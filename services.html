@@ -10,12 +10,13 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Services & Capabilities | SalesGency">
   <meta property="og:description" content="Custom GTM workflows, agent planning harnesses, and full stack web applications.">
-  <meta property="og:image" content="gency-wordmark.png">
+  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,8 +24,9 @@
 <!-- 1. FLOATING PILL NAVBAR -->
 <div class="nav-wrapper">
   <nav>
-    <a href="index.html" class="nav-brand">
-      Sales<em>Gency</em> <span class="brand-badge">Services</span>
+    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
+      <span class="brand-badge">Services</span>
     </a>
     <div class="nav-links">
       <a href="index.html">Overview</a>
@@ -123,6 +125,16 @@
       </div>
 
     </div>
+
+    <!-- Visual Architecture Spec: CRM Shield -->
+    <div style="margin-top: 36px;">
+      <div class="project-card-image-wrap" style="max-width: 900px; margin: 0 auto 16px; aspect-ratio: 16 / 9;">
+        <span class="project-image-badge">Production Architecture</span>
+        <img src="assets/project-vntnr.jpg" alt="VNTNR Lead Routing & CRM Shield System" class="project-card-img" loading="lazy">
+      </div>
+      <p style="text-align: center; font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Fig 1.1: Automated Lead-to-CRM Routing with Dynamic Dedupe Shield &amp; Real-time Enrichment</p>
+    </div>
+
   </div>
 </section>
 
@@ -193,6 +205,16 @@
       </div>
 
     </div>
+
+    <!-- Visual Architecture Spec: Web Apps & Command Centers -->
+    <div style="margin-top: 36px;">
+      <div class="project-card-image-wrap" style="max-width: 900px; margin: 0 auto 16px; aspect-ratio: 16 / 9;">
+        <span class="project-image-badge">Custom Full-Stack Build</span>
+        <img src="assets/project-archin.jpg" alt="Archin Robotics Command Center Application" class="project-card-img" loading="lazy">
+      </div>
+      <p style="text-align: center; font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Fig 1.2: Bespoke Next.js Outbound Intelligence Command Center with Live Pipeline Telemetry</p>
+    </div>
+
   </div>
 </section>
 
@@ -214,7 +236,9 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand-col">
-        <h4>Sales<em>Gency</em></h4>
+        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
+          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
+        </a>
         <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
       </div>
       <div class="footer-col">

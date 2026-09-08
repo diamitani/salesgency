@@ -10,12 +10,13 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="SalesGency — GTM Workflows, Custom Harnesses & Full-Stack Web Apps">
   <meta property="og:description" content="Tailored exclusively to GTM operations. Live in 30 days with full infrastructure ownership.">
-  <meta property="og:image" content="gency-wordmark.png">
+  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
   
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,8 +24,9 @@
 <!-- 1. FLOATING PILL NAVBAR -->
 <div class="nav-wrapper">
   <nav>
-    <a href="index.html" class="nav-brand">
-      Sales<em>Gency</em> <span class="brand-badge">GTM AI</span>
+    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
+      <span class="brand-badge">GTM AI</span>
     </a>
     <div class="nav-links">
       <a href="index.html" class="active">Overview</a>
@@ -197,6 +199,22 @@
 
     </div>
 
+    <!-- Flagship Outbound Revenue Intelligence Command Center Preview -->
+    <div class="hero-dashboard-preview">
+      <div class="hero-dashboard-bar">
+        <div class="hero-dashboard-dots">
+          <span class="hero-dashboard-dot red"></span>
+          <span class="hero-dashboard-dot yellow"></span>
+          <span class="hero-dashboard-dot green"></span>
+        </div>
+        <span>ARCHIN ROBOTICS · OUTBOUND REVENUE INTELLIGENCE (LIVE TELEMETRY)</span>
+        <span style="color: #00C2FF; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+          <span class="brand-dot" style="margin: 0;"></span> TELEMETRY ACTIVE
+        </span>
+      </div>
+      <img src="assets/project-archin.jpg" alt="SalesGency Outbound Revenue Intelligence Telemetry Command Center" class="hero-dashboard-img" loading="eager">
+    </div>
+
   </div>
 </header>
 
@@ -276,6 +294,49 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTION DEPLOYMENTS & LIVE SYSTEMS SHOWCASE -->
+<section id="deployments" style="border-top: 1px solid var(--border); background: var(--bg-canvas);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Production Provenance</div>
+      <h2 class="section-title">Engineered For Scale. <span class="serif-i">Live In Production.</span></h2>
+      <p class="section-desc">Real systems built directly in client infrastructure with zero-leak CRM shields, adaptive copywriting engines, and deterministic webhooks.</p>
+    </div>
+
+    <div class="grid-2">
+      <!-- Aeorim AI -->
+      <div class="feature-card" style="padding: 24px;">
+        <div class="project-card-image-wrap">
+          <span class="project-image-badge">24.2% Reply Rate</span>
+          <img src="assets/project-aeorim.jpg" alt="Aeorim AI Cold Email Outreach Engine" class="project-card-img" loading="lazy">
+        </div>
+        <div class="badge badge-mint" style="margin-bottom: 10px;">Autonomous Outbound Engine</div>
+        <h3 style="font-size: 20px; margin-bottom: 8px;">Aeorim AI: Q4 Multi-Variant PAS Campaign</h3>
+        <p style="font-size: 14px; margin-bottom: 16px;">Automated prospect reveal, dynamic PAS pain point synthesis, and adaptive sequence progression across 14,800+ enterprise buyers with 118 meetings booked.</p>
+        <div class="feature-card-footer">
+          <span>Smartlead · Clay · n8n</span>
+          <a href="work.html" style="color: var(--primary); font-weight: 600;">View System Specs →</a>
+        </div>
+      </div>
+
+      <!-- VNTNR Global Logistics -->
+      <div class="feature-card" style="padding: 24px;">
+        <div class="project-card-image-wrap">
+          <span class="project-image-badge">0% Domain Burn</span>
+          <img src="assets/project-vntnr.jpg" alt="VNTNR Global Logistics CRM Shield Routing" class="project-card-img" loading="lazy">
+        </div>
+        <div class="badge badge-blue" style="margin-bottom: 10px;">CRM Shield &amp; Routing</div>
+        <h3 style="font-size: 20px; margin-bottom: 8px;">VNTNR Logistics: Global Lead-to-CRM Routing</h3>
+        <p style="font-size: 14px; margin-bottom: 16px;">Deterministic webhook routing, real-time deduplication, and automated territory assignments across HubSpot and Salesforce instances with 99/100 sender score.</p>
+        <div class="feature-card-footer">
+          <span>Salesforce · HubSpot · Clearbit</span>
+          <a href="work.html" style="color: var(--primary); font-weight: 600;">View System Specs →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -558,6 +619,35 @@
   </div>
 </section>
 
+<!-- FOUNDER & ARCHITECT COMMITMENT -->
+<section id="founder-guarantee" style="border-top: 1px solid var(--border); padding: 90px 0; background: var(--bg-alt);">
+  <div class="container">
+    <div class="founder-editorial-card">
+      <div class="founder-photo-wrap">
+        <img src="assets/founder.jpg" alt="Patrick Diamitani, Lead Systems Architect at SalesGency" class="founder-photo" loading="lazy">
+        <div class="founder-photo-tag">
+          <div class="name">Patrick Diamitani <span class="brand-dot"></span></div>
+          <div class="role">Founder &amp; Lead Systems Architect</div>
+        </div>
+      </div>
+      <div class="founder-editorial-content">
+        <div class="badge badge-mint" style="margin-bottom: 14px; width: fit-content;">Engineering Accountability</div>
+        <h3 style="font-size: 28px; margin-bottom: 14px; line-height: 1.3;">No Junior Outsourcing. <br><span class="serif-i">Direct Senior AI Engineering.</span></h3>
+        <p style="font-size: 15px; color: var(--ink-secondary); line-height: 1.7; margin-bottom: 16px;">
+          When you work with SalesGency, you are not handed off to junior coordinators or outsourced account managers. Every single GTM workflow, agent skill, and web app is personally designed, tested, and deployed by our Lead Systems Architect.
+        </p>
+        <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
+          We enforce a <strong>strict client cap of 3 concurrent builds per month</strong> to maintain relentless engineering rigor and deliver production-ready systems within 30 days.
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <a href="about.html" class="btn btn-secondary btn-sm">Read Founder Story &amp; Philosophy →</a>
+          <a href="qualification.html" class="btn btn-primary btn-sm">Schedule Architectural Review ($250) →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 10. BOTTOM CTA BANNER -->
 <div class="container cta-banner-wrapper">
   <div class="cta-banner-card">
@@ -581,7 +671,9 @@
     <div class="footer-grid">
       
       <div class="footer-brand-col">
-        <h4>Sales<em>Gency</em></h4>
+        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
+          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
+        </a>
         <p>Custom GTM workflows, agent planning harnesses, and full stack web apps. Built by Forward Deployed AI Engineers in Chicago.</p>
         <div style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">
           Direct: <a href="mailto:patrick.diamitani@gmail.com" style="color: var(--primary);">patrick.diamitani@gmail.com</a>

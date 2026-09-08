@@ -10,12 +10,13 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="About & Leadership | SalesGency">
   <meta property="og:description" content="Forward Deployed AI Engineering for revenue systems, agentic harnesses, and custom GTM tooling.">
-  <meta property="og:image" content="gency-wordmark.png">
+  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,8 +24,9 @@
 <!-- 1. FLOATING PILL NAVBAR -->
 <div class="nav-wrapper">
   <nav>
-    <a href="index.html" class="nav-brand">
-      Sales<em>Gency</em> <span class="brand-badge">Founder</span>
+    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
+      <span class="brand-badge">Founder</span>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -78,30 +80,41 @@
 </header>
 
 <!-- 3. BIO CARD -->
-<section id="bio" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
-  <div class="container-narrow">
+<section id="bio" style="border-top: 1px solid var(--border); background: var(--bg-alt); padding: 90px 0;">
+  <div class="container">
     
-    <div class="feature-card" style="padding: 48px;">
-      <div class="badge badge-mint" style="margin-bottom: 20px;">Leadership &amp; Architecture</div>
-      <h3 style="font-size: 28px; margin-bottom: 16px;">Engineering Autonomous Revenue Systems</h3>
-      <p style="font-size: 16px; margin-bottom: 20px; line-height: 1.7;">
-        Previously built systems at Atlas HXM. Published AI builder focused on practical, production-grade workflows using Claude, n8n, Clay, Make.com, and modern orchestration tooling.
-      </p>
-      <p style="font-size: 16px; margin-bottom: 30px; line-height: 1.7;">
-        My core philosophy is simple: <strong>Deterministic data routing + Agentic unstructured synthesis</strong>. I don't believe in giving AI free rein over unverified actions. We build strict guardrails, deduplication shields, and human approval gates so revenue teams scale with 100% confidence.
-      </p>
-
-      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
-        <span class="badge badge-blue">n8n Systems Engineer</span>
-        <span class="badge badge-rose">Agent PAL Architect</span>
-        <span class="badge badge-sun">Claude / MCP Specialist</span>
-        <span class="badge badge-mint">CRM Automation</span>
+    <div class="founder-editorial-card">
+      <div class="founder-photo-wrap">
+        <img src="assets/founder.jpg" alt="Patrick Diamitani, Lead Systems Architect at SalesGency" class="founder-photo" loading="eager">
+        <div class="founder-photo-tag">
+          <div class="name">Patrick Diamitani <span class="brand-dot"></span></div>
+          <div class="role">Lead GTM Systems Architect · Chicago, IL</div>
+        </div>
       </div>
 
-      <div style="display: flex; gap: 14px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-light);">
-        <a href="https://linkedin.com/in/diamitani" target="_blank" class="btn btn-primary btn-sm">LinkedIn Profile ↗</a>
-        <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-ghost btn-sm">Schedule Strategy Call ↗</a>
-        <a href="mailto:patrick.diamitani@gmail.com" class="btn btn-ghost btn-sm">Email Direct ↗</a>
+      <div class="founder-editorial-content">
+        <div class="badge badge-mint" style="margin-bottom: 16px; width: fit-content;">Leadership &amp; Architecture</div>
+        <h3 style="font-size: 32px; margin-bottom: 16px; line-height: 1.25;">Engineering Autonomous Revenue Systems</h3>
+        <p style="font-size: 16px; margin-bottom: 18px; line-height: 1.7; color: var(--ink);">
+          Previously engineered systems at <strong>Atlas HXM</strong>. Published AI practitioner focused on deterministic data routing, high-scale n8n workflows, dynamic Claude/MCP agents, and Clay enrichment engines.
+        </p>
+        <p style="font-size: 15px; margin-bottom: 28px; line-height: 1.7; color: var(--text-muted);">
+          My core philosophy is simple: <strong>Deterministic data routing + Agentic unstructured synthesis</strong>. We do not give AI unbounded authority over sensitive CRM records or email senders. Every engine is fortified with strict guardrails, deduplication shields, and human approval gates so revenue teams scale with 100% confidence.
+        </p>
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px;">
+          <span class="badge badge-blue">n8n Systems Engineer</span>
+          <span class="badge badge-rose">Agent PAL Architect</span>
+          <span class="badge badge-sun">Claude / MCP Specialist</span>
+          <span class="badge badge-mint">CRM Automation</span>
+          <span class="badge badge-gray">Full-Stack Next.js</span>
+        </div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-light);">
+          <a href="https://linkedin.com/in/diamitani" target="_blank" class="btn btn-primary btn-sm">LinkedIn Profile ↗</a>
+          <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-sm">Schedule Strategy Call ↗</a>
+          <a href="mailto:patrick.diamitani@gmail.com" class="btn btn-secondary btn-sm">Email Direct ↗</a>
+        </div>
       </div>
     </div>
 
@@ -125,7 +138,9 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand-col">
-        <h4>Sales<em>Gency</em></h4>
+        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
+          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
+        </a>
         <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
       </div>
       <div class="footer-col">

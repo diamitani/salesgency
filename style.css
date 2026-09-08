@@ -180,18 +180,54 @@ nav:hover {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  letter-spacing: -0.04em;
+  gap: 10px;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 750;
+  font-size: 20px;
+  letter-spacing: -0.03em;
   color: var(--ink);
+  text-decoration: none;
   white-space: nowrap;
+}
+
+.brand-wordmark-img {
+  height: 24px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s var(--ease-spring);
+}
+
+.nav-brand:hover .brand-wordmark-img {
+  transform: scale(1.03);
+}
+
+.brand-dot {
+  display: inline-block;
+  width: 6.5px;
+  height: 6.5px;
+  background: #00C2FF;
+  border-radius: 50%;
+  margin-left: 2px;
+  vertical-align: baseline;
+  box-shadow: 0 0 10px rgba(0, 194, 255, 0.85);
+  animation: cyanDotPulse 2.8s infinite ease-in-out;
+}
+
+@keyframes cyanDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(0, 194, 255, 0.75);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0, 194, 255, 1);
+    transform: scale(1.18);
+  }
 }
 
 .nav-brand em {
   font-style: normal;
-  color: var(--primary);
+  color: var(--ink);
 }
 
 .nav-brand .brand-badge {
@@ -1402,3 +1438,231 @@ footer {
   .cta-banner-card { padding: 50px 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 }
+
+/* ==========================================================================
+   SalesGency Brand Asset Integration Components
+   Wordmark, Production Dashboards, and Founder Editorial Styling
+   ========================================================================== */
+
+/* Wordmark & Footer Branding */
+.footer-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+.footer-brand-logo .brand-wordmark-img {
+  height: 26px;
+}
+
+/* Flagship Curved & Hero Dashboard Preview Frame */
+.hero-dashboard-preview {
+  max-width: 1120px;
+  margin: 44px auto 0;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  border: 1px solid rgba(0, 194, 255, 0.28);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.16), 0 0 40px rgba(0, 194, 255, 0.12);
+  background: #080C14;
+  position: relative;
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+}
+.hero-dashboard-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 85px rgba(0, 0, 0, 0.22), 0 0 55px rgba(0, 194, 255, 0.2);
+}
+.hero-dashboard-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+  background: #0B111E;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: #94A3B8;
+  font-family: 'JetBrains Mono', monospace;
+}
+.hero-dashboard-dots {
+  display: flex;
+  gap: 6px;
+}
+.hero-dashboard-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.hero-dashboard-dot.red { background: #EF4444; }
+.hero-dashboard-dot.yellow { background: #F59E0B; }
+.hero-dashboard-dot.green { background: #10B981; }
+
+.hero-dashboard-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Production Project Card Image Framing */
+.project-card-image-wrap {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #080C14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  transition: transform 0.3s var(--ease-spring), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card-image-wrap:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 194, 255, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 194, 255, 0.14);
+}
+.project-card-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-card-image-wrap:hover .project-card-img {
+  transform: scale(1.03);
+}
+.project-image-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(8, 12, 20, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 194, 255, 0.35);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #00C2FF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  z-index: 2;
+}
+.project-image-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00C2FF;
+  box-shadow: 0 0 6px #00C2FF;
+}
+
+/* Founder Editorial Portrait Layout */
+.founder-editorial-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  align-items: stretch;
+}
+@media (max-width: 860px) {
+  .founder-editorial-card {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+.founder-photo-wrap {
+  position: relative;
+  background: #090D16;
+  overflow: hidden;
+  min-height: 380px;
+}
+.founder-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.founder-photo-wrap:hover .founder-photo {
+  transform: scale(1.03);
+}
+.founder-photo-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(8, 12, 20, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: #FFFFFF;
+}
+.founder-photo-tag .name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.founder-photo-tag .role {
+  font-size: 11px;
+  color: #94A3B8;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 2px;
+}
+.founder-editorial-content {
+  padding: 44px 44px 44px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 860px) {
+  .founder-editorial-content {
+    padding: 32px 28px;
+  }
+}
+
+/* Consultation Booking Architect Badge */
+.consultation-architect-preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+}
+.consultation-architect-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00C2FF;
+  box-shadow: 0 0 12px rgba(0, 194, 255, 0.35);
+  flex-shrink: 0;
+}
+.consultation-architect-info h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.consultation-architect-info p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
