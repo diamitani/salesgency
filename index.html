@@ -35,6 +35,35 @@
 
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li class="nav-item-dropdown">
+          <a href="agents.html" class="nav-link nav-dropdown-trigger">
+            <span>Architecture</span>
+            <span class="dropdown-arrow">▼</span>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="agents.html" class="nav-dropdown-item">
+              <span class="item-icon">🤖</span>
+              <div>
+                <strong>Agents</strong>
+                <span class="item-desc">Autonomous reasoning &amp; triage</span>
+              </div>
+            </a>
+            <a href="workflows.html" class="nav-dropdown-item">
+              <span class="item-icon">⚡</span>
+              <div>
+                <strong>Workflows</strong>
+                <span class="item-desc">Deterministic execution rails</span>
+              </div>
+            </a>
+            <a href="skills.html" class="nav-dropdown-item">
+              <span class="item-icon">🧠</span>
+              <div>
+                <strong>Skills</strong>
+                <span class="item-desc">Packaged domain intelligence</span>
+              </div>
+            </a>
+          </div>
+        </li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="process.html" class="nav-link">Process</a></li>
         <li><a href="work.html" class="nav-link">Work</a></li>
@@ -59,6 +88,12 @@
   <!-- Mobile Navigation Drawer -->
   <div class="mobile-nav-drawer" id="mobileNavDrawer">
     <a href="index.html" class="nav-link active">Home</a>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-heading">Architecture</div>
+      <a href="agents.html" class="nav-link">🤖 Agents</a>
+      <a href="workflows.html" class="nav-link">⚡ Workflows</a>
+      <a href="skills.html" class="nav-link">🧠 Skills</a>
+    </div>
     <a href="services.html" class="nav-link">Services</a>
     <a href="process.html" class="nav-link">Process</a>
     <a href="work.html" class="nav-link">Work</a>
@@ -334,93 +369,7 @@
   </section>
 
   <!-- ==========================================================================
-       4. THE ARCHITECTURAL TRIAD: SKILLS, AGENTS, WORKFLOWS
-       ========================================================================== -->
-  <section class="section triad-section" id="triad">
-    <div class="container">
-      <div class="section-header">
-        <div class="digiket-badge badge-cyan">
-          <span class="badge-dot"></span>
-          <span>🛠️ The Engineering Blueprint</span>
-        </div>
-        <h2>Skills, Agents, Workflows</h2>
-        <p>Each of our projects are designed to give you three. We expand on what you already have to build an autonomous revenue architecture that you own outright.</p>
-      </div>
-
-      <div class="triad-callout-banner">
-        <div class="triad-callout-text">
-          <h3>Why We Always Deliver All Three</h3>
-          <p>An agent without workflows is locked in a sandbox. A workflow without skills lacks domain judgment. A skill without an agent cannot adapt to live buyer signals. By unifying all three, your sales engine runs 24/7 with zero human bottleneck.</p>
-        </div>
-        <a href="process.html" class="btn btn-primary" style="flex-shrink: 0;">See How It Connects →</a>
-      </div>
-
-      <div class="triad-grid">
-        <!-- 1. Workflows -->
-        <div class="triad-card card-workflows">
-          <span class="triad-badge">Execution Rails</span>
-          <h3>Workflows</h3>
-          <div class="triad-role">Deterministic Infrastructure</div>
-          <p>
-            The reliable highways connecting your CRMs, lead sources, email sequencers, and communication channels. Driven by real-time webhooks, automated cron triggers, and error-handling fallbacks.
-          </p>
-          <div class="triad-spec-box">
-            <strong>Included Deliverables:</strong>
-            <div class="triad-spec-tags">
-              <span class="triad-spec-tag">n8n / Make</span>
-              <span class="triad-spec-tag">Webhook Routers</span>
-              <span class="triad-spec-tag">Dual Inbox Sync</span>
-              <span class="triad-spec-tag">CRM Sync Rails</span>
-              <span class="triad-spec-tag">Audit Logs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Skills -->
-        <div class="triad-card card-skills">
-          <span class="triad-badge">Operational Intelligence</span>
-          <h3>Skills</h3>
-          <div class="triad-role">Packaged Domain Capabilities</div>
-          <p>
-            The specialized recipes, dynamic prompting frameworks, and heuristics that instruct AI how to research, synthesize company signals, score buyer readiness, and draft high-converting copy.
-          </p>
-          <div class="triad-spec-box">
-            <strong>Included Deliverables:</strong>
-            <div class="triad-spec-tags">
-              <span class="triad-spec-tag">AI PAS Copywriting</span>
-              <span class="triad-spec-tag">Signal Extractors</span>
-              <span class="triad-spec-tag">MQL Classifiers</span>
-              <span class="triad-spec-tag">Data Scrubbers</span>
-              <span class="triad-spec-tag">Quote Builders</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Agents -->
-        <div class="triad-card card-agents">
-          <span class="triad-badge">Autonomous Logic</span>
-          <h3>Agents</h3>
-          <div class="triad-role">Reasoning &amp; Decision Engines</div>
-          <p>
-            The autonomous units that observe inputs, evaluate context against your playbook, handle objections, triage inbound inquiries, and dispatch workflows without waiting for manual intervention.
-          </p>
-          <div class="triad-spec-box">
-            <strong>Included Deliverables:</strong>
-            <div class="triad-spec-tags">
-              <span class="triad-spec-tag">Triage Agent</span>
-              <span class="triad-spec-tag">Lead Chatbot</span>
-              <span class="triad-spec-tag">Outreach Agent</span>
-              <span class="triad-spec-tag">Meeting Booker</span>
-              <span class="triad-spec-tag">Ticket Router</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. WORK & PROVEN OUTCOMES (DIGIKET FORMAT)
+       4. WORK & PROVEN OUTCOMES (DIGIKET FORMAT)
        ========================================================================== -->
   <section class="section" id="work">
     <div class="container">
