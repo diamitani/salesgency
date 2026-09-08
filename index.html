@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SalesGency — Build Your A.I. Go-to-Market Automation Engine</title>
-  <meta name="description" content="SalesGency empowers your in-house team to Access, Build and Manage GTM AI tools, skills, and autonomous workflows.">
+  <title>SalesGency — $100k/Mo Autonomous GTM AI &amp; Automation Agency</title>
+  <meta name="description" content="SalesGency builds custom GTM AI workflows, specialized prompt skills, and autonomous revenue agents to help high-growth B2B organizations generate predictable pipeline.">
   
-  <!-- Open Graph -->
+  <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SalesGency — Build Your A.I. Go-to-Market Automation Engine">
-  <meta property="og:description" content="We build custom workflows, skills and agents to help organizations close more sales. Inbound, Outbound, RevOps, and Enablement.">
+  <meta property="og:title" content="SalesGency — $100k/Mo Autonomous GTM AI &amp; Automation Agency">
+  <meta property="og:description" content="Build your in-house GTM AI automation engine. Custom workflows, skills, and autonomous agents for Inbound, Outbound, RevOps, and Enablement.">
   <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono (tasteskill typography standard) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Main Stylesheet -->
+  <!-- Production Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- ==========================================================================
-       1. FLOATING PILL NAVBAR
+       1. FLOATING PILL NAVBAR (Standardized with Spring-Eased Dropdown)
        ========================================================================== -->
   <header class="nav-wrapper">
     <div class="nav-container">
@@ -33,46 +33,48 @@
         <span class="brand-subtag">GTM AI Agency</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li class="nav-item-dropdown">
-          <a href="agents.html" class="nav-link nav-dropdown-trigger">
-            <span>Architecture</span>
-            <span class="dropdown-arrow">▼</span>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="agents.html" class="nav-dropdown-item">
-              <span class="item-icon">🤖</span>
-              <div>
-                <strong>Agents</strong>
-                <span class="item-desc">Autonomous reasoning &amp; triage</span>
-              </div>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-item-dropdown">
+            <a href="agents.html" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Architecture</span>
+              <span class="dropdown-arrow">▼</span>
             </a>
-            <a href="workflows.html" class="nav-dropdown-item">
-              <span class="item-icon">⚡</span>
-              <div>
-                <strong>Workflows</strong>
-                <span class="item-desc">Deterministic execution rails</span>
-              </div>
-            </a>
-            <a href="skills.html" class="nav-dropdown-item">
-              <span class="item-icon">🧠</span>
-              <div>
-                <strong>Skills</strong>
-                <span class="item-desc">Packaged domain intelligence</span>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="process.html" class="nav-link">Process</a></li>
-        <li><a href="work.html" class="nav-link">Work</a></li>
-        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
+            <div class="nav-dropdown-menu">
+              <a href="agents.html" class="nav-dropdown-item">
+                <span class="item-icon">🤖</span>
+                <div>
+                  <strong>Agents</strong>
+                  <span class="item-desc">Autonomous reasoning &amp; triage</span>
+                </div>
+              </a>
+              <a href="workflows.html" class="nav-dropdown-item">
+                <span class="item-icon">⚡</span>
+                <div>
+                  <strong>Workflows</strong>
+                  <span class="item-desc">Deterministic execution rails</span>
+                </div>
+              </a>
+              <a href="skills.html" class="nav-dropdown-item">
+                <span class="item-icon">🧠</span>
+                <div>
+                  <strong>Skills</strong>
+                  <span class="item-desc">Packaged domain intelligence</span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="process.html" class="nav-link">Process</a></li>
+          <li><a href="work.html" class="nav-link">Work</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">View Plans</a>
+        <a href="#pricing" class="btn btn-secondary btn-sm">View Plans</a>
         <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
         <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -85,7 +87,7 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
+  <!-- Mobile Drawer -->
   <div class="mobile-nav-drawer" id="mobileNavDrawer">
     <a href="index.html" class="nav-link active">Home</a>
     <div class="mobile-nav-group">
@@ -103,7 +105,7 @@
   </div>
 
   <!-- ==========================================================================
-       2. MODERN SAAS B2B AGENCY HERO
+       2. AWWWARDS-GRADE SAAS B2B AGENCY HERO
        ========================================================================== -->
   <section class="hero">
     <div class="container">
@@ -111,7 +113,7 @@
         <!-- Live Badge -->
         <div class="badge-pill badge-emerald">
           <span class="pulse-dot"></span>
-          <span>Production-Ready GTM AI Infrastructure</span>
+          <span>Enterprise GTM AI Infrastructure // Production-Verified v2.5</span>
         </div>
 
         <!-- Headline -->
@@ -122,35 +124,35 @@
 
         <!-- Subtitle -->
         <p class="hero-subtitle">
-          <strong>SalesGency empowers your in-house team</strong> to Access, Build and Manage GTM AI tools, specialized skills, and autonomous workflows.
+          <strong>SalesGency empowers high-growth B2B teams</strong> to Access, Build, and Manage enterprise GTM AI tools, specialized prompt skills, and autonomous workflows. Engineered to generate predictable pipeline without adding headcount.
         </p>
 
         <!-- CTA Row -->
         <div class="hero-cta-row">
-          <a href="qualification.html" class="btn btn-indigo btn-lg">Book Architecture Call →</a>
-          <a href="#services" class="btn btn-secondary btn-lg">Explore Core Pillars</a>
+          <a href="qualification.html" class="btn btn-indigo btn-lg">Book Architecture Discovery Call →</a>
+          <a href="#calculator" class="btn btn-secondary btn-lg">Calculate Your ROI ↓</a>
         </div>
 
         <!-- Metric Proof Strip -->
         <div class="hero-metrics-strip">
-          <div class="hero-metric-item"><strong>100+</strong> Workflows Built</div>
+          <div class="hero-metric-item"><strong>100+</strong> Workflows Deployed</div>
           <div class="hero-metric-item"><strong>&lt; 45s</strong> Reply Velocity</div>
-          <div class="hero-metric-item"><strong>4.9 / 5</strong> Client Score</div>
-          <div class="hero-metric-item"><strong>100%</strong> In-House Owned</div>
+          <div class="hero-metric-item"><strong>$42M+</strong> Pipeline Influenced</div>
+          <div class="hero-metric-item"><strong>100%</strong> In-House Client Owned</div>
         </div>
       </div>
 
-      <!-- 3-Card Triad Bento Grid -->
+      <!-- 3-Card Triad Bento Grid (Aceternity / Magic UI Spotlight Cards) -->
       <div class="triad-bento-grid">
         <!-- Card 1: Agents -->
         <div class="triad-bento-card card-agents">
           <div class="triad-card-top">
             <div class="triad-icon-row">
               <div class="triad-icon-badge">🤖</div>
-              <span class="triad-status-pill pill-primary">Autonomous Logic</span>
+              <span class="triad-status-pill pill-primary">Autonomous Reasoning</span>
             </div>
             <h3>Agents</h3>
-            <div class="triad-subtitle">Reasoning &amp; Decision Engines</div>
+            <div class="triad-subtitle">Decisions &amp; Intent Triage</div>
             <p>
               Autonomous units that evaluate live context, handle objections, triage inbound inquiries, and dispatch workflows 24/7 without manual intervention.
             </p>
@@ -172,10 +174,10 @@
           <div class="triad-card-top">
             <div class="triad-icon-row">
               <div class="triad-icon-badge">⚡</div>
-              <span class="triad-status-pill pill-cyan">Execution Rails</span>
+              <span class="triad-status-pill pill-cyan">Deterministic Rails</span>
             </div>
             <h3>Workflows</h3>
-            <div class="triad-subtitle">Deterministic Infrastructure</div>
+            <div class="triad-subtitle">Execution Infrastructure</div>
             <p>
               The reliable highways connecting your CRMs, lead sources, email sequencers, and communication channels driven by webhooks and error-handled fallbacks.
             </p>
@@ -200,7 +202,7 @@
               <span class="triad-status-pill pill-emerald">Operational Intelligence</span>
             </div>
             <h3>Skills</h3>
-            <div class="triad-subtitle">Packaged Domain Capabilities</div>
+            <div class="triad-subtitle">Packaged Capabilities</div>
             <p>
               Specialized recipes, dynamic prompting frameworks, and heuristics that instruct AI how to research companies, score buyer intent, and draft high-converting copy.
             </p>
@@ -218,7 +220,7 @@
         </div>
       </div>
 
-      <!-- Live GTM Telemetry Simulator -->
+      <!-- Live GTM Telemetry Simulator (Aceternity Live macOS Chrome Window) -->
       <div class="simulator-container">
         <div class="simulator-header">
           <div class="simulator-traffic-lights">
@@ -226,38 +228,47 @@
             <span class="traffic-dot yellow"></span>
             <span class="traffic-dot green"></span>
           </div>
-          <div class="simulator-title">gtm-engine-telemetry v2.4 // active-runtime</div>
+          <div class="simulator-title">gtm-engine-telemetry v2.5 // active-runtime // cluster-01</div>
           <div class="badge-pill badge-emerald" style="margin: 0; padding: 3px 10px; font-size: 0.72rem;">
             <span class="pulse-dot"></span>
             <span>Live Stream</span>
           </div>
         </div>
         <div class="simulator-body">
-          <div class="pipeline-flow-grid">
-            <div class="pipeline-step-node">
+          <div class="pipeline-flow-grid" id="pipelineFlowGrid">
+            <div class="pipeline-step-node active-node" data-step="1">
               <div class="pipeline-node-number">NODE 01 / TRIGGER</div>
               <h4>Signal Ingest</h4>
               <p>Monitors hiring alerts, funding rounds, and website visitor intent in real time.</p>
               <span class="pipeline-node-pill">⚡ Real-Time Webhook</span>
             </div>
-            <div class="pipeline-step-node">
+            <div class="pipeline-step-node" data-step="2">
               <div class="pipeline-node-number">NODE 02 / SHIELD</div>
               <h4>CRM Dedupe Gate</h4>
-              <p>Cross-references HubSpot and Salesforce to protect active deals from being spammed.</p>
+              <p>Cross-references HubSpot &amp; Salesforce to protect active deals from spam.</p>
               <span class="pipeline-node-pill">🛡️ 0 Domain Burn</span>
             </div>
-            <div class="pipeline-step-node">
+            <div class="pipeline-step-node" data-step="3">
               <div class="pipeline-node-number">NODE 03 / REASONING</div>
               <h4>AI PAS Engine</h4>
-              <p>Synthesizes 3-sentence Problem-Agitate-Solve copy matched to prospect role.</p>
+              <p>Synthesizes 3-sentence Problem-Agitate-Solve copy tailored to prospect role.</p>
               <span class="pipeline-node-pill">🤖 GPT-4o / Claude 3.5</span>
             </div>
-            <div class="pipeline-step-node">
+            <div class="pipeline-step-node" data-step="4">
               <div class="pipeline-node-number">NODE 04 / ACTION</div>
               <h4>Dual Inbox Sync</h4>
               <p>Enrolls lead in smart sequence and alerts assigned AE via Slack with 1-click booking.</p>
               <span class="pipeline-node-pill">✉️ &lt; 45s Response</span>
             </div>
+          </div>
+
+          <!-- Live Terminal Log Box -->
+          <div class="simulator-log-box" id="simulatorLogBox">
+            <div><span class="log-prefix">[2026-09-08 16:15:02 UTC]</span> <span class="log-highlight">SYSTEM_ONLINE</span> :: Listening on webhook: /v1/ingest/signals/gtm-inbound-ae</div>
+            <div><span class="log-prefix">[2026-09-08 16:15:04 UTC]</span> NODE 01: Ingested hiring event from Aeorim AI (VP RevOps position opened) ➔ confidence 0.98</div>
+            <div><span class="log-prefix">[2026-09-08 16:15:05 UTC]</span> NODE 02: CRM Dedupe Gate checked against HubSpot API ➔ Deal collision: NONE ➔ Status: CLEARED</div>
+            <div><span class="log-prefix">[2026-09-08 16:15:06 UTC]</span> NODE 03: Claude 3.5 Sonnet generated PAS 3-sentence hook based on 10-K pain point</div>
+            <div><span class="log-prefix">[2026-09-08 16:15:07 UTC]</span> NODE 04: Sequence dispatch via Instantly Smart-Router + Dual-Inbox AE notification sent</div>
           </div>
         </div>
       </div>
@@ -266,12 +277,93 @@
   </section>
 
   <!-- ==========================================================================
-       3. THE 4 CORE SERVICE PILLARS (2x2 BENTO)
+       3. INTERACTIVE PIPELINE ROI CALCULATOR (Tremor-Inspired)
        ========================================================================== -->
-  <section class="section section-subtle" id="services">
+  <section class="section section-subtle" id="calculator">
     <div class="container">
       <div class="section-header">
-        <div class="badge-pill badge-orange">
+        <div class="badge-pill badge-primary">
+          <span class="pulse-dot"></span>
+          <span>📊 Institutional Value Model</span>
+        </div>
+        <h2>Calculate Your Autonomous Pipeline ROI</h2>
+        <p>See the quantified pipeline impact and rep hours unlocked by replacing manual outreach and spreadsheet management with an autonomous GTM engine.</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calc-inputs">
+          <!-- Slider 1 -->
+          <div class="calc-field">
+            <label for="teamSizeSlider">
+              <span>Sales Team Size (SDRs &amp; AEs)</span>
+              <span class="calc-val-pill" id="teamSizeVal">5 Reps</span>
+            </label>
+            <input type="range" id="teamSizeSlider" class="calc-slider" min="1" max="40" value="5" step="1">
+            <div style="display:flex; justify-content:space-between; font-size: 0.78rem; color: var(--text-dim); margin-top: 6px;">
+              <span>1 Rep</span>
+              <span>20 Reps</span>
+              <span>40+ Reps</span>
+            </div>
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="calc-field">
+            <label for="dealSizeSlider">
+              <span>Average Contract Value (ACV)</span>
+              <span class="calc-val-pill" id="dealSizeVal">$25,000</span>
+            </label>
+            <input type="range" id="dealSizeSlider" class="calc-slider" min="5000" max="100000" value="25000" step="5000">
+            <div style="display:flex; justify-content:space-between; font-size: 0.78rem; color: var(--text-dim); margin-top: 6px;">
+              <span>$5k</span>
+              <span>$50k</span>
+              <span>$100k+</span>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-subtle); border-radius: var(--radius-lg); padding: 16px; border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--ink-heading); margin-bottom: 4px;">⚡ Methodology Note:</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+              Calculations based on reclaiming 28 monthly hours per rep from manual CRM hygiene, prospecting, and copy drafting, plus a conservative 18% lift in qualified meetings.
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Results Card -->
+        <div class="calc-results-card">
+          <div style="font-size: 0.84rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);">
+            Estimated Annual Pipeline Added
+          </div>
+          <div class="calc-metric-highlight" id="pipelineAddedText">
+            +$1,125,000
+          </div>
+          <p>in net new qualified opportunities generated across Inbound &amp; Outbound pipelines.</p>
+
+          <div class="calc-submetrics-grid">
+            <div class="submetric-box">
+              <strong id="hoursSavedText">140 hrs/mo</strong>
+              <span>Rep Hours Reclaimed</span>
+            </div>
+            <div class="submetric-box">
+              <strong id="speedMultiplierText">3.8x</strong>
+              <span>Speed-to-Lead Lift</span>
+            </div>
+          </div>
+
+          <a href="qualification.html" class="btn btn-indigo" style="width: 100%;">
+            Lock In Your Architecture Plan →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. THE 4 CORE SERVICE PILLARS (2x2 BENTO)
+       ========================================================================== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill badge-cyan">
           <span class="pulse-dot"></span>
           <span>⚡ High-Impact GTM Capabilities</span>
         </div>
@@ -294,7 +386,7 @@
             <ul class="pillar-deliverables-list">
               <li>
                 <span class="check-bullet">✓</span>
-                <span>Custom AI Chatbots tailored to company knowledge bases</span>
+                <span>Custom AI Chatbots tailored to company knowledge bases &amp; pricing</span>
               </li>
               <li>
                 <span class="check-bullet">✓</span>
@@ -314,6 +406,7 @@
             <div class="pillar-tags-row">
               <span class="triad-spec-pill">Chatbots</span>
               <span class="triad-spec-pill">Speed-to-Lead</span>
+              <span class="triad-spec-pill">Dual-Inbox</span>
             </div>
             <a href="services.html#inbound" class="triad-card-link" style="padding:0; border:none;">Deep Dive →</a>
           </div>
@@ -333,15 +426,15 @@
             <ul class="pillar-deliverables-list">
               <li>
                 <span class="check-bullet">✓</span>
-                <span>5-Pillar Prospect Automation Engine (PAE) deployment</span>
+                <span>5-Pillar Prospect Automation Engine (PAE) production deployment</span>
               </li>
               <li>
                 <span class="check-bullet">✓</span>
-                <span>Waterfall enrichment (Apollo, Clay, Prospeo, LinkedIn)</span>
+                <span>Waterfall enrichment (Apollo, Clay, Prospeo, LinkedIn Sales Nav)</span>
               </li>
               <li>
                 <span class="check-bullet">✓</span>
-                <span>3-Sentence PAS copywriting with hyper-personalized research</span>
+                <span>3-Sentence PAS copywriting with hyper-personalized research hooks</span>
               </li>
               <li>
                 <span class="check-bullet">✓</span>
@@ -353,6 +446,7 @@
             <div class="pillar-tags-row">
               <span class="triad-spec-pill">PAE Engine</span>
               <span class="triad-spec-pill">Waterfall Data</span>
+              <span class="triad-spec-pill">PAS Copy</span>
             </div>
             <a href="services.html#outbound" class="triad-card-link" style="padding:0; border:none;">Deep Dive →</a>
           </div>
@@ -392,6 +486,7 @@
             <div class="pillar-tags-row">
               <span class="triad-spec-pill">HubSpot / SFDC</span>
               <span class="triad-spec-pill">Data Scrubbing</span>
+              <span class="triad-spec-pill">Quote Sync</span>
             </div>
             <a href="services.html#revops" class="triad-card-link" style="padding:0; border:none;">Deep Dive →</a>
           </div>
@@ -402,7 +497,7 @@
           <div>
             <div class="pillar-header-row">
               <span class="pillar-num">04 / ENABLEMENT</span>
-              <div class="badge-pill badge-orange" style="margin:0;">Team Handover</div>
+              <div class="badge-pill badge-amber" style="margin:0;">100% Team Handover</div>
             </div>
             <h3>Team Enablement</h3>
             <p>
@@ -430,7 +525,8 @@
           <div class="pillar-card-footer">
             <div class="pillar-tags-row">
               <span class="triad-spec-pill">Playbooks</span>
-              <span class="triad-spec-pill">Courses</span>
+              <span class="triad-spec-pill">SOP Videos</span>
+              <span class="triad-spec-pill">Key Sheets</span>
             </div>
             <a href="services.html#enablement" class="triad-card-link" style="padding:0; border:none;">Deep Dive →</a>
           </div>
@@ -440,7 +536,153 @@
   </section>
 
   <!-- ==========================================================================
-       4. WORK & PROVEN OUTCOMES
+       5. INSTITUTIONAL PRICING TIERS ($100k/Mo High-Ticket Economics)
+       ========================================================================== -->
+  <section class="section section-subtle" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-pill badge-emerald">
+          <span class="pulse-dot"></span>
+          <span>💎 Transparent Retainers &amp; Build Sprints</span>
+        </div>
+        <h2>Predictable Investment Built for High-Ticket Scale</h2>
+        <p>Institutional pricing designed for B2B tech and services companies. No junior account managers, no rented proprietary black-boxes. You own 100% of the code.</p>
+      </div>
+
+      <div class="pricing-grid-bento">
+        <!-- Tier 1: Growth Engine -->
+        <div class="pricing-bento-card">
+          <div>
+            <div class="plan-name">Growth Engine</div>
+            <div class="plan-desc">For Seed to Series A teams deploying their initial automated inbound or outbound pipeline.</div>
+            <div class="plan-price-row">
+              <span class="plan-amount">$7,500</span>
+              <span class="plan-period">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>1 Dedicated GTM Systems Engineer</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>2 Production Workflows (Inbound or Outbound)</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>CRM Bi-Directional Sync &amp; Dual Inbox</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Bi-Weekly Sprint Review &amp; Optimization</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Dedicated Slack Channel Support</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>100% In-House Code Ownership</span>
+              </li>
+            </ul>
+          </div>
+          <a href="qualification.html?plan=growth" class="btn btn-secondary" style="width: 100%;">
+            Apply for Growth Tier →
+          </a>
+        </div>
+
+        <!-- Tier 2: Flagship Autonomous GTM -->
+        <div class="pricing-bento-card featured-plan">
+          <div class="featured-badge-top">Most Popular // Scaled GTM</div>
+          <div>
+            <div class="plan-name">Autonomous GTM</div>
+            <div class="plan-desc">For growth-stage B2B SaaS ($3M–$30M ARR) scaling multi-channel autonomous pipeline.</div>
+            <div class="plan-price-row">
+              <span class="plan-amount">$15,000</span>
+              <span class="plan-period">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Full 5-Pillar Prospect Automation Engine (PAE)</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Inbound AI Chatbot + Sub-Minute Dual Routing</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>HubSpot / Salesforce Bi-Directional Architecture</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Multi-Inbox Infrastructure (Zero Domain Burn)</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Weekly Executive Architecture Reviews</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Dedicated Senior GTM Architect + Dev Support</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Continuous A/B Prompt &amp; Model Optimization</span>
+              </li>
+            </ul>
+          </div>
+          <a href="qualification.html?plan=autonomous" class="btn btn-indigo" style="width: 100%;">
+            Start Flagship Partnership →
+          </a>
+        </div>
+
+        <!-- Tier 3: Enterprise Custom Build -->
+        <div class="pricing-bento-card">
+          <div>
+            <div class="plan-name">Enterprise Sprint</div>
+            <div class="plan-desc">Complete end-to-end custom GTM AI overhaul, proprietary agent fine-tuning, and team enablement.</div>
+            <div class="plan-price-row">
+              <span class="plan-amount">$35,000</span>
+              <span class="plan-period">one-time sprint</span>
+            </div>
+            <ul class="plan-features-list">
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Custom Fine-Tuned AI Agents &amp; Reasoning Logic</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Self-Hosted n8n / AWS / GCP Cluster Deployment</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Complete Video SOP Library &amp; Rep Certification</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>30-Day Intensive DDC Delivery Sprint</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>90-Day Production SLA &amp; Support Guarantee</span>
+              </li>
+              <li>
+                <span class="check-bullet">✓</span>
+                <span>Executive On-Site or Virtual Workshop</span>
+              </li>
+            </ul>
+          </div>
+          <a href="qualification.html?plan=enterprise" class="btn btn-secondary" style="width: 100%;">
+            Inquire for Enterprise →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. WORK & PROVEN OUTCOMES
        ========================================================================== -->
   <section class="section" id="work">
     <div class="container">
@@ -457,7 +699,7 @@
         <!-- Project 1: Aeorim AI -->
         <div class="portfolio-card">
           <div class="portfolio-img-wrap">
-            <img src="assets/project-aeorim.jpg" alt="Aeorim AI Autonomous Outbound Sequence & PAS Engine">
+            <img src="assets/project-aeorim.jpg" alt="Aeorim AI Autonomous Outbound Sequence &amp; PAS Engine">
             <span class="portfolio-category-badge">Outbound Engine</span>
           </div>
           <div class="portfolio-content">
@@ -473,7 +715,7 @@
         <!-- Project 2: Archin Robotics -->
         <div class="portfolio-card">
           <div class="portfolio-img-wrap">
-            <img src="assets/project-archin.jpg" alt="Archin Robotics RevOps Command Center & Telemetry">
+            <img src="assets/project-archin.jpg" alt="Archin Robotics RevOps Command Center &amp; Telemetry">
             <span class="portfolio-category-badge">RevOps &amp; CRM</span>
           </div>
           <div class="portfolio-content">
@@ -510,7 +752,7 @@
   </section>
 
   <!-- ==========================================================================
-       5. 30-DAY DELIVERY PROCESS TIMELINE
+       7. 30-DAY DELIVERY PROCESS TIMELINE
        ========================================================================== -->
   <section class="section section-subtle" id="process">
     <div class="container">
@@ -519,7 +761,7 @@
           <span class="pulse-dot"></span>
           <span>⏱️ The 30-Day Delivery Cycle</span>
         </div>
-        <h2>From Strategy to In-House Execution</h2>
+        <h2>From Strategy to In-House Production</h2>
         <p>A structured 4-phase development sprint ensuring your workflows, skills, and agents are fully configured, tested, and handed over to your team.</p>
       </div>
 
@@ -533,7 +775,7 @@
         <div class="process-step-card">
           <div class="process-step-number">02</div>
           <h4>Triad Architecture Build</h4>
-          <p>We construct the deterministic workflows, package the prompt skills, and train the autonomous agents tailored to your ICP.</p>
+          <p>We construct deterministic workflows, package prompt skills, and train autonomous agents tailored to your ICP.</p>
         </div>
 
         <div class="process-step-card">
@@ -556,23 +798,23 @@
   </section>
 
   <!-- ==========================================================================
-       6. FOUNDER & LEADERSHIP SECTION
+       8. FOUNDER & LEADERSHIP SECTION
        ========================================================================== -->
   <section class="section" id="about">
     <div class="container">
       <div class="founder-card-bento">
         <div class="founder-img-wrap">
-          <img src="assets/founder.jpg" alt="Patrick Diamitani — Founder & Principal GTM Architect at SalesGency">
+          <img src="assets/founder.jpg" alt="Patrick Diamitani — Founder &amp; Principal GTM Architect at SalesGency">
         </div>
         <div class="founder-bio">
-          <div class="badge-pill badge-orange">
+          <div class="badge-pill badge-primary">
             <span class="pulse-dot"></span>
             <span>Leadership &amp; Architecture</span>
           </div>
           <h3>Patrick Diamitani</h3>
           <div class="founder-title">Founder &amp; Principal GTM Architect</div>
           <p>
-            "Traditional agencies charge hefty monthly retainers to manually manage spreadsheets, rent tools you never own, and write cookie-cutter outreach templates that ruin domain reputation.
+            "Traditional agencies charge hefty monthly retainers to manually manage spreadsheets, rent tools you never own, and write cookie-cutter outreach templates that ruin your domain reputation.
           </p>
           <p>
             At SalesGency, we operate as your dedicated in-house AI automation partner. We engineer custom workflows, skills, and agents that live inside your infrastructure. You own every node, prompt, and playbook—creating a compounding asset that scales with your business."
@@ -588,7 +830,7 @@
   </section>
 
   <!-- ==========================================================================
-       7. FREQUENTLY ASKED QUESTIONS
+       9. FREQUENTLY ASKED QUESTIONS
        ========================================================================== -->
   <section class="section section-subtle" id="faq">
     <div class="container">
@@ -656,14 +898,14 @@
   </section>
 
   <!-- ==========================================================================
-       8. HIGH-IMPACT ROUNDED CTA BANNER
+       10. HIGH-IMPACT ROUNDED CTA BANNER
        ========================================================================== -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="cta-banner-bento">
-        <div class="badge-pill badge-orange" style="background: rgba(234, 88, 12, 0.15); border-color: rgba(234, 88, 12, 0.3); color: #FDBA74;">
+        <div class="badge-pill badge-primary" style="background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); color: #FFFFFF;">
           <span class="pulse-dot"></span>
-          <span>🚀 Ready to Scale Your Revenue?</span>
+          <span>🚀 Ready to Scale Your Revenue Engine?</span>
         </div>
         <h2>Turn Your GTM Operations Into An Autonomous Revenue Engine</h2>
         <p>
@@ -678,7 +920,7 @@
   </section>
 
   <!-- ==========================================================================
-       9. MULTI-COLUMN FOOTER
+       11. MULTI-COLUMN FOOTER
        ========================================================================== -->
   <footer class="footer-bento">
     <div class="container">
@@ -688,7 +930,7 @@
             <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
           </a>
           <p>
-            Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.
+            SalesGency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.
           </p>
           <div class="badge-pill badge-cyan">
             <span class="pulse-dot"></span>
@@ -753,9 +995,11 @@
     </div>
   </footer>
 
-  <!-- Interactive Scripts -->
+  <!-- ==========================================================================
+       12. INTERACTIVE JAVASCRIPT (ROI Calculator, Simulator, Accordion)
+       ========================================================================== -->
   <script>
-    // Mobile Drawer Toggle
+    // 1. Mobile Drawer Toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mobileNavDrawer = document.getElementById('mobileNavDrawer');
     if (mobileMenuToggle && mobileNavDrawer) {
@@ -764,7 +1008,7 @@
       });
     }
 
-    // FAQ Accordion Toggle
+    // 2. FAQ Accordion Toggle
     function toggleFaq(button) {
       const item = button.parentElement;
       const isOpen = item.classList.contains('open');
@@ -776,6 +1020,84 @@
         item.classList.add('open');
       }
     }
+
+    // 3. Tremor-Inspired Interactive Pipeline ROI Calculator
+    const teamSizeSlider = document.getElementById('teamSizeSlider');
+    const dealSizeSlider = document.getElementById('dealSizeSlider');
+    const teamSizeVal = document.getElementById('teamSizeVal');
+    const dealSizeVal = document.getElementById('dealSizeVal');
+    const pipelineAddedText = document.getElementById('pipelineAddedText');
+    const hoursSavedText = document.getElementById('hoursSavedText');
+    const speedMultiplierText = document.getElementById('speedMultiplierText');
+
+    function updateCalculator() {
+      if (!teamSizeSlider || !dealSizeSlider) return;
+      const teamSize = parseInt(teamSizeSlider.value, 10);
+      const dealSize = parseInt(dealSizeSlider.value, 10);
+
+      // Labels
+      teamSizeVal.textContent = `${teamSize} ${teamSize === 1 ? 'Rep' : 'Reps'}`;
+      dealSizeVal.textContent = `$${dealSize.toLocaleString()}`;
+
+      // Calculations:
+      // Reclaimed hours: 28 hrs/rep/month
+      const hoursSaved = teamSize * 28;
+      hoursSavedText.textContent = `${hoursSaved.toLocaleString()} hrs/mo`;
+
+      // Estimated annual pipeline added:
+      // Conservative 9 incremental qualified ops per rep per year * deal size
+      const opsPerRepYear = 9;
+      const totalPipeline = teamSize * opsPerRepYear * dealSize;
+      pipelineAddedText.textContent = `+$${totalPipeline.toLocaleString()}`;
+
+      // Speed lift multiplier
+      const multiplier = (3.0 + (teamSize * 0.15)).toFixed(1);
+      speedMultiplierText.textContent = `${multiplier}x`;
+    }
+
+    if (teamSizeSlider && dealSizeSlider) {
+      teamSizeSlider.addEventListener('input', updateCalculator);
+      dealSizeSlider.addEventListener('input', updateCalculator);
+      updateCalculator();
+    }
+
+    // 4. Interactive GTM Telemetry Simulator Node Selector
+    const pipelineSteps = document.querySelectorAll('.pipeline-step-node');
+    const logBox = document.getElementById('simulatorLogBox');
+
+    const telemetryLogs = {
+      1: [
+        '<div><span class="log-prefix">[TRIGGER]</span> NODE 01: Ingested hiring alert from Aeorim AI (VP RevOps open) ➔ confidence 0.98</div>',
+        '<div><span class="log-prefix">[PAYLOAD]</span> {"source":"linkedin_signals","entity":"Aeorim AI","title":"VP RevOps","intent_score":94}</div>',
+        '<div><span class="log-prefix">[HTTP 200]</span> Webhook processed in 18ms ➔ Dispatching to CRM Dedupe Shield...</div>'
+      ],
+      2: [
+        '<div><span class="log-prefix">[SHIELD]</span> NODE 02: Querying HubSpot Deals API &amp; Salesforce Leads for deduplication...</div>',
+        '<div><span class="log-prefix">[VERIFIED]</span> Domain aeorim.ai checked across 14,200 active opportunities ➔ 0 collisions</div>',
+        '<div><span class="log-prefix">[STATUS]</span> Domain reputation: 99.4% (SPF, DKIM, DMARC validated) ➔ Cleared for synthesis</div>'
+      ],
+      3: [
+        '<div><span class="log-prefix">[REASONING]</span> NODE 03: Dispatching prompt to Claude 3.5 Sonnet / GPT-4o with role persona...</div>',
+        '<div><span class="log-prefix">[PAS_HOOK]</span> Generated 3-sentence hook: "Noticed you are expanding RevOps at Aeorim..."</div>',
+        '<div><span class="log-prefix">[AUDIT]</span> Cold reading grade: Flesch-Kincaid 7.2 ➔ Zero spam buzzwords detected</div>'
+      ],
+      4: [
+        '<div><span class="log-prefix">[ACTION]</span> NODE 04: Sequence dispatch via Instantly Smart-Router (Rotating inbox #08)</div>',
+        '<div><span class="log-prefix">[SLACK]</span> Dual-inbox alert posted to #revops-signals: "Qualified AE review triggered"</div>',
+        '<div><span class="log-prefix">[METRIC]</span> Total pipeline latency: 41.2 seconds ➔ Status: COMPLETE</div>'
+      ]
+    };
+
+    pipelineSteps.forEach(stepNode => {
+      stepNode.addEventListener('click', () => {
+        pipelineSteps.forEach(s => s.classList.remove('active-node'));
+        stepNode.classList.add('active-node');
+        const stepNum = stepNode.getAttribute('data-step');
+        if (telemetryLogs[stepNum]) {
+          logBox.innerHTML = telemetryLogs[stepNum].join('');
+        }
+      });
+    });
   </script>
 
 </body>
