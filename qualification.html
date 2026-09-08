@@ -3,385 +3,386 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTM Qualification Agent | SalesGency</title>
-  <meta name="description" content="Interactive GTM Qualification Agent. Determine if custom sales workflows, agent harnesses, or full-stack web apps are the right fit for your revenue team.">
+  <title>Architecture Discovery &amp; Qualification — SalesGency</title>
+  <meta name="description" content="Calculate your revenue architecture match score and book a 1-on-1 architecture discovery call with lead architect Patrick Diamitani.">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="GTM Qualification Agent | SalesGency">
-  <meta property="og:description" content="All client calls are paid consultations. Run our qualification agent to calculate your architecture match and book.">
+  <meta property="og:title" content="Architecture Discovery & Qualification — SalesGency">
+  <meta property="og:description" content="Evaluate your sales tech stack and calculate your custom Triad fit in 60 seconds.">
   <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Fonts & Styles -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 1. FLOATING PILL NAVBAR -->
-<div class="nav-wrapper">
-  <nav>
-    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
-      <span class="brand-badge">Qualification</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Overview</a>
-      <a href="services.html">Services</a>
-      <a href="process.html">Process</a>
-      <a href="deployment.html">Deployment</a>
-      <a href="templates.html">Templates &amp; Skills</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
-    </div>
-    <a href="pricing.html" class="nav-cta">Paid Consultation ($250)</a>
-    
-    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </nav>
-</div>
+  <!-- FLOATING PILL NAVBAR -->
+  <header class="nav-wrapper">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+        <span class="brand-subtag">Discovery</span>
+      </a>
 
-<!-- Mobile Menu Drawer -->
-<div class="mobile-menu-drawer" id="mobileMenu">
-  <a href="index.html">Overview</a>
-  <a href="services.html">Services</a>
-  <a href="process.html">Process</a>
-  <a href="deployment.html">Deployment</a>
-  <a href="templates.html">Templates &amp; Skills</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="about.html">About</a>
-  <a href="pricing.html" style="color: var(--primary); font-weight: 700;">Paid Consultation ($250) →</a>
-</div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="process.html" class="nav-link">Process</a></li>
+        <li><a href="work.html" class="nav-link">Work</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
 
-<!-- 2. HERO -->
-<header class="hero subpage">
-  <div class="container">
-    <div class="hero-pill-badge badge-pulse">
-      <span class="dot"></span>
-      <span>Autonomous Qualification &amp; Architecture Audit</span>
+      <div class="nav-actions">
+        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
+        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
-    
-    <h1>
-      GTM <span class="serif-i">Qualification Agent.</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      All client calls are paid consultations with live engineering. Run our 60-second qualification assessment to calculate your architecture fit, estimate hours saved, and unlock paid booking.
-    </p>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="process.html" class="nav-link">Process</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
   </div>
-</header>
 
-<!-- 3. INTERACTIVE QUALIFICATION AGENT -->
-<section style="padding-top: 10px; padding-bottom: 90px; background: var(--bg-alt);">
-  <div class="container">
-    
-    <div class="qual-agent-container">
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom: 30px;">
+    <div class="container">
+      <div class="hero-content">
+        <div class="digiket-badge badge-cyan">
+          <span class="badge-dot"></span>
+          <span>⚡ Live 60-Second Assessment</span>
+        </div>
+        <h1>
+          Revenue Architecture <br>
+          <span class="highlight-cyan">Fit Assessment</span>
+        </h1>
+        <p class="hero-lead">
+          Calculate your architecture match, evaluate your CRM and signal stack, and schedule a 1-on-1 architecture discovery call with our lead systems engineer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFICATION INTERACTIVE WIDGET -->
+  <section class="section" style="padding-top: 10px; padding-bottom: 80px;">
+    <div class="container">
       
-      <div class="qual-agent-header">
-        <div class="qual-agent-title">
-          <span>⚡ SalesGency Qualification Engine</span>
-          <span class="badge badge-mint">Active</span>
+      <div class="qual-agent-container">
+        
+        <div class="qual-agent-header">
+          <div class="qual-agent-title">
+            <span>⚡ SalesGency Architecture Diagnostic</span>
+            <span class="digiket-badge badge-emerald" style="margin: 0;">Online</span>
+          </div>
+          <div class="qual-progress-bar">
+            <div class="progress-step-dot active" id="dot-1">1</div>
+            <div class="progress-step-dot" id="dot-2">2</div>
+            <div class="progress-step-dot" id="dot-3">3</div>
+            <div class="progress-step-dot" id="dot-4">4</div>
+          </div>
         </div>
-        <div class="qual-progress-bar">
-          <div class="progress-step-dot active" id="dot-1">1</div>
-          <div class="progress-step-dot" id="dot-2">2</div>
-          <div class="progress-step-dot" id="dot-3">3</div>
-          <div class="progress-step-dot" id="dot-4">4</div>
+
+        <!-- Step 1: Bottleneck -->
+        <div class="qual-step-card active" id="step-1">
+          <div class="qual-step-title">01. What is your primary GTM revenue bottleneck?</div>
+          <div class="qual-options-grid">
+            
+            <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Outbound Prospecting', this)">
+              <strong>🎯 Outbound Prospecting &amp; Research</strong>
+              <span>Reps lose hours manually scraping leads and drafting generic cold copy</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Inbound Triage', this)">
+              <strong>⚡ Inbound Lead Triage &amp; Reply Velocity</strong>
+              <span>Warm inbound leads wait hours for qualification and manual calendar booking</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'RevOps & CRM Hygiene', this)">
+              <strong>📊 RevOps, Data Hygiene &amp; CRM Sync</strong>
+              <span>Inconsistent records, unformatted CSV lists, and missing pipeline updates</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Team Enablement & Playbooks', this)">
+              <strong>📚 Tool Setup, Playbooks &amp; Enablement</strong>
+              <span>Tech stack is scattered, credential vaulting is messy, reps need SOP training</span>
+            </div>
+
+          </div>
+          <div class="qual-action-bar">
+            <span style="font-size: 0.88rem; color: var(--text-dim);">Step 1 of 4</span>
+            <button class="btn btn-primary btn-sm" id="btn-next-1" disabled onclick="nextStep(2)">Next Step →</button>
+          </div>
         </div>
-      </div>
 
-      <!-- Step 1: Bottleneck -->
-      <div class="qual-step-card active" id="step-1">
-        <div class="qual-step-title">01. What is your primary GTM revenue bottleneck?</div>
-        <div class="qual-options-grid">
-          
-          <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Outbound Prospecting', this)">
-            <strong>🎯 Outbound Prospecting &amp; Research</strong>
-            <span>Reps lose hours manual scraping &amp; writing generic cold copy</span>
+        <!-- Step 2: Tech Stack -->
+        <div class="qual-step-card" id="step-2">
+          <div class="qual-step-title">02. What is your primary CRM and database stack?</div>
+          <div class="qual-options-grid">
+            
+            <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Salesforce / HubSpot', this)">
+              <strong>Salesforce or HubSpot</strong>
+              <span>Standard enterprise CRM requiring webhook sync and dual inbox dispatch</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Clay / Smartlead / Instantly', this)">
+              <strong>Clay + Smartlead or Instantly</strong>
+              <span>High-volume cold outreach waterfall with multi-domain rotation</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Postgres / Supabase / Custom', this)">
+              <strong>PostgreSQL, Supabase or Custom APIs</strong>
+              <span>Internal product database requiring custom webhook pipelines</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Spreadsheets & Manual Tools', this)">
+              <strong>Spreadsheets / Legacy Tools</strong>
+              <span>Ready to deploy an automated, deterministic revenue engine</span>
+            </div>
+
           </div>
-
-          <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Inbound Triage', this)">
-            <strong>⚡ Inbound Lead Triage &amp; Routing</strong>
-            <span>Warm leads wait hours for qualification and manual calendar booking</span>
+          <div class="qual-action-bar">
+            <button class="btn btn-ghost btn-sm" onclick="prevStep(1)">← Back</button>
+            <button class="btn btn-primary btn-sm" id="btn-next-2" disabled onclick="nextStep(3)">Next Step →</button>
           </div>
-
-          <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Post-Call CRM Admin', this)">
-            <strong>📝 Post-Call CRM Admin &amp; Follow-up</strong>
-            <span>Missing MEDDIC/BANT fields, delayed recaps, CRM data leakage</span>
-          </div>
-
-          <div class="qual-option-chip" onclick="selectOption(1, 'bottleneck', 'Custom Full-Stack Apps & Harnesses', this)">
-            <strong>🛠️ Custom Agent Harnesses &amp; Web Apps</strong>
-            <span>Need bespoke GTM portals, SOP-to-Agent runtimes, or client consoles</span>
-          </div>
-
         </div>
-        <div class="qual-action-bar">
-          <span style="font-size: 13px; color: var(--text-dim);">Step 1 of 4</span>
-          <button class="btn btn-primary btn-sm" id="btn-next-1" disabled onclick="nextStep(2)">Next Step →</button>
+
+        <!-- Step 3: Team Size -->
+        <div class="qual-step-card" id="step-3">
+          <div class="qual-step-title">03. What is your current sales organization size?</div>
+          <div class="qual-options-grid">
+            
+            <div class="qual-option-chip" onclick="selectOption(3, 'team', 'Solo Founder / 1-3 Reps', this)">
+              <strong>Solo Founder / 1–3 Reps</strong>
+              <span>Need maximum leverage to generate pipeline without hiring SDR headcount</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(3, 'team', '4-15 Reps / Growth SaaS', this)">
+              <strong>4–15 Reps / Growth-Stage SaaS</strong>
+              <span>Scaling pipeline velocity and standardizing CRM data entry</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(3, 'team', '15+ Reps Enterprise', this)">
+              <strong>15+ Reps / Enterprise Revenue Team</strong>
+              <span>Complex multi-territory routing, strict security, and dual inbox SLAs</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(3, 'team', 'Agency / Consultancy', this)">
+              <strong>GTM Agency or Consultancy</strong>
+              <span>Deploying autonomous workflows, skills, and agents for clients</span>
+            </div>
+
+          </div>
+          <div class="qual-action-bar">
+            <button class="btn btn-ghost btn-sm" onclick="prevStep(2)">← Back</button>
+            <button class="btn btn-primary btn-sm" id="btn-next-3" disabled onclick="nextStep(4)">Next Step →</button>
+          </div>
         </div>
-      </div>
 
-      <!-- Step 2: Stack -->
-      <div class="qual-step-card" id="step-2">
-        <div class="qual-step-title">02. What is your core CRM and automation stack?</div>
-        <div class="qual-options-grid">
-          
-          <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Salesforce/HubSpot + n8n', this)">
-            <strong>Salesforce / HubSpot + n8n / Make</strong>
-            <span>Standard modern B2B CRM with workflow automation requirements</span>
+        <!-- Step 4: Engagement Model -->
+        <div class="qual-step-card" id="step-4">
+          <div class="qual-step-title">04. Which engagement model fits your timeline?</div>
+          <div class="qual-options-grid">
+            
+            <div class="qual-option-chip" onclick="selectOption(4, 'engagement', 'Architecture Consultation ($250)', this)">
+              <strong>Architecture Review Session ($250)</strong>
+              <span>45-min diagnosis + custom Triad blueprint (credited to any build)</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(4, 'engagement', 'In-House Retainer ($6,500/mo)', this)">
+              <strong>In-House Agency Retainer ($6,500/mo)</strong>
+              <span>Dedicated engineering partner across Inbound, Outbound, RevOps &amp; Enablement</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(4, 'engagement', '30-Day Sprint ($8,500)', this)">
+              <strong>30-Day DDC Build Sprint ($8,500)</strong>
+              <span>Turnkey build of one complete Triad with 100% infrastructure handover</span>
+            </div>
+
+            <div class="qual-option-chip" onclick="selectOption(4, 'engagement', 'Custom Enterprise', this)">
+              <strong>Custom Multi-Brand Architecture</strong>
+              <span>Enterprise multi-CRM setup, custom LLM fine-tuning &amp; compliance</span>
+            </div>
+
           </div>
-
-          <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Apollo/Clay + Smartlead', this)">
-            <strong>Apollo / Clay + Smartlead / Instantly</strong>
-            <span>High-volume outbound waterfall &amp; inbox rotation architecture</span>
+          <div class="qual-action-bar">
+            <button class="btn btn-ghost btn-sm" onclick="prevStep(3)">← Back</button>
+            <button class="btn btn-primary btn-sm" id="btn-next-4" disabled onclick="calculateResult()">Analyze Qualification →</button>
           </div>
-
-          <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Next.js/Supabase/Postgres', this)">
-            <strong>Next.js + Supabase + Custom APIs</strong>
-            <span>Full-stack custom product or internal developer infrastructure</span>
-          </div>
-
-          <div class="qual-option-chip" onclick="selectOption(2, 'stack', 'Legacy/Spreadsheets', this)">
-            <strong>Spreadsheets / Legacy Tools</strong>
-            <span>Ready to transition to an automated, deterministic revenue stack</span>
-          </div>
-
         </div>
-        <div class="qual-action-bar">
-          <button class="btn btn-ghost btn-sm" onclick="prevStep(1)">← Back</button>
-          <button class="btn btn-primary btn-sm" id="btn-next-2" disabled onclick="nextStep(3)">Next Step →</button>
-        </div>
-      </div>
 
-      <!-- Step 3: Team Size & Volume -->
-      <div class="qual-step-card" id="step-3">
-        <div class="qual-step-title">03. What is your sales team size and monthly pipeline volume?</div>
-        <div class="qual-options-grid">
-          
-          <div class="qual-option-chip" onclick="selectOption(3, 'team', 'Solo Founder / 1-3 Reps', this)">
-            <strong>Solo Founder / 1–3 Reps</strong>
-            <span>Need maximum leverage to generate pipeline without SDR headcount</span>
-          </div>
+        <!-- Step 5: Result & Calendar Booking -->
+        <div class="qual-step-card" id="step-result">
+          <div class="qual-result-box">
+            <div class="digiket-badge badge-emerald" style="margin-bottom: 16px;">
+              <span>✓ Architecture Match Score: 98/100 · High-Priority Fit</span>
+            </div>
+            
+            <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Your Revenue Architecture Blueprint is Ready</h3>
+            
+            <p style="font-size: 1rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 24px;">
+              Based on your inputs, deploying a custom SalesGency Triad will eliminate <strong>4+ hours per rep daily</strong> and dramatically boost your speed to lead.
+            </p>
 
-          <div class="qual-option-chip" onclick="selectOption(3, 'team', '4-15 Reps / Growth SaaS', this)">
-            <strong>4–15 Reps / Growth-Stage SaaS</strong>
-            <span>Scaling pipeline velocity and standardizing CRM data entry</span>
-          </div>
+            <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; text-align: left; max-width: 620px; margin: 0 auto 28px;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--ink-heading); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">RECOMMENDED ARCHITECTURE:</div>
+              <div style="font-size: 0.94rem; color: var(--ink-secondary); line-height: 1.65;" id="result-summary-text">
+                • <strong>Core Focus:</strong> Inbound &amp; Outbound Automation Triad<br>
+                • <strong>Delivery Model:</strong> 30-Day DDC Production Handover<br>
+                • <strong>Next Step:</strong> 1-on-1 Architecture Discovery Call
+              </div>
+            </div>
 
-          <div class="qual-option-chip" onclick="selectOption(3, 'team', '15+ Reps Enterprise Org', this)">
-            <strong>15+ Reps / Enterprise Revenue Org</strong>
-            <span>Complex multi-territory routing, strict security, and SLA requirements</span>
-          </div>
+            <div class="consultation-architect-preview" style="max-width: 620px; margin: 0 auto 28px; text-align: left;">
+              <img src="assets/founder.jpg" alt="Patrick Diamitani" class="consultation-architect-avatar">
+              <div class="consultation-architect-info">
+                <h4>Session with Patrick Diamitani</h4>
+                <p>Founder &amp; Principal GTM Architect · Atlas HXM Pedigree. No sales reps—we diagnose your bottlenecks and map out working workflow logic live.</p>
+              </div>
+            </div>
 
-          <div class="qual-option-chip" onclick="selectOption(3, 'team', 'GTM Agency / Consultancy', this)">
-            <strong>GTM Agency / Consultancy</strong>
-            <span>Deploying autonomous engines &amp; templates for client accounts</span>
-          </div>
-
-        </div>
-        <div class="qual-action-bar">
-          <button class="btn btn-ghost btn-sm" onclick="prevStep(2)">← Back</button>
-          <button class="btn btn-primary btn-sm" id="btn-next-3" disabled onclick="nextStep(4)">Next Step →</button>
-        </div>
-      </div>
-
-      <!-- Step 4: Budget & Engagement Preference -->
-      <div class="qual-step-card" id="step-4">
-        <div class="qual-step-title">04. Which engagement model fits your timeline?</div>
-        <div class="qual-options-grid">
-          
-          <div class="qual-option-chip" onclick="selectOption(4, 'engagement', 'Strategy Call ($250)', this)">
-            <strong>Strategy Consultation &amp; Live Build ($250)</strong>
-            <span>60-min diagnosis + 30-min live build of one working engine</span>
-          </div>
-
-          <div class="qual-option-chip" onclick="selectOption(4, 'engagement', 'Agent Setup ($499)', this)">
-            <strong>Agent Setup ($499)</strong>
-            <span>Agent team deployed with 1hr onboarding &amp; SOP documentation</span>
-          </div>
-
-          <div class="qual-option-chip" onclick="selectOption(4, 'engagement', '1-Week Sprint ($1,500)', this)">
-            <strong>1-Week Sprint Activation ($1,500)</strong>
-            <span>Full JTBD audit, working prototype, custom skills, and playbooks</span>
-          </div>
-
-          <div class="qual-option-chip" onclick="selectOption(4, 'engagement', 'Self-Serve Templates ($19-$99)', this)">
-            <strong>Self-Serve Template Library ($19–$99)</strong>
-            <span>Download pre-built n8n JSONs &amp; skill packs to build in-house</span>
-          </div>
-
-        </div>
-        <div class="qual-action-bar">
-          <button class="btn btn-ghost btn-sm" onclick="prevStep(3)">← Back</button>
-          <button class="btn btn-primary btn-sm" id="btn-next-4" disabled onclick="calculateResult()">Analyze Qualification →</button>
-        </div>
-      </div>
-
-      <!-- Step 5: Results & Booking -->
-      <div class="qual-step-card" id="step-result">
-        <div class="qual-result-box">
-          <div class="qual-score-pill badge-mint">
-            <span>✓ Match Score: 98/100 · High-Priority Deployment Fit</span>
-          </div>
-          
-          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; color: var(--ink); margin-bottom: 12px;">
-            Your Revenue Architecture Blueprint is Ready
-          </h3>
-          
-          <p style="font-size: 15px; color: var(--text-muted); max-width: 600px; margin: 0 auto 24px; line-height: 1.6;">
-            Based on your answers, our autonomous engines can eliminate <strong>4+ hours per rep daily</strong> and accelerate your pipeline velocity by up to <strong>9x</strong>.
-          </p>
-
-          <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; text-align: left; max-width: 620px; margin: 0 auto 28px;">
-            <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">RECOMMENDED IMPLEMENTATION:</div>
-            <div style="font-size: 14px; color: var(--text-muted); line-height: 1.6;" id="result-summary-text">
-              • <strong>Core Focus:</strong> Outbound Prospecting &amp; CRM Shield<br>
-              • <strong>Deployment Timeline:</strong> 7 to 30 Days<br>
-              • <strong>Next Step:</strong> Paid Strategy Consultation &amp; Live Build Session ($250)
+            <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+              <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-orange btn-lg">Schedule Discovery Call on Calendly →</a>
+              <a href="pricing.html" class="btn btn-secondary btn-lg">Review Plans</a>
             </div>
           </div>
+        </div>
 
-          <!-- Architect Consultation Profile Card -->
-          <div class="consultation-architect-preview" style="max-width: 620px; margin: 0 auto 24px; text-align: left;">
-            <img src="assets/founder.jpg" alt="Patrick Diamitani" class="consultation-architect-avatar">
-            <div class="consultation-architect-info">
-              <h4>Direct Session with Patrick Diamitani</h4>
-              <p>Lead GTM Systems Architect · Atlas HXM Pedigree. No junior coordinators. We diagnose bottlenecks and build working workflow logic live on the call.</p>
-            </div>
-          </div>
+      </div>
 
-          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-lg" id="btn-pay-book">Pay $250 &amp; Book Strategy Call →</a>
-            <a href="templates.html" class="btn btn-ghost btn-lg">Browse Template Library</a>
-          </div>
+    </div>
+  </section>
 
-          <div style="margin-top: 20px; font-size: 12px; color: var(--text-dim);">
-            100% satisfaction guaranteed. If the live session does not provide actionable value, we issue a prompt refund.
-          </div>
+  <!-- FOOTER -->
+  <footer class="footer-digiket">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
+            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+          </a>
+          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Core Pillars</h4>
+          <ul>
+            <li><a href="services.html#inbound">Inbound Automation</a></li>
+            <li><a href="services.html#outbound">Outbound Automation</a></li>
+            <li><a href="services.html#revops">RevOps</a></li>
+            <li><a href="services.html#enablement">Enablement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Architecture</h4>
+          <ul>
+            <li><a href="process.html">Skills, Agents, Workflows</a></li>
+            <li><a href="process.html#ddc">30-Day Sprint</a></li>
+            <li><a href="templates.html">Skill Library</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
+            <li><a href="qualification.html">Book Discovery Call →</a></li>
+          </ul>
         </div>
       </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- 4. FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand-col">
-        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
-          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
-        </a>
-        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <ul class="footer-links">
-          <li><a href="services.html">GTM Services</a></li>
-          <li><a href="process.html">PAL Process</a></li>
-          <li><a href="deployment.html">Deployment SLA</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Library &amp; Pricing</h5>
-        <ul class="footer-links">
-          <li><a href="templates.html">Template Library</a></li>
-          <li><a href="pricing.html">Strategy Call ($250)</a></li>
-          <li><a href="pricing.html">Sprint ($1,500)</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul class="footer-links">
-          <li><a href="about.html">About &amp; Leadership</a></li>
-          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
-          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html">Privacy</a>
+          <a href="index.html">Terms</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 SalesGency. All rights reserved.</div>
-      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-  // Mobile Menu
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  }
+  <script>
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    if (mobileMenuToggle && mobileNavDrawer) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileNavDrawer.classList.toggle('open');
+      });
+    }
 
-  // Qualification State
-  const answers = {};
+    const answers = {};
 
-  function selectOption(step, key, val, element) {
-    answers[key] = val;
-    const parent = element.parentElement;
-    parent.querySelectorAll('.qual-option-chip').forEach(c => c.classList.remove('selected'));
-    element.classList.add('selected');
-    const nextBtn = document.getElementById(`btn-next-${step}`);
-    if (nextBtn) nextBtn.disabled = false;
-  }
+    function selectOption(step, key, value, chip) {
+      const parent = chip.parentElement;
+      parent.querySelectorAll('.qual-option-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      answers[key] = value;
+      const nextBtn = document.getElementById('btn-next-' + step);
+      if (nextBtn) nextBtn.removeAttribute('disabled');
+    }
 
-  function nextStep(stepNum) {
-    document.querySelectorAll('.qual-step-card').forEach(c => c.classList.remove('active'));
-    document.getElementById(`step-${stepNum}`).classList.add('active');
-    
-    // Update progress dots
-    for (let i = 1; i <= 4; i++) {
-      const dot = document.getElementById(`dot-${i}`);
-      if (dot) {
-        if (i < stepNum) {
-          dot.classList.add('completed');
-          dot.classList.remove('active');
-        } else if (i === stepNum) {
-          dot.classList.add('active');
-          dot.classList.remove('completed');
-        } else {
-          dot.classList.remove('active', 'completed');
+    function nextStep(target) {
+      document.querySelectorAll('.qual-step-card').forEach(c => c.classList.remove('active'));
+      const nextCard = document.getElementById('step-' + target);
+      if (nextCard) nextCard.classList.add('active');
+
+      document.querySelectorAll('.progress-step-dot').forEach(d => d.classList.remove('active'));
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById('dot-' + i);
+        if (dot) {
+          if (i < target) dot.classList.add('completed');
+          if (i === target) dot.classList.add('active');
         }
       }
     }
-  }
 
-  function prevStep(stepNum) {
-    nextStep(stepNum);
-  }
-
-  function calculateResult() {
-    document.querySelectorAll('.qual-step-card').forEach(c => c.classList.remove('active'));
-    document.getElementById('step-result').classList.add('active');
-    
-    // Update summary text
-    const bottleneck = answers['bottleneck'] || 'GTM Revenue Architecture';
-    const stack = answers['stack'] || 'Standard GTM Stack';
-    const engagement = answers['engagement'] || 'Strategy Call ($250)';
-    
-    const summaryEl = document.getElementById('result-summary-text');
-    if (summaryEl) {
-      summaryEl.innerHTML = `
-        • <strong>Identified Bottleneck:</strong> ${bottleneck}<br>
-        • <strong>Target Stack:</strong> ${stack}<br>
-        • <strong>Selected Engagement:</strong> ${engagement}<br>
-        • <strong>Deployment Path:</strong> 100% Client Infrastructure Ownership &amp; Shadow Testing
-      `;
+    function prevStep(target) {
+      nextStep(target);
     }
-  }
-</script>
 
+    function calculateResult() {
+      document.querySelectorAll('.qual-step-card').forEach(c => c.classList.remove('active'));
+      document.getElementById('step-result').classList.add('active');
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById('dot-' + i);
+        if (dot) dot.classList.add('completed');
+      }
+
+      const summary = document.getElementById('result-summary-text');
+      if (summary) {
+        summary.innerHTML = `
+          • <strong>Selected Focus:</strong> ${answers.bottleneck || 'Outbound Prospecting & Inbound Speed'}<br>
+          • <strong>Target Tech Stack:</strong> ${answers.stack || 'CRM & n8n Automation Engine'}<br>
+          • <strong>Team Organization:</strong> ${answers.team || 'Growth Organization'}<br>
+          • <strong>Preferred Engagement:</strong> ${answers.engagement || 'In-House Partnership'}<br>
+          • <strong>Recommendation:</strong> Schedule a 1-on-1 architecture discovery call to map out custom Triad schematics.
+        `;
+      }
+    }
+  </script>
 </body>
 </html>

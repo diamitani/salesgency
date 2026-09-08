@@ -3,187 +3,244 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About & Leadership | SalesGency</title>
-  <meta name="description" content="Learn about Patrick Diamitani, the Forward Deployed AI Engineer behind SalesGency.">
+  <title>About &amp; Leadership — SalesGency</title>
+  <meta name="description" content="Sales Gency is a GTM AI & Automation Agency. Learn about our founder Patrick Diamitani and our engineering philosophy.">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="About & Leadership | SalesGency">
-  <meta property="og:description" content="Forward Deployed AI Engineering for revenue systems, agentic harnesses, and custom GTM tooling.">
+  <meta property="og:title" content="About & Leadership — SalesGency">
+  <meta property="og:description" content="Why in-house AI automation infrastructure outperforms traditional outsourced agencies.">
   <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Fonts & Styles -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 1. FLOATING PILL NAVBAR -->
-<div class="nav-wrapper">
-  <nav>
-    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
-      <span class="brand-badge">Founder</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="prospect-automation.html">Prospect Automation</a>
-      <a href="services.html">Engines</a>
-      <a href="process.html">Process</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="work.html">Work</a>
-      <a href="about.html" class="active">About</a>
-    </div>
-    <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call →</a>
-    
-    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </nav>
-</div>
+  <!-- FLOATING PILL NAVBAR -->
+  <header class="nav-wrapper">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+        <span class="brand-subtag">About</span>
+      </a>
 
-<!-- Mobile Menu Drawer -->
-<div class="mobile-menu-drawer" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="prospect-automation.html">Prospect Automation</a>
-  <a href="services.html">Engines</a>
-  <a href="process.html">Process</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="work.html">Work</a>
-  <a href="about.html" class="active">About</a>
-  <a href="https://calendly.com/diamitani" target="_blank" style="color: var(--primary); font-weight: 700;">Book a Call →</a>
-</div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="process.html" class="nav-link">Process</a></li>
+        <li><a href="work.html" class="nav-link">Work</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+      </ul>
 
-<!-- 2. HERO -->
-<header class="hero subpage">
-  <div class="container">
-    <div class="hero-pill-badge badge-pulse">
-      <span class="dot"></span>
-      <span>Forward Deployed AI Engineering</span>
-    </div>
-    
-    <h1>
-      Patrick <span class="serif-i">Diamitani.</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      Forward Deployed AI Engineer in Chicago. I build autonomous revenue systems, agentic infrastructure, and custom GTM engines for startups and growth-stage companies.
-    </p>
-  </div>
-</header>
-
-<!-- 3. BIO CARD -->
-<section id="bio" style="border-top: 1px solid var(--border); background: var(--bg-alt); padding: 90px 0;">
-  <div class="container">
-    
-    <div class="founder-editorial-card">
-      <div class="founder-photo-wrap">
-        <img src="assets/founder.jpg" alt="Patrick Diamitani, Lead Systems Architect at SalesGency" class="founder-photo" loading="eager">
-        <div class="founder-photo-tag">
-          <div class="name">Patrick Diamitani <span class="brand-dot"></span></div>
-          <div class="role">Lead GTM Systems Architect · Chicago, IL</div>
-        </div>
+      <div class="nav-actions">
+        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
+        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
+    </div>
+  </header>
 
-      <div class="founder-editorial-content">
-        <div class="badge badge-mint" style="margin-bottom: 16px; width: fit-content;">Leadership &amp; Architecture</div>
-        <h3 style="font-size: 32px; margin-bottom: 16px; line-height: 1.25;">Engineering Autonomous Revenue Systems</h3>
-        <p style="font-size: 16px; margin-bottom: 18px; line-height: 1.7; color: var(--ink);">
-          Previously engineered systems at <strong>Atlas HXM</strong>. Published AI practitioner focused on deterministic data routing, high-scale n8n workflows, dynamic Claude/MCP agents, and Clay enrichment engines.
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="process.html" class="nav-link">Process</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom: 40px;">
+    <div class="container">
+      <div class="hero-content">
+        <div class="digiket-badge badge-orange">
+          <span>Our Vision &amp; Philosophy</span>
+        </div>
+        <h1>
+          Your In-House AI Automation <br>
+          <span class="highlight-cyan">GTM Agency</span>
+        </h1>
+        <p class="hero-lead">
+          <strong>Sales Gency is a GTM AI &amp; Automation Agency.</strong><br>
+          We build custom workflows, skills and agents to help organizations close more sales.
         </p>
-        <p style="font-size: 15px; margin-bottom: 28px; line-height: 1.7; color: var(--text-muted);">
-          My core philosophy is simple: <strong>Deterministic data routing + Agentic unstructured synthesis</strong>. We do not give AI unbounded authority over sensitive CRM records or email senders. Every engine is fortified with strict guardrails, deduplication shields, and human approval gates so revenue teams scale with 100% confidence.
-        </p>
+      </div>
+    </div>
+  </section>
 
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px;">
-          <span class="badge badge-blue">n8n Systems Engineer</span>
-          <span class="badge badge-rose">Agent PAL Architect</span>
-          <span class="badge badge-sun">Claude / MCP Specialist</span>
-          <span class="badge badge-mint">CRM Automation</span>
-          <span class="badge badge-gray">Full-Stack Next.js</span>
+  <!-- FOUNDER EDITORIAL CARD (DIGIKET FORMAT) -->
+  <section class="section" style="padding-top: 20px;">
+    <div class="container">
+      <div class="founder-card-digiket">
+        <div class="founder-img-wrap">
+          <img src="assets/founder.jpg" alt="Patrick Diamitani — Founder & Lead Architect at SalesGency">
+        </div>
+        <div class="founder-bio">
+          <div class="digiket-badge badge-cyan">
+            <span class="badge-dot"></span>
+            <span>Founder &amp; Lead Systems Architect</span>
+          </div>
+          <h3>Patrick Diamitani</h3>
+          <div class="founder-title">Systems Engineering &amp; GTM Infrastructure</div>
+          <p>
+            Before founding SalesGency, I engineered high-volume systems at Atlas HXM and scaled sales operations for high-growth tech ventures. I repeatedly watched founders and sales leaders waste hundreds of thousands of dollars on outsourced lead generation agencies that delivered spammy outreach, damaged sender reputation, and locked everything inside proprietary tools.
+          </p>
+          <p>
+            We built SalesGency around a radically different thesis: <strong>Your company should own its revenue infrastructure.</strong>
+          </p>
+          <p>
+            When we partner with your team, we act as your dedicated in-house engineering squad. We build custom workflows that automate lead intake, package the prompts and skills that make AI write like your best rep, and deploy autonomous agents to route deals before competitors can even reply.
+          </p>
+          <div class="founder-badges-row">
+            <span class="digiket-badge">Atlas HXM Pedigree</span>
+            <span class="digiket-badge badge-emerald">Deterministic n8n &amp; Make Architect</span>
+            <span class="digiket-badge badge-cyan">Full Infrastructure Handover</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MANIFESTO: OUTSOURCED VS IN-HOUSE -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="digiket-badge badge-orange">
+          <span>The SalesGency Standard</span>
+        </div>
+        <h2>Why In-House AI Beats Traditional Agencies</h2>
+        <p>Compare the old agency model with SalesGency's modern in-house automation architecture.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 1040px; margin: 0 auto;">
+        
+        <!-- Old Agency Model -->
+        <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 36px; box-shadow: var(--shadow-xs);">
+          <div style="display: inline-block; padding: 4px 12px; background: #FEE2E2; color: #991B1B; font-size: 0.8rem; font-weight: 700; border-radius: var(--radius-pill); margin-bottom: 16px;">
+            The Old Agency Model
+          </div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 16px; color: #991B1B;">Outsourced Black Box</h3>
+          <ul class="service-features-list" style="border: none; padding: 0;">
+            <li>❌ <strong>Rented Tools:</strong> You lose all workflows the moment you cancel the contract.</li>
+            <li>❌ <strong>Cookie-Cutter Copy:</strong> Generic templates sent to worn-out lists burn your primary domain.</li>
+            <li>❌ <strong>Slow Human Triage:</strong> Warm inbound leads sit for hours waiting for manual rep review.</li>
+            <li>❌ <strong>Messy CRM Admin:</strong> Inconsistent field names, unformatted CSVs, and duplicate deals.</li>
+            <li>❌ <strong>Zero Skill Building:</strong> Your internal team never learns how to operate or iterate the engine.</li>
+          </ul>
         </div>
 
-        <div style="display: flex; gap: 14px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-light);">
-          <a href="https://linkedin.com/in/diamitani" target="_blank" class="btn btn-primary btn-sm">LinkedIn Profile ↗</a>
-          <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-sm">Schedule Strategy Call ↗</a>
-          <a href="mailto:patrick.diamitani@gmail.com" class="btn btn-secondary btn-sm">Email Direct ↗</a>
+        <!-- SalesGency In-House Model -->
+        <div style="background: #FFFFFF; border: 2px solid var(--accent-cyan); border-radius: var(--radius-xl); padding: 36px; box-shadow: var(--shadow-md);">
+          <div style="display: inline-block; padding: 4px 12px; background: var(--accent-cyan-subtle); color: #0284C7; font-size: 0.8rem; font-weight: 700; border-radius: var(--radius-pill); margin-bottom: 16px;">
+            The SalesGency Model
+          </div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 16px; color: var(--ink-heading);">In-House Compounding Asset</h3>
+          <ul class="service-features-list" style="border: none; padding: 0;">
+            <li>✅ <strong>100% Asset Ownership:</strong> Built directly in your n8n, Clay, CRM, and cloud accounts.</li>
+            <li>✅ <strong>Hyper-Targeted Signal Mining:</strong> Custom PAS copy based on actual buyer triggers.</li>
+            <li>✅ <strong>Sub-Minute Inbound Velocity:</strong> Automated chatbots and dual inbox routing.</li>
+            <li>✅ <strong>Self-Healing RevOps:</strong> Automated data deduplication, import formatters, and quote generators.</li>
+            <li>✅ <strong>Team Enablement:</strong> Master key sheets, video courses, and playbooks your reps own forever.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA BANNER -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner-digiket">
+        <div class="digiket-badge badge-orange" style="background: rgba(255, 96, 28, 0.2); border-color: rgba(255, 96, 28, 0.4); color: #FF9B71;">
+          <span>👋 Let's Connect</span>
+        </div>
+        <h2>Ready to Meet Your In-House AI GTM Team?</h2>
+        <p>Book a 20-minute architecture discovery call with Patrick Diamitani to review your revenue engine.</p>
+        <div class="btn-group">
+          <a href="qualification.html" class="btn btn-orange btn-lg">Schedule Discovery Call →</a>
+          <a href="services.html" class="btn btn-ghost btn-lg" style="color: #FFF; border-color: rgba(255,255,255,0.25);">Review 4 Pillars</a>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- 4. BOTTOM CTA -->
-<div class="container cta-banner-wrapper">
-  <div class="cta-banner-card">
-    <div class="badge badge-sun" style="margin-bottom: 20px;">Direct Pairing</div>
-    <h2>Let's Architect Your <span class="serif-i" style="color: #FDFF73;">AI Sales Engine.</span></h2>
-    <p>Book a strategy session today. We'll map your sales funnel bottlenecks and design an automated architecture live on the call.</p>
-    <div class="cta-banner-btns">
-      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-lg">Book a Call →</a>
+  <!-- FOOTER -->
+  <footer class="footer-digiket">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
+            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+          </a>
+          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Core Pillars</h4>
+          <ul>
+            <li><a href="services.html#inbound">Inbound Automation</a></li>
+            <li><a href="services.html#outbound">Outbound Automation</a></li>
+            <li><a href="services.html#revops">RevOps</a></li>
+            <li><a href="services.html#enablement">Enablement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Architecture</h4>
+          <ul>
+            <li><a href="process.html">Skills, Agents, Workflows</a></li>
+            <li><a href="process.html#ddc">30-Day Sprint</a></li>
+            <li><a href="templates.html">Skill Library</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
+            <li><a href="qualification.html">Book Discovery Call →</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html">Privacy</a>
+          <a href="index.html">Terms</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-<!-- 5. FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand-col">
-        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
-          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
-        </a>
-        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <ul class="footer-links">
-          <li><a href="prospect-automation.html">Prospect Automation</a></li>
-          <li><a href="services.html">Engines</a></li>
-          <li><a href="process.html">Process</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Pricing</h5>
-        <ul class="footer-links">
-          <li><a href="pricing.html">Strategy Call ($250)</a></li>
-          <li><a href="pricing.html">Agent Setup ($499)</a></li>
-          <li><a href="pricing.html">Sprint Activation ($1,500)</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul class="footer-links">
-          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
-          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a></li>
-          <li><a href="mailto:patrick.diamitani@gmail.com">Email ↗</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 SalesGency. All rights reserved.</div>
-      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-  }
-</script>
-
+  <script>
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    if (mobileMenuToggle && mobileNavDrawer) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileNavDrawer.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
 </html>

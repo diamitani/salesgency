@@ -13,53 +13,55 @@
   <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
 
-  <!-- Fonts & Styles -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 1. FLOATING PILL NAVBAR -->
-<div class="nav-wrapper">
-  <nav>
-    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
-      <span class="brand-badge">PAE</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="prospect-automation.html" class="active">Prospect Automation</a>
-      <a href="services.html">Engines</a>
-      <a href="process.html">Process</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
-    </div>
-    <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call →</a>
-    
-    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </nav>
-</div>
+  <!-- FLOATING PILL NAVBAR -->
+  <header class="nav-wrapper">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+        <span class="brand-subtag">PAE</span>
+      </a>
 
-<!-- Mobile Menu Drawer -->
-<div class="mobile-menu-drawer" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="prospect-automation.html" class="active">Prospect Automation</a>
-  <a href="services.html">Engines</a>
-  <a href="process.html">Process</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="work.html">Work</a>
-  <a href="about.html">About</a>
-  <a href="https://calendly.com/diamitani" target="_blank" style="color: var(--primary); font-weight: 700;">Book a Call →</a>
-</div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="process.html" class="nav-link">Process</a></li>
+        <li><a href="work.html" class="nav-link">Work</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
+        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="process.html" class="nav-link">Process</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
+  </div>
 
 <!-- 2. HERO -->
 <header class="hero subpage">
@@ -287,56 +289,67 @@
 </div>
 
 <!-- 7. FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand-col">
-        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
-          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
-        </a>
-        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
+  <!-- FOOTER -->
+  <footer class="footer-digiket">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
+            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+          </a>
+          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Core Pillars</h4>
+          <ul>
+            <li><a href="services.html#inbound">Inbound Automation</a></li>
+            <li><a href="services.html#outbound">Outbound Automation</a></li>
+            <li><a href="services.html#revops">RevOps</a></li>
+            <li><a href="services.html#enablement">Enablement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Architecture</h4>
+          <ul>
+            <li><a href="process.html">Skills, Agents, Workflows</a></li>
+            <li><a href="process.html#ddc">30-Day Sprint</a></li>
+            <li><a href="templates.html">Skill Library</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
+            <li><a href="qualification.html">Book Discovery Call →</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <ul class="footer-links">
-          <li><a href="prospect-automation.html">Prospect Automation</a></li>
-          <li><a href="services.html">Engines</a></li>
-          <li><a href="process.html">Setup Guide</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Packages</h5>
-        <ul class="footer-links">
-          <li><a href="pricing.html">Strategy Call ($250)</a></li>
-          <li><a href="pricing.html">Agent Setup ($499)</a></li>
-          <li><a href="pricing.html">Sprint ($1,500)</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul class="footer-links">
-          <li><a href="about.html">About &amp; Founder</a></li>
-          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
-          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html">Privacy</a>
+          <a href="index.html">Terms</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 SalesGency. All rights reserved.</div>
-      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-  }
-</script>
-
+  <script>
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    if (mobileMenuToggle && mobileNavDrawer) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileNavDrawer.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
 </html>

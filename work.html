@@ -3,217 +3,252 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies & Work | SalesGency</title>
-  <meta name="description" content="Explore real client case studies: automated lead triage, 9x pipeline growth, and zero-admin post-call intelligence.">
+  <title>Case Studies &amp; Work — SalesGency</title>
+  <meta name="description" content="Explore real client case studies: autonomous inbound chatbots, outbound PAS outreach engines, and RevOps CRM synchronization.">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Case Studies & Work | SalesGency">
-  <meta property="og:description" content="Proven ROI from autonomous AI revenue engines. Read our case studies.">
+  <meta property="og:title" content="Case Studies & Work — SalesGency">
+  <meta property="og:description" content="Proven outcomes from custom workflows, skills, and agents.">
   <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Fonts & Styles -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 1. FLOATING PILL NAVBAR -->
-<div class="nav-wrapper">
-  <nav>
-    <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="24">
-      <span class="brand-badge">Work</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="prospect-automation.html">Prospect Automation</a>
-      <a href="services.html">Engines</a>
-      <a href="process.html">Process</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="work.html" class="active">Work</a>
-      <a href="about.html">About</a>
-    </div>
-    <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call →</a>
-    
-    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </nav>
-</div>
+  <!-- FLOATING PILL NAVBAR -->
+  <header class="nav-wrapper">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
+        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+        <span class="brand-subtag">Case Studies</span>
+      </a>
 
-<!-- Mobile Menu Drawer -->
-<div class="mobile-menu-drawer" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="prospect-automation.html">Prospect Automation</a>
-  <a href="services.html">Engines</a>
-  <a href="process.html">Process</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="work.html" class="active">Work</a>
-  <a href="about.html">About</a>
-  <a href="https://calendly.com/diamitani" target="_blank" style="color: var(--primary); font-weight: 700;">Book a Call →</a>
-</div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="process.html" class="nav-link">Process</a></li>
+        <li><a href="work.html" class="nav-link active">Work</a></li>
+        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
 
-<!-- 2. HERO -->
-<header class="hero subpage">
-  <div class="container">
-    <div class="hero-pill-badge badge-pulse">
-      <span class="dot"></span>
-      <span>Proven Results &amp; Production Deployments</span>
+      <div class="nav-actions">
+        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
+        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
-    
-    <h1>
-      Engines That <br>
-      <span class="serif-i">Perform.</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      Explore how fast-growing SaaS startups, agencies, and revenue teams scaled their pipeline velocity and eliminated operational bloat with custom SalesGency systems.
-    </p>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="process.html" class="nav-link">Process</a>
+    <a href="work.html" class="nav-link active">Work</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
   </div>
-</header>
 
-<!-- 3. CASE STUDIES GRID -->
-<section id="cases" style="border-top: 1px solid var(--border); background: var(--bg-alt); padding: 80px 0;">
-  <div class="container">
-    
-    <div class="grid-3">
-      
-      <!-- Case 1: Aeorim AI -->
-      <div class="feature-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div class="project-card-image-wrap">
-            <span class="project-image-badge">24.2% Reply Rate</span>
-            <img src="assets/project-aeorim.jpg" alt="Aeorim AI Cold Email Outreach Dashboard" class="project-card-img" loading="lazy">
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom: 40px;">
+    <div class="container">
+      <div class="hero-content">
+        <div class="digiket-badge badge-emerald">
+          <span>⭐ Production Deployments</span>
+        </div>
+        <h1>
+          Proven Workflows That <br>
+          <span class="highlight-cyan">Close More Sales</span>
+        </h1>
+        <p class="hero-lead">
+          Explore how B2B companies, high-growth SaaS startups, and logistics enterprises scaled their revenue velocity with custom SalesGency workflows, skills, and agents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES SHOWCASE (DIGIKET FORMAT) -->
+  <section class="section" style="padding-top: 20px;">
+    <div class="container">
+
+      <!-- Tabs -->
+      <div class="portfolio-tabs">
+        <button class="portfolio-tab-btn active" onclick="filterProjects('all', this)">All Deployments</button>
+        <button class="portfolio-tab-btn" onclick="filterProjects('outbound', this)">Outbound Automation</button>
+        <button class="portfolio-tab-btn" onclick="filterProjects('revops', this)">RevOps &amp; CRM</button>
+        <button class="portfolio-tab-btn" onclick="filterProjects('inbound', this)">Inbound &amp; Chatbots</button>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- Project 1: Aeorim AI -->
+        <div class="portfolio-card" data-category="outbound">
+          <div class="portfolio-img-wrap">
+            <img src="assets/project-aeorim.jpg" alt="Aeorim AI Cold Email Outreach Dashboard">
+            <span class="portfolio-category-badge">Outbound Engine</span>
           </div>
-          <div class="badge badge-mint" style="margin-bottom: 12px;">Autonomous Outbound Engine</div>
-          <div class="p-amount" style="color: var(--primary); font-size: 32px; margin-bottom: 6px;">118 Booked</div>
-          <div style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Aeorim AI: Multi-Variant PAS Outreach</div>
-          <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 18px;">
-            Engineered automated prospect enrichment, 3-sentence dynamic PAS copywriting, and Smartlead enrollment across 14,832 target accounts, maintaining an unprecedented 24.2% reply rate.
-          </p>
-        </div>
-        <div class="feature-card-footer">
-          <span>Smartlead · Clay · n8n</span>
-          <span style="color: #16A34A; font-weight: 600;">● Live in Prod</span>
-        </div>
-      </div>
-
-      <!-- Case 2: Archin Robotics -->
-      <div class="feature-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div class="project-card-image-wrap">
-            <span class="project-image-badge">$4.2M ARR</span>
-            <img src="assets/project-archin.jpg" alt="Archin Robotics Outbound Revenue Intelligence" class="project-card-img" loading="lazy">
+          <div class="portfolio-content">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 6px;">SaaS Infrastructure</div>
+            <h3>Aeorim AI: Dynamic PAS Outreach</h3>
+            <p>
+              Deployed a custom outbound automation engine mining hiring signals and funding announcements. Dynamic AI PAS copywriting resulted in 118 qualified discovery calls and $1.4M in pipeline.
+            </p>
+            <div class="portfolio-metrics-row">
+              <span>Reply Velocity</span>
+              <span class="portfolio-metric-pill">24.2% Reply Rate</span>
+            </div>
           </div>
-          <div class="badge badge-blue" style="margin-bottom: 12px;">Revenue Intelligence Command</div>
-          <div class="p-amount" style="color: var(--primary); font-size: 32px; margin-bottom: 6px;">+18.5M</div>
-          <div style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Archin Robotics: Outbound Intelligence</div>
-          <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 18px;">
-            Deployed an enterprise revenue telemetry monitor tracking 4,150 high-value leads with real-time velocity analytics, account activity triggers, and stage-by-stage pipeline forecasts.
-          </p>
         </div>
-        <div class="feature-card-footer">
-          <span>Next.js · Supabase · APIs</span>
-          <span style="color: #16A34A; font-weight: 600;">● Live Telemetry</span>
-        </div>
-      </div>
 
-      <!-- Case 3: VNTNR Global Logistics -->
-      <div class="feature-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div class="project-card-image-wrap">
-            <span class="project-image-badge">0% Burn Rate</span>
-            <img src="assets/project-vntnr.jpg" alt="VNTNR Global Logistics CRM Shield Routing" class="project-card-img" loading="lazy">
+        <!-- Project 2: Archin Robotics -->
+        <div class="portfolio-card" data-category="revops">
+          <div class="portfolio-img-wrap">
+            <img src="assets/project-archin.jpg" alt="Archin Robotics RevOps Command Center">
+            <span class="portfolio-category-badge">RevOps &amp; CRM</span>
           </div>
-          <div class="badge badge-rose" style="margin-bottom: 12px;">CRM Shield &amp; Routing</div>
-          <div class="p-amount" style="color: var(--primary); font-size: 32px; margin-bottom: 6px;">99/100</div>
-          <div style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">VNTNR Logistics: Global Lead Routing</div>
-          <p style="font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 18px;">
-            Architected a zero-leak CRM Shield connecting forms, LinkedIn ads, and campaigns to automated data enrichment and dual-routed HubSpot/Salesforce sync with 99/100 sender score.
-          </p>
+          <div class="portfolio-content">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 6px;">Robotics &amp; Hardware</div>
+            <h3>Archin Robotics: CRM Hygiene &amp; Pipeline Engine</h3>
+            <p>
+              Built automated CSV import formatters, standardized 45,000 legacy records, and synchronized deal progression stages with custom quote and invoice generation.
+            </p>
+            <div class="portfolio-metrics-row">
+              <span>Records Cleaned</span>
+              <span class="portfolio-metric-pill">45,000 Verified</span>
+            </div>
+          </div>
         </div>
-        <div class="feature-card-footer">
-          <span>HubSpot · Salesforce · Clearbit</span>
-          <span style="color: #16A34A; font-weight: 600;">● 0 Dedupe Errors</span>
+
+        <!-- Project 3: VNTNR Global -->
+        <div class="portfolio-card" data-category="inbound">
+          <div class="portfolio-img-wrap">
+            <img src="assets/project-vntnr.jpg" alt="VNTNR Global Logistics Speed-to-Lead Triage">
+            <span class="portfolio-category-badge">Inbound Automation</span>
+          </div>
+          <div class="portfolio-content">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 6px;">Global Logistics</div>
+            <h3>VNTNR Global: Sub-Minute Inbound Triage</h3>
+            <p>
+              Engineered a custom conversational intake chatbot with real-time MQL scoring, routing high-value freight inquiries to dual inboxes in under 45 seconds.
+            </p>
+            <div class="portfolio-metrics-row">
+              <span>First Response</span>
+              <span class="portfolio-metric-pill">&lt; 45 Seconds</span>
+            </div>
+          </div>
         </div>
       </div>
 
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- 4. BOTTOM CTA -->
-<div class="container cta-banner-wrapper">
-  <div class="cta-banner-card">
-    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready for Real Results?</div>
-    <h2>Let's Build Your <span class="serif-i" style="color: #FDFF73;">Next Growth Case Study.</span></h2>
-    <p>Book a discovery session today. We'll map your sales funnel bottlenecks and design an automated architecture live on the call.</p>
-    <div class="cta-banner-btns">
-      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-lg">Book Architecture Session →</a>
-    </div>
-  </div>
-</div>
-
-<!-- 5. FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand-col">
-        <a href="index.html" class="footer-brand-logo" aria-label="SalesGency Home">
-          <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency." class="brand-wordmark-img" height="26">
-        </a>
-        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Work &amp; Results</h5>
-        <ul class="footer-links">
-          <li><a href="work.html">Case Studies</a></li>
-          <li><a href="services.html">Capabilities</a></li>
-          <li><a href="process.html">Setup Guide</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Packages</h5>
-        <ul class="footer-links">
-          <li><a href="pricing.html">Strategy Call ($250)</a></li>
-          <li><a href="pricing.html">Agent Setup ($499)</a></li>
-          <li><a href="pricing.html">Sprint Activation ($1,500)</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul class="footer-links">
-          <li><a href="about.html">About &amp; Leadership</a></li>
-          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
-          <li><a href="https://calendly.com/diamitani" target="_blank">Book a Call ↗</a></li>
-        </ul>
+  <!-- BOTTOM CTA BANNER -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner-digiket">
+        <div class="digiket-badge badge-orange" style="background: rgba(255, 96, 28, 0.2); border-color: rgba(255, 96, 28, 0.4); color: #FF9B71;">
+          <span>🚀 Get Similar Results</span>
+        </div>
+        <h2>Want To Scale Your Revenue Without Adding Rep Headcount?</h2>
+        <p>Let's map out an in-house automation architecture designed specifically for your ICP and sales motion.</p>
+        <div class="btn-group">
+          <a href="qualification.html" class="btn btn-orange btn-lg">Book Architecture Call →</a>
+          <a href="pricing.html" class="btn btn-ghost btn-lg" style="color: #FFF; border-color: rgba(255,255,255,0.25);">Explore Packages</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 SalesGency. All rights reserved.</div>
-      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-digiket">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
+            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
+          </a>
+          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Core Pillars</h4>
+          <ul>
+            <li><a href="services.html#inbound">Inbound Automation</a></li>
+            <li><a href="services.html#outbound">Outbound Automation</a></li>
+            <li><a href="services.html#revops">RevOps</a></li>
+            <li><a href="services.html#enablement">Enablement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Architecture</h4>
+          <ul>
+            <li><a href="process.html">Skills, Agents, Workflows</a></li>
+            <li><a href="process.html#ddc">30-Day Sprint</a></li>
+            <li><a href="templates.html">Skill Library</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
+            <li><a href="qualification.html">Book Discovery Call →</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="index.html">Privacy</a>
+          <a href="index.html">Terms</a>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-  }
-</script>
+  <script>
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    if (mobileMenuToggle && mobileNavDrawer) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileNavDrawer.classList.toggle('open');
+      });
+    }
 
+    // Portfolio Filter Tabs
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.portfolio-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.portfolio-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
