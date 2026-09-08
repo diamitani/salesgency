@@ -1575,3 +1575,636 @@ img {
     gap: 12px;
   }
 }
+
+
+/* ==========================================================================
+   14. DIGITAL MARKETPLACE & STORE STYLES (Paid E-Commerce Architecture)
+   ========================================================================== */
+.marketplace-header-wrap {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.marketplace-filter-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 32px 0 24px;
+}
+
+.filter-btn {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  color: var(--ink-body);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--ink-display);
+  color: #FFFFFF;
+  border-color: var(--ink-display);
+}
+
+.marketplace-search-wrap {
+  max-width: 520px;
+  margin: 0 auto 36px;
+  position: relative;
+}
+
+.marketplace-search-input {
+  width: 100%;
+  padding: 12px 20px 12px 42px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  font-size: 0.94rem;
+  background: #FFFFFF;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.marketplace-search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-subtle);
+}
+
+.marketplace-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.marketplace-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.25s var(--ease-spring);
+}
+
+.marketplace-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-spotlight);
+  border-color: var(--border-strong);
+}
+
+.marketplace-card.bundle-card {
+  border-color: var(--primary-border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFF 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.bundle-badge-top {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: linear-gradient(135deg, var(--primary) 0%, #0284C7 100%);
+  color: #FFFFFF;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.product-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-workflow {
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284C7;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.badge-skill {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.badge-soul {
+  background: rgba(79, 70, 229, 0.08);
+  color: #4F46E5;
+  border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.badge-bundle {
+  background: rgba(217, 119, 6, 0.08);
+  color: #D97706;
+  border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 10px;
+  color: var(--ink-heading);
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.product-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.product-tag {
+  font-size: 0.74rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--ink-body);
+  font-weight: 600;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.product-price strong {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--ink-display);
+}
+
+.product-price small {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.product-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Floating Cart Trigger */
+.floating-cart-trigger {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--ink-display);
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 28px rgba(7, 11, 20, 0.28);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 990;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.floating-cart-trigger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(7, 11, 20, 0.38);
+}
+
+.cart-badge {
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 2px 7px;
+  border-radius: 50%;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+/* Cart Drawer */
+.cart-drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(7, 11, 20, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.cart-drawer-overlay.open {
+  display: block;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 440px;
+  background: #FFFFFF;
+  box-shadow: -10px 0 40px rgba(7, 11, 20, 0.18);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.28s var(--ease-spring);
+}
+
+.cart-drawer.open {
+  transform: translateX(0);
+}
+
+.cart-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-header h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.close-drawer-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.cart-items-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.cart-item-info strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink-heading);
+}
+
+.cart-item-info span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.cart-item-price {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #EF4444;
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+.cart-footer {
+  padding: 24px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-subtle);
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-total-row span {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-body);
+}
+
+.cart-total-row strong {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--ink-display);
+}
+
+/* Checkout Modal & Download Unlock */
+.checkout-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(7, 11, 20, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1010;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.checkout-modal-overlay.open {
+  display: flex;
+}
+
+.checkout-modal {
+  background: #FFFFFF;
+  border-radius: var(--radius-3xl);
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.checkout-header {
+  padding: 24px 30px;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-body {
+  padding: 30px;
+}
+
+.payment-input-group {
+  margin-bottom: 16px;
+}
+
+.payment-input-group label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink-heading);
+  margin-bottom: 6px;
+}
+
+.payment-input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.payment-input-group input:focus {
+  border-color: var(--primary);
+}
+
+.download-unlocked-card {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.download-unlocked-card h4 {
+  color: #065F46;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.download-unlocked-card p {
+  color: #047857;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #059669;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #047857;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   15. PAID 1-HOUR ARCHITECTURE AUDIT SYSTEM STYLES ( Booking Flow)
+   ========================================================================== */
+.audit-pricing-banner {
+  background: #FFFFFF;
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-2xl);
+  padding: 24px 30px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.audit-price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.audit-price-tag strong {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+}
+
+.audit-price-tag span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.calendar-picker-container {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 28px;
+  margin-top: 20px;
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.calendar-day-cell {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--bg-subtle);
+  transition: all 0.18s ease;
+}
+
+.calendar-day-cell:hover,
+.calendar-day-cell.selected {
+  border-color: var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+}
+
+.calendar-day-cell strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ink-heading);
+}
+
+.calendar-day-cell span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.time-slot-btn {
+  padding: 10px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  background: #FFFFFF;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.18s ease;
+  color: var(--ink-display);
+}
+
+.time-slot-btn:hover,
+.time-slot-btn.selected {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+}
+
+.audit-credit-guarantee-box {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: var(--radius-xl);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.audit-credit-guarantee-box span {
+  font-size: 1.4rem;
+}
+
+.audit-credit-guarantee-box p {
+  font-size: 0.86rem;
+  color: #1E40AF;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .marketplace-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .marketplace-grid {
+    grid-template-columns: 1fr;
+  }
+  .calendar-days-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .time-slots-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

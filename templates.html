@@ -3,73 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template & Skills Library | SalesGency</title>
-  <meta name="description" content="Download production-tested GTM skills, n8n JSON workflows, agent souls, and full-stack scaffolding. Self-serve GTM infrastructure.">
+  <title>GTM Skills, Templates &amp; Build Packages Marketplace — SalesGency</title>
+  <meta name="description" content="Download production-tested n8n JSON workflows, GTM agent skills, prompt stacks, and full-stack build packages. Instant self-serve access to our autonomous revenue engine.">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Template & Skills Library | SalesGency">
-  <meta property="og:description" content="Production-ready n8n workflows, GTM agent skills, and full-stack scaffolding for revenue teams.">
+  <meta property="og:title" content="GTM Skills, Templates &amp; Build Packages Marketplace — SalesGency">
+  <meta property="og:description" content="Instant digital download marketplace for GTM AI skills, n8n workflow JSONs, and complete pre-built autopilot packages.">
   <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- FLOATING PILL NAVBAR -->
+  <!-- ==========================================================================
+       1. FLOATING PILL NAVBAR
+       ========================================================================== -->
   <header class="nav-wrapper">
     <div class="nav-container">
       <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
         <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-        <span class="brand-subtag">Library</span>
+        <span class="brand-subtag">Marketplace</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item-dropdown">
-          <a href="agents.html" class="nav-link nav-dropdown-trigger">
-            <span>Architecture</span>
-            <span class="dropdown-arrow">▼</span>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="agents.html" class="nav-dropdown-item">
-              <span class="item-icon">🤖</span>
-              <div>
-                <strong>Agents</strong>
-                <span class="item-desc">Autonomous reasoning &amp; triage</span>
-              </div>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item-dropdown">
+            <a href="agents.html" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Architecture</span>
+              <span class="dropdown-arrow">▼</span>
             </a>
-            <a href="workflows.html" class="nav-dropdown-item">
-              <span class="item-icon">⚡</span>
-              <div>
-                <strong>Workflows</strong>
-                <span class="item-desc">Deterministic execution rails</span>
-              </div>
-            </a>
-            <a href="skills.html" class="nav-dropdown-item">
-              <span class="item-icon">🧠</span>
-              <div>
-                <strong>Skills</strong>
-                <span class="item-desc">Packaged domain intelligence</span>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="process.html" class="nav-link">Process</a></li>
-        <li><a href="work.html" class="nav-link">Work</a></li>
-        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
+            <div class="nav-dropdown-menu">
+              <a href="agents.html" class="nav-dropdown-item">
+                <span class="item-icon">🤖</span>
+                <div>
+                  <strong>Agents</strong>
+                  <span class="item-desc">Autonomous reasoning &amp; triage</span>
+                </div>
+              </a>
+              <a href="workflows.html" class="nav-dropdown-item">
+                <span class="item-icon">⚡</span>
+                <div>
+                  <strong>Workflows</strong>
+                  <span class="item-desc">Deterministic execution rails</span>
+                </div>
+              </a>
+              <a href="skills.html" class="nav-dropdown-item">
+                <span class="item-icon">🧠</span>
+                <div>
+                  <strong>Skills</strong>
+                  <span class="item-desc">Packaged domain intelligence</span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="templates.html" class="nav-link active">Marketplace</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="process.html" class="nav-link">Process</a></li>
+          <li><a href="work.html" class="nav-link">Work</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
-        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
+        <a href="pricing.html" class="btn btn-secondary btn-sm">View Plans</a>
+        <a href="qualification.html" class="btn btn-primary btn-sm">Paid Audit ($495) →</a>
         <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -90,292 +97,516 @@
       <a href="workflows.html" class="nav-link">⚡ Workflows</a>
       <a href="skills.html" class="nav-link">🧠 Skills</a>
     </div>
+    <a href="templates.html" class="nav-link active">🛒 Marketplace</a>
     <a href="services.html" class="nav-link">Services</a>
     <a href="process.html" class="nav-link">Process</a>
     <a href="work.html" class="nav-link">Work</a>
     <a href="pricing.html" class="nav-link">Pricing</a>
     <a href="about.html" class="nav-link">About</a>
-    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
+    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Paid Audit ($495) →</a>
   </div>
 
-<!-- 2. HERO -->
-<header class="hero subpage">
-  <div class="container">
-    <div class="hero-pill-badge badge-pulse">
-      <span class="dot"></span>
-      <span>Self-Serve Digital Store · Instant Download</span>
+  <!-- ==========================================================================
+       2. MARKETPLACE HERO SECTION
+       ========================================================================== -->
+  <section class="hero" style="padding-bottom: 30px;">
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge-pill badge-emerald">
+          <span class="pulse-dot"></span>
+          <span>Self-Serve Digital Store · Instant Download</span>
+        </div>
+        <h1 class="hero-title">
+          GTM Skills, Templates &amp; <br>
+          <span class="gradient-text-indigo">Autonomous Build Packages.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Don't need a high-ticket agency retainer? Build in-house with our production-tested n8n workflow JSONs, agent skills, prompt stacks, and comprehensive pre-packaged revenue engines.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="marketplace-search-wrap">
+          <span class="marketplace-search-icon">🔍</span>
+          <input type="text" id="marketplaceSearch" class="marketplace-search-input" placeholder="Search workflows, skills, prompt packs, or bundles..." oninput="searchCatalog()">
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="marketplace-filter-wrapper">
+          <button class="filter-btn active" onclick="filterCategory('all', this)">All Digital Assets (9)</button>
+          <button class="filter-btn" onclick="filterCategory('bundle', this)">Build Packages (3)</button>
+          <button class="filter-btn" onclick="filterCategory('workflow', this)">n8n Workflows (3)</button>
+          <button class="filter-btn" onclick="filterCategory('skill', this)">Agent Skills (2)</button>
+          <button class="filter-btn" onclick="filterCategory('soul', this)">Agent Souls (1)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. MARKETPLACE PRODUCT CATALOG GRID
+       ========================================================================== -->
+  <section class="section section-subtle" style="padding-top: 20px;">
+    <div class="container">
+
+      <div class="marketplace-grid" id="marketplaceGrid">
+
+        <!-- Item 1: Complete GTM Autopilot Master Bundle -->
+        <div class="marketplace-card bundle-card" data-category="bundle" data-id="gtm-master-bundle" data-name="Complete GTM Autopilot Master Bundle" data-price="497" data-file="templates/bundles/gtm-autopilot-master-bundle.zip">
+          <div class="bundle-badge-top">⭐ Flagship All-In-One Pack</div>
+          <div>
+            <div class="product-type-badge badge-bundle">Full Build Package</div>
+            <h3 class="product-title">The Complete GTM Autopilot Master Bundle</h3>
+            <p class="product-desc">
+              Everything in our arsenal: All 5 Prospect Automation Engine workflows, 10 core agent skills, 3 agent souls, video setup SOPs, and prompt libraries in one turnkey download.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">All 5 Workflows</span>
+              <span class="product-tag">10 Skills</span>
+              <span class="product-tag">Agent Souls</span>
+              <span class="product-tag">SOP Videos</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$497</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('gtm-master-bundle', 'The Complete GTM Autopilot Master Bundle', 497, 'templates/bundles/gtm-autopilot-master-bundle.zip')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('gtm-master-bundle', 'The Complete GTM Autopilot Master Bundle', 497, 'templates/bundles/gtm-autopilot-master-bundle.zip')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Outbound Signal & PAS Copy Engine Pack -->
+        <div class="marketplace-card bundle-card" data-category="bundle" data-id="outbound-engine-pack" data-name="Outbound Signal & PAS Copy Engine Pack" data-price="297" data-file="templates/bundles/outbound-revenue-engine-pack.zip">
+          <div class="bundle-badge-top">🚀 High-Velocity Pack</div>
+          <div>
+            <div class="product-type-badge badge-bundle">Outbound Build Pack</div>
+            <h3 class="product-title">Outbound Signal &amp; PAS Copy Engine Pack</h3>
+            <p class="product-desc">
+              Complete cold outbound machine: 5-Pillar n8n JSON, Factors-to-Clay webhook synchronizer, Master Agent Soul, and the AI Prospecting Tester skill pack.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">PAE n8n JSON</span>
+              <span class="product-tag">Clay Webhook</span>
+              <span class="product-tag">PAS Copy Skill</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$297</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('outbound-engine-pack', 'Outbound Signal & PAS Copy Engine Pack', 297, 'templates/bundles/outbound-revenue-engine-pack.zip')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('outbound-engine-pack', 'Outbound Signal & PAS Copy Engine Pack', 297, 'templates/bundles/outbound-revenue-engine-pack.zip')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Inbound Speed-to-Lead & Dual-Inbox Kit -->
+        <div class="marketplace-card bundle-card" data-category="bundle" data-id="inbound-lead-kit" data-name="Inbound Speed-to-Lead & Dual-Inbox Kit" data-price="197" data-file="templates/bundles/inbound-speed-to-lead-kit.zip">
+          <div class="bundle-badge-top">⚡ Sub-Minute Lead Pack</div>
+          <div>
+            <div class="product-type-badge badge-bundle">Inbound Build Pack</div>
+            <h3 class="product-title">Inbound Speed-to-Lead &amp; Dual-Inbox Kit</h3>
+            <p class="product-desc">
+              Sub-minute inbound reply velocity: Dual-inbox routing n8n JSON, MQL AI research workflow, Slack alert webhook dispatcher, and inbound qualification prompt soul.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">Dual-Inbox JSON</span>
+              <span class="product-tag">MQL AI Research</span>
+              <span class="product-tag">Slack Routing</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$197</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('inbound-lead-kit', 'Inbound Speed-to-Lead & Dual-Inbox Kit', 197, 'templates/bundles/inbound-speed-to-lead-kit.zip')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('inbound-lead-kit', 'Inbound Speed-to-Lead & Dual-Inbox Kit', 197, 'templates/bundles/inbound-speed-to-lead-kit.zip')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Prospect Automation Engine (PAE) n8n JSON -->
+        <div class="marketplace-card" data-category="workflow" data-id="pae-n8n-json" data-name="Prospect Automation Engine (PAE) n8n JSON" data-price="99" data-file="templates/Prospect Automation Engine - Template.json">
+          <div>
+            <div class="product-type-badge badge-workflow">n8n Workflow JSON</div>
+            <h3 class="product-title">Prospect Automation Engine (PAE) n8n JSON</h3>
+            <p class="product-desc">
+              Canonical 5-Pillar 9-node n8n workflow: Signal Ingest, Data Normalizer, CRM Dedupe Shield, Apollo Reveal, AI PAS Reasoner, and Smartlead Enrollment.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">n8n v1.0+</span>
+              <span class="product-tag">HubSpot / SFDC</span>
+              <span class="product-tag">Claude 3.5</span>
+              <span class="product-tag">Smartlead</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$99</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('pae-n8n-json', 'Prospect Automation Engine (PAE) n8n JSON', 99, 'templates/Prospect Automation Engine - Template.json')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('pae-n8n-json', 'Prospect Automation Engine (PAE) n8n JSON', 99, 'templates/Prospect Automation Engine - Template.json')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Daily Meeting Sync & Calendar Prep JSON -->
+        <div class="marketplace-card" data-category="workflow" data-id="daily-meeting-json" data-name="Daily Meeting Sync & Calendar Prep JSON" data-price="49" data-file="templates/Daily Meeting Sync - Pre-Call Summary - FIXED.json">
+          <div>
+            <div class="product-type-badge badge-workflow">n8n Workflow JSON</div>
+            <h3 class="product-title">Daily Meeting Sync &amp; Calendar Prep JSON</h3>
+            <p class="product-desc">
+              Automated pre-call intelligence: Fetches daily Google/Outlook calendar events, runs automated Apollo lookups on attendees, and posts formatted briefing notes to Slack.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">Google Calendar</span>
+              <span class="product-tag">Outlook 365</span>
+              <span class="product-tag">Slack Alerts</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$49</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('daily-meeting-json', 'Daily Meeting Sync & Calendar Prep JSON', 49, 'templates/Daily Meeting Sync - Pre-Call Summary - FIXED.json')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('daily-meeting-json', 'Daily Meeting Sync & Calendar Prep JSON', 49, 'templates/Daily Meeting Sync - Pre-Call Summary - FIXED.json')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Inbound Automation & MQL Research Workflow -->
+        <div class="marketplace-card" data-category="workflow" data-id="inbound-mql-json" data-name="Inbound Automation & MQL Research Workflow" data-price="49" data-file="templates/inbound-automation-workflow.json">
+          <div>
+            <div class="product-type-badge badge-workflow">n8n Workflow JSON</div>
+            <h3 class="product-title">Inbound Automation &amp; MQL Research JSON</h3>
+            <p class="product-desc">
+              Listens for website form submissions, queries LLM with prospect website URL for instant company analysis, calculates intent score, and routes to dual inboxes.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">Webhook Ingest</span>
+              <span class="product-tag">Web Scraping</span>
+              <span class="product-tag">MQL Scoring</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$49</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('inbound-mql-json', 'Inbound Automation & MQL Research Workflow', 49, 'templates/inbound-automation-workflow.json')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('inbound-mql-json', 'Inbound Automation & MQL Research Workflow', 49, 'templates/inbound-automation-workflow.json')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7: AI PAS Copywriting Master Skill Pack -->
+        <div class="marketplace-card" data-category="skill" data-id="pas-skill-pack" data-name="AI PAS Copywriting Master Skill Pack" data-price="39" data-file="templates/skills/ai-prospecting-tester-skill (1).zip">
+          <div>
+            <div class="product-type-badge badge-skill">Agent Skill Pack</div>
+            <h3 class="product-title">AI PAS Copywriting Master Skill Pack</h3>
+            <p class="product-desc">
+              Complete system prompt architecture, few-shot examples, and heuristic rules instructing LLMs to generate high-converting 3-sentence Problem-Agitate-Solve cold emails.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">SKILL.md</span>
+              <span class="product-tag">Claude 3.5 / Cursor</span>
+              <span class="product-tag">Grade 6 Copy</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$39</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('pas-skill-pack', 'AI PAS Copywriting Master Skill Pack', 39, 'templates/skills/ai-prospecting-tester-skill (1).zip')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('pas-skill-pack', 'AI PAS Copywriting Master Skill Pack', 39, 'templates/skills/ai-prospecting-tester-skill (1).zip')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8: GTM Architect & Proposal Builder Skill -->
+        <div class="marketplace-card" data-category="skill" data-id="gtm-architect-skill" data-name="GTM Architect & Proposal Builder Skill" data-price="39" data-file="templates/skills/gtm-architect-skill (1).zip">
+          <div>
+            <div class="product-type-badge badge-skill">Agent Skill Pack</div>
+            <h3 class="product-title">GTM Architect &amp; Proposal Builder Skill</h3>
+            <p class="product-desc">
+              Packaged domain intelligence for AI sales engineers: diagnostic question rubrics, tech-stack scoping templates, and automated statement of work (SOW) generators.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">SOW Generator</span>
+              <span class="product-tag">Tech Scoping</span>
+              <span class="product-tag">Atlas Pedigree</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$39</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('gtm-architect-skill', 'GTM Architect & Proposal Builder Skill', 39, 'templates/skills/gtm-architect-skill (1).zip')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('gtm-architect-skill', 'GTM Architect & Proposal Builder Skill', 39, 'templates/skills/gtm-architect-skill (1).zip')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 9: Master GTM Agent Soul & Guardrails -->
+        <div class="marketplace-card" data-category="soul" data-id="master-soul-md" data-name="Master GTM Agent Soul & Guardrails" data-price="49" data-file="templates/00-Master-Soul.md">
+          <div>
+            <div class="product-type-badge badge-soul">Agent Soul Markdown</div>
+            <h3 class="product-title">Master GTM Agent Soul &amp; Guardrails</h3>
+            <p class="product-desc">
+              The canonical behavioral constitution for GTM autonomous agents: role definition, conversational heuristics, deterministic fallbacks, and multi-tenant security barriers.
+            </p>
+            <div class="product-tags">
+              <span class="product-tag">00-Master-Soul.md</span>
+              <span class="product-tag">Guardrails</span>
+              <span class="product-tag">System Prompt</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="product-price">
+              <strong>$49</strong>
+              <small>one-time</small>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-secondary btn-sm" onclick="addToCart('master-soul-md', 'Master GTM Agent Soul & Guardrails', 49, 'templates/00-Master-Soul.md')">Add to Cart</button>
+              <button class="btn btn-indigo btn-sm" onclick="instantCheckout('master-soul-md', 'Master GTM Agent Soul & Guardrails', 49, 'templates/00-Master-Soul.md')">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. HIGH-TICKET AUDIT CALLOUT BANNER
+       ========================================================================== -->
+  <section class="section" style="padding-top: 20px;">
+    <div class="container">
+      <div class="cta-banner-bento">
+        <div class="badge-pill badge-primary" style="background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); color: #FFFFFF;">
+          <span class="pulse-dot"></span>
+          <span>⚡ Need Custom Engineering &amp; Team Handover?</span>
+        </div>
+        <h2>Book a 1-Hour GTM Architecture &amp; Strategy Audit</h2>
+        <p>
+          Don't want to build it yourself? Spend 60 intensive minutes with Patrick Diamitani. We diagnose your bottlenecks, diagram your custom Triad, and map out your revenue engine live.
+        </p>
+        <div class="btn-group">
+          <a href="qualification.html" class="btn btn-indigo btn-lg">Book 1-Hour Paid Audit ($495) →</a>
+          <a href="pricing.html" class="btn btn-secondary btn-lg" style="color: #FFFFFF; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);">Explore Agency Retainers</a>
+        </div>
+        <div style="margin-top: 18px; font-size: 0.85rem; color: #94A3B8;">
+          ✓ 100% of your $495 audit fee is credited directly toward any retainer or build sprint booked within 30 days.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. FLOATING CART BUTTON & CART DRAWER
+       ========================================================================== -->
+  <div class="floating-cart-trigger" id="floatingCartBtn" onclick="toggleCartDrawer()">
+    <span>🛒 Cart</span>
+    <span class="cart-badge" id="cartCount">0</span>
+    <span id="cartSubtotal" style="font-weight: 800; font-size: 0.85rem;">$0</span>
+  </div>
+
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer()"></div>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Digital Cart</h3>
+      <button class="close-drawer-btn" onclick="toggleCartDrawer()">&times;</button>
     </div>
     
-    <h1>
-      GTM Skills, Plugin Packs &amp;<br>
-      <span class="serif-i">n8n Workflow JSONs.</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      Don't want a custom client engagement? Build in-house with our production-tested n8n JSON templates, agent skill markdowns, prompt stacks, and full-stack scaffolding.
-    </p>
-  </div>
-</header>
-
-<!-- 3. TEMPLATES CATALOG -->
-<section id="catalog" style="border-top: 1px solid var(--border); background: var(--bg-alt); padding-top: 40px;">
-  <div class="container">
-    
-    <!-- Filter Pills -->
-    <div class="library-filter-wrapper">
-      <button class="filter-btn active" onclick="filterCatalog('all', this)">All Assets (9)</button>
-      <button class="filter-btn" onclick="filterCatalog('n8n', this)">n8n Workflows (4)</button>
-      <button class="filter-btn" onclick="filterCatalog('skills', this)">GTM Skills (3)</button>
-      <button class="filter-btn" onclick="filterCatalog('souls', this)">Agent Souls &amp; Packs (1)</button>
-      <button class="filter-btn" onclick="filterCatalog('fullstack', this)">Full-Stack Scaffolding (1)</button>
+    <div class="cart-items-list" id="cartItemsList">
+      <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+        Your cart is currently empty. <br>Add templates or skills from the catalog!
+      </div>
     </div>
 
-    <!-- Catalog Grid -->
-    <div class="grid-3" id="templateGrid">
-      
-      <!-- Item 1: PAE 5-Pillar n8n JSON -->
-      <div class="template-card" data-cat="n8n">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
-          <h3>Prospect Automation Engine (PAE) Master Template</h3>
-          <p>Canonical 5-Pillar 9-node n8n workflow: Trigger Ingest, Data Normalizer, CRM Dedupe Shield, Apollo Reveal, AI PAS Reasoner, and Smartlead Enrollment.</p>
-          <div class="template-tags">
-            <span class="template-tag">n8n JSON</span>
-            <span class="template-tag">Salesforce/HubSpot</span>
-            <span class="template-tag">Apollo API</span>
-            <span class="template-tag">Claude 3.5</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$49 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal:</span>
+        <strong id="cartDrawerTotal">$0</strong>
       </div>
-
-      <!-- Item 2: GTM Engineering Skill -->
-      <div class="template-card" data-cat="skills">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-blue">Agent Skill Markdown</div>
-          <h3>GTM Engineering Master Skill Pack</h3>
-          <p>Complete system instructions and prompt architecture for AI SDRs, dynamic PAS copy generation, intent classification, and objection handling.</p>
-          <div class="template-tags">
-            <span class="template-tag">SKILL.md</span>
-            <span class="template-tag">Claude / Cursor</span>
-            <span class="template-tag">PAS Prompts</span>
-            <span class="template-tag">Grade 6 Copy</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$19 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
+      <button class="btn btn-indigo btn-lg" style="width: 100%;" onclick="openCheckoutFromCart()">
+        Proceed to Secure Checkout →
+      </button>
+      <div style="font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
+        🔒 256-bit Encrypted Checkout · Instant Download Delivery
       </div>
-
-      <!-- Item 3: Daily Meeting Sync JSON -->
-      <div class="template-card" data-cat="n8n">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
-          <h3>Daily Meeting Sync &amp; Pre-Call Intelligence</h3>
-          <p>Fetches daily Google/Outlook calendar events, runs automated Clearbit/Apollo lookups on attendees, and posts formatted briefing notes to Slack 15 mins before calls.</p>
-          <div class="template-tags">
-            <span class="template-tag">n8n JSON</span>
-            <span class="template-tag">Google Calendar</span>
-            <span class="template-tag">Slack Webhook</span>
-            <span class="template-tag">Enrichment</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$29 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-      <!-- Item 4: Inbound Lead Triage JSON -->
-      <div class="template-card" data-cat="n8n">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
-          <h3>Inbound Lead Triage &amp; ICP Scoring Engine</h3>
-          <p>Instant webhook parsing of form fills, Clearbit firmographic cascade, automated 0–100 ICP calculation, and round-robin AE calendar routing.</p>
-          <div class="template-tags">
-            <span class="template-tag">n8n JSON</span>
-            <span class="template-tag">Webhook</span>
-            <span class="template-tag">HubSpot API</span>
-            <span class="template-tag">0.2s Latency</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$39 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-      <!-- Item 5: MQL AI Research JSON -->
-      <div class="template-card" data-cat="n8n">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
-          <h3>MQL AI Research &amp; Classification Workflow</h3>
-          <p>Autonomous LLM node graph that reads prospect website URLs, summarizes their value proposition, and determines exact buying intent category.</p>
-          <div class="template-tags">
-            <span class="template-tag">n8n JSON</span>
-            <span class="template-tag">OpenAI / Claude</span>
-            <span class="template-tag">Web Scraping</span>
-            <span class="template-tag">MQL Tagging</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$29 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-      <!-- Item 6: Master Soul Pack -->
-      <div class="template-card" data-cat="souls">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-rose">Agent Soul Pack</div>
-          <h3>00-Master-Soul &amp; Multi-Agent Swarm Hierarchy</h3>
-          <p>The definitive multi-agent soul architecture. Includes system boundaries, tool permissions, memory schemas, and escalation protocols for GTM agent swarms.</p>
-          <div class="template-tags">
-            <span class="template-tag">SOUL.md</span>
-            <span class="template-tag">Agent Swarm</span>
-            <span class="template-tag">Hermes / OpenClaw</span>
-            <span class="template-tag">Guardrails</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$29 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-      <!-- Item 7: RFP Answer Retriever Skill -->
-      <div class="template-card" data-cat="skills">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-blue">Agent Skill Markdown</div>
-          <h3>RFP Intelligence &amp; Answer Retriever Suite</h3>
-          <p>Automated semantic search against past RFP proposals and company knowledge bases. Returns High/Medium/No Match confidence with automated gap tickets.</p>
-          <div class="template-tags">
-            <span class="template-tag">SKILL.md</span>
-            <span class="template-tag">RFP Parser</span>
-            <span class="template-tag">HubSpot Tickets</span>
-            <span class="template-tag">Q&amp;A Pairs</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$19 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-      <!-- Item 8: n8n Factors to Clay Webhook -->
-      <div class="template-card" data-cat="skills">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-blue">Integration Skill</div>
-          <h3>Factors.ai to Clay Intent Trigger Workflow</h3>
-          <p>Real-time webhook router that captures high-intent website visitors from Factors.ai / 6sense and pushes them directly into Clay for decision-maker waterfall reveal.</p>
-          <div class="template-tags">
-            <span class="template-tag">Intent Stream</span>
-            <span class="template-tag">Clay.com</span>
-            <span class="template-tag">Factors.ai</span>
-            <span class="template-tag">n8n JSON</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$29 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-      <!-- Item 9: Full-Stack GTM SaaS Scaffolding -->
-      <div class="template-card" data-cat="fullstack">
-        <div class="template-header">
-          <div class="template-type-badge badge badge-sun">Full-Stack Codebase</div>
-          <h3>Full-Stack GTM Web App Scaffolding</h3>
-          <p>Production Next.js 16 App Router repository with Supabase Auth, PostgreSQL RLS, Stripe Checkout, Inngest job queues, and responsive shadcn/ui components.</p>
-          <div class="template-tags">
-            <span class="template-tag">Next.js 16</span>
-            <span class="template-tag">Supabase RLS</span>
-            <span class="template-tag">Stripe Billing</span>
-            <span class="template-tag">TypeScript</span>
-          </div>
-        </div>
-        <div class="template-footer">
-          <div class="template-price">$99 <small>one-time</small></div>
-          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- 4. BOTTOM CTA -->
-<div class="container cta-banner-wrapper">
-  <div class="cta-banner-card">
-    <div class="badge badge-sun" style="margin-bottom: 20px;">Need Custom Implementation?</div>
-    <h2>Prefer a Done-For-You <span class="serif-i" style="color: #FDFF73;">Production Build?</span></h2>
-    <p>If you'd rather have our team audit your funnel and deploy the full architecture in a 1-week sprint, take the qualification quiz to book a paid consultation.</p>
-    <div class="cta-banner-btns">
-      <a href="qualification.html" class="btn btn-accent btn-lg">Run Qualification Agent →</a>
-      <a href="pricing.html" class="btn btn-ghost btn-lg" style="background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.2);">View Client Packages</a>
     </div>
   </div>
-</div>
 
-<footer class="footer-digiket">
+  <!-- ==========================================================================
+       6. CHECKOUT & DOWNLOAD UNLOCK MODAL
+       ========================================================================== -->
+  <div class="checkout-modal-overlay" id="checkoutModalOverlay">
+    <div class="checkout-modal">
+      <div class="checkout-header">
+        <h3 id="checkoutModalTitle">Complete Your Purchase</h3>
+        <button class="close-drawer-btn" onclick="closeCheckoutModal()">&times;</button>
+      </div>
+      <div class="checkout-body">
+        
+        <!-- Step 1: Payment Form -->
+        <div id="checkoutPaymentView">
+          <div style="background: var(--bg-subtle); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.82rem; color: var(--text-muted);">ORDER SUMMARY:</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--ink-heading); margin-top: 4px;" id="checkoutItemName">The Complete GTM Autopilot Master Bundle</div>
+            <div style="font-size: 1.3rem; font-weight: 900; color: var(--primary); margin-top: 4px;" id="checkoutItemPrice">$497 USD</div>
+          </div>
+
+          <form id="checkoutForm" onsubmit="processOrder(event)">
+            <div class="payment-input-group">
+              <label for="buyerEmail">Work Email (Deliverable Sent Here):</label>
+              <input type="email" id="buyerEmail" required placeholder="you@company.com">
+            </div>
+
+            <div class="payment-input-group">
+              <label for="cardNumber">Card Number:</label>
+              <input type="text" id="cardNumber" required placeholder="4242 •••• •••• 4242" value="4242 •••• •••• 4242">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="payment-input-group">
+                <label for="cardExpiry">Expiration:</label>
+                <input type="text" id="cardExpiry" required placeholder="MM / YY" value="12/28">
+              </div>
+              <div class="payment-input-group">
+                <label for="cardCvc">CVC:</label>
+                <input type="text" id="cardCvc" required placeholder="CVC" value="888">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-indigo btn-lg" style="width: 100%; margin-top: 8px;" id="submitPaymentBtn">
+              Pay &amp; Unlock Instant Download →
+            </button>
+            <div style="text-align: center; margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
+              ⚡ Direct Stripe Processing · Or pay via <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" style="color: var(--primary); font-weight: 700;">PayPal Express</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 2: Unlocked Download View -->
+        <div id="checkoutSuccessView" style="display: none;">
+          <div class="download-unlocked-card">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">🎉</div>
+            <h4>Payment Successful!</h4>
+            <p>Your digital package has been generated and unlocked. Click below to download your files instantly.</p>
+            
+            <a id="instantDownloadBtn" href="#" download class="download-btn">
+              <span>⬇️ Download Package Files Now</span>
+            </a>
+            
+            <div style="margin-top: 18px; font-size: 0.82rem; color: var(--text-muted);">
+              A backup download link and invoice has also been sent to your email.
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; text-align: center;">
+            <button class="btn btn-secondary btn-sm" onclick="closeCheckoutModal()">Done</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       7. MULTI-COLUMN FOOTER
+       ========================================================================== -->
+  <footer class="footer-bento">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand-col">
           <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
             <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
           </a>
-          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
+          <p>
+            SalesGency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.
+          </p>
+          <div class="badge-pill badge-cyan">
+            <span class="pulse-dot"></span>
+            <span>Digital Marketplace: Operational</span>
+          </div>
         </div>
+
         <div class="footer-col">
-          <h4>Core Pillars</h4>
+          <h4>Marketplace</h4>
           <ul>
-            <li><a href="services.html#inbound">Inbound Automation</a></li>
-            <li><a href="services.html#outbound">Outbound Automation</a></li>
-            <li><a href="services.html#revops">RevOps</a></li>
-            <li><a href="services.html#enablement">Enablement</a></li>
+            <li><a href="templates.html?filter=bundle">Build Packages (Bundles)</a></li>
+            <li><a href="templates.html?filter=workflow">n8n Workflow JSONs</a></li>
+            <li><a href="templates.html?filter=skill">Agent Skill Packs</a></li>
+            <li><a href="templates.html?filter=soul">Master Agent Souls</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Architecture</h4>
           <ul>
+            <li><a href="agents.html">GTM AI Agents</a></li>
+            <li><a href="workflows.html">Deterministic Workflows</a></li>
+            <li><a href="skills.html">Domain Skills</a></li>
             <li><a href="process.html">Skills, Agents, Workflows</a></li>
-            <li><a href="process.html#ddc">30-Day Sprint</a></li>
-            <li><a href="templates.html">Skill Library</a></li>
+            <li><a href="process.html#ddc">30-Day Delivery Sprint</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="work.html">Case Studies</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About SalesGency</a></li>
+            <li><a href="work.html">Case Studies &amp; Work</a></li>
+            <li><a href="pricing.html">Agency Pricing</a></li>
+            <li><a href="qualification.html">Book Paid Audit ($495)</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h4>Contact &amp; Office</h4>
           <ul>
+            <li style="font-size: 0.92rem; color: var(--text-muted);">Austin, TX &amp; Remote Global</li>
             <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
-            <li><a href="qualification.html">Book Discovery Call →</a></li>
+            <li><a href="qualification.html" style="font-weight: 600; color: var(--primary);">Schedule 1-Hour Audit →</a></li>
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
+        <div>&copy; 2026 SalesGency LLC. All Rights Reserved. All digital downloads include commercial usage rights.</div>
         <div style="display: flex; gap: 20px;">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
+          <a href="index.html">Privacy Policy</a>
+          <a href="index.html">Terms of Digital Sale</a>
+          <a href="index.html">License Agreement</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- ==========================================================================
+       8. E-COMMERCE & CART JAVASCRIPT
+       ========================================================================== -->
   <script>
-    // Mobile Menu
+    // 1. Mobile Drawer Toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mobileNavDrawer = document.getElementById('mobileNavDrawer');
     if (mobileMenuToggle && mobileNavDrawer) {
@@ -384,19 +615,162 @@
       });
     }
 
-    // Filter Catalog
-    function filterCatalog(category, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cards = document.querySelectorAll('.template-card');
+    // 2. Category Filtering
+    function filterCategory(category, button) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const cards = document.querySelectorAll('.marketplace-card');
       cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-cat') === category) {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
     }
+
+    // 3. Real-Time Catalog Search
+    function searchCatalog() {
+      const query = document.getElementById('marketplaceSearch').value.toLowerCase();
+      const cards = document.querySelectorAll('.marketplace-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. Shopping Cart State
+    let cart = [];
+
+    function addToCart(id, name, price, file) {
+      const existing = cart.find(item => item.id === id);
+      if (!existing) {
+        cart.push({ id, name, price, file });
+      }
+      updateCartUI();
+      openCartDrawer();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartCount = document.getElementById('cartCount');
+      const cartSubtotal = document.getElementById('cartSubtotal');
+      const cartDrawerTotal = document.getElementById('cartDrawerTotal');
+      const cartItemsList = document.getElementById('cartItemsList');
+
+      const totalCount = cart.length;
+      const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+
+      cartCount.textContent = totalCount;
+      cartSubtotal.textContent = `$${totalPrice}`;
+      cartDrawerTotal.textContent = `$${totalPrice}`;
+
+      if (totalCount === 0) {
+        cartItemsList.innerHTML = `
+          <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+            Your cart is currently empty. <br>Add templates or skills from the catalog!
+          </div>
+        `;
+      } else {
+        cartItemsList.innerHTML = cart.map(item => `
+          <div class="cart-item-row">
+            <div class="cart-item-info">
+              <strong>${item.name}</strong>
+              <span>Digital Deliverable</span>
+            </div>
+            <div class="cart-item-price">
+              $${item.price}
+              <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" title="Remove item">✕</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const overlay = document.getElementById('cartOverlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+
+    function openCartDrawer() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('cartOverlay').classList.add('open');
+    }
+
+    // 5. Checkout & Download Flow
+    let activeCheckoutItem = null;
+
+    function instantCheckout(id, name, price, file) {
+      activeCheckoutItem = { id, name, price, file };
+      document.getElementById('checkoutItemName').textContent = name;
+      document.getElementById('checkoutItemPrice').textContent = `$${price} USD`;
+      document.getElementById('checkoutPaymentView').style.display = 'block';
+      document.getElementById('checkoutSuccessView').style.display = 'none';
+      document.getElementById('checkoutModalOverlay').classList.add('open');
+    }
+
+    function openCheckoutFromCart() {
+      if (cart.length === 0) return;
+      toggleCartDrawer();
+      const firstItem = cart[0];
+      const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+      const names = cart.map(i => i.name).join(', ');
+      
+      activeCheckoutItem = { 
+        id: 'cart-bundle', 
+        name: cart.length > 1 ? `Cart Items (${cart.length}): ${cart[0].name}...` : cart[0].name, 
+        price: totalPrice, 
+        file: firstItem.file 
+      };
+
+      document.getElementById('checkoutItemName').textContent = activeCheckoutItem.name;
+      document.getElementById('checkoutItemPrice').textContent = `$${totalPrice} USD`;
+      document.getElementById('checkoutPaymentView').style.display = 'block';
+      document.getElementById('checkoutSuccessView').style.display = 'none';
+      document.getElementById('checkoutModalOverlay').classList.add('open');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModalOverlay').classList.remove('open');
+    }
+
+    function processOrder(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitPaymentBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing Payment with Stripe...';
+
+      setTimeout(() => {
+        // Unlock download
+        document.getElementById('checkoutPaymentView').style.display = 'none';
+        document.getElementById('checkoutSuccessView').style.display = 'block';
+        
+        const downloadBtn = document.getElementById('instantDownloadBtn');
+        if (activeCheckoutItem && activeCheckoutItem.file) {
+          downloadBtn.href = activeCheckoutItem.file;
+        } else {
+          downloadBtn.href = 'templates/bundles/gtm-autopilot-master-bundle.zip';
+        }
+
+        // Clear cart if bought
+        cart = [];
+        updateCartUI();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Pay & Unlock Instant Download →';
+      }, 950);
+    }
   </script>
+
 </body>
 </html>
