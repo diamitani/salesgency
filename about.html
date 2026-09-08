@@ -1,47 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | SalesGency</title>
-<meta name="description" content="Learn about Patrick Diamitani, the Forward Deployed AI Engineer behind SalesGency.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Leadership | SalesGency</title>
+  <meta name="description" content="Learn about Patrick Diamitani, the Forward Deployed AI Engineer behind SalesGency.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About & Leadership | SalesGency">
+  <meta property="og:description" content="Forward Deployed AI Engineering for revenue systems, agentic harnesses, and custom GTM tooling.">
+  <meta property="og:image" content="gency-wordmark.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand"><a href="index.html">Sales<em>Gency</em></a></div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="process.html">Process</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="work.html">Work</a>
-    <a href="about.html" class="active">About</a>
+<!-- 1. FLOATING PILL NAVBAR -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="index.html" class="nav-brand">
+      Sales<em>Gency</em> <span class="brand-badge">Founder</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="prospect-automation.html">Prospect Automation</a>
+      <a href="services.html">Engines</a>
+      <a href="process.html">Process</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="work.html">Work</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+    <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call →</a>
+    
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+</div>
+
+<!-- Mobile Menu Drawer -->
+<div class="mobile-menu-drawer" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="prospect-automation.html">Prospect Automation</a>
+  <a href="services.html">Engines</a>
+  <a href="process.html">Process</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="work.html">Work</a>
+  <a href="about.html" class="active">About</a>
+  <a href="https://calendly.com/diamitani" target="_blank" style="color: var(--primary); font-weight: 700;">Book a Call →</a>
+</div>
+
+<!-- 2. HERO -->
+<header class="hero subpage">
+  <div class="container">
+    <div class="hero-pill-badge badge-pulse">
+      <span class="dot"></span>
+      <span>Forward Deployed AI Engineering</span>
+    </div>
+    
+    <h1>
+      Patrick <span class="serif-i">Diamitani.</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Forward Deployed AI Engineer in Chicago. I build autonomous revenue systems, agentic infrastructure, and custom GTM engines for startups and growth-stage companies.
+    </p>
   </div>
-  <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call</a>
-</nav>
+</header>
 
-<div class="container" style="padding-top: 140px; padding-bottom: 80px;">
+<!-- 3. BIO CARD -->
+<section id="bio" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+  <div class="container-narrow">
+    
+    <div class="feature-card" style="padding: 48px;">
+      <div class="badge badge-mint" style="margin-bottom: 20px;">Leadership &amp; Architecture</div>
+      <h3 style="font-size: 28px; margin-bottom: 16px;">Engineering Autonomous Revenue Systems</h3>
+      <p style="font-size: 16px; margin-bottom: 20px; line-height: 1.7;">
+        Previously built systems at Atlas HXM. Published AI builder focused on practical, production-grade workflows using Claude, n8n, Clay, Make.com, and modern orchestration tooling.
+      </p>
+      <p style="font-size: 16px; margin-bottom: 30px; line-height: 1.7;">
+        My core philosophy is simple: <strong>Deterministic data routing + Agentic unstructured synthesis</strong>. I don't believe in giving AI free rein over unverified actions. We build strict guardrails, deduplication shields, and human approval gates so revenue teams scale with 100% confidence.
+      </p>
 
-<div class="founder" id="about">
-  <div class="section-label">Leadership</div>
-  <div class="section-title" style="margin-bottom:20px">Patrick <span class="serif-i">Diamitani.</span></div>
-  <p>Forward Deployed AI Engineer in Chicago. I build revenue systems, agentic infrastructure, and custom tools for startups, campaigns, and growth-stage companies.</p>
-  <p style="margin-top:12px">Previously built systems at Atlas HXM. Published AI builder focused on practical, production-grade workflows using Claude, n8n, Clay, Make.com, and modern orchestration tooling.</p>
-  <div class="founder-links">
-    <a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a>
-    <a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a>
-    <a href="mailto:patrick.diamitani@gmail.com">Email ↗</a>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
+        <span class="badge badge-blue">n8n Systems Engineer</span>
+        <span class="badge badge-rose">Agent PAL Architect</span>
+        <span class="badge badge-sun">Claude / MCP Specialist</span>
+        <span class="badge badge-mint">CRM Automation</span>
+      </div>
+
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--border-light);">
+        <a href="https://linkedin.com/in/diamitani" target="_blank" class="btn btn-primary btn-sm">LinkedIn Profile ↗</a>
+        <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-ghost btn-sm">Schedule Strategy Call ↗</a>
+        <a href="mailto:patrick.diamitani@gmail.com" class="btn btn-ghost btn-sm">Email Direct ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 4. BOTTOM CTA -->
+<div class="container cta-banner-wrapper">
+  <div class="cta-banner-card">
+    <div class="badge badge-sun" style="margin-bottom: 20px;">Direct Pairing</div>
+    <h2>Let's Architect Your <span class="serif-i" style="color: #FDFF73;">AI Sales Engine.</span></h2>
+    <p>Book a strategy session today. We'll map your sales funnel bottlenecks and design an automated architecture live on the call.</p>
+    <div class="cta-banner-btns">
+      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-lg">Book a Call →</a>
+    </div>
   </div>
 </div>
 
-</div>
+<!-- 5. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <h4>Sales<em>Gency</em></h4>
+        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul class="footer-links">
+          <li><a href="prospect-automation.html">Prospect Automation</a></li>
+          <li><a href="services.html">Engines</a></li>
+          <li><a href="process.html">Process</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Pricing</h5>
+        <ul class="footer-links">
+          <li><a href="pricing.html">Strategy Call ($250)</a></li>
+          <li><a href="pricing.html">Agent Setup ($499)</a></li>
+          <li><a href="pricing.html">Sprint Activation ($1,500)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
+          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a></li>
+          <li><a href="mailto:patrick.diamitani@gmail.com">Email ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 SalesGency. All rights reserved.</div>
+      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+    </div>
+  </div>
+</footer>
 
-<footer><div class="container">© 2026 SalesGency · patrick.diamitani@gmail.com · <a href="https://linkedin.com/in/diamitani" target="_blank" style="color:var(--muted)">LinkedIn</a></div></footer>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+</script>
 
 </body>
 </html>

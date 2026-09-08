@@ -1,193 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SalesGency — AI Revenue Automation</title>
-<meta name="description" content="SalesGency builds autonomous sales engines. Scale your inbound, outbound, and post-call intelligence with custom AI workflows.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalesGency — GTM Workflows, Custom Harnesses & Full-Stack Web Apps</title>
+  <meta name="description" content="I build GTM workflows, skills, and agents. I configure custom harnesses and full-stack web apps tailored to GTM operations.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SalesGency — GTM Workflows, Custom Harnesses & Full-Stack Web Apps">
+  <meta property="og:description" content="Tailored exclusively to GTM operations. Live in 30 days with full infrastructure ownership.">
+  <meta property="og:image" content="gency-wordmark.png">
+  
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- 1. NAV -->
-<nav>
-  <div class="nav-brand">Sales<em>Gency</em></div>
-  <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="prospect-automation.html">Prospect Automation</a>
-    <a href="services.html">Engines</a>
-    <a href="process.html">Process</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="work.html">Work</a>
-    <a href="about.html">About</a>
-  </div>
-  <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call</a>
-</nav>
-
-<div class="container">
-
-<!-- 2. HERO -->
-<div class="hero">
-  <div class="hero-badge"><span class="dot"></span> Revenue Automation</div>
-  <h1>Scale Your Revenue With<br><span class="serif-i">Autonomous Engines.</span></h1>
-  <p>SalesGency builds AI-driven sales architecture. From inbound triage to outbound prospecting and post-call intelligence, we automate the busywork so your closers can close.</p>
-  <div class="hero-btns">
-    <a href="services.html" class="btn btn-primary">Explore Engines →</a>
-    <a href="process.html" class="btn btn-ghost">See How We Build</a>
-  </div>
+<!-- 1. FLOATING PILL NAVBAR -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="index.html" class="nav-brand">
+      Sales<em>Gency</em> <span class="brand-badge">GTM AI</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Overview</a>
+      <a href="services.html">Services</a>
+      <a href="process.html">Process</a>
+      <a href="deployment.html">Deployment</a>
+      <a href="templates.html">Templates &amp; Skills</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="qualification.html" class="nav-cta">Paid Consultation ($250) →</a>
+    
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
 </div>
+
+<!-- Mobile Menu Drawer -->
+<div class="mobile-menu-drawer" id="mobileMenu">
+  <a href="index.html" class="active">Overview</a>
+  <a href="services.html">Services</a>
+  <a href="process.html">Process</a>
+  <a href="deployment.html">Deployment</a>
+  <a href="templates.html">Templates &amp; Skills</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="qualification.html" style="color: var(--primary); font-weight: 700;">Paid Consultation ($250) →</a>
+</div>
+
+<!-- 2. HERO SECTION -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-pill-badge badge-pulse">
+      <span class="dot"></span>
+      <span>GTM Operations &amp; Revenue Architecture</span>
+    </div>
+    
+    <h1>
+      I Build GTM Workflows, Skills &amp; Agents.<br>
+      <span class="serif-i">Custom Harnesses &amp; Full-Stack Web Apps.</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Tailored exclusively to GTM operations. From automated prospecting and zero-admin CRM sync to bespoke agent planning harnesses and production-grade full stack web apps.
+    </p>
+    
+    <div class="hero-btns">
+      <a href="qualification.html" class="btn btn-primary btn-lg">Run Qualification Agent →</a>
+      <a href="templates.html" class="btn btn-ghost btn-lg">Browse Template Library</a>
+    </div>
+
+    <!-- Embedded Qualification Agent Widget -->
+    <div class="qual-agent-container" style="text-align: left;">
+      <div class="qual-agent-header">
+        <div class="qual-agent-title">
+          <span>⚡ Interactive GTM Qualification Assessment</span>
+          <span class="badge badge-mint">Live Assistant</span>
+        </div>
+        <div class="qual-progress-bar">
+          <div class="progress-step-dot active" id="h-dot-1">1</div>
+          <div class="progress-step-dot" id="h-dot-2">2</div>
+          <div class="progress-step-dot" id="h-dot-3">3</div>
+        </div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="qual-step-card active" id="h-step-1">
+        <div class="qual-step-title">01. What is your primary GTM operational bottleneck?</div>
+        <div class="qual-options-grid">
+          <div class="qual-option-chip" onclick="hSelectOption(1, 'bottleneck', 'Outbound Prospecting', this)">
+            <strong>🎯 Outbound Prospecting &amp; Research</strong>
+            <span>Reps waste 15+ hrs/week manual scraping and drafting cold emails</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(1, 'bottleneck', 'Inbound Triage', this)">
+            <strong>⚡ Inbound Lead Triage &amp; Speed to Lead</strong>
+            <span>Warm inbound leads sit for hours before qualification and routing</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(1, 'bottleneck', 'Post-Call CRM Admin', this)">
+            <strong>📝 Post-Call CRM Admin &amp; Data Logging</strong>
+            <span>Missing MEDDIC/BANT fields, delayed follow-up recaps, CRM hygiene</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(1, 'bottleneck', 'Custom Harnesses & Web Apps', this)">
+            <strong>🛠️ Custom Agent Harnesses &amp; Web Apps</strong>
+            <span>Need bespoke SOP-to-Agent runtimes, sales portals, or client tooling</span>
+          </div>
+        </div>
+        <div class="qual-action-bar">
+          <span style="font-size: 13px; color: var(--text-dim);">Step 1 of 3</span>
+          <button class="btn btn-primary btn-sm" id="h-btn-next-1" disabled onclick="hNextStep(2)">Next Step →</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="qual-step-card" id="h-step-2">
+        <div class="qual-step-title">02. What is your current CRM &amp; tooling stack?</div>
+        <div class="qual-options-grid">
+          <div class="qual-option-chip" onclick="hSelectOption(2, 'stack', 'Salesforce/HubSpot + n8n', this)">
+            <strong>Salesforce / HubSpot + n8n / Make</strong>
+            <span>Standard CRM with automated webhook and workflow requirements</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(2, 'stack', 'Apollo/Clay + Smartlead', this)">
+            <strong>Apollo / Clay + Smartlead / Instantly</strong>
+            <span>Waterfall contact reveal &amp; multi-inbox sequence rotation</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(2, 'stack', 'Next.js + Postgres', this)">
+            <strong>Next.js + Supabase + Custom APIs</strong>
+            <span>Custom full-stack architecture &amp; dedicated cloud databases</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(2, 'stack', 'Spreadsheets/Manual', this)">
+            <strong>Spreadsheets / Manual Operations</strong>
+            <span>Ready for complete automation and deterministic logic gates</span>
+          </div>
+        </div>
+        <div class="qual-action-bar">
+          <button class="btn btn-ghost btn-sm" onclick="hPrevStep(1)">← Back</button>
+          <button class="btn btn-primary btn-sm" id="h-btn-next-2" disabled onclick="hNextStep(3)">Next Step →</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="qual-step-card" id="h-step-3">
+        <div class="qual-step-title">03. What is your timeline and preferred delivery model?</div>
+        <div class="qual-options-grid">
+          <div class="qual-option-chip" onclick="hSelectOption(3, 'model', 'Strategy Consultation ($250)', this)">
+            <strong>Paid Strategy Call ($250)</strong>
+            <span>60-min diagnosis + 30-min live build of one working engine</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(3, 'model', 'Agent Setup ($499)', this)">
+            <strong>Agent Setup ($499)</strong>
+            <span>Agent team deployed with 1hr onboarding call &amp; documentation</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(3, 'model', '1-Week Sprint ($1,500)', this)">
+            <strong>1-Week Sprint Activation ($1,500)</strong>
+            <span>Full JTBD audit, working prototype, skills, and playbooks</span>
+          </div>
+          <div class="qual-option-chip" onclick="hSelectOption(3, 'model', 'Self-Serve Templates ($19-$99)', this)">
+            <strong>Self-Serve Template Library ($19–$99)</strong>
+            <span>Download ready n8n JSONs &amp; skill packs to build in-house</span>
+          </div>
+        </div>
+        <div class="qual-action-bar">
+          <button class="btn btn-ghost btn-sm" onclick="hPrevStep(2)">← Back</button>
+          <button class="btn btn-primary btn-sm" id="h-btn-next-3" disabled onclick="hCalculateResult()">Calculate Architecture Match →</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="qual-step-card" id="h-step-result">
+        <div class="qual-result-box">
+          <div class="qual-score-pill badge-mint">
+            <span>✓ Match Score: 98/100 · High-Priority Architecture Fit</span>
+          </div>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 10px;">
+            Your Custom GTM Architecture is Scoped
+          </h3>
+          <p style="font-size: 14.5px; color: var(--text-muted); max-width: 580px; margin: 0 auto 20px; line-height: 1.6;" id="h-result-desc">
+            Based on your answers, deploying our autonomous GTM engines can eliminate <strong>4+ hours per rep daily</strong> with <strong>100% infrastructure ownership</strong>.
+          </p>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-lg">Pay $250 &amp; Book Paid Strategy Call →</a>
+            <a href="templates.html" class="btn btn-ghost btn-lg">Browse Template Library</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</header>
 
 <!-- 3. LOGO CLOUD -->
-<section id="logos" style="padding: 0 0 100px; text-align: center; border-bottom: 1px solid var(--surface-border);">
-  <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 32px;">Powered by industry-leading infrastructure</p>
-  <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.5; align-items: center; filter: grayscale(100%);">
-    <span style="font-size: 24px; font-weight: 800; letter-spacing: -1px;">Salesforce</span>
-    <span style="font-size: 24px; font-weight: 800; letter-spacing: -1px;">HubSpot</span>
-    <span style="font-size: 24px; font-weight: 800; letter-spacing: -1px;">Outreach</span>
-    <span style="font-size: 24px; font-weight: 800; letter-spacing: -1px;">Gong</span>
-    <span style="font-size: 24px; font-weight: 800; letter-spacing: -1px;">Apollo</span>
+<section class="logo-cloud-section">
+  <div class="container">
+    <div class="logo-cloud-label">INTEGRATED DIRECTLY INTO YOUR GTM &amp; CRM STACK</div>
+    <div class="logo-cloud-grid">
+      <div class="logo-item">Salesforce</div>
+      <div class="logo-item">HubSpot</div>
+      <div class="logo-item">Outreach</div>
+      <div class="logo-item">Gong</div>
+      <div class="logo-item">Apollo</div>
+      <div class="logo-item">Clay</div>
+      <div class="logo-item">n8n</div>
+      <div class="logo-item">Claude</div>
+    </div>
   </div>
 </section>
 
-<!-- 4. REVENUE STACK OVERVIEW -->
-<section id="overview">
-  <div class="centered">
-    <div class="section-label">Core Systems</div>
-    <div class="section-title">The Revenue <span class="serif-i">Stack.</span></div>
-    <div class="section-desc">We don't sell software; we build custom engines integrated directly into your CRM and data sources.</div>
-  </div>
-  <div class="grid-3">
-    <div class="step-card">
-      <div class="step-num">01. Inbound</div>
-      <h3>Lead Triage &amp; Routing</h3>
-      <p>Automate lead qualification. Our systems parse inbound inquiries, score them against your ICP, and route them to the right rep instantly.</p>
+<!-- 4. THREE CORE SERVICES (GTM OPERATIONS) -->
+<section id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Core Capabilities</div>
+      <h2 class="section-title">Three Core Services. <span class="serif-i">100% Tailored to GTM.</span></h2>
+      <p class="section-desc">I don't sell bloated software subscriptions. I architect, build, and deploy custom revenue infrastructure directly into your accounts.</p>
     </div>
-    <div class="step-card">
-      <div class="step-num">02. Outbound</div>
-      <h3>Autonomous Prospecting</h3>
-      <p>Connect your data sources to generate hyper-personalized outreach sequences at scale without manual SDR intervention.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">03. Post-Call</div>
-      <h3>Intelligence &amp; CRM Sync</h3>
-      <p>Automatically extract MEDDIC/BANT criteria from call transcripts, update Salesforce/HubSpot, and draft follow-up emails.</p>
-    </div>
-  </div>
-  <div class="centered" style="margin-top: 48px;">
-    <a href="services.html" class="btn btn-ghost">View All Capabilities →</a>
-  </div>
-</section>
 
-<!-- 5. HOW IT WORKS (DEPLOYMENT) -->
-<section id="deployment" style="background: var(--surface); margin: 0 -28px; padding: 100px 28px;">
-  <div class="container" style="max-width: 900px;">
-    <div class="grid-2" style="align-items: center;">
-      <div>
-        <div class="section-label">Speed to Value</div>
-        <h2 class="section-title" style="font-size: 36px; margin-bottom: 20px;">Live in <span class="serif-i">30 Days.</span></h2>
-        <p style="color: var(--muted); margin-bottom: 24px;">We don't do multi-year digital transformations. We audit your funnel, design the architecture, and deploy functioning AI engines in weeks, not months.</p>
-        <ul style="list-style: none;">
-          <li style="margin-bottom: 12px; font-size: 14px; font-weight: 500;"><span style="color: var(--accent); margin-right: 8px;">✓</span> JTBD Funnel Audit</li>
-          <li style="margin-bottom: 12px; font-size: 14px; font-weight: 500;"><span style="color: var(--accent); margin-right: 8px;">✓</span> Custom Logic Blueprint</li>
-          <li style="margin-bottom: 12px; font-size: 14px; font-weight: 500;"><span style="color: var(--accent); margin-right: 8px;">✓</span> CRM Integration & Testing</li>
-          <li style="font-size: 14px; font-weight: 500;"><span style="color: var(--accent); margin-right: 8px;">✓</span> Team Handoff & Playbooks</li>
-        </ul>
-        <div style="margin-top: 32px;">
-          <a href="process.html" class="btn btn-primary">Read the Setup Guide</a>
+    <div class="grid-3">
+      
+      <!-- Service 1 -->
+      <div class="feature-card">
+        <div>
+          <div class="feature-icon-box" style="background: var(--badge-mint-bg); color: var(--badge-mint-text);">
+            ⚡
+          </div>
+          <div class="badge badge-mint" style="margin-bottom: 12px;">Service 01</div>
+          <h3>GTM Workflows, Skills &amp; Agents</h3>
+          <p>Autonomous outbound prospecting (PAE 5-pillar), instant 0.2s inbound triage, event-driven signal detection, and automated post-call CRM sync (MEDDIC/BANT extraction).</p>
+        </div>
+        <div class="feature-card-footer">
+          <span>Outbound · Inbound · CRM</span>
+          <a href="services.html#workflows" style="color: var(--primary);">Explore Workflows →</a>
         </div>
       </div>
-      <div style="background: var(--ink); border-radius: var(--radius); padding: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4ade80; margin-bottom: 16px;">> STATUS: PIPELINE DEPLOYED</div>
-        <div style="font-family: inherit; font-size: 13px; color: #94a3b8; line-height: 1.8;">
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 8px;">
-            <span>Lead Parsed</span><span style="color: #fff;">0.2s</span>
+
+      <!-- Service 2 -->
+      <div class="feature-card">
+        <div>
+          <div class="feature-icon-box" style="background: var(--badge-blue-bg); color: var(--badge-blue-text);">
+            🛡️
           </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 8px;">
-            <span>Clearbit Enrichment</span><span style="color: #fff;">1.1s</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 8px;">
-            <span>ICP Score Calculated</span><span style="color: #fff;">0.5s</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding-bottom: 8px;">
-            <span>HubSpot Task Created</span><span style="color: #fff;">0.8s</span>
-          </div>
+          <div class="badge badge-blue" style="margin-bottom: 12px;">Service 02</div>
+          <h3>Custom Agent Harnesses</h3>
+          <p>Delali Development Cycle (DDC) planning runtimes, SOP-to-Agent architecture, strict prompt boundaries, deduplication safety shields, and 1-click Slack confirmation gates.</p>
+        </div>
+        <div class="feature-card-footer">
+          <span>Safe Runtimes · Zero Hallucination</span>
+          <a href="services.html#harnesses" style="color: var(--primary);">View Harnesses →</a>
         </div>
       </div>
+
+      <!-- Service 3 -->
+      <div class="feature-card">
+        <div>
+          <div class="feature-icon-box" style="background: var(--badge-rose-bg); color: var(--badge-rose-text);">
+            💻
+          </div>
+          <div class="badge badge-rose" style="margin-bottom: 12px;">Service 03</div>
+          <h3>Full-Stack Web Apps for GTM</h3>
+          <p>Custom Next.js 16 web applications, internal rep command centers, qualification funnels, and embeddable AI intelligence portals connected to your private knowledge bases.</p>
+        </div>
+        <div class="feature-card-footer">
+          <span>Next.js · Supabase · APIs</span>
+          <a href="services.html#webapps" style="color: var(--primary);">See Web Apps →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- 6. CASE STUDIES PREVIEW -->
-<section id="metrics">
-  <div class="centered">
-    <div class="section-label">Proven Results</div>
-    <div class="section-title">Engines That <span class="serif-i">Perform.</span></div>
-    <div class="section-desc">We build systems that drive real pipeline velocity and eliminate admin bloat.</div>
-  </div>
-  <div class="grid-2">
-    <div class="card" style="text-align: center; padding: 48px 32px;">
-      <div style="font-size: 48px; font-weight: 800; color: var(--accent); margin-bottom: 8px; letter-spacing: -2px;">4hrs+</div>
-      <h3 style="font-size: 18px; margin-bottom: 8px;">Saved Per Rep / Daily</h3>
-      <p style="font-size: 14px; max-width: 300px; margin: 0 auto;">Enterprise HR tech eliminated manual inbound triage, routing leads instantly with 100% accuracy.</p>
+<!-- 5. TEMPLATE & SKILLS LIBRARY PREVIEW -->
+<section id="library-preview" style="background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Digital Store &amp; Assets</div>
+      <h2 class="section-title">Self-Serve <span class="serif-i">Templates &amp; Skills Library.</span></h2>
+      <p class="section-desc">Prefer to build in-house? Download our production-tested n8n JSON workflows, agent skills, and full-stack scaffolding instantly.</p>
     </div>
-    <div class="card" style="text-align: center; padding: 48px 32px;">
-      <div style="font-size: 48px; font-weight: 800; color: var(--accent); margin-bottom: 8px; letter-spacing: -2px;">9x</div>
-      <h3 style="font-size: 18px; margin-bottom: 8px;">Revenue Growth</h3>
-      <p style="font-size: 14px; max-width: 300px; margin: 0 auto;">Series A SaaS company deployed 3 autonomous engines in 30 days, scaling their 6-person team's output exponentially.</p>
+
+    <div class="grid-3" style="margin-bottom: 36px;">
+      
+      <div class="template-card">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
+          <h3>Prospect Automation Engine (PAE) Master</h3>
+          <p>5-Pillar 9-node n8n workflow: Ingestion, Normalizer, CRM Dedupe Gate, Apollo Reveal, PAS Copywriter, and Smartlead enrollment.</p>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$49 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-blue">Agent Skill Markdown</div>
+          <h3>GTM Engineering Master Skill Pack</h3>
+          <p>Complete system prompt stack and instruction hierarchy for AI SDRs, dynamic PAS copy, intent classification, and objection handling.</p>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$19 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-sun">Full-Stack Scaffolding</div>
+          <h3>Full-Stack GTM SaaS App Scaffolding</h3>
+          <p>Production Next.js 16 App Router repository with Supabase Auth, PostgreSQL RLS, Stripe Checkout, and shadcn/ui components.</p>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$99 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="centered" style="margin-top: 48px;">
-    <a href="work.html" class="btn btn-ghost">View All Case Studies →</a>
+
+    <div style="text-align: center;">
+      <a href="templates.html" class="btn btn-ghost btn-lg">View All 9+ Templates &amp; Skills →</a>
+    </div>
   </div>
 </section>
 
-<!-- 7. WHY AGENTIC SALES (BENEFITS) -->
-<section id="benefits" style="border-top: 1px solid var(--surface-border);">
-  <div class="grid-2" style="gap: 40px; align-items: center;">
-    <div>
-      <h2 style="font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 24px;">Stop hiring SDRs to do <span class="serif-i" style="color: var(--accent);">machine work.</span></h2>
-      <p style="color: var(--muted); margin-bottom: 24px;">Traditional sales orgs scale by throwing headcount at the pipeline. Modern sales orgs scale by automating the top-of-funnel and post-call admin, allowing reps to focus 100% on closing.</p>
-      <p style="color: var(--muted);">SalesGency engines don't sleep, don't miss CRM fields, and don't forget to follow up.</p>
+<!-- 6. PAL PROCESS OVERVIEW -->
+<section id="process">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Engineering Discipline</div>
+      <h2 class="section-title">The PAL Framework: <span class="serif-i">Prompt Architecture Layer.</span></h2>
+      <p class="section-desc">Every GTM workflow and agent harness is engineered using our deterministic 5-step PAL lifecycle.</p>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-      <div style="background: var(--surface); padding: 24px; border-radius: var(--radius-sm);">
-        <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 15px;">Zero CRM Bloat</h4>
-        <p style="font-size: 12px; color: var(--muted);">Engines map directly to your existing fields.</p>
+
+    <div class="grid-4">
+      <div class="usecase-card">
+        <div class="badge badge-mint" style="margin-bottom: 12px;">P · Parse</div>
+        <h4>01. Input Normalization</h4>
+        <p>Clean schemas, standardize ICP parameters, and establish baseline constraints.</p>
       </div>
-      <div style="background: var(--surface); padding: 24px; border-radius: var(--radius-sm);">
-        <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 15px;">Deterministic</h4>
-        <p style="font-size: 12px; color: var(--muted);">No hallucinations. Strict logic gates.</p>
+
+      <div class="usecase-card">
+        <div class="badge badge-blue" style="margin-bottom: 12px;">A · Ambiguity Scan</div>
+        <h4>02. Collision Check</h4>
+        <p>Identify hidden assumptions, CRM field mismatches, and API rate limits.</p>
       </div>
-      <div style="background: var(--surface); padding: 24px; border-radius: var(--radius-sm);">
-        <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 15px;">API Native</h4>
-        <p style="font-size: 12px; color: var(--muted);">Connects to Gong, Apollo, Salesforce.</p>
+
+      <div class="usecase-card">
+        <div class="badge badge-rose" style="margin-bottom: 12px;">L · Latent Intent</div>
+        <h4>03. Intent Uncovering</h4>
+        <p>Extract unstated revenue requirements and operational edge-cases before coding.</p>
       </div>
-      <div style="background: var(--surface); padding: 24px; border-radius: var(--radius-sm);">
-        <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 15px;">Full Ownership</h4>
-        <p style="font-size: 12px; color: var(--muted);">We build it, you own the infrastructure.</p>
+
+      <div class="usecase-card">
+        <div class="badge badge-sun" style="margin-bottom: 12px;">C · Compile</div>
+        <h4>04. Node Generation</h4>
+        <p>Compile deterministic n8n node graphs, agent souls, and shadow test suites.</p>
       </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 36px;">
+      <a href="process.html" class="btn btn-ghost">Read the Full PAL &amp; DDC Blueprint →</a>
     </div>
   </div>
 </section>
 
-<!-- 8. CTA -->
-<section class="cta-section">
-  <h2>Ready to <span class="serif-i">scale?</span></h2>
-  <p>Book a free discovery call. We'll audit your current sales process and design an automated architecture on the call.</p>
-  <div class="cta-btns">
-    <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent">Book a Call →</a>
-    <a href="pricing.html" class="btn btn-ghost">View Pricing</a>
-  </div>
-  <div class="status"><span class="dot"></span> SYSTEM OPERATIONAL · ACCEPTING CLIENTS</div>
-</section>
+<!-- 7. MEASURABLE IMPACT METRICS -->
+<div class="container">
+  <div class="metrics-section">
+    <div class="metrics-header">
+      <div class="section-label" style="background: rgba(255,255,255,0.1); color: var(--badge-sun-bg);">Measurable ROI</div>
+      <h2 class="section-title">Engines That Deliver <span style="color: var(--badge-sun-bg); font-style: italic;">Quantifiable Alpha.</span></h2>
+      <p class="section-desc">We build systems that drive real pipeline velocity and eliminate admin bloat from day one.</p>
+    </div>
 
+    <div class="grid-3">
+      <div class="metric-box">
+        <div class="metric-val">4hrs+</div>
+        <div class="metric-label">Saved Per Rep / Daily</div>
+        <div class="metric-sub">Enterprise HR SaaS eliminated manual inbound triage and post-call data logging completely.</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="metric-val">9x</div>
+        <div class="metric-label">Pipeline Growth</div>
+        <div class="metric-sub">Series A company deployed 3 autonomous engines in 30 days, 9x-ing their sales velocity.</div>
+      </div>
+
+      <div class="metric-box">
+        <div class="metric-val">100%</div>
+        <div class="metric-label">Infrastructure Ownership</div>
+        <div class="metric-sub">All workflows live in your own n8n/AWS accounts. Zero recurring platform lock-in.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- 9. FOOTER -->
-<footer><div class="container">© 2026 SalesGency · patrick.diamitani@gmail.com · <a href="https://linkedin.com/in/diamitani" target="_blank" style="color:var(--muted)">LinkedIn</a></div></footer>
+<!-- 8. PAID CONSULTATION & PACKAGES -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Paid Consultations &amp; Engagements</div>
+      <h2 class="section-title">All Client Calls are <span class="serif-i">Paid Consultations.</span></h2>
+      <p class="section-desc">Every consultation includes live engineer diagnosis and working code. Choose your engagement level.</p>
+    </div>
+
+    <div class="pricing-grid">
+      
+      <!-- Tier 1 -->
+      <div class="pricing-card">
+        <div>
+          <div class="p-name">Strategy Call</div>
+          <div class="p-desc">1hr consultation + 30min live build session.</div>
+          <div class="p-price-box">
+            <div class="p-amount">$250</div>
+            <div class="p-term">One-time engagement</div>
+          </div>
+          <ul class="p-list">
+            <li>60-minute architecture consultation</li>
+            <li>30-minute live engine build</li>
+            <li>Claude Cowork / OpenClaw setup</li>
+            <li>Action plan &amp; blueprint notes</li>
+          </ul>
+        </div>
+        <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn p-btn-outline">Pay &amp; Book →</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="pricing-card">
+        <div>
+          <div class="p-name">Agent Setup</div>
+          <div class="p-desc">Agent team deployed with 1hr onboarding call.</div>
+          <div class="p-price-box">
+            <div class="p-amount">$499</div>
+            <div class="p-term">One-time deployment</div>
+          </div>
+          <ul class="p-list">
+            <li>1-hour live onboarding session</li>
+            <li>OpenClaw / Paperclip config</li>
+            <li>Agent hierarchy &amp; soul setup</li>
+            <li>Working agent team deployed</li>
+            <li>Full SOP documentation</li>
+          </ul>
+        </div>
+        <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn p-btn-outline">Pay &amp; Book →</a>
+      </div>
+
+      <!-- Tier 3: Featured -->
+      <div class="pricing-card featured">
+        <div class="featured-pill">Most Popular</div>
+        <div>
+          <div class="p-name">Sprint</div>
+          <div class="p-desc">1-week activation. Full engine build + handoff.</div>
+          <div class="p-price-box">
+            <div class="p-amount">$1,500</div>
+            <div class="p-term">1-week intensive</div>
+          </div>
+          <ul class="p-list">
+            <li>Intro call &amp; JTBD funnel audit</li>
+            <li>Working prototype delivered</li>
+            <li>Skills &amp; autonomous agents configured</li>
+            <li>Build prompts for continuation</li>
+            <li>Architecture diagrams &amp; playbooks</li>
+            <li>Full team training session</li>
+          </ul>
+        </div>
+        <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn p-btn-solid">Pay &amp; Book →</a>
+      </div>
+
+      <!-- Tier 4 -->
+      <div class="pricing-card">
+        <div>
+          <div class="p-name">Enterprise</div>
+          <div class="p-desc">Project-based build or dedicated retainer.</div>
+          <div class="p-price-box">
+            <div class="p-amount">Custom</div>
+            <div class="p-term">Scoped after discovery</div>
+          </div>
+          <ul class="p-list">
+            <li>Full SOP-to-Agent architecture</li>
+            <li>Multi-workflow automation &amp; n8n</li>
+            <li>Ongoing optimization &amp; support</li>
+            <li>Dedicated private Slack channel</li>
+            <li>Priority SLA &amp; weekly reviews</li>
+          </ul>
+        </div>
+        <a href="qualification.html" class="p-btn p-btn-outline">Qualify &amp; Schedule →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 9. FAQ ACCORDION -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Frequently Asked Questions</div>
+      <h2 class="section-title">Everything You Need <span class="serif-i">to Know.</span></h2>
+      <p class="section-desc">Common questions regarding paid consultations, templates, and deployment timelines.</p>
+    </div>
+
+    <div class="faq-wrapper">
+      
+      <div class="faq-item open">
+        <button class="faq-question">
+          <span>Why are all client discovery calls paid consultations?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          We don't do generic sales pitch calls. Every consultation is a working 90-minute technical session with a Forward Deployed AI Engineer where we diagnose your bottlenecks and write functioning workflow logic live on the call.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What happens after I purchase a template from the library?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          You receive an instant download link to the complete JSON workflow file or markdown skill pack, accompanied by step-by-step setup guides, credential configuration instructions, and sample payloads.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Do we own the infrastructure and code you build?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, 100%. We build directly in your own n8n instance, Supabase project, or cloud server. You retain full ownership of all IP, API keys, and database schemas.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How does the Qualification Agent work?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          The Qualification Agent analyzes your target bottleneck, CRM stack, team size, and timeline. It calculates an architecture match score and confirms whether a Paid Strategy Call ($250) or Sprint ($1,500) makes the most financial sense for your company.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 10. BOTTOM CTA BANNER -->
+<div class="container cta-banner-wrapper">
+  <div class="cta-banner-card">
+    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready for Autonomous Revenue?</div>
+    <h2>Build Clarity &amp; Velocity Into <span class="serif-i" style="color: #FDFF73;">Your GTM Operations.</span></h2>
+    <p>Run the 60-second qualification assessment to scope your custom build and book your paid strategy consultation.</p>
+    <div class="cta-banner-btns">
+      <a href="qualification.html" class="btn btn-accent btn-lg">Run Qualification Agent →</a>
+      <a href="templates.html" class="btn btn-ghost btn-lg" style="background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.2);">Browse Template Library</a>
+    </div>
+    <div class="cta-banner-status">
+      <span class="dot"></span>
+      <span>SYSTEM OPERATIONAL · LIVE SPRINT CAPACITY AVAILABLE</span>
+    </div>
+  </div>
+</div>
+
+<!-- 11. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      
+      <div class="footer-brand-col">
+        <h4>Sales<em>Gency</em></h4>
+        <p>Custom GTM workflows, agent planning harnesses, and full stack web apps. Built by Forward Deployed AI Engineers in Chicago.</p>
+        <div style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">
+          Direct: <a href="mailto:patrick.diamitani@gmail.com" style="color: var(--primary);">patrick.diamitani@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="services.html#workflows">GTM Workflows &amp; Agents</a></li>
+          <li><a href="services.html#harnesses">Custom Agent Harnesses</a></li>
+          <li><a href="services.html#webapps">Full-Stack Web Apps</a></li>
+          <li><a href="deployment.html">Deployment SLA</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Store &amp; Process</h5>
+        <ul class="footer-links">
+          <li><a href="templates.html">Templates &amp; Skills Library</a></li>
+          <li><a href="process.html">PAL Process &amp; Blueprint</a></li>
+          <li><a href="pricing.html">Strategy Call ($250)</a></li>
+          <li><a href="pricing.html">Sprint Activation ($1,500)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About &amp; Leadership</a></li>
+          <li><a href="qualification.html">Qualification Agent</a></li>
+          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn Profile ↗</a></li>
+          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly Booking ↗</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 SalesGency. All rights reserved. Delali Development Cycle Architecture.</div>
+      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Scripts -->
+<script>
+  // Mobile Menu
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+
+  // FAQ Accordion
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(q => {
+    q.addEventListener('click', () => {
+      const parent = q.parentElement;
+      const isOpen = parent.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
+      if (!isOpen) parent.classList.add('open');
+    });
+  });
+
+  // Hero Qualification Widget State
+  const hAnswers = {};
+
+  function hSelectOption(step, key, val, element) {
+    hAnswers[key] = val;
+    const parent = element.parentElement;
+    parent.querySelectorAll('.qual-option-chip').forEach(c => c.classList.remove('selected'));
+    element.classList.add('selected');
+    const nextBtn = document.getElementById(`h-btn-next-${step}`);
+    if (nextBtn) nextBtn.disabled = false;
+  }
+
+  function hNextStep(stepNum) {
+    document.querySelectorAll('.qual-step-card').forEach(c => c.classList.remove('active'));
+    document.getElementById(`h-step-${stepNum}`).classList.add('active');
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById(`h-dot-${i}`);
+      if (dot) {
+        if (i < stepNum) {
+          dot.classList.add('completed');
+          dot.classList.remove('active');
+        } else if (i === stepNum) {
+          dot.classList.add('active');
+          dot.classList.remove('completed');
+        } else {
+          dot.classList.remove('active', 'completed');
+        }
+      }
+    }
+  }
+
+  function hPrevStep(stepNum) {
+    hNextStep(stepNum);
+  }
+
+  function hCalculateResult() {
+    document.querySelectorAll('.qual-step-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('h-step-result').classList.add('active');
+  }
+</script>
 
 </body>
 </html>

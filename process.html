@@ -1,111 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Process & Setup Guide | SalesGency</title>
-<meta name="description" content="The Sales Operations Setup Guide. How we deploy custom sales automation engines in under 30 days.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The PAL Process & Setup Blueprint | SalesGency</title>
+  <meta name="description" content="The PAL (Prompt Architecture Layer) format and Delali Development Cycle. How we engineer and deploy custom GTM automation in 30 days.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The PAL Process & Setup Blueprint | SalesGency">
+  <meta property="og:description" content="Parse. Ambiguity Scan. Latent Intent. Expand. Compile. Deterministic GTM engineering.">
+  <meta property="og:image" content="gency-wordmark.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand"><a href="index.html">Sales<em>Gency</em></a></div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html">Engines</a>
-    <a href="process.html" class="active">Process</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="work.html">Work</a>
-    <a href="about.html">About</a>
-  </div>
-  <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call</a>
-</nav>
-
-<div class="container">
-
-<div class="hero subpage">
-  <div class="hero-badge"><span class="dot"></span> How We Build</div>
-  <h1>The Sales Ops <br><span class="serif-i">Setup Guide.</span></h1>
-  <p>We deploy autonomous revenue architecture in 30 days. Here is our exact blueprint from audit to production.</p>
+<!-- 1. FLOATING PILL NAVBAR -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="index.html" class="nav-brand">
+      Sales<em>Gency</em> <span class="brand-badge">PAL</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="services.html">Services</a>
+      <a href="process.html" class="active">Process</a>
+      <a href="deployment.html">Deployment</a>
+      <a href="templates.html">Templates &amp; Skills</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="qualification.html" class="nav-cta">Book Paid Consultation →</a>
+    
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
 </div>
 
-<section id="framework">
-  <div class="centered">
-    <div class="section-label">Pipeline</div>
-    <div class="section-title">Audit → Design → <span class="serif-i">Deploy.</span></div>
-    <div class="section-desc">We follow a strict, four-phase setup guide to ensure your engines go live without disrupting current sales momentum.</div>
-  </div>
-  <div class="grid-2">
-    <div class="step-card">
-      <div class="step-num">PHASE 01</div>
-      <h3>Revenue Stack Audit &amp; JTBD</h3>
-      <p>We analyze your current CRM, tech stack, and lead flow. We interview your top reps using Jobs-To-Be-Done to find exactly where manual data entry and lead routing are causing bottlenecks.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">PHASE 02</div>
-      <h3>Blueprint &amp; Tech Design</h3>
-      <p>We design the custom logic. We determine whether to use n8n, Make.com, or custom Python agents. You receive a complete visual diagram of all data flows before we write a single line of code.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">PHASE 03</div>
-      <h3>Integration &amp; Testing</h3>
-      <p>We build the engines and connect them securely to your Salesforce, HubSpot, or Outreach instances. We run shadowed tests to ensure the AI logic routes and enriches perfectly.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">PHASE 04</div>
-      <h3>Handoff &amp; Playbooks</h3>
-      <p>We deploy to production. Your team receives the "Sales Ops Playbook" detailing how the engines work, how to monitor them, and how to scale the prompts as your ICP evolves.</p>
-    </div>
-  </div>
-</section>
-
-<section id="deliverables">
-  <div class="centered">
-    <div class="section-label">Deliverables</div>
-    <div class="section-title">What You Get Every <span class="serif-i">Time.</span></div>
-    <div class="section-desc">We deliver fully functional systems, not just advice.</div>
-  </div>
-  <div class="grid-4">
-    <div class="card">
-      <div class="card-icon">📊</div>
-      <h3>Audit Report</h3>
-      <p>A comprehensive breakdown of your sales pipeline inefficiencies.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🗺️</div>
-      <h3>Architecture Map</h3>
-      <p>Visual diagrams of all data flows and automation triggers.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">⚡</div>
-      <h3>Live Engines</h3>
-      <p>The deployed, functioning automation workflows and AI agents.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon">📚</div>
-      <h3>SOP Playbook</h3>
-      <p>Documentation on how your team maintains and scales the new systems.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <h2>Ready to <span class="serif-i">scale?</span></h2>
-  <p>Book a free discovery call. We'll audit your current sales process and design an automated architecture on the call.</p>
-  <div class="cta-btns">
-    <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent">Book a Call →</a>
-    <a href="pricing.html" class="btn btn-ghost">View Pricing</a>
-  </div>
-  <div class="status"><span class="dot"></span> SYSTEM OPERATIONAL · ACCEPTING CLIENTS</div>
-</section>
-
+<!-- Mobile Menu Drawer -->
+<div class="mobile-menu-drawer" id="mobileMenu">
+  <a href="index.html">Overview</a>
+  <a href="services.html">Services</a>
+  <a href="process.html" class="active">Process</a>
+  <a href="deployment.html">Deployment</a>
+  <a href="templates.html">Templates &amp; Skills</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="qualification.html" style="color: var(--primary); font-weight: 700;">Book Paid Consultation →</a>
 </div>
 
-<footer><div class="container">© 2026 SalesGency · patrick.diamitani@gmail.com · <a href="https://linkedin.com/in/diamitani" target="_blank" style="color:var(--muted)">LinkedIn</a></div></footer>
+<!-- 2. HERO -->
+<header class="hero subpage">
+  <div class="container">
+    <div class="hero-pill-badge badge-pulse">
+      <span class="dot"></span>
+      <span>The PAL Architecture &amp; Delali Planning Runtime</span>
+    </div>
+    
+    <h1>
+      The PAL Process &amp; <br>
+      <span class="serif-i">Setup Blueprint.</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Best-in-class revenue engineering is not a vibe — it is an unskippable machine. Here is our exact 5-step PAL framework and 4-phase deployment cycle.
+    </p>
+  </div>
+</header>
+
+<!-- 3. THE 5 PAL STAGES -->
+<section id="pal-framework" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Engineering Discipline</div>
+      <h2 class="section-title">The 5-Step PAL Framework: <span class="serif-i">From Intent to Code.</span></h2>
+      <p class="section-desc">Prompt Architecture Layer (PAL) guarantees that requirements are verified, de-risked, and compiled deterministically before a single line of production code is written.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom: 30px;">
+      
+      <!-- PAL 1: Parse -->
+      <div class="feature-card">
+        <div class="badge badge-mint" style="margin-bottom: 12px;">Step 01 · P</div>
+        <h3>Parse &amp; Normalize</h3>
+        <p>Extract core revenue objectives, ICP parameters, and technology boundaries from ordinary language. Distinguish stated requirements from inferred decisions.</p>
+        <ul class="checklist" style="margin-top: 16px;">
+          <li><span class="checklist-icon">✓</span> Input schema standardization</li>
+          <li><span class="checklist-icon">✓</span> Separation of stated vs inferred goals</li>
+          <li><span class="checklist-icon">✓</span> Zero premature assumptions</li>
+        </ul>
+      </div>
+
+      <!-- PAL 2: Ambiguity Scan -->
+      <div class="feature-card">
+        <div class="badge badge-blue" style="margin-bottom: 12px;">Step 02 · A</div>
+        <h3>Ambiguity Scan</h3>
+        <p>Identify the single material uncertainty that could alter architecture, cost, or security. Ask at most one targeted question instead of a 40-field questionnaire.</p>
+        <ul class="checklist" style="margin-top: 16px;">
+          <li><span class="checklist-icon">✓</span> CRM field mismatch detection</li>
+          <li><span class="checklist-icon">✓</span> API credit &amp; rate limit audits</li>
+          <li><span class="checklist-icon">✓</span> Tenancy and credential boundaries</li>
+        </ul>
+      </div>
+
+      <!-- PAL 3: Latent Intent -->
+      <div class="feature-card">
+        <div class="badge badge-rose" style="margin-bottom: 12px;">Step 03 · L</div>
+        <h3>Latent Intent Extraction</h3>
+        <p>Uncover the unstated operational needs that standard scoping misses: deduplication safety, fallback alerts, error reporting, and team handoff friction.</p>
+        <ul class="checklist" style="margin-top: 16px;">
+          <li><span class="checklist-icon">✓</span> Rep workflow edge-case capture</li>
+          <li><span class="checklist-icon">✓</span> CRM hygiene preservation rules</li>
+          <li><span class="checklist-icon">✓</span> Observability requirement mapping</li>
+        </ul>
+      </div>
+
+      <!-- PAL 4: Expand -->
+      <div class="feature-card">
+        <div class="badge badge-sun" style="margin-bottom: 12px;">Step 04 · E</div>
+        <h3>Expand &amp; Enrich</h3>
+        <p>Synthesize research, identify data provider cascades (Apollo, Clay, Clearbit), design prompt stacks, and map deterministic routing trees.</p>
+        <ul class="checklist" style="margin-top: 16px;">
+          <li><span class="checklist-icon">✓</span> Multi-source waterfall design</li>
+          <li><span class="checklist-icon">✓</span> Grade 6 PAS copy prompt templates</li>
+          <li><span class="checklist-icon">✓</span> Subagent task specialization</li>
+        </ul>
+      </div>
+
+      <!-- PAL 5: Compile -->
+      <div class="feature-card">
+        <div class="badge badge-orange" style="margin-bottom: 12px;">Step 05 · C</div>
+        <h3>Compile &amp; Test</h3>
+        <p>Compile the final production assets: n8n workflow JSONs, agent souls, system instructions, and shadowed verification test suites.</p>
+        <ul class="checklist" style="margin-top: 16px;">
+          <li><span class="checklist-icon">✓</span> Production n8n node graphs</li>
+          <li><span class="checklist-icon">✓</span> Markdown skill &amp; soul files</li>
+          <li><span class="checklist-icon">✓</span> Dry-run test assertions</li>
+        </ul>
+      </div>
+
+      <!-- PAL Invariant -->
+      <div class="feature-card" style="background: var(--ink); color: #FFFFFF;">
+        <div class="badge badge-mint" style="margin-bottom: 12px;">Quality Gate</div>
+        <h3 style="color: #FFFFFF;">Quality Score ≥ 4/5</h3>
+        <p style="color: #94A3B8;">Every plan is scored across 10 dimensions (security, reliability, taste, observability) before build mode is unlocked.</p>
+        <div class="feature-card-footer" style="border-color: rgba(255,255,255,0.1); color: var(--badge-sun-bg);">
+          <span>Zero Scaffolding Errors</span>
+          <span>Well-Architected</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. FOUR PHASES DEPLOYMENT -->
+<section id="deployment-phases">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Execution Roadmap</div>
+      <h2 class="section-title">The 4-Phase <span class="serif-i">Sales Ops Setup Blueprint.</span></h2>
+      <p class="section-desc">How we transition your custom PAL blueprint into production software in under 30 days.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="feature-card">
+        <div class="badge badge-mint" style="margin-bottom: 14px;">Phase 01</div>
+        <h3>Revenue Stack Audit &amp; JTBD</h3>
+        <p>We analyze your CRM data fields, sales tech stack, and outbound bottlenecks. Using the Jobs-To-Be-Done (JTBD) framework, we identify where reps lose high-value selling hours.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="badge badge-blue" style="margin-bottom: 14px;">Phase 02</div>
+        <h3>Node Architecture &amp; Tech Design</h3>
+        <p>We construct the 5-Pillar n8n graph, design prompt architecture, authenticate API credentials, and map custom CRM field write-backs.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="badge badge-rose" style="margin-bottom: 14px;">Phase 03</div>
+        <h3>Shadowed Integration &amp; Testing</h3>
+        <p>We run 100+ dry-run test records through the engine to verify deduplication shields, email deliverability, and webhook speed in a risk-free sandbox.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="badge badge-sun" style="margin-bottom: 14px;">Phase 04</div>
+        <h3>Handoff, SOP Playbooks &amp; Training</h3>
+        <p>We switch to live production. You receive 100% ownership of all workflows, JSON templates, operator video guides, and live team training.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. BOTTOM CTA -->
+<div class="container cta-banner-wrapper">
+  <div class="cta-banner-card">
+    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready for Architecture Execution?</div>
+    <h2>Let's Engineer Your <span class="serif-i" style="color: #FDFF73;">Custom GTM Infrastructure.</span></h2>
+    <p>Take the 60-second qualification assessment to scope your build and book your paid strategy consultation.</p>
+    <div class="cta-banner-btns">
+      <a href="qualification.html" class="btn btn-accent btn-lg">Run Qualification Agent →</a>
+      <a href="templates.html" class="btn btn-ghost btn-lg" style="background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.2);">Browse Templates</a>
+    </div>
+  </div>
+</div>
+
+<!-- 6. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <h4>Sales<em>Gency</em></h4>
+        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Process</h5>
+        <ul class="footer-links">
+          <li><a href="process.html">PAL Process</a></li>
+          <li><a href="deployment.html">Deployment SLA</a></li>
+          <li><a href="services.html">GTM Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Store &amp; Pricing</h5>
+        <ul class="footer-links">
+          <li><a href="templates.html">Template Library</a></li>
+          <li><a href="pricing.html">Strategy Call ($250)</a></li>
+          <li><a href="pricing.html">Sprint ($1,500)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About Founder</a></li>
+          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
+          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 SalesGency. All rights reserved.</div>
+      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+</script>
 
 </body>
 </html>

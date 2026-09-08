@@ -1,76 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work & Case Studies | SalesGency</title>
-<meta name="description" content="View our recent work and case studies. See how we've helped companies scale using agentic automation.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies & Work | SalesGency</title>
+  <meta name="description" content="Explore real client case studies: automated lead triage, 9x pipeline growth, and zero-admin post-call intelligence.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Case Studies & Work | SalesGency">
+  <meta property="og:description" content="Proven ROI from autonomous AI revenue engines. Read our case studies.">
+  <meta property="og:image" content="gency-wordmark.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand"><a href="index.html">Sales<em>Gency</em></a></div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="process.html">Process</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="work.html" class="active">Work</a>
-    <a href="about.html">About</a>
-  </div>
-  <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call</a>
-</nav>
-
-<div class="container">
-
-<div class="hero subpage">
-  <div class="hero-badge"><span class="dot"></span> Case Studies</div>
-  <h1>Results That <span class="serif-i">Speak.</span></h1>
-  <p>Client names withheld for privacy. Outcomes speak for themselves. We build systems that perform in production, not just in testing.</p>
+<!-- 1. FLOATING PILL NAVBAR -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="index.html" class="nav-brand">
+      Sales<em>Gency</em> <span class="brand-badge">Work</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="prospect-automation.html">Prospect Automation</a>
+      <a href="services.html">Engines</a>
+      <a href="process.html">Process</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="work.html" class="active">Work</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call →</a>
+    
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
 </div>
 
-<section id="work" style="padding-top: 0;">
-  <div class="grid-3">
-    <div class="case-card">
-      <span class="case-tag">Revenue Automation</span>
-      <h4>Series A AI SaaS</h4>
-      <p>6-person sales team with 9x revenue growth but no process. Deployed full GTM — inbound, outbound, post-call — in 30 days.</p>
-      <div class="case-metrics">
-        <div><div class="val">3</div><div class="lbl">Engines</div></div>
-        <div><div class="val">30d</div><div class="lbl">Deployed</div></div>
-        <div><div class="val">0→1</div><div class="lbl">Process</div></div>
-      </div>
+<!-- Mobile Menu Drawer -->
+<div class="mobile-menu-drawer" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="prospect-automation.html">Prospect Automation</a>
+  <a href="services.html">Engines</a>
+  <a href="process.html">Process</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="work.html" class="active">Work</a>
+  <a href="about.html">About</a>
+  <a href="https://calendly.com/diamitani" target="_blank" style="color: var(--primary); font-weight: 700;">Book a Call →</a>
+</div>
+
+<!-- 2. HERO -->
+<header class="hero subpage">
+  <div class="container">
+    <div class="hero-pill-badge badge-pulse">
+      <span class="dot"></span>
+      <span>Proven Results &amp; Deployments</span>
     </div>
-    <div class="case-card">
-      <span class="case-tag">Inbound Automation</span>
-      <h4>B2B HXM Platform</h4>
-      <p>Enterprise HR tech spending 4+ hours daily on manual triage. LLM engine now routes and drafts in under 30 seconds.</p>
-      <div class="case-metrics">
-        <div><div class="val">&lt;30s</div><div class="lbl">Triage</div></div>
-        <div><div class="val">100%</div><div class="lbl">Accuracy</div></div>
-        <div><div class="val">4hrs</div><div class="lbl">Saved/Day</div></div>
+    
+    <h1>
+      Engines That <br>
+      <span class="serif-i">Perform.</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Explore how fast-growing SaaS startups, agencies, and revenue teams scaled their pipeline velocity and eliminated operational bloat.
+    </p>
+  </div>
+</header>
+
+<!-- 3. CASE STUDIES GRID -->
+<section id="cases" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
+  <div class="container">
+    
+    <div class="grid-3">
+      
+      <!-- Case 1 -->
+      <div class="feature-card">
+        <div class="badge badge-mint" style="margin-bottom: 14px;">Enterprise HR SaaS</div>
+        <div class="p-amount" style="color: var(--primary); margin-bottom: 8px;">4hrs+</div>
+        <div style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 14px;">Saved Per Rep / Daily</div>
+        <p>Eliminated manual inbound lead triage. Inquiries are parsed in 0.2 seconds, enriched against ICP criteria via Clearbit, and scheduled on senior AE calendars with 100% routing accuracy.</p>
+        <div class="feature-card-footer">
+          <span>Engine: Inbound Triage</span>
+          <span>Status: Live in Prod</span>
+        </div>
       </div>
-    </div>
-    <div class="case-card">
-      <span class="case-tag">Skills &amp; Apps</span>
-      <h4>Political Campaign</h4>
-      <p>Built constituent CRM, precinct intelligence app, and voter outreach dashboard from zero in one week.</p>
-      <div class="case-metrics">
-        <div><div class="val">4.2K</div><div class="lbl">Records</div></div>
-        <div><div class="val">7d</div><div class="lbl">Shipped</div></div>
-        <div><div class="val">3</div><div class="lbl">Apps</div></div>
+
+      <!-- Case 2 -->
+      <div class="feature-card">
+        <div class="badge badge-blue" style="margin-bottom: 14px;">Series A B2B Tech</div>
+        <div class="p-amount" style="color: var(--primary); margin-bottom: 8px;">9x</div>
+        <div style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 14px;">Pipeline Growth</div>
+        <p>Deployed 3 autonomous outbound engines across 30 days. Scaled the 6-person sales org's output by automating signal detection, 3-sentence dynamic PAS copywriting, and Smartlead enrollment.</p>
+        <div class="feature-card-footer">
+          <span>Engine: Prospect PAL</span>
+          <span>Status: Scaled 9x</span>
+        </div>
       </div>
+
+      <!-- Case 3 -->
+      <div class="feature-card">
+        <div class="badge badge-rose" style="margin-bottom: 14px;">GTM Growth Consultancy</div>
+        <div class="p-amount" style="color: var(--primary); margin-bottom: 8px;">100%</div>
+        <div style="font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 14px;">CRM Sync Hygiene</div>
+        <p>Automated Gong transcript extraction into Salesforce. BANT/MEDDIC parameters, deal blockers, and custom fields are populated within 30 seconds of call termination without human error.</p>
+        <div class="feature-card-footer">
+          <span>Engine: Post-Call Sync</span>
+          <span>Status: 0 Dedupe Errors</span>
+        </div>
+      </div>
+
     </div>
+
   </div>
 </section>
 
+<!-- 4. BOTTOM CTA -->
+<div class="container cta-banner-wrapper">
+  <div class="cta-banner-card">
+    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready for Real Results?</div>
+    <h2>Let's Build Your <span class="serif-i" style="color: #FDFF73;">Next Growth Case Study.</span></h2>
+    <p>Book a discovery session today. We'll map your sales funnel bottlenecks and design an automated architecture live on the call.</p>
+    <div class="cta-banner-btns">
+      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-lg">Book Architecture Session →</a>
+    </div>
+  </div>
 </div>
 
-<footer><div class="container">© 2026 SalesGency · patrick.diamitani@gmail.com · <a href="https://linkedin.com/in/diamitani" target="_blank" style="color:var(--muted)">LinkedIn</a></div></footer>
+<!-- 5. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <h4>Sales<em>Gency</em></h4>
+        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Work &amp; Results</h5>
+        <ul class="footer-links">
+          <li><a href="work.html">Case Studies</a></li>
+          <li><a href="services.html">Capabilities</a></li>
+          <li><a href="process.html">Setup Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Packages</h5>
+        <ul class="footer-links">
+          <li><a href="pricing.html">Strategy Call ($250)</a></li>
+          <li><a href="pricing.html">Agent Setup ($499)</a></li>
+          <li><a href="pricing.html">Sprint Activation ($1,500)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About &amp; Leadership</a></li>
+          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
+          <li><a href="https://calendly.com/diamitani" target="_blank">Book a Call ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 SalesGency. All rights reserved.</div>
+      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+</script>
 
 </body>
 </html>

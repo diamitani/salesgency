@@ -1,104 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing & Packages | SalesGency</title>
-<meta name="description" content="Transparent pricing for AI agent development. From a 1-hour strategy call to full enterprise builds.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing & Packages | SalesGency</title>
+  <meta name="description" content="Transparent pricing for autonomous AI sales engines and agent development. From a rapid strategy call to full enterprise builds.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pricing & Packages | SalesGency">
+  <meta property="og:description" content="Transparent plans with working deliverables and full infrastructure ownership.">
+  <meta property="og:image" content="gency-wordmark.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-brand"><a href="index.html">Sales<em>Gency</em></a></div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="process.html">Process</a>
-    <a href="pricing.html" class="active">Pricing</a>
-    <a href="work.html">Work</a>
-    <a href="about.html">About</a>
-  </div>
-  <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call</a>
-</nav>
-
-<div class="container">
-
-<div class="hero subpage">
-  <div class="hero-badge"><span class="dot"></span> Packages &amp; Pricing</div>
-  <h1>Transparent Plans, <br><span class="serif-i">Real Deliverables.</span></h1>
-  <p>Every tier includes a live call and working infrastructure. Pick the engagement that fits your stage, from rapid testing to enterprise deployment.</p>
+<!-- 1. FLOATING PILL NAVBAR -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="index.html" class="nav-brand">
+      Sales<em>Gency</em> <span class="brand-badge">Pricing</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="prospect-automation.html">Prospect Automation</a>
+      <a href="services.html">Engines</a>
+      <a href="process.html">Process</a>
+      <a href="pricing.html" class="active">Pricing</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="https://calendly.com/diamitani" target="_blank" class="nav-cta">Book a Call →</a>
+    
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
 </div>
 
-<section id="pricing" style="padding-top: 0;">
-  <div class="pricing-grid">
-    <div class="pricing-card">
-      <div class="p-name">Strategy Call</div>
-      <div class="p-desc">1hr consultation + 30min live build.</div>
-      <div class="p-amount">$250</div>
-      <div class="p-term">One-time</div>
-      <ul class="p-list">
-        <li>60-minute strategy consultation</li>
-        <li>30-minute live build session</li>
-        <li>Claude Cowork platform setup</li>
-        <li>OpenClaw basics configured</li>
-        <li>Action plan &amp; next steps</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn">Pay &amp; Book →</a>
+<!-- Mobile Menu Drawer -->
+<div class="mobile-menu-drawer" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="prospect-automation.html">Prospect Automation</a>
+  <a href="services.html">Engines</a>
+  <a href="process.html">Process</a>
+  <a href="pricing.html" class="active">Pricing</a>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="https://calendly.com/diamitani" target="_blank" style="color: var(--primary); font-weight: 700;">Book a Call →</a>
+</div>
+
+<!-- 2. HERO -->
+<header class="hero subpage">
+  <div class="container">
+    <div class="hero-pill-badge badge-pulse">
+      <span class="dot"></span>
+      <span>No Hidden Fees · Full Ownership</span>
     </div>
-    <div class="pricing-card">
-      <div class="p-name">Agent Setup</div>
-      <div class="p-desc">Agent team deployed with 1hr onboarding.</div>
-      <div class="p-amount">$499</div>
-      <div class="p-term">One-time</div>
-      <ul class="p-list">
-        <li>1-hour onboarding call</li>
-        <li>OpenClaw / Paperclip config</li>
-        <li>Agent hierarchy &amp; roles</li>
-        <li>Working agent team deployed</li>
-        <li>Setup documentation</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn">Pay &amp; Book →</a>
+    
+    <h1>
+      Transparent Plans, <br>
+      <span class="serif-i">Real Deliverables.</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Every tier includes live engineer pairing, working infrastructure, and complete documentation. Pick the engagement that fits your stage.
+    </p>
+  </div>
+</header>
+
+<!-- 3. PRICING GRID -->
+<section id="plans" style="border-top: 1px solid var(--border); background: var(--bg-alt); padding-top: 60px;">
+  <div class="container">
+
+    <div class="pricing-grid">
+      
+      <!-- Tier 1 -->
+      <div class="pricing-card">
+        <div>
+          <div class="p-name">Strategy Call</div>
+          <div class="p-desc">1hr consultation + 30min live build session.</div>
+          <div class="p-price-box">
+            <div class="p-amount">$250</div>
+            <div class="p-term">One-time engagement</div>
+          </div>
+          <ul class="p-list">
+            <li>60-minute strategy consultation</li>
+            <li>30-minute live engine build session</li>
+            <li>Claude Cowork platform setup</li>
+            <li>OpenClaw basics configured</li>
+            <li>Action plan &amp; next steps</li>
+          </ul>
+        </div>
+        <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn p-btn-outline">Pay &amp; Book →</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="pricing-card">
+        <div>
+          <div class="p-name">Agent Setup</div>
+          <div class="p-desc">Agent team deployed with 1hr onboarding.</div>
+          <div class="p-price-box">
+            <div class="p-amount">$499</div>
+            <div class="p-term">One-time deployment</div>
+          </div>
+          <ul class="p-list">
+            <li>1-hour onboarding &amp; handoff call</li>
+            <li>OpenClaw / Paperclip config</li>
+            <li>Agent hierarchy &amp; soul setup</li>
+            <li>Working agent team deployed</li>
+            <li>Setup documentation &amp; SOPs</li>
+          </ul>
+        </div>
+        <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn p-btn-outline">Pay &amp; Book →</a>
+      </div>
+
+      <!-- Tier 3: Featured -->
+      <div class="pricing-card featured">
+        <div class="featured-pill">Most Popular</div>
+        <div>
+          <div class="p-name">Sprint</div>
+          <div class="p-desc">1-week activation. Full build + live handoff.</div>
+          <div class="p-price-box">
+            <div class="p-amount">$1,500</div>
+            <div class="p-term">1-week intensive</div>
+          </div>
+          <ul class="p-list">
+            <li>Intro call &amp; JTBD funnel audit</li>
+            <li>Working prototype delivered</li>
+            <li>Skills &amp; agents configured</li>
+            <li>Build prompts for continuation</li>
+            <li>Playbooks &amp; architecture diagrams</li>
+            <li>Full team training session</li>
+          </ul>
+        </div>
+        <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn p-btn-solid">Pay &amp; Book →</a>
+      </div>
+
+      <!-- Tier 4 -->
+      <div class="pricing-card">
+        <div>
+          <div class="p-name">Enterprise</div>
+          <div class="p-desc">Project-based build or monthly retainer.</div>
+          <div class="p-price-box">
+            <div class="p-amount">Custom</div>
+            <div class="p-term">Scoped after discovery</div>
+          </div>
+          <ul class="p-list">
+            <li>Full SOP-to-Agent architecture</li>
+            <li>Multi-workflow automation &amp; n8n</li>
+            <li>Ongoing optimization &amp; support</li>
+            <li>Dedicated Slack channel</li>
+            <li>Custom agent teams at scale</li>
+            <li>Priority SLA &amp; weekly reviews</li>
+          </ul>
+        </div>
+        <a href="https://calendly.com/diamitani" target="_blank" class="p-btn p-btn-outline">Schedule Discovery →</a>
+      </div>
+
     </div>
-    <div class="pricing-card featured">
-      <div class="p-name">Sprint</div>
-      <div class="p-desc">1-week activation. Full build + handoff.</div>
-      <div class="p-amount">$1,500</div>
-      <div class="p-term">One-time / 1 week</div>
-      <ul class="p-list">
-        <li>Intro call &amp; JTBD audit</li>
-        <li>Working prototype delivered</li>
-        <li>Skills &amp; agents configured</li>
-        <li>Build prompts for continuation</li>
-        <li>Playbooks &amp; architecture diagrams</li>
-        <li>Team training session</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="p-btn solid">Pay &amp; Book →</a>
-    </div>
-    <div class="pricing-card">
-      <div class="p-name">Enterprise</div>
-      <div class="p-desc">Project-based or monthly retainer.</div>
-      <div class="p-amount">Custom</div>
-      <div class="p-term">Scoped after discovery</div>
-      <ul class="p-list">
-        <li>Full SOP-to-Agent architecture</li>
-        <li>Multi-workflow automation</li>
-        <li>Ongoing optimization &amp; support</li>
-        <li>Dedicated Slack channel</li>
-        <li>Custom agent teams at scale</li>
-        <li>Priority SLA &amp; weekly reviews</li>
-      </ul>
-      <a href="https://calendly.com/diamitani" target="_blank" class="p-btn">Schedule Discovery →</a>
-    </div>
+
   </div>
 </section>
 
+<!-- 4. PLAN COMPARISON MATRIX -->
+<section id="comparison">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Detailed Breakdown</div>
+      <h2 class="section-title">Compare <span class="serif-i">Plan Features.</span></h2>
+      <p class="section-desc">Clear breakdown of what is included across each tier.</p>
+    </div>
+
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-2xl); overflow: hidden; box-shadow: var(--shadow-sm);">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 20px 24px; background: #FAFAFB; border-bottom: 1px solid var(--border-light); font-weight: 700; font-size: 13.5px; color: var(--ink);">
+        <div>Feature / Deliverable</div>
+        <div style="text-align: center;">Strategy ($250)</div>
+        <div style="text-align: center;">Setup ($499)</div>
+        <div style="text-align: center; color: var(--primary);">Sprint ($1.5k)</div>
+        <div style="text-align: center;">Enterprise</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 18px 24px; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-muted);">
+        <div>Live Engineer Consultation</div>
+        <div style="text-align: center;">60 min</div>
+        <div style="text-align: center;">60 min</div>
+        <div style="text-align: center;">Full Week</div>
+        <div style="text-align: center;">Ongoing</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 18px 24px; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-muted);">
+        <div>Working Prototype / Code</div>
+        <div style="text-align: center;">Basic</div>
+        <div style="text-align: center;">Configured</div>
+        <div style="text-align: center; color: var(--accent-emerald); font-weight: 700;">Full Build</div>
+        <div style="text-align: center; color: var(--accent-emerald); font-weight: 700;">Full Build</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 18px 24px; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-muted);">
+        <div>100% Infrastructure Ownership</div>
+        <div style="text-align: center;">✓</div>
+        <div style="text-align: center;">✓</div>
+        <div style="text-align: center;">✓</div>
+        <div style="text-align: center;">✓</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 18px 24px; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-muted);">
+        <div>Dedicated Slack Channel</div>
+        <div style="text-align: center;">—</div>
+        <div style="text-align: center;">—</div>
+        <div style="text-align: center;">7 Days</div>
+        <div style="text-align: center; color: var(--accent-emerald); font-weight: 700;">Dedicated</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; padding: 18px 24px; font-size: 14px; color: var(--text-muted);">
+        <div>SOP Playbooks &amp; Architecture Map</div>
+        <div style="text-align: center;">Notes</div>
+        <div style="text-align: center;">Summary</div>
+        <div style="text-align: center; color: var(--accent-emerald); font-weight: 700;">Complete Map</div>
+        <div style="text-align: center; color: var(--accent-emerald); font-weight: 700;">Custom Matrix</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 5. BOTTOM CTA -->
+<div class="container cta-banner-wrapper">
+  <div class="cta-banner-card">
+    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready to Scale?</div>
+    <h2>Let's Build Your <span class="serif-i" style="color: #FDFF73;">Revenue Engines.</span></h2>
+    <p>Book a strategy session or secure your sprint slot today. We accept a limited number of build clients each month to maintain 100% execution quality.</p>
+    <div class="cta-banner-btns">
+      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-lg">Book Discovery Call →</a>
+    </div>
+  </div>
 </div>
 
-<footer><div class="container">© 2026 SalesGency · patrick.diamitani@gmail.com · <a href="https://linkedin.com/in/diamitani" target="_blank" style="color:var(--muted)">LinkedIn</a></div></footer>
+<!-- 6. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <h4>Sales<em>Gency</em></h4>
+        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Packages</h5>
+        <ul class="footer-links">
+          <li><a href="pricing.html">Strategy Call ($250)</a></li>
+          <li><a href="pricing.html">Agent Setup ($499)</a></li>
+          <li><a href="pricing.html">Sprint Activation ($1,500)</a></li>
+          <li><a href="pricing.html">Enterprise Retainer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engines</h5>
+        <ul class="footer-links">
+          <li><a href="prospect-automation.html">Prospect Automation</a></li>
+          <li><a href="services.html">Inbound Triage</a></li>
+          <li><a href="process.html">Setup Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">Founder Bio</a></li>
+          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
+          <li><a href="https://calendly.com/diamitani" target="_blank">Book a Call ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 SalesGency. All rights reserved.</div>
+      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+</script>
 
 </body>
 </html>

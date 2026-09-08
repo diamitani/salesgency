@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template & Skills Library | SalesGency</title>
+  <meta name="description" content="Download production-tested GTM skills, n8n JSON workflows, agent souls, and full-stack scaffolding. Self-serve GTM infrastructure.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Template & Skills Library | SalesGency">
+  <meta property="og:description" content="Production-ready n8n workflows, GTM agent skills, and full-stack scaffolding for revenue teams.">
+  <meta property="og:image" content="gency-wordmark.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 1. FLOATING PILL NAVBAR -->
+<div class="nav-wrapper">
+  <nav>
+    <a href="index.html" class="nav-brand">
+      Sales<em>Gency</em> <span class="brand-badge">Library</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="services.html">Services</a>
+      <a href="process.html">Process</a>
+      <a href="deployment.html">Deployment</a>
+      <a href="templates.html" class="active">Templates &amp; Skills</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="qualification.html" class="nav-cta">Book Paid Consultation →</a>
+    
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+</div>
+
+<!-- Mobile Menu Drawer -->
+<div class="mobile-menu-drawer" id="mobileMenu">
+  <a href="index.html">Overview</a>
+  <a href="services.html">Services</a>
+  <a href="process.html">Process</a>
+  <a href="deployment.html">Deployment</a>
+  <a href="templates.html" class="active">Templates &amp; Skills</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="qualification.html" style="color: var(--primary); font-weight: 700;">Book Paid Consultation →</a>
+</div>
+
+<!-- 2. HERO -->
+<header class="hero subpage">
+  <div class="container">
+    <div class="hero-pill-badge badge-pulse">
+      <span class="dot"></span>
+      <span>Self-Serve Digital Store · Instant Download</span>
+    </div>
+    
+    <h1>
+      GTM Skills, Plugin Packs &amp;<br>
+      <span class="serif-i">n8n Workflow JSONs.</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Don't want a custom client engagement? Build in-house with our production-tested n8n JSON templates, agent skill markdowns, prompt stacks, and full-stack scaffolding.
+    </p>
+  </div>
+</header>
+
+<!-- 3. TEMPLATES CATALOG -->
+<section id="catalog" style="border-top: 1px solid var(--border); background: var(--bg-alt); padding-top: 40px;">
+  <div class="container">
+    
+    <!-- Filter Pills -->
+    <div class="library-filter-wrapper">
+      <button class="filter-btn active" onclick="filterCatalog('all', this)">All Assets (9)</button>
+      <button class="filter-btn" onclick="filterCatalog('n8n', this)">n8n Workflows (4)</button>
+      <button class="filter-btn" onclick="filterCatalog('skills', this)">GTM Skills (3)</button>
+      <button class="filter-btn" onclick="filterCatalog('souls', this)">Agent Souls &amp; Packs (1)</button>
+      <button class="filter-btn" onclick="filterCatalog('fullstack', this)">Full-Stack Scaffolding (1)</button>
+    </div>
+
+    <!-- Catalog Grid -->
+    <div class="grid-3" id="templateGrid">
+      
+      <!-- Item 1: PAE 5-Pillar n8n JSON -->
+      <div class="template-card" data-cat="n8n">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
+          <h3>Prospect Automation Engine (PAE) Master Template</h3>
+          <p>Canonical 5-Pillar 9-node n8n workflow: Trigger Ingest, Data Normalizer, CRM Dedupe Shield, Apollo Reveal, AI PAS Reasoner, and Smartlead Enrollment.</p>
+          <div class="template-tags">
+            <span class="template-tag">n8n JSON</span>
+            <span class="template-tag">Salesforce/HubSpot</span>
+            <span class="template-tag">Apollo API</span>
+            <span class="template-tag">Claude 3.5</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$49 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 2: GTM Engineering Skill -->
+      <div class="template-card" data-cat="skills">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-blue">Agent Skill Markdown</div>
+          <h3>GTM Engineering Master Skill Pack</h3>
+          <p>Complete system instructions and prompt architecture for AI SDRs, dynamic PAS copy generation, intent classification, and objection handling.</p>
+          <div class="template-tags">
+            <span class="template-tag">SKILL.md</span>
+            <span class="template-tag">Claude / Cursor</span>
+            <span class="template-tag">PAS Prompts</span>
+            <span class="template-tag">Grade 6 Copy</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$19 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 3: Daily Meeting Sync JSON -->
+      <div class="template-card" data-cat="n8n">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
+          <h3>Daily Meeting Sync &amp; Pre-Call Intelligence</h3>
+          <p>Fetches daily Google/Outlook calendar events, runs automated Clearbit/Apollo lookups on attendees, and posts formatted briefing notes to Slack 15 mins before calls.</p>
+          <div class="template-tags">
+            <span class="template-tag">n8n JSON</span>
+            <span class="template-tag">Google Calendar</span>
+            <span class="template-tag">Slack Webhook</span>
+            <span class="template-tag">Enrichment</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$29 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 4: Inbound Lead Triage JSON -->
+      <div class="template-card" data-cat="n8n">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
+          <h3>Inbound Lead Triage &amp; ICP Scoring Engine</h3>
+          <p>Instant webhook parsing of form fills, Clearbit firmographic cascade, automated 0–100 ICP calculation, and round-robin AE calendar routing.</p>
+          <div class="template-tags">
+            <span class="template-tag">n8n JSON</span>
+            <span class="template-tag">Webhook</span>
+            <span class="template-tag">HubSpot API</span>
+            <span class="template-tag">0.2s Latency</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$39 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 5: MQL AI Research JSON -->
+      <div class="template-card" data-cat="n8n">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-mint">n8n Workflow JSON</div>
+          <h3>MQL AI Research &amp; Classification Workflow</h3>
+          <p>Autonomous LLM node graph that reads prospect website URLs, summarizes their value proposition, and determines exact buying intent category.</p>
+          <div class="template-tags">
+            <span class="template-tag">n8n JSON</span>
+            <span class="template-tag">OpenAI / Claude</span>
+            <span class="template-tag">Web Scraping</span>
+            <span class="template-tag">MQL Tagging</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$29 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 6: Master Soul Pack -->
+      <div class="template-card" data-cat="souls">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-rose">Agent Soul Pack</div>
+          <h3>00-Master-Soul &amp; Multi-Agent Swarm Hierarchy</h3>
+          <p>The definitive multi-agent soul architecture. Includes system boundaries, tool permissions, memory schemas, and escalation protocols for GTM agent swarms.</p>
+          <div class="template-tags">
+            <span class="template-tag">SOUL.md</span>
+            <span class="template-tag">Agent Swarm</span>
+            <span class="template-tag">Hermes / OpenClaw</span>
+            <span class="template-tag">Guardrails</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$29 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 7: RFP Answer Retriever Skill -->
+      <div class="template-card" data-cat="skills">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-blue">Agent Skill Markdown</div>
+          <h3>RFP Intelligence &amp; Answer Retriever Suite</h3>
+          <p>Automated semantic search against past RFP proposals and company knowledge bases. Returns High/Medium/No Match confidence with automated gap tickets.</p>
+          <div class="template-tags">
+            <span class="template-tag">SKILL.md</span>
+            <span class="template-tag">RFP Parser</span>
+            <span class="template-tag">HubSpot Tickets</span>
+            <span class="template-tag">Q&amp;A Pairs</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$19 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 8: n8n Factors to Clay Webhook -->
+      <div class="template-card" data-cat="skills">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-blue">Integration Skill</div>
+          <h3>Factors.ai to Clay Intent Trigger Workflow</h3>
+          <p>Real-time webhook router that captures high-intent website visitors from Factors.ai / 6sense and pushes them directly into Clay for decision-maker waterfall reveal.</p>
+          <div class="template-tags">
+            <span class="template-tag">Intent Stream</span>
+            <span class="template-tag">Clay.com</span>
+            <span class="template-tag">Factors.ai</span>
+            <span class="template-tag">n8n JSON</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$29 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+      <!-- Item 9: Full-Stack GTM SaaS Scaffolding -->
+      <div class="template-card" data-cat="fullstack">
+        <div class="template-header">
+          <div class="template-type-badge badge badge-sun">Full-Stack Codebase</div>
+          <h3>Full-Stack GTM Web App Scaffolding</h3>
+          <p>Production Next.js 16 App Router repository with Supabase Auth, PostgreSQL RLS, Stripe Checkout, Inngest job queues, and responsive shadcn/ui components.</p>
+          <div class="template-tags">
+            <span class="template-tag">Next.js 16</span>
+            <span class="template-tag">Supabase RLS</span>
+            <span class="template-tag">Stripe Billing</span>
+            <span class="template-tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-price">$99 <small>one-time</small></div>
+          <a href="https://www.paypal.com/ncp/payment/GU76JHXHYPNQL" target="_blank" class="btn btn-accent btn-sm">Buy &amp; Download →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- 4. BOTTOM CTA -->
+<div class="container cta-banner-wrapper">
+  <div class="cta-banner-card">
+    <div class="badge badge-sun" style="margin-bottom: 20px;">Need Custom Implementation?</div>
+    <h2>Prefer a Done-For-You <span class="serif-i" style="color: #FDFF73;">Production Build?</span></h2>
+    <p>If you'd rather have our team audit your funnel and deploy the full architecture in a 1-week sprint, take the qualification quiz to book a paid consultation.</p>
+    <div class="cta-banner-btns">
+      <a href="qualification.html" class="btn btn-accent btn-lg">Run Qualification Agent →</a>
+      <a href="pricing.html" class="btn btn-ghost btn-lg" style="background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.2);">View Client Packages</a>
+    </div>
+  </div>
+</div>
+
+<!-- 5. FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <h4>Sales<em>Gency</em></h4>
+        <p>Custom AI sales engines, GTM automation, and agentic revenue architecture. Built by Forward Deployed AI Engineers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Templates</h5>
+        <ul class="footer-links">
+          <li><a href="templates.html">All Templates</a></li>
+          <li><a href="templates.html">n8n JSON Workflows</a></li>
+          <li><a href="templates.html">GTM Skill Packs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul class="footer-links">
+          <li><a href="services.html">GTM Workflows &amp; Agents</a></li>
+          <li><a href="services.html">Custom Agent Harnesses</a></li>
+          <li><a href="services.html">Full-Stack Web Apps</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About &amp; Leadership</a></li>
+          <li><a href="https://linkedin.com/in/diamitani" target="_blank">LinkedIn ↗</a></li>
+          <li><a href="https://calendly.com/diamitani" target="_blank">Calendly ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 SalesGency. All rights reserved.</div>
+      <div>Designed with PipelinePro Aesthetic · Powered by Agent PAL</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+
+  // Filter Catalog
+  function filterCatalog(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cards = document.querySelectorAll('.template-card');
+    cards.forEach(card => {
+      if (category === 'all' || card.getAttribute('data-cat') === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
