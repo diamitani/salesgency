@@ -520,11 +520,11 @@ img {
 /* SaaS Tech AI Agency Typography */
 .hero-dual-left h1 {
   font-family: 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif;
-  font-size: clamp(2.4rem, 4.2vw, 3.65rem);
-  font-weight: 800;
+  font-size: clamp(2.9rem, 5.4vw, 4.5rem);
+  font-weight: 850;
   letter-spacing: -0.04em;
-  line-height: 1.1;
-  margin: 8px 0 18px;
+  line-height: 1.05;
+  margin: 0 0 20px;
   color: var(--ink-heading);
 }
 
