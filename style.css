@@ -448,7 +448,8 @@ img {
 
 /* Modern Single Section SaaS Content Container */
 .hero-saas-content {
-  max-width: 900px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -461,11 +462,12 @@ img {
 
 .hero-saas-content .hero-title {
   font-family: 'Space Grotesk', 'Plus Jakarta Sans', -apple-system, sans-serif;
-  font-size: clamp(3.2rem, 6.4vw, 5.2rem);
+  font-size: clamp(2.8rem, 5.8vw, 4.6rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin: 0 auto 24px;
+  line-height: 1.08;
+  max-width: 880px;
+  margin: 0 auto 22px;
   color: #0F172A;
   text-align: center;
 }
@@ -476,6 +478,169 @@ img {
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 22px rgba(0, 194, 255, 0.28));
   display: inline-block;
+}
+
+/* Hero Triad 3-Card Grid (Agents, Workflows, Skills) */
+.hero-triad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1160px;
+  margin: 44px auto 10px;
+  text-align: left;
+}
+
+.hero-triad-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  padding: 30px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 10px 30px -6px rgba(10, 17, 40, 0.04),
+    0 0 0 1px rgba(0, 194, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-triad-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.hero-triad-card.card-hero-agents:hover::before {
+  background: linear-gradient(90deg, #10B981, #00C2FF);
+}
+.hero-triad-card.card-hero-workflows:hover::before {
+  background: linear-gradient(90deg, #00C2FF, #3B82F6);
+}
+.hero-triad-card.card-hero-skills:hover::before {
+  background: linear-gradient(90deg, #8B5CF6, #EC4899);
+}
+
+.hero-triad-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 194, 255, 0.35);
+  box-shadow: 
+    0 22px 48px -12px rgba(0, 194, 255, 0.16),
+    0 0 0 1px rgba(0, 194, 255, 0.3);
+}
+
+.hero-triad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.hero-triad-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: inset 0 1px 2px #FFFFFF;
+}
+
+.hero-triad-card h3 {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 4px;
+}
+
+.hero-triad-role {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0284C7;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.hero-triad-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.hero-triad-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.hero-triad-tags span {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hero-triad-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 18px;
+  border-radius: 100px;
+  background: #0F172A;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.hero-triad-link .link-arrow {
+  transition: transform 0.2s ease;
+  font-size: 1rem;
+  margin-left: 6px;
+}
+
+.hero-triad-link:hover {
+  background: #00C2FF;
+  color: #0F172A;
+  border-color: #00C2FF;
+  box-shadow: 0 6px 20px rgba(0, 194, 255, 0.4);
+}
+
+.hero-triad-link:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 992px) {
+  .hero-triad-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
 }
 
 .hero-saas-content .brand-dot-cyan {
