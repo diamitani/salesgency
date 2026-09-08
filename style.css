@@ -415,16 +415,17 @@ img {
 }
 
 /* ==========================================================================
-   2. GLOSSY & GLASSMORPHIC DUAL SECTION HERO (SAAS TECH AI AGENCY)
+   2. MODERN SAAS HERO SECTION (CLEAN SINGLE SECTION)
    ========================================================================== */
 .hero {
-  padding: 130px 0 80px;
+  padding: 140px 0 90px;
   position: relative;
   overflow: hidden;
+  text-align: center;
   background: 
-    radial-gradient(circle at 20% 15%, rgba(0, 194, 255, 0.14) 0%, transparent 50%),
-    radial-gradient(circle at 80% 25%, rgba(255, 96, 28, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 50% 80%, rgba(0, 194, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 20%, rgba(0, 194, 255, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(0, 194, 255, 0.06) 0%, transparent 45%),
     linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 50%, #F8FAFC 100%);
 }
 
@@ -439,10 +440,114 @@ img {
   background-image: 
     linear-gradient(to right, rgba(0, 194, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 194, 255, 0.035) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 30%, transparent 85%);
   pointer-events: none;
+}
+
+/* Modern Single Section SaaS Content Container */
+.hero-saas-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 10px 16px 20px;
+}
+
+.hero-saas-content .hero-title {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: clamp(3.2rem, 6.4vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 auto 24px;
+  color: #0F172A;
+  text-align: center;
+}
+
+.hero-saas-content .hero-title .glossy-gradient-text {
+  background: linear-gradient(135deg, #0A1128 5%, #0369A1 38%, #00C2FF 76%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 22px rgba(0, 194, 255, 0.28));
+  display: inline-block;
+}
+
+.hero-saas-content .brand-dot-cyan {
+  color: #00C2FF;
+  -webkit-text-fill-color: #00C2FF;
+  filter: drop-shadow(0 0 10px rgba(0, 194, 255, 0.95));
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.hero-saas-content .hero-lead {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.32rem);
+  color: #475569;
+  font-weight: 400;
+  max-width: 680px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.hero-saas-content .hero-lead strong {
+  color: #0F172A;
+  font-weight: 650;
+}
+
+.hero-saas-content .hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.hero-saas-content .btn-hero-single {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 40px;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 14px 34px -4px rgba(10, 17, 40, 0.3),
+    0 0 24px -2px rgba(0, 194, 255, 0.35),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.25s var(--ease-smooth);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-saas-content .btn-hero-single:hover {
+  background: linear-gradient(180deg, #334155 0%, #0F172A 100%);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 20px 42px -4px rgba(10, 17, 40, 0.4),
+    0 0 34px 0 rgba(0, 194, 255, 0.55),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.7);
+  color: #FFFFFF;
+}
+
+.hero-saas-content .btn-hero-single svg {
+  transition: transform 0.25s ease;
+}
+
+.hero-saas-content .btn-hero-single:hover svg {
+  transform: translateY(3px);
 }
 
 .hero-dual-container {
