@@ -3,522 +3,395 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketplace - GTM Skills, Templates and Build Packages - SalesGency</title>
-  <meta name="description" content="Download production-tested n8n JSON workflows, GTM agent skills, prompt stacks, and full-stack build packages. Instant self-serve access to our autonomous revenue engine.">
+  <title>Workflow Marketplace &amp; Store — SalesGency®</title>
+  <meta name="description" content="Production-ready n8n JSON workflows, GTM prompt skills, and autonomous agent packages for immediate self-serve download.">
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Marketplace - SalesGency">
+  <meta property="og:title" content="Workflow Marketplace — SalesGency®">
   <meta property="og:description" content="Instant digital download marketplace for GTM AI skills, n8n workflow JSONs, and complete pre-built autopilot packages.">
-  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ====================================================================
-       1. NAVIGATION
-       ==================================================================== -->
-  <header class="site-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-        SalesGency<span class="dot">.</span>
+  <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
       </a>
 
-      <nav class="nav-links" aria-label="Main Navigation">
-        <a href="services.html">Services</a>
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">Architecture <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="nav-dropdown-panel">
-            <a href="agents.html" class="dropdown-item">
-              <strong>Agents</strong>
-              <span>Autonomous reasoning and triage</span>
-            </a>
-            <a href="workflows.html" class="dropdown-item">
-              <strong>Workflows</strong>
-              <span>Deterministic execution rails</span>
-            </a>
-            <a href="skills.html" class="dropdown-item">
-              <strong>Skills</strong>
-              <span>Packaged domain intelligence</span>
-            </a>
-          </div>
-        </div>
-        <a href="templates.html" class="active">Marketplace</a>
-        <a href="process.html">Process</a>
-        <a href="work.html">Work</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-      </nav>
+      <div class="nav-menu">
+        <a href="index.html#services" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item active">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="index.html#architecture" class="nav-item">Architecture</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="index.html#faqs" class="nav-item">FAQs</a>
+      </div>
 
-      <div class="nav-cta">
-        <a href="qualification.html" class="btn btn-primary btn-sm" id="nav-cta-audit">Book Audit</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+      <div class="nav-actions">
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <a href="services.html">Services</a>
-    <div class="mobile-drawer-group">
-      <div class="mobile-drawer-heading">Architecture</div>
-      <a href="agents.html" class="mobile-drawer-sub">Agents</a>
-      <a href="workflows.html" class="mobile-drawer-sub">Workflows</a>
-      <a href="skills.html" class="mobile-drawer-sub">Skills</a>
-    </div>
-    <a href="templates.html">Marketplace</a>
-    <a href="process.html">Process</a>
-    <a href="work.html">Work</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="qualification.html" class="btn btn-primary" style="margin-top: 16px; text-align: center;">Book Audit</a>
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html#services" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace Catalog</a>
+    <a href="index.html#architecture" class="mobile-link">Architecture</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
   </div>
 
-  <!-- ====================================================================
-       2. MARKETPLACE HEADER
-       ==================================================================== -->
-  <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
-    <div class="inner">
-      <div class="section-header-center">
-        <h1>Digital Marketplace</h1>
-        <p>Production-tested n8n workflows, agent skills, prompt stacks, and complete build packages. Instant download.</p>
-      </div>
+  <div class="site-wrapper">
 
-      <!-- Search -->
-      <div class="marketplace-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="searchInput" placeholder="Search workflows, skills, bundles..." oninput="handleSearch()">
-      </div>
+    <!-- Store Hero -->
+    <section class="hero-section" style="padding-top: clamp(120px, 14vw, 170px); padding-bottom: 40px;">
+      <div class="container">
+        
+        <div class="badge-tag">Self-Serve Digital Store</div>
+        <h1 class="hero-headline">
+          Production GTM <span class="serif-italic">blueprints &amp; workflows.</span>
+        </h1>
+        <p class="hero-description">
+          Download battle-tested n8n JSON nodes, Python scrapers, and prompt skill stacks. Import into your own instance in minutes.
+        </p>
 
-      <!-- Filter Pills -->
-      <div class="filter-bar" id="filterBar">
-        <button class="filter-pill active" onclick="setFilter('all', this)">All (9)</button>
-        <button class="filter-pill" onclick="setFilter('bundle', this)">Build Packages (3)</button>
-        <button class="filter-pill" onclick="setFilter('workflow', this)">Workflows (3)</button>
-        <button class="filter-pill" onclick="setFilter('skill', this)">Skills (2)</button>
-        <button class="filter-pill" onclick="setFilter('soul', this)">Agent Souls (1)</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================================
-       3. PRODUCT GRID
-       ==================================================================== -->
-  <section class="section section-alt" style="padding-top: 0;">
-    <div class="inner">
-      <!-- Results Info Bar -->
-      <div class="results-info">
-        <span class="results-count" id="resultsCount">Showing 9 products</span>
-        <select class="sort-select" id="sortSelect" onchange="handleSort()">
-          <option value="featured">Sort: Featured</option>
-          <option value="price-low">Price: Low to High</option>
-          <option value="price-high">Price: High to Low</option>
-          <option value="name">Name: A to Z</option>
-        </select>
-      </div>
-
-      <!-- Grid -->
-      <div class="product-grid" id="productGrid">
-        <!-- Cards are rendered by JavaScript -->
-      </div>
-
-      <!-- Pagination -->
-      <div class="pagination" id="pagination">
-        <!-- Rendered by JavaScript -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================================
-       4. CTA BANNER
-       ==================================================================== -->
-  <section class="cta-banner">
-    <div class="inner">
-      <h2>Need a custom build instead?</h2>
-      <p>Book a 60-minute architecture audit. We map your bottlenecks and present live workflow schematics.</p>
-      <div class="btn-group">
-        <a href="qualification.html" class="btn btn-inverse" id="marketplace-cta-audit">Book Paid Audit ($495)</a>
-      </div>
-      <div class="cta-credit">100% of your $495 audit fee is credited toward any retainer or build sprint.</div>
-    </div>
-  </section>
-
-  <!-- ====================================================================
-       5. FOOTER
-       ==================================================================== -->
-  <footer class="site-footer">
-    <div class="inner">
-      <div class="footer-grid">
-        <div>
-          <span class="footer-brand">SalesGency<span class="dot">.</span></span>
-          <p class="footer-desc">GTM AI and Automation Agency. Custom workflows, skills, and agents to help organizations close more sales.</p>
+        <!-- Filter Tabs -->
+        <div class="filter-tabs-wrapper">
+          <button class="filter-tab-btn active" onclick="filterMarketplace('all')">All Products (8)</button>
+          <button class="filter-tab-btn" onclick="filterMarketplace('outbound')">Outbound (3)</button>
+          <button class="filter-tab-btn" onclick="filterMarketplace('inbound')">Inbound (2)</button>
+          <button class="filter-tab-btn" onclick="filterMarketplace('revops')">CRM &amp; RevOps (2)</button>
+          <button class="filter-tab-btn" onclick="filterMarketplace('free')">Free Blueprints (2)</button>
         </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <a href="services.html#inbound">Inbound Automation</a>
-          <a href="services.html#outbound">Outbound Automation</a>
-          <a href="services.html#revops">RevOps and Data Hygiene</a>
-          <a href="services.html#enablement">Team Enablement</a>
-        </div>
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <a href="agents.html">GTM AI Agents</a>
-          <a href="workflows.html">Deterministic Workflows</a>
-          <a href="skills.html">Domain Skills</a>
-          <a href="templates.html">Digital Marketplace</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About SalesGency</a>
-          <a href="work.html">Case Studies</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="qualification.html">Book Paid Audit ($495)</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All rights reserved.</div>
-        <div class="footer-bottom-links">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-  <!-- ====================================================================
-       6. CART MODAL
-       ==================================================================== -->
-  <div class="cart-overlay" id="cartOverlay">
-    <div class="cart-modal">
-      <div class="cart-header">
-        <h3>Your Cart</h3>
-        <button class="cart-close" onclick="closeCart()">&times;</button>
       </div>
-      <div id="cartItems">
-        <div class="cart-empty">Your cart is empty.</div>
-      </div>
-      <div id="cartFooter" style="display: none;">
-        <div class="cart-total">
-          <span>Total</span>
-          <span id="cartTotal">$0</span>
+    </section>
+
+    <!-- Catalog Grid -->
+    <section class="marketplace-section" style="padding-top: 0;">
+      <div class="container">
+        
+        <div class="products-grid">
+          
+          <!-- Item 1 -->
+          <div class="product-card" data-cat="outbound">
+            <div class="product-thumbnail">
+              <span class="product-badge-float">Best Selling</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Apollo Signal Trigger</span><span style="color: #10B981;">Active</span></div>
+                <div class="mock-node-row"><span>Multi-Source Reveal &amp; Dedupe</span><span style="color: #2563EB;">Enriched</span></div>
+                <div class="mock-node-row"><span>Smartlead Cadence Hook</span><span style="color: #8B5CF6;">Enrolled</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Apollo &amp; LinkedIn Intent Scraper Pro</h3>
+                <span class="product-price">$97</span>
+              </div>
+              <p class="product-description">
+                Autonomous n8n blueprint that monitors hiring intent, tech stack changes, reveals verified mobiles/emails, and shields your CRM from duplicates.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Apollo Intent Scraper ($97)')">Download Blueprint ($97)</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="product-card" data-cat="inbound">
+            <div class="product-thumbnail">
+              <span class="product-badge-float">Popular</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Webhook: Demo Submission</span><span style="color: #10B981;">Received</span></div>
+                <div class="mock-node-row"><span>GPT-4o Intent Scoring</span><span style="color: #2563EB;">Scored</span></div>
+                <div class="mock-node-row"><span>Slack Alert + Calendar Hook</span><span style="color: #E11D48;">&lt; 28s</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Sub-Minute Inbound AI Lead Responder</h3>
+                <span class="product-price">$79</span>
+              </div>
+              <p class="product-description">
+                Real-time lead enrichment and AI qualification routing inbound demo requests to sales rep calendars within 30 seconds of form submission.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Inbound AI Responder ($79)')">Download Blueprint ($79)</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="product-card" data-cat="outbound">
+            <div class="product-thumbnail">
+              <span class="product-badge-float">Best Selling</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Target Account Segment</span><span style="color: #10B981;">Loaded</span></div>
+                <div class="mock-node-row"><span>Claude 3.5 Dynamic PAS Copy</span><span style="color: #8B5CF6;">Generated</span></div>
+                <div class="mock-node-row"><span>Instantly 4-Step Sequence Hook</span><span style="color: #2563EB;">Live</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Multi-Channel Cold Outreach Engine</h3>
+                <span class="product-price">$129</span>
+              </div>
+              <p class="product-description">
+                Hyper-personalized email and LinkedIn sequence generator using deep company pain-point research and proven PAS copywriting formulas.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Cold Outreach Engine ($129)')">Download Blueprint ($129)</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="product-card" data-cat="revops">
+            <div class="product-thumbnail">
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>HubSpot / Salesforce Monitor</span><span style="color: #10B981;">Active</span></div>
+                <div class="mock-node-row"><span>Stale Deal Audit &amp; Dedupe</span><span style="color: #2563EB;">Cleaned</span></div>
+                <div class="mock-node-row"><span>Weekly Executive Pipeline Digest</span><span style="color: #8B5CF6;">Delivered</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Bidirectional CRM Hygiene &amp; Scorer</h3>
+                <span class="product-price">$69</span>
+              </div>
+              <p class="product-description">
+                Automated deal stage progression audits, contact deduplication, ghosting deal alerts, and real-time synchronization between your CRM and Slack.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for CRM Hygiene ($69)')">Download Blueprint ($69)</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 (Outbound) -->
+          <div class="product-card" data-cat="outbound">
+            <div class="product-thumbnail">
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Job Posting Intent Scraper</span><span style="color: #10B981;">Active</span></div>
+                <div class="mock-node-row"><span>Hiring Manager Match Algorithm</span><span style="color: #2563EB;">Matched</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Hiring Signal &amp; Job Board Scraper</h3>
+                <span class="product-price">$89</span>
+              </div>
+              <p class="product-description">
+                Scrapes Greenhouse, Lever, and LinkedIn Jobs daily to identify expanding teams and instantly finds the hiring decision maker's direct contact.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Job Scraper ($89)')">Download Blueprint ($89)</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6 (RevOps) -->
+          <div class="product-card" data-cat="revops">
+            <div class="product-thumbnail">
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>PostgreSQL / Metabase Queries</span><span style="color: #10B981;">Ready</span></div>
+                <div class="mock-node-row"><span>CAC, LTV &amp; Velocity Viz</span><span style="color: #2563EB;">Computed</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Revenue Velocity Telemetry Dashboard</h3>
+                <span class="product-price">$89</span>
+              </div>
+              <p class="product-description">
+                Production Metabase and Supabase dashboard templates with pre-calculated SQL queries for stage-by-stage velocity and rep conversion.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Dashboard ($89)')">Download Blueprint ($89)</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7 (Free) -->
+          <div class="product-card" data-cat="free">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #10B981;">FREE</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>SPF, DKIM &amp; DMARC Checklist</span><span style="color: #10B981;">Verified</span></div>
+                <div class="mock-node-row"><span>Inbox Warmup Health Monitor</span><span style="color: #2563EB;">Active</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Cold Email Deliverability &amp; DNS Kit</h3>
+                <span class="product-price free">FREE</span>
+              </div>
+              <p class="product-description">
+                Essential DNS configuration playbook, inbox warmup rails, and automated domain health check scripts to guarantee 0% spam landing.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" style="background: #10B981;" onclick="alert('Free download initiated.')">Download Free Kit</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Want custom setup? Book Audit →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8 (Free) -->
+          <div class="product-card" data-cat="free">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #10B981;">FREE</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Lead Domain Webhook Ingest</span><span style="color: #10B981;">Hooked</span></div>
+                <div class="mock-node-row"><span>Tech Stack &amp; Employee Size Reveal</span><span style="color: #2563EB;">Enriched</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title">Instant Company Firmographic Enricher</h3>
+                <span class="product-price free">FREE</span>
+              </div>
+              <p class="product-description">
+                Lightweight webhook microservice that accepts any target company domain and returns funding, employee headcount, and installed tech stacks.
+              </p>
+              <div class="product-card-footer">
+                <button class="btn-download-blueprint" style="background: #10B981;" onclick="alert('Free download initiated.')">Download Free Enricher</button>
+                <a href="qualification.html" class="btn-deploy-inhouse">Want custom setup? Book Audit →</a>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <a href="#" class="btn btn-primary" style="width: 100%;" onclick="handleCheckout(event)">Proceed to Checkout</a>
+
+        <!-- Master Bundle Box -->
+        <div class="bundle-box" style="margin-top: 40px;">
+          <div class="bundle-info">
+            <div class="discount-pill" style="display: inline-block; margin-bottom: 16px;">🔥 Limited Time All-Access Deal</div>
+            <h2>Get All 25+ Production Workflows &amp; Agent Packs</h2>
+            <p>
+              Unlock the complete SalesGency vault: full n8n JSON nodes, Python scrapers, prompt skill banks, 4K video setup guides, and lifetime updates.
+            </p>
+
+            <div class="bundle-checklist">
+              <div class="bundle-check-item">
+                <span style="color: #10B981; font-weight: 700;">✓</span>
+                <span>All 25+ Outbound, Inbound &amp; RevOps n8n JSON Blueprints</span>
+              </div>
+              <div class="bundle-check-item">
+                <span style="color: #10B981; font-weight: 700;">✓</span>
+                <span>Claude 3.5 &amp; GPT-4o Prompt Skill Libraries (PAS, Objection, Triage)</span>
+              </div>
+              <div class="bundle-check-item">
+                <span style="color: #10B981; font-weight: 700;">✓</span>
+                <span>Step-by-step video implementation &amp; deployment walkthroughs</span>
+              </div>
+              <div class="bundle-check-item">
+                <span style="color: #10B981; font-weight: 700;">✓</span>
+                <span>Lifetime updates &amp; free access to future workflow releases</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bundle-card-cta">
+            <div class="bundle-price-box">
+              <span class="bundle-old-price">$499</span>
+              <span class="bundle-new-price">$149</span>
+            </div>
+            <p style="font-size: 13.5px; color: #A1A1AA;">One-time payment · Instant lifetime access</p>
+
+            <button class="btn-bundle-buy" onclick="alert('Master Bundle Checkout ($149) triggered.')">
+              Get Instant All-Access ($149) →
+            </button>
+
+            <span style="font-size: 12px; color: #71717A; margin-top: 12px;">30-Day Money-Back Guarantee</span>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
+
+    <!-- Mega Bottom CTA Banner -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
+            salesgency<span class="brand-symbol">®</span>
+          </div>
+          <h2 class="bottom-cta-headline">
+            Need custom in-house <span class="serif-italic">engineering?</span>
+          </h2>
+          <p class="bottom-cta-subtitle">
+            Book a paid 1-hour strategy audit ($495) with founder Patrick Diamitani to diagnose your revenue leaks. 100% credited to your first retainer.
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="qualification.html" class="btn btn-primary">Book Paid Audit ($495)</a>
+            <a href="pricing.html" class="btn btn-secondary">View Retainer Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
 
-  <!-- ====================================================================
-       7. JAVASCRIPT - Product Data, Filtering, Pagination, Cart
-       ==================================================================== -->
   <script>
-    // Product catalog data
-    const products = [
-      {
-        id: 'gtm-master-bundle',
-        name: 'Complete GTM Autopilot Master Bundle',
-        desc: 'Everything in our arsenal: All 5 Prospect Automation Engine workflows, 10 core agent skills, 3 agent souls, video setup SOPs, and prompt libraries.',
-        price: 497,
-        category: 'bundle',
-        tags: ['All 5 Workflows', '10 Skills', 'Agent Souls', 'SOP Videos'],
-        file: 'templates/bundles/gtm-autopilot-master-bundle.zip',
-        featured: true,
-        order: 1
-      },
-      {
-        id: 'outbound-engine-pack',
-        name: 'Outbound Signal and PAS Copy Engine Pack',
-        desc: 'Complete cold outbound machine: 5-Pillar n8n JSON, Factors-to-Clay webhook synchronizer, Master Agent Soul, and the AI Prospecting Tester skill pack.',
-        price: 297,
-        category: 'bundle',
-        tags: ['PAE n8n JSON', 'Clay Webhook', 'PAS Copy Skill'],
-        file: 'templates/bundles/outbound-revenue-engine-pack.zip',
-        featured: false,
-        order: 2
-      },
-      {
-        id: 'inbound-lead-kit',
-        name: 'Inbound Speed-to-Lead and Dual-Inbox Kit',
-        desc: 'Sub-minute inbound reply velocity: Dual-inbox routing n8n JSON, MQL AI research workflow, Slack alert webhook dispatcher.',
-        price: 197,
-        category: 'bundle',
-        tags: ['Dual-Inbox JSON', 'MQL AI Research', 'Slack Routing'],
-        file: 'templates/bundles/inbound-speed-to-lead-kit.zip',
-        featured: false,
-        order: 3
-      },
-      {
-        id: 'pae-n8n-json',
-        name: 'Prospect Automation Engine (PAE) n8n JSON',
-        desc: 'Canonical 5-Pillar 9-node n8n workflow: Signal Ingest, Data Normalizer, CRM Dedupe Shield, Apollo Reveal, AI PAS Reasoner, and Smartlead Enrollment.',
-        price: 99,
-        category: 'workflow',
-        tags: ['n8n v1.0+', 'HubSpot / SFDC', 'Claude 3.5', 'Smartlead'],
-        file: 'templates/Prospect Automation Engine - Template.json',
-        featured: false,
-        order: 4
-      },
-      {
-        id: 'daily-meeting-json',
-        name: 'Daily Meeting Sync and Calendar Prep JSON',
-        desc: 'Automated pre-call intelligence: Fetches daily calendar events, runs Apollo lookups on attendees, and posts formatted briefing notes to Slack.',
-        price: 49,
-        category: 'workflow',
-        tags: ['Google Calendar', 'Outlook 365', 'Slack Alerts'],
-        file: 'templates/Daily Meeting Sync - Pre-Call Summary - FIXED.json',
-        featured: false,
-        order: 5
-      },
-      {
-        id: 'inbound-mql-json',
-        name: 'Inbound Automation and MQL Research JSON',
-        desc: 'Listens for website form submissions, queries LLM with prospect URL for company analysis, calculates intent score, and routes to dual inboxes.',
-        price: 49,
-        category: 'workflow',
-        tags: ['Webhook Ingest', 'Web Scraping', 'MQL Scoring'],
-        file: 'templates/inbound-automation-workflow.json',
-        featured: false,
-        order: 6
-      },
-      {
-        id: 'pas-skill-pack',
-        name: 'AI PAS Copywriting Master Skill Pack',
-        desc: 'Complete system prompt architecture, few-shot examples, and heuristic rules for generating high-converting 3-sentence Problem-Agitate-Solve cold emails.',
-        price: 39,
-        category: 'skill',
-        tags: ['SKILL.md', 'Claude 3.5', 'Grade 6 Copy'],
-        file: 'templates/skills/ai-prospecting-tester-skill.zip',
-        featured: false,
-        order: 7
-      },
-      {
-        id: 'gtm-architect-skill',
-        name: 'GTM Architect and Proposal Builder Skill',
-        desc: 'Packaged domain intelligence for AI sales engineers: diagnostic question rubrics, tech-stack scoping templates, and automated SOW generators.',
-        price: 39,
-        category: 'skill',
-        tags: ['SOW Generator', 'Tech Scoping', 'Atlas Pedigree'],
-        file: 'templates/skills/gtm-architect-skill.zip',
-        featured: false,
-        order: 8
-      },
-      {
-        id: 'master-soul-md',
-        name: 'Master GTM Agent Soul and Guardrails',
-        desc: 'The canonical behavioral constitution for GTM autonomous agents: role definition, conversational heuristics, deterministic fallbacks, and security barriers.',
-        price: 49,
-        category: 'soul',
-        tags: ['00-Master-Soul.md', 'Guardrails', 'System Prompt'],
-        file: 'templates/00-Master-Soul.md',
-        featured: false,
-        order: 9
-      }
-    ];
+    function filterMarketplace(category) {
+      document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
 
-    const ITEMS_PER_PAGE = 6;
-    let currentFilter = 'all';
-    let currentSort = 'featured';
-    let currentSearch = '';
-    let currentPage = 1;
-    let cart = [];
-
-    const categoryLabels = {
-      bundle: 'Build Package',
-      workflow: 'n8n Workflow',
-      skill: 'Agent Skill',
-      soul: 'Agent Soul'
-    };
-
-    function getFilteredProducts() {
-      let filtered = [...products];
-      if (currentFilter !== 'all') {
-        filtered = filtered.filter(p => p.category === currentFilter);
-      }
-      if (currentSearch.trim()) {
-        const q = currentSearch.toLowerCase();
-        filtered = filtered.filter(p =>
-          p.name.toLowerCase().includes(q) ||
-          p.desc.toLowerCase().includes(q) ||
-          p.tags.some(t => t.toLowerCase().includes(q))
-        );
-      }
-      // Sort
-      if (currentSort === 'price-low') filtered.sort((a, b) => a.price - b.price);
-      else if (currentSort === 'price-high') filtered.sort((a, b) => b.price - a.price);
-      else if (currentSort === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
-      else filtered.sort((a, b) => a.order - b.order);
-
-      return filtered;
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-cat') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     }
 
-    function renderGrid() {
-      const filtered = getFilteredProducts();
-      const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-      if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
-
-      const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
-
-      const grid = document.getElementById('productGrid');
-      const countEl = document.getElementById('resultsCount');
-      countEl.textContent = 'Showing ' + filtered.length + ' product' + (filtered.length !== 1 ? 's' : '');
-
-      if (pageItems.length === 0) {
-        grid.innerHTML = '<div class="empty-state"><h3>No products found</h3><p>Try adjusting your search or filter criteria.</p></div>';
-        document.getElementById('pagination').innerHTML = '';
-        return;
-      }
-
-      grid.innerHTML = pageItems.map(p => {
-        const isInCart = cart.some(c => c.id === p.id);
-        return `
-          <div class="product-card${p.featured ? ' featured' : ''}" data-id="${p.id}">
-            ${p.featured ? '<span class="product-featured-tag">Flagship Bundle</span>' : ''}
-            <span class="product-type">${categoryLabels[p.category]}</span>
-            <h3>${p.name}</h3>
-            <p>${p.desc}</p>
-            <div class="product-tags">
-              ${p.tags.map(t => '<span class="product-tag">' + t + '</span>').join('')}
-            </div>
-            <div class="product-footer">
-              <div class="product-price">
-                <strong>$${p.price}</strong>
-                <small>one-time</small>
-              </div>
-              <div class="product-actions">
-                <button class="btn btn-secondary btn-sm" onclick="addToCart('${p.id}')" ${isInCart ? 'disabled style="opacity:0.5"' : ''}>
-                  ${isInCart ? 'In Cart' : 'Add to Cart'}
-                </button>
-                <button class="btn btn-primary btn-sm" onclick="buyNow('${p.id}')">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      // Pagination
-      renderPagination(filtered.length, totalPages);
-    }
-
-    function renderPagination(total, totalPages) {
-      const pagEl = document.getElementById('pagination');
-      if (totalPages <= 1) { pagEl.innerHTML = ''; return; }
-
-      let html = '<button class="page-btn" onclick="goToPage(' + (currentPage - 1) + ')"' + (currentPage === 1 ? ' disabled' : '') + '>&larr; Prev</button>';
-      for (let i = 1; i <= totalPages; i++) {
-        html += '<button class="page-btn' + (i === currentPage ? ' active' : '') + '" onclick="goToPage(' + i + ')">' + i + '</button>';
-      }
-      html += '<button class="page-btn" onclick="goToPage(' + (currentPage + 1) + ')"' + (currentPage === totalPages ? ' disabled' : '') + '>Next &rarr;</button>';
-      pagEl.innerHTML = html;
-    }
-
-    function goToPage(p) {
-      currentPage = p;
-      renderGrid();
-      window.scrollTo({ top: document.getElementById('productGrid').offsetTop - 100, behavior: 'smooth' });
-    }
-
-    function setFilter(cat, btn) {
-      currentFilter = cat;
-      currentPage = 1;
-      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderGrid();
-    }
-
-    function handleSearch() {
-      currentSearch = document.getElementById('searchInput').value;
-      currentPage = 1;
-      renderGrid();
-    }
-
-    function handleSort() {
-      currentSort = document.getElementById('sortSelect').value;
-      currentPage = 1;
-      renderGrid();
-    }
-
-    // Cart
-    function addToCart(id) {
-      const product = products.find(p => p.id === id);
-      if (!product || cart.some(c => c.id === id)) return;
-      cart.push({ id: product.id, name: product.name, price: product.price, file: product.file });
-      renderGrid();
-      renderCart();
-      openCart();
-    }
-
-    function removeFromCart(id) {
-      cart = cart.filter(c => c.id !== id);
-      renderGrid();
-      renderCart();
-    }
-
-    function buyNow(id) {
-      const product = products.find(p => p.id === id);
-      if (!product) return;
-      alert('Redirecting to Stripe checkout for: ' + product.name + ' ($' + product.price + ').\n\nThis would connect to your payment processor in production.');
-    }
-
-    function handleCheckout(e) {
-      e.preventDefault();
-      const total = cart.reduce((s, c) => s + c.price, 0);
-      alert('Redirecting to Stripe checkout.\nTotal: $' + total + '\nItems: ' + cart.length + '\n\nThis would connect to your payment processor in production.');
-    }
-
-    function openCart() {
-      document.getElementById('cartOverlay').classList.add('open');
-    }
-
-    function closeCart() {
-      document.getElementById('cartOverlay').classList.remove('open');
-    }
-
-    function renderCart() {
-      const itemsEl = document.getElementById('cartItems');
-      const footerEl = document.getElementById('cartFooter');
-
-      if (cart.length === 0) {
-        itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
-        footerEl.style.display = 'none';
-        return;
-      }
-
-      itemsEl.innerHTML = cart.map(c => `
-        <div class="cart-item">
-          <span class="cart-item-name">${c.name}</span>
-          <div style="display:flex;align-items:center;">
-            <span class="cart-item-price">$${c.price}</span>
-            <button class="cart-item-remove" onclick="removeFromCart('${c.id}')">Remove</button>
-          </div>
-        </div>
-      `).join('');
-
-      const total = cart.reduce((s, c) => s + c.price, 0);
-      document.getElementById('cartTotal').textContent = '$' + total;
-      footerEl.style.display = 'block';
-    }
-
-    // Close cart on overlay click
-    document.getElementById('cartOverlay').addEventListener('click', function(e) {
-      if (e.target === this) closeCart();
-    });
-
-    // Mobile nav
-    const navToggle = document.getElementById('navToggle');
+    const mobileToggle = document.getElementById('mobileNavToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
-    if (navToggle && mobileDrawer) {
-      navToggle.addEventListener('click', () => mobileDrawer.classList.toggle('open'));
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
     }
-
-    // Initial render
-    renderGrid();
   </script>
 
 </body>

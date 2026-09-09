@@ -3,597 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paid 1-Hour GTM Architecture &amp; Strategy Audit ($495) — SalesGency</title>
-  <meta name="description" content="Book an intensive 1-hour GTM Architecture & Strategy Audit with founder Patrick Diamitani. Diagnosing your revenue leaks and live-diagramming your autonomous engine. 100% credited to any retainer.">
-  
+  <title>Book 15-Min Intro Call & Strategy Audit — SalesGency®</title>
+  <meta name="description" content="Book a 15-minute intro call with founder Patrick Diamitani to diagnose your revenue leaks and determine your GTM automation roadmap.">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Paid 1-Hour GTM Architecture & Strategy Audit ($495) — SalesGency">
-  <meta property="og:description" content="60-minute intensive systems engineering session. Live pipeline diagnosis, architecture diagramming, and 100% retainer credit guarantee.">
-  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
+  <meta property="og:title" content="Book Intro Call — SalesGency®">
+  <meta property="og:description" content="Direct 15-minute consultation to review your pipeline, outbound rails, and automation goals.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ==========================================================================
-       1. FLOATING PILL NAVBAR
-       ========================================================================== -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-        <span class="brand-subtag">Paid Audit</span>
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
       </a>
 
-      <nav aria-label="Main Navigation">
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item-dropdown">
-            <a href="agents.html" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
-              <span>Architecture</span>
-              <span class="dropdown-arrow">▼</span>
-            </a>
-            <div class="nav-dropdown-menu">
-              <a href="agents.html" class="nav-dropdown-item">
-                <span class="item-icon">🤖</span>
-                <div>
-                  <strong>Agents</strong>
-                  <span class="item-desc">Autonomous reasoning &amp; triage</span>
-                </div>
-              </a>
-              <a href="workflows.html" class="nav-dropdown-item">
-                <span class="item-icon">⚡</span>
-                <div>
-                  <strong>Workflows</strong>
-                  <span class="item-desc">Deterministic execution rails</span>
-                </div>
-              </a>
-              <a href="skills.html" class="nav-dropdown-item">
-                <span class="item-icon">🧠</span>
-                <div>
-                  <strong>Skills</strong>
-                  <span class="item-desc">Packaged domain intelligence</span>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li><a href="templates.html" class="nav-link">Marketplace</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="process.html" class="nav-link">Process</a></li>
-          <li><a href="work.html" class="nav-link">Work</a></li>
-          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-        </ul>
-      </nav>
+      <div class="nav-menu">
+        <a href="index.html#how-it-works" class="nav-item">How It Works</a>
+        <a href="index.html#work" class="nav-item">Work</a>
+        <a href="index.html#features" class="nav-item">Features</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="index.html#faqs" class="nav-item">FAQs</a>
+      </div>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">View Plans</a>
-        <a href="templates.html" class="btn btn-secondary btn-sm">🛒 Marketplace</a>
-        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Call</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
   <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer" id="mobileNavDrawer">
-    <a href="index.html" class="nav-link">Home</a>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-heading">Architecture</div>
-      <a href="agents.html" class="nav-link">🤖 Agents</a>
-      <a href="workflows.html" class="nav-link">⚡ Workflows</a>
-      <a href="skills.html" class="nav-link">🧠 Skills</a>
-    </div>
-    <a href="templates.html" class="nav-link">🛒 Marketplace</a>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="process.html" class="nav-link">Process</a>
-    <a href="work.html" class="nav-link">Work</a>
-    <a href="pricing.html" class="nav-link">Pricing</a>
-    <a href="about.html" class="nav-link">About</a>
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="index.html#how-it-works" class="mobile-link">How It Works</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="services.html" class="mobile-link">Services</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book 15-Min Intro Call</a>
   </div>
 
-  <!-- ==========================================================================
-       2. HERO SECTION
-       ========================================================================== -->
-  <section class="hero" style="padding-bottom: 24px;">
-    <div class="container-wide">
-      <div class="hero-content">
-        <div class="badge-pill badge-primary">
-          <span class="pulse-dot"></span>
-          <span>🔒 1-on-1 Systems Engineering Intensive · No Sales Reps</span>
-        </div>
-        
-        <h1 class="hero-title">
-          Book Your 1-Hour GTM Architecture <br>
-          <span class="gradient-text-indigo">&amp; Strategy Audit.</span>
-        </h1>
-        
-        <p class="hero-subtitle">
-          We don't do generic sales calls. Spend 60 intensive minutes with Principal Architect <strong>Patrick Diamitani</strong>. We diagnose your pipeline leaks, live-diagram your custom Triad (Workflows, Skills, Agents), and hand you an actionable roadmap.
-        </p>
+  <div class="site-wrapper">
 
-        <!-- Pricing & Guarantee Banner -->
-        <div class="audit-pricing-banner" style="max-width: 780px; margin: 28px auto 0;">
-          <div>
-            <div class="audit-price-tag">
-              <strong>$495</strong>
-              <span>USD / 1-Hour Session</span>
-            </div>
-            <div style="font-size: 0.84rem; color: var(--text-muted); margin-top: 4px;">
-              Paid upfront · Strictly limited to 3 sessions per week
-            </div>
-          </div>
-          <div style="text-align: right;">
-            <div class="badge-pill badge-emerald" style="margin: 0;">
-              <span>✓ 100% Retainer Credit Guarantee</span>
-            </div>
-            <div style="font-size: 0.78rem; color: var(--accent-emerald); font-weight: 700; margin-top: 6px;">
-              100% credited to any build sprint or monthly retainer
+    <!-- Qualification & Booking Section -->
+    <section class="pricing-section" style="padding-top: clamp(120px, 14vw, 170px); width: 100%;">
+      <div class="container-narrow">
+        
+        <div class="section-header">
+          <div class="booking-badge-card" style="margin-bottom: 20px;">
+            <span class="live-dot" aria-hidden="true"></span>
+            <div class="booking-badge-text">
+              <strong>Patrick Diamitani’s Calendar</strong> · <span>Available this week</span>
             </div>
           </div>
+          <h1 class="section-title">
+            Book a 15-min <span class="serif-italic">intro call.</span>
+          </h1>
+          <p class="section-subtitle">
+            Get a clear look at how SalesGency works, what workflows we can build for you, and whether our monthly subscription fits your team’s pace.
+          </p>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       3. 4-STEP PAID AUDIT BOOKING ENGINE
-       ========================================================================== -->
-  <section class="section section-subtle" style="padding-top: 20px; padding-bottom: 80px;">
-    <div class="container-wide">
-
-      <div style="max-width: 820px; margin: 0 auto; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-3xl); box-shadow: var(--shadow-lg); overflow: hidden;">
-        
-        <!-- Header Progress Bar -->
-        <div style="background: var(--bg-subtle); border-bottom: 1px solid var(--border-subtle); padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 800; color: var(--ink-heading);">
-            AUDIT_INTAKE_PROTOCOL // STEP <span id="currentStepNum">1</span> OF 4
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <span class="progress-dot active" id="dot1" style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary);"></span>
-            <span class="progress-dot" id="dot2" style="width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong);"></span>
-            <span class="progress-dot" id="dot3" style="width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong);"></span>
-            <span class="progress-dot" id="dot4" style="width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong);"></span>
-          </div>
-        </div>
-
-        <div style="padding: 40px;">
+        <div class="subscription-card" style="padding: clamp(28px, 4vw, 44px);">
           
-          <!-- STEP 1: Revenue Leak & Bottleneck -->
-          <div id="step1" class="audit-step-card">
-            <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 8px;">01. What is your primary GTM revenue bottleneck?</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">Select the area where your pipeline is currently leaking the most deals and rep hours:</p>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px;">
-              <div class="step-option-card selected" onclick="selectStepOption(1, this, 'Outbound Prospecting & PAS Copy')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">🎯 Outbound Prospecting</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">Reps lose 20+ hrs/wk manually researching leads and drafting generic cold copy</span>
+          <form id="qualificationForm" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <label style="display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--text-heading);">First Name *</label>
+                <input type="text" required placeholder="Alex" style="width: 100%; padding: 12px 16px; background: var(--bg-card-pure); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); font-size: 14.5px; font-family: inherit; color: var(--text-main); outline: none;">
               </div>
-              <div class="step-option-card" onclick="selectStepOption(1, this, 'Inbound Reply Velocity & Chatbots')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">⚡ Inbound Lead Velocity</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">Warm inbound leads wait hours for qualification and manual booking</span>
-              </div>
-              <div class="step-option-card" onclick="selectStepOption(1, this, 'RevOps, CSV Dedupe & CRM Sync')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">📊 RevOps &amp; CRM Hygiene</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">Messy CRM records, unformatted CSVs, and missing bi-directional deal updates</span>
-              </div>
-              <div class="step-option-card" onclick="selectStepOption(1, this, 'Team Enablement & SOPs')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">📚 Tool Setup &amp; Enablement</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">Scattered stack, unvaulted API keys, and reps need structured video SOPs</span>
+              <div>
+                <label style="display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--text-heading);">Work Email *</label>
+                <input type="email" required placeholder="alex@company.com" style="width: 100%; padding: 12px 16px; background: var(--bg-card-pure); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); font-size: 14.5px; font-family: inherit; color: var(--text-main); outline: none;">
               </div>
             </div>
 
-            <div style="display: flex; justify-content: flex-end;">
-              <button class="btn btn-indigo btn-sm" onclick="goToStep(2)">Continue to Stack Assessment →</button>
-            </div>
-          </div>
-
-          <!-- STEP 2: Current Tech Stack & Scale -->
-          <div id="step2" class="audit-step-card" style="display: none;">
-            <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 8px;">02. What is your current CRM and team scale?</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">Helps us prepare working webhook and schema blueprints before the call:</p>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px;">
-              <div class="step-option-card selected" onclick="selectStepOption(2, this, 'HubSpot / Salesforce (4-15 reps)')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">HubSpot or Salesforce</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">4–15 Reps · Need automated webhook sync and dual-inbox routing</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <label style="display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--text-heading);">Company Website *</label>
+                <input type="url" required placeholder="https://company.com" style="width: 100%; padding: 12px 16px; background: var(--bg-card-pure); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); font-size: 14.5px; font-family: inherit; color: var(--text-main); outline: none;">
               </div>
-              <div class="step-option-card" onclick="selectStepOption(2, this, 'Clay + Smartlead / Instantly (Cold stack)')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">Clay + Smartlead / Instantly</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">Multi-domain cold outreach needing waterfall enrichment &amp; dedupe</span>
-              </div>
-              <div class="step-option-card" onclick="selectStepOption(2, this, 'Postgres / Supabase / Custom APIs')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">PostgreSQL / Custom APIs</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">Product databases requiring custom webhook pipelines &amp; LLM agents</span>
-              </div>
-              <div class="step-option-card" onclick="selectStepOption(2, this, 'Solo Founder / Spreadsheets')">
-                <strong style="display: block; font-size: 0.96rem; margin-bottom: 4px;">Founder / Early Stage</strong>
-                <span style="font-size: 0.82rem; color: var(--text-muted);">1–3 Reps · Need maximum pipeline leverage without hiring headcount</span>
+              <div>
+                <label style="display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--text-heading);">Current Monthly Revenue *</label>
+                <select required style="width: 100%; padding: 12px 16px; background: var(--bg-card-pure); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); font-size: 14.5px; font-family: inherit; color: var(--text-main); outline: none;">
+                  <option value="" disabled selected>Select revenue range</option>
+                  <option value="pre-revenue">&lt; $20k / mo</option>
+                  <option value="20k-50k">$20k – $50k / mo</option>
+                  <option value="50k-200k">$50k – $200k / mo</option>
+                  <option value="200k+">$200k+ / mo</option>
+                </select>
               </div>
             </div>
 
-            <div style="display: flex; justify-content: space-between;">
-              <button class="btn btn-secondary btn-sm" onclick="goToStep(1)">← Back</button>
-              <button class="btn btn-indigo btn-sm" onclick="goToStep(3)">Select Calendar Date &amp; Time →</button>
-            </div>
-          </div>
-
-          <!-- STEP 3: Interactive Calendar Date & Time Slot Picker -->
-          <div id="step3" class="audit-step-card" style="display: none;">
-            <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 8px;">03. Select your preferred 1-Hour audit slot</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">Audits are hosted 1-on-1 via private Google Meet with Patrick Diamitani:</p>
-
-            <div class="calendar-picker-container">
-              <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">
-                AVAILABLE DATES (NEXT 5 BUSINESS DAYS):
-              </div>
-              <div class="calendar-days-grid">
-                <div class="calendar-day-cell selected" onclick="selectDay(this, 'Thursday, Sep 10')">
-                  <strong>Thu, Sep 10</strong>
-                  <span>2 slots left</span>
-                </div>
-                <div class="calendar-day-cell" onclick="selectDay(this, 'Friday, Sep 11')">
-                  <strong>Fri, Sep 11</strong>
-                  <span>1 slot left</span>
-                </div>
-                <div class="calendar-day-cell" onclick="selectDay(this, 'Monday, Sep 14')">
-                  <strong>Mon, Sep 14</strong>
-                  <span>3 slots left</span>
-                </div>
-                <div class="calendar-day-cell" onclick="selectDay(this, 'Tuesday, Sep 15')">
-                  <strong>Tue, Sep 15</strong>
-                  <span>2 slots left</span>
-                </div>
-                <div class="calendar-day-cell" onclick="selectDay(this, 'Wednesday, Sep 16')">
-                  <strong>Wed, Sep 16</strong>
-                  <span>3 slots left</span>
-                </div>
-              </div>
-
-              <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">
-                SELECT START TIME (CENTRAL TIME / CST):
-              </div>
-              <div class="time-slots-grid">
-                <button class="time-slot-btn selected" onclick="selectTime(this, '10:00 AM CST')">10:00 AM CST</button>
-                <button class="time-slot-btn" onclick="selectTime(this, '1:30 PM CST')">1:30 PM CST</button>
-                <button class="time-slot-btn" onclick="selectTime(this, '3:30 PM CST')">3:30 PM CST</button>
-              </div>
+            <div>
+              <label style="display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--text-heading);">Primary GTM Challenge *</label>
+              <select required style="width: 100%; padding: 12px 16px; background: var(--bg-card-pure); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); font-size: 14.5px; font-family: inherit; color: var(--text-main); outline: none;">
+                <option value="" disabled selected>What is your biggest bottleneck?</option>
+                <option value="outbound">Outbound Pipeline: Need automated lead scraping & cadences</option>
+                <option value="inbound">Speed-to-Lead: Slow response times on demo submissions</option>
+                <option value="revops">CRM Hygiene: Disorganized data, stale opportunities & dedupe</option>
+                <option value="enablement">Enablement: Need AI call prep, dossiers & automated decks</option>
+                <option value="all">Full Stack: Comprehensive autonomous revenue infrastructure</option>
+              </select>
             </div>
 
-            <div class="audit-credit-guarantee-box">
-              <span>💎</span>
-              <p>
-                <strong>100% Credit Guarantee:</strong> Your $495 audit fee is fully deductible from any build sprint or monthly retainer if you move forward within 30 days.
-              </p>
+            <div>
+              <label style="display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--text-heading);">Additional Notes (Optional)</label>
+              <textarea rows="3" placeholder="Tell us about your current CRM, tech stack, or specific workflows you'd like built..." style="width: 100%; padding: 12px 16px; background: var(--bg-card-pure); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); font-size: 14.5px; font-family: inherit; color: var(--text-main); outline: none; resize: vertical;"></textarea>
             </div>
 
-            <div style="display: flex; justify-content: space-between; margin-top: 28px;">
-              <button class="btn btn-secondary btn-sm" onclick="goToStep(2)">← Back</button>
-              <button class="btn btn-indigo btn-sm" onclick="goToStep(4)">Proceed to Payment ($495) →</button>
-            </div>
-          </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px;">
+              Confirm &amp; Pick Calendar Time →
+            </button>
 
-          <!-- STEP 4: Secure Payment Gate ($495 USD) -->
-          <div id="step4" class="audit-step-card" style="display: none;">
-            <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 8px;">04. Secure Your Audit Session</h3>
-            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">Payment guarantees your 1-hour private session with Principal Architect Patrick Diamitani:</p>
-
-            <div style="background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 20px 24px; margin-bottom: 24px;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
-                <strong style="font-size: 1.05rem; color: var(--ink-heading);">1-Hour GTM Architecture &amp; Strategy Audit</strong>
-                <strong style="font-size: 1.35rem; color: var(--primary);">$495.00 USD</strong>
-              </div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-                • <strong>Scheduled For:</strong> <span id="summaryScheduledSlot" style="color: var(--ink-heading); font-weight: 700;">Thu, Sep 10 @ 10:00 AM CST</span><br>
-                • <strong>Includes:</strong> Complete pipeline diagnosis, custom Triad diagram, recorded session, and 100% credit guarantee.
-              </div>
+            <div style="text-align: center; font-size: 13px; color: var(--text-muted);">
+              🔒 100% confidential. No spam, zero high-pressure sales tactics.
             </div>
 
-            <form id="auditPaymentForm" onsubmit="confirmAuditBooking(event)">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
-                <div class="payment-input-group" style="margin-bottom: 0;">
-                  <label for="auditFullName">Full Name:</label>
-                  <input type="text" id="auditFullName" required placeholder="Patrick Collison">
-                </div>
-                <div class="payment-input-group" style="margin-bottom: 0;">
-                  <label for="auditWorkEmail">Work Email (Calendar Invite Sent Here):</label>
-                  <input type="email" id="auditWorkEmail" required placeholder="patrick@company.com">
-                </div>
-              </div>
+          </form>
 
-              <div class="payment-input-group">
-                <label for="auditCompany">Company Name &amp; Website:</label>
-                <input type="text" id="auditCompany" required placeholder="Company Inc. (company.com)">
-              </div>
-
-              <div class="payment-input-group">
-                <label for="auditCardNumber">Card Number:</label>
-                <input type="text" id="auditCardNumber" required placeholder="4242 •••• •••• 4242" value="4242 •••• •••• 4242">
-              </div>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-                <div class="payment-input-group">
-                  <label for="auditCardExp">Expiration:</label>
-                  <input type="text" id="auditCardExp" required placeholder="MM / YY" value="12/28">
-                </div>
-                <div class="payment-input-group">
-                  <label for="auditCardCvc">CVC:</label>
-                  <input type="text" id="auditCardCvc" required placeholder="CVC" value="999">
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
-                <button type="button" class="btn btn-secondary btn-sm" onclick="goToStep(3)">← Back</button>
-                <button type="submit" class="btn btn-indigo btn-lg" id="auditPayBtn">
-                  🔒 Pay $495 &amp; Lock In Session →
-                </button>
-              </div>
-
-              <div style="text-align: center; margin-top: 16px; font-size: 0.78rem; color: var(--text-muted);">
-                🔒 256-bit Encrypted Checkout · Instant Google Meet link generated upon payment
-              </div>
-            </form>
-          </div>
-
-          <!-- STEP 5: Instant Booking Confirmation -->
-          <div id="step5" class="audit-step-card" style="display: none;">
-            <div style="text-align: center; padding: 20px 0;">
-              <div style="font-size: 3.2rem; margin-bottom: 12px;">🎉</div>
-              <div class="badge-pill badge-emerald" style="margin-bottom: 14px;">
-                <span>✓ Payment Confirmed &amp; Session Reserved</span>
-              </div>
-              <h3 style="font-size: 1.85rem; font-weight: 900; margin-bottom: 10px;">You're Confirmed with Patrick Diamitani</h3>
-              <p style="font-size: 1.02rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 24px;">
-                Your 1-hour private architecture intensive is locked in for <strong id="confirmedSlotText" style="color: var(--ink-heading);">Thursday, Sep 10 at 10:00 AM CST</strong>.
-              </p>
-
-              <div style="background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-2xl); padding: 24px; max-width: 580px; margin: 0 auto 28px; text-align: left;">
-                <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">
-                  MEETING ACCESS DETAILS:
-                </div>
-                <div style="font-size: 0.94rem; color: var(--ink-body); line-height: 1.65;">
-                  • <strong>Google Meet URL:</strong> <a href="https://meet.google.com" target="_blank" style="color: var(--primary); font-weight: 700;">meet.google.com/sg-audit-live</a><br>
-                  • <strong>Host:</strong> Patrick Diamitani (Founder &amp; Principal Architect)<br>
-                  • <strong>Calendar Invite:</strong> Sent to your registered email address<br>
-                  • <strong>Credit Note:</strong> $495 credit invoice generated for your records
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-                <a href="index.html" class="btn btn-secondary">Return to Home</a>
-                <a href="templates.html" class="btn btn-primary">Browse Digital Marketplace →</a>
-              </div>
-            </div>
+          <!-- Confirmation State -->
+          <div id="confirmationPanel" style="display: none; text-align: center; padding: 40px 20px;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: #E6F9EE; color: #0E8345; font-size: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">✓</div>
+            <h3 style="font-size: 26px; font-weight: 700; color: var(--text-heading); margin-bottom: 12px;">Opening Calendar...</h3>
+            <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 24px; line-height: 1.5;">
+              Thank you! Your information has been received. Redirecting to Patrick Diamitani's calendar to select your 15-minute slot.
+            </p>
+            <a href="https://calendly.com" target="_blank" class="btn btn-primary">Open Calendar Directly</a>
           </div>
 
         </div>
 
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       4. FOUNDER AUTHORITY CARD
-       ========================================================================== -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container-wide">
-      <div class="founder-card-bento">
-        <div class="founder-img-wrap">
-          <img src="assets/founder.jpg" alt="Patrick Diamitani — Founder &amp; Principal Architect">
-        </div>
-        <div class="founder-bio">
-          <div class="badge-pill badge-primary">
-            <span class="pulse-dot"></span>
-            <span>Why The $495 Audit is 100% Value-Backed</span>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved.
           </div>
-          <h3>Patrick Diamitani</h3>
-          <div class="founder-title">Founder &amp; Principal GTM Architect</div>
-          <p>
-            "Free discovery calls in the B2B world are almost always high-pressure sales pitches conducted by junior SDRs reading a script.
-          </p>
-          <p>
-            We operate differently. When you book a 1-hour audit with SalesGency, you get 60 minutes of uninterrupted, deep-dive systems engineering. We review your live stack, diagnose where you are burning domain reputation or dropping inbound leads, and build your custom Triad schematic live on the screen.
-          </p>
-          <p>
-            And because we stand by the tangible value of our architecture, <strong>every dollar of your $495 session is credited directly</strong> to any build sprint or monthly retainer if you decide to partner with us."
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. MULTI-COLUMN FOOTER
-       ========================================================================== -->
-  <footer class="footer-bento">
-    <div class="container-wide">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
-            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-          </a>
-          <p>
-            SalesGency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.
-          </p>
-          <div class="badge-pill badge-cyan">
-            <span class="pulse-dot"></span>
-            <span>Audit Booking: Active</span>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
           </div>
         </div>
-
-        <div class="footer-col">
-          <h4>Core Pillars</h4>
-          <ul>
-            <li><a href="services.html#inbound">Inbound Automation</a></li>
-            <li><a href="services.html#outbound">Outbound Automation</a></li>
-            <li><a href="services.html#revops">RevOps &amp; Data Hygiene</a></li>
-            <li><a href="services.html#enablement">Team Enablement</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="agents.html">GTM AI Agents</a></li>
-            <li><a href="workflows.html">Deterministic Workflows</a></li>
-            <li><a href="skills.html">Domain Skills</a></li>
-            <li><a href="templates.html">Digital Marketplace</a></li>
-            <li><a href="process.html#ddc">30-Day Delivery Sprint</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About SalesGency</a></li>
-            <li><a href="work.html">Case Studies &amp; Work</a></li>
-            <li><a href="pricing.html">Agency Pricing</a></li>
-            <li><a href="about.html#founder">Leadership &amp; Bio</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contact &amp; Office</h4>
-          <ul>
-            <li style="font-size: 0.92rem; color: var(--text-muted);">Austin, TX &amp; Remote Global</li>
-            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
-            <li><a href="qualification.html" style="font-weight: 600; color: var(--primary);">Schedule 1-Hour Audit →</a></li>
-          </ul>
-        </div>
       </div>
+    </footer>
 
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All Rights Reserved. All audit fees subject to 100% Retainer Credit Guarantee.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="index.html">Privacy Policy</a>
-          <a href="index.html">Terms of Service</a>
-          <a href="index.html">Audit Guarantee Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </div>
 
-  <style>
-    .step-option-card {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-xl);
-      padding: 18px 20px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-    .step-option-card:hover,
-    .step-option-card.selected {
-      background: #FFFFFF;
-      border-color: var(--primary);
-      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.14);
-    }
-  </style>
-
-  <!-- ==========================================================================
-       6. INTERACTIVE BOOKING & PAYMENT JS
-       ========================================================================== -->
   <script>
-    // 1. Mobile Drawer
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-    if (mobileMenuToggle && mobileNavDrawer) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileNavDrawer.classList.toggle('open');
-      });
-    }
-
-    // 2. Audit State
-    let auditState = {
-      bottleneck: 'Outbound Prospecting & PAS Copy',
-      stack: 'HubSpot / Salesforce (4-15 reps)',
-      date: 'Thursday, Sep 10',
-      time: '10:00 AM CST'
-    };
-
-    function selectStepOption(step, element, value) {
-      const parent = element.parentElement;
-      parent.querySelectorAll('.step-option-card').forEach(el => el.classList.remove('selected'));
-      element.classList.add('selected');
-      if (step === 1) auditState.bottleneck = value;
-      if (step === 2) auditState.stack = value;
-    }
-
-    function selectDay(cell, day) {
-      document.querySelectorAll('.calendar-day-cell').forEach(c => c.classList.remove('selected'));
-      cell.classList.add('selected');
-      auditState.date = day;
-      updateScheduledSlotText();
-    }
-
-    function selectTime(btn, time) {
-      document.querySelectorAll('.time-slot-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      auditState.time = time;
-      updateScheduledSlotText();
-    }
-
-    function updateScheduledSlotText() {
-      const summaryText = `${auditState.date} @ ${auditState.time}`;
-      const elem = document.getElementById('summaryScheduledSlot');
-      if (elem) elem.textContent = summaryText;
-      const confirmedElem = document.getElementById('confirmedSlotText');
-      if (confirmedElem) confirmedElem.textContent = `${auditState.date} at ${auditState.time}`;
-    }
-
-    function goToStep(stepNum) {
-      // Hide all steps
-      for (let i = 1; i <= 5; i++) {
-        const stepEl = document.getElementById(`step${i}`);
-        if (stepEl) stepEl.style.display = 'none';
-      }
-
-      // Show current step
-      const current = document.getElementById(`step${stepNum}`);
-      if (current) current.style.display = 'block';
-
-      // Update header
-      const stepNumHeader = document.getElementById('currentStepNum');
-      if (stepNumHeader) stepNumHeader.textContent = stepNum > 4 ? 4 : stepNum;
-
-      // Update progress dots
-      for (let i = 1; i <= 4; i++) {
-        const dot = document.getElementById(`dot${i}`);
-        if (dot) {
-          if (i <= stepNum) {
-            dot.style.background = 'var(--primary)';
-          } else {
-            dot.style.background = 'var(--border-strong)';
-          }
-        }
-      }
-
-      window.scrollTo({ top: 220, behavior: 'smooth' });
-    }
-
-    function confirmAuditBooking(e) {
+    function handleFormSubmit(e) {
       e.preventDefault();
-      const payBtn = document.getElementById('auditPayBtn');
-      payBtn.disabled = true;
-      payBtn.textContent = 'Processing $495 via Stripe...';
+      document.getElementById('qualificationForm').style.display = 'none';
+      document.getElementById('confirmationPanel').style.display = 'block';
+    }
 
-      setTimeout(() => {
-        goToStep(5);
-      }, 1000);
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
     }
   </script>
 

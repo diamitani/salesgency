@@ -3,272 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing &amp; Packages — SalesGency</title>
-  <meta name="description" content="Transparent pricing for your in-house GTM AI and automation agency partner. Full infrastructure ownership with zero hidden fees.">
-  
+  <title>Pricing & Membership — SalesGency®</title>
+  <meta name="description" content="Simple, predictable monthly pricing for custom GTM AI and sales automation infrastructure.">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Pricing & Packages — SalesGency">
-  <meta property="og:description" content="Workflows, skills, and agents deployed into your accounts. Transparent pricing.">
-  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
+  <meta property="og:title" content="Pricing — SalesGency®">
+  <meta property="og:description" content="One monthly rate. Unlimited sales automation requests. 100% client-owned code.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- FLOATING PILL NAVBAR -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-        <span class="brand-subtag">Pricing</span>
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item-dropdown">
-          <a href="agents.html" class="nav-link nav-dropdown-trigger">
-            <span>Architecture</span>
-            <span class="dropdown-arrow">▼</span>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="agents.html" class="nav-dropdown-item">
-              <span class="item-icon">🤖</span>
-              <div>
-                <strong>Agents</strong>
-                <span class="item-desc">Autonomous reasoning &amp; triage</span>
-              </div>
-            </a>
-            <a href="workflows.html" class="nav-dropdown-item">
-              <span class="item-icon">⚡</span>
-              <div>
-                <strong>Workflows</strong>
-                <span class="item-desc">Deterministic execution rails</span>
-              </div>
-            </a>
-            <a href="skills.html" class="nav-dropdown-item">
-              <span class="item-icon">🧠</span>
-              <div>
-                <strong>Skills</strong>
-                <span class="item-desc">Packaged domain intelligence</span>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="process.html" class="nav-link">Process</a></li>
-        <li><a href="work.html" class="nav-link">Work</a></li>
-        <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
+      <div class="nav-menu">
+        <a href="index.html#how-it-works" class="nav-item">How It Works</a>
+        <a href="index.html#work" class="nav-item">Work</a>
+        <a href="index.html#features" class="nav-item">Features</a>
+        <a href="pricing.html" class="nav-item active">Pricing</a>
+        <a href="index.html#blog" class="nav-item">Blog</a>
+        <a href="index.html#faqs" class="nav-item">FAQs</a>
+      </div>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">Plans</a>
-        <a href="qualification.html" class="btn btn-primary btn-sm">Paid Audit () →</a>
-        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Call</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
   <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer" id="mobileNavDrawer">
-    <a href="index.html" class="nav-link">Home</a>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-heading">Architecture</div>
-      <a href="agents.html" class="nav-link">🤖 Agents</a>
-      <a href="workflows.html" class="nav-link">⚡ Workflows</a>
-      <a href="skills.html" class="nav-link">🧠 Skills</a>
-    </div>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="process.html" class="nav-link">Process</a>
-    <a href="work.html" class="nav-link">Work</a>
-    <a href="pricing.html" class="nav-link active">Pricing</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Paid Audit () →</a>
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="index.html#how-it-works" class="mobile-link">How It Works</a>
+    <a href="index.html#work" class="mobile-link">Work</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="services.html" class="mobile-link">Services</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book 15-Min Intro Call</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero" style="padding-bottom: 40px;">
-    <div class="container-wide">
-      <div class="hero-content">
-        <div class="digiket-badge badge-cyan">
-          <span class="badge-dot"></span>
-          <span>💎 Transparent Investments · 100% Asset Ownership</span>
-        </div>
-        <h1>
-          Simple, Transparent <br>
-          <span class="highlight-cyan">Agency Pricing</span>
-        </h1>
-        <p class="hero-lead">
-          No hidden fees, no proprietary black boxes. Every engagement delivers production-grade workflows, skills, and agents deployed directly inside your company's infrastructure.
-        </p>
-      </div>
-    </div>
-  </section>
+  <div class="site-wrapper">
 
-  <!-- PRICING CARDS (DIGIKET FORMAT) -->
-  <section class="section" style="padding-top: 20px;">
-    <div class="container-wide">
-      <div class="pricing-grid">
+    <!-- Pricing Hero & Tier -->
+    <section class="pricing-section" style="padding-top: clamp(120px, 14vw, 170px);">
+      <div class="container">
         
-        <!-- Plan 1: Architecture Review -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3>Architecture Consultation</h3>
-            <p>1-on-1 deep-dive with our principal architect to review your GTM tech stack and map live workflow schematics.</p>
-          </div>
-          <div class="pricing-price">
-            <span class="amount">$250</span>
-            <span class="term">/ one-time session</span>
-          </div>
-          <ul class="pricing-features">
-            <li><span class="service-check-icon">✓</span> 45-min live architectural audit</li>
-            <li><span class="service-check-icon">✓</span> Tech stack &amp; CRM bottleneck diagnosis</li>
-            <li><span class="service-check-icon">✓</span> Custom "Skills, Agents, Workflows" blueprint</li>
-            <li><span class="service-check-icon">✓</span> Credited 100% towards any build sprint</li>
-          </ul>
-          <a href="qualification.html" class="btn btn-secondary" style="width: 100%;">Book Consultation Session</a>
+        <div class="section-header">
+          <div class="badge-tag">Membership</div>
+          <h1 class="section-title">
+            Simple, transparent <span class="serif-italic">pricing.</span>
+          </h1>
+          <p class="section-subtitle">
+            One flat monthly rate for your in-house GTM automation engine. Zero recruiter fees, zero percentage cuts, cancel or pause anytime.
+          </p>
         </div>
 
-        <!-- Plan 2: In-House Agency Retainer (Featured) -->
-        <div class="pricing-card featured">
-          <div class="pricing-featured-badge">Most Popular</div>
-          <div class="pricing-header">
-            <h3>In-House GTM Retainer</h3>
-            <p>Your dedicated GTM AI &amp; automation partner. Continuous engineering across Inbound, Outbound, RevOps &amp; Enablement.</p>
+        <div class="pricing-card-wrapper">
+          <div class="subscription-card">
+            
+            <div class="pricing-top-row">
+              <div class="brand-link" style="font-size: 20px;">
+                salesgency<span class="brand-symbol">®</span>
+              </div>
+              <span class="pill-popular">Standard Plan</span>
+            </div>
+
+            <div class="pricing-main-amount">
+              <span class="currency-symbol">$</span>
+              <span class="price-number">2,995</span>
+              <span class="billing-period">/ month</span>
+            </div>
+
+            <div class="add-on-pill font-mono">
+              Additional Active Task Stream: +$995/mo
+            </div>
+
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.55;">
+              Submit any sales automation task you need. Outbound funnels, lead scrapers, CRM hygiene, pitch scripts, and custom agent tools.
+            </p>
+
+            <div class="pricing-features-list">
+              <div class="feature-check-item">
+                <span class="check-circle">✓</span>
+                <span>Unlimited sales automation requests</span>
+              </div>
+              <div class="feature-check-item">
+                <span class="check-circle">✓</span>
+                <span>One active task stream at a time</span>
+              </div>
+              <div class="feature-check-item">
+                <span class="check-circle">✓</span>
+                <span>Delivered in 2–3 business days on average</span>
+              </div>
+              <div class="feature-check-item">
+                <span class="check-circle">✓</span>
+                <span>100% client-owned source code, n8n nodes, and prompts</span>
+              </div>
+              <div class="feature-check-item">
+                <span class="check-circle">✓</span>
+                <span>Direct Slack channel & Notion board collaboration</span>
+              </div>
+              <div class="feature-check-item">
+                <span class="check-circle">✓</span>
+                <span>Cancel or pause your subscription anytime</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <a href="qualification.html" class="btn btn-primary" style="width: 100%;">Join Today</a>
+              <a href="qualification.html" class="btn btn-secondary" style="width: 100%;">Book a 15-min intro call</a>
+            </div>
+
           </div>
-          <div class="pricing-price">
-            <span class="amount">$6,500</span>
-            <span class="term">/ month</span>
-          </div>
-          <ul class="pricing-features">
-            <li><span class="service-check-icon">✓</span> <strong>All 4 Core Pillars Covered</strong></li>
-            <li><span class="service-check-icon">✓</span> Continuous workflow, skill &amp; agent builds</li>
-            <li><span class="service-check-icon">✓</span> Sub-minute inbound reply velocity setup</li>
-            <li><span class="service-check-icon">✓</span> Outbound PAS signal mining &amp; sequencer wiring</li>
-            <li><span class="service-check-icon">✓</span> Bi-directional CRM sync &amp; quote automation</li>
-            <li><span class="service-check-icon">✓</span> Weekly rep calibration &amp; live playbooks</li>
-            <li><span class="service-check-icon">✓</span> Dedicated Slack channel &amp; 24h SLA</li>
-          </ul>
-          <a href="qualification.html" class="btn btn-orange" style="width: 100%;">Partner With SalesGency →</a>
         </div>
 
-        <!-- Plan 3: 30-Day DDC Build Sprint -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3>30-Day Production Sprint</h3>
-            <p>A turnkey 4-week engagement to architect, build, and deploy one complete end-to-end Triad into your accounts.</p>
+        <!-- Scope Breakdown Section -->
+        <div style="margin-top: 80px;">
+          <div class="section-header">
+            <div class="badge-tag">Capabilities</div>
+            <h2 class="section-title" style="font-size: 36px;">
+              What's <span class="serif-italic">included</span> in your membership.
+            </h2>
           </div>
-          <div class="pricing-price">
-            <span class="amount">$8,500</span>
-            <span class="term">/ fixed project</span>
+
+          <div class="features-grid">
+            <div class="feature-item-card">
+              <h4>Outbound Automation</h4>
+              <p>Apollo scraping, LinkedIn signal monitors, dynamic PAS email copywriting, Smartlead / Instantly multi-inbox setup, and reply routing.</p>
+            </div>
+            <div class="feature-item-card">
+              <h4>Inbound Speed-to-Lead</h4>
+              <p>Sub-minute form enrichment, AI lead qualification, automatic round-robin AE calendar booking, and instant Slack notifications.</p>
+            </div>
+            <div class="feature-item-card">
+              <h4>CRM Dedupe & Hygiene</h4>
+              <p>Automated HubSpot & Salesforce bidirectional sync, contact deduplication, stale opportunity cleanup, and data enrichment.</p>
+            </div>
+            <div class="feature-item-card">
+              <h4>Autonomous Agents</h4>
+              <p>Custom research agents, meeting prep assistants, transcript extraction pipelines, and automated follow-up drafting.</p>
+            </div>
+            <div class="feature-item-card">
+              <h4>Custom n8n & API Nodes</h4>
+              <p>Self-hosted or cloud n8n workflows, Python scraping microservices, Webhooks, Make scenarios, and Postgres integration.</p>
+            </div>
+            <div class="feature-item-card">
+              <h4>Enablement & Decks</h4>
+              <p>Sales collateral generation, dynamic proposal generators, cold call script banks, and revenue telemetry dashboards.</p>
+            </div>
           </div>
-          <ul class="pricing-features">
-            <li><span class="service-check-icon">✓</span> Complete 30-day DDC development cycle</li>
-            <li><span class="service-check-icon">✓</span> 1 Production Workflow (n8n/Make)</li>
-            <li><span class="service-check-icon">✓</span> 1 Domain Intelligence Skill pack (PAS/Scraping)</li>
-            <li><span class="service-check-icon">✓</span> 1 Custom Autonomous Agent</li>
-            <li><span class="service-check-icon">✓</span> Dual inbox routing &amp; CRM stage syncing</li>
-            <li><span class="service-check-icon">✓</span> Key sheet organization &amp; rep video course</li>
-            <li><span class="service-check-icon">✓</span> 30 days post-launch warranty &amp; monitoring</li>
-          </ul>
-          <a href="qualification.html" class="btn btn-secondary" style="width: 100%;">Apply for 30-Day Sprint</a>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- BOTTOM CTA BANNER -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container-wide">
-      <div class="cta-banner-digiket">
-        <div class="digiket-badge badge-orange" style="background: rgba(255, 96, 28, 0.2); border-color: rgba(255, 96, 28, 0.4); color: #FF9B71;">
-          <span>💬 Need a Custom Setup?</span>
-        </div>
-        <h2>Enterprise &amp; Multi-Brand Architectures</h2>
-        <p>Managing multiple sales divisions, international branches, or separate CRM instances? We design custom multi-agent networks tailored to enterprise compliance.</p>
-        <div class="btn-group">
-          <a href="qualification.html" class="btn btn-orange btn-lg">Book Enterprise Consultation →</a>
-          <a href="services.html" class="btn btn-ghost btn-lg" style="color: #FFF; border-color: rgba(255,255,255,0.25);">Explore Capabilities</a>
+    <!-- Mega Bottom CTA Banner -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
+            salesgency<span class="brand-symbol">®</span>
+          </div>
+          <h2 class="bottom-cta-headline">
+            Ready to build your <span class="serif-italic">revenue</span> engine?
+          </h2>
+          <p class="bottom-cta-subtitle">
+            Get started today or book a 15-minute intro call to discuss your GTM architecture.
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="qualification.html" class="btn btn-primary">Join Today</a>
+            <a href="qualification.html" class="btn btn-secondary">Book Intro Call</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer-digiket">
-    <div class="container-wide">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
-            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-          </a>
-          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Core Pillars</h4>
-          <ul>
-            <li><a href="services.html#inbound">Inbound Automation</a></li>
-            <li><a href="services.html#outbound">Outbound Automation</a></li>
-            <li><a href="services.html#revops">RevOps</a></li>
-            <li><a href="services.html#enablement">Enablement</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="process.html">Skills, Agents, Workflows</a></li>
-            <li><a href="process.html#ddc">30-Day Sprint</a></li>
-            <li><a href="templates.html">Skill Library</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="work.html">Case Studies</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
-            <li><a href="qualification.html">Paid Audit () →</a></li>
-          </ul>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
+
+  </div>
 
   <script>
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-    if (mobileMenuToggle && mobileNavDrawer) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileNavDrawer.classList.toggle('open');
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
       });
     }
   </script>
+
 </body>
 </html>
