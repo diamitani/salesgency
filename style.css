@@ -552,14 +552,14 @@ ul, ol {
 /* --------------------------------------------------------------------------
    6. Integrated Workflow & Template Marketplace Grid
    -------------------------------------------------------------------------- */
-.marketplace-section {
+.marketplace-section, .skills-section {
   padding: var(--section-pad) 0;
   width: 100%;
   background: linear-gradient(180deg, #FAFBFC 0%, #F3F4F6 50%, #FAFBFC 100%);
   position: relative;
 }
 
-.marketplace-section::before {
+.marketplace-section::before, .skills-section::before {
   content: '';
   position: absolute;
   top: 15%;
