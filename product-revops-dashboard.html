@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Velocity Telemetry Dashboard (Metabase / Supabase) — SalesGency®</title>
+  <meta name="description" content="Production Metabase &amp; Supabase SQL dashboard templates: track deal velocity, rep close rates, CAC, LTV, and pipeline leakages in real-time.">
+  <meta name="keywords" content="RevOps Dashboard Metabase, Revenue Velocity SQL, Supabase GTM Telemetry, Pipeline Conversion Dashboard, Sales Analytics">
+  <link rel="canonical" href="https://salesgency.com/product-revops-dashboard.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://salesgency.com/product-revops-dashboard.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Revenue Velocity Telemetry Dashboard — SalesGency®">
+  <meta property="og:description" content="Production Metabase and Supabase dashboard templates with pre-calculated SQL queries.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Revenue Velocity Telemetry Dashboard (Metabase / Supabase)",
+    "image": "https://salesgency.com/assets/salesgency-wordmark-dark.svg",
+    "description": "Production Metabase and Supabase dashboard templates with pre-calculated SQL queries for stage-by-stage velocity and rep conversion.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SalesGency®"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://salesgency.com/product-revops-dashboard.html",
+      "priceCurrency": "USD",
+      "price": "89.00",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "31"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item active">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Breadcrumb Header -->
+    <section style="padding-top: clamp(110px, 13vw, 150px); width: 100%;">
+      <div class="container">
+        <div style="font-size: 13.5px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; margin-bottom: 20px;">
+          <a href="index.html" style="color: var(--text-secondary);">Home</a> &gt; 
+          <a href="templates.html" style="color: var(--text-secondary);">Marketplace</a> &gt; 
+          <span style="color: var(--text-heading); font-weight: 600;">Revenue Velocity Dashboard</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Main Split Layout -->
+    <section style="width: 100%; padding-bottom: 80px;">
+      <div class="container">
+        <div class="product-detail-layout">
+          
+          <!-- Left Column: Visuals & Architecture -->
+          <div>
+            <div class="product-media-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span class="badge-tag" style="margin: 0;">Analytics &bull; Version 1.8</span>
+                <span style="font-size: 13px; font-weight: 700; color: #10B981;">⭐ 4.9 (31 Reviews)</span>
+              </div>
+
+              <!-- Interactive Node Flow Diagram -->
+              <div class="product-workflow-diagram">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.05em;">
+                  Live Execution Flowchart
+                </div>
+                <div class="work-preview-flow">
+                  <div class="flow-node"><span>1. HubSpot / Salesforce DB Sync</span><span class="flow-status-pill">Connected</span></div>
+                  <div class="flow-node"><span>2. SQL Pipeline Velocity &amp; Cohort Views</span><span class="flow-status-pill">Computed</span></div>
+                  <div class="flow-node"><span>3. Executive Metabase Visuals &amp; Heatmaps</span><span class="flow-status-pill">Live</span></div>
+                  <div class="flow-node"><span>4. Weekly Slack Snapshot &amp; Forecast Digest</span><span class="flow-status-pill">Dispatched</span></div>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Compatible Tech Stack:</div>
+              <div class="tech-badge-strip">
+                <span class="tech-badge-item">📊 Metabase (Open-Source / Cloud)</span>
+                <span class="tech-badge-item">⚡ Supabase / PostgreSQL</span>
+                <span class="tech-badge-item">🧡 HubSpot CRM Data Hub</span>
+                <span class="tech-badge-item">💬 Slack Webhooks</span>
+              </div>
+
+              <!-- Code Preview -->
+              <div style="font-size: 13px; font-weight: 700; color: var(--text-heading); margin-top: 24px;">Velocity SQL Calculation Snippet:</div>
+              <div class="code-preview-block">
+SELECT 
+  rep_name,
+  AVG(closed_date - created_date) as avg_days_to_close,
+  SUM(deal_amount) as total_pipeline_won,
+  COUNT(CASE WHEN stage = 'Closed Won' THEN 1 END) * 100.0 / COUNT(*) as win_rate
+FROM deals 
+WHERE created_date >= NOW() - INTERVAL '90 days'
+GROUP BY rep_name;</div>
+
+            </div>
+
+            <!-- What's Included Box -->
+            <div style="margin-top: 32px;">
+              <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 16px;">What's Included in This Package</h3>
+              <div class="package-includes-grid">
+                <div class="package-item">
+                  <span style="font-size: 20px;">📊</span>
+                  <div>
+                    <strong>Metabase Dashboard JSON Export</strong>
+                    8 pre-built cards: cohort velocity, CAC payback, rep win rates.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🐘</span>
+                  <div>
+                    <strong>SQL Schema &amp; Views Scripts</strong>
+                    Optimized PostgreSQL / Supabase views for zero-latency queries.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">💬</span>
+                  <div>
+                    <strong>Automated Slack Digest n8n Node</strong>
+                    Sends weekly executive summaries with key variance highlights.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🎥</span>
+                  <div>
+                    <strong>Deployment Video Walkthrough</strong>
+                    Loom guide on importing JSON dashboards into Metabase in minutes.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Checkout & Tool Compatibility Selector -->
+          <div class="product-info-panel">
+            
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-md);">
+              
+              <div class="product-price-headline">
+                <span class="product-price-amount">$89</span>
+                <span class="product-price-original">$249</span>
+                <span class="discount-pill">64% OFF</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px; margin-bottom: 20px;">One-time purchase &bull; Instant JSON download &bull; Lifetime updates</p>
+
+              <h1 style="font-size: 26px; font-weight: 800; color: var(--text-heading); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.02em;">
+                Revenue Velocity Telemetry Dashboard
+              </h1>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+                Stop relying on messy spreadsheets. This production Metabase template calculates true pipeline velocity, rep stage conversion, and revenue leakages in real time.
+              </p>
+
+              <!-- Interactive Stack Checker -->
+              <div class="tool-compatibility-card" style="margin-bottom: 24px;">
+                <h4>⚡ Verify Your Stack Compatibility:</h4>
+                <div class="compat-status-row">
+                  <span>BI Platform:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Metabase, Supabase Dashboards</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Database:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ PostgreSQL, Supabase, MySQL</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>CRMs:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ HubSpot, Salesforce, Stripe Billing</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Alerts:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Slack Executive Channels</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <button class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700; margin-bottom: 12px;" onclick="alert('Checkout initiated for Revenue Velocity Dashboard ($89).')">
+                Download Blueprint Now ($89) &rarr;
+              </button>
+
+              <a href="qualification.html" class="btn btn-secondary" style="width: 100%; padding: 14px; font-size: 14px; text-align: center; display: block;">
+                Or have us deploy &amp; customize it in-house ($495 Audit)
+              </a>
+
+              <div style="display: flex; justify-content: center; gap: 16px; font-size: 12.5px; color: var(--text-muted); margin-top: 16px;">
+                <span>🔒 Secure Stripe Checkout</span>
+                <span>•</span>
+                <span>⚡ Instant JSON Download</span>
+                <span>•</span>
+                <span>🛡️ 30-Day Guarantee</span>
+              </div>
+
+            </div>
+
+            <!-- Master Bundle Upsell Box -->
+            <div style="background: #F8F9FA; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
+              <span class="discount-pill" style="margin-bottom: 8px; display: inline-block;">VALUE DEAL</span>
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Want all 25+ GTM Blueprints?</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px;">
+                Get every single workflow, scraper, and prompt package for just <strong>$149</strong> (Total value $1,240+).
+              </p>
+              <a href="product-master-bundle.html" class="btn btn-secondary" style="width: 100%; font-size: 13px;">View All-Access Bundle ($149) &rarr;</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="agents.html" class="footer-link">Architecture</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+
+</body>
+</html>

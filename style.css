@@ -1378,18 +1378,189 @@ ul, ol {
   }
 }
 
-@media (max-width: 810px) {
-  .nav-menu, .btn-book-call {
-    display: none;
+/* --------------------------------------------------------------------------
+   12. Product Detail Pages & Tech Stack Filtering
+   -------------------------------------------------------------------------- */
+.tech-filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tech-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.tech-pill-btn:hover {
+  color: var(--text-heading);
+  border-color: #000000;
+  background: #FFFFFF;
+}
+
+.tech-pill-btn.active {
+  color: #FFFFFF;
+  background: #000000;
+  border-color: #000000;
+}
+
+/* Product Detail Page Split Layout */
+.product-detail-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 40px 0 80px;
+}
+
+.product-media-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.product-workflow-diagram {
+  background: #F8F9FA;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.product-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-price-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.product-price-amount {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--text-heading);
+  font-family: var(--font-mono);
+  letter-spacing: -0.03em;
+}
+
+.product-price-original {
+  font-size: 20px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-family: var(--font-mono);
+}
+
+.tech-badge-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 20px;
+}
+
+.tech-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #F3F4F6;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.tool-compatibility-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.tool-compatibility-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 12px;
+}
+
+.compat-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-hairline);
+  font-size: 14px;
+}
+
+.compat-status-row:last-child {
+  border-bottom: none;
+}
+
+.package-includes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.package-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  background: #F8F9FA;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.package-item strong {
+  color: var(--text-heading);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.code-preview-block {
+  background: #000000;
+  color: #F3F4F6;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  overflow-x: auto;
+  line-height: 1.5;
+  margin: 16px 0;
+}
+
+@media (max-width: 960px) {
+  .product-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .mobile-nav-toggle {
-    display: block;
-  }
-  .products-grid, .features-grid {
+  .package-includes-grid {
     grid-template-columns: 1fr;
   }
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
+

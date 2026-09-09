@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sub-Minute Inbound AI Lead Responder (n8n Blueprint) — SalesGency®</title>
+  <meta name="description" content="Production n8n workflow blueprint: Sub-30s inbound lead qualification, real-time Clearbit/LinkedIn enrichment, Slack triage, and Calendly routing.">
+  <meta name="keywords" content="Inbound Speed to Lead n8n, AI Lead Responder, Form to Calendar Automation, Inbound Triage n8n, RevOps Speed to Lead">
+  <link rel="canonical" href="https://salesgency.com/product-inbound-responder.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://salesgency.com/product-inbound-responder.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Sub-Minute Inbound AI Lead Responder — SalesGency®">
+  <meta property="og:description" content="Route inbound demo leads to your sales reps' calendars in under 30 seconds.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Sub-Minute Inbound AI Lead Responder (n8n Blueprint)",
+    "image": "https://salesgency.com/assets/salesgency-wordmark-dark.svg",
+    "description": "Real-time lead enrichment and AI qualification routing inbound demo requests to sales rep calendars within 30 seconds of form submission.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SalesGency®"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://salesgency.com/product-inbound-responder.html",
+      "priceCurrency": "USD",
+      "price": "79.00",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "39"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item active">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Breadcrumb Header -->
+    <section style="padding-top: clamp(110px, 13vw, 150px); width: 100%;">
+      <div class="container">
+        <div style="font-size: 13.5px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; margin-bottom: 20px;">
+          <a href="index.html" style="color: var(--text-secondary);">Home</a> &gt; 
+          <a href="templates.html" style="color: var(--text-secondary);">Marketplace</a> &gt; 
+          <span style="color: var(--text-heading); font-weight: 600;">Sub-Minute Inbound AI Responder</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Main Split Layout -->
+    <section style="width: 100%; padding-bottom: 80px;">
+      <div class="container">
+        <div class="product-detail-layout">
+          
+          <!-- Left Column: Visuals & Architecture -->
+          <div>
+            <div class="product-media-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span class="badge-tag" style="margin: 0;">Inbound Pipeline &bull; Version 3.1</span>
+                <span style="font-size: 13px; font-weight: 700; color: #10B981;">⭐ 4.9 (39 Reviews)</span>
+              </div>
+
+              <!-- Interactive Node Flow Diagram -->
+              <div class="product-workflow-diagram">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.05em;">
+                  Live Execution Flowchart
+                </div>
+                <div class="work-preview-flow">
+                  <div class="flow-node"><span>1. Demo Form Webhook Ingest</span><span class="flow-status-pill">&lt; 1s</span></div>
+                  <div class="flow-node"><span>2. Clearbit &amp; LinkedIn ICP Score: 96/100</span><span class="flow-status-pill">Scored</span></div>
+                  <div class="flow-node"><span>3. Urgent Slack Alert &amp; AE Round-Robin</span><span class="flow-status-pill">Assigned</span></div>
+                  <div class="flow-node"><span>4. Personalized SMS &amp; Email Calendar Link</span><span class="flow-status-pill">&lt; 22s</span></div>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Compatible Tech Stack:</div>
+              <div class="tech-badge-strip">
+                <span class="tech-badge-item">⚡ n8n (Cloud &amp; Self-Hosted)</span>
+                <span class="tech-badge-item">📝 Typeform / Webflow Forms / HubSpot</span>
+                <span class="tech-badge-item">💬 Slack Webhooks</span>
+                <span class="tech-badge-item">📅 Calendly / Chili Piper / Cal.com</span>
+                <span class="tech-badge-item">📲 Twilio SMS</span>
+                <span class="tech-badge-item">🤖 OpenAI GPT-4o</span>
+              </div>
+
+              <!-- Code Preview -->
+              <div style="font-size: 13px; font-weight: 700; color: var(--text-heading); margin-top: 24px;">Webhook Listener Schema:</div>
+              <div class="code-preview-block">
+POST /webhook/inbound-lead-triage
+Headers: { "Authorization": "Bearer {{YOUR_SECRET}}" }
+Body: { "email": "buyer@company.com", "first_name": "Sarah", "company": "ScaleTech" }
+// Triggers instant enrichment & round-robin calendar assignment</div>
+
+            </div>
+
+            <!-- What's Included Box -->
+            <div style="margin-top: 32px;">
+              <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 16px;">What's Included in This Package</h3>
+              <div class="package-includes-grid">
+                <div class="package-item">
+                  <span style="font-size: 20px;">📦</span>
+                  <div>
+                    <strong>Production n8n JSON Blueprint</strong>
+                    12-node speed-to-lead flow with fallback routing.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">📲</span>
+                  <div>
+                    <strong>Twilio &amp; Slack Notification Templates</strong>
+                    High-urgency alert templates with 1-click accept buttons.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🧠</span>
+                  <div>
+                    <strong>ICP Evaluation Prompt Pack</strong>
+                    GPT-4o reasoning schema to filter out students, personal emails &amp; spam.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🎥</span>
+                  <div>
+                    <strong>Setup &amp; Testing Loom Video</strong>
+                    Walkthrough on connecting your web forms to n8n in 5 minutes.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Checkout & Tool Compatibility Selector -->
+          <div class="product-info-panel">
+            
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-md);">
+              
+              <div class="product-price-headline">
+                <span class="product-price-amount">$79</span>
+                <span class="product-price-original">$199</span>
+                <span class="discount-pill">60% OFF</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px; margin-bottom: 20px;">One-time purchase &bull; Instant JSON download &bull; Lifetime updates</p>
+
+              <h1 style="font-size: 26px; font-weight: 800; color: var(--text-heading); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.02em;">
+                Sub-Minute Inbound AI Lead Responder
+              </h1>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+                Studies show replying in &lt; 5 minutes increases conversion by 391%. This automated n8n blueprint enriches prospect accounts and sends instant booking links in under 30 seconds.
+              </p>
+
+              <!-- Interactive Stack Checker -->
+              <div class="tool-compatibility-card" style="margin-bottom: 24px;">
+                <h4>⚡ Verify Your Stack Compatibility:</h4>
+                <div class="compat-status-row">
+                  <span>Web Forms:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Typeform, Webflow, HubSpot, WordPress</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Enrichment:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Clearbit, Apollo, Brandfetch</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Calendars:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Calendly, Cal.com, HubSpot Meetings</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Notifications:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Slack, Microsoft Teams, Twilio SMS</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <button class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700; margin-bottom: 12px;" onclick="alert('Checkout initiated for Sub-Minute Inbound AI Responder ($79).')">
+                Download Blueprint Now ($79) &rarr;
+              </button>
+
+              <a href="qualification.html" class="btn btn-secondary" style="width: 100%; padding: 14px; font-size: 14px; text-align: center; display: block;">
+                Or have us deploy &amp; customize it in-house ($495 Audit)
+              </a>
+
+              <div style="display: flex; justify-content: center; gap: 16px; font-size: 12.5px; color: var(--text-muted); margin-top: 16px;">
+                <span>🔒 Secure Stripe Checkout</span>
+                <span>•</span>
+                <span>⚡ Instant JSON Download</span>
+                <span>•</span>
+                <span>🛡️ 30-Day Guarantee</span>
+              </div>
+
+            </div>
+
+            <!-- Master Bundle Upsell Box -->
+            <div style="background: #F8F9FA; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
+              <span class="discount-pill" style="margin-bottom: 8px; display: inline-block;">VALUE DEAL</span>
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Want all 25+ GTM Blueprints?</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px;">
+                Get every single workflow, scraper, and prompt package for just <strong>$149</strong> (Total value $1,240+).
+              </p>
+              <a href="product-master-bundle.html" class="btn btn-secondary" style="width: 100%; font-size: 13px;">View All-Access Bundle ($149) &rarr;</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="agents.html" class="footer-link">Architecture</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+
+</body>
+</html>

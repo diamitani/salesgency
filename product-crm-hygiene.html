@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bidirectional CRM Hygiene &amp; Scorer (n8n Blueprint) — SalesGency®</title>
+  <meta name="description" content="Production n8n workflow blueprint: automated HubSpot and Salesforce deduplication, stale opportunity watchdog, and real-time Slack risk alerts.">
+  <meta name="keywords" content="CRM Hygiene n8n, HubSpot Deduplication Automation, Salesforce Data Cleanup n8n, RevOps Telemetry, Stale Deal Alert">
+  <link rel="canonical" href="https://salesgency.com/product-crm-hygiene.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://salesgency.com/product-crm-hygiene.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Bidirectional CRM Hygiene &amp; Scorer — SalesGency®">
+  <meta property="og:description" content="Automated deal stage audits, contact deduplication, and ghosting deal alerts for HubSpot and Salesforce.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Bidirectional CRM Hygiene & Scorer (n8n Blueprint)",
+    "image": "https://salesgency.com/assets/salesgency-wordmark-dark.svg",
+    "description": "Automated deal stage progression audits, contact deduplication, ghosting deal alerts, and real-time synchronization between your CRM and Slack.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SalesGency®"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://salesgency.com/product-crm-hygiene.html",
+      "priceCurrency": "USD",
+      "price": "69.00",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "34"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item active">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Breadcrumb Header -->
+    <section style="padding-top: clamp(110px, 13vw, 150px); width: 100%;">
+      <div class="container">
+        <div style="font-size: 13.5px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; margin-bottom: 20px;">
+          <a href="index.html" style="color: var(--text-secondary);">Home</a> &gt; 
+          <a href="templates.html" style="color: var(--text-secondary);">Marketplace</a> &gt; 
+          <span style="color: var(--text-heading); font-weight: 600;">Bidirectional CRM Hygiene &amp; Scorer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Main Split Layout -->
+    <section style="width: 100%; padding-bottom: 80px;">
+      <div class="container">
+        <div class="product-detail-layout">
+          
+          <!-- Left Column: Visuals & Architecture -->
+          <div>
+            <div class="product-media-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span class="badge-tag" style="margin: 0;">RevOps &bull; Version 2.1</span>
+                <span style="font-size: 13px; font-weight: 700; color: #10B981;">⭐ 4.9 (34 Reviews)</span>
+              </div>
+
+              <!-- Interactive Node Flow Diagram -->
+              <div class="product-workflow-diagram">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.05em;">
+                  Live Execution Flowchart
+                </div>
+                <div class="work-preview-flow">
+                  <div class="flow-node"><span>1. HubSpot / Salesforce Webhook Trigger</span><span class="flow-status-pill">Active</span></div>
+                  <div class="flow-node"><span>2. Fuzzy Matching Deduplication Engine</span><span class="flow-status-pill">Cleaned</span></div>
+                  <div class="flow-node"><span>3. Stage Progression &amp; Ghosting Risk Audit</span><span class="flow-status-pill">Scored</span></div>
+                  <div class="flow-node"><span>4. Slack #revops-alerts Broadcast</span><span class="flow-status-pill">Reported</span></div>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Compatible Tech Stack:</div>
+              <div class="tech-badge-strip">
+                <span class="tech-badge-item">⚡ n8n (Cloud &amp; Self-Hosted)</span>
+                <span class="tech-badge-item">🧡 HubSpot CRM API</span>
+                <span class="tech-badge-item">☁️ Salesforce REST API</span>
+                <span class="tech-badge-item">💬 Slack Webhooks</span>
+                <span class="tech-badge-item">🐘 PostgreSQL / MySQL</span>
+              </div>
+
+              <!-- Code Preview -->
+              <div style="font-size: 13px; font-weight: 700; color: var(--text-heading); margin-top: 24px;">Deduplication SQL Query Logic:</div>
+              <div class="code-preview-block">
+SELECT email, company_domain, COUNT(*) 
+FROM crm_contacts 
+GROUP BY email, company_domain 
+HAVING COUNT(*) > 1;
+// Automatically merges secondary contact notes and preserves master deal ID</div>
+
+            </div>
+
+            <!-- What's Included Box -->
+            <div style="margin-top: 32px;">
+              <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 16px;">What's Included in This Package</h3>
+              <div class="package-includes-grid">
+                <div class="package-item">
+                  <span style="font-size: 20px;">📦</span>
+                  <div>
+                    <strong>Production n8n JSON Blueprint</strong>
+                    16-node bidirectional CRM hygiene &amp; deduplication pipeline.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🔍</span>
+                  <div>
+                    <strong>Fuzzy Domain Matcher Node</strong>
+                    JavaScript function node matching subdomains and subsidiaries.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">💬</span>
+                  <div>
+                    <strong>Slack BlockKit Deal Alert Card</strong>
+                    Pre-formatted interactive Slack cards with 1-click update buttons.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🎥</span>
+                  <div>
+                    <strong>HubSpot &amp; Salesforce Setup Loom</strong>
+                    Video guide on OAuth2 app setup and webhook listener activation.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Checkout & Tool Compatibility Selector -->
+          <div class="product-info-panel">
+            
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-md);">
+              
+              <div class="product-price-headline">
+                <span class="product-price-amount">$69</span>
+                <span class="product-price-original">$179</span>
+                <span class="discount-pill">61% OFF</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px; margin-bottom: 20px;">One-time purchase &bull; Instant JSON download &bull; Lifetime updates</p>
+
+              <h1 style="font-size: 26px; font-weight: 800; color: var(--text-heading); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.02em;">
+                Bidirectional CRM Hygiene &amp; Scorer
+              </h1>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+                Keep your CRM clean without nagging sales reps. Automated deal stage progression audits, contact deduplication, ghosting deal alerts, and real-time synchronization.
+              </p>
+
+              <!-- Interactive Stack Checker -->
+              <div class="tool-compatibility-card" style="margin-bottom: 24px;">
+                <h4>⚡ Verify Your Stack Compatibility:</h4>
+                <div class="compat-status-row">
+                  <span>CRMs:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ HubSpot, Salesforce, Pipedrive, Close</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Execution:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ n8n (Self-Hosted / Cloud)</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Alerts:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Slack, Microsoft Teams, Email</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Databases:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ PostgreSQL, Supabase, MySQL</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <button class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700; margin-bottom: 12px;" onclick="alert('Checkout initiated for CRM Hygiene & Scorer ($69).')">
+                Download Blueprint Now ($69) &rarr;
+              </button>
+
+              <a href="qualification.html" class="btn btn-secondary" style="width: 100%; padding: 14px; font-size: 14px; text-align: center; display: block;">
+                Or have us deploy &amp; customize it in-house ($495 Audit)
+              </a>
+
+              <div style="display: flex; justify-content: center; gap: 16px; font-size: 12.5px; color: var(--text-muted); margin-top: 16px;">
+                <span>🔒 Secure Stripe Checkout</span>
+                <span>•</span>
+                <span>⚡ Instant JSON Download</span>
+                <span>•</span>
+                <span>🛡️ 30-Day Guarantee</span>
+              </div>
+
+            </div>
+
+            <!-- Master Bundle Upsell Box -->
+            <div style="background: #F8F9FA; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
+              <span class="discount-pill" style="margin-bottom: 8px; display: inline-block;">VALUE DEAL</span>
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Want all 25+ GTM Blueprints?</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px;">
+                Get every single workflow, scraper, and prompt package for just <strong>$149</strong> (Total value $1,240+).
+              </p>
+              <a href="product-master-bundle.html" class="btn btn-secondary" style="width: 100%; font-size: 13px;">View All-Access Bundle ($149) &rarr;</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="agents.html" class="footer-link">Architecture</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+
+</body>
+</html>

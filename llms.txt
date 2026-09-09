@@ -36,3 +36,14 @@ B2B founders, CROs, VPs of Sales, Heads of RevOps, and growth stage scale-ups se
 - Prompt Skills Catalog: https://salesgency.com/skills.html
 - Deployment Specifications: https://salesgency.com/deployment.html
 - About & Leadership: https://salesgency.com/about.html
+
+## Dedicated Product Blueprints
+- Apollo & LinkedIn Intent Scraper Pro ($97): https://salesgency.com/product-apollo-scraper.html
+- Sub-Minute Inbound AI Lead Responder ($79): https://salesgency.com/product-inbound-responder.html
+- Multi-Channel Cold Outreach Engine ($129): https://salesgency.com/product-cold-outreach.html
+- Bidirectional CRM Hygiene & Scorer ($69): https://salesgency.com/product-crm-hygiene.html
+- Hiring Signal & Job Board Scraper ($89): https://salesgency.com/product-hiring-scraper.html
+- Revenue Velocity Telemetry Dashboard ($89): https://salesgency.com/product-revops-dashboard.html
+- Cold Email Deliverability & DNS Kit (FREE): https://salesgency.com/product-deliverability-dns.html
+- Instant Company Firmographic Enricher (FREE): https://salesgency.com/product-firmographic-enricher.html
+- All-Access GTM Automation Master Bundle ($149): https://salesgency.com/product-master-bundle.html

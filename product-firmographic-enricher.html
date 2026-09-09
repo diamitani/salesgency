@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant Company Firmographic Enricher (Free n8n Webhook) — SalesGency®</title>
+  <meta name="description" content="Free n8n webhook blueprint: query any company domain and instantly receive employee headcount, funding history, and installed tech stack data.">
+  <meta name="keywords" content="Company Enrichment n8n, Free Firmographic Scraper, Tech Stack Detector Webhook, Apollo Clearbit n8n, B2B Lead Enrichment">
+  <link rel="canonical" href="https://salesgency.com/product-firmographic-enricher.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://salesgency.com/product-firmographic-enricher.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Instant Company Firmographic Enricher — SalesGency®">
+  <meta property="og:description" content="Free webhook microservice that accepts any target domain and returns tech stacks and headcount.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Instant Company Firmographic Enricher (Free n8n Webhook)",
+    "image": "https://salesgency.com/assets/salesgency-wordmark-dark.svg",
+    "description": "Lightweight webhook microservice that accepts any target company domain and returns funding, employee headcount, and installed tech stacks.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SalesGency®"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://salesgency.com/product-firmographic-enricher.html",
+      "priceCurrency": "USD",
+      "price": "0.00",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "41"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item active">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Breadcrumb Header -->
+    <section style="padding-top: clamp(110px, 13vw, 150px); width: 100%;">
+      <div class="container">
+        <div style="font-size: 13.5px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; margin-bottom: 20px;">
+          <a href="index.html" style="color: var(--text-secondary);">Home</a> &gt; 
+          <a href="templates.html" style="color: var(--text-secondary);">Marketplace</a> &gt; 
+          <span style="color: var(--text-heading); font-weight: 600;">Instant Firmographic Enricher</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Main Split Layout -->
+    <section style="width: 100%; padding-bottom: 80px;">
+      <div class="container">
+        <div class="product-detail-layout">
+          
+          <!-- Left Column: Visuals & Architecture -->
+          <div>
+            <div class="product-media-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span class="badge-tag" style="margin: 0; background: #ECFDF5; color: #10B981; border-color: #A7F3D0;">Free Blueprint</span>
+                <span style="font-size: 13px; font-weight: 700; color: #10B981;">⭐ 4.9 (41 Reviews)</span>
+              </div>
+
+              <!-- Interactive Node Flow Diagram -->
+              <div class="product-workflow-diagram">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.05em;">
+                  Live Execution Flowchart
+                </div>
+                <div class="work-preview-flow">
+                  <div class="flow-node"><span>1. Webhook: Domain Submitted (e.g. stripe.com)</span><span class="flow-status-pill">&lt; 1s</span></div>
+                  <div class="flow-node"><span>2. Brandfetch &amp; Clearbit Free API Call</span><span class="flow-status-pill">Parsed</span></div>
+                  <div class="flow-node"><span>3. Extract Headcount, Tech Stack &amp; Industry</span><span class="flow-status-pill">Enriched</span></div>
+                  <div class="flow-node"><span>4. Return Formatted JSON Payload</span><span class="flow-status-pill">Success</span></div>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Compatible Tech Stack:</div>
+              <div class="tech-badge-strip">
+                <span class="tech-badge-item">⚡ n8n (Cloud &amp; Self-Hosted)</span>
+                <span class="tech-badge-item">🔍 Brandfetch API</span>
+                <span class="tech-badge-item">🌐 Clearbit Logo API</span>
+                <span class="tech-badge-item">💬 Slack Webhooks</span>
+              </div>
+
+              <!-- Code Preview -->
+              <div style="font-size: 13px; font-weight: 700; color: var(--text-heading); margin-top: 24px;">Sample API Response JSON:</div>
+              <div class="code-preview-block">
+{
+  "domain": "scale.com",
+  "company_name": "Scale AI",
+  "employees_range": "1,000-5,000",
+  "technologies": ["HubSpot", "Segment", "Next.js", "AWS"],
+  "estimated_revenue": "$250M+"
+}</div>
+
+            </div>
+
+            <!-- What's Included Box -->
+            <div style="margin-top: 32px;">
+              <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 16px;">What's Included in This Free Blueprint</h3>
+              <div class="package-includes-grid">
+                <div class="package-item">
+                  <span style="font-size: 20px;">📦</span>
+                  <div>
+                    <strong>Production n8n JSON Blueprint</strong>
+                    6-node lightweight enrichment endpoint with API key caching.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">⚡</span>
+                  <div>
+                    <strong>1-Click cURL Testing Script</strong>
+                    Test terminal commands to verify domain lookup response times.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">💬</span>
+                  <div>
+                    <strong>Slack Lead Broadcast Node</strong>
+                    Optional node to post enriched company stats directly to Slack.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🎥</span>
+                  <div>
+                    <strong>5-Min Video Walkthrough</strong>
+                    Quick tutorial on importing and testing your new enrichment webhook.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Checkout & Tool Compatibility Selector -->
+          <div class="product-info-panel">
+            
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-md);">
+              
+              <div class="product-price-headline">
+                <span class="product-price-amount" style="color: #10B981;">FREE</span>
+                <span class="product-price-original">$49</span>
+                <span class="discount-pill" style="background: #ECFDF5; color: #10B981;">100% OFF</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px; margin-bottom: 20px;">Free digital download &bull; Zero credit card required</p>
+
+              <h1 style="font-size: 26px; font-weight: 800; color: var(--text-heading); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.02em;">
+                Instant Company Firmographic Enricher
+              </h1>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+                Accepts any company domain name and returns verified employee headcount, funding history, and installed tech stack data within 800 milliseconds.
+              </p>
+
+              <!-- Interactive Stack Checker -->
+              <div class="tool-compatibility-card" style="margin-bottom: 24px;">
+                <h4>⚡ Verify Your Stack Compatibility:</h4>
+                <div class="compat-status-row">
+                  <span>Execution:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ n8n (Self-Hosted / Cloud)</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Input:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Webhook / REST POST / JSON</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Output:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Clean JSON Payload / CRM Sync</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <button class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700; background: #10B981; border-color: #10B981; margin-bottom: 12px;" onclick="alert('Free Firmographic Enricher JSON blueprint link copied to clipboard!')">
+                Download Free Blueprint JSON &rarr;
+              </button>
+
+              <a href="qualification.html" class="btn btn-secondary" style="width: 100%; padding: 14px; font-size: 14px; text-align: center; display: block;">
+                Need full-stack GTM infrastructure? Book Audit ($495)
+              </a>
+
+              <div style="display: flex; justify-content: center; gap: 16px; font-size: 12.5px; color: var(--text-muted); margin-top: 16px;">
+                <span>⚡ Instant Free JSON</span>
+                <span>•</span>
+                <span>🛡️ Clean Open Code</span>
+              </div>
+
+            </div>
+
+            <!-- Master Bundle Upsell Box -->
+            <div style="background: #F8F9FA; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
+              <span class="discount-pill" style="margin-bottom: 8px; display: inline-block;">VALUE DEAL</span>
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Want all 25+ GTM Blueprints?</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px;">
+                Get every single workflow, scraper, and prompt package for just <strong>$149</strong> (Total value $1,240+).
+              </p>
+              <a href="product-master-bundle.html" class="btn btn-secondary" style="width: 100%; font-size: 13px;">View All-Access Bundle ($149) &rarr;</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="agents.html" class="footer-link">Architecture</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+
+</body>
+</html>

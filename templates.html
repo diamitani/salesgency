@@ -131,16 +131,29 @@
           Production GTM <span class="serif-italic">blueprints &amp; workflows.</span>
         </h1>
         <p class="hero-description">
-          Download battle-tested n8n JSON nodes, Python scrapers, and prompt skill stacks. Import into your own instance in minutes.
+          Download battle-tested n8n JSON nodes, Python scrapers, and prompt skill stacks. Import into your own private instance in minutes.
         </p>
 
-        <!-- Filter Tabs -->
+        <!-- Category Filter Tabs -->
         <div class="filter-tabs-wrapper">
-          <button class="filter-tab-btn active" onclick="filterMarketplace('all')">All Products (8)</button>
-          <button class="filter-tab-btn" onclick="filterMarketplace('outbound')">Outbound (3)</button>
-          <button class="filter-tab-btn" onclick="filterMarketplace('inbound')">Inbound (2)</button>
-          <button class="filter-tab-btn" onclick="filterMarketplace('revops')">CRM &amp; RevOps (2)</button>
-          <button class="filter-tab-btn" onclick="filterMarketplace('free')">Free Blueprints (2)</button>
+          <button class="filter-tab-btn active" onclick="filterCategory('all', this)">All Categories (8)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('outbound', this)">Outbound (3)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('inbound', this)">Inbound (2)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('revops', this)">CRM &amp; RevOps (2)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('free', this)">Free Blueprints (2)</button>
+        </div>
+
+        <!-- Tool & Compatible Tech Stack Filter Bar -->
+        <div class="tech-filter-container">
+          <span style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-right: 4px;">Filter by Tool:</span>
+          <button class="tech-pill-btn active" onclick="filterTech('all', this)">All Tools</button>
+          <button class="tech-pill-btn" onclick="filterTech('apollo', this)">🎯 Apollo.io</button>
+          <button class="tech-pill-btn" onclick="filterTech('hubspot', this)">🧡 HubSpot</button>
+          <button class="tech-pill-btn" onclick="filterTech('smartlead', this)">📧 Smartlead</button>
+          <button class="tech-pill-btn" onclick="filterTech('instantly', this)">⚡ Instantly</button>
+          <button class="tech-pill-btn" onclick="filterTech('claude', this)">🤖 Claude 3.5</button>
+          <button class="tech-pill-btn" onclick="filterTech('metabase', this)">📊 Metabase</button>
+          <button class="tech-pill-btn" onclick="filterTech('salesforce', this)">☁️ Salesforce</button>
         </div>
 
       </div>
@@ -150,10 +163,10 @@
     <section class="marketplace-section" style="padding-top: 0;">
       <div class="container">
         
-        <div class="products-grid">
+        <div class="products-grid" id="marketplaceGrid">
           
-          <!-- Item 1 -->
-          <div class="product-card" data-cat="outbound">
+          <!-- Item 1: Apollo Scraper -->
+          <div class="product-card" data-cat="outbound" data-tools="apollo linkedin smartlead hubspot">
             <div class="product-thumbnail">
               <span class="product-badge-float">Best Selling</span>
               <div class="node-graph-mock">
@@ -164,21 +177,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Apollo &amp; LinkedIn Intent Scraper Pro</h3>
+                <h3 class="product-title"><a href="product-apollo-scraper.html" style="color: inherit;">Apollo &amp; LinkedIn Intent Scraper Pro</a></h3>
                 <span class="product-price">$97</span>
               </div>
               <p class="product-description">
                 Autonomous n8n blueprint that monitors hiring intent, tech stack changes, reveals verified mobiles/emails, and shields your CRM from duplicates.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, Apollo.io, Smartlead, HubSpot
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Apollo Intent Scraper ($97)')">Download Blueprint ($97)</button>
+                <a href="product-apollo-scraper.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Product Specs ($97) &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 2 -->
-          <div class="product-card" data-cat="inbound">
+          <!-- Item 2: Inbound Responder -->
+          <div class="product-card" data-cat="inbound" data-tools="hubspot smartlead slack">
             <div class="product-thumbnail">
               <span class="product-badge-float">Popular</span>
               <div class="node-graph-mock">
@@ -189,21 +205,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Sub-Minute Inbound AI Lead Responder</h3>
+                <h3 class="product-title"><a href="product-inbound-responder.html" style="color: inherit;">Sub-Minute Inbound AI Lead Responder</a></h3>
                 <span class="product-price">$79</span>
               </div>
               <p class="product-description">
                 Real-time lead enrichment and AI qualification routing inbound demo requests to sales rep calendars within 30 seconds of form submission.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, Typeform, Slack, Calendly, GPT-4o
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Inbound AI Responder ($79)')">Download Blueprint ($79)</button>
+                <a href="product-inbound-responder.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Product Specs ($79) &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 3 -->
-          <div class="product-card" data-cat="outbound">
+          <!-- Item 3: Cold Outreach Engine -->
+          <div class="product-card" data-cat="outbound" data-tools="claude instantly smartlead apollo">
             <div class="product-thumbnail">
               <span class="product-badge-float">Best Selling</span>
               <div class="node-graph-mock">
@@ -214,21 +233,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Multi-Channel Cold Outreach Engine</h3>
+                <h3 class="product-title"><a href="product-cold-outreach.html" style="color: inherit;">Multi-Channel Cold Outreach Engine</a></h3>
                 <span class="product-price">$129</span>
               </div>
               <p class="product-description">
                 Hyper-personalized email and LinkedIn sequence generator using deep company pain-point research and proven PAS copywriting formulas.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, Claude 3.5 Sonnet, Instantly, Smartlead
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Cold Outreach Engine ($129)')">Download Blueprint ($129)</button>
+                <a href="product-cold-outreach.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Product Specs ($129) &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 4 -->
-          <div class="product-card" data-cat="revops">
+          <!-- Item 4: CRM Hygiene -->
+          <div class="product-card" data-cat="revops" data-tools="hubspot salesforce slack">
             <div class="product-thumbnail">
               <div class="node-graph-mock">
                 <div class="mock-node-row"><span>HubSpot / Salesforce Monitor</span><span style="color: #10B981;">Active</span></div>
@@ -238,21 +260,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Bidirectional CRM Hygiene &amp; Scorer</h3>
+                <h3 class="product-title"><a href="product-crm-hygiene.html" style="color: inherit;">Bidirectional CRM Hygiene &amp; Scorer</a></h3>
                 <span class="product-price">$69</span>
               </div>
               <p class="product-description">
                 Automated deal stage progression audits, contact deduplication, ghosting deal alerts, and real-time synchronization between your CRM and Slack.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, HubSpot CRM, Salesforce, Slack
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for CRM Hygiene ($69)')">Download Blueprint ($69)</button>
+                <a href="product-crm-hygiene.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Product Specs ($69) &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 5 (Outbound) -->
-          <div class="product-card" data-cat="outbound">
+          <!-- Item 5: Hiring Signal Scraper -->
+          <div class="product-card" data-cat="outbound" data-tools="apollo smartlead instantly">
             <div class="product-thumbnail">
               <div class="node-graph-mock">
                 <div class="mock-node-row"><span>Job Posting Intent Scraper</span><span style="color: #10B981;">Active</span></div>
@@ -261,21 +286,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Hiring Signal &amp; Job Board Scraper</h3>
+                <h3 class="product-title"><a href="product-hiring-scraper.html" style="color: inherit;">Hiring Signal &amp; Job Board Scraper</a></h3>
                 <span class="product-price">$89</span>
               </div>
               <p class="product-description">
                 Scrapes Greenhouse, Lever, and LinkedIn Jobs daily to identify expanding teams and instantly finds the hiring decision maker's direct contact.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, Greenhouse, Lever, Apollo.io, Smartlead
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Job Scraper ($89)')">Download Blueprint ($89)</button>
+                <a href="product-hiring-scraper.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Product Specs ($89) &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 6 (RevOps) -->
-          <div class="product-card" data-cat="revops">
+          <!-- Item 6: RevOps Dashboard -->
+          <div class="product-card" data-cat="revops" data-tools="metabase hubspot salesforce">
             <div class="product-thumbnail">
               <div class="node-graph-mock">
                 <div class="mock-node-row"><span>PostgreSQL / Metabase Queries</span><span style="color: #10B981;">Ready</span></div>
@@ -284,21 +312,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Revenue Velocity Telemetry Dashboard</h3>
+                <h3 class="product-title"><a href="product-revops-dashboard.html" style="color: inherit;">Revenue Velocity Telemetry Dashboard</a></h3>
                 <span class="product-price">$89</span>
               </div>
               <p class="product-description">
                 Production Metabase and Supabase dashboard templates with pre-calculated SQL queries for stage-by-stage velocity and rep conversion.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: Metabase, PostgreSQL, Supabase, HubSpot
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" onclick="alert('Checkout initiated for Dashboard ($89)')">Download Blueprint ($89)</button>
+                <a href="product-revops-dashboard.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Product Specs ($89) &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 7 (Free) -->
-          <div class="product-card" data-cat="free">
+          <!-- Item 7: Deliverability Kit (Free) -->
+          <div class="product-card" data-cat="free" data-tools="smartlead instantly">
             <div class="product-thumbnail">
               <span class="product-badge-float" style="background: #10B981;">FREE</span>
               <div class="node-graph-mock">
@@ -308,21 +339,24 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Cold Email Deliverability &amp; DNS Kit</h3>
+                <h3 class="product-title"><a href="product-deliverability-dns.html" style="color: inherit;">Cold Email Deliverability &amp; DNS Kit</a></h3>
                 <span class="product-price free">FREE</span>
               </div>
               <p class="product-description">
                 Essential DNS configuration playbook, inbox warmup rails, and automated domain health check scripts to guarantee 0% spam landing.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: Cloudflare, Google Workspace, Smartlead, Instantly
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" style="background: #10B981;" onclick="alert('Free download initiated.')">Download Free Kit</button>
+                <a href="product-deliverability-dns.html" class="btn btn-primary" style="background: #10B981; border-color: #10B981; padding: 10px 18px; font-size: 13.5px; text-align: center;">View Free Kit Specs &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Want custom setup? Book Audit →</a>
               </div>
             </div>
           </div>
 
-          <!-- Item 8 (Free) -->
-          <div class="product-card" data-cat="free">
+          <!-- Item 8: Firmographic Enricher (Free) -->
+          <div class="product-card" data-cat="free" data-tools="slack">
             <div class="product-thumbnail">
               <span class="product-badge-float" style="background: #10B981;">FREE</span>
               <div class="node-graph-mock">
@@ -332,14 +366,17 @@
             </div>
             <div class="product-body">
               <div class="product-header-row">
-                <h3 class="product-title">Instant Company Firmographic Enricher</h3>
+                <h3 class="product-title"><a href="product-firmographic-enricher.html" style="color: inherit;">Instant Company Firmographic Enricher</a></h3>
                 <span class="product-price free">FREE</span>
               </div>
               <p class="product-description">
                 Lightweight webhook microservice that accepts any target company domain and returns funding, employee headcount, and installed tech stacks.
               </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n Webhook, Brandfetch API, Slack
+              </div>
               <div class="product-card-footer">
-                <button class="btn-download-blueprint" style="background: #10B981;" onclick="alert('Free download initiated.')">Download Free Enricher</button>
+                <a href="product-firmographic-enricher.html" class="btn btn-primary" style="background: #10B981; border-color: #10B981; padding: 10px 18px; font-size: 13.5px; text-align: center;">View Free Blueprint &rarr;</a>
                 <a href="qualification.html" class="btn-deploy-inhouse">Want custom setup? Book Audit →</a>
               </div>
             </div>
@@ -371,23 +408,19 @@
               </div>
               <div class="bundle-check-item">
                 <span style="color: #10B981; font-weight: 700;">✓</span>
-                <span>Lifetime updates &amp; free access to future workflow releases</span>
+                <span>Private GitHub Repository access with lifetime blueprint updates</span>
               </div>
             </div>
           </div>
 
-          <div class="bundle-card-cta">
-            <div class="bundle-price-box">
-              <span class="bundle-old-price">$499</span>
-              <span class="bundle-new-price">$149</span>
+          <div class="bundle-action-card">
+            <div class="bundle-price-header">
+              <div class="bundle-price">$149</div>
+              <div class="bundle-orig-price">$1,240 value</div>
             </div>
-            <p style="font-size: 13.5px; color: #A1A1AA;">One-time payment · Instant lifetime access</p>
-
-            <button class="btn-bundle-buy" onclick="alert('Master Bundle Checkout ($149) triggered.')">
-              Get Instant All-Access ($149) →
-            </button>
-
-            <span style="font-size: 12px; color: #71717A; margin-top: 12px;">30-Day Money-Back Guarantee</span>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">One-time payment &bull; Instant access to everything</p>
+            <a href="product-master-bundle.html" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; margin-bottom: 12px; text-align: center; display: block;">View Master Bundle Specs ($149) &rarr;</a>
+            <a href="qualification.html" style="font-size: 13px; color: var(--text-secondary); text-decoration: underline;">Need custom in-house installation? Book Audit ($495)</a>
           </div>
         </div>
 
@@ -442,18 +475,75 @@
   </div>
 
   <script>
-    function filterMarketplace(category) {
-      document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+    let activeCategory = 'all';
+    let activeTech = 'all';
 
+    function filterCategory(category, btnElement) {
+      activeCategory = category;
+      document.querySelectorAll('.filter-tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) {
+        btnElement.classList.add('active');
+      }
+      applyFilters();
+    }
+
+    function filterTech(tech, btnElement) {
+      activeTech = tech;
+      document.querySelectorAll('.tech-pill-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) {
+        btnElement.classList.add('active');
+      }
+      applyFilters();
+    }
+
+    function applyFilters() {
       const cards = document.querySelectorAll('.product-card');
+      let visibleCount = 0;
+
       cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-cat') === category) {
+        const cardCat = card.getAttribute('data-cat') || '';
+        const cardTools = (card.getAttribute('data-tools') || '').toLowerCase().split(' ');
+
+        const catMatches = (activeCategory === 'all' || cardCat === activeCategory);
+        const techMatches = (activeTech === 'all' || cardTools.includes(activeTech.toLowerCase()));
+
+        if (catMatches && techMatches) {
           card.style.display = 'flex';
+          visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+
+      // Handle empty state indicator
+      let emptyMsg = document.getElementById('filterEmptyState');
+      const grid = document.getElementById('marketplaceGrid');
+      if (visibleCount === 0) {
+        if (!emptyMsg) {
+          emptyMsg = document.createElement('div');
+          emptyMsg.id = 'filterEmptyState';
+          emptyMsg.style.cssText = 'grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: #FFFFFF; border: 1px dashed var(--border-subtle); border-radius: var(--radius-lg);';
+          emptyMsg.innerHTML = '<h3 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">No blueprints match both filters</h3><p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Try resetting the filters or book a custom build audit.</p><button onclick="resetFilters()" class="btn btn-primary" style="padding: 8px 18px; font-size: 13px;">Reset All Filters</button>';
+          grid.appendChild(emptyMsg);
+        }
+        emptyMsg.style.display = 'block';
+      } else if (emptyMsg) {
+        emptyMsg.style.display = 'none';
+      }
+    }
+
+    function resetFilters() {
+      activeCategory = 'all';
+      activeTech = 'all';
+      document.querySelectorAll('.filter-tab-btn').forEach((btn, idx) => {
+        if (idx === 0) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      document.querySelectorAll('.tech-pill-btn').forEach((btn, idx) => {
+        if (idx === 0) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      applyFilters();
     }
 
     const mobileToggle = document.getElementById('mobileNavToggle');
