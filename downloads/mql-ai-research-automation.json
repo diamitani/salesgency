@@ -1,0 +1,469 @@
+{
+  "name": "SalesGency MQL AI Research & Intent Automation Blueprint",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/objects/contacts/{{ encodeURIComponent($json.body.email) }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "idProperty",
+              "value": "email"
+            },
+            {
+              "name": "properties",
+              "value": "firstname,lastname,email,jobtitle,country,company,linkedin_url,phone,hs_lead_status,lifecyclestage,message,reason_for_contact,recent_conversion_event_name,ai_mql_response_1"
+            },
+            {
+              "name": "associations",
+              "value": "companies"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -688,
+        1008
+      ],
+      "id": "91e2db65-9ee0-4cf8-a2c1-fe4261830387",
+      "name": "Get Contact Details",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/objects/companies/{{ $json.associations.companies.results[0].id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "properties",
+              "value": "name,domain,website,industry,numberofemployees,annualrevenue,country,city,state,description,lifecyclestage"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -464,
+        1008
+      ],
+      "id": "e8ab5d27-eeca-45a2-85ab-671e93876cf3",
+      "name": "Get Associated Company",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.factors.ai/open/v1/account/{{ $json.properties.domain }}/journey/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -240,
+        1008
+      ],
+      "id": "7409c837-5647-436a-9faf-97e7b8d3bc21",
+      "name": "Get Factors API data",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "WXK2AgBNrcih4FHC",
+          "name": "Onspring API Key"
+        },
+        "httpBearerAuth": {
+          "id": "TAtcNZO5GrGpDngz",
+          "name": "Factors Journey API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write the MQL research summary.\n\nBe concise in language. instead of :  No journey data is available to indicate further engagement or interest in Atlas HXM's services, say, \" no journey data available.\" instead of \"The inquiry does not specify a need related to employment compliance or global payroll - say, no need specified\" etc. Only take key points rep need to understand. Don't use obvious data (\"filled a contact form, indcates he is interested in EOR - no shit\"). however, use all data available. DO NOT GUESS OR HALLUCINATE. IF YOU DON'T KNOW JUST SAY YOU DON'T KNOW\n\nMax 5 bullet points, 1 sentence per point.\n\nCONTACT: analyze each property value\n{{ JSON.stringify($('Get Contact Details').item.json.properties) }}\n\nCOMPANY:{{ $('Webhook').item.json.body.company }}\n\nJOURNEY SUMMARY:\n{{ $json.output }} - only use if necessary or filled. mentioned all activities.\n\nJourney Summary: {{ $('Journey Summary').item.json.output }} only use if necessary or filled. mentioned all activities.\n",
+        "options": {
+          "systemMessage": "You are the Atlas HXM MQL Research Agent.\n\nProduce a concise, rep-ready summary using ONLY the context provided. Report facts directly. No buzzwords, no promotional language, no vague interpretation.\n\nATLAS CONTEXT\nAtlas HXM helps companies hire, onboard, manage, and pay employees internationally without first establishing local legal entities.\n\nRelevant capabilities:\n* Employer of Record\n* Global payroll and benefits\n* Compliant contracts and onboarding\n* Employment compliance\n* Immigration and work permits\n* International workforce management\n\nOnly mention capabilities directly supported by the supplied data.\n\nOUTPUT FORMAT (exactly three labeled blocks, plain text, no markdown headers, no bullets)\n\nProspect: 1-3 sentences. Who the contact is, their title and likely scope of ownership, and the specific need implied by their message or behavior. If title is missing, say so.\n\nCompany: 1-3 sentences. What the company does, size and geography if known, and the strongest concrete signal from the Factors journey or HubSpot activity. Name the actual pages or actions. Do NOT say \"highly interested\", \"actively exploring\", or \"strong intent\" unless the data explicitly proves it.\n\nEOR Angle: 1-3 sentences. Which Atlas capability fits and the specific hook. If a country is named anywhere in the context, make the angle country-specific (entity requirement, payroll, benefits, contracts, compliance, onboarding, or immigration). If no country is known, state the angle generically and note that no country was identified.\n\nHARD RULES\n- Every named entity (company name, headcount, country, page, exec title) must appear in the supplied context. Never infer or invent.\n- If the Factors payload is empty, errored, or has no events, OR the company record is missing, begin your output with \"[Limited data] \" and build the summary from whatever contact data exists.\n- Total output must be under 120 words. If a rep cannot read it in 20 seconds, it is too long.\n- No hedging. State the hypothesis directly or omit it.\n- Never restate the obvious (e.g. \"they filled out a contact form\", \"they were scored as an MQL\"). If there is genuinely nothing meaningful to say, say so in one short clause and move on.",
+          "enableStreaming": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        656,
+        1008
+      ],
+      "id": "9ae567a5-94dc-4dec-b306-21fce12dc23e",
+      "name": "Analyze prospect and company"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "responseFormat": "text",
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1264
+      ],
+      "id": "2d3b4059-d68b-4cce-882c-661dea2a3e93",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Webhook').item.json.body.email }}",
+        "additionalFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "ai_mql_summary",
+                "value": "={{ $json.output }}"
+              },
+              {
+                "property": "journey_summary",
+                "value": "={{ $('Journey Summary').item.json.output }}"
+              },
+              {
+                "property": "ai_processed",
+                "value": "true"
+              }
+            ]
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        976,
+        1008
+      ],
+      "id": "ec4f7f1b-d0bb-43aa-8a07-ac2858c56cfb",
+      "name": "Update Contact: AI MQL Summary",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Summarize this account's journey.\n\nCompany: {{ $('Get Associated Company').item.json.properties.name }}\nDomain: {{ $('Get Associated Company').item.json.properties.domain }}\n\nFactors payload:\n{{ JSON.stringify($json) }}",
+        "options": {
+          "systemMessage": "You summarize Factors.ai account journey data for Atlas HXM sales reps.\n\nWrite a clean, natural paragraph (1-3 sentences) followed by 3-5 bullet points of the exact journey events. No markdown headers, no hash symbols, no AI-sounding filler.\n\nSpeak about the COMPANY as the actor, not the individual contact. Any employee at the account may have generated these events.\n\nBullet format:\n- Visited: [specific page or page category]\n- Engaged with: [form, calculator, guide, meeting, email, or other known action]\n- Timing: [date, sequence, or recency if known]\n\nOnly include activity explicitly present in the payload. List the full journey trend, not a sampled summary.\n\nDo not restate the obvious. If the entire journey is a single page view or a single form fill, say that plainly in one clause and stop. Never pad.\n\nIf the payload is empty, errored, or contains no events, output exactly: No journey data available.",
+          "enableStreaming": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -16,
+        1008
+      ],
+      "id": "3181ce7a-fa1d-4d6d-ac53-f77b3c5c701b",
+      "name": "Journey Summary",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "responseFormat": "text",
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        64,
+        1232
+      ],
+      "id": "acc24616-fe18-49cd-ae4a-ad517d7bda70",
+      "name": "Azure OpenAI Chat Model1",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mqlresearch",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -912,
+        1008
+      ],
+      "id": "2fbac932-9e5e-4685-a945-d32cd1060cab",
+      "name": "Webhook",
+      "webhookId": "034a12ca-66ec-4df4-956a-1917d11c95e6",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jL6mIjMZipJSP1iV",
+          "name": "n8n_hubspot_flow_key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "company",
+        "operation": "update",
+        "companyId": "={{ $('Get Contact Details').item.json.associations.companies.results[0].id }}",
+        "updateFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "mql_research_summary",
+                "value": "={{ $('Analyze prospect and company').item.json.output }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        1168,
+        1008
+      ],
+      "id": "da32d64b-1325-4a8b-b8f3-b1fa217602c5",
+      "name": "Update Company: AI MQL Summary",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        208,
+        1216
+      ],
+      "id": "a4661777-7877-4509-ad39-f0b5f434462b",
+      "name": "Azure OpenAI Chat Model2",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=summarize  {{ $json.output }} so it fits within the next nodes token parameters",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        336,
+        1008
+      ],
+      "id": "abf5abc4-2d81-4efd-a8c4-11ab304463f3",
+      "name": "Condense Journey Summary"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get Contact Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contact Details": {
+      "main": [
+        [
+          {
+            "node": "Get Associated Company",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Associated Company": {
+      "main": [
+        [
+          {
+            "node": "Get Factors API data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Factors API data": {
+      "main": [
+        [
+          {
+            "node": "Journey Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Journey Summary": {
+      "main": [
+        [
+          {
+            "node": "Condense Journey Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze prospect and company": {
+      "main": [
+        [
+          {
+            "node": "Update Contact: AI MQL Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact: AI MQL Summary": {
+      "main": [
+        [
+          {
+            "node": "Update Company: AI MQL Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Journey Summary",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Analyze prospect and company",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Condense Journey Summary",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Condense Journey Summary": {
+      "main": [
+        [
+          {
+            "node": "Analyze prospect and company",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0346c92c-eff2-4f17-bf6f-fc417429a9a1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "da98df5c5d7ca09b34ad4f795244e87a7663d8722c18682c2021c70624938526"
+  },
+  "id": "4R2Bhf06Qg9FJR5I",
+  "tags": []
+}

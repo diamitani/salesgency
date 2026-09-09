@@ -137,10 +137,11 @@
 
         <!-- Category Filter Tabs -->
         <div class="filter-tabs-wrapper">
-          <button class="filter-tab-btn active" onclick="filterCategory('all', this)">All Categories (8)</button>
-          <button class="filter-tab-btn" onclick="filterCategory('outbound', this)">Outbound (3)</button>
-          <button class="filter-tab-btn" onclick="filterCategory('inbound', this)">Inbound (2)</button>
+          <button class="filter-tab-btn active" onclick="filterCategory('all', this)">All Blueprints &amp; Skills (12)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('outbound', this)">Outbound (4)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('inbound', this)">Inbound (3)</button>
           <button class="filter-tab-btn" onclick="filterCategory('revops', this)">CRM &amp; RevOps (2)</button>
+          <button class="filter-tab-btn" onclick="filterCategory('skills', this)">Skills &amp; Agents (3)</button>
           <button class="filter-tab-btn" onclick="filterCategory('free', this)">Free Blueprints (2)</button>
         </div>
 
@@ -165,6 +166,143 @@
       <div class="container">
         
         <div class="products-grid" id="marketplaceGrid">
+          
+          <!-- Flagship Item 0: Prospect Automation Engine (PAE) -->
+          <div class="product-card" data-cat="outbound" data-tools="apollo hubspot smartlead instantly claude salesforce">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #000; color: #fff;">Flagship Engine</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>5-Pillar 9-Node Graph</span><span style="color: #10B981;">38 Nodes</span></div>
+                <div class="mock-node-row"><span>CRM Dedupe &amp; Reveal Shield</span><span style="color: #2563EB;">Shielded</span></div>
+                <div class="mock-node-row"><span>Claude PAS + Sequencer Hook</span><span style="color: #8B5CF6;">Automated</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title"><a href="prospect-automation.html" style="color: inherit;">Prospect Automation Engine (PAE)</a></h3>
+                <span class="product-price">$97</span>
+              </div>
+              <p class="product-description">
+                The premier 5-pillar autonomous outbound engine: Trigger Ingest, CRM Shield &amp; Dedupe, Waterfall Reveal, AI PAS Copywriting, and Sequencer Enrollment.
+              </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, Apollo, HubSpot, Smartlead, Claude 3.5, Slack
+              </div>
+              <div class="product-card-footer">
+                <a href="prospect-automation.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Flagship Engine ($97) &rarr;</a>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship Item 0.5: Inbound Automation Engine (IAE) -->
+          <div class="product-card" data-cat="inbound" data-tools="hubspot slack claude typeform">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #2563EB; color: #fff;">Speed-to-Lead</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Form Webhook Ingest</span><span style="color: #10B981;">&lt; 1s</span></div>
+                <div class="mock-node-row"><span>7-Class GPT-4o Intent Triage</span><span style="color: #2563EB;">Classified</span></div>
+                <div class="mock-node-row"><span>Dynamic Email Draft + Slack Rep Alert</span><span style="color: #E11D48;">&lt; 28s</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title"><a href="inbound-automation.html" style="color: inherit;">Inbound Automation Engine (IAE)</a></h3>
+                <span class="product-price">$79</span>
+              </div>
+              <p class="product-description">
+                Sub-minute inbound lead triage and dynamic conversational response generator with 7-class intent classification and real-time CRM / Slack routing.
+              </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Stack: n8n, Typeform, HubSpot, Slack, GPT-4o
+              </div>
+              <div class="product-card-footer">
+                <a href="inbound-automation.html" class="btn btn-primary" style="padding: 10px 18px; font-size: 13.5px; text-align: center;">View Inbound Engine ($79) &rarr;</a>
+                <a href="qualification.html" class="btn-deploy-inhouse">Or have us deploy it in-house →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 1: GTM Engineering Master Skill -->
+          <div class="product-card" data-cat="skills" data-tools="claude">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #000; color: #fff;">LLM Skill</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>Architecture Over Tools Spec</span><span style="color: #10B981;">860 Lines</span></div>
+                <div class="mock-node-row"><span>4-Layer Instruction Stack</span><span style="color: #2563EB;">Compiled</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title"><a href="gtm-engineering.html" style="color: inherit;">GTM Engineering Architecture Skill</a></h3>
+                <span class="product-price free">FREE</span>
+              </div>
+              <p class="product-description">
+                The comprehensive skill package that equips Claude 3.5, Cursor, or ChatGPT with enterprise GTM automation and API orchestration rules.
+              </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Compatible: Claude 3.5, GPT-4o, Cursor, Antigravity
+              </div>
+              <div class="product-card-footer">
+                <a href="gtm-engineering.html" class="btn btn-primary" style="background: #000; padding: 10px 18px; font-size: 13.5px; text-align: center;">View Skill &amp; Copy (.md) &rarr;</a>
+                <a href="qualification.html" class="btn-deploy-inhouse">Hire GTM Engineer ($2,995/mo) →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 2: n8n Execution Analyst -->
+          <div class="product-card" data-cat="skills" data-tools="claude">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #E11D48; color: #fff;">Debugger</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>runData Error Object Parser</span><span style="color: #E11D48;">Active</span></div>
+                <div class="mock-node-row"><span>Self-Healing Node Retries</span><span style="color: #10B981;">Synthesized</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title"><a href="n8n-analyst.html" style="color: inherit;">n8n Execution Analyst &amp; Debugger</a></h3>
+                <span class="product-price free">FREE</span>
+              </div>
+              <p class="product-description">
+                Automated error triage, execution graph diagnosis, and self-healing node generator to eliminate silent revenue drop-offs in n8n.
+              </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Compatible: Claude 3.5, GPT-4o, Cursor, n8n Public API
+              </div>
+              <div class="product-card-footer">
+                <a href="n8n-analyst.html" class="btn btn-primary" style="background: #E11D48; border-color: #E11D48; padding: 10px 18px; font-size: 13.5px; text-align: center;">View Debugger Skill &rarr;</a>
+                <a href="qualification.html" class="btn-deploy-inhouse">Need workflow triage? Book Audit →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill 3: UYSG Growth Suite -->
+          <div class="product-card" data-cat="skills" data-tools="claude">
+            <div class="product-thumbnail">
+              <span class="product-badge-float" style="background: #10B981; color: #fff;">5-in-1 Suite</span>
+              <div class="node-graph-mock">
+                <div class="mock-node-row"><span>5 Sub-Agents: Email &bull; SMS &bull; Reviews</span><span style="color: #10B981;">Ready</span></div>
+                <div class="mock-node-row"><span>Sales 101 Rapport &amp; Pitch Engine</span><span style="color: #2563EB;">Loaded</span></div>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="product-header-row">
+                <h3 class="product-title"><a href="uysg-growth-suite.html" style="color: inherit;">UYSG Master Sales Growth Suite</a></h3>
+                <span class="product-price free">FREE</span>
+              </div>
+              <p class="product-description">
+                5 specialized sub-agents orchestrating Constant Contact email sequences, Google review funnels, social media grids, and SMS text marketing.
+              </p>
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px;">
+                Compatible: Claude 3.5, GPT-4o, Constant Contact
+              </div>
+              <div class="product-card-footer">
+                <a href="uysg-growth-suite.html" class="btn btn-primary" style="background: #10B981; border-color: #10B981; padding: 10px 18px; font-size: 13.5px; text-align: center;">View Growth Suite (.md) &rarr;</a>
+                <a href="qualification.html" class="btn-deploy-inhouse">Book Strategy Audit ($495) →</a>
+              </div>
+            </div>
+          </div>
           
           <!-- Item 1: Apollo Scraper -->
           <div class="product-card" data-cat="outbound" data-tools="apollo linkedin smartlead hubspot">

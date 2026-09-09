@@ -1,0 +1,656 @@
+{
+  "name": "SalesGency Inbound Automation Engine (IAE) Production Blueprint",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are writing only the BODY of a follow-up sales email for Atlas HXM (Atlas).\n\nDo NOT include:\n\nSubject line\n\nGreeting\n\nRep name, title, or signature\n\nAny intro or outro outside the email body\n\nThe output must be only the email body, using <br><br> for paragraph breaks.\n\nInputs Provided to You\n\nProspect message:\n{{ $('Get Form Submissions').item.json.body.properties.message.value }}\n\nReason for contact:\n{{ $('Get Form Submissions').item.json.body.properties.reason_for_contact.versions[0]['source-label'] }}\n\nPrimary Objective\n\nAcknowledge the prospect\u2019s message and set up a meeting.\n\nThis is not a pitch email.\nDo not explain Atlas in detail.\nDo not validate or solve the situation in writing.\n\nTone & Style Requirements\n\nHuman, natural, and conversational\n\nBrief and calm\n\nSlightly informal, not corporate or stiff\n\nAvoid phrases that sound formal or templated\n\nExamples to avoid:\n\n\u201cThank you for sharing the details of your situation and objectives\u201d\n\nOverly polished consulting language\n\nPrefer:\n\n\u201cThanks for reaching out\u201d\n\n\u201cAppreciate you sharing some context\u201d\n\nAtlas Positioning (Keep Extremely Light)\n\nYou may reference Atlas only in a very high-level, vague way, or not at all.\n\nIf referenced, it should be no more than a short clause, such as:\n\n\u201cHappy to talk through this with you\u201d\n\n\u201cWe can look into this together\u201d\n\n\u201cWe can walk through your questions\u201d\n\nDo NOT:\n\nDescribe products, features, payroll, benefits, entities, or compliance specifics\n\nMention tax advisors, visas, or guarantees\n\nPitch capabilities or explain how Atlas works\n\nWhen in doubt, be more vague.\n\nDynamic Logic Rules\nCountry Handling\n\nIf the prospect mentions one or more countries:\n\nAcknowledge them directly.\n\nInclude a natural line such as:\n\u201cLooking forward to a conversation about your plans in [country/countries].\u201d\n\nDo NOT ask which countries they are hiring in.\n\nIf the prospect does NOT mention any countries:\n\nAsk one simple question asking which country or countries they are considering.\n\nFrame it as optional context for the call.\n\nQuestion Handling\n\nIf the prospect asked questions in their message:\n\nExplicitly acknowledge this.\n\nInclude a line such as:\n\u201cThis would be a good time to dig into the questions you shared.\u201d\n\nDo NOT answer the questions in the email.\n\nDo NOT ask follow-up questions unless something critical is missing.\n\nMaximum:\n\n1 question preferred\n\n2 questions absolute max\n\nUse a bulleted list only if truly necessary\n\nCTA Requirements\n\nInvite them to reply or meet.\n\nDo NOT include a booking link.\n\nThe final sentence must always reference a calendar link in the signature.\n\nRequired structure for final line:\n\n\u201cIf it\u2019s easier, feel free to grab time on my calendar in my signature.\u201d\n\nFormat Rules\n\n2\u20134 short paragraphs\n\nUse <br><br> between paragraphs\n\nNo em dashes\n\nAvoid long sentences\n\n900 characters max, including spaces\n\nFinal Instruction to the Model\n\nGenerate the best possible follow-up email body based on the inputs.\n\nPriorities, in order:\n\nSound human\n\nAcknowledge their message\n\nClarify country only if missing\n\nSet up a meeting\n\nDo not pitch.\nDo not over-explain.\nDo not promise or confirm anything.\n\nOutput only the email body using <br><br> for paragraph breaks.\nALWAYS respond in English.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        3728,
+        96
+      ],
+      "id": "a5c98157-e7c4-4887-a8e9-c1f6a9ffbd52",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3696,
+        320
+      ],
+      "id": "0cd96f3d-4b12-4589-996e-49d916af9f74",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an intent-classification engine for Atlas HXM, a global Employer of Record and Human Experience Management provider.\n\nAtlas helps companies hire employees or contractors globally, set up staff in countries without a local entity, and handle payroll, compliance, onboarding, HR, and benefits.\n\nINPUT\n\nClassify the intent of this inbound form submission exactly once.\n\nProspect message:\n{{ $json.body.properties.message.value }}\n\nOriginal reason selected on the form, if available:\n{{ $json.body.properties.reason_for_contact.value || $json.body.properties.reason_for_contact.versions[0]['source-label'] || '' }}\n\nForm/source context, if available:\n{{ $json.body.formName || $json.body.pageName || $json.body.properties.recent_conversion_event_name.value || '' }}\n\nOUTPUT\n\nReturn exactly one of these canonical category names, case-sensitive:\n\nSpeak with Sales\nPartnership Enquiry\nCareer Enquiry\nCustomer Support\nPress Enquiry\nEmployment Verification\nGeneral Enquiry\n\nDo not return any other value.\n\nHARD OVERRIDE RULE \u2014 EVALUATE FIRST, BEFORE ALL OTHER LOGIC\n\nIf the original form reason value is an EXACT CASE-INSENSITIVE match to any of the following canonical values, return it immediately. Do not analyse the message. Do not consider context. The user explicitly made this selection on the form.\n\nCanonical values eligible for hard override:\n- Partnership Enquiry\n- Speak with Sales\n- Career Enquiry\n- Customer Support\n- Press Enquiry\n- Employment Verification\n- General Enquiry\n\nExact match = return that value and stop. No exceptions.\n\n---\n\nCORE DECISION RULES\n\n1. Speak with Sales\n\nClassify as Speak with Sales when the sender wants Atlas to provide services, quote services, explain capabilities, or help with hiring, onboarding, employing, paying, managing, or supporting workers globally.\n\nThis includes:\n- Employer of Record\n- EOR\n- global hiring\n- contractor hiring\n- payroll\n- compliance\n- benefits\n- visas\n- onboarding\n- country setup\n- expansion into a new country\n- hiring employees without a local entity\n- workforce management\n- pricing for Atlas services\n- demos or sales conversations\n\nExamples:\n\u201cWe need staff in Germany.\u201d\n\u201cCan Atlas handle payroll in Brazil?\u201d\n\u201cWe are looking to hire contractors overseas.\u201d\n\u201cDo you offer EOR services in India?\u201d\n\u201cWe need to set up employees in France without a local entity.\u201d\n\n2. Partnership Enquiry\n\nClassify as Partnership Enquiry when the sender is asking about, proposing, or showing intent around a business partnership with Atlas.\n\nThis includes:\n- partner\n- partnership\n- alliances\n- alliance\n- channel partner\n- partner channel\n- reseller\n- referral partner\n- implementation partner\n- integration partner\n- technology integration\n- co-marketing\n- affiliate\n- strategic partnership\n- joint initiative\n- ecosystem partnership\n- marketplace partnership\n- \u201cwork together\u201d when paired with partnership, channel, reseller, referral, integration, or alliance context\n\nAlso classify as Partnership Enquiry if:\n- The original form reason selected by the user contains \u201cpartner,\u201d \u201cpartnership,\u201d \u201calliances,\u201d \u201calliance,\u201d or \u201cpartner channel,\u201d unless the message clearly indicates it is a job application, customer support issue, press inquiry, or employment verification request.\n- The message says they are looking for a strategic partnership.\n- The message says they want to become a partner, discuss a partnership, join a partner program, resell Atlas, refer business to Atlas, integrate with Atlas, or collaborate with Atlas commercially.\n- The form/source context indicates this came from a partner form or partner inquiry form.\n\nImportant vendor distinction:\nA generic vendor pitch is not automatically a Partnership Enquiry.\nIf the sender is simply selling Atlas their services, classify as General Enquiry unless they explicitly mention partnership/reseller/referral/integration/channel/alliance/co-marketing/joint initiative language.\n\nExamples:\n\u201cWe\u2019d like to discuss reselling Atlas services in APAC.\u201d\n\u201cOur HRIS integrates with payroll providers. Can we explore an official integration partnership?\u201d\n\u201cWe propose a co-marketing campaign.\u201d\n\u201cAre you looking for channel partners for your EOR offering?\u201d\n\u201cWe are interested in a strategic partnership with Atlas.\u201d\n\u201cI selected partner inquiry because we want to explore an alliance.\u201d\n\n3. Career Enquiry\n\nClassify as Career Enquiry if the sender is seeking employment at Atlas, applying for a job, asking about a job posting, or checking whether a job offer or hiring process is legitimate.\n\nCareer signals include:\n- applying\n- apply\n- CV\n- resume\n- attached my CV\n- attached my resume\n- offer letter\n- training\n- interview\n- onboarding for a role\n- start date for a role\n- job posting\n- job vacancy\n- listed on your website\n- advertised on\n- are you hiring\n- open positions\n- internship\n- full-time role\n- part-time role\n- interested in joining your team\n- seeking employment\n\nCareer signals override vendor language unless the message is from a recruiter or agency pitching candidates.\n\nRecruiter/agency exception:\nIf the message is from a recruiter, staffing firm, or agency offering candidates or recruiting services to Atlas, classify as General Enquiry, not Career Enquiry.\n\n4. Customer Support\n\nClassify as Customer Support when the sender appears to be an existing Atlas customer, client, employee, worker, or account contact asking for help.\n\nThis includes:\n- existing account support\n- payroll issue\n- onboarding issue for an existing account\n- billing issue\n- invoice issue\n- portal access issue\n- support ticket\n- incident\n- employee support\n- help with a current Atlas service\n\nExamples:\n\u201cOur January payroll has not been processed.\u201d\n\u201cWe cannot access the onboarding portal.\u201d\n\u201cThere is an unexpected billing charge.\u201d\n\u201cHow do I add a new employee to our Atlas account?\u201d\n\n5. Press Enquiry\n\nClassify as Press Enquiry for media, journalist, PR, spokesperson, article, interview, statement, press, or analyst inquiries.\n\nExamples:\n\u201cI\u2019m a reporter requesting an interview.\u201d\n\u201cMedia inquiry: can you provide a statement?\u201d\n\u201cWe would like to interview your CEO.\u201d\n\n6. Employment Verification\n\nClassify as Employment Verification for formal employment verification requests.\n\nThis includes:\n- verify employment\n- employment verification\n- dates of employment\n- verification letter\n- mortgage employment verification\n- background check\n- HR verification form\n- former employee verification\n\nExamples:\n\u201cPlease confirm employment for John Doe.\u201d\n\u201cWe need an employment verification letter for visa processing.\u201d\n\u201cVerify employment status for a mortgage application.\u201d\n\n7. General Enquiry\n\nClassify as General Enquiry for everything else.\n\nThis includes:\n- vendor outreach\n- agency pitches\n- selling services to Atlas\n- marketing services\n- lead generation\n- appointment setting\n- software pitches\n- recruiting agency pitches\n- general business inquiries\n- privacy policy questions\n- newsletter questions\n- office/general contact questions\n- unclear messages that do not fit another category\n\nVendor/outreach trigger phrases:\n- \u201cWe provide\u2026\u201d\n- \u201cWe offer\u2026\u201d\n- \u201cMy team offers\u2026\u201d\n- \u201cWe help companies with\u2026\u201d\n- \u201cWould you be open to\u2026\u201d\n- \u201cappointment setting\u201d\n- \u201clead generation\u201d\n- \u201clead gen\u201d\n- \u201cwe place candidates\u201d\n- \u201coutsourcing\u201d\n- \u201cmarketing services\u201d\n- \u201csoftware solution\u201d\n- \u201cSaaS platform\u201d\n\nDo not classify vendor outreach as Speak with Sales.\n\nPRIORITY ORDER\n\nIf multiple categories appear to match, use this priority order:\n\nCareer Enquiry\nPartnership Enquiry\nSpeak with Sales\nCustomer Support\nPress Enquiry\nEmployment Verification\nGeneral Enquiry\n\nPARTNERSHIP EDGE-CASE RULES\n\nUse Partnership Enquiry when:\n- The user selected a partner/partnership/alliance option and the message does not clearly contradict that selection.\n- Avoma or another form source submits a message that includes \u201cstrategic partnership,\u201d \u201cpartner,\u201d \u201cpartnership,\u201d \u201calliance,\u201d \u201creseller,\u201d \u201cintegration,\u201d \u201cchannel,\u201d \u201creferral,\u201d \u201caffiliate,\u201d or \u201cco-marketing.\u201d\n- The person wants to be routed to partnerships rather than sales.\n- The person asks how to partner with Atlas or collaborate with Atlas commercially.\n\nUse General Enquiry instead when:\n- The sender is pitching a normal vendor service to Atlas without explicit partnership language.\n- The sender is a recruitment agency trying to sell recruiting services or submit candidates.\n- The sender says \u201cwe partner with companies\u201d only as generic vendor language and is not asking to partner with Atlas.\n\nFINAL OUTPUT RULES\n\nOutput exactly one category name from the canonical list.\nDo not include explanation.\nDo not include punctuation.\nDo not include quotes.\nDo not include markdown.\nDo not include extra text.\nUse case-insensitive matching for triggers, but return the category names exactly as spelled.\n\nREFERENCE EXAMPLES\n\n\u201cI am looking to hire telemarketers.\u201d -> Speak with Sales\n\u201cWe\u2019re looking to hire 50 contractors across Germany and Brazil. Can Atlas manage payroll and compliance?\u201d -> Speak with Sales\n\u201cDo you offer EOR services for remote employees in India?\u201d -> Speak with Sales\n\u201cWe need to set up staff in France without a local entity.\u201d -> Speak with Sales\n\n\u201cWe\u2019d like to discuss reselling Atlas services in APAC and joining your partner program.\u201d -> Partnership Enquiry\n\u201cOur HRIS integrates with payroll providers. Can we explore an official integration partnership?\u201d -> Partnership Enquiry\n\u201cWe propose a co-marketing campaign to target SMBs.\u201d -> Partnership Enquiry\n\u201cAre you looking for channel partners or resellers for your EOR offering?\u201d -> Partnership Enquiry\n\u201cI am looking for a strategic partnership with Atlas.\u201d -> Partnership Enquiry\n\n\u201cI saw the Customer Success Manager role on your website. I\u2019m applying and attached my resume.\u201d -> Career Enquiry\n\u201cI received an offer letter and was due for training today. Was this vacancy legit?\u201d -> Career Enquiry\n\u201cAre you hiring software engineers?\u201d -> Career Enquiry\n\u201cHow do I apply for internship opportunities at Atlas?\u201d -> Career Enquiry\n\n\u201cOur January payroll has not been processed.\u201d -> Customer Support\n\u201cWe cannot access the onboarding portal.\u201d -> Customer Support\n\u201cThere is an unexpected billing charge on invoice INV-456.\u201d -> Customer Support\n\u201cHow do I add a new employee to our Atlas account?\u201d -> Customer Support\n\n\u201cI\u2019m a reporter requesting an interview about Atlas.\u201d -> Press Enquiry\n\u201cMedia inquiry: can you provide a statement?\u201d -> Press Enquiry\n\u201cWe are writing an article and would like to interview your CEO.\u201d -> Press Enquiry\n\n\u201cPlease confirm employment for John Doe.\u201d -> Employment Verification\n\u201cHR verification request: did Jane Smith work at Atlas?\u201d -> Employment Verification\n\u201cWe require an employment verification letter.\u201d -> Employment Verification\n\n\u201cWe provide appointment setting and lead generation services.\u201d -> General Enquiry\n\u201cWe are a recruitment agency that places customer service candidates. Can we submit resumes and discuss fees?\u201d -> General Enquiry\n\u201cWhat are your office hours?\u201d -> General Enquiry\n\u201cWhere can I find your privacy policy?\u201d -> General Enquiry\n\nFINAL ANSWER:",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2224,
+        96
+      ],
+      "id": "b3994292-f7c1-4fcf-af87-6f951a577b72",
+      "name": "Analyze Category"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        320
+      ],
+      "id": "a38bc6fe-ea53-445c-91eb-4280e6bcbb21",
+      "name": "Azure OpenAI Chat Model1",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Get Form Submissions').item.json.body.properties.email.value }}",
+        "additionalFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "reason_for_contact",
+                "value": "={{ $json.output }}"
+              }
+            ]
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        2576,
+        96
+      ],
+      "id": "806b45c3-cd0e-4f59-ae30-a248e070f0ac",
+      "name": "Update Reason for Contact",
+      "retryOnFail": true,
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "EZyv5jdmdlvyEf3Z",
+          "name": "HubSpot account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bcb3edf5-b9ce-4011-95ed-e99c0f82cf6d",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        2000,
+        96
+      ],
+      "id": "38eeba62-c74e-4bb8-9629-367dd6f8bf89",
+      "name": "Get Form Submissions",
+      "webhookId": "bcb3edf5-b9ce-4011-95ed-e99c0f82cf6d",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jL6mIjMZipJSP1iV",
+          "name": "n8n_hubspot_flow_key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "532e72c5-47b0-4f4e-96ac-b70ae5bc8e37",
+              "leftValue": "={{ $('Analyze Category').item.json.output }}",
+              "rightValue": "Speak with Sales",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3472,
+        96
+      ],
+      "id": "205fbe73-c372-40b8-bb15-903e8b4e5c4f",
+      "name": "Send to AI - Speak with Sales"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Get Form Submissions').item.json.body.properties.email.value }}",
+        "additionalFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "ai_mql_response_1",
+                "value": "={{ $json.output }}"
+              },
+              {
+                "property": "ai_processed",
+                "value": "true"
+              }
+            ]
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        4192,
+        96
+      ],
+      "id": "71b4a8a4-116c-4822-89b0-aa1bf957529d",
+      "name": "Update MQL Response",
+      "retryOnFail": true,
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "EZyv5jdmdlvyEf3Z",
+          "name": "HubSpot account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// After \"Update Reason for Contact\"\n// Uses:\n// - AI classification from \"Analyze Category\"\n// - Original form selection from \"Get Form Submissions\"\n// - Current lifecycle stage from HubSpot response\n//\n// Purpose:\n// - Normalize original form selection\n// - Map AI classification to HubSpot lifecycle stage\n// - Detect partner inquiries, including Avoma/n8n reclassification cases\n// - Emit routing flags for downstream IF nodes\n// - Avoid breaking the existing Speak with Sales branch\n\nconst aiClassification = String($('Analyze Category').item.json.output || '').trim();\n\n// Original selection label, if the user picked a reason on the form\nconst originalLabel =\n  $('Get Form Submissions').item.json.body?.properties?.reason_for_contact?.versions?.[0]?.['source-label']\n  ?? $('Get Form Submissions').item.json.body?.properties?.reason_for_contact?.value\n  ?? '';\n\n// Source/form context, if available\nconst formName =\n  $('Get Form Submissions').item.json.body?.formName\n  ?? $('Get Form Submissions').item.json.body?.pageName\n  ?? $('Get Form Submissions').item.json.body?.properties?.recent_conversion_event_name?.value\n  ?? '';\n\nconst message =\n  $('Get Form Submissions').item.json.body?.properties?.message?.value\n  ?? '';\n\nconst email =\n  $('Get Form Submissions').item.json.body?.properties?.email?.value\n  ?? '';\n\nfunction normalizeText(val) {\n  return String(val || '').toLowerCase().trim();\n}\n\nfunction normalizeOriginalSelection(val) {\n  const v = normalizeText(val);\n\n  if (!v) return '';\n\n  if (v.includes('speak') || v.includes('sales')) return 'Speak with Sales';\n\n  if (\n    v.includes('partner') ||\n    v.includes('partnership') ||\n    v.includes('alliance') ||\n    v.includes('alliances') ||\n    v.includes('channel')\n  ) {\n    return 'Partnership Enquiry';\n  }\n\n  if (v.includes('press') || v.includes('media') || v.includes('journalist')) return 'Press Enquiry';\n\n  if (\n    v.includes('career') ||\n    v.includes('job') ||\n    v.includes('employment') ||\n    v.includes('candidate') ||\n    v.includes('resume') ||\n    v.includes('cv')\n  ) {\n    return 'Career Enquiry';\n  }\n\n  if (v.includes('support') || v.includes('customer')) return 'Customer Support';\n\n  if (v.includes('verification') || v.includes('verify')) return 'Employment Verification';\n\n  return 'General Enquiry';\n}\n\nconst originalNormalized = normalizeOriginalSelection(originalLabel);\n\n// HubSpot internal lifecycle stage option values\nconst HS_LIFECYCLE = {\n  MQL: 'marketingqualifiedlead',\n  OTHER: '1141555748',\n  PARTNERSHIP: '58620755',\n};\n\nfunction targetLifecycleFromClassification(c) {\n  switch (c) {\n    case 'Speak with Sales':\n      return HS_LIFECYCLE.MQL;\n\n    case 'Partnership Enquiry':\n    case 'Partnership / Alliance Inquiry':\n    case 'Contact Us Partner Inquiry':\n      return HS_LIFECYCLE.PARTNERSHIP;\n\n    case 'General Enquiry':\n    case 'Press Enquiry':\n    case 'Career Enquiry':\n    case 'Customer Support':\n    case 'Employment Verification':\n      return HS_LIFECYCLE.OTHER;\n\n    default:\n      return null;\n  }\n}\n\nconst targetLifecycleValue = targetLifecycleFromClassification(aiClassification);\n\n// Current lifecycle from the HubSpot node output immediately before this code node\nconst currentLifecycleValue =\n  $json?.properties?.lifecyclestage?.value\n  ?? $json?.properties?.lifecyclestage\n  ?? '';\n\nconst classificationChanged =\n  Boolean(originalNormalized) &&\n  Boolean(aiClassification) &&\n  originalNormalized !== aiClassification;\n\nconst lowerOriginalLabel = normalizeText(originalLabel);\nconst lowerFormName = normalizeText(formName);\nconst lowerMessage = normalizeText(message);\n\nconst originalSelectedPartner =\n  lowerOriginalLabel.includes('partner') ||\n  lowerOriginalLabel.includes('partnership') ||\n  lowerOriginalLabel.includes('alliance') ||\n  lowerOriginalLabel.includes('alliances') ||\n  lowerOriginalLabel.includes('channel');\n\nconst sourceLooksPartner =\n  lowerFormName.includes('partner') ||\n  lowerFormName.includes('partnership') ||\n  lowerFormName.includes('alliance') ||\n  lowerFormName.includes('alliances');\n\nconst messageLooksPartner =\n  lowerMessage.includes('partner') ||\n  lowerMessage.includes('partnership') ||\n  lowerMessage.includes('strategic partnership') ||\n  lowerMessage.includes('alliance') ||\n  lowerMessage.includes('alliances') ||\n  lowerMessage.includes('reseller') ||\n  lowerMessage.includes('channel partner') ||\n  lowerMessage.includes('referral partner') ||\n  lowerMessage.includes('integration partner') ||\n  lowerMessage.includes('technology integration') ||\n  lowerMessage.includes('co-marketing') ||\n  lowerMessage.includes('affiliate') ||\n  lowerMessage.includes('joint initiative');\n\nconst isPartnershipInquiry =\n  aiClassification === 'Partnership Enquiry' ||\n  aiClassification === 'Partnership / Alliance Inquiry' ||\n  aiClassification === 'Contact Us Partner Inquiry' ||\n  originalNormalized === 'Partnership Enquiry' ||\n  originalSelectedPartner ||\n  sourceLooksPartner ||\n  messageLooksPartner;\n\n// Only update lifecycle if:\n// - target exists\n// - current value is not already target\n//\n// I recommend allowing this even when classification did not change,\n// because Avoma submissions may not have a meaningful original reason,\n// and partner form submissions should still land in the partnership lifecycle.\nconst shouldUpdateLifecycleStage =\n  Boolean(targetLifecycleValue) &&\n  String(currentLifecycleValue) !== String(targetLifecycleValue);\n\nconst shouldRouteToPartnerWorkflow = Boolean(isPartnershipInquiry);\n\nconst shouldRouteToSalesAI =\n  aiClassification === 'Speak with Sales' &&\n  !shouldRouteToPartnerWorkflow;\n\n// Melissa Harding HubSpot owner ID\nconst MELISSA_HARDING_OWNER_ID = '79608276';\n\nreturn [\n  {\n    json: {\n      email,\n\n      aiClassification,\n      originalLabel,\n      originalNormalized,\n      formName,\n\n      classificationChanged,\n\n      currentLifecycleValue,\n      targetLifecycleValue,\n      shouldUpdateLifecycleStage,\n\n      isPartnershipInquiry,\n      shouldRouteToPartnerWorkflow,\n      shouldRouteToSalesAI,\n\n      partnerOwnerId: MELISSA_HARDING_OWNER_ID,\n\n      hubspotUpdate: {\n        ...(shouldUpdateLifecycleStage ? { lifecyclestage: targetLifecycleValue } : {}),\n\n        ...(shouldRouteToPartnerWorkflow\n          ? {\n              hubspot_owner_id: MELISSA_HARDING_OWNER_ID,\n              reason_for_contact: 'Partnership Enquiry',\n              ai_processed: 'true',\n              ai_partner_inquiry_identified: 'true',\n              partner_thank_you_email_requested: 'true',\n              inbound_ai_classification: aiClassification,\n              inbound_original_reason_for_contact: originalLabel,\n              inbound_original_form_name: formName,\n            }\n          : {}),\n      },\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        96
+      ],
+      "id": "61a1151e-7efd-412d-b76c-5103cf2873e2",
+      "name": "Code: Set Target Lifecycle"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Get Form Submissions').item.json.body.properties.email.value }}",
+        "additionalFields": {
+          "lifeCycleStage": "={{ $json.targetLifecycleValue }}"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        3024,
+        96
+      ],
+      "id": "6e990498-da96-47ee-a480-520688307c70",
+      "name": "Create or update a contact",
+      "retryOnFail": true,
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "EZyv5jdmdlvyEf3Z",
+          "name": "HubSpot account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Search the Atlas HXM knowledge base to find information about services, capabilities, countries supported, pricing, compliance, and how Atlas can help with specific customer requests. Use this when you need to verify if Atlas can support a customer need or provide specific service details.",
+        "indexName": "ks-azureblob-967-index",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreAzureAISearch",
+      "typeVersion": 1.3,
+      "position": [
+        3824,
+        320
+      ],
+      "id": "5a714184-efad-4dbf-b7d4-93c0c3df2f82",
+      "name": "Azure AI Search Vector Store",
+      "credentials": {
+        "azureAiSearchApi": {
+          "id": "9WZEGpcDeBynmAzS",
+          "name": "Azure AI Search account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": " text-embedding-3-large",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3904,
+        528
+      ],
+      "id": "48ba9e3b-ab9e-49f3-8fd2-1a3c2f845437",
+      "name": "Embeddings Azure OpenAI",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "Z1WZb2xCXCs8Wx4U",
+          "name": "azure openai embeddings"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f71c80ac-d28d-4221-949c-4f7681b97495",
+              "leftValue": "={{ $('Code: Set Target Lifecycle').item.json.shouldRouteToPartnerWorkflow }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        3248,
+        -48
+      ],
+      "id": "537be7bd-4116-4b92-9287-e2ac2c52d0d9",
+      "name": "Route: Partnership Enquiry?"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Get Form Submissions').item.json.body.properties.email.value }}",
+        "additionalFields": {
+          "contactOwner": 79608276,
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "reason_for_contact",
+                "value": "Partnership Enquiry"
+              },
+              {
+                "property": "ai_processed",
+                "value": "true"
+              },
+              {
+                "property": "mql_contact_owner",
+                "value": "79608276"
+              }
+            ]
+          }
+        },
+        "options": {}
+      },
+      "id": "daec9a83-e7b8-4627-84da-76fd684399b2",
+      "name": "Update Contact: Partner Routing",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        3712,
+        -256
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "EZyv5jdmdlvyEf3Z",
+          "name": "HubSpot account 3"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "note"
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        5200,
+        -256
+      ],
+      "id": "f4a5b6c7-d8e9-0123-defa-456789012345",
+      "name": "HubSpot: Create Partner Note",
+      "retryOnFail": true,
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "EZyv5jdmdlvyEf3Z",
+          "name": "HubSpot account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are writing a brief, personalised reply email on behalf of Melissa Harding (Alliances & Partnerships, Atlas HXM) to someone who submitted a partnership enquiry via the Atlas HXM website.\n\nOutput ONLY the email body \u2014 no subject line, no greeting, no sign-off. Use <br><br> between paragraphs.\n\n--- FORM DATA ---\nName: {{ $('Get Form Submissions').item.json.body.properties.firstname.value || '' }} {{ $('Get Form Submissions').item.json.body.properties.lastname.value || '' }}\nCompany: {{ $('Get Form Submissions').item.json.body.properties.company.value || 'their company' }}\nReason selected: {{ $('Get Form Submissions').item.json.body.properties.reason_for_contact.versions[0]['source-label'] || $('Get Form Submissions').item.json.body.properties.reason_for_contact.value || 'Partnership Enquiry' }}\nMessage: {{ $('Get Form Submissions').item.json.body.properties.message.value }}\nAI Classification: {{ $('Analyze Category').item.json.output }}\n-----------------\n\nRULES:\n- Acknowledge what they specifically said or asked about. Be direct, not generic.\n- Keep it warm and human \u2014 no corporate stiffness.\n- Do NOT pitch Atlas or explain what Atlas does.\n- Do NOT answer their questions in writing \u2014 invite them to a call instead.\n- End with: \"If it's easier, feel free to grab time on my calendar \u2014 link is in my signature.\"\n- 2-3 short paragraphs max. No em dashes. <br><br> between paragraphs.\n- ALWAYS respond in English.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        4208,
+        -256
+      ],
+      "id": "d2e3f4a5-b6c7-8901-bcde-f23456789012",
+      "name": "AI Agent: Partner Email + Note"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        4208,
+        -480
+      ],
+      "id": "e3f4a5b6-c7d8-9012-cdef-345678901234",
+      "name": "Azure OpenAI Chat Model2",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toRecipients": "={{ $('Get Form Submissions').item.json.body.properties.email.value }}",
+        "subject": "Re: Your Partnership Enquiry \u2014 Atlas HXM",
+        "bodyContent": "=<p>Hi {{ $('Get Form Submissions').item.json.body.properties.firstname.value || 'there' }},</p><br>{{ $json.output }}<br><br><p>Best,<br>Melissa Harding<br>Alliances &amp; Partnerships | Atlas HXM</p>",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        4704,
+        -256
+      ],
+      "id": "c1a2b3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Send Partner Email",
+      "webhookId": "0474964c-bbca-4038-85c5-ebd4a1a20ac2",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "CONFIGURE_ME",
+          "name": "Melissa Outlook"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Update MQL Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Category": {
+      "main": [
+        [
+          {
+            "node": "Update Reason for Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Analyze Category",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Reason for Contact": {
+      "main": [
+        [
+          {
+            "node": "Code: Set Target Lifecycle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Form Submissions": {
+      "main": [
+        [
+          {
+            "node": "Analyze Category",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to AI - Speak with Sales": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Set Target Lifecycle": {
+      "main": [
+        [
+          {
+            "node": "Create or update a contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create or update a contact": {
+      "main": [
+        [
+          {
+            "node": "Send to AI - Speak with Sales",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Route: Partnership Enquiry?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure AI Search Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Azure OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Azure AI Search Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update MQL Response": {
+      "main": [
+        []
+      ]
+    },
+    "Route: Partnership Enquiry?": {
+      "main": [
+        [
+          {
+            "node": "Update Contact: Partner Routing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send to AI - Speak with Sales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact: Partner Routing": {
+      "main": [
+        [
+          {
+            "node": "AI Agent: Partner Email + Note",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Partner Email": {
+      "main": [
+        [
+          {
+            "node": "HubSpot: Create Partner Note",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent: Partner Email + Note",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot: Create Partner Note": {
+      "main": [
+        []
+      ]
+    },
+    "AI Agent: Partner Email + Note": {
+      "main": [
+        [
+          {
+            "node": "Send Partner Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "any",
+    "availableInMCP": false,
+    "errorWorkflow": "7Exlq2OSVUSh0Tni"
+  },
+  "versionId": "1fb46029-0f39-4146-83df-b86fcbaf43cd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "da98df5c5d7ca09b34ad4f795244e87a7663d8722c18682c2021c70624938526"
+  },
+  "id": "7Exlq2OSVUSh0Tni",
+  "tags": []
+}

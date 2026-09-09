@@ -30,14 +30,19 @@ B2B founders, CROs, VPs of Sales, Heads of RevOps, and growth stage scale-ups se
 - Pricing Plans: https://salesgency.com/pricing.html
 - Case Studies: https://salesgency.com/work.html
 - 30-Day Engineering Process: https://salesgency.com/process.html
+## Flagship Autonomous Engines & Architecture
 - Prospect Automation Engine (PAE): https://salesgency.com/prospect-automation.html
+- Inbound Automation Engine (IAE): https://salesgency.com/inbound-automation.html
+- GTM Engineering Master Architecture: https://salesgency.com/gtm-engineering.html
+- n8n Execution Analyst & Debugger: https://salesgency.com/n8n-analyst.html
+- Unleash Your Sales Greatness (UYSG) Suite: https://salesgency.com/uysg-growth-suite.html
 - Autonomous Agents Catalog: https://salesgency.com/agents.html
 - Deterministic Workflows Catalog: https://salesgency.com/workflows.html
 - Prompt Skills Catalog: https://salesgency.com/skills.html
 - Deployment Specifications: https://salesgency.com/deployment.html
 - About & Leadership: https://salesgency.com/about.html
 
-## Dedicated Product Blueprints
+## Dedicated Product Blueprints & Workflows
 - Apollo & LinkedIn Intent Scraper Pro ($97): https://salesgency.com/product-apollo-scraper.html
 - Sub-Minute Inbound AI Lead Responder ($79): https://salesgency.com/product-inbound-responder.html
 - Multi-Channel Cold Outreach Engine ($129): https://salesgency.com/product-cold-outreach.html

@@ -65,7 +65,39 @@
     <loc>https://salesgency.com/prospect-automation.html</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Inbound Automation Engine (IAE) -->
+  <url>
+    <loc>https://salesgency.com/inbound-automation.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- GTM Engineering Master Architecture & Skill -->
+  <url>
+    <loc>https://salesgency.com/gtm-engineering.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- n8n Execution Analyst & Debugger -->
+  <url>
+    <loc>https://salesgency.com/n8n-analyst.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Unleash Your Sales Greatness (UYSG) Growth Suite -->
+  <url>
+    <loc>https://salesgency.com/uysg-growth-suite.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 
   <!-- Autonomous Agents (Tier 3) -->
