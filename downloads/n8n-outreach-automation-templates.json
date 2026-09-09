@@ -1,0 +1,148 @@
+{
+  "name": "SalesGency PAE Outreach Automation Templates (Company & Contact Patterns)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "prospect-trigger",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "node-trigger-01",
+      "name": "01: Trigger Ingest",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [180, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json.body || $input.first().json;\nreturn [{\n  json: {\n    company_domain: (item.domain || item.email?.split('@')[1] || '').toLowerCase().trim(),\n    company_name: item.company || '',\n    target_titles: item.target_titles || ['VP Sales', 'Head of Revenue', 'Founder', 'CRO'],\n    contact_name: item.name || '',\n    contact_email: item.email || '',\n    trigger_type: item.company ? 'company_automation' : 'contact_automation'\n  }\n}];"
+      },
+      "id": "node-normalize-02",
+      "name": "02: Normalizer Clean & Enrich",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.hubapi.com/crm/v3/objects/companies/search",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.HUBSPOT_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"filterGroups\": [{\n    \"filters\": [{\n      \"propertyName\": \"domain\",\n      \"operator\": \"EQ\",\n      \"value\": \"{{ $json.company_domain }}\"\n    }]\n  }]\n}",
+        "options": {}
+      },
+      "id": "node-dedupe-03",
+      "name": "03: CRM Dedupe Shield",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [620, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.total }}",
+              "operation": "equal",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "id": "node-shield-gate",
+      "name": "Check CRM Collision Gate",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [840, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.apollo.io/v1/mixed_people/search",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"api_key\": \"{{ $env.APOLLO_API_KEY }}\",\n  \"q_organization_domains\": \"{{ $('02: Normalizer Clean & Enrich').item.json.company_domain }}\",\n  \"person_titles\": {{ JSON.stringify($('02: Normalizer Clean & Enrich').item.json.target_titles) }},\n  \"page\": 1,\n  \"per_page\": 1\n}",
+        "options": {}
+      },
+      "id": "node-reveal-04",
+      "name": "04: Contact Reveal & Enrich",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1060, 200]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-latest",
+        "prompt": "=Write a 3-sentence Problem-Agitate-Solve cold email to {{ $json.people?.[0]?.first_name || 'there' }} at {{ $('02: Normalizer Clean & Enrich').item.json.company_name }}.\n\nRules:\n- Under 65 words.\n- Sentence 1: Specific pain trigger re: speed to lead or SDR capacity.\n- Sentence 2: Financial impact / deal leakage.\n- Sentence 3: Low friction interest-based ask.",
+        "options": {}
+      },
+      "id": "node-pas-copy-05",
+      "name": "05: AI PAS Copywriting",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [1280, 200]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SLACK_APPROVAL_WEBHOOK }}",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \":email: *New AI Outreach Draft Prepared for Approval*\\n*To:* {{ $('04: Contact Reveal & Enrich').item.json.people?.[0]?.name }} ({{ $('04: Contact Reveal & Enrich').item.json.people?.[0]?.email }})\\n*Company:* {{ $('02: Normalizer Clean & Enrich').item.json.company_name }}\\n\\n*Copy:*\\n{{ $json.output }}\"\n}",
+        "options": {}
+      },
+      "id": "node-approval-06",
+      "name": "06: Approval Switch / Slack Review",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1500, 200]
+    }
+  ],
+  "connections": {
+    "01: Trigger Ingest": {
+      "main": [[{"node": "02: Normalizer Clean & Enrich", "type": "main", "index": 0}]]
+    },
+    "02: Normalizer Clean & Enrich": {
+      "main": [[{"node": "03: CRM Dedupe Shield", "type": "main", "index": 0}]]
+    },
+    "03: CRM Dedupe Shield": {
+      "main": [[{"node": "Check CRM Collision Gate", "type": "main", "index": 0}]]
+    },
+    "Check CRM Collision Gate": {
+      "main": [
+        [{"node": "04: Contact Reveal & Enrich", "type": "main", "index": 0}]
+      ]
+    },
+    "04: Contact Reveal & Enrich": {
+      "main": [[{"node": "05: AI PAS Copywriting", "type": "main", "index": 0}]]
+    },
+    "05: AI PAS Copywriting": {
+      "main": [[{"node": "06: Approval Switch / Slack Review", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

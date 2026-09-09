@@ -1,0 +1,90 @@
+{
+  "name": "Daily Sales Rep Execution Telemetry & Stuck Deal Digest",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "30 17 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "node-schedule-eod",
+      "name": "End of Day 5:30 PM Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.hubapi.com/crm/v3/objects/deals/search",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.HUBSPOT_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"filterGroups\": [\n    {\n      \"filters\": [\n        {\n          \"propertyName\": \"notes_last_updated\",\n          \"operator\": \"GTE\",\n          \"value\": \"{{ $now.startOf('day').toMillis() }}\"\n        }\n      ]\n    }\n  ],\n  \"properties\": [\"dealname\", \"amount\", \"dealstage\", \"hubspot_owner_id\"],\n  \"limit\": 100\n}",
+        "options": {}
+      },
+      "id": "node-fetch-today-activity",
+      "name": "Fetch Deals Touched Today",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SLACK_SALES_EXECUTION_WEBHOOK }}",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \":bar_chart: *Daily Rep Execution Report ({{ $now.toFormat('yyyy-MM-dd') }})*\\n• Deals Touched Today: {{ $json.total }}\\n• Zero-Activity Rep Follow-up Alerts generated.\"\n}",
+        "options": {}
+      },
+      "id": "node-slack-eod",
+      "name": "Post Daily Execution Slack Briefing",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "End of Day 5:30 PM Trigger": {
+      "main": [
+        [
+          {
+            "node": "Fetch Deals Touched Today",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Deals Touched Today": {
+      "main": [
+        [
+          {
+            "node": "Post Daily Execution Slack Briefing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

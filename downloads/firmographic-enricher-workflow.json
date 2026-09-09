@@ -1,0 +1,100 @@
+{
+  "name": "Firmographic Domain Enricher Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "enrich-domain",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "node-webhook-01",
+      "name": "Webhook Ingest",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body || {};\nconst domain = (body.domain || body.email || '').split('@').pop().toLowerCase().trim();\nreturn [{ json: { domain, raw: body } }];"
+      },
+      "id": "node-clean-domain",
+      "name": "Clean & Extract Domain",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.brandfetch.io/v2/brands/{{ $json.domain }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.BRANDFETCH_API_KEY }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-brandfetch",
+      "name": "Brandfetch API Reveal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": true,\n  \"company_name\": $json.name,\n  \"domain\": $json.domain,\n  \"industry\": $json.company?.industry,\n  \"employees\": $json.company?.employees,\n  \"links\": $json.links,\n  \"logo\": $json.logos?.[0]?.formats?.[0]?.src\n}",
+        "options": {}
+      },
+      "id": "node-respond",
+      "name": "Return Enriched Payload",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Ingest": {
+      "main": [
+        [
+          {
+            "node": "Clean & Extract Domain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean & Extract Domain": {
+      "main": [
+        [
+          {
+            "node": "Brandfetch API Reveal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brandfetch API Reveal": {
+      "main": [
+        [
+          {
+            "node": "Return Enriched Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

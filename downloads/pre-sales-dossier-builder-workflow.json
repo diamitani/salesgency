@@ -1,0 +1,130 @@
+{
+  "name": "Pre-Sales Call Dossier & AI Briefing Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "event": "eventCreated"
+      },
+      "id": "node-calendar-trigger",
+      "name": "Google Calendar Monitor",
+      "type": "n8n-nodes-base.googleCalendarTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const attendees = $input.first().json.attendees || [];\nconst external = attendees.filter(a => !a.email.endsWith('@mycompany.com'));\nif (external.length === 0) return [];\n\nconst guest = external[0];\nconst domain = guest.email.split('@').pop();\nreturn [{\n  json: {\n    guest_email: guest.email,\n    guest_name: guest.displayName || guest.email.split('@')[0],\n    domain: domain,\n    summary: $input.first().json.summary,\n    start_time: $input.first().json.start?.dateTime\n  }\n}];"
+      },
+      "id": "node-filter-guest",
+      "name": "Extract External Guest Domain",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.brandfetch.io/v2/brands/{{ $json.domain }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.BRANDFETCH_API_KEY }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-brandfetch",
+      "name": "Firmographic Reveal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-latest",
+        "prompt": "=Generate a 1-page pre-call sales briefing dossier for:\nProspect: {{ $('Extract External Guest Domain').item.json.guest_name }} ({{ $('Extract External Guest Domain').item.json.guest_email }})\nCompany: {{ $json.name }} ({{ $json.domain }})\nIndustry: {{ $json.company?.industry }}\nHeadcount: {{ $json.company?.employees }}\n\nInclude:\n1. 3 Likely Operational Bottlenecks in GTM\n2. 3 High-Impact Discovery Questions to Open the Call\n3. Likely Tech Stack Competitor / Overlap\n4. Recommended Pitch Anchor",
+        "options": {}
+      },
+      "id": "node-claude-dossier",
+      "name": "Claude 3.5 Pre-Call Synthesis",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SLACK_REP_BRIEFING_WEBHOOK }}",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \":mag: *Pre-Call Dossier (Meeting in 15m)*: {{ $('Extract External Guest Domain').item.json.guest_name }} @ {{ $('Firmographic Reveal').item.json.name }}\\n\\n{{ $json.output }}\"\n}",
+        "options": {}
+      },
+      "id": "node-slack-brief",
+      "name": "Slack Rep Briefing 15m Prior",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Google Calendar Monitor": {
+      "main": [
+        [
+          {
+            "node": "Extract External Guest Domain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract External Guest Domain": {
+      "main": [
+        [
+          {
+            "node": "Firmographic Reveal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Firmographic Reveal": {
+      "main": [
+        [
+          {
+            "node": "Claude 3.5 Pre-Call Synthesis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude 3.5 Pre-Call Synthesis": {
+      "main": [
+        [
+          {
+            "node": "Slack Rep Briefing 15m Prior",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

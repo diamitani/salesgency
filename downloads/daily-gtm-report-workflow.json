@@ -1,0 +1,75 @@
+{
+  "name": "Daily Executive GTM Pipeline & CAC Velocity Briefing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "node-schedule-morning",
+      "name": "Morning 7:00 AM Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT SUM(amount) as pipeline_active, COUNT(id) as open_deals FROM hubspot_deals WHERE dealstage NOT IN ('closedwon', 'closedlost');"
+      },
+      "id": "node-db-query",
+      "name": "Query PostgreSQL Telemetry",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SLACK_EXEC_GTM_WEBHOOK }}",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \":moneybag: *Executive GTM Briefing ({{ $now.toFormat('yyyy-MM-dd') }})*\\n• Active Pipeline: ${{ $json.pipeline_active?.toLocaleString() }}\\n• Qualified Deals In Play: {{ $json.open_deals }}\\n• Speed-to-lead 24h avg: 24s\"\n}",
+        "options": {}
+      },
+      "id": "node-slack-gtm",
+      "name": "Post Executive GTM Slack Briefing",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Morning 7:00 AM Trigger": {
+      "main": [
+        [
+          {
+            "node": "Query PostgreSQL Telemetry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query PostgreSQL Telemetry": {
+      "main": [
+        [
+          {
+            "node": "Post Executive GTM Slack Briefing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

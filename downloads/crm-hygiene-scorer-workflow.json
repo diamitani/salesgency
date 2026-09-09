@@ -1,0 +1,111 @@
+{
+  "name": "HubSpot & Salesforce Deal Hygiene Auditor",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "node-schedule",
+      "name": "Daily 8 AM Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.hubapi.com/crm/v3/objects/deals/search",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.HUBSPOT_ACCESS_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"filterGroups\": [\n    {\n      \"filters\": [\n        {\n          \"propertyName\": \"dealstage\",\n          \"operator\": \"NOT_IN\",\n          \"values\": [\"closedwon\", \"closedlost\"]\n        },\n        {\n          \"propertyName\": \"notes_last_updated\",\n          \"operator\": \"LT\",\n          \"value\": \"{{ $now.minus({ days: 7 }).toMillis() }}\"\n        }\n      ]\n    }\n  ],\n  \"properties\": [\"dealname\", \"amount\", \"dealstage\", \"hubspot_owner_id\", \"notes_last_updated\"],\n  \"limit\": 100\n}",
+        "options": {}
+      },
+      "id": "node-stale-deals",
+      "name": "Find Deals Inactive > 7 Days",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const deals = $input.first().json.results || [];\nif (deals.length === 0) return [];\n\nlet totalValue = 0;\nconst summary = deals.map(d => {\n  const amt = parseFloat(d.properties.amount || 0);\n  totalValue += amt;\n  return `• *${d.properties.dealname}* ($${amt.toLocaleString()}) - Stage: ${d.properties.dealstage}`;\n});\n\nreturn [{\n  json: {\n    dealCount: deals.length,\n    totalValue,\n    dealListFormatted: summary.join('\\n')\n  }\n}];"
+      },
+      "id": "node-summarize",
+      "name": "Format Slack Digest",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SLACK_REVOPS_WEBHOOK_URL }}",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \":warning: *Daily RevOps Hygiene Alert*: {{ $json.dealCount }} stale deals detected ($' + {{ $json.totalValue.toLocaleString() }} + ' pipeline value at risk)\\n\\n' + {{ $json.dealListFormatted }}\n}",
+        "options": {}
+      },
+      "id": "node-slack-alert",
+      "name": "Send RevOps Slack Alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "Daily 8 AM Trigger": {
+      "main": [
+        [
+          {
+            "node": "Find Deals Inactive > 7 Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Deals Inactive > 7 Days": {
+      "main": [
+        [
+          {
+            "node": "Format Slack Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Slack Digest": {
+      "main": [
+        [
+          {
+            "node": "Send RevOps Slack Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
