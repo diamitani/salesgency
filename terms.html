@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service — SalesGency®</title>
-  <meta name="description" content="SalesGency terms of service and subscription service agreement.">
+  <meta name="description" content="SalesGency terms of service, engagement agreements, and intellectual property ownership policies.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -16,48 +16,71 @@
       <a href="index.html" class="brand-link" aria-label="SalesGency Home">
         salesgency<span class="brand-symbol">®</span>
       </a>
+
       <div class="nav-menu">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="services.html" class="nav-item">Services</a>
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
         <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
       </div>
+
       <div class="nav-actions">
         <a href="qualification.html" class="btn-book-call">
           <span class="live-dot" aria-hidden="true"></span>
-          <span>Book Call</span>
+          <span>Book Audit ($495)</span>
         </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
       </div>
     </nav>
   </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
+  </div>
 
   <div class="site-wrapper">
     <section class="pricing-section" style="padding-top: clamp(120px, 14vw, 170px); width: 100%;">
       <div class="container-narrow">
         <div class="section-header" style="text-align: left; align-items: flex-start;">
-          <div class="badge-tag">Legal</div>
+          <div class="badge-tag">Legal &bull; Agreement</div>
           <h1 class="section-title" style="text-align: left;">Terms of <span class="serif-italic">Service</span></h1>
-          <p class="section-subtitle" style="text-align: left; margin: 0;">Last updated: January 2026</p>
+          <p class="section-subtitle" style="text-align: left; margin: 0;">Last updated: September 2026</p>
         </div>
 
-        <div class="subscription-card" style="padding: 40px; line-height: 1.7; color: var(--text-secondary);">
-          <h3 style="color: var(--text-heading); margin-bottom: 12px;">1. Service Description &amp; Subscription Model</h3>
+        <div class="subscription-card" style="padding: 40px; line-height: 1.7; color: var(--text-secondary); background: #FFFFFF;">
+          <h3 style="color: var(--text-heading); margin-bottom: 12px; font-size: 19px;">1. Service Description &amp; Retainer Engagements</h3>
           <p style="margin-bottom: 24px;">
-            SalesGency provides ongoing GTM AI automation, scraper development, and sales systems engineering on a monthly subscription basis. Subscriptions grant access to unlimited queue requests, executed one active task stream at a time (or more with parallel add-on streams).
+            SalesGency provides ongoing GTM AI automation, custom scraper engineering, and sales systems architecture. Engagements include one-time Diagnostic Audits ($495, 100% credited to first retainer), Dedicated Retainers ($2,995/mo), and self-serve digital workflow blueprints.
           </p>
 
-          <h3 style="color: var(--text-heading); margin-bottom: 12px;">2. 100% Intellectual Property Ownership</h3>
+          <h3 style="color: var(--text-heading); margin-bottom: 12px; font-size: 19px;">2. 100% Intellectual Property Ownership</h3>
           <p style="margin-bottom: 24px;">
-            All workflows, scripts, custom n8n nodes, and prompt architectures created specifically for the client belong 100% to the client upon delivery.
+            All workflows, n8n JSON nodes, Python scripts, database schemas, and prompt architectures authored for your organization belong 100% to you. We do not retain proprietary locks or licensing rights over your deliverables.
           </p>
 
-          <h3 style="color: var(--text-heading); margin-bottom: 12px;">3. Cancellation &amp; Pause Policy</h3>
+          <h3 style="color: var(--text-heading); margin-bottom: 12px; font-size: 19px;">3. Cancellation &amp; Pause Policy</h3>
           <p style="margin-bottom: 24px;">
-            Memberships may be paused or canceled at any time. When paused, unused days in the current billing cycle remain credited and can be resumed at any future date.
+            Monthly retainer subscriptions may be paused or canceled at any time with zero penalty. When paused, unused days in your current billing cycle are preserved and may be resumed whenever you choose.
           </p>
 
-          <h3 style="color: var(--text-heading); margin-bottom: 12px;">4. Questions</h3>
+          <h3 style="color: var(--text-heading); margin-bottom: 12px; font-size: 19px;">4. Inquiries &amp; Legal Notices</h3>
           <p>
-            For questions regarding service terms, reach us at <a href="mailto:legal@salesgency.com" style="text-decoration: underline; color: var(--text-heading);">legal@salesgency.com</a>.
+            For questions regarding our terms of service, please contact <a href="mailto:legal@salesgency.com" style="text-decoration: underline; color: var(--text-heading); font-weight: 600;">legal@salesgency.com</a>.
           </p>
         </div>
       </div>
@@ -68,18 +91,32 @@
       <div class="container">
         <div class="footer-inner">
           <div class="footer-copyright">
-            © 2026 SalesGency®. All rights reserved.
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
           </div>
           <div class="footer-links">
             <a href="index.html" class="footer-link">Home</a>
-            <a href="services.html" class="footer-link">Services</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
             <a href="pricing.html" class="footer-link">Pricing</a>
-            <a href="qualification.html" class="footer-link">Book Audit</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="privacy.html" class="footer-link">Privacy</a>
+            <a href="terms.html" class="footer-link">Terms</a>
           </div>
         </div>
       </div>
     </footer>
   </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
 
 </body>
 </html>

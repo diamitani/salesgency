@@ -3,355 +3,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Process &amp; Architecture — SalesGency</title>
-  <meta name="description" content="How SalesGency builds custom workflows, skills and agents to help organizations close more sales. The 30-day DDC deployment cycle and PAL methodology.">
-  
+  <title>Engineering Process &amp; Methodology — SalesGency®</title>
+  <meta name="description" content="How SalesGency builds custom GTM AI infrastructure in 30 days: The Delali Development Cycle (DDC), PAL methodology, and 100% client code ownership.">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Engineering Process & Architecture — SalesGency">
-  <meta property="og:description" content="Skills, Agents, Workflows: Each of our projects are designed to give you three. Expand on what you have in 30 days.">
-  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
+  <meta property="og:title" content="Engineering Process &amp; Methodology — SalesGency®">
+  <meta property="og:description" content="Predictable 30-day GTM engineering cycle. Expand from audit to production deployment in 4 sprints.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- FLOATING PILL NAVBAR -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-        <span class="brand-subtag">Process</span>
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item-dropdown">
-          <a href="agents.html" class="nav-link nav-dropdown-trigger">
-            <span>Architecture</span>
-            <span class="dropdown-arrow">▼</span>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="agents.html" class="nav-dropdown-item">
-              <span class="item-icon">🤖</span>
-              <div>
-                <strong>Agents</strong>
-                <span class="item-desc">Autonomous reasoning &amp; triage</span>
-              </div>
-            </a>
-            <a href="workflows.html" class="nav-dropdown-item">
-              <span class="item-icon">⚡</span>
-              <div>
-                <strong>Workflows</strong>
-                <span class="item-desc">Deterministic execution rails</span>
-              </div>
-            </a>
-            <a href="skills.html" class="nav-dropdown-item">
-              <span class="item-icon">🧠</span>
-              <div>
-                <strong>Skills</strong>
-                <span class="item-desc">Packaged domain intelligence</span>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="process.html" class="nav-link active">Process</a></li>
-        <li><a href="work.html" class="nav-link">Work</a></li>
-        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item">Architecture</a>
+        <a href="process.html" class="nav-item active">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
-        <a href="qualification.html" class="btn btn-primary btn-sm">Paid Audit () →</a>
-        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer" id="mobileNavDrawer">
-    <a href="index.html" class="nav-link">Home</a>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-heading">Architecture</div>
-      <a href="agents.html" class="nav-link">🤖 Agents</a>
-      <a href="workflows.html" class="nav-link">⚡ Workflows</a>
-      <a href="skills.html" class="nav-link">🧠 Skills</a>
-    </div>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="process.html" class="nav-link active">Process</a>
-    <a href="work.html" class="nav-link">Work</a>
-    <a href="pricing.html" class="nav-link">Pricing</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Paid Audit () →</a>
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
   </div>
 
-  <!-- HERO SECTION -->
-  <section class="hero" style="padding-bottom: 40px;">
-    <div class="container-wide">
-      <div class="hero-content">
-        <div class="digiket-badge badge-cyan">
-          <span class="badge-dot"></span>
-          <span>🛠️ Architecture &amp; Methodology</span>
-        </div>
-        <h1>
-          Skills, Agents, Workflows: <br>
-          <span class="highlight-cyan">The Delivery Blueprint</span>
+  <div class="site-wrapper">
+
+    <!-- Process Hero -->
+    <section class="hero-section" style="padding-top: clamp(120px, 14vw, 170px); padding-bottom: 40px;">
+      <div class="container">
+        
+        <div class="badge-tag">Predictable 30-Day Cycle</div>
+        <h1 class="hero-headline">
+          From audit to production <br>
+          <span class="serif-italic">in 30 days.</span>
         </h1>
-        <p class="hero-lead">
-          <strong>Each of our projects are designed to give you three.</strong><br>
-          We expand on what you have to deploy an autonomous revenue engine that lives in your infrastructure and compounds over time.
+        <p class="hero-description">
+          We use the structured Delali Development Cycle (DDC) and PAL compilation methodology to deploy robust, self-healing GTM software directly into your stack.
         </p>
-      </div>
-    </div>
-  </section>
 
-  <!-- THE TRIAD DEEP DIVE -->
-  <section class="section section-alt" style="padding-top: 40px;">
-    <div class="container-wide">
-      <div class="section-header">
-        <div class="digiket-badge badge-orange">
-          <span>Three Interlocking Layers</span>
+        <div class="hero-cta-group">
+          <a href="qualification.html" class="btn btn-primary">Start with Audit ($495)</a>
+          <a href="pricing.html" class="btn btn-secondary">Explore Retainer Option</a>
         </div>
-        <h2>Why Every Project Delivers The Complete Triad</h2>
-        <p>Most automation projects fail because they build isolated pieces. We engineer the complete triad so your revenue operations run smoothly without maintenance headaches.</p>
-      </div>
 
-      <div class="triad-grid">
-        <!-- Layer 1: Workflows -->
-        <div class="triad-card card-workflows">
-          <span class="triad-badge">Layer 01 · Rail</span>
-          <h3>Workflows</h3>
-          <div class="triad-role">Deterministic Highway</div>
-          <p>
-            The plumbing connecting your sales channels, databases, CRMs, and email rotators. Triggered by webhooks, cron intervals, or rep actions with error handling and live audit logging.
+      </div>
+    </section>
+
+    <!-- 4 Sprints Timeline -->
+    <section style="padding: 40px 0 80px; width: 100%;">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="badge-tag">Sprint Breakdown</div>
+          <h2 class="section-title">
+            The 4-phase <span class="serif-italic">deployment roadmap.</span>
+          </h2>
+          <p class="section-subtitle">
+            Every step is transparent, documented, and built directly within your private infrastructure.
           </p>
-          <div class="triad-spec-box">
-            <strong>Key Architecture:</strong>
-            <div class="triad-spec-tags">
-              <span class="triad-spec-tag">Webhook Ingest</span>
-              <span class="triad-spec-tag">Dual Inbox Dispatch</span>
-              <span class="triad-spec-tag">CRM Stage Sync</span>
-              <span class="triad-spec-tag">Deduplication</span>
-              <span class="triad-spec-tag">Failure Alerting</span>
+        </div>
+
+        <div class="process-steps-container">
+          
+          <!-- Step 1 -->
+          <div class="process-step-item">
+            <div class="step-badge-number">01</div>
+            <div class="step-content-box">
+              <div class="step-timeline-tag">Days 1 – 7 &bull; Diagnostic &amp; Architecture</div>
+              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
+                GTM System Audit &amp; Data-Flow Blueprinting
+              </h3>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                We map your entire revenue tech stack (CRM, email sequencers, forms, scrapers, databases). We uncover duplicate records, ghosting leads, and manual bottlenecks, producing a detailed engineering specification diagram.
+              </p>
+              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
+                <div class="flow-node"><span>Deliverable: Full Architectural Blueprint</span><span class="flow-status-pill">Signed Off</span></div>
+                <div class="flow-node"><span>Deliverable: Prioritized High-ROI Workflow Backlog</span><span class="flow-status-pill">Ready</span></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Layer 2: Skills -->
-        <div class="triad-card card-skills">
-          <span class="triad-badge">Layer 02 · Knowledge</span>
-          <h3>Skills</h3>
-          <div class="triad-role">Domain Intelligence Recipes</div>
-          <p>
-            Packaged operational blueprints that instruct AI how to evaluate context. Contains your specific ICP rules, PAS copywriting formulas, data transformation routines, and buyer intent filters.
-          </p>
-          <div class="triad-spec-box">
-            <strong>Key Architecture:</strong>
-            <div class="triad-spec-tags">
-              <span class="triad-spec-tag">PAS Copy Engine</span>
-              <span class="triad-spec-tag">Signal Extractors</span>
-              <span class="triad-spec-tag">MQL Classifiers</span>
-              <span class="triad-spec-tag">Quote Compiler</span>
-              <span class="triad-spec-tag">Cleanse Rules</span>
+          <!-- Step 2 -->
+          <div class="process-step-item">
+            <div class="step-badge-number">02</div>
+            <div class="step-content-box">
+              <div class="step-timeline-tag">Days 8 – 15 &bull; Core Intelligence Layer</div>
+              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
+                Prompt Skills &amp; Scraper Cluster Construction
+              </h3>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                We author and benchmark domain-specific prompt skill engines (PAS copywriting, objection handling, intent classification) and deploy headless scrapers for LinkedIn, Apollo, and company hiring signals.
+              </p>
+              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
+                <div class="flow-node"><span>Deliverable: 3-5 Custom Prompt Skill Packs</span><span class="flow-status-pill">Benchmarked</span></div>
+                <div class="flow-node"><span>Deliverable: Multi-Source Scraping Webhooks</span><span class="flow-status-pill">Live</span></div>
+              </div>
             </div>
           </div>
+
+          <!-- Step 3 -->
+          <div class="process-step-item">
+            <div class="step-badge-number">03</div>
+            <div class="step-content-box">
+              <div class="step-timeline-tag">Days 16 – 23 &bull; Orchestration &amp; Sync</div>
+              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
+                Deterministic n8n Workflows &amp; CRM Shield
+              </h3>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                We assemble the production n8n execution pipelines connecting scrapers, LLMs, sequencers, and your CRM. We install bidirectional deduplication, bounce filters, and sub-minute webhook triggers.
+              </p>
+              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
+                <div class="flow-node"><span>Deliverable: Production n8n Engine Deployed</span><span class="flow-status-pill">Tested</span></div>
+                <div class="flow-node"><span>Deliverable: CRM Shield &amp; Deduplication Node</span><span class="flow-status-pill">Active</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="process-step-item">
+            <div class="step-badge-number">04</div>
+            <div class="step-content-box">
+              <div class="step-timeline-tag">Days 24 – 30 &bull; Autonomous Deployment &amp; Handoff</div>
+              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
+                Autonomous Agents, Telemetry &amp; 100% Code Handoff
+              </h3>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                We activate autonomous agents with human-in-the-loop overrides, set up real-time Slack telemetry dashboards, and conduct full operational handoff training with your revenue leadership team.
+              </p>
+              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
+                <div class="flow-node"><span>Deliverable: Slack &amp; Email Telemetry Alerts</span><span class="flow-status-pill">Monitoring</span></div>
+                <div class="flow-node"><span>Deliverable: 100% Source Code &amp; Credentials Transferred</span><span class="flow-status-pill">Client-Owned</span></div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Layer 3: Agents -->
-        <div class="triad-card card-agents">
-          <span class="triad-badge">Layer 03 · Autonomy</span>
-          <h3>Agents</h3>
-          <div class="triad-role">Autonomous Decision Engines</div>
-          <p>
-            Autonomous runtime workers that parse incoming conversations, classify sentiment, answer technical questions, schedule meetings, and escalate hot leads to your senior account executives.
+      </div>
+    </section>
+
+    <!-- PAL Methodology Section -->
+    <section class="section" style="padding: 70px 0; background: var(--bg-card-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); width: 100%;">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-tag">Engineering Rigor</div>
+          <h2 class="section-title">
+            The PAL <span class="serif-italic">methodology.</span>
+          </h2>
+          <p class="section-subtitle">
+            How we translate complex sales operations into deterministic, zero-error AI workflows.
           </p>
-          <div class="triad-spec-box">
-            <strong>Key Architecture:</strong>
-            <div class="triad-spec-tags">
-              <span class="triad-spec-tag">Inbound Chatbot</span>
-              <span class="triad-spec-tag">Reply Triage Agent</span>
-              <span class="triad-spec-tag">Signal Researcher</span>
-              <span class="triad-spec-tag">Calendar Booker</span>
-              <span class="triad-spec-tag">Support Router</span>
-            </div>
+        </div>
+
+        <div class="work-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          
+          <div class="work-card" style="padding: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--accent-blue); margin-bottom: 8px;">P</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Parse</h4>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+              Deconstruct manual SDR &amp; AE workflows into raw operational constraints, data inputs, and desired trigger conditions.
+            </p>
+          </div>
+
+          <div class="work-card" style="padding: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--accent-green); margin-bottom: 8px;">A</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Ambiguity Scan</h4>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+              Identify edge cases, API rate limits, catch-all domains, and missing data schemas before authoring code.
+            </p>
+          </div>
+
+          <div class="work-card" style="padding: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--accent-rose); margin-bottom: 8px;">L</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Latent Intent</h4>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+              Uncover buyer psychological triggers to ensure AI-generated messaging resonates with high-conviction value.
+            </p>
+          </div>
+
+          <div class="work-card" style="padding: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">C</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Compile</h4>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+              Synthesize tested n8n JSON nodes, prompt schemas, and webhook listeners ready for immediate production execution.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mega Bottom CTA Banner -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
+            salesgency<span class="brand-symbol">®</span>
+          </div>
+          <h2 class="bottom-cta-headline">
+            Start your 30-day <span class="serif-italic">build cycle.</span>
+          </h2>
+          <p class="bottom-cta-subtitle">
+            Kick off with a 60-minute GTM Architecture Audit ($495, 100% credited to your retainer) or partner on a dedicated retainer.
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="qualification.html" class="btn btn-primary">Book Paid Audit ($495)</a>
+            <a href="pricing.html" class="btn btn-secondary">See Retainer Plans</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 4-WEEK DDC DELIVERY CYCLE -->
-  <section class="section" id="ddc">
-    <div class="container-wide">
-      <div class="section-header">
-        <div class="digiket-badge badge-cyan">
-          <span>⏱️ The Delali Development Cycle</span>
-        </div>
-        <h2>Our 30-Day Deployment Sprint</h2>
-        <p>From initial discovery audit to live production handover, every step is rigorously tested and documented.</p>
-      </div>
-
-      <div class="process-grid">
-        <div class="process-step-card">
-          <div class="process-step-number">01</div>
-          <h4>Week 1: Audit &amp; Signal Mapping</h4>
-          <p>We analyze your sales tech stack, CRM schemas, inbound conversion points, and buyer trigger signals to design the technical architecture document.</p>
-        </div>
-
-        <div class="process-step-card">
-          <div class="process-step-number">02</div>
-          <h4>Week 2: Triad Architecture Build</h4>
-          <p>We construct the deterministic workflows (n8n/Make), author the dynamic prompt skills, and train the custom agents tailored to your sales playbook.</p>
-        </div>
-
-        <div class="process-step-card">
-          <div class="process-step-number">03</div>
-          <h4>Week 3: CRM &amp; Dual Inbox Routing</h4>
-          <p>We integrate bi-directional CRM syncing, automated import formatters, quote generators, and dual inbox notifications with end-to-end event telemetry.</p>
-        </div>
-
-        <div class="process-step-card">
-          <div class="process-step-number">04</div>
-          <h4>Week 4: Playbooks, Training &amp; Handover</h4>
-          <p>We organize your master key sheets, deliver custom video courses and rep SOPs, conduct live shadow sessions, and transfer complete infrastructure ownership.</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- THE PAL DISCIPLINE -->
-  <section class="section section-alt">
-    <div class="container-wide">
-      <div class="section-header">
-        <div class="digiket-badge badge-emerald">
-          <span>Engineering Invariant</span>
-        </div>
-        <h2>The PAL Protocol: Parse, Scan, Intent, Expand, Compile</h2>
-        <p>We never write unverified code. Every workflow and agent prompt is vetted through the PAL framework.</p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
-        <div style="background: #FFFFFF; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border);">
-          <strong style="color: #0284C7; display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">P · Parse</strong>
-          <h4 style="margin-bottom: 8px;">Deconstruct Intent</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted);">Isolate business objectives, ICP constraints, and CRM data boundaries.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border);">
-          <strong style="color: #0284C7; display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">A · Ambiguity Scan</strong>
-          <h4 style="margin-bottom: 8px;">Eliminate Blindspots</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted);">Identify missing API webhooks, deduplication rules, and delivery failure states.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border);">
-          <strong style="color: #0284C7; display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">L · Latent Intent</strong>
-          <h4 style="margin-bottom: 8px;">Map Downstream Needs</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted);">Anticipate rep edge cases, CRM validation rules, and future tool migrations.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border);">
-          <strong style="color: #0284C7; display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">E · Expand</strong>
-          <h4 style="margin-bottom: 8px;">Draft Architecture</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted);">Write technical specifications, data schemas, and prompt recipes.</p>
-        </div>
-        <div style="background: #FFFFFF; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border);">
-          <strong style="color: #0284C7; display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px;">C · Compile</strong>
-          <h4 style="margin-bottom: 8px;">Deploy To Production</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted);">Deploy deterministic workflows into your production accounts with tests.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BOTTOM CTA BANNER -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container-wide">
-      <div class="cta-banner-digiket">
-        <div class="digiket-badge badge-orange" style="background: rgba(255, 96, 28, 0.2); border-color: rgba(255, 96, 28, 0.4); color: #FF9B71;">
-          <span>🚀 Deploy in 30 Days</span>
-        </div>
-        <h2>Ready to Build Your Custom Triad?</h2>
-        <p>Book a 20-minute discovery session with our lead architect. We'll outline the exact workflows, skills, and agents needed for your revenue targets.</p>
-        <div class="btn-group">
-          <a href="qualification.html" class="btn btn-orange btn-lg">Paid Audit () →</a>
-          <a href="services.html" class="btn btn-ghost btn-lg" style="color: #FFF; border-color: rgba(255,255,255,0.25);">Explore 4 Core Pillars</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer-digiket">
-    <div class="container-wide">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
-            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-          </a>
-          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Core Pillars</h4>
-          <ul>
-            <li><a href="services.html#inbound">Inbound Automation</a></li>
-            <li><a href="services.html#outbound">Outbound Automation</a></li>
-            <li><a href="services.html#revops">RevOps</a></li>
-            <li><a href="services.html#enablement">Enablement</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="process.html">Skills, Agents, Workflows</a></li>
-            <li><a href="process.html#ddc">30-Day Sprint</a></li>
-            <li><a href="templates.html">Skill Library</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="work.html">Case Studies</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
-            <li><a href="qualification.html">Paid Audit () →</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </div>
 
   <script>
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-    if (mobileMenuToggle && mobileNavDrawer) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileNavDrawer.classList.toggle('open');
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
       });
     }
   </script>
+
 </body>
 </html>

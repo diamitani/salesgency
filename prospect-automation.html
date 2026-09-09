@@ -3,388 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prospect Automation Engine (PAE) | SalesGency</title>
-  <meta name="description" content="AI-powered prospect automation: 5-Pillar outbound architecture, deterministic n8n workflows, dynamic PAS copy, and autonomous agent teams.">
-  
+  <title>Prospect Automation Engine (PAE) — SalesGency®</title>
+  <meta name="description" content="AI-powered 5-Pillar outbound architecture: Trigger Ingest, CRM Shield & Dedupe, Multi-Source Reveal, AI PAS Copywriting, and Autonomous Sequencer Enrollment.">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Prospect Automation Engine (PAE) | SalesGency">
-  <meta property="og:description" content="Research. Personalize. Enroll. Track. Autonomous GTM architecture built for speed to value.">
-  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
+  <meta property="og:title" content="Prospect Automation Engine (PAE) — SalesGency®">
+  <meta property="og:description" content="Research. Personalize. Enroll. Track. Autonomous GTM architecture built for speed and deliverability.">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- FLOATING PILL NAVBAR -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-        <span class="brand-subtag">PAE</span>
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item-dropdown">
-          <a href="agents.html" class="nav-link nav-dropdown-trigger">
-            <span>Architecture</span>
-            <span class="dropdown-arrow">▼</span>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="agents.html" class="nav-dropdown-item">
-              <span class="item-icon">🤖</span>
-              <div>
-                <strong>Agents</strong>
-                <span class="item-desc">Autonomous reasoning &amp; triage</span>
-              </div>
-            </a>
-            <a href="workflows.html" class="nav-dropdown-item">
-              <span class="item-icon">⚡</span>
-              <div>
-                <strong>Workflows</strong>
-                <span class="item-desc">Deterministic execution rails</span>
-              </div>
-            </a>
-            <a href="skills.html" class="nav-dropdown-item">
-              <span class="item-icon">🧠</span>
-              <div>
-                <strong>Skills</strong>
-                <span class="item-desc">Packaged domain intelligence</span>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="process.html" class="nav-link">Process</a></li>
-        <li><a href="work.html" class="nav-link">Work</a></li>
-        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item active">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
-        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
-        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer" id="mobileNavDrawer">
-    <a href="index.html" class="nav-link">Home</a>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-heading">Architecture</div>
-      <a href="agents.html" class="nav-link">🤖 Agents</a>
-      <a href="workflows.html" class="nav-link">⚡ Workflows</a>
-      <a href="skills.html" class="nav-link">🧠 Skills</a>
-    </div>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="process.html" class="nav-link">Process</a>
-    <a href="work.html" class="nav-link">Work</a>
-    <a href="pricing.html" class="nav-link">Pricing</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
   </div>
 
-<!-- 2. HERO -->
-<header class="hero subpage">
-  <div class="container">
-    <div class="hero-pill-badge badge-pulse">
-      <span class="dot"></span>
-      <span>5-Pillar Autonomous Outbound Architecture</span>
-    </div>
-    
-    <h1>
-      Prospect <span class="serif-i">Automation Engine.</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      Research. Personalize. Enroll. Track. We build custom agent harnesses, skills, and n8n workflows to automate the entire top-of-funnel prospecting lifecycle — so your team focuses on closing.
-    </p>
-    
-    <div class="hero-btns">
-      <a href="#architecture" class="btn btn-primary btn-lg">View 5-Pillar Architecture ↓</a>
-      <a href="salesgency-pae/index.html" class="btn btn-accent btn-lg" style="background:linear-gradient(135deg,#0284C7,#7C3AED); color:#FFF; border:none;">Launch Live PAE Sandbox ⚡</a>
-      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-ghost btn-lg">Book Architecture Call</a>
-    </div>
-  </div>
-</header>
+  <div class="site-wrapper">
 
-<!-- 3. THE 5-PILLAR ARCHITECTURE SPECIFICATION -->
-<section id="architecture" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">System Architecture</div>
-      <h2 class="section-title">The 5-Pillar <span class="serif-i">9-Node Production Pattern.</span></h2>
-      <p class="section-desc">Every PAE workflow is built upon our canonical production graph: combining deterministic data routing with agentic research synthesis.</p>
-    </div>
+    <!-- PAE Hero -->
+    <section class="hero-section" style="padding-top: clamp(120px, 14vw, 170px); padding-bottom: 40px;">
+      <div class="container">
+        
+        <div class="badge-tag">Flagship Architecture</div>
+        <h1 class="hero-headline">
+          Prospect Automation <br>
+          <span class="serif-italic">Engine (PAE).</span>
+        </h1>
+        <p class="hero-description">
+          The 5-pillar autonomous outbound architecture that turns disparate scraping tools and LLM APIs into a unified, self-healing revenue pipeline.
+        </p>
 
-    <!-- 5 Pillars Flow Grid -->
-    <div class="grid-3" style="margin-bottom: 40px;">
-      
-      <div class="feature-card">
-        <div class="badge badge-mint" style="margin-bottom: 12px;">Pillar 01</div>
-        <h3>Trigger Ingest &amp; Normalizer</h3>
-        <p>Ingests real-time webhooks, scheduled daily CRON sweeps, or CSV uploads. Normalizes company domains, cleans names, and standardizes payload schemas.</p>
-        <div class="feature-card-footer">
-          <span>Node 01 &amp; Node 02</span>
-          <span>Latency &lt; 0.2s</span>
+        <div class="hero-cta-group">
+          <a href="qualification.html" class="btn btn-primary">Deploy via Paid Audit ($495)</a>
+          <a href="templates.html" class="btn btn-secondary">Get n8n Blueprint ($97)</a>
         </div>
+
       </div>
+    </section>
 
-      <div class="feature-card">
-        <div class="badge badge-blue" style="margin-bottom: 12px;">Pillar 02</div>
-        <h3>CRM Shield &amp; Dedupe Gate</h3>
-        <p>Mandatory safety gate. Queries Salesforce/HubSpot before contacting any prospect. Halts automatically if an active deal, open pipeline stage, or client tag exists.</p>
-        <div class="feature-card-footer">
-          <span>Node 03</span>
-          <span>Zero Collision</span>
-        </div>
-      </div>
-
-      <div class="feature-card">
-        <div class="badge badge-rose" style="margin-bottom: 12px;">Pillar 03</div>
-        <h3>Data Tool &amp; Contact Reveal</h3>
-        <p>Executes multi-provider cascades (Clay, Apollo, ZoomInfo) with exact ICP boolean titles to retrieve verified work emails, phone numbers, and LinkedIn URLs.</p>
-        <div class="feature-card-footer">
-          <span>Node 04</span>
-          <span>99.4% Verified</span>
-        </div>
-      </div>
-
-      <div class="feature-card">
-        <div class="badge badge-sun" style="margin-bottom: 12px;">Pillar 04</div>
-        <h3>AI PAS Research Copywriter</h3>
-        <p>Generates high-converting 3-sentence Problem-Agitate-Solve copy based on real-time news, tech stack data, and company hiring signals without robotic clichés.</p>
-        <div class="feature-card-footer">
-          <span>Node 05</span>
-          <span>Grade 6 Reading Level</span>
-        </div>
-      </div>
-
-      <div class="feature-card">
-        <div class="badge badge-orange" style="margin-bottom: 12px;">Pillar 05</div>
-        <h3>Approval Gate &amp; Sequencer</h3>
-        <p>Human-in-the-loop Slack alert with 1-click confirmation or automated enrollment into Smartlead, Instantly, or Lemlist, accompanied by real-time CRM updates.</p>
-        <div class="feature-card-footer">
-          <span>Nodes 06, 07, 08, 09</span>
-          <span>Instant Dispatch</span>
-        </div>
-      </div>
-
-      <div class="feature-card" style="background: var(--ink); color: #FFFFFF;">
-        <div class="badge badge-mint" style="margin-bottom: 12px;">Core Invariant</div>
-        <h3 style="color: #FFFFFF;">Deterministic Logic + Agentic Depth</h3>
-        <p style="color: #94A3B8;">Triggers, deduplication, and CRM field syncs are 100% deterministic. LLMs are strictly isolated to unstructured synthesis.</p>
-        <div class="feature-card-footer" style="border-color: rgba(255,255,255,0.1); color: var(--badge-sun-bg);">
-          <span>Zero Hallucinations</span>
-          <span>Production Ready</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Architecture Visual Inspections -->
-    <div style="margin-top: 50px;">
-      <div class="section-label" style="text-align: center; margin-bottom: 12px;">Production Workflow Telemetry</div>
-      <h3 style="text-align: center; font-size: 26px; margin-bottom: 36px;">Live System Diagrams &amp; Sequence Dashboards</h3>
-      
-      <div class="grid-2">
-        <!-- CRM Shield -->
-        <div class="feature-card" style="padding: 24px;">
-          <div class="project-card-image-wrap">
-            <span class="project-image-badge">0% Collision · 99/100</span>
-            <img src="assets/project-vntnr.jpg" alt="VNTNR Global Logistics CRM Shield Architecture" class="project-card-img" loading="lazy">
-          </div>
-          <div class="badge badge-mint" style="margin-bottom: 10px;">Pillar 02 Deep Dive</div>
-          <h4 style="font-size: 18px; margin-bottom: 8px;">Deterministic CRM Shield &amp; Routing Engine</h4>
-          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
-            Lead capture from websites, LinkedIn ads, and campaigns routes through real-time data enrichment and qualification gates before dispatching to HubSpot and Salesforce with automated territory assignment.
+    <!-- 5 Pillars Architecture Breakdown -->
+    <section style="padding: 40px 0 80px; width: 100%;">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="badge-tag">5-Pillar System Specs</div>
+          <h2 class="section-title">
+            Engineered for <span class="serif-italic">maximum deliverability.</span>
+          </h2>
+          <p class="section-subtitle">
+            Every step is protected by automated verification, catch-all validation, and bidirectional CRM deduplication.
           </p>
         </div>
 
-        <!-- PAS Sequence Engine -->
-        <div class="feature-card" style="padding: 24px;">
-          <div class="project-card-image-wrap">
-            <span class="project-image-badge">24.2% Reply · 118 Mtgs</span>
-            <img src="assets/project-aeorim.jpg" alt="Aeorim AI Cold Email Outreach Engine" class="project-card-img" loading="lazy">
+        <div class="work-gallery-grid" style="grid-template-columns: 1fr;">
+          
+          <!-- Pillar 1 -->
+          <div class="work-card" style="flex-direction: row; flex-wrap: wrap; gap: 28px; align-items: center;">
+            <div class="work-card-visual" style="flex: 1; min-width: 280px; height: 180px;">
+              <div class="work-preview-flow">
+                <div class="flow-node"><span>Webhook Trigger: Job Board Post Detected</span><span class="flow-status-pill">Signal</span></div>
+                <div class="flow-node"><span>Funding Round Scraped from Crunchbase</span><span class="flow-status-pill">Parsed</span></div>
+                <div class="flow-node"><span>Account ICP Score Computed: 94/100</span><span class="flow-status-pill">Qualified</span></div>
+              </div>
+            </div>
+            <div class="work-card-content" style="flex: 1.2; min-width: 280px;">
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-blue); margin-bottom: 6px;">PILLAR 01</div>
+              <h3>Trigger &amp; Signal Ingestion</h3>
+              <p>
+                Captures real-time account buying intent from job postings, executive headcount additions, tech stack installations, and funding events across Apollo, LinkedIn, and PredictLeads.
+              </p>
+            </div>
           </div>
-          <div class="badge badge-blue" style="margin-bottom: 10px;">Pillar 04 &amp; 05 Deep Dive</div>
-          <h4 style="font-size: 18px; margin-bottom: 8px;">Dynamic PAS Copywriter &amp; Sequencer</h4>
-          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
-            Multi-stage sequence tracking with real-time open/reply rate telemetry. Synthesizes pain points, company milestones, and case studies into 3-sentence dynamic outreach variants.
+
+          <!-- Pillar 2 -->
+          <div class="work-card" style="flex-direction: row; flex-wrap: wrap; gap: 28px; align-items: center;">
+            <div class="work-card-visual" style="flex: 1; min-width: 280px; height: 180px;">
+              <div class="work-preview-flow">
+                <div class="flow-node"><span>HubSpot &amp; Salesforce Bidirectional Query</span><span class="flow-status-pill">Querying</span></div>
+                <div class="flow-node"><span>Check Open Deals &amp; Unsubscribe Blacklist</span><span class="flow-status-pill">Checking</span></div>
+                <div class="flow-node"><span>Result: Clean Record Approved for Outreach</span><span class="flow-status-pill">Shielded</span></div>
+              </div>
+            </div>
+            <div class="work-card-content" style="flex: 1.2; min-width: 280px;">
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-green); margin-bottom: 6px;">PILLAR 02</div>
+              <h3>CRM Shield &amp; Deduplication</h3>
+              <p>
+                Prevents reps from stepping on active opportunities or emailing existing customers. Real-time querying cross-references HubSpot, Salesforce, and suppression lists before any enrichment occurs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="work-card" style="flex-direction: row; flex-wrap: wrap; gap: 28px; align-items: center;">
+            <div class="work-card-visual" style="flex: 1; min-width: 280px; height: 180px;">
+              <div class="work-preview-flow">
+                <div class="flow-node"><span>Multi-Source Waterfall: Apollo &rarr; Clay &rarr; Prospeo</span><span class="flow-status-pill">Waterfall</span></div>
+                <div class="flow-node"><span>Deep MX &amp; Catch-All SMTP Handshake</span><span class="flow-status-pill">Validated</span></div>
+                <div class="flow-node"><span>Direct Mobile &amp; Verified Email Confirmed</span><span class="flow-status-pill">Enriched</span></div>
+              </div>
+            </div>
+            <div class="work-card-content" style="flex: 1.2; min-width: 280px;">
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-rose); margin-bottom: 6px;">PILLAR 03</div>
+              <h3>Multi-Source Contact Reveal &amp; Verification</h3>
+              <p>
+                Waterfall data enrichment cascades across multiple providers to achieve 92%+ contact reveal rates with zero catch-all bounce risk, protecting your domain sender reputation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="work-card" style="flex-direction: row; flex-wrap: wrap; gap: 28px; align-items: center;">
+            <div class="work-card-visual" style="flex: 1; min-width: 280px; height: 180px;">
+              <div class="work-preview-flow">
+                <div class="flow-node"><span>Prospect LinkedIn Summary &amp; Post Ingest</span><span class="flow-status-pill">Ingested</span></div>
+                <div class="flow-node"><span>Dynamic PAS Prompt Engine Execution</span><span class="flow-status-pill">Drafted</span></div>
+                <div class="flow-node"><span>Custom 1:1 Hook Generated (Zero Template Slop)</span><span class="flow-status-pill">Ready</span></div>
+              </div>
+            </div>
+            <div class="work-card-content" style="flex: 1.2; min-width: 280px;">
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-blue); margin-bottom: 6px;">PILLAR 04</div>
+              <h3>AI PAS Copywriting Engine</h3>
+              <p>
+                Generates hyper-personalized Problem-Agitate-Solve copy tailored specifically to the prospect's tech stack and recent milestones. No generic AI templates or spam jargon.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 5 -->
+          <div class="work-card" style="flex-direction: row; flex-wrap: wrap; gap: 28px; align-items: center;">
+            <div class="work-card-visual" style="flex: 1; min-width: 280px; height: 180px;">
+              <div class="work-preview-flow">
+                <div class="flow-node"><span>Smartlead / Instantly Campaign Webhook</span><span class="flow-status-pill">Enrolled</span></div>
+                <div class="flow-node"><span>Warmup Inbox Pool Rotation (Spreading Load)</span><span class="flow-status-pill">Rotated</span></div>
+                <div class="flow-node"><span>Real-Time Reply &amp; Sentiment Classification</span><span class="flow-status-pill">Monitored</span></div>
+              </div>
+            </div>
+            <div class="work-card-content" style="flex: 1.2; min-width: 280px;">
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-green); margin-bottom: 6px;">PILLAR 05</div>
+              <h3>Sequencer Enrollment &amp; Sentiment Triage</h3>
+              <p>
+                Automatically pushes enriched leads into rotated inbox pools in Smartlead or Instantly, and uses LLM sentiment analysis to categorize incoming replies (Positive, Objection, Referral, Out of Office).
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Mega Bottom CTA Banner -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
+            salesgency<span class="brand-symbol">®</span>
+          </div>
+          <h2 class="bottom-cta-headline">
+            Deploy PAE in your <span class="serif-italic">infrastructure.</span>
+          </h2>
+          <p class="bottom-cta-subtitle">
+            Get the production n8n JSON blueprint ($97) or have our engineering team customize and install it for you during a paid audit ($495).
           </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="qualification.html" class="btn btn-primary">Book Paid Audit ($495)</a>
+            <a href="templates.html" class="btn btn-secondary">Get Blueprint ($97)</a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="agents.html" class="footer-link">Architecture</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </div>
-</section>
-
-<!-- 4. AUTONOMOUS AGENT ROSTER -->
-<section id="agents">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Agent Swarm</div>
-      <h2 class="section-title">Specialized Sub-Agents Built for <span class="serif-i">GTM Execution.</span></h2>
-      <p class="section-desc">Each autonomous agent is assigned a dedicated soul, operational boundaries, and specialized tools.</p>
-    </div>
-
-    <div class="grid-4">
-      
-      <!-- Agent 1 -->
-      <div class="usecase-card">
-        <div class="badge badge-mint" style="margin-bottom: 14px;">🔍 Research</div>
-        <h4>Prospect Agent</h4>
-        <p>Conducts deep firmographic and technographic sweeps on companies. Extracts hiring trends, funding rounds, and executive quotes into structured brief sheets.</p>
-      </div>
-
-      <!-- Agent 2 -->
-      <div class="usecase-card">
-        <div class="badge badge-blue" style="margin-bottom: 14px;">✍️ Copywriting</div>
-        <h4>PAS Copy Agent</h4>
-        <p>Drafts hyper-personalized 3-sentence outreach emails. Matches your brand tone and avoids AI buzzwords ("delve", "testament", "revolutionize").</p>
-      </div>
-
-      <!-- Agent 3 -->
-      <div class="usecase-card">
-        <div class="badge badge-rose" style="margin-bottom: 14px;">📥 Inbox Triage</div>
-        <h4>Inbox Agent</h4>
-        <p>Monitors email replies, filters out-of-office notices, classifies objections, and alerts reps instantly when a prospect requests a meeting or demo.</p>
-      </div>
-
-      <!-- Agent 4 -->
-      <div class="usecase-card">
-        <div class="badge badge-sun" style="margin-bottom: 14px;">📡 Buying Signals</div>
-        <h4>Signal Agent</h4>
-        <p>Monitors job boards, LinkedIn executive changes, and tech stack additions to trigger real-time, event-driven outreach sequences.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 5. GTM TECH STACK -->
-<section id="stack" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Infrastructure</div>
-      <h2 class="section-title">Built on <span class="serif-i">Production-Grade Tooling.</span></h2>
-      <p class="section-desc">No brittle no-code toys. We build using enterprise orchestration tools and scalable cloud infrastructure.</p>
-    </div>
-
-    <div class="grid-3">
-      
-      <div class="feature-card">
-        <div style="font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 10px;">n8n &amp; Make</div>
-        <p>Enterprise workflow orchestration with custom JavaScript code nodes, sub-workflow modularization, and MCP server control planes.</p>
-      </div>
-
-      <div class="feature-card">
-        <div style="font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 10px;">Claude 3.5 &amp; GPT-4o</div>
-        <p>State-of-the-art reasoning models for deep prospect extraction, structured data formatting, and personalized copy generation.</p>
-      </div>
-
-      <div class="feature-card">
-        <div style="font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 10px;">Apollo, Clay &amp; Smartlead</div>
-        <p>Seamless waterfall enrichment and high-deliverability email warm-up / sequence rotation engines.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 6. BOTTOM CTA -->
-<div class="container cta-banner-wrapper">
-  <div class="cta-banner-card">
-    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready to Deploy PAE?</div>
-    <h2>Deploy Your Custom <span class="serif-i" style="color: #FDFF73;">Prospect Engine in 30 Days.</span></h2>
-    <p>Book a discovery call. We'll audit your target ICP and construct a live 5-Pillar outbound workflow map on the call.</p>
-    <div class="cta-banner-btns">
-      <a href="https://calendly.com/diamitani" target="_blank" class="btn btn-accent btn-lg">Book Architecture Session →</a>
-      <a href="pricing.html" class="btn btn-ghost btn-lg" style="background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.2);">View Pricing</a>
-    </div>
-    <div class="cta-banner-status">
-      <span class="dot"></span>
-      <span>SYSTEM OPERATIONAL · ACCEPTING CLIENT BUILDS</span>
-    </div>
-  </div>
-</div>
-
-<!-- 7. FOOTER -->
-  <!-- FOOTER -->
-  <footer class="footer-digiket">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
-            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-          </a>
-          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Core Pillars</h4>
-          <ul>
-            <li><a href="services.html#inbound">Inbound Automation</a></li>
-            <li><a href="services.html#outbound">Outbound Automation</a></li>
-            <li><a href="services.html#revops">RevOps</a></li>
-            <li><a href="services.html#enablement">Enablement</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="process.html">Skills, Agents, Workflows</a></li>
-            <li><a href="process.html#ddc">30-Day Sprint</a></li>
-            <li><a href="templates.html">Skill Library</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="work.html">Case Studies</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
-            <li><a href="qualification.html">Book Discovery Call →</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script>
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-    if (mobileMenuToggle && mobileNavDrawer) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileNavDrawer.classList.toggle('open');
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
       });
     }
   </script>
+
 </body>
 </html>

@@ -3,301 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deployment & Speed to Value | SalesGency</title>
-  <meta name="description" content="Production-ready GTM automation deployment: 30-day speed to value, shadowed testing, and 100% client infrastructure ownership.">
-  
+  <title>Deployment Specifications &amp; Handoff — SalesGency®</title>
+  <meta name="description" content="Technical deployment specifications for SalesGency GTM AI infrastructure: self-hosted n8n, private Docker clusters, credential security, and 100% client code ownership.">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Deployment & Speed to Value | SalesGency">
-  <meta property="og:description" content="Live in 30 days with full infrastructure ownership and shadowed testing.">
-  <meta property="og:image" content="assets/salesgency_wordmark_dark_1788823782682.jpg">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-dark.svg">
+  <meta property="og:title" content="Deployment Specifications &amp; Handoff — SalesGency®">
+  <meta property="og:description" content="Enterprise security, zero SaaS lock-in, and full source code handoff.">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- FLOATING PILL NAVBAR -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand" aria-label="SalesGency Home">
-        <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-        <span class="brand-subtag">Deployment</span>
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item-dropdown">
-          <a href="agents.html" class="nav-link nav-dropdown-trigger">
-            <span>Architecture</span>
-            <span class="dropdown-arrow">▼</span>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="agents.html" class="nav-dropdown-item">
-              <span class="item-icon">🤖</span>
-              <div>
-                <strong>Agents</strong>
-                <span class="item-desc">Autonomous reasoning &amp; triage</span>
-              </div>
-            </a>
-            <a href="workflows.html" class="nav-dropdown-item">
-              <span class="item-icon">⚡</span>
-              <div>
-                <strong>Workflows</strong>
-                <span class="item-desc">Deterministic execution rails</span>
-              </div>
-            </a>
-            <a href="skills.html" class="nav-dropdown-item">
-              <span class="item-icon">🧠</span>
-              <div>
-                <strong>Skills</strong>
-                <span class="item-desc">Packaged domain intelligence</span>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="process.html" class="nav-link">Process</a></li>
-        <li><a href="work.html" class="nav-link">Work</a></li>
-        <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
+      <div class="nav-menu">
+        <a href="services.html" class="nav-item">Capabilities</a>
+        <a href="templates.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="discount-pill">70% OFF</span>
+        </a>
+        <a href="agents.html" class="nav-item active">Architecture</a>
+        <a href="process.html" class="nav-item">Process</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
 
       <div class="nav-actions">
-        <a href="pricing.html" class="btn btn-secondary btn-sm">Pricing</a>
-        <a href="qualification.html" class="btn btn-primary btn-sm">Book Discovery Call →</a>
-        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <a href="qualification.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book Audit ($495)</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
         </button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-nav-drawer" id="mobileNavDrawer">
-    <a href="index.html" class="nav-link">Home</a>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-heading">Architecture</div>
-      <a href="agents.html" class="nav-link">🤖 Agents</a>
-      <a href="workflows.html" class="nav-link">⚡ Workflows</a>
-      <a href="skills.html" class="nav-link">🧠 Skills</a>
-    </div>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="process.html" class="nav-link">Process</a>
-    <a href="work.html" class="nav-link">Work</a>
-    <a href="pricing.html" class="nav-link">Pricing</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="qualification.html" class="btn btn-primary btn-sm" style="margin-top: 10px;">Book Discovery Call →</a>
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Capabilities</a>
+    <a href="templates.html" class="mobile-link">Marketplace (70% OFF)</a>
+    <a href="agents.html" class="mobile-link">Architecture</a>
+    <a href="process.html" class="mobile-link">Process</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="qualification.html" class="btn btn-primary" style="margin-top: 8px;">Book Paid Audit ($495)</a>
   </div>
 
-<!-- 2. HERO -->
-<header class="hero subpage">
-  <div class="container">
-    <div class="hero-pill-badge badge-pulse">
-      <span class="dot"></span>
-      <span>Enterprise SLA · 30-Day Deployment</span>
+  <div class="site-wrapper">
+
+    <!-- Architecture Subnav Tabs -->
+    <div style="width: 100%; display: flex; justify-content: center; padding-top: clamp(100px, 12vw, 140px); background: #FFFFFF;">
+      <div style="display: flex; gap: 8px; background: var(--bg-card-subtle); padding: 6px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle);">
+        <a href="agents.html" class="filter-tab-btn">🤖 Agents (Tier 3)</a>
+        <a href="workflows.html" class="filter-tab-btn">⚡ Workflows (Tier 2)</a>
+        <a href="skills.html" class="filter-tab-btn">🧠 Skills (Tier 1)</a>
+        <a href="deployment.html" class="filter-tab-btn active">📦 Deployment Specs</a>
+      </div>
     </div>
-    
-    <h1>
-      Live in 30 Days. <br>
-      <span class="serif-i">Full Infrastructure Ownership.</span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      No multi-year digital transformations. We audit your revenue funnel, design the architecture, and deploy functioning AI engines directly into your infrastructure in weeks.
-    </p>
+
+    <!-- Deployment Hero -->
+    <section class="hero-section" style="padding-top: 30px; padding-bottom: 40px;">
+      <div class="container">
+        
+        <div class="badge-tag">Enterprise Architecture &bull; 100% In-House</div>
+        <h1 class="hero-headline">
+          Deployment specs &amp; <br>
+          <span class="serif-italic">complete ownership.</span>
+        </h1>
+        <p class="hero-description">
+          We don't trap you in a proprietary SaaS black box. Everything we engineer runs inside your private AWS/GCP/DigitalOcean cloud with 100% client code ownership.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="qualification.html" class="btn btn-primary">Book Paid Architecture Audit ($495)</a>
+          <a href="pricing.html" class="btn btn-secondary">Review Engagement Plans</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4 Core Pillars of Technical Handoff -->
+    <section style="padding: 20px 0 80px; width: 100%;">
+      <div class="container">
+        <div class="work-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          
+          <!-- Spec 1 -->
+          <div class="work-card" style="padding: 32px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">🛡️</div>
+            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">
+              Zero Vendor Lock-In
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+              All n8n workflow JSONs, Python scrapers, and prompt engineering schemas are committed to your private GitHub/GitLab repository. If you ever pause your subscription, everything keeps running without interruption.
+            </p>
+            <div class="ticker-pill font-mono" style="font-size: 12px;">100% Client-Owned Intellectual Property</div>
+          </div>
+
+          <!-- Spec 2 -->
+          <div class="work-card" style="padding: 32px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">🔒</div>
+            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">
+              Private Infrastructure Isolation
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+              Deploy on self-hosted Docker containers, Railway, Render, or AWS ECS. Your CRM keys, prospect data, and internal sales recordings never transit through third-party multi-tenant agency servers.
+            </p>
+            <div class="ticker-pill font-mono" style="font-size: 12px;">SOC2 &amp; GDPR Compliant Data Boundary</div>
+          </div>
+
+          <!-- Spec 3 -->
+          <div class="work-card" style="padding: 32px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">⚡</div>
+            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">
+              Self-Healing Telemetry
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+              Every webhook and scraper includes automated retry queues, rate-limit backoffs, and instant error telemetry sent to a dedicated Slack channel (`#gtm-telemetry`) for real-time observability.
+            </p>
+            <div class="ticker-pill font-mono" style="font-size: 12px;">99.9% Uptime with Auto-Failover</div>
+          </div>
+
+          <!-- Spec 4 -->
+          <div class="work-card" style="padding: 32px;">
+            <div style="font-size: 32px; margin-bottom: 12px;">📚</div>
+            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">
+              Comprehensive Runbooks &amp; Training
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+              We provide step-by-step video walkthroughs, system diagrams, and operational runbooks for your RevOps and sales leadership team, ensuring seamless in-house continuity.
+            </p>
+            <div class="ticker-pill font-mono" style="font-size: 12px;">Loom Video Walkthroughs + Markdown Docs</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mega Bottom CTA Banner -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
+            salesgency<span class="brand-symbol">®</span>
+          </div>
+          <h2 class="bottom-cta-headline">
+            Build software you own. <br><span class="serif-italic">Not software you rent.</span>
+          </h2>
+          <p class="bottom-cta-subtitle">
+            Get started with a 60-minute GTM Architecture Audit ($495, 100% credited to your retainer).
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="qualification.html" class="btn btn-primary">Book Paid Audit ($495)</a>
+            <a href="pricing.html" class="btn btn-secondary">See Pricing Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. All rights reserved. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Capabilities</a>
+            <a href="templates.html" class="footer-link">Marketplace</a>
+            <a href="agents.html" class="footer-link">Architecture</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="work.html" class="footer-link">Case Studies</a>
+            <a href="qualification.html" class="footer-link">Book Audit</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
-</header>
-
-<!-- 3. DEPLOYMENT PILLARS -->
-<section id="pillars" style="border-top: 1px solid var(--border); background: var(--bg-alt);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Deployment Standards</div>
-      <h2 class="section-title">Built for Enterprise <span class="serif-i">Reliability &amp; Control.</span></h2>
-      <p class="section-desc">We follow strict engineering principles to guarantee zero downtime, zero data leakage, and complete client ownership.</p>
-    </div>
-
-    <div class="grid-2">
-      
-      <div class="feature-card">
-        <div class="badge badge-mint" style="margin-bottom: 14px;">01. Zero Vendor Lock-in</div>
-        <h3>100% Client Infrastructure Ownership</h3>
-        <p>All n8n workflows, Make blueprints, Next.js web applications, and agent system prompts are deployed directly into your own cloud accounts or servers. You retain total ownership of all API keys, data models, and IP.</p>
-        <ul class="checklist" style="margin-top: 16px;">
-          <li><span class="checklist-icon">✓</span> Your own AWS / Supabase / n8n instances</li>
-          <li><span class="checklist-icon">✓</span> Exportable JSON workflows &amp; markdown docs</li>
-          <li><span class="checklist-icon">✓</span> Zero recurring agency platform markups</li>
-        </ul>
-      </div>
-
-      <div class="feature-card">
-        <div class="badge badge-blue" style="margin-bottom: 14px;">02. Risk-Free Launch</div>
-        <h3>Shadowed Production Testing</h3>
-        <p>Before any outreach sequence or CRM update is activated, we run shadowed dry-runs on 100+ sample records. We test deduplication filters, ICP scoring matrices, and API rate limits in sandbox environments.</p>
-        <ul class="checklist" style="margin-top: 16px;">
-          <li><span class="checklist-icon">✓</span> 100% CRM collision prevention</li>
-          <li><span class="checklist-icon">✓</span> Deliverability &amp; SPF/DKIM verification</li>
-          <li><span class="checklist-icon">✓</span> Fail-safe Slack alerting on errors</li>
-        </ul>
-      </div>
-
-      <div class="feature-card">
-        <div class="badge badge-rose" style="margin-bottom: 14px;">03. Deterministic Safety</div>
-        <h3>Strict Logic Gates &amp; Human Approval</h3>
-        <p>High-impact actions (mass email dispatch, stage advancement, pricing quotes) include human approval switches by default. Reps confirm via 1-click Slack buttons before actions execute.</p>
-        <ul class="checklist" style="margin-top: 16px;">
-          <li><span class="checklist-icon">✓</span> 1-Click Slack Block Kit confirmation</li>
-          <li><span class="checklist-icon">✓</span> Deterministic triggers &amp; CRM field mapping</li>
-          <li><span class="checklist-icon">✓</span> Strict prompt boundaries (Grade 6 reading level)</li>
-        </ul>
-      </div>
-
-      <div class="feature-card">
-        <div class="badge badge-sun" style="margin-bottom: 14px;">04. Team Enablement</div>
-        <h3>Sales Ops Playbooks &amp; Training</h3>
-        <p>We don't just ship code and leave. Every deployment includes complete SOP documentation, operator video guides, and live team training to ensure full internal adoption.</p>
-        <ul class="checklist" style="margin-top: 16px;">
-          <li><span class="checklist-icon">✓</span> Executive architecture map &amp; data dictionary</li>
-          <li><span class="checklist-icon">✓</span> Live recorded onboarding workshop</li>
-          <li><span class="checklist-icon">✓</span> 30-day post-launch warranty support</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 4. 30-DAY TIMELINE -->
-<section id="timeline">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Deployment Roadmap</div>
-      <h2 class="section-title">From Discovery to <span class="serif-i">Live Production in 30 Days.</span></h2>
-      <p class="section-desc">Our streamlined 4-week sprint model delivers working software with zero wasted time.</p>
-    </div>
-
-    <div class="grid-4">
-      <div class="usecase-card">
-        <div class="badge badge-mint" style="margin-bottom: 14px;">Week 1</div>
-        <h4>Audit &amp; JTBD</h4>
-        <p>Analyze CRM bottlenecks, top rep workflows, and data sources. Define exact trigger logic and ICP scoring criteria.</p>
-      </div>
-
-      <div class="usecase-card">
-        <div class="badge badge-blue" style="margin-bottom: 14px;">Week 2</div>
-        <h4>PAL Blueprint &amp; Build</h4>
-        <p>Compile n8n node graphs, write PAS prompt stacks, and authenticate CRM/Apollo/Clay API connections.</p>
-      </div>
-
-      <div class="usecase-card">
-        <div class="badge badge-rose" style="margin-bottom: 14px;">Week 3</div>
-        <h4>Shadow Testing &amp; QA</h4>
-        <p>Run 100+ dry-run test records. Verify deduplication shields, webhook speed, and copy quality standards.</p>
-      </div>
-
-      <div class="usecase-card">
-        <div class="badge badge-sun" style="margin-bottom: 14px;">Week 4</div>
-        <h4>Live Production &amp; Handoff</h4>
-        <p>Switch to live production, deliver Sales Ops playbooks, conduct team training, and provide live Slack monitoring.</p>
-      </div>
-    </div>
-
-    <!-- Production Telemetry Showcase -->
-    <div style="margin-top: 48px;">
-      <div class="project-card-image-wrap" style="max-width: 960px; margin: 0 auto 16px; aspect-ratio: 16 / 9;">
-        <span class="project-image-badge">Production Monitoring SLA</span>
-        <img src="assets/project-archin.jpg" alt="Production Monitoring and Revenue Telemetry" class="project-card-img" loading="lazy">
-      </div>
-      <p style="text-align: center; font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">30-Day Deployment Deliverable: Live telemetry console monitoring all inbound &amp; outbound signals</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- 5. BOTTOM CTA -->
-<div class="container cta-banner-wrapper">
-  <div class="cta-banner-card">
-    <div class="badge badge-sun" style="margin-bottom: 20px;">Ready for Production Deployment?</div>
-    <h2>Deploy Custom Revenue Engines <span class="serif-i" style="color: #FDFF73;">In 30 Days.</span></h2>
-    <p>Run our qualification agent to calculate your architecture fit and book a paid strategy session.</p>
-    <div class="cta-banner-btns">
-      <a href="qualification.html" class="btn btn-accent btn-lg">Run Qualification Agent →</a>
-      <a href="pricing.html" class="btn btn-ghost btn-lg" style="background: rgba(255,255,255,0.08); color: #FFF; border-color: rgba(255,255,255,0.2);">View Pricing Plans</a>
-    </div>
-  </div>
-</div>
-
-<!-- 6. FOOTER -->
-  <!-- FOOTER -->
-  <footer class="footer-digiket">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <a href="index.html" class="nav-brand" style="margin-bottom: 14px;">
-            <span class="brand-text">SalesGency<span class="brand-dot">.</span></span>
-          </a>
-          <p>Sales Gency is a GTM AI &amp; Automation Agency. We build custom workflows, skills and agents to help organizations close more sales.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Core Pillars</h4>
-          <ul>
-            <li><a href="services.html#inbound">Inbound Automation</a></li>
-            <li><a href="services.html#outbound">Outbound Automation</a></li>
-            <li><a href="services.html#revops">RevOps</a></li>
-            <li><a href="services.html#enablement">Enablement</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Architecture</h4>
-          <ul>
-            <li><a href="process.html">Skills, Agents, Workflows</a></li>
-            <li><a href="process.html#ddc">30-Day Sprint</a></li>
-            <li><a href="templates.html">Skill Library</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="work.html">Case Studies</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:hello@salesgency.com">hello@salesgency.com</a></li>
-            <li><a href="qualification.html">Book Discovery Call →</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency LLC. All Rights Reserved.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script>
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-    if (mobileMenuToggle && mobileNavDrawer) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileNavDrawer.classList.toggle('open');
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
       });
     }
   </script>
+
 </body>
 </html>
