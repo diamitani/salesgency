@@ -14,17 +14,59 @@
   <meta property="og:site_name" content="SalesGency®">
   <meta property="og:title" content="SalesGency® — Your Go-To-Market Architecture">
   <meta property="og:description" content="Drive value cost-effectively. We engineer custom workflows, skills, and agents to get more revenue and enhance operations.">
-  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+  <meta property="og:image" content="https://salesgency.com/assets/gtm-architecture-hero.jpg">
 
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://salesgency.com/">
   <meta name="twitter:title" content="SalesGency® — Your Go-To-Market Architecture">
   <meta name="twitter:description" content="Drive value cost-effectively. Custom GTM workflows, skills, and agents.">
-  <meta name="twitter:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+  <meta name="twitter:image" content="https://salesgency.com/assets/gtm-architecture-hero.jpg">
 
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .hero-media-wrapper {
+      max-width: 1040px;
+      margin: 44px auto 0;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: var(--shadow-float);
+      background: #000000;
+      position: relative;
+    }
+    .hero-media-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hero-media-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      font-size: 12.5px;
+      font-family: var(--font-mono);
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pillar-card-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+  </style>
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -157,60 +199,72 @@
           </div>
         </div>
 
+        <!-- Hero Architecture Blueprint Graphic -->
+        <div class="hero-media-wrapper">
+          <img src="assets/gtm-architecture-hero.jpg" alt="SalesGency Go-To-Market AI Data Pipeline Architecture" loading="eager">
+          <div class="hero-media-badge">
+            <span class="live-dot"></span>
+            <span>GTM AI Engine Telemetry · 100% Client-Owned VPC Deployment</span>
+          </div>
+        </div>
+
         <!-- 3 Primary Pillars Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1040px; margin: 36px auto 0; text-align: left;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1040px; margin: 40px auto 0; text-align: left;">
           
           <!-- Pillar 1: Workflows (Agency) -->
-          <a href="agency.html" style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: var(--shadow-card);" onmouseover="this.style.borderColor='var(--text-heading)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)';">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <a href="agency.html" style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: var(--shadow-card);" onmouseover="this.style.borderColor='var(--text-heading)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)';">
+            <img src="assets/agency-workflow-engineering.jpg" alt="Agency Custom Workflows" class="pillar-card-img">
+            <div style="padding: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span class="font-mono" style="font-size: 11px; font-weight: 800; background: var(--bg-card-subtle); padding: 4px 8px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle);">01 · WORKFLOWS</span>
                 <span style="font-size: 12px; color: var(--accent-green); font-weight: 700;">● The Agency</span>
               </div>
-              <h3 style="font-size: 20px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Custom Revenue Workflows</h3>
-              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+              <h3 style="font-size: 19px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Custom Revenue Workflows</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
                 We engineer the 6 Core Revenue Systems custom in your n8n instance and private cloud. Book a <strong>Build Session</strong> priced on a transparent 30% scale of projected value.
               </p>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: var(--text-heading); border-top: 1px solid var(--border-hairline); padding-top: 12px;">
-              <span>Explore 6 Workflows</span>
-              <span>&rarr;</span>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: var(--text-heading); border-top: 1px solid var(--border-hairline); padding-top: 12px;">
+                <span>Explore 6 Workflows</span>
+                <span>&rarr;</span>
+              </div>
             </div>
           </a>
 
           <!-- Pillar 2: Skills (Marketplace) -->
-          <a href="marketplace.html" style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: var(--shadow-card);" onmouseover="this.style.borderColor='var(--text-heading)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)';">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <a href="marketplace.html" style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: var(--shadow-card);" onmouseover="this.style.borderColor='var(--text-heading)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)';">
+            <img src="assets/marketplace-blueprint-suite.jpg" alt="Marketplace Skills and Tools" class="pillar-card-img">
+            <div style="padding: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span class="font-mono" style="font-size: 11px; font-weight: 800; background: var(--bg-card-subtle); padding: 4px 8px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle);">02 · SKILLS</span>
                 <span style="font-size: 12px; color: var(--accent-blue); font-weight: 700;">● The Marketplace</span>
               </div>
-              <h3 style="font-size: 20px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Modular Agent Skills &amp; Tools</h3>
-              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+              <h3 style="font-size: 19px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Modular Agent Skills &amp; Tools</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
                 Download 25+ battle-tested Agent Skills (`SKILL.md`), Python lead scrapers, SQL Telemetry packs, and production n8n JSON blueprints ($149 Master Bundle).
               </p>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: var(--text-heading); border-top: 1px solid var(--border-hairline); padding-top: 12px;">
-              <span>Browse 25+ Assets</span>
-              <span>&rarr;</span>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: var(--text-heading); border-top: 1px solid var(--border-hairline); padding-top: 12px;">
+                <span>Browse 25+ Assets</span>
+                <span>&rarr;</span>
+              </div>
             </div>
           </a>
 
           <!-- Pillar 3: Agents (Platform) -->
-          <a href="agent.html" style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: var(--shadow-card);" onmouseover="this.style.borderColor='var(--text-heading)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)';">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <a href="agent.html" style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: var(--shadow-card);" onmouseover="this.style.borderColor='var(--text-heading)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-subtle)'; this.style.transform='translateY(0)';">
+            <img src="assets/autonomous-agent-network.jpg" alt="Autonomous AI Revenue Agents" class="pillar-card-img">
+            <div style="padding: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span class="font-mono" style="font-size: 11px; font-weight: 800; background: var(--bg-card-subtle); padding: 4px 8px; border-radius: var(--radius-pill); border: 1px solid var(--border-subtle);">03 · AGENTS</span>
                 <span style="font-size: 12px; color: var(--accent-rose); font-weight: 700;">● The Platform</span>
               </div>
-              <h3 style="font-size: 20px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Autonomous AI Teammates</h3>
-              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+              <h3 style="font-size: 19px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Autonomous AI Teammates</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
                 Goal-oriented AI revenue agents with browser tools, CRM write access, and real-time research skills. Test the live terminal simulator in your browser.
               </p>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: var(--text-heading); border-top: 1px solid var(--border-hairline); padding-top: 12px;">
-              <span>Launch Simulator</span>
-              <span>&rarr;</span>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; color: var(--text-heading); border-top: 1px solid var(--border-hairline); padding-top: 12px;">
+                <span>Launch Simulator</span>
+                <span>&rarr;</span>
+              </div>
             </div>
           </a>
 

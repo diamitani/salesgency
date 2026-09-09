@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTM AI Case Studies &amp; Proven Revenue Automation Outcomes — SalesGency®</title>
+  <title>Production Case Studies &amp; Outcomes | Go-To-Market Architecture — SalesGency®</title>
   <meta name="description" content="Explore real client case studies: autonomous outbound engines, sub-minute inbound speed-to-lead responders, and RevOps telemetry deployed inside client infrastructure.">
   <meta name="keywords" content="GTM AI Case Studies, RevOps AI Results, Outbound Automation Outcomes, Inbound Speed to Lead Data, n8n Production Deployments">
   <link rel="canonical" href="https://salesgency.com/work.html">
@@ -48,14 +48,14 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "FreightPilot: $180k/Yr Saved in Dispatch Coordination",
-        "description": "24/7 autonomous rate quoting and carrier dispatch bot saving $180k annually in manual logistics coordination."
+        "name": "DataBridge Analytics: 2 Hours Saved per Rep per Day",
+        "description": "Automated pre-sales briefing dossiers compiling executive background and tech stack 10 minutes prior to calls."
       },
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "FinFlow Payments: 100% CRM Deduplication & Hygiene",
-        "description": "RevOps automation cleaning 45,000+ HubSpot/Salesforce records with zero duplicate contacts."
+        "name": "FinFlow Payments: 100% CRM Deduplication & Post-Call Sync",
+        "description": "Post-call transcript extraction and continuous CRM hygiene cleaning 45,000+ records with zero duplicate contacts."
       }
     ]
   }
@@ -63,7 +63,7 @@
 </head>
 <body>
 
-    <!-- Floating Navigation -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
     <nav class="nav-bar">
       <a href="index.html" class="brand-link" aria-label="SalesGency Home">
@@ -110,7 +110,7 @@
         </a>
         <a href="agent.html" class="nav-item">Agent</a>
         <a href="pricing.html" class="nav-item">Pricing</a>
-        <a href="work.html" class="nav-item">Case Studies</a>
+        <a href="work.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">Case Studies</a>
       </div>
 
       <div class="nav-actions">
@@ -125,38 +125,44 @@
     </nav>
   </header>
 
-    <!-- Mobile Menu Drawer -->
+  <!-- Mobile Menu Drawer -->
   <div class="mobile-menu-drawer" id="mobileDrawer">
     <a href="index.html" class="mobile-link">Home</a>
-    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Products)</a>
+    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Workflows)</a>
     <a href="marketplace.html" class="mobile-link" style="font-weight: 700;">2. Marketplace (Skills &amp; Blueprints)</a>
-    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammate Platform)</a>
+    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammates)</a>
     <a href="pricing.html" class="mobile-link">Pricing Guide</a>
-    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="work.html" class="mobile-link" style="font-weight: 700; color: var(--text-heading);">Case Studies</a>
     <a href="build-session.html" class="btn btn-primary" style="margin-top: 8px;">Book a Build Session</a>
   </div>
 
-<div class="site-wrapper">
+  <div class="site-wrapper">
 
     <!-- Case Studies Hero -->
-    <section class="hero-section" style="padding-top: clamp(120px, 14vw, 170px); padding-bottom: 40px;">
+    <section class="hero-section" style="padding-top: clamp(120px, 14vw, 170px); padding-bottom: 30px;">
       <div class="container">
         
-        <div class="badge-tag">Production Case Studies</div>
+        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+          <span class="live-telemetry-badge">
+            <span class="live-dot"></span>
+            <span>Production Telemetry · Real Revenue &amp; Efficiency Outcomes</span>
+          </span>
+        </div>
+
         <h1 class="hero-headline">
-          Proven workflows that <br>
-          <span class="serif-italic">compound revenue.</span>
+          Proven Workflows that <br>
+          <span class="serif-italic">Compound Revenue.</span>
         </h1>
-        <p class="hero-description">
-          See how B2B companies, SaaS scale-ups, and sales organizations replaced fragmented tools with dedicated, client-owned revenue automation.
+        <p class="hero-description" style="max-width: 820px; font-size: 18px; line-height: 1.6;">
+          See how high-growth B2B companies, SaaS scale-ups, and sales organizations replaced bloated agency retainers with dedicated, client-owned revenue automation.
         </p>
 
         <!-- Filter Tabs -->
         <div class="filter-tabs-wrapper" style="margin-top: 32px;">
-          <button class="filter-tab-btn active" onclick="filterCaseStudies('all')">All Outcomes (6)</button>
-          <button class="filter-tab-btn" onclick="filterCaseStudies('outbound')">Outbound (2)</button>
-          <button class="filter-tab-btn" onclick="filterCaseStudies('inbound')">Inbound (2)</button>
-          <button class="filter-tab-btn" onclick="filterCaseStudies('revops')">RevOps &amp; Enablement (2)</button>
+          <button class="filter-tab-btn active" onclick="filterCaseStudies('all', this)">All Outcomes (6)</button>
+          <button class="filter-tab-btn" onclick="filterCaseStudies('outbound', this)">Outbound (2)</button>
+          <button class="filter-tab-btn" onclick="filterCaseStudies('inbound', this)">Inbound (2)</button>
+          <button class="filter-tab-btn" onclick="filterCaseStudies('revops', this)">RevOps &amp; Enablement (2)</button>
         </div>
 
       </div>
@@ -178,7 +184,7 @@
             </div>
             <div class="work-card-content">
               <div style="font-size: 12px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                B2B SaaS &bull; Outbound Engine
+                B2B SaaS &bull; Outbound Workflow
               </div>
               <h3>Aeorim AI: 18 Qualified Pipeline Demos / Mo</h3>
               <p>
@@ -188,6 +194,9 @@
                 <span class="metric-pill">✉️ 42% Open Rate</span>
                 <span class="metric-pill">🎯 14.8% Reply Rate</span>
                 <span class="metric-pill">📈 +$340k Pipeline</span>
+              </div>
+              <div style="margin-top: 18px;">
+                <a href="outbound-automation.html" class="nav-item" style="font-size: 13px; font-weight: 700;">Explore Outbound Architecture &rarr;</a>
               </div>
             </div>
           </div>
@@ -203,7 +212,7 @@
             </div>
             <div class="work-card-content">
               <div style="font-size: 12px; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                DevOps Platform &bull; Inbound Speed-to-Lead
+                DevOps Platform &bull; Inbound Workflow
               </div>
               <h3>CloudScale: Sub-30s Response Velocity</h3>
               <p>
@@ -214,30 +223,36 @@
                 <span class="metric-pill">📈 +34% Show Rate</span>
                 <span class="metric-pill">🚀 2.4x More Closes</span>
               </div>
+              <div style="margin-top: 18px;">
+                <a href="inbound-automation.html" class="nav-item" style="font-size: 13px; font-weight: 700;">Explore Inbound Architecture &rarr;</a>
+              </div>
             </div>
           </div>
 
-          <!-- Case 3: FreightPilot Logistics -->
-          <div class="work-card" data-category="inbound">
+          <!-- Case 3: DataBridge Analytics -->
+          <div class="work-card" data-category="revops">
             <div class="work-card-visual" style="height: 190px;">
               <div class="work-preview-flow">
-                <div class="flow-node"><span>Carrier Rate Quote Request</span><span class="flow-status-pill">Parsed</span></div>
-                <div class="flow-node"><span>Lane Pricing Matrix &amp; Capacity Check</span><span class="flow-status-pill">Calculated</span></div>
-                <div class="flow-node"><span>Autonomous Instant Rate Confirmation</span><span class="flow-status-pill">Confirmed</span></div>
+                <div class="flow-node"><span>Meeting Booked via Calendar</span><span class="flow-status-pill">Triggered</span></div>
+                <div class="flow-node"><span>Deep Tech Stack &amp; SEC 10-K Ingest</span><span class="flow-status-pill">Compiled</span></div>
+                <div class="flow-node"><span>1-Page AE Prep Dossier in Slack</span><span class="flow-status-pill">Ready</span></div>
               </div>
             </div>
             <div class="work-card-content">
-              <div style="font-size: 12px; font-weight: 700; color: var(--accent-rose); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                Logistics &amp; Supply Chain &bull; Chatbot Agent
+              <div style="font-size: 12px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+                Data Infrastructure &bull; Pre-Sales Briefing
               </div>
-              <h3>FreightPilot: $180k Saved in Coordination</h3>
+              <h3>DataBridge: 2 Hours Saved per Rep per Day</h3>
               <p>
-                Built a 24/7 autonomous rate quoting and carrier dispatch bot that answers shipment quote inquiries in real time and automatically creates shipment orders in TMS.
+                Engineered meeting prep bots that ingest prospect tech stacks, recent news, and LinkedIn backgrounds to deliver a synthesized 1-page briefing directly to AEs before discovery calls.
               </p>
               <div class="work-metrics-strip">
-                <span class="metric-pill">💰 $180k/Yr Saved</span>
-                <span class="metric-pill">🕒 24/7 Availability</span>
-                <span class="metric-pill">⚡ 100% Quote Accuracy</span>
+                <span class="metric-pill">⏱️ 2 Hrs Saved/Rep/Day</span>
+                <span class="metric-pill">🏆 +28% Win Rate</span>
+                <span class="metric-pill">📑 Instant Dossiers</span>
+              </div>
+              <div style="margin-top: 18px;">
+                <a href="pre-sales-automation.html" class="nav-item" style="font-size: 13px; font-weight: 700;">Explore Pre-Sales Architecture &rarr;</a>
               </div>
             </div>
           </div>
@@ -252,42 +267,48 @@
               </div>
             </div>
             <div class="work-card-content">
-              <div style="font-size: 12px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                Fintech Enterprise &bull; RevOps Hygiene
+              <div style="font-size: 12px; font-weight: 700; color: var(--accent-rose); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+                Fintech Enterprise &bull; Post-Sales &amp; Telemetry
               </div>
               <h3>FinFlow: 100% CRM Deduplication &amp; Hygiene</h3>
               <p>
-                Automated continuous CRM cleansing across 45,000+ records in HubSpot and Salesforce, eliminating orphan contacts and alerting managers before deals slip.
+                Automated post-sales call transcript extraction and continuous CRM cleansing across 45,000+ records in HubSpot and Salesforce, eliminating orphan contacts and alerting managers before deals slip.
               </p>
               <div class="work-metrics-strip">
                 <span class="metric-pill">🛡️ 0 Duplicate Leads</span>
                 <span class="metric-pill">📊 100% Data Cleanliness</span>
                 <span class="metric-pill">📉 -40% Slippage</span>
               </div>
+              <div style="margin-top: 18px;">
+                <a href="post-sales-automation.html" class="nav-item" style="font-size: 13px; font-weight: 700;">Explore Post-Sales Architecture &rarr;</a>
+              </div>
             </div>
           </div>
 
-          <!-- Case 5: DataBridge Analytics -->
-          <div class="work-card" data-category="revops">
+          <!-- Case 5: FreightPilot Logistics -->
+          <div class="work-card" data-category="inbound">
             <div class="work-card-visual" style="height: 190px;">
               <div class="work-preview-flow">
-                <div class="flow-node"><span>Meeting Booked via Calendar</span><span class="flow-status-pill">Triggered</span></div>
-                <div class="flow-node"><span>Deep Tech Stack &amp; SEC 10-K Ingest</span><span class="flow-status-pill">Compiled</span></div>
-                <div class="flow-node"><span>1-Page AE Prep Dossier in Slack</span><span class="flow-status-pill">Ready</span></div>
+                <div class="flow-node"><span>Carrier Rate Quote Request</span><span class="flow-status-pill">Parsed</span></div>
+                <div class="flow-node"><span>Lane Pricing Matrix &amp; Capacity Check</span><span class="flow-status-pill">Calculated</span></div>
+                <div class="flow-node"><span>Autonomous Instant Rate Confirmation</span><span class="flow-status-pill">Confirmed</span></div>
               </div>
             </div>
             <div class="work-card-content">
-              <div style="font-size: 12px; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                Data Infrastructure &bull; Enablement
+              <div style="font-size: 12px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+                Logistics &amp; Supply Chain &bull; Execution Automation
               </div>
-              <h3>DataBridge: 2 Hours Saved per Rep per Day</h3>
+              <h3>FreightPilot: $180k Saved in Coordination</h3>
               <p>
-                Engineered meeting prep bots that ingest prospect tech stacks, recent news, and LinkedIn backgrounds to deliver a synthesized 1-page briefing directly to AEs before discovery calls.
+                Built a 24/7 autonomous rate quoting and carrier dispatch bot that answers shipment quote inquiries in real time and automatically dispatches daily execution tasks.
               </p>
               <div class="work-metrics-strip">
-                <span class="metric-pill">⏱️ 2 Hrs Saved/Rep/Day</span>
-                <span class="metric-pill">🏆 +28% Win Rate</span>
-                <span class="metric-pill">📑 Instant Dossiers</span>
+                <span class="metric-pill">💰 $180k/Yr Saved</span>
+                <span class="metric-pill">🕒 24/7 Availability</span>
+                <span class="metric-pill">⚡ 100% Quote Accuracy</span>
+              </div>
+              <div style="margin-top: 18px;">
+                <a href="daily-execution-report.html" class="nav-item" style="font-size: 13px; font-weight: 700;">Explore Execution Architecture &rarr;</a>
               </div>
             </div>
           </div>
@@ -298,21 +319,24 @@
               <div class="work-preview-flow">
                 <div class="flow-node"><span>Hospital Decision-Maker Webhook</span><span class="flow-status-pill">Scraped</span></div>
                 <div class="flow-node"><span>SMTP &amp; Catch-All MX Validator</span><span class="flow-status-pill">0% Bounce</span></div>
-                <div class="flow-node"><span>HIPAA-Compliant Personalized Cadence</span><span class="flow-status-pill">Active</span></div>
+                <div class="flow-node"><span>HIPAA-Compliant Executive Pipeline</span><span class="flow-status-pill">Active</span></div>
               </div>
             </div>
             <div class="work-card-content">
-              <div style="font-size: 12px; font-weight: 700; color: var(--accent-rose); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                Healthcare Tech &bull; Outbound Signal Mining
+              <div style="font-size: 12px; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
+                Healthcare Tech &bull; Executive GTM Telemetry
               </div>
               <h3>Apex Health: 3,200 Verified Leads / Month</h3>
               <p>
-                Custom scraper cluster monitoring compliance shifts and EHR migrations, feeding verified C-suite contact data directly into high-deliverability cold email infrastructure.
+                Custom scraper cluster monitoring compliance shifts and EHR migrations, feeding verified C-suite contact data directly into high-deliverability cold email infrastructure with daily GTM telemetry.
               </p>
               <div class="work-metrics-strip">
                 <span class="metric-pill">🎯 3,200 Leads/Mo</span>
                 <span class="metric-pill">🛡️ 0.3% Bounce Rate</span>
                 <span class="metric-pill">🚀 22 Closed Deals</span>
+              </div>
+              <div style="margin-top: 18px;">
+                <a href="daily-gtm-report.html" class="nav-item" style="font-size: 13px; font-weight: 700;">Explore GTM Report Architecture &rarr;</a>
               </div>
             </div>
           </div>
@@ -329,20 +353,21 @@
             salesgency<span class="brand-symbol">®</span>
           </div>
           <h2 class="bottom-cta-headline">
-            Ready to achieve <span class="serif-italic">similar outcomes?</span>
+            Ready to achieve <span class="serif-italic">similar revenue outcomes?</span>
           </h2>
           <p class="bottom-cta-subtitle">
-            Book a 60-minute GTM Architecture Audit ($495, 100% credited to your retainer) or explore our instant workflow store.
+            Book a Build Session to scope your custom revenue workflow, or download our complete $149 digital marketplace suite.
           </p>
           <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
-            <a href="qualification.html" class="btn btn-primary">Book Paid Audit ($495)</a>
-            <a href="templates.html" class="btn btn-secondary">Explore 25+ Workflows</a>
+            <a href="build-session.html" class="btn btn-primary">⚡ Book a Build Session</a>
+            <a href="marketplace.html" class="btn btn-secondary">Get Marketplace Bundle ($149)</a>
+            <a href="pricing.html" class="btn btn-secondary">Pricing Guide</a>
           </div>
         </div>
       </div>
     </section>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-inner">
@@ -364,10 +389,12 @@
   </div>
 
   <script>
-    function filterCaseStudies(category) {
+    function filterCaseStudies(category, btnElement) {
       const tabs = document.querySelectorAll('.filter-tab-btn');
       tabs.forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
+      if (btnElement) {
+        btnElement.classList.add('active');
+      }
 
       const cards = document.querySelectorAll('#caseStudiesGrid .work-card');
       cards.forEach(card => {
