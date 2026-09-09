@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace | Agent Skills, Python Scrapers &amp; n8n JSON Workflows — SalesGency®</title>
+  <meta name="description" content="SalesGency Marketplace: Download production Agent Skills, n8n JSON Workflows, Python Scrapers, and SQL Telemetry packs. Get the $149 All-Access Digital Bundle.">
+  <meta name="keywords" content="GTM AI Marketplace, n8n Workflows Download, Agent Skills, SKILL.md, Python Lead Scrapers, Sales Automation Templates">
+  <link rel="canonical" href="https://salesgency.com/marketplace.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://salesgency.com/marketplace.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Marketplace — Agent Skills &amp; n8n Workflows | SalesGency®">
+  <meta property="og:description" content="Download production-tested Agent Skills, n8n JSONs, Python Scrapers, and SQL Telemetry packs.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .marketplace-tab {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .marketplace-tab:hover {
+      border-color: var(--border-strong);
+      color: var(--text-heading);
+    }
+    .marketplace-tab.active {
+      background: var(--text-heading);
+      color: #FFFFFF;
+      border-color: var(--text-heading);
+    }
+    .asset-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .asset-card:hover {
+      border-color: var(--text-heading);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
+      </a>
+
+      <div class="nav-menu">
+        <div class="nav-dropdown-trigger">
+          <a href="agency.html" class="nav-item">Agency ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="inbound-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">1. Inbound Automation Workflow</span>
+              <span class="nav-dropdown-sub">Sub-30s speed-to-lead &amp; triage</span>
+            </a>
+            <a href="outbound-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">2. Outbound Automation Workflow</span>
+              <span class="nav-dropdown-sub">Intent waterfall &amp; PAS personalization</span>
+            </a>
+            <a href="pre-sales-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">3. Pre Sales Call Automation</span>
+              <span class="nav-dropdown-sub">Autonomous prospect dossiers</span>
+            </a>
+            <a href="post-sales-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">4. Post Sales Call Automation</span>
+              <span class="nav-dropdown-sub">Transcript extraction &amp; CRM sync</span>
+            </a>
+            <a href="daily-execution-report.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">5. Daily Execution Report</span>
+              <span class="nav-dropdown-sub">Rep telemetry &amp; stuck deals</span>
+            </a>
+            <a href="daily-gtm-report.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">6. Daily GTM Report</span>
+              <span class="nav-dropdown-sub">Executive pipeline &amp; CAC velocity</span>
+            </a>
+            <a href="build-session.html" class="nav-dropdown-item" style="border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
+              <span class="nav-dropdown-title" style="color: var(--accent-blue);">⚡ Book a Build Session</span>
+              <span class="nav-dropdown-sub">Custom scoped 30% value-added build</span>
+            </a>
+          </div>
+        </div>
+        <a href="marketplace.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="blueprint-pill">Skills &amp; Tools</span>
+        </a>
+        <a href="agent.html" class="nav-item">Agent</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="build-session.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book a Build Session</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+    <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Products)</a>
+    <a href="marketplace.html" class="mobile-link" style="font-weight: 700;">2. Marketplace (Skills &amp; Blueprints)</a>
+    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammate Platform)</a>
+    <a href="pricing.html" class="mobile-link">Pricing Guide</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="build-session.html" class="btn btn-primary" style="margin-top: 8px;">Book a Build Session</a>
+  </div>
+
+<div class="site-wrapper">
+
+    <!-- Hero Header -->
+    <section style="padding-top: clamp(120px, 14vw, 160px); padding-bottom: 40px; width: 100%;">
+      <div class="container">
+        
+        <div style="display: flex; flex-direction: column; align-items: flex-start; max-width: 880px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 6px 14px; font-size: 13px; font-weight: 700; color: var(--text-heading); margin-bottom: 20px;">
+            <span class="live-dot"></span>
+            <span>Category 02 · Self-Serve Digital Store</span>
+          </div>
+
+          <h1 class="hero-headline" style="font-size: clamp(38px, 5.5vw, 60px); margin-bottom: 16px; line-height: 1.1;">
+            Agent Skills, Python Scrapers &amp; <br>
+            <span class="serif-italic">Production n8n Workflows.</span>
+          </h1>
+
+          <p class="hero-description" style="font-size: 18px; max-width: 740px; margin-bottom: 32px; line-height: 1.6;">
+            Deploy battle-tested GTM automation in minutes. Download individual modular tools, prompt injection skills, and full-stack n8n JSON templates — or unlock all 25+ assets in the <strong>$149 All-Access Digital Bundle</strong>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Master Bundle Banner -->
+    <section style="margin-bottom: 50px; width: 100%;">
+      <div class="container">
+        <div style="background: #000000; color: #FFFFFF; border-radius: var(--radius-lg); padding: clamp(28px, 4vw, 40px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span class="ticker-pill font-mono" style="background: #10B981; color: #000000; font-weight: 800; border: none;">ALL-ACCESS BUNDLE</span>
+              <span style="font-size: 13px; color: #9CA3AF;">Lifetime Updates · Instant ZIP Download</span>
+            </div>
+            <h2 style="font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: #FFFFFF;">The Complete GTM AI Engineering Suite</h2>
+            <p style="font-size: 14.5px; color: #D1D5DB; margin-top: 6px; max-width: 600px;">
+              All 25 assets: 7 Agent Skills, 6 n8n JSONs, 6 Python Scrapers, SQL Telemetry &amp; DNS Deliverability kits.
+            </p>
+          </div>
+          <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+            <div style="font-size: 32px; font-weight: 900; font-family: var(--font-mono); color: #10B981;">$149 <span style="font-size: 16px; text-decoration: line-through; color: #6B7280;">$495</span></div>
+            <a href="downloads/n8n-outreach-automation-templates.json" download class="btn btn-primary" style="background: #10B981; color: #000000; border: none; font-weight: 800; padding: 12px 24px;">
+              ⚡ Download Master Bundle ($149)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Tabs & Asset Grid -->
+    <section style="padding-bottom: 90px; width: 100%;">
+      <div class="container">
+        
+        <!-- Tabs & Search -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 32px;">
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="filterTabs">
+            <button class="marketplace-tab active" onclick="filterCategory('all', this)">All Assets (25)</button>
+            <button class="marketplace-tab" onclick="filterCategory('skill', this)">Agent Skills (7)</button>
+            <button class="marketplace-tab" onclick="filterCategory('n8n', this)">n8n Workflows (6)</button>
+            <button class="marketplace-tab" onclick="filterCategory('scraper', this)">Python Scrapers (6)</button>
+            <button class="marketplace-tab" onclick="filterCategory('telemetry', this)">SQL &amp; Telemetry (6)</button>
+          </div>
+
+          <div>
+            <input type="text" id="assetSearch" placeholder="Search marketplace assets..." onkeyup="searchAssets()" style="padding: 10px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: 13.5px; width: 260px; outline: none;">
+          </div>
+        </div>
+
+        <!-- Asset Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;" id="assetGrid">
+
+          <!-- Asset 1: Prospect Automation Engine JSON -->
+          <div class="asset-card" data-cat="n8n" data-title="Prospect Automation Engine n8n Workflow JSON">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill">n8n JSON</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">92.3 KB · 38 Nodes</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Prospect Automation Engine</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Full 5-pillar outbound engine JSON. Trigger ingest, CRM shield deduplication, waterfall reveal, and PAS copywriting.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$79 / Free in Bundle</span>
+              <a href="downloads/prospect-automation-engine.json" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .json</a>
+            </div>
+          </div>
+
+          <!-- Asset 2: Inbound Automation Engine JSON -->
+          <div class="asset-card" data-cat="n8n" data-title="Inbound Speed-to-Lead Automation n8n Workflow JSON">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill">n8n JSON</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">40.1 KB · 24 Nodes</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Inbound Automation Engine</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Sub-30 second speed-to-lead webhook listener, 7-class firmographic triage, calendar routing, and Slack VIP alerts.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$69 / Free in Bundle</span>
+              <a href="downloads/inbound-automation-engine.json" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .json</a>
+            </div>
+          </div>
+
+          <!-- Asset 3: Pre-Sales Dossier Builder JSON -->
+          <div class="asset-card" data-cat="n8n" data-title="Pre-Sales Dossier Builder Workflow JSON">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill">n8n JSON</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">4.2 KB · 16 Nodes</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Pre-Sales Dossier Builder</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                10-minute automated AE briefing system. Extracts attendees from calendar, pulls LinkedIn &amp; 10-K filings, and posts to Slack.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/pre-sales-dossier-builder-workflow.json" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .json</a>
+            </div>
+          </div>
+
+          <!-- Asset 4: Post-Sales Call Extractor JSON -->
+          <div class="asset-card" data-cat="n8n" data-title="Post-Sales Call Transcript Extractor Workflow JSON">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill">n8n JSON</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">3.5 KB · 14 Nodes</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Post-Sales Call Extractor</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Parses Gong / Fathom transcripts, extracts MEDDPICC criteria, updates CRM deal stages, and drafts custom follow-up emails.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/post-sales-call-extractor-workflow.json" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .json</a>
+            </div>
+          </div>
+
+          <!-- Asset 5: Daily Execution Report JSON -->
+          <div class="asset-card" data-cat="n8n" data-title="Daily Execution Report Cron Workflow JSON">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill">n8n JSON</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">2.7 KB · 12 Nodes</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Daily Execution Report</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Daily 8:00 AM Cron workflow that queries CRM for stuck deals (>5 days no touch), missing deal amounts, and rep task velocity.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/daily-execution-report-workflow.json" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .json</a>
+            </div>
+          </div>
+
+          <!-- Asset 6: Daily GTM Report JSON -->
+          <div class="asset-card" data-cat="n8n" data-title="Daily GTM Report Executive Workflow JSON">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill">n8n JSON</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">2.0 KB · 10 Nodes</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Daily GTM Executive Report</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Calculates rolling 30-day pipeline velocity, pipeline created vs target, and delivers a formatted briefing to leadership.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/daily-gtm-report-workflow.json" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .json</a>
+            </div>
+          </div>
+
+          <!-- Asset 7: GTM Engineering Skill MD -->
+          <div class="asset-card" data-cat="skill" data-title="GTM Engineering Master Skill Prompt">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill" style="background: #ECFDF5; color: #10B981; border-color: rgba(16,185,129,0.3);">Agent Skill</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">45.8 KB · SKILL.md</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">GTM Engineering Master Skill</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                System prompt &amp; reasoning framework for building autonomous GTM pipelines, handling webhook payloads, and error routing.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$59 / Free in Bundle</span>
+              <a href="downloads/gtm-engineering-skill.md" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .md</a>
+            </div>
+          </div>
+
+          <!-- Asset 8: B2B PAS Copywriting Skill MD -->
+          <div class="asset-card" data-cat="skill" data-title="B2B PAS Copywriting Agent Skill MD">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill" style="background: #ECFDF5; color: #10B981; border-color: rgba(16,185,129,0.3);">Agent Skill</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">3.4 KB · SKILL.md</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">B2B PAS Copywriting Skill</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                3-sentence Problem-Agitate-Solution email generator. Includes anti-spam triggers, low-friction CTAs, and persona variables.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/b2b-pas-copywriting-skill.md" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .md</a>
+            </div>
+          </div>
+
+          <!-- Asset 9: Hiring Signal Python Scraper -->
+          <div class="asset-card" data-cat="scraper" data-title="Hiring Signal Scraper Python Script">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill" style="background: #EFF6FF; color: #2563EB; border-color: rgba(37,99,235,0.3);">Python Script</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">3.6 KB · .py</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Hiring Signal Intent Scraper</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Automated script that monitors Greenhouse, Lever, and Ashby job boards to detect sales hiring triggers and pipe leads to n8n.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/hiring-signal-scraper.py" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .py</a>
+            </div>
+          </div>
+
+          <!-- Asset 10: Revenue Velocity Telemetry SQL -->
+          <div class="asset-card" data-cat="telemetry" data-title="Revenue Velocity Telemetry SQL Query Pack">
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                <span class="blueprint-pill" style="background: #FDF4FF; color: #A855F7; border-color: rgba(168,85,247,0.3);">SQL Pack</span>
+                <span style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">2.5 KB · .sql</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Revenue Velocity Telemetry SQL</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                PostgreSQL and Snowflake query pack for real-time pipeline velocity, conversion drop-off by rep, and deal stagnation telemetry.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+              <span style="font-size: 15px; font-weight: 800; font-family: var(--font-mono); color: var(--text-heading);">$49 / Free in Bundle</span>
+              <a href="downloads/revenue-velocity-telemetry.sql" download class="btn btn-secondary" style="padding: 6px 14px; font-size: 12.5px;">Download .sql</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-copyright">
+            © 2026 SalesGency®. GTM AI Architecture. 100% client-owned code.
+          </div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="agency.html" class="footer-link">Agency</a>
+            <a href="marketplace.html" class="footer-link">Marketplace</a>
+            <a href="agent.html" class="footer-link">Agent</a>
+            <a href="pricing.html" class="footer-link">Pricing Guide</a>
+            <a href="build-session.html" class="footer-link">Book Build Session</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.marketplace-tab').forEach(el => el.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.asset-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchAssets() {
+      const q = document.getElementById('assetSearch').value.toLowerCase();
+      document.querySelectorAll('.asset-card').forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        if (title.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+
+</body>
+</html>
