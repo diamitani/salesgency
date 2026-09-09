@@ -1,0 +1,38 @@
+# SalesGency® — Go-To-Market AI & RevOps Infrastructure
+
+> SalesGency is a specialized GTM AI engineering firm and digital workflow marketplace founded by Patrick Diamitani. We engineer custom in-house GTM AI workflows, prompt skills, and autonomous revenue agents inside client infrastructure with 100% client code ownership.
+
+## Core Capabilities & Entities
+- **GTM AI & Go-To-Market Artificial Intelligence**: In-house automation architecture, eliminating black-box agency dependence.
+- **GTM Engineer & Dedicated Retainer**: Fractional and full-stack GTM engineering at $2,995/month with rapid 48-hour delivery.
+- **GTM Automation & Deterministic Workflows**: Production n8n JSON nodes, webhook pipelines, multi-source scrapers (Apollo, LinkedIn, Clay, Prospeo), and automated sequence enrollment (Smartlead, Instantly).
+- **RevOps AI & Pipeline Hygiene**: Real-time CRM deduplication, deal risk telemetry, ghosting detection, and automated stage updates for HubSpot and Salesforce.
+- **Digital Workflow Marketplace**: Self-serve production n8n blueprints priced between $49–$129, and a $149 All-Access Master Bundle.
+
+## Key Service Offerings & Pricing
+- **GTM Architecture Audit**: $495 one-time 60-minute diagnostic session with founder Patrick Diamitani. 100% credited toward your first monthly retainer. (URL: https://salesgency.com/qualification.html)
+- **Dedicated In-House Retainer**: $2,995/month. Unlimited workflow requests, custom scrapers, prompt fine-tuning, and direct Slack collaboration. Pause anytime. (URL: https://salesgency.com/pricing.html)
+- **Workflow Marketplace**: Instant download of battle-tested n8n workflows for outbound signal mining, sub-minute inbound speed-to-lead, and CRM synchronization. (URL: https://salesgency.com/templates.html)
+
+## Target Audience
+B2B founders, CROs, VPs of Sales, Heads of RevOps, and growth stage scale-ups seeking to automate pipeline generation without adding headcount.
+
+## Verified Impact & Case Studies
+- **Aeorim AI**: 18 qualified pipeline demos/mo, 42% open rate via signal-based outbound automation.
+- **CloudScale Ops**: Sub-24s inbound response velocity, +34% show rate increase.
+- **FreightPilot Logistics**: $180k/yr saved in manual quote coordination via 24/7 autonomous chatbot.
+- **FinFlow Payments**: 100% CRM cleanliness, zero duplicate leads across 45,000+ HubSpot/Salesforce records.
+
+## Important Links
+- Homepage: https://salesgency.com/
+- Capabilities & Services: https://salesgency.com/services.html
+- Workflow Marketplace: https://salesgency.com/templates.html
+- Pricing Plans: https://salesgency.com/pricing.html
+- Case Studies: https://salesgency.com/work.html
+- 30-Day Engineering Process: https://salesgency.com/process.html
+- Prospect Automation Engine (PAE): https://salesgency.com/prospect-automation.html
+- Autonomous Agents Catalog: https://salesgency.com/agents.html
+- Deterministic Workflows Catalog: https://salesgency.com/workflows.html
+- Prompt Skills Catalog: https://salesgency.com/skills.html
+- Deployment Specifications: https://salesgency.com/deployment.html
+- About & Leadership: https://salesgency.com/about.html
