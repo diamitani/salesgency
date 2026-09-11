@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPresetChips();
   initSynthesizeAction();
   initCodeActions();
+  initSandboxTabs();
   loadProductsCatalog();
   runDefaultSimulation();
 });
@@ -474,3 +475,108 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
+
+function initSandboxTabs() {
+  const termBtn = document.getElementById('tab-terminal-btn');
+  const astBtn = document.getElementById('tab-ast-btn');
+  const termView = document.getElementById('terminal-stream');
+  const astView = document.getElementById('ast-graph-stream');
+
+  if (termBtn && astBtn) {
+    termBtn.addEventListener('click', () => {
+      termBtn.classList.add('active');
+      astBtn.classList.remove('active');
+      if (termView) termView.style.display = 'block';
+      if (astView) astView.classList.remove('active');
+    });
+
+    astBtn.addEventListener('click', () => {
+      astBtn.classList.add('active');
+      termBtn.classList.remove('active');
+      if (termView) termView.style.display = 'none';
+      if (astView) astView.classList.add('active');
+      if (activeArtifact) renderAstGraph(activeArtifact);
+    });
+  }
+}
+
+function renderAstGraph(artifact) {
+  const container = document.getElementById('ast-graph-stream');
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (artifact.type === 'workflow_json') {
+    let parsed = null;
+    try {
+      parsed = JSON.parse(artifact.content);
+    } catch (e) {
+      parsed = null;
+    }
+
+    const nodes = (parsed && parsed.nodes) ? parsed.nodes : [
+      { name: 'Webhook Ingest Trigger', type: 'n8n-nodes-base.webhook', id: 'node_1' },
+      { name: 'CRM Dedupe Shield & Validator', type: 'n8n-nodes-base.if', id: 'node_2' },
+      { name: 'Multi-Provider Waterfall Enrichment', type: 'n8n-nodes-base.httpRequest', id: 'node_3' },
+      { name: 'AI PAS Copywriter (LLM Agent)', type: 'n8n-nodes-base.openAi', id: 'node_4' },
+      { name: 'Smartlead / Instantly Sequencer Dispatch', type: 'n8n-nodes-base.httpRequest', id: 'node_5' },
+      { name: 'Slack Telemetry & RevOps Alert', type: 'n8n-nodes-base.slack', id: 'node_6' }
+    ];
+
+    nodes.forEach((node, idx) => {
+      const card = document.createElement('div');
+      let typeClass = 'type-webhook';
+      let icon = '⚡';
+      let badge = 'TRIGGER';
+
+      const nType = (node.type || '').toLowerCase();
+      const nName = (node.name || '').toLowerCase();
+
+      if (nType.includes('if') || nName.includes('dedupe') || nName.includes('shield')) {
+        typeClass = 'type-validator';
+        icon = '🛡️';
+        badge = 'VALIDATOR';
+      } else if (nType.includes('httprequest') || nName.includes('waterfall') || nName.includes('enrich')) {
+        typeClass = 'type-enrichment';
+        icon = '💧';
+        badge = 'ENRICHMENT';
+      } else if (nType.includes('openai') || nName.includes('ai') || nName.includes('copywriter')) {
+        typeClass = 'type-ai';
+        icon = '🤖';
+        badge = 'LLM AGENT';
+      } else if (nName.includes('sequencer') || nName.includes('dispatch') || nType.includes('slack')) {
+        typeClass = 'type-dispatch';
+        icon = '🚀';
+        badge = 'DISPATCH';
+      }
+
+      card.className = `ast-node-card ${typeClass}`;
+      card.innerHTML = `
+        <div class="ast-node-header">
+          <div class="ast-node-title"><span>${icon}</span> <span>${escapeHtml(node.name)}</span></div>
+          <span class="ast-node-badge">${badge}</span>
+        </div>
+        <div class="ast-node-desc">Type: ${escapeHtml(node.type || 'standard-node')} • ID: ${escapeHtml(node.id || 'node_' + idx)}</div>
+      `;
+      container.appendChild(card);
+
+      if (idx < nodes.length - 1) {
+        const arrow = document.createElement('div');
+        arrow.className = 'ast-connector-arrow';
+        arrow.innerHTML = '▼ DAG edge';
+        container.appendChild(arrow);
+      }
+    });
+  } else {
+    const card = document.createElement('div');
+    card.className = 'ast-node-card type-ai';
+    card.innerHTML = `
+      <div class="ast-node-header">
+        <div class="ast-node-title"><span>🧠</span> <span>${escapeHtml(artifact.title)}</span></div>
+        <span class="ast-node-badge">AGENT PROMPT / SPEC</span>
+      </div>
+      <div class="ast-node-desc">Target File: ${escapeHtml(artifact.filename)} • SLA & Guardrails Enforced</div>
+    `;
+    container.appendChild(card);
+  }
+}
+

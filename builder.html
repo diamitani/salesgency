@@ -109,8 +109,8 @@
           </div>
 
           <div class="sandbox-tabs">
-            <button class="sandbox-tab-btn active">Terminal CLI Execution</button>
-            <button class="sandbox-tab-btn">AST Graph Validator</button>
+            <button class="sandbox-tab-btn active" id="tab-terminal-btn">Terminal CLI Execution</button>
+            <button class="sandbox-tab-btn" id="tab-ast-btn">AST Graph Validator</button>
           </div>
 
           <div style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
@@ -131,6 +131,11 @@
               <span class="terminal-text">Ready. Enter prompt above to trigger real-time AST synthesis.</span>
               <span class="terminal-cursor"></span>
             </div>
+          </div>
+
+          <!-- Left Alternative: AST Graph Visualizer Stream -->
+          <div class="ast-graph-view" id="ast-graph-stream">
+            <!-- Rendered dynamically -->
           </div>
 
           <!-- Right: Code / AST Preview -->

@@ -75,6 +75,13 @@
           </p>
         </div>
 
+        <div id="builderNextSteps" style="display: none; text-align: center; margin-bottom: 20px;">
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+            <strong>Your Builder Compute is Active!</strong> You now have access to autonomous agent synthesis, live sandbox CLI streaming, and template downloads.
+          </p>
+          <a href="builder.html" class="btn-hero-primary" style="font-size: 14px; padding: 12px 28px; background: #10B981; color: #000; font-weight: 700;">⚡ Launch Builder Workbench →</a>
+        </div>
+
         <div id="packageNextSteps" style="display: none; text-align: center; margin-bottom: 20px;">
           <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 12px;">
             <strong>Next step:</strong> Check your email for download instructions and setup documentation.
@@ -129,12 +136,15 @@
 
           if (product) {
             document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = '$' + (product.price / 100).toLocaleString('en-US');
+            const priceSuffix = product.mode === 'subscription' ? '/mo' : '';
+            document.getElementById('productPrice').textContent = '$' + (product.price / 100).toLocaleString('en-US') + priceSuffix;
             document.getElementById('productInfo').style.display = 'flex';
 
             // Show appropriate next steps
             if (product.type === 'session') {
               document.getElementById('sessionNextSteps').style.display = 'block';
+            } else if (product.category === 'builder' || product.type === 'subscription') {
+              document.getElementById('builderNextSteps').style.display = 'block';
             } else {
               document.getElementById('packageNextSteps').style.display = 'block';
             }

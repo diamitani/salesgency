@@ -940,3 +940,79 @@ body {
   color: var(--text-muted);
   font-size: 0.875rem;
 }
+
+/* AST Graph Validator Styles */
+.ast-graph-view {
+  background: #060913;
+  padding: 24px;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  max-height: 520px;
+}
+
+.ast-graph-view.active {
+  display: flex;
+}
+
+.ast-node-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-emerald);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.ast-node-card:hover {
+  border-color: var(--accent-emerald);
+  transform: translateX(4px);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.ast-node-card.type-webhook { border-left-color: #3b82f6; }
+.ast-node-card.type-validator { border-left-color: #eab308; }
+.ast-node-card.type-enrichment { border-left-color: #06b6d4; }
+.ast-node-card.type-ai { border-left-color: #8b5cf6; }
+.ast-node-card.type-dispatch { border-left-color: #10b981; }
+
+.ast-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ast-node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ast-node-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.ast-node-desc {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.ast-connector-arrow {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
