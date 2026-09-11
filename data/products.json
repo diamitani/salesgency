@@ -512,5 +512,83 @@
     "badge": "With Founder",
     "popular": false,
     "engineOrder": null
+  },
+  {
+    "id": "builder-starter",
+    "name": "Builder Starter Plan",
+    "tagline": "Prompt-to-Sales-Infrastructure engine for solo founders & small teams",
+    "category": "builder",
+    "tags": ["builder", "subscription", "agent", "workflow", "n8n", "skills"],
+    "type": "subscription",
+    "price": 4900,
+    "currency": "usd",
+    "mode": "subscription",
+    "description": "Access the autonomous Sales Infrastructure Builder: generate up to 50 workflows, custom skills, and agent souls per month with sandbox execution and template downloads.",
+    "features": [
+      "50 autonomous agent synthesis runs / month",
+      "Automation Builder (n8n JSON compiler)",
+      "Skill Builder (PAS & GTM prompts)",
+      "Agent Builder (SOUL.md & guardrails)",
+      "Interactive Sandbox CLI preview & live logs",
+      "Standard template downloads included",
+      "Community support"
+    ],
+    "includes": ["AGENT-CLI-ACCESS", "UNLIMITED-EXPORTS", "COMMUNITY-SUPPORT"],
+    "icon": "builder",
+    "badge": "Starter",
+    "popular": false,
+    "engineOrder": null
+  },
+  {
+    "id": "builder-pro",
+    "name": "Builder Pro Growth Plan",
+    "tagline": "High-velocity sales infrastructure generation & dedicated sandbox compute",
+    "category": "builder",
+    "tags": ["builder", "subscription", "agent", "workflow", "n8n", "pro", "growth"],
+    "type": "subscription",
+    "price": 14900,
+    "currency": "usd",
+    "mode": "subscription",
+    "description": "For scaling teams and agencies: generate up to 250 workflows, custom skills, and agent souls per month with prioritized sandbox execution and all premium template packages.",
+    "features": [
+      "250 autonomous agent synthesis runs / month",
+      "Full access to Automation, Skill & Agent Builders",
+      "Priority sandbox compute & fast CLI streaming",
+      "All premium template downloads & version drops",
+      "Direct webhook dispatch to your n8n / CRM endpoints",
+      "Up to 5 team member seats",
+      "Priority email & Slack support"
+    ],
+    "includes": ["PRIORITY-SANDBOX", "ALL-TEMPLATES-ACCESS", "TEAM-SEATS", "SLACK-SUPPORT"],
+    "icon": "builder",
+    "badge": "Most Popular",
+    "popular": true,
+    "engineOrder": null
+  },
+  {
+    "id": "builder-enterprise",
+    "name": "Builder Enterprise Scale Plan",
+    "tagline": "Unlimited autonomous generation, custom node development & dedicated cluster",
+    "category": "builder",
+    "tags": ["builder", "subscription", "enterprise", "unlimited", "custom-nodes"],
+    "type": "subscription",
+    "price": 49900,
+    "currency": "usd",
+    "mode": "subscription",
+    "description": "Unlimited sales infrastructure engineering: dedicated sandbox environment, custom n8n node development, custom system integrations, and white-glove onboarding.",
+    "features": [
+      "Unlimited agent synthesis runs & sandbox executions",
+      "Dedicated isolated sandbox compute cluster",
+      "Custom n8n node compilation & private repository syncing",
+      "Bespoke CRM & ERP connector authoring",
+      "Unlimited team seats & role-based access",
+      "Dedicated Slack channel & monthly 1-on-1 strategy calls",
+      "99.9% uptime SLA"
+    ],
+    "includes": ["DEDICATED-CLUSTER", "CUSTOM-NODES", "WHITE-GLOVE-ONBOARDING", "DEDICATED-SLACK"],
+    "icon": "builder",
+    "badge": "Enterprise",
+    "popular": false,
+    "engineOrder": null
   }
 ]
