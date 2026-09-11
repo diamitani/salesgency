@@ -3,31 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book a Build Session | Custom GTM AI Architecture — SalesGency®</title>
-  <meta name="description" content="Book a SalesGency Build Session: An interactive conversational wizard to scope your custom revenue automation system, priced dynamically on a 30% scale of projected value added and revenue capture.">
-  <meta name="keywords" content="Book Build Session, SalesGency Build Session, GTM AI Pricing Algorithm, Revenue Automation Intake, n8n Custom Build">
+  <title>Workflow Generator Wizard &amp; The $1,000 Build Session — SalesGency®</title>
+  <meta name="description" content="Use our interactive Workflow Generator Wizard to configure your 6 Core GTM Automation Engines and book a 4-Hour Build Session ($1,000).">
+  <meta name="keywords" content="Workflow Generator Wizard, Build Session $1000, 6 Core Automation Engines, GTM AI Architecture, n8n Custom Blueprint">
   <link rel="canonical" href="https://salesgency.com/build-session.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://salesgency.com/build-session.html">
   <meta property="og:site_name" content="SalesGency®">
-  <meta property="og:title" content="Book a Build Session — SalesGency®">
-  <meta property="og:description" content="Interactive project scoping wizard with dynamic 30% value-added pricing calculation.">
+  <meta property="og:title" content="Workflow Generator Wizard &amp; The $1,000 Build Session — SalesGency®">
+  <meta property="og:description" content="Configure the 6 Core Automation Engines and schedule your 4-Hour Build Session. Live prototype + enriched prospect data.">
   <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
 
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Conversational Wizard Specific Styles */
     .wizard-container {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-float);
       overflow: hidden;
       padding: clamp(24px, 4vw, 48px);
     }
@@ -53,7 +52,7 @@
       top: 50%;
       left: 0;
       height: 2px;
-      background: var(--text-heading);
+      background: #2563EB;
       z-index: 2;
       transform: translateY(-50%);
       transition: width 0.3s ease;
@@ -77,13 +76,13 @@
       font-family: var(--font-mono);
     }
     .step-indicator.active {
-      border-color: var(--text-heading);
-      background: var(--text-heading);
+      border-color: #2563EB;
+      background: #2563EB;
       color: #FFFFFF;
     }
     .step-indicator.completed {
-      border-color: var(--accent-green);
-      background: var(--accent-green);
+      border-color: #10B981;
+      background: #10B981;
       color: #FFFFFF;
     }
     .wizard-step {
@@ -97,103 +96,11 @@
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .workflow-select-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .workflow-option-card {
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      background: var(--bg-card-subtle);
-      position: relative;
-    }
-    .workflow-option-card:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
-    }
-    .workflow-option-card.selected {
-      border-color: var(--text-heading);
-      background: #FFFFFF;
-      box-shadow: 0 0 0 2px var(--text-heading);
-    }
-    .calc-slider-wrap {
-      margin-top: 24px;
-      background: var(--bg-card-subtle);
-      padding: 24px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-    }
-    .slider-row {
-      margin-bottom: 24px;
-    }
-    .slider-label-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-heading);
-    }
-    .slider-input {
-      width: 100%;
-      height: 6px;
-      border-radius: 3px;
-      background: var(--border-subtle);
-      outline: none;
-      -webkit-appearance: none;
-    }
-    .slider-input::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--text-heading);
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-    }
-    .algorithm-result-card {
-      background: #000000;
-      color: #FFFFFF;
-      border-radius: var(--radius-md);
-      padding: 28px;
-      margin-top: 28px;
-    }
-    .algo-metric-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      margin-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      padding-top: 20px;
-    }
-    .ts-schema-preview {
-      background: #0D1117;
-      color: #E6EDF3;
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      line-height: 1.6;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 20px;
-      overflow-x: auto;
-    }
-    @media (max-width: 640px) {
-      .algo-metric-grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
 
-    <!-- Floating Navigation -->
+  <!-- Floating Navigation -->
   <header class="nav-wrapper">
     <nav class="nav-bar">
       <a href="index.html" class="brand-link" aria-label="SalesGency Home">
@@ -201,52 +108,21 @@
       </a>
 
       <div class="nav-menu">
-        <div class="nav-dropdown-trigger">
-          <a href="agency.html" class="nav-item">Agency ▾</a>
-          <div class="nav-dropdown-menu">
-            <a href="inbound-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">1. Inbound Automation Workflow</span>
-              <span class="nav-dropdown-sub">Sub-30s speed-to-lead &amp; triage</span>
-            </a>
-            <a href="outbound-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">2. Outbound Automation Workflow</span>
-              <span class="nav-dropdown-sub">Intent waterfall &amp; PAS personalization</span>
-            </a>
-            <a href="pre-sales-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">3. Pre Sales Call Automation</span>
-              <span class="nav-dropdown-sub">Autonomous prospect dossiers</span>
-            </a>
-            <a href="post-sales-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">4. Post Sales Call Automation</span>
-              <span class="nav-dropdown-sub">Transcript extraction &amp; CRM sync</span>
-            </a>
-            <a href="daily-execution-report.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">5. Daily Execution Report</span>
-              <span class="nav-dropdown-sub">Rep telemetry &amp; stuck deals</span>
-            </a>
-            <a href="daily-gtm-report.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">6. Daily GTM Report</span>
-              <span class="nav-dropdown-sub">Executive pipeline &amp; CAC velocity</span>
-            </a>
-            <a href="build-session.html" class="nav-dropdown-item" style="border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
-              <span class="nav-dropdown-title" style="color: var(--accent-blue);">⚡ Book a Build Session</span>
-              <span class="nav-dropdown-sub">Custom scoped 30% value-added build</span>
-            </a>
-          </div>
-        </div>
         <a href="marketplace.html" class="nav-item">
-          <span>Marketplace</span>
-          <span class="blueprint-pill">Skills &amp; Tools</span>
+          <span>Build Packages</span>
+          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$199+</span>
         </a>
-        <a href="agent.html" class="nav-item">Agent</a>
+        <a href="build-session.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">
+          <span>Workflow Wizard</span>
+          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
+        </a>
+        <a href="agency.html" class="nav-item">Agency Services</a>
         <a href="pricing.html" class="nav-item">Pricing</a>
-        <a href="work.html" class="nav-item">Case Studies</a>
       </div>
 
       <div class="nav-actions">
-        <a href="build-session.html" class="btn-book-call">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>Book a Build Session</span>
+        <a href="marketplace.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13.5px;">
+          Explore Packages ($199+)
         </a>
         <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
           Menu
@@ -255,306 +131,316 @@
     </nav>
   </header>
 
-    <!-- Mobile Menu Drawer -->
+  <!-- Mobile Menu Drawer -->
   <div class="mobile-menu-drawer" id="mobileDrawer">
     <a href="index.html" class="mobile-link">Home</a>
-    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Products)</a>
-    <a href="marketplace.html" class="mobile-link" style="font-weight: 700;">2. Marketplace (Skills &amp; Blueprints)</a>
-    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammate Platform)</a>
+    <a href="marketplace.html" class="mobile-link">1. Build Packages ($199+)</a>
+    <a href="build-session.html" class="mobile-link" style="font-weight: 700; color: #2563EB;">2. Workflow Wizard &amp; Build Session ($1,000)</a>
+    <a href="agency.html" class="mobile-link">3. Agency Services</a>
     <a href="pricing.html" class="mobile-link">Pricing Guide</a>
-    <a href="work.html" class="mobile-link">Case Studies</a>
-    <a href="build-session.html" class="btn btn-primary" style="margin-top: 8px;">Book a Build Session</a>
   </div>
 
-<div class="site-wrapper">
+  <div class="site-wrapper">
 
-    <!-- Header Intro -->
-    <section style="padding-top: clamp(120px, 14vw, 160px); padding-bottom: 30px; width: 100%;">
-      <div class="container-narrow" style="text-align: center;">
+    <!-- Header -->
+    <section style="padding-top: clamp(120px, 14vw, 150px); padding-bottom: 40px; width: 100%;">
+      <div class="sampleshop-container">
         
-        <div style="display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 6px 14px; font-size: 13px; font-weight: 700; color: var(--text-heading); margin-bottom: 16px;">
-          <span class="live-dot"></span>
-          <span>Agency Token · Custom Build Session</span>
+        <div style="max-width: 840px; margin-bottom: 36px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; color: #2563EB; margin-bottom: 12px;">
+            <span class="live-dot" style="background: #2563EB;"></span>
+            <span>Custom Architecture Generator &amp; Co-Building Sprint</span>
+          </div>
+
+          <h1 class="hero-headline" style="font-size: clamp(36px, 5.5vw, 56px); margin-bottom: 16px; text-align: left; line-height: 1.1;">
+            Workflow Generator <br>
+            <span class="serif-italic">&amp; The $1,000 Build Session.</span>
+          </h1>
+
+          <p class="hero-description" style="font-size: 18px; max-width: 780px; text-align: left; margin: 0; line-height: 1.6;">
+            Select which of the <strong>6 Core Revenue Engines</strong> you need. Our generator compiles your customized architecture graph in real-time, calculates time and pipeline ROI, and prepares your <strong>4-Hour / 6-Session Build Sprint</strong>.
+          </p>
         </div>
 
-        <h1 class="hero-headline" style="font-size: clamp(34px, 4.5vw, 48px); margin-bottom: 12px;">
-          Scope your custom <br><span class="serif-italic">Build Session.</span>
-        </h1>
-        <p class="hero-description" style="max-width: 650px; margin: 0 auto;">
-          Our Build Sessions deploy turnkey GTM AI infrastructure into your private cloud to <strong>drive value cost-effectively</strong>. Each engagement is priced on a transparent <strong>30% scale of projected 90-day net value added and revenue capture</strong>.
-        </p>
+        <!-- 6-Session Framework Spotlight -->
+        <div style="background: #000000; color: #FFFFFF; border-radius: var(--radius-xl); padding: clamp(28px, 4vw, 44px); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: var(--shadow-float); margin-bottom: 48px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 24px;">
+            <div>
+              <span class="font-mono" style="font-size: 12px; color: #60A5FA; font-weight: 800; text-transform: uppercase;">⚡ 4 Hours Total · 6 Dedicated Sessions</span>
+              <h2 style="font-size: 26px; font-weight: 800; color: #FFFFFF; margin-top: 4px;">The Build Session Cadence</h2>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); border-radius: var(--radius-pill); padding: 6px 18px; font-family: var(--font-mono); font-size: 20px; font-weight: 900;">
+              $1,000 Flat
+            </div>
+          </div>
 
-      </div>
-    </section>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: 20px;">
+              <strong style="color: #60A5FA; font-size: 14px; display: block; margin-bottom: 6px;">Part 1 · 2× 1-Hour Sessions (2h)</strong>
+              <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5;">
+                <strong>Session 1:</strong> Intake, ICP definitions, ACV, bottleneck audit.<br>
+                <strong>Session 2:</strong> Architecture mapping, node schema, credential setup.
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: 20px;">
+              <strong style="color: #10B981; font-size: 14px; display: block; margin-bottom: 6px;">Part 2 · 4× 30-Minute Sessions (2h)</strong>
+              <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5;">
+                <strong>Sessions 3–5:</strong> Rapid prototyping rounds on scraping and copy.<br>
+                <strong>Session 6:</strong> Live test on real prospect data, review, and handover.
+              </p>
+            </div>
+          </div>
+        </div>
 
-    <!-- Wizard Section -->
-    <section style="padding-bottom: 80px; width: 100%;">
-      <div class="container">
-        
-        <div class="wizard-container">
+        <!-- Interactive Stepper Wizard Container -->
+        <div class="wizard-container" id="wizardBox">
           
-          <!-- Progress Bar -->
           <div class="wizard-progress-bar">
-            <div class="wizard-progress-fill" id="progressFill"></div>
-            <div class="step-indicator active" id="stepIndicator1">1</div>
-            <div class="step-indicator" id="stepIndicator2">2</div>
-            <div class="step-indicator" id="stepIndicator3">3</div>
-            <div class="step-indicator" id="stepIndicator4">4</div>
+            <div class="wizard-progress-fill" id="wizardProgressFill"></div>
+            <div class="step-indicator active" id="stepInd1">1</div>
+            <div class="step-indicator" id="stepInd2">2</div>
+            <div class="step-indicator" id="stepInd3">3</div>
+            <div class="step-indicator" id="stepInd4">4</div>
           </div>
 
-          <form id="buildSessionWizard" onsubmit="event.preventDefault();">
-            
-            <!-- STEP 1: WORKFLOW SELECTION -->
-            <div class="wizard-step active" id="wizardStep1">
-              <div style="margin-bottom: 20px;">
-                <span style="font-size: 12px; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">STEP 1 OF 4 · SYSTEM SELECTION</span>
-                <h3 style="font-size: 22px; font-weight: 800; color: var(--text-heading); margin-top: 4px;">Which systems do you want us to build?</h3>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Select the workflows to include in your private cloud architecture.</p>
-              </div>
-
-              <div class="workflow-select-grid">
-                <div class="workflow-option-card selected" onclick="toggleWorkflow(this, 'inbound', 0.85)">
-                  <input type="checkbox" checked style="display:none;" value="inbound">
-                  <div style="font-size: 20px; margin-bottom: 6px;">⚡</div>
-                  <strong style="display:block; font-size: 15px; color: var(--text-heading);">1. Inbound Automation</strong>
-                  <span style="font-size: 12.5px; color: var(--text-secondary);">Sub-30s speed-to-lead &amp; 7-class triage</span>
-                </div>
-
-                <div class="workflow-option-card selected" onclick="toggleWorkflow(this, 'outbound', 1.0)">
-                  <input type="checkbox" checked style="display:none;" value="outbound">
-                  <div style="font-size: 20px; margin-bottom: 6px;">🎯</div>
-                  <strong style="display:block; font-size: 15px; color: var(--text-heading);">2. Outbound Automation</strong>
-                  <span style="font-size: 12.5px; color: var(--text-secondary);">Intent signals &amp; 4-tier waterfall PAS</span>
-                </div>
-
-                <div class="workflow-option-card" onclick="toggleWorkflow(this, 'presales', 0.75)">
-                  <input type="checkbox" style="display:none;" value="presales">
-                  <div style="font-size: 20px; margin-bottom: 6px;">📋</div>
-                  <strong style="display:block; font-size: 15px; color: var(--text-heading);">3. Pre Sales Dossiers</strong>
-                  <span style="font-size: 12.5px; color: var(--text-secondary);">Autonomous prospect briefs 10m prior</span>
-                </div>
-
-                <div class="workflow-option-card" onclick="toggleWorkflow(this, 'postsales', 0.75)">
-                  <input type="checkbox" style="display:none;" value="postsales">
-                  <div style="font-size: 20px; margin-bottom: 6px;">📝</div>
-                  <strong style="display:block; font-size: 15px; color: var(--text-heading);">4. Post Sales CRM Patch</strong>
-                  <span style="font-size: 12.5px; color: var(--text-secondary);">Gong/Fathom transcript MEDDPICC sync</span>
-                </div>
-
-                <div class="workflow-option-card" onclick="toggleWorkflow(this, 'dailyrep', 0.70)">
-                  <input type="checkbox" style="display:none;" value="dailyrep">
-                  <div style="font-size: 20px; margin-bottom: 6px;">🚨</div>
-                  <strong style="display:block; font-size: 15px; color: var(--text-heading);">5. Daily Execution Report</strong>
-                  <span style="font-size: 12.5px; color: var(--text-secondary);">Rep accountability &amp; deal slippage alert</span>
-                </div>
-
-                <div class="workflow-option-card" onclick="toggleWorkflow(this, 'dailygtm', 0.85)">
-                  <input type="checkbox" style="display:none;" value="dailygtm">
-                  <div style="font-size: 20px; margin-bottom: 6px;">📊</div>
-                  <strong style="display:block; font-size: 15px; color: var(--text-heading);">6. Daily GTM Report</strong>
-                  <span style="font-size: 12.5px; color: var(--text-secondary);">Executive CAC velocity &amp; MRR digest</span>
-                </div>
-              </div>
-
-              <div style="margin-top: 32px; display: flex; justify-content: flex-end;">
-                <button type="button" class="btn btn-primary" onclick="goToStep(2)" style="padding: 14px 28px;">Continue to Value Algorithm &rarr;</button>
-              </div>
-            </div>
-
-            <!-- STEP 2: PIPELINE METRICS & VALUE SIMULATION -->
-            <div class="wizard-step" id="wizardStep2">
-              <div style="margin-bottom: 20px;">
-                <span style="font-size: 12px; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">STEP 2 OF 4 · VALUE SCALE ALGORITHM</span>
-                <h3 style="font-size: 22px; font-weight: 800; color: var(--text-heading); margin-top: 4px;">Pipeline &amp; Value Parameters</h3>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Move the sliders to project revenue capture and time saved for your organization.</p>
-              </div>
-
-              <div class="calc-slider-wrap">
-                
-                <!-- Slider 1: Average Contract Value (ACV) -->
-                <div class="slider-row">
-                  <div class="slider-label-row">
-                    <span>Average Contract Value (ACV)</span>
-                    <span id="acvDisplay" style="font-family: var(--font-mono); color: var(--accent-blue);">$8,000</span>
-                  </div>
-                  <input type="range" class="slider-input" id="acvSlider" min="1000" max="50000" step="1000" value="8000" oninput="calculateValueAlgorithm()">
-                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
-                    <span>$1k</span>
-                    <span>$25k</span>
-                    <span>$50k+</span>
-                  </div>
-                </div>
-
-                <!-- Slider 2: Target Closed Deals / Month -->
-                <div class="slider-row">
-                  <div class="slider-label-row">
-                    <span>Pipeline Closed Deals / Month</span>
-                    <span id="dealsDisplay" style="font-family: var(--font-mono); color: var(--accent-blue);">6 deals/mo</span>
-                  </div>
-                  <input type="range" class="slider-input" id="dealsSlider" min="1" max="40" step="1" value="6" oninput="calculateValueAlgorithm()">
-                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
-                    <span>1 deal</span>
-                    <span>20 deals</span>
-                    <span>40+ deals</span>
-                  </div>
-                </div>
-
-                <!-- Slider 3: Sales Reps (AEs / SDRs) -->
-                <div class="slider-row" style="margin-bottom: 0;">
-                  <div class="slider-label-row">
-                    <span>Sales &amp; RevOps Team Size</span>
-                    <span id="repsDisplay" style="font-family: var(--font-mono); color: var(--accent-blue);">3 Reps</span>
-                  </div>
-                  <input type="range" class="slider-input" id="repsSlider" min="1" max="25" step="1" value="3" oninput="calculateValueAlgorithm()">
-                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
-                    <span>1 rep</span>
-                    <span>10 reps</span>
-                    <span>25+ reps</span>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Real-time Algorithm Output -->
-              <div class="algorithm-result-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-                  <div>
-                    <span class="ticker-pill font-mono" style="background: rgba(255,255,255,0.15); color: #FFFFFF; border-color: rgba(255,255,255,0.3); font-size: 11.5px;">Algorithm Telemetry</span>
-                    <h4 style="font-size: 19px; font-weight: 800; margin-top: 6px; color: #FFFFFF;">Calculated Build Session Quote</h4>
-                  </div>
-                  <div style="text-align: right;">
-                    <div id="priceQuoteDisplay" style="font-size: 32px; font-weight: 800; font-family: var(--font-mono); color: #10B981;">$3,450</div>
-                    <div style="font-size: 12px; color: #9CA3AF;">30% Scale of Projected 90-Day Net Value</div>
-                  </div>
-                </div>
-
-                <div class="algo-metric-grid">
-                  <div>
-                    <div style="font-size: 12px; color: #9CA3AF;">90-Day Revenue Lift</div>
-                    <div id="revenueLiftDisplay" style="font-size: 18px; font-weight: 700; color: #FFFFFF; font-family: var(--font-mono); margin-top: 4px;">+$8,640</div>
-                  </div>
-                  <div>
-                    <div style="font-size: 12px; color: #9CA3AF;">Hours Saved / Month</div>
-                    <div id="hoursSavedDisplay" style="font-size: 18px; font-weight: 700; color: #FFFFFF; font-family: var(--font-mono); margin-top: 4px;">97.5 hrs/mo</div>
-                  </div>
-                  <div>
-                    <div style="font-size: 12px; color: #9CA3AF;">Projected 90-Day ROI</div>
-                    <div id="roiMultiplierDisplay" style="font-size: 18px; font-weight: 700; color: #10B981; font-family: var(--font-mono); margin-top: 4px;">3.3x ROI</div>
-                  </div>
-                </div>
-              </div>
-
-              <div style="margin-top: 32px; display: flex; justify-content: space-between;">
-                <button type="button" class="btn btn-secondary" onclick="goToStep(1)">Back</button>
-                <button type="button" class="btn btn-primary" onclick="goToStep(3)">Continue to Tech Stack &rarr;</button>
-              </div>
-            </div>
-
-            <!-- STEP 3: TECH STACK & CREDENTIAL ARCHITECTURE -->
-            <div class="wizard-step" id="wizardStep3">
-              <div style="margin-bottom: 20px;">
-                <span style="font-size: 12px; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">STEP 3 OF 4 · INTEGRATIONS &amp; INFRASTRUCTURE</span>
-                <h3 style="font-size: 22px; font-weight: 800; color: var(--text-heading); margin-top: 4px;">What tools will this system connect to?</h3>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Select your systems so we can prepare your private cloud keysheet.</p>
-              </div>
-
-              <div style="display: flex; flex-direction: column; gap: 18px;">
-                <div>
-                  <label style="display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(--text-heading);">Primary CRM System *</label>
-                  <select id="crmSelect" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #FFFFFF;">
-                    <option value="HubSpot CRM">HubSpot CRM</option>
-                    <option value="Salesforce">Salesforce</option>
-                    <option value="Attio">Attio</option>
-                    <option value="Pipedrive">Pipedrive</option>
-                    <option value="Zoho CRM">Zoho CRM</option>
-                    <option value="PostgreSQL / Custom">Other / Custom Postgres</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label style="display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(--text-heading);">Outbound Sequencer / Email Engine *</label>
-                  <select id="sequencerSelect" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #FFFFFF;">
-                    <option value="Smartlead.ai">Smartlead.ai</option>
-                    <option value="Instantly.ai">Instantly.ai</option>
-                    <option value="HubSpot Sales Hub">HubSpot Sales Hub</option>
-                    <option value="Lemlist">Lemlist</option>
-                    <option value="Need SalesGency Recommendation">Need SalesGency Recommendation</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label style="display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(--text-heading);">Deployment Cloud Target *</label>
-                  <select id="deploySelect" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #FFFFFF;">
-                    <option value="n8n Cloud (Client Account)">Client-Owned n8n Cloud Account</option>
-                    <option value="Docker / Self-Hosted VPS">Self-Hosted Docker / VPS (AWS / GCP / Hetzner)</option>
-                    <option value="SalesGency Managed Cloud">SalesGency Private Managed Cloud</option>
-                  </select>
-                </div>
-              </div>
-
-              <div style="margin-top: 32px; display: flex; justify-content: space-between;">
-                <button type="button" class="btn btn-secondary" onclick="goToStep(2)">Back</button>
-                <button type="button" class="btn btn-primary" onclick="goToStep(4)">Review &amp; Confirm Booking &rarr;</button>
-              </div>
-            </div>
-
-            <!-- STEP 4: SUMMARY & BOOKING CONFIRMATION -->
-            <div class="wizard-step" id="wizardStep4">
-              <div style="margin-bottom: 20px;">
-                <span style="font-size: 12px; font-weight: 800; color: var(--accent-green); font-family: var(--font-mono);">STEP 4 OF 4 · PROJECT SCHEMA &amp; BOOKING</span>
-                <h3 style="font-size: 22px; font-weight: 800; color: var(--text-heading); margin-top: 4px;">Confirm Your Build Session Scope</h3>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Review your compiled TypeScript architecture spec and confirm your session.</p>
-              </div>
-
-              <!-- TypeScript Schema Preview -->
-              <div class="ts-schema-preview" id="tsSchemaBox">
-                <span style="color:#7EE787;">const</span> <span style="color:#79C0FF;">buildSessionScope</span>: <span style="color:#FFA657;">GTMArchitectureSpec</span> = {<br>
-                &nbsp;&nbsp;token: <span style="color:#A5D6FF;">"BUILD_SESSION_ENGAGEMENT"</span>,<br>
-                &nbsp;&nbsp;workflows: [<span style="color:#A5D6FF;" id="schemaWorkflows">"inbound", "outbound"</span>],<br>
-                &nbsp;&nbsp;targetCRM: <span style="color:#A5D6FF;" id="schemaCRM">"HubSpot"</span>,<br>
-                &nbsp;&nbsp;sequencer: <span style="color:#A5D6FF;" id="schemaSeq">"Smartlead"</span>,<br>
-                &nbsp;&nbsp;projectedValue90d: <span style="color:#79C0FF;" id="schemaValue">$11,500</span>,<br>
-                &nbsp;&nbsp;investmentQuote: <span style="color:#7EE787;" id="schemaQuote">$3,450</span> (30% value scale),<br>
-                &nbsp;&nbsp;codeOwnership: <span style="color:#A5D6FF;">"100% Client-Owned"</span><br>
-                };
-              </div>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-                <div>
-                  <label style="display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(--text-heading);">Full Name *</label>
-                  <input type="text" required id="contactName" placeholder="Patrick Diamitani" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #FFFFFF;">
-                </div>
-                <div>
-                  <label style="display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(--text-heading);">Work Email *</label>
-                  <input type="email" required id="contactEmail" placeholder="alex@company.com" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #FFFFFF;">
-                </div>
-              </div>
-
-              <div style="margin-bottom: 24px;">
-                <label style="display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 8px; color: var(--text-heading);">Company Website *</label>
-                <input type="url" required id="contactWebsite" placeholder="https://yourcompany.com" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #FFFFFF;">
-              </div>
-
-              <button type="button" class="btn btn-primary" onclick="submitBuildSession()" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 800;">
-                Confirm Scope &amp; Select Calendar Slot &rarr;
-              </button>
-
-              <div style="display: flex; justify-content: space-between; margin-top: 16px;">
-                <button type="button" class="btn btn-secondary" onclick="goToStep(3)">Back</button>
-                <div style="font-size: 12px; color: var(--text-muted); align-self: center;">🔒 100% Confidential · No Obligation</div>
-              </div>
-            </div>
-
-          </form>
-
-          <!-- Confirmation Screen -->
-          <div id="confirmedScreen" style="display: none; text-align: center; padding: 40px 20px;">
-            <div style="width: 64px; height: 64px; border-radius: 50%; background: #ECFDF5; color: #10B981; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 1px solid rgba(16, 185, 129, 0.3);">✓</div>
-            <h3 style="font-size: 28px; font-weight: 800; color: var(--text-heading); margin-bottom: 12px;">Build Session Scoped!</h3>
-            <p style="color: var(--text-secondary); max-width: 540px; margin: 0 auto 24px; line-height: 1.6; font-size: 15px;">
-              Your customized Build Session architecture has been recorded. Opening Patrick Diamitani's live schedule to confirm Day 1 Intake and receive your keysheet template.
+          <!-- STEP 1: Select 6 Core Engines -->
+          <div class="wizard-step active" id="wizardStep1">
+            <span class="blueprint-pill" style="margin-bottom: 8px; display: inline-block;">STEP 1 OF 4</span>
+            <h3 style="font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">
+              Select Core Engines to Include
+            </h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+              Choose any combination of our 6 production automation systems:
             </p>
-            <a href="https://calendly.com" target="_blank" class="btn btn-primary" style="padding: 14px 28px;">Open Calendar Schedule &rarr;</a>
+
+            <div class="engine-select-grid">
+              
+              <div class="engine-check-card checked" data-id="inbound" data-price="299" data-hours="12" onclick="toggleEngineWizard(this)">
+                <div>
+                  <div class="engine-check-header">
+                    <div class="engine-check-box">✓</div>
+                    <span class="engine-pkg-price">$299</span>
+                  </div>
+                  <h4 class="engine-check-title">1. Inbound Automation</h4>
+                  <p class="engine-check-sub">Sub-30s triage &amp; calendar routing</p>
+                </div>
+                <div class="engine-check-metric">+12 hrs saved / mo</div>
+              </div>
+
+              <div class="engine-check-card checked" data-id="outbound" data-price="399" data-hours="24" onclick="toggleEngineWizard(this)">
+                <div>
+                  <div class="engine-check-header">
+                    <div class="engine-check-box">✓</div>
+                    <span class="engine-pkg-price">$399</span>
+                  </div>
+                  <h4 class="engine-check-title">2. Outbound Automation</h4>
+                  <p class="engine-check-sub">5-Pillar PAE outbound engine</p>
+                </div>
+                <div class="engine-check-metric">+24 hrs saved / mo</div>
+              </div>
+
+              <div class="engine-check-card" data-id="presales" data-price="249" data-hours="8" onclick="toggleEngineWizard(this)">
+                <div>
+                  <div class="engine-check-header">
+                    <div class="engine-check-box"></div>
+                    <span class="engine-pkg-price">$249</span>
+                  </div>
+                  <h4 class="engine-check-title">3. Pre Sales Dossier</h4>
+                  <p class="engine-check-sub">10m pre-call executive intel</p>
+                </div>
+                <div class="engine-check-metric">+8 hrs saved / mo</div>
+              </div>
+
+              <div class="engine-check-card checked" data-id="postsales" data-price="199" data-hours="16" onclick="toggleEngineWizard(this)">
+                <div>
+                  <div class="engine-check-header">
+                    <div class="engine-check-box">✓</div>
+                    <span class="engine-pkg-price">$199</span>
+                  </div>
+                  <h4 class="engine-check-title">4. Post Sales CRM Sync</h4>
+                  <p class="engine-check-sub">MEDDPICC transcript parsing</p>
+                </div>
+                <div class="engine-check-metric">+16 hrs saved / mo</div>
+              </div>
+
+              <div class="engine-check-card" data-id="dailyrep" data-price="199" data-hours="6" onclick="toggleEngineWizard(this)">
+                <div>
+                  <div class="engine-check-header">
+                    <div class="engine-check-box"></div>
+                    <span class="engine-pkg-price">$199</span>
+                  </div>
+                  <h4 class="engine-check-title">5. Daily Execution Report</h4>
+                  <p class="engine-check-sub">8 AM rep activity scorecard</p>
+                </div>
+                <div class="engine-check-metric">+6 hrs saved / mo</div>
+              </div>
+
+              <div class="engine-check-card" data-id="dailygtm" data-price="199" data-hours="6" onclick="toggleEngineWizard(this)">
+                <div>
+                  <div class="engine-check-header">
+                    <div class="engine-check-box"></div>
+                    <span class="engine-pkg-price">$199</span>
+                  </div>
+                  <h4 class="engine-check-title">6. Daily GTM Report</h4>
+                  <p class="engine-check-sub">Executive pipeline velocity</p>
+                </div>
+                <div class="engine-check-metric">+6 hrs saved / mo</div>
+              </div>
+
+            </div>
+
+            <div class="blueprint-summary-bar">
+              <div class="summary-stat-box">
+                <span class="summary-stat-label">Engines Active</span>
+                <span class="summary-stat-val" id="wizStep1Count">3 of 6</span>
+              </div>
+              <div class="summary-stat-box">
+                <span class="summary-stat-label">Est. Time Saved</span>
+                <span class="summary-stat-val" style="color: #10B981;" id="wizStep1Hours">52 hrs/mo</span>
+              </div>
+              <div class="summary-stat-box">
+                <span class="summary-stat-label">A La Carte Total</span>
+                <span class="summary-stat-val" id="wizStep1Price">$897</span>
+              </div>
+              <div class="summary-stat-box">
+                <span class="summary-stat-label">Build Session Cost</span>
+                <span class="summary-stat-val" style="color: #2563EB;">$1,000 Flat</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 32px; display: flex; justify-content: flex-end;">
+              <button class="btn btn-primary" onclick="goToWizardStep(2)" style="padding: 12px 28px; font-size: 14.5px; font-weight: 800; background: #2563EB; color: #FFFFFF; border: none;">
+                Next: Connect Tools &amp; CRM &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Tools & Stack -->
+          <div class="wizard-step" id="wizardStep2">
+            <span class="blueprint-pill" style="margin-bottom: 8px; display: inline-block;">STEP 2 OF 4</span>
+            <h3 style="font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">
+              Configure Your Tool Stack
+            </h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">
+              Specify which tools you currently use so the generator configures correct API connectors.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">CRM System</label>
+                <select id="crmSelect" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; background: #FFFFFF;" onchange="updateGeneratedSchema()">
+                  <option value="HubSpot">HubSpot (Contacts, Deals, Properties)</option>
+                  <option value="Salesforce">Salesforce (Leads, Opportunities)</option>
+                  <option value="Attio">Attio (AI-Native Objects)</option>
+                  <option value="Pipedrive">Pipedrive / Zoho CRM</option>
+                  <option value="PostgreSQL">PostgreSQL / Supabase</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">Outreach Sequencer</label>
+                <select id="seqSelect" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px; background: #FFFFFF;" onchange="updateGeneratedSchema()">
+                  <option value="Instantly">Instantly.ai (Multi-account warmup)</option>
+                  <option value="Smartlead">Smartlead (Waterfall API)</option>
+                  <option value="Outreach">Outreach / Salesloft</option>
+                  <option value="HubSpot Sequences">HubSpot Sales Sequences</option>
+                  <option value="None">None / Direct Gmail API</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">Data &amp; Enrichment Providers</label>
+                <input type="text" id="dataProviderInput" placeholder="Clay, Apollo.io, FindyMail, Hunter, Gong, Fathom" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px;" oninput="updateGeneratedSchema()">
+              </div>
+            </div>
+
+            <div style="margin-top: 32px; display: flex; justify-content: space-between;">
+              <button class="btn btn-secondary" onclick="goToWizardStep(1)">Back</button>
+              <button class="btn btn-primary" onclick="goToWizardStep(3)" style="padding: 12px 28px; font-size: 14.5px; font-weight: 800; background: #2563EB; color: #FFFFFF; border: none;">
+                Next: Compile Architecture Blueprint &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Compiled Architecture Blueprint -->
+          <div class="wizard-step" id="wizardStep3">
+            <span class="blueprint-pill" style="margin-bottom: 8px; display: inline-block;">STEP 3 OF 4</span>
+            <h3 style="font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">
+              Compiled Architecture Blueprint
+            </h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+              Here is your custom topology schema based on your selected engines and tooling stack:
+            </p>
+
+            <div class="blueprint-console">
+              <div class="blueprint-console-header">
+                <span>// Generated Node Schema &amp; Routing Graph</span>
+                <span style="color: #10B981;">● Ready for Session 1 Ingest</span>
+              </div>
+              <pre id="compiledJsonSchema" style="margin: 0; overflow-x: auto; font-size: 12px; color: #93C5FD;"></pre>
+            </div>
+
+            <div style="background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; margin-bottom: 20px;">
+              <div style="font-size: 14px; font-weight: 700; color: var(--text-heading); margin-bottom: 4px;">What happens next in your Build Session:</div>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                We load this compiled topology directly into our live coding environment during <strong>Session 1</strong> to start construction immediately.
+              </p>
+            </div>
+
+            <div style="margin-top: 28px; display: flex; justify-content: space-between;">
+              <button class="btn btn-secondary" onclick="goToWizardStep(2)">Back</button>
+              <button class="btn btn-primary" onclick="goToWizardStep(4)" style="padding: 12px 28px; font-size: 14.5px; font-weight: 800; background: #2563EB; color: #FFFFFF; border: none;">
+                Next: Schedule Build Session &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Lock In & Schedule -->
+          <div class="wizard-step" id="wizardStep4">
+            <span class="blueprint-pill" style="margin-bottom: 8px; display: inline-block;">STEP 4 OF 4 · SCHEDULE</span>
+            <h3 style="font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">
+              Confirm Your $1,000 Build Session
+            </h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+              Review parameters and book your 4-Hour / 6-Session co-building sprint:
+            </p>
+
+            <div style="background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-hairline); padding-bottom: 10px; margin-bottom: 10px;">
+                <span style="font-size: 13.5px; color: var(--text-secondary);">Scope</span>
+                <strong style="font-size: 13.5px; color: var(--text-heading);" id="finalScopeLabel">3 Engines Configured</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-hairline); padding-bottom: 10px; margin-bottom: 10px;">
+                <span style="font-size: 13.5px; color: var(--text-secondary);">Cadence</span>
+                <strong style="font-size: 13.5px; color: var(--text-heading);">4 Hours (2x 1hr, 4x 30m)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-hairline); padding-bottom: 10px; margin-bottom: 10px;">
+                <span style="font-size: 13.5px; color: var(--text-secondary);">Deliverables</span>
+                <strong style="font-size: 13.5px; color: #10B981;">Complete Build Packages + Data</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 4px;">
+                <span style="font-size: 15px; font-weight: 800; color: var(--text-heading);">Investment</span>
+                <strong style="font-size: 28px; font-weight: 900; font-family: var(--font-mono); color: var(--text-heading);">$1,000 Flat</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+              <div>
+                <label style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">Your Name</label>
+                <input type="text" id="finalNameInput" required placeholder="Sarah Jenkins" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px;">
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">Work Email</label>
+                <input type="email" id="finalEmailInput" required placeholder="sarah@company.com" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 14px;">
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <button class="btn btn-secondary" onclick="goToWizardStep(3)">Back</button>
+              <button class="btn btn-primary" onclick="submitFinalSession()" style="padding: 14px 32px; font-size: 15px; font-weight: 800; background: #2563EB; color: #FFFFFF; border: none;">
+                ⚡ Schedule 6-Session Sprint ($1,000) &rarr;
+              </button>
+            </div>
           </div>
 
         </div>
@@ -562,20 +448,19 @@
       </div>
     </section>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-inner">
           <div class="footer-copyright">
-            © 2026 SalesGency®. GTM AI Architecture. 100% client-owned code.
+            © 2026 SalesGency®. Your Go-To-Market AI and Automation Agency. 100% client-owned code.
           </div>
           <div class="footer-links">
             <a href="index.html" class="footer-link">Home</a>
-            <a href="agency.html" class="footer-link">Agency</a>
-            <a href="marketplace.html" class="footer-link">Marketplace</a>
-            <a href="agent.html" class="footer-link">Agent</a>
+            <a href="marketplace.html" class="footer-link">Build Packages ($199+)</a>
+            <a href="build-session.html" class="footer-link">Build Sessions ($1,000)</a>
+            <a href="agency.html" class="footer-link">Agency Services</a>
             <a href="pricing.html" class="footer-link">Pricing Guide</a>
-            <a href="build-session.html" class="footer-link">Book Build Session</a>
           </div>
         </div>
       </div>
@@ -584,111 +469,106 @@
   </div>
 
   <script>
-    let currentStep = 1;
-    let selectedWorkflows = ['inbound', 'outbound'];
+    const engineDict = {
+      inbound: { name: 'Inbound Automation', price: 299, hours: 12, nodes: ['Webhook Ingest', 'Clay Firmographics', 'Intent Classification', 'Calendar Booking'] },
+      outbound: { name: 'Outbound PAE', price: 399, hours: 24, nodes: ['Waterfall Trigger Ingest', 'CRM Dedupe Shield', 'Contact Reveal', 'PAS Copywriter', 'Sequencer Sync'] },
+      presales: { name: 'Pre Sales Dossier', price: 249, hours: 8, nodes: ['Calendar Watcher', 'Google Search Intel', 'Exec Bio Extractor', 'Slack Dossier Alert'] },
+      postsales: { name: 'Post Sales CRM Sync', price: 199, hours: 16, nodes: ['Recording Webhook', 'MEDDPICC Parser', 'CRM Field Upsert', 'Client Follow-up Generator'] },
+      dailyrep: { name: 'Daily Execution Report', price: 199, hours: 6, nodes: ['8 AM Cron', 'PostgreSQL Pipeline Query', 'Stuck Deal Alert (>5d)', 'Slack Scorecard'] },
+      dailygtm: { name: 'Daily GTM Report', price: 199, hours: 6, nodes: ['Pipeline Velocity Aggregator', 'CAC Payback Metric', 'Executive Push'] }
+    };
 
-    function toggleWorkflow(card, wfId, complexity) {
-      const checkbox = card.querySelector('input[type="checkbox"]');
-      checkbox.checked = !checkbox.checked;
-      card.classList.toggle('selected', checkbox.checked);
+    function updateGeneratedSchema() {
+      const cards = document.querySelectorAll('#wizardStep1 .engine-check-card.checked');
+      let totalHours = 0;
+      let totalPrice = 0;
+      let activeNames = [];
+      let allNodes = [];
 
-      if (checkbox.checked) {
-        if (!selectedWorkflows.includes(wfId)) selectedWorkflows.push(wfId);
-      } else {
-        selectedWorkflows = selectedWorkflows.filter(id => id !== wfId);
-      }
-      calculateValueAlgorithm();
-    }
-
-    function goToStep(step) {
-      document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
-      document.getElementById(`wizardStep${step}`).classList.add('active');
-
-      document.querySelectorAll('.step-indicator').forEach((el, idx) => {
-        el.classList.remove('active', 'completed');
-        if (idx + 1 < step) el.classList.add('completed');
-        if (idx + 1 === step) el.classList.add('active');
+      cards.forEach(c => {
+        const id = c.getAttribute('data-id');
+        const d = engineDict[id];
+        if (d) {
+          totalHours += d.hours;
+          totalPrice += d.price;
+          activeNames.push(d.name);
+          allNodes.push(...d.nodes);
+        }
       });
 
-      const fillPercent = ((step - 1) / 3) * 100;
-      document.getElementById('progressFill').style.width = `${Math.max(25, fillPercent)}%`;
+      document.getElementById('wizStep1Count').textContent = `${cards.length} of 6`;
+      document.getElementById('wizStep1Hours').textContent = `${totalHours} hrs/mo`;
+      document.getElementById('wizStep1Price').textContent = `$${totalPrice}`;
+      document.getElementById('finalScopeLabel').textContent = `${cards.length} Engines Configured (${activeNames.join(', ')})`;
 
-      currentStep = step;
-      if (step === 2) calculateValueAlgorithm();
-      if (step === 4) updateSummary();
-      window.scrollTo({ top: 200, behavior: 'smooth' });
+      const crm = document.getElementById('crmSelect')?.value || 'HubSpot';
+      const seq = document.getElementById('seqSelect')?.value || 'Instantly';
+      const dataProv = document.getElementById('dataProviderInput')?.value || 'Clay, Apollo.io, Gong';
+
+      const schema = {
+        session_scoping_id: "BUILD-SESSION-" + Math.floor(1000 + Math.random() * 9000),
+        cadence: "4 Hours (2x 1hr strategy + 4x 30m prototyping)",
+        investment: "1,000 USD (Flat)",
+        crm_integration: crm,
+        sequencer_target: seq,
+        data_enrichment_stack: dataProv,
+        engines_selected: activeNames,
+        generated_pipeline_nodes: allNodes,
+        estimated_monthly_hours_saved: `${totalHours} hours / rep`,
+        deliverables: [
+          "Complete n8n Workflow JSONs",
+          "Python Scraper CLI scripts",
+          "Executable Agent SKILL.md files",
+          "Enriched prospect target data"
+        ]
+      };
+
+      document.getElementById('compiledJsonSchema').textContent = JSON.stringify(schema, null, 2);
     }
 
-    function calculateValueAlgorithm() {
-      const acv = parseInt(document.getElementById('acvSlider').value, 10);
-      const deals = parseInt(document.getElementById('dealsSlider').value, 10);
-      const reps = parseInt(document.getElementById('repsSlider').value, 10);
-
-      document.getElementById('acvDisplay').textContent = `$${acv.toLocaleString()}`;
-      document.getElementById('dealsDisplay').textContent = `${deals} deals/mo`;
-      document.getElementById('repsDisplay').textContent = `${reps} Rep${reps > 1 ? 's' : ''}`;
-
-      // Value Formula:
-      // 1. Revenue Capture: 18% lift in win rate / deal velocity
-      const monthlyRevenueLift = Math.round(deals * 0.18 * acv * 0.20);
-      const ninetyDayRevenueLift = monthlyRevenueLift * 3;
-
-      // 2. Operational Hours Saved: 7.5 hrs/rep/week * 4.33 weeks * $75/hr blended
-      const hoursSavedPerRepPerMonth = 32.5;
-      const totalHoursSavedMonth = reps * hoursSavedPerRepPerMonth;
-      const timeSavedDollarValue90 = totalHoursSavedMonth * 75 * 3;
-
-      // Total 90-Day Net Value Added
-      const totalValueAdded90 = ninetyDayRevenueLift + timeSavedDollarValue90;
-
-      // Complexity Multiplier based on selected workflows
-      let complexityMultiplier = 0.6;
-      if (selectedWorkflows.length === 2) complexityMultiplier = 0.9;
-      if (selectedWorkflows.length >= 3) complexityMultiplier = 1.15;
-      if (selectedWorkflows.length >= 5) complexityMultiplier = 1.4;
-
-      // 30% Scale Calculation
-      let rawQuote = totalValueAdded90 * 0.30 * (complexityMultiplier / (selectedWorkflows.length || 1));
-      
-      // Clamp between $2,500 and $9,500 rounded to $50
-      let finalQuote = Math.max(2500, Math.min(9500, Math.round(rawQuote / 50) * 50));
-
-      document.getElementById('priceQuoteDisplay').textContent = `$${finalQuote.toLocaleString()}`;
-      document.getElementById('revenueLiftDisplay').textContent = `+$${ninetyDayRevenueLift.toLocaleString()}`;
-      document.getElementById('hoursSavedDisplay').textContent = `${totalHoursSavedMonth.toFixed(0)} hrs/mo`;
-
-      const roiRatio = (totalValueAdded90 / finalQuote).toFixed(1);
-      document.getElementById('roiMultiplierDisplay').textContent = `${roiRatio}x ROI`;
-
-      window.calculatedBuildPrice = finalQuote;
-      window.calculatedNetValue = totalValueAdded90;
+    function toggleEngineWizard(el) {
+      el.classList.toggle('checked');
+      const box = el.querySelector('.engine-check-box');
+      box.textContent = el.classList.contains('checked') ? '✓' : '';
+      updateGeneratedSchema();
     }
 
-    function updateSummary() {
-      const crm = document.getElementById('crmSelect').value;
-      const seq = document.getElementById('sequencerSelect').value;
+    function goToWizardStep(step) {
+      document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`wizardStep${step}`).classList.add('active');
 
-      document.getElementById('schemaWorkflows').textContent = JSON.stringify(selectedWorkflows);
-      document.getElementById('schemaCRM').textContent = `"${crm}"`;
-      document.getElementById('schemaSeq').textContent = `"${seq}"`;
-      document.getElementById('schemaValue').textContent = `$${(window.calculatedNetValue || 11500).toLocaleString()}`;
-      document.getElementById('schemaQuote').textContent = `$${(window.calculatedBuildPrice || 3450).toLocaleString()}`;
+      document.getElementById('wizardProgressFill').style.width = `${(step / 4) * 100}%`;
+
+      for (let i = 1; i <= 4; i++) {
+        const ind = document.getElementById(`stepInd${i}`);
+        if (i < step) {
+          ind.className = 'step-indicator completed';
+          ind.innerHTML = '✓';
+        } else if (i === step) {
+          ind.className = 'step-indicator active';
+          ind.innerHTML = i;
+        } else {
+          ind.className = 'step-indicator';
+          ind.innerHTML = i;
+        }
+      }
+      updateGeneratedSchema();
+      window.scrollTo({ top: document.getElementById('wizardBox').offsetTop - 100, behavior: 'smooth' });
     }
 
-    function submitBuildSession() {
-      const name = document.getElementById('contactName').value;
-      const email = document.getElementById('contactEmail').value;
-      const web = document.getElementById('contactWebsite').value;
-
-      if (!name || !email || !web) {
-        alert('Please fill in all required contact fields.');
+    function submitFinalSession() {
+      const name = document.getElementById('finalNameInput').value;
+      const email = document.getElementById('finalEmailInput').value;
+      if (!name || !email) {
+        alert('Please provide your name and work email.');
         return;
       }
-
-      document.getElementById('buildSessionWizard').style.display = 'none';
-      document.getElementById('confirmedScreen').style.display = 'block';
+      alert(`Build Session Confirmed for ${name} (${email})!\n\nYour compiled architecture blueprint has been registered.\nOur calendar invite and onboarding brief have been sent.`);
     }
 
+    updateGeneratedSchema();
+
+    // Mobile Drawer
     const mobileToggle = document.getElementById('mobileNavToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
     if (mobileToggle && mobileDrawer) {
@@ -697,9 +577,6 @@
         mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
       });
     }
-
-    // Initialize algorithm on load
-    calculateValueAlgorithm();
   </script>
 
 </body>

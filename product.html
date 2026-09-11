@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | SalesGency®</title>
+  <meta name="description" content="View product details, features, and purchase options for SalesGency GTM automation packages.">
+  <link rel="canonical" href="https://salesgency.com/product.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://salesgency.com/product.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Product Details | SalesGency®">
+  <meta property="og:description" content="Production-ready GTM automation. View features, pricing, and buy with secure Stripe checkout.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        salesgency<span class="brand-symbol">®</span>
+      </a>
+      <div class="nav-menu">
+        <a href="marketplace.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$39+</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span>Build Session</span>
+          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
+        </a>
+        <a href="architecture.html" class="nav-item">Architecture</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+      </div>
+      <div class="nav-actions">
+        <a href="book.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book a Build Session</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">Menu</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="marketplace.html" class="mobile-link">Marketplace ($39+)</a>
+    <a href="book.html" class="mobile-link">Book a Build Session ($1,000)</a>
+    <a href="architecture.html" class="mobile-link">System Architecture</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+  </div>
+
+  <div class="site-wrapper">
+    <section style="padding-top: clamp(100px, 12vw, 140px); padding-bottom: clamp(60px, 8vw, 100px);">
+      <div class="product-detail" id="productDetail">
+        <!-- Loaded dynamically by product-page.js -->
+        <div style="text-align: center; padding: 80px 20px;">
+          <p style="color: var(--text-muted);">Loading product…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 40px 0; border-top: 1px solid var(--border-hairline);">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 800; color: var(--text-heading);">salesgency<span style="color: var(--text-muted);">®</span></span>
+          <span style="font-size: 12px; color: var(--text-dim); margin-left: 12px;">© 2026 SalesGency LLC</span>
+        </div>
+        <div style="display: flex; gap: 20px; font-size: 12px;">
+          <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms</a>
+          <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/salesgency-interactive.js"></script>
+  <script src="assets/stripe-client.js"></script>
+  <script src="assets/product-page.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      SalesgencyProductPage.init();
+    });
+  </script>
+</body>
+</html>
