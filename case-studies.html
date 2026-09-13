@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Studies — Salesgency</title>
+  <meta name="description" content="Real production systems with execution-level attribution: $9.06M estimated impact from one inbound automation, a $250K deal traced to a single AI chat, 779 contacts with zero overlap for an SDR agency, and client engine deployments at 18.4% cold reply rates.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/sg.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="SalesGency Home">salesgency<span class="brand-symbol">&reg;</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="activations.html">Activations</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="skills.html">Skills</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="outreach.html">Outreach</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="mailto:Patrick.Diamitani@gmail.com?subject=Prospect%20Automation%20Engine%20%E2%80%94%20working%20session">Start a conversation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow reveal">Case studies</p>
+        <h1 class="reveal">Production systems, <span class="accent">measured in dollars.</span></h1>
+        <p class="lede reveal">Every number below comes from a real workflow run or a live CRM record — execution-level attribution, conservative rules, nothing modeled. Two kinds of proof: systems Patrick built and operated in production at Atlas HXM, and Prospect Automation Engine deployments for Salesgency clients.</p>
+        <div class="hero-stats reveal">
+          <div class="stat"><span class="stat-num">14</span><span class="stat-label">production AI systems shipped and operated</span></div>
+          <div class="stat"><span class="stat-num">50+</span><span class="stat-label">non-technical reps and marketers using them daily</span></div>
+          <div class="stat"><span class="stat-num">$9.06M</span><span class="stat-label">largest single-system estimated impact, traced to execution IDs</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship -->
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow reveal">Flagship · built &amp; operated by Patrick Diamitani, GTM AI &amp; Automation Manager, Atlas HXM</p>
+        <h2 class="reveal">AI inbound lead automation — <span class="accent">$9.06M in attributed impact.</span></h2>
+        <div class="steps">
+          <div class="step reveal"><span class="step-num">P</span><div><h3>The problem</h3><p>Atlas HXM's inbound "Contact Us" leads sat untriaged — no instant qualification, no routing, and no way to prove what marketing automation was worth in dollars. Sales-ready buyers waited in line behind job seekers, verification requests, and press inquiries.</p></div></div>
+          <div class="step reveal"><span class="step-num">B</span><div><h3>What was built</h3><p>An 18-node n8n workflow: every form submission is classified by an AI agent into one of seven intents, the MQL lifecycle stage is set in HubSpot, partnerships route to the right owner, and a grounded reply agent answers sales-ready leads referencing the country and service they asked about. Then a measurement pipeline matched all 166 workflow executions against live CRM deals — a deal counts only if created on or after the contact's workflow run, so pre-existing deals are excluded.</p></div></div>
+          <div class="step reveal"><span class="step-num">R</span><div><h3>Measured outcome</h3><p>101 MQLs auto-created (72% of runs) · 29 sales deals · $6.38M in attributed pipeline · $130K closed-won · $9.06M total estimated impact. Every dollar traceable to a specific workflow execution ID.</p></div></div>
+        </div>
+        <p class="footnote reveal">Stack: n8n · Azure OpenAI · Azure AI Search · HubSpot CRM + API · Microsoft Outlook · Claude (agentic analysis) · Python.</p>
+      </div>
+    </section>
+
+    <!-- More production systems -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow reveal">More production systems · Atlas HXM</p>
+        <h2 class="reveal">The same operating model, <span class="accent">across the GTM org.</span></h2>
+        <div class="package-grid">
+          <div class="package-card reveal">
+            <p class="eyebrow">AI customer agent</p>
+            <h3>A $250K deal traced to one chat</h3>
+            <p><strong>Problem:</strong> site visitors bounced without qualifying; nobody could prove the agent's revenue impact.</p>
+            <p><strong>Built:</strong> a production agent on the public pricing page with versioned guardrails, 4,100+ logged executions, and a weekly attribution stamper writing sourced/influenced tiers onto deals.</p>
+            <p><strong>Outcome:</strong> ~$520K agent-sourced deal value since launch, including a $250K open deal — chat one day, deal the next, traceable to the originating thread ID.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">Prospect data pipeline</p>
+            <h3>779 contacts, 0% overlap</h3>
+            <p><strong>Problem:</strong> feeding an outsourced SDR agency stale or already-called contacts burns money and brand.</p>
+            <p><strong>Built:</strong> a 9-script Python pipeline merging five enrichment exports, triple-key dedupe against every contact the agency ever called, buying-intent signals scraped from five ATS platforms.</p>
+            <p><strong>Outcome:</strong> 779 unique contacts across 623 companies with confirmed 0% overlap against ~2,900 already-called keys; 91% mobile coverage; tier-ranked 200-contact weekly plans.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">AI compliance screening</p>
+            <h3>240 deals screened, zero errors</h3>
+            <p><strong>Problem:</strong> deals reached contract stage before anyone checked regulatory eligibility — blockers surfaced at signature time.</p>
+            <p><strong>Built:</strong> a 46-node system mapping messy CRM data to a 30-sector rulebook with a deterministic, unit-tested rules engine issuing the verdict.</p>
+            <p><strong>Outcome:</strong> all ~240 open deals screened; 103 wrongly-stuck deals cleared; ineligible-deal detection doubled; 238/238 production writes, zero errors.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">Contract intake</p>
+            <h3>Deal to legal intake in under 3 minutes</h3>
+            <p><strong>Problem:</strong> sellers hand-copied deal data into Legal's e-signature form; errors stalled contracting.</p>
+            <p><strong>Built:</strong> seller pastes a deal URL, an agent confirms in 3 steps, and an AI browser agent pre-fills the form in the seller's own logged-in browser — Legal's process untouched, the agent never clicks submit.</p>
+            <p><strong>Outcome:</strong> deal-to-filled-intake in under 3 minutes.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">Post-call automation</p>
+            <h3>Four AI agents on every sales call</h3>
+            <p><strong>Problem:</strong> reps left calls without follow-ups; country-specific facts were applied inconsistently.</p>
+            <p><strong>Built:</strong> an always-on pipeline triggered after every call — country-aware follow-up email, missed-questions analysis, competitor research, LinkedIn draft, plus an automatic CRM note. Zero rep action.</p>
+            <p><strong>Outcome:</strong> live on every sales call, any device, unattended — verified end-to-end on a real three-country call.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">Cost governance</p>
+            <h3>~70% enrichment cost cut by architecture</h3>
+            <p><strong>Problem:</strong> runaway enrichment spend — background workflows burned a large credit purchase in about a month, unmonitored.</p>
+            <p><strong>Built:</strong> a standard, cloneable enrichment table — free ICP-fit gate before any paid column, AI columns restricted to top-tier accounts, per-row cost estimates, monthly spend reports to the budget owner.</p>
+            <p><strong>Outcome:</strong> three predictable build profiles (Lean ~15, Balanced ~21, Full ~50 credits/row). Cost control enforced by structure, not by asking users to be careful.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client deployments -->
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow reveal">Prospect Automation Engine · Salesgency client deployments</p>
+        <h2 class="reveal">The engine, <span class="accent">in clients' stacks.</span></h2>
+        <div class="package-grid">
+          <div class="package-card reveal">
+            <p class="eyebrow">Enterprise robotics · custom engagement</p>
+            <h3>42 demos in 60 days</h3>
+            <p><strong>Problem:</strong> an industrial robotics company couldn't get C-level plant managers onto demo calls.</p>
+            <p><strong>Built:</strong> a custom Prospect Automation Engine with automated funding &amp; expansion signal ingestion.</p>
+            <p><strong>Outcome:</strong> 42 demos booked in the first 60 days; $1.4M ARR qualified sales pipeline.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">Global logistics · CRM shield architecture</p>
+            <h3>99.4% CRM deduplication</h3>
+            <p><strong>Problem:</strong> 31,000 corporate contacts, frequent SDR deal collisions on key accounts.</p>
+            <p><strong>Built:</strong> a fault-tolerant CRM shield filtering all outbound against active pipelines, with real-time verification.</p>
+            <p><strong>Outcome:</strong> 0% domain burn, sender score held at 99/100, 19.4% reply rate across cold freight buyers.</p>
+          </div>
+          <div class="package-card reveal">
+            <p class="eyebrow">Generative AI SaaS · managed agent</p>
+            <h3>118 meetings on autopilot</h3>
+            <p><strong>Problem:</strong> reaching engineering leaders with credible, technical outreach at scale.</p>
+            <p><strong>Built:</strong> a managed cloud agent performing deep repository and tech-stack analysis to generate hyper-personalized outreach.</p>
+            <p><strong>Outcome:</strong> 24.2% average reply rate on cold C-suite outreach; 118 meetings booked on autopilot.</p>
+          </div>
+        </div>
+        <p class="footnote reveal">Client deployment figures as presented in Salesgency engagement records. Atlas HXM figures verified against the live CRM, July 2026.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary btn-lg" href="mailto:Patrick.Diamitani@gmail.com?subject=Prospect%20Automation%20Engine%20%E2%80%94%20working%20session">Start a conversation</a>
+          <a class="btn btn-ghost btn-lg" href="outreach.html">See the outreach template</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-note">Salesgency — the Prospect Automation Engine, installed in your stack. Built by Patrick Diamitani.</p>
+      <div class="footer-links">
+        <a href="activations.html">Activations</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="skills.html">Skills</a>
+        <a href="workflows.html">Workflows</a>
+        <a href="outreach.html">Outreach</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var revealEls = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var o = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); o.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        revealEls.forEach(function (el) { o.observe(el); });
+      } else { revealEls.forEach(function (el) { el.classList.add("visible"); }); }
+      var t = document.getElementById("navToggle"), l = document.getElementById("navLinks"), c = document.querySelector(".nav-cta");
+      if (t && l) t.addEventListener("click", function () {
+        var open = l.classList.toggle("open");
+        if (c) c.classList.toggle("open", open);
+        t.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+  </script>
+</body>
+</html>
