@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Package Portal — Salesgency</title>
+  <meta name="description" content="Answer a few questions in the chat wizard and download your personalized automation package. $199 one-time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy:#0f2a4a; --blue:#1f6feb; --green:#1a9e5c; --ink:#12233a; --muted:#5b6b80; --line:#e4e9f0; --bg:#ffffff; --soft:#f5f8fc; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+    .wrap { max-width:1080px; margin:0 auto; padding:0 20px; }
+    header.nav { border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:50; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .brand { font-weight:800; font-size:1.15rem; color:var(--navy); text-decoration:none; }
+    .brand span { color:var(--green); }
+    .nav-links { display:flex; gap:18px; list-style:none; }
+    .nav-links a { color:var(--ink); text-decoration:none; font-weight:500; font-size:.92rem; }
+    .nav-links a.active { color:var(--blue); font-weight:700; }
+    .nav-cta { background:var(--navy); color:#fff; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; font-size:.9rem; }
+    .hero { text-align:center; padding:56px 20px 32px; }
+    .hero h1 { font-size:2.3rem; color:var(--navy); letter-spacing:-.02em; margin-bottom:12px; }
+    .hero p { color:var(--muted); max-width:640px; margin:0 auto 8px; }
+    .price-pill { display:inline-block; background:var(--soft); border:1px solid var(--line); border-radius:999px; padding:8px 18px; font-weight:700; color:var(--navy); margin-top:12px; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:24px 0 64px; }
+    @media(max-width:860px){ .grid{grid-template-columns:1fr;} .nav-links{display:none;} }
+    .card { background:#fff; border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 8px 28px rgba(15,42,74,.06); }
+    .card h2 { color:var(--navy); font-size:1.3rem; margin-bottom:10px; }
+    .card p { color:var(--muted); font-size:.95rem; margin-bottom:14px; }
+    .btn { display:inline-block; background:var(--blue); color:#fff; border:none; padding:14px 26px; border-radius:12px; font-weight:700; font-size:1rem; cursor:pointer; text-decoration:none; min-height:44px; }
+    .btn:hover { filter:brightness(.95); }
+    .btn.dark { background:var(--navy); }
+    .btn.ghost { background:#fff; color:var(--navy); border:1px solid var(--line); }
+    .fine { font-size:.82rem; color:var(--muted); margin-top:10px; }
+    /* chat */
+    #chatCard { display:none; }
+    #chatLog { display:flex; flex-direction:column; gap:12px; max-height:460px; overflow-y:auto; padding:6px 2px 12px; }
+    .msg { max-width:82%; padding:12px 16px; border-radius:16px; font-size:.95rem; line-height:1.55; }
+    .msg.bot { background:var(--soft); border:1px solid var(--line); border-bottom-left-radius:6px; align-self:flex-start; }
+    .msg.user { background:var(--navy); color:#fff; border-bottom-right-radius:6px; align-self:flex-end; }
+    .msg.typing { color:var(--muted); font-style:italic; }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+    .chip { background:#fff; border:1.5px solid var(--blue); color:var(--blue); border-radius:999px; padding:9px 16px; font-weight:600; font-size:.88rem; cursor:pointer; min-height:44px; }
+    .chip:hover { background:var(--blue); color:#fff; }
+    #chatInputRow { display:flex; gap:10px; margin-top:14px; }
+    #chatInput { flex:1; border:1.5px solid var(--line); border-radius:12px; padding:13px 16px; font-size:1rem; font-family:inherit; }
+    #chatInput:focus { outline:none; border-color:var(--blue); }
+    #chatSend { background:var(--navy); color:#fff; border:none; border-radius:12px; padding:0 22px; font-weight:700; cursor:pointer; min-height:44px; }
+    .progress { height:6px; background:var(--soft); border-radius:99px; overflow:hidden; margin-bottom:16px; }
+    .progress i { display:block; height:100%; background:var(--green); width:0; transition:width .4s; }
+    .pkg { border:1px solid var(--line); border-radius:14px; padding:16px; margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .pkg b { color:var(--navy); display:block; }
+    .pkg small { color:var(--muted); }
+    .pkg button { background:var(--green); color:#fff; border:none; border-radius:10px; padding:10px 18px; font-weight:700; cursor:pointer; min-height:44px; white-space:nowrap; }
+    .check { color:var(--green); font-weight:700; }
+    ul.ticks { list-style:none; margin:6px 0 16px; }
+    ul.ticks li { padding:7px 0 7px 30px; position:relative; color:var(--ink); font-size:.95rem; }
+    ul.ticks li::before { content:"✓"; position:absolute; left:4px; color:var(--green); font-weight:800; }
+    footer { border-top:1px solid var(--line); padding:28px 0; color:var(--muted); font-size:.85rem; text-align:center; }
+  </style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Salesgency<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="agency.html">Agency</a></li>
+      <li><a href="activations.html">Activations</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="outreach.html">Outreach</a></li>
+      <li><a href="portal.html" class="active">Portal</a></li>
+    </ul>
+    <a class="nav-cta" href="build-session.html">Book a build session — $1,000</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Your automation package, built around your stack.</h1>
+    <p>Answer a few questions in the chat wizard. Our builder assembles a personalized n8n workflow, a setup playbook, and a config checklist — ready to download and import.</p>
+    <div class="price-pill">$199 one-time · yours forever · includes portal access</div>
+  </div>
+
+  <div class="grid">
+    <!-- Paywall / entry -->
+    <div class="card" id="payCard">
+      <h2>Get portal access</h2>
+      <ul class="ticks">
+        <li>Conversational wizard — no forms, no guesswork</li>
+        <li>Personalized n8n workflow JSON for your CRM + tools</li>
+        <li>Step-by-step setup playbook written for your stack</li>
+        <li>Config checklist — every credential and URL to fill</li>
+        <li>Re-download anytime from your portal library</li>
+      </ul>
+      <button class="btn" id="buyBtn">Build my package — $199</button>
+      <p class="fine">Secure checkout via Stripe. One payment, unlimited package builds in your portal.</p>
+      <hr style="border:none;border-top:1px solid var(--line);margin:18px 0;">
+      <p style="margin-bottom:8px;"><b>Already purchased?</b></p>
+      <div style="display:flex;gap:10px;">
+        <input id="receiptEmail" type="email" placeholder="Email from your receipt" style="flex:1;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem;font-family:inherit;">
+        <button class="btn ghost" id="receiptBtn">Enter portal</button>
+      </div>
+      <p class="fine" id="receiptMsg"></p>
+    </div>
+
+    <!-- Chat wizard -->
+    <div class="card" id="chatCard">
+      <h2>Package builder</h2>
+      <div class="progress"><i id="progBar"></i></div>
+      <div id="chatLog"></div>
+      <div id="chatInputRow">
+        <input id="chatInput" placeholder="Type your answer…" autocomplete="off">
+        <button id="chatSend">Send</button>
+      </div>
+    </div>
+
+    <!-- Library -->
+    <div class="card">
+      <h2>My packages</h2>
+      <p>Every package you build is saved here for re-download.</p>
+      <div id="library"><p class="fine">No packages yet — build your first one in the wizard.</p></div>
+      <hr style="border:none;border-top:1px solid var(--line);margin:18px 0;">
+      <h2 style="font-size:1.05rem;">Want it installed for you?</h2>
+      <p>A $1,000 Build Session gets your package installed, connected, and tuned with you live — credited 100% toward an Agency Sprint.</p>
+      <a class="btn dark" href="build-session.html">Book a build session</a>
+    </div>
+  </div>
+</div>
+
+<footer>Salesgency · d/b/a Diamitani Industries · Your code, your portal, your engine.</footer>
+
+<script src="assets/stripe-client.js"></script>
+<script>
+(function(){
+  const LS_RECEIPT='sg_portal_receipt', LS_PKGS='sg_portal_packages';
+  const $=id=>document.getElementById(id);
+  const params=new URLSearchParams(location.search);
+
+  /* ---------- receipt handling ---------- */
+  function getReceipt(){ try{return JSON.parse(localStorage.getItem(LS_RECEIPT));}catch(e){return null;} }
+  function unlock(email){
+    localStorage.setItem(LS_RECEIPT, JSON.stringify({email, at:new Date().toISOString(), product:'build-portal-199'}));
+    showWizard(email);
+  }
+  if(params.get('purchase')==='build-portal-199'){ unlock(params.get('email')||''); history.replaceState({},'',location.pathname); }
+  else if(getReceipt()){ showWizard(getReceipt().email); }
+
+  $('buyBtn').onclick=()=>{ if(window.SalesgencyStripe) SalesgencyStripe.checkout('build-portal-199'); };
+  $('receiptBtn').onclick=()=>{
+    const em=$('receiptEmail').value.trim();
+    if(!em||!em.includes('@')){ $('receiptMsg').textContent='Enter the email from your receipt.'; return; }
+    unlock(em); $('receiptMsg').textContent='';
+  };
+
+  /* ---------- library ---------- */
+  function getPkgs(){ try{return JSON.parse(localStorage.getItem(LS_PKGS))||[];}catch(e){return [];} }
+  function savePkg(p){ const a=getPkgs(); a.unshift(p); localStorage.setItem(LS_PKGS, JSON.stringify(a.slice(0,8))); renderLib(); }
+  function renderLib(){
+    const a=getPkgs(), el=$('library');
+    if(!a.length){ el.innerHTML='<p class="fine">No packages yet — build your first one in the wizard.</p>'; return; }
+    el.innerHTML=a.map((p,i)=>`<div class="pkg"><div><b>${esc(p.filename)}</b><small>${esc(p.engine)} · ${esc(p.company)} · ${new Date(p.at).toLocaleDateString()}</small></div><button data-i="${i}">Download</button></div>`).join('');
+    el.querySelectorAll('button').forEach(b=>b.onclick=()=>downloadPkg(getPkgs()[+b.dataset.i]));
+  }
+  function esc(s){ return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+  function downloadPkg(p){
+    const bin=atob(p.zipBase64), bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([bytes],{type:'application/zip'}));
+    a.download=p.filename; document.body.appendChild(a); a.click(); a.remove();
+  }
+  renderLib();
+
+  /* ---------- chat wizard ---------- */
+  const ENGINES=[
+    {v:'outbound',label:'Outbound prospecting'},
+    {v:'inbound',label:'Inbound speed-to-lead'},
+    {v:'precall',label:'Pre-call dossiers'},
+    {v:'postcall',label:'Post-call sync'},
+    {v:'reports',label:'Daily GTM reports'}
+  ];
+  const steps=[
+    {key:'engine', q:'Which engine should I build for you?', type:'chips', options:ENGINES.map(e=>e.label)},
+    {key:'crm', q:'Which CRM does it need to plug into?', type:'chips', options:['HubSpot','Salesforce','Pipedrive','Zoho','Other']},
+    {key:'sequencer', q:'What sends your outbound email?', type:'chips', options:['Instantly','Smartlead','Lemlist','Not yet']},
+    {key:'dataProvider', q:'Where do you get contact data?', type:'chips', options:['Clay','Apollo','Neither yet']},
+    {key:'company', q:'What company is this for?', type:'text', ph:'Company name'},
+    {key:'website', q:'Company website?', type:'text', ph:'acme.com'},
+    {key:'icp', q:'Describe your ideal customer in one line.', type:'text', ph:'e.g. Series A SaaS with 10-50 reps'},
+    {key:'email', q:'Where should I send your receipt?', type:'email', ph:'you@company.com'}
+  ];
+  const answers={}; let stepIdx=0, busy=false;
+
+  function showWizard(email){
+    $('payCard').style.display='none';
+    $('chatCard').style.display='block';
+    if(!window.__wizardStarted){ window.__wizardStarted=true; botSay(`Welcome${email?' back':''} — I'll build your personalized automation package right now. Takes about a minute.`); setTimeout(askStep,700); }
+    $('chatCard').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function botSay(html, chips){
+    const log=$('chatLog'), d=document.createElement('div');
+    d.className='msg bot'; d.innerHTML=html; log.appendChild(d);
+    if(chips){ const c=document.createElement('div'); c.className='chips';
+      chips.forEach(t=>{ const b=document.createElement('button'); b.className='chip'; b.textContent=t;
+        b.onclick=()=>{ if(!busy) submit(t); }; c.appendChild(b); });
+      d.appendChild(c); }
+    log.scrollTop=log.scrollHeight;
+  }
+  function userSay(t){
+    const d=document.createElement('div'); d.className='msg user'; d.textContent=t;
+    $('chatLog').appendChild(d); $('chatLog').scrollTop=$('chatLog').scrollHeight;
+  }
+  function askStep(){
+    const s=steps[stepIdx];
+    $('progBar').style.width=Math.round(stepIdx/steps.length*100)+'%';
+    botSay(esc(s.q), s.type==='chips'?s.options:null);
+    $('chatInput').placeholder=s.ph||'Type your answer…'; $('chatInput').focus();
+  }
+  function submit(raw){
+    if(busy) return;
+    const s=steps[stepIdx], val=(raw||'').trim();
+    if(!val) return;
+    if(s.type==='email'&&!val.includes('@')){ botSay('That email doesn\u2019t look right — mind checking it?'); return; }
+    userSay(val); answers[s.key]=val;
+    const log=$('chatLog'); log.querySelectorAll('.chips').forEach(c=>c.remove());
+    stepIdx++;
+    if(stepIdx<steps.length){ busy=true; setTimeout(()=>{busy=false;askStep();},450); }
+    else build();
+  }
+  $('chatSend').onclick=()=>{ submit($('chatInput').value); $('chatInput').value=''; };
+  $('chatInput').addEventListener('keydown',e=>{ if(e.key==='Enter'){ submit($('chatInput').value); $('chatInput').value=''; }});
+
+  function build(){
+    busy=true; $('progBar').style.width='100%';
+    const eng=ENGINES.find(e=>e.label===answers.engine);
+    const key=eng?eng.v:'outbound';
+    const t=document.createElement('div'); t.className='msg bot typing';
+    t.textContent=`Building your ${answers.engine} package for ${answers.company}…`;
+    $('chatLog').appendChild(t); $('chatLog').scrollTop=$('chatLog').scrollHeight;
+    $('chatInputRow').style.display='none';
+    fetch('/api/portal/generate',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({engine:key,crm:answers.crm,sequencer:answers.sequencer,dataProvider:answers.dataProvider,company:answers.company,website:answers.website,icp:answers.icp,email:answers.email})})
+    .then(r=>r.json().then(j=>({ok:r.ok,j})))
+    .then(({ok,j})=>{
+      t.remove(); busy=false;
+      if(!ok) throw new Error(j.error||'Build failed');
+      const pkg={filename:j.filename,engine:j.engine,company:j.company,at:j.builtAt,zipBase64:j.zipBase64};
+      savePkg(pkg);
+      const d=document.createElement('div'); d.className='msg bot';
+      d.innerHTML=`<span class="check">✓</span> <b>${esc(j.filename)}</b> is ready.<br><small>Personalized n8n workflow + setup playbook + config checklist, built for ${esc(j.company)}.</small><br><br><button class="btn" id="dlNow">Download package</button>`;
+      $('chatLog').appendChild(d);
+      d.querySelector('#dlNow').onclick=()=>downloadPkg(pkg);
+      $('chatLog').scrollTop=$('chatLog').scrollHeight;
+    })
+    .catch(err=>{ t.remove(); busy=false; botSay('Something went wrong building your package — mind trying once more? ('+esc(err.message)+')'); $('chatInputRow').style.display='flex'; });
+  }
+})();
+</script>
+</body>
+</html>

@@ -88,6 +88,13 @@
           </p>
         </div>
 
+        <div id="portalNextSteps" style="display: none; text-align: center; margin-bottom: 20px;">
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+            <strong>Your Package Portal is unlocked.</strong> Answer a few questions in the chat wizard and download your personalized automation package.
+          </p>
+          <a href="portal.html?purchase=build-portal-199" class="btn-hero-primary" style="font-size: 14px; padding: 12px 28px; background: #10B981; color: #000; font-weight: 700;">Enter Your Portal →</a>
+        </div>
+
         <a href="marketplace.html" class="btn-hero-primary" style="font-size: 14px; padding: 12px 28px;">Browse More Packages →</a>
         <a href="book.html" class="btn-hero-secondary" style="font-size: 14px; padding: 12px 28px;">Book a Build Session</a>
       </div>
@@ -141,7 +148,9 @@
             document.getElementById('productInfo').style.display = 'flex';
 
             // Show appropriate next steps
-            if (product.type === 'session') {
+            if (productId === 'build-portal-199') {
+              document.getElementById('portalNextSteps').style.display = 'block';
+            } else if (product.type === 'session') {
               document.getElementById('sessionNextSteps').style.display = 'block';
             } else if (product.category === 'builder' || product.type === 'subscription') {
               document.getElementById('builderNextSteps').style.display = 'block';
