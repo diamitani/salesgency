@@ -83,7 +83,7 @@
 <div class="wrap">
   <div class="hero">
     <h1>Your automation package, built around your stack.</h1>
-    <p>Answer a few questions in the chat wizard. Our builder assembles a personalized n8n workflow, a setup playbook, and a config checklist — ready to download and import.</p>
+    <p>Tell our Deploy Engineer what you want in plain words. It designs a custom n8n workflow from your answers — plus a setup playbook and config checklist, ready to download and import.</p>
     <div class="price-pill">$199 one-time · yours forever · includes portal access</div>
   </div>
 
@@ -178,15 +178,19 @@
   renderLib();
 
   /* ---------- chat wizard ---------- */
+  const ROSTR_RUN_URL='https://rostr-platform.vercel.app/api/v1/run';
+  const ROSTR_HEALTH_URL='https://rostr-platform.vercel.app/api/v1/health';
   const ENGINES=[
-    {v:'outbound',label:'Outbound prospecting'},
-    {v:'inbound',label:'Inbound speed-to-lead'},
-    {v:'precall',label:'Pre-call dossiers'},
-    {v:'postcall',label:'Post-call sync'},
-    {v:'reports',label:'Daily GTM reports'}
+    {v:'outbound',label:'Outbound prospecting',skill:'prospect-automation-engine'},
+    {v:'inbound',label:'Inbound speed-to-lead',skill:'n8n-engineer'},
+    {v:'precall',label:'Pre-call dossiers',skill:'n8n-engineer'},
+    {v:'postcall',label:'Post-call sync',skill:'n8n-engineer'},
+    {v:'reports',label:'Daily GTM reports',skill:'n8n-engineer'},
+    {v:'custom',label:'Something custom',skill:'n8n-engineer'}
   ];
   const steps=[
-    {key:'engine', q:'Which engine should I build for you?', type:'chips', options:ENGINES.map(e=>e.label)},
+    {key:'goal', q:'What do you want to automate? Describe it in your own words — the more specific, the better the build.', type:'text', ph:'e.g. When a trial signs up, research the company, score the lead, and alert sales in Slack'},
+    {key:'engine', q:'Which engine is the closest match?', type:'chips', options:ENGINES.map(e=>e.label)},
     {key:'crm', q:'Which CRM does it need to plug into?', type:'chips', options:['HubSpot','Salesforce','Pipedrive','Zoho','Other']},
     {key:'sequencer', q:'What sends your outbound email?', type:'chips', options:['Instantly','Smartlead','Lemlist','Not yet']},
     {key:'dataProvider', q:'Where do you get contact data?', type:'chips', options:['Clay','Apollo','Neither yet']},
@@ -200,7 +204,7 @@
   function showWizard(email){
     $('payCard').style.display='none';
     $('chatCard').style.display='block';
-    if(!window.__wizardStarted){ window.__wizardStarted=true; botSay(`Welcome${email?' back':''} — I'll build your personalized automation package right now. Takes about a minute.`); setTimeout(askStep,700); }
+    if(!window.__wizardStarted){ window.__wizardStarted=true; botSay(`Welcome${email?' back':''} — tell me what you want automated and I'll have our Deploy Engineer build it for you.`); setTimeout(askStep,700); }
     $('chatCard').scrollIntoView({behavior:'smooth',block:'start'});
   }
   function botSay(html, chips){
@@ -236,29 +240,140 @@
   $('chatSend').onclick=()=>{ submit($('chatInput').value); $('chatInput').value=''; };
   $('chatInput').addEventListener('keydown',e=>{ if(e.key==='Enter'){ submit($('chatInput').value); $('chatInput').value=''; }});
 
+  function buildBrief(){
+    const eng=ENGINES.find(e=>e.label===answers.engine);
+    return [
+      'Build a production n8n workflow for this buyer.',
+      '',
+      'GOAL (in their own words): '+(answers.goal||''),
+      'CLOSEST ENGINE: '+(answers.engine||''),
+      'STACK: CRM='+(answers.crm||'')+', Sequencer='+(answers.sequencer||'')+', Data provider='+(answers.dataProvider||''),
+      'COMPANY: '+(answers.company||'')+' ('+(answers.website||'')+')',
+      'ICP: '+(answers.icp||''),
+      '',
+      'Rules: output ONLY the workflow JSON inside one ```json fence, then a 5-line plain-text summary. Zero hardcoded secrets — use $env / credential references. Human approval gates before anything external sends.'
+    ].join('\n');
+  }
+
+  function extractWorkflow(text){
+    if(!text) return null;
+    let m=text.match(/```json\s*([\s\S]*?)```/i);
+    let candidate=m?m[1]:null;
+    if(!candidate){
+      m=text.match(/\{[\s\S]*"nodes"\s*:\s*\[/);
+      if(m){ const start=text.indexOf(m[0]); candidate=text.slice(start); }
+    }
+    if(!candidate) return null;
+    try{
+      // trim to balanced braces
+      let depth=0, end=-1, started=false;
+      for(let i=0;i<candidate.length;i++){
+        const ch=candidate[i];
+        if(ch==='{'){depth++;started=true;}
+        else if(ch==='}'){depth--; if(started&&depth===0){end=i+1;break;}}
+      }
+      const wf=JSON.parse(candidate.slice(0,end>0?end:candidate.length));
+      if(wf&&Array.isArray(wf.nodes)&&wf.nodes.length) return wf;
+    }catch(e){}
+    return null;
+  }
+
+  function rostrLive(){
+    return new Promise(resolve=>{
+      const ctl=new AbortController(); const t=setTimeout(()=>{ctl.abort();resolve(false);},8000);
+      fetch(ROSTR_HEALTH_URL,{signal:ctl.signal}).then(r=>r.json()).then(j=>{clearTimeout(t);resolve(j&&j.status==='ok'&&j.mock!==true);}).catch(()=>{clearTimeout(t);resolve(false);});
+    });
+  }
+
+  function streamRostrRun(brief, skill, onThought){
+    return new Promise((resolve,reject)=>{
+      const ctl=new AbortController();
+      const kill=setTimeout(()=>{ctl.abort();reject(new Error('Engine timed out'));},180000);
+      fetch(ROSTR_RUN_URL,{method:'POST',headers:{'Content-Type':'application/json'},signal:ctl.signal,
+        body:JSON.stringify({project_id:'salesgency',agent:'deploy-engineer',skill:skill,input:brief})})
+      .then(r=>{ if(!r.ok) throw new Error('Engine returned '+r.status); return r.body.getReader(); })
+      .then(reader=>{
+        const dec=new TextDecoder(); let buf='', finalText='';
+        function pump(){
+          reader.read().then(({done,value})=>{
+            if(done){ clearTimeout(kill); resolve(finalText); return; }
+            buf+=dec.decode(value,{stream:true});
+            const parts=buf.split('\n\n'); buf=parts.pop();
+            for(const p of parts){
+              const line=p.trim(); if(line.indexOf('data:')!==0) continue;
+              let ev=null;
+              try{ ev=JSON.parse(line.slice(5)); }catch(parseErr){ continue; }
+              if(!ev||!ev.type) continue;
+              if(ev.type==='thought'&&ev.text) onThought(ev.text);
+              else if(ev.type==='error') throw new Error('ENGINE:'+(ev.text||'Engine error'));
+              else if((ev.type==='result'||ev.type==='done')&&ev.text) finalText+=ev.text+'\n';
+            }
+            pump();
+          }).catch(e=>{clearTimeout(kill);reject(e);});
+        }
+        pump();
+      }).catch(e=>{clearTimeout(kill);reject(e);});
+    });
+  }
+
   function build(){
     busy=true; $('progBar').style.width='100%';
     const eng=ENGINES.find(e=>e.label===answers.engine);
     const key=eng?eng.v:'outbound';
+    const skill=eng?eng.skill:'n8n-engineer';
     const t=document.createElement('div'); t.className='msg bot typing';
-    t.textContent=`Building your ${answers.engine} package for ${answers.company}…`;
+    t.textContent='Checking the Deploy Engineer…';
     $('chatLog').appendChild(t); $('chatLog').scrollTop=$('chatLog').scrollHeight;
     $('chatInputRow').style.display='none';
-    fetch('/api/portal/generate',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({engine:key,crm:answers.crm,sequencer:answers.sequencer,dataProvider:answers.dataProvider,company:answers.company,website:answers.website,icp:answers.icp,email:answers.email})})
-    .then(r=>r.json().then(j=>({ok:r.ok,j})))
-    .then(({ok,j})=>{
+
+    const baseBody={engine:key,crm:answers.crm,sequencer:answers.sequencer,dataProvider:answers.dataProvider,company:answers.company,website:answers.website,icp:answers.icp,email:answers.email};
+
+    function templateFallback(note){
+      t.textContent=note||`Building your ${answers.engine} package for ${answers.company}…`;
+      return fetch('/api/portal/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(baseBody)})
+        .then(r=>r.json().then(j=>({ok:r.ok,j})))
+        .then(({ok,j})=>{ if(!ok) throw new Error(j.error||'Build failed'); return j; });
+    }
+
+    function finish(j, aiNote){
       t.remove(); busy=false;
-      if(!ok) throw new Error(j.error||'Build failed');
       const pkg={filename:j.filename,engine:j.engine,company:j.company,at:j.builtAt,zipBase64:j.zipBase64};
       savePkg(pkg);
       const d=document.createElement('div'); d.className='msg bot';
-      d.innerHTML=`<span class="check">✓</span> <b>${esc(j.filename)}</b> is ready.<br><small>Personalized n8n workflow + setup playbook + config checklist, built for ${esc(j.company)}.</small><br><br><button class="btn" id="dlNow">Download package</button>`;
+      d.innerHTML=`<span class="check">✓</span> <b>${esc(j.filename)}</b> is ready.`+
+        (aiNote?`<br><small>${esc(aiNote)}</small>`:`<br><small>Personalized n8n workflow + setup playbook + config checklist, built for ${esc(j.company)}.</small>`)+
+        `<br><br><button class="btn" id="dlNow">Download package</button>`;
       $('chatLog').appendChild(d);
       d.querySelector('#dlNow').onclick=()=>downloadPkg(pkg);
       $('chatLog').scrollTop=$('chatLog').scrollHeight;
-    })
-    .catch(err=>{ t.remove(); busy=false; botSay('Something went wrong building your package — mind trying once more? ('+esc(err.message)+')'); $('chatInputRow').style.display='flex'; });
+    }
+    function fail(err){
+      t.remove(); busy=false;
+      botSay('Something went wrong building your package — mind trying once more? ('+esc(err.message)+')');
+      $('chatInputRow').style.display='flex';
+    }
+
+    rostrLive().then(live=>{
+      if(!live){
+        // Engineer offline/mock — proven template path
+        return templateFallback().then(j=>finish(j)).catch(fail);
+      }
+      t.textContent='Deploy Engineer is designing your workflow — this takes a minute or two…';
+      return streamRostrRun(buildBrief(), skill, thought=>{
+        t.textContent=thought.length>90?thought.slice(0,90)+'…':thought;
+      }).then(text=>{
+        const wf=extractWorkflow(text);
+        if(!wf) return templateFallback('Engine output wasn\u2019t usable — building from the proven template…').then(j=>finish(j));
+        t.textContent='Packaging your custom workflow…';
+        return fetch('/api/portal/generate',{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(Object.assign({},baseBody,{customWorkflow:JSON.stringify(wf)}))})
+          .then(r=>r.json().then(j=>({ok:r.ok,j})))
+          .then(({ok,j})=>{
+            if(!ok) throw new Error(j.error||'Packaging failed');
+            finish(j,'Custom workflow designed by the Deploy Engineer from your answers.');
+          });
+      }).catch(()=>templateFallback('Engine hiccup — building from the proven template…').then(j=>finish(j)).catch(fail));
+    }).catch(()=>{ templateFallback().then(j=>finish(j)).catch(fail); });
   }
 })();
 </script>
