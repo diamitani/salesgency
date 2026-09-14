@@ -11,8 +11,7 @@
     { href: 'portal.html', label: 'Portal' },
     { href: 'pricing.html', label: 'Pricing' },
     { href: 'case-studies.html', label: 'Case Studies' },
-    { href: 'outreach.html', label: 'Outreach' },
-    { href: 'sitemap.html', label: 'Sitemap' }
+    { href: 'outreach.html', label: 'Outreach' }
   ];
   var CTA = { href: 'build-session.html', label: 'Book a build session — $1,000' };
 
