@@ -21,17 +21,17 @@
 
   <style>
     .agent-console-box {
-      background: #000000;
-      color: #FFFFFF;
+      background: #FFFFFF;
+      color: var(--text-heading);
       border-radius: var(--radius-lg);
       padding: clamp(20px, 3vw, 32px);
-      box-shadow: var(--shadow-float);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-subtle);
       font-family: var(--font-sans);
     }
     .terminal-chat-logs {
-      background: #0D1117;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 20px;
       min-height: 280px;
@@ -43,20 +43,20 @@
       margin-bottom: 16px;
     }
     .agent-prompt-chip {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
       padding: 6px 14px;
       font-size: 12px;
-      color: #D1D5DB;
+      color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.2s ease;
       font-family: var(--font-mono);
     }
     .agent-prompt-chip:hover {
-      background: rgba(255, 255, 255, 0.25);
-      color: #FFFFFF;
-      border-color: #FFFFFF;
+      background: var(--bg-card-subtle);
+      color: var(--text-heading);
+      border-color: var(--accent-blue);
     }
   </style>
   <link rel="stylesheet" href="assets/unified.css">
@@ -199,12 +199,12 @@
       <div class="container">
         
         <div class="agent-console-box">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 12px;">
             <div style="display: flex; align-items: center; gap: 10px;">
-              <div style="width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 8px #10B981;"></div>
-              <strong style="font-size: 14px; font-family: var(--font-mono); color: #FFFFFF;">SALESGENCY AGENT RUNTIME v2.4</strong>
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #10B981;"></div>
+              <strong style="font-size: 14px; font-family: var(--font-mono); color: var(--text-heading);">SALESGENCY AGENT RUNTIME v2.4</strong>
             </div>
-            <div style="font-size: 12px; font-family: var(--font-mono); color: #9CA3AF;">STATUS: READY · 4 TOOLS CONNECTED</div>
+            <div style="font-size: 12px; font-family: var(--font-mono); color: var(--text-muted);">STATUS: READY · 4 TOOLS CONNECTED</div>
           </div>
 
           <!-- Quick Test Prompts -->
@@ -217,14 +217,14 @@
 
           <!-- Terminal Output Box -->
           <div class="terminal-chat-logs" id="terminalLogs">
-            <span style="color: #6B7280;">// SalesGency Autonomous Agent initialized. Select a scenario above or enter a command...</span><br>
+            <span style="color: var(--text-muted);">// SalesGency Autonomous Agent initialized. Select a scenario above or enter a command...</span><br>
             <span style="color: #10B981;">[system]</span> Ready to execute CRM triage, account research, and meeting prep workflows.<br><br>
           </div>
 
           <!-- Input Bar -->
           <div style="display: flex; gap: 10px;">
-            <input type="text" id="agentInput" placeholder="Enter instructions (e.g. /triage-inbound or /enrich stripe.com)..." onkeydown="if(event.key==='Enter') runCustomPrompt()" style="flex: 1; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: #161B22; color: #FFFFFF; font-family: var(--font-mono); font-size: 13.5px; outline: none;">
-            <button class="btn btn-primary" onclick="runCustomPrompt()" style="background: #10B981; color: #000000; font-weight: 800; border: none; padding: 12px 20px;">
+            <input type="text" id="agentInput" placeholder="Enter instructions (e.g. /triage-inbound or /enrich stripe.com)..." onkeydown="if(event.key==='Enter') runCustomPrompt()" style="flex: 1; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: #FFFFFF; color: var(--text-heading); font-family: var(--font-mono); font-size: 13.5px; outline: none;">
+            <button class="btn btn-primary" onclick="runCustomPrompt()" style="background: var(--accent-green); color: #FFFFFF; font-weight: 800; border: none; padding: 12px 20px;">
               Execute &rarr;
             </button>
           </div>
@@ -319,7 +319,7 @@
   </div>
 
   <script>
-    function logTerminal(role, text, color = '#FFFFFF') {
+    function logTerminal(role, text, color = 'var(--text-heading)') {
       const logs = document.getElementById('terminalLogs');
       const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
       logs.innerHTML += `<div style="margin-bottom: 6px;"><span style="color:#6B7280;">[${time}]</span> <strong style="color:${color};">${role}:</strong> ${text}</div>`;
@@ -331,48 +331,48 @@
       logs.innerHTML = '';
 
       if (type === 'inbound') {
-        logTerminal('TRIGGER', 'Webhook received: POST /webhook/inbound-lead {"name":"Alex Rivera","email":"alex@datadog.com","size":"500+"}', '#38BDF8');
+        logTerminal('TRIGGER', 'Webhook received: POST /webhook/inbound-lead {"name":"Alex Rivera","email":"alex@datadog.com","size":"500+"}', '#2563EB');
         setTimeout(() => {
-          logTerminal('TOOL CALL', 'lookup_firmographics(domain="datadog.com") ➔ Revenue: $2.1B, Tech: AWS, HubSpot, Gong', '#FBBF24');
+          logTerminal('TOOL CALL', 'lookup_firmographics(domain="datadog.com") ➔ Revenue: $2.1B, Tech: AWS, HubSpot, Gong', '#B45309');
         }, 500);
         setTimeout(() => {
-          logTerminal('REASONING', 'Lead meets Tier 1 Enterprise criteria. Intent score: 96/100. Assigning Enterprise AE (Sarah M.)', '#A78BFA');
+          logTerminal('REASONING', 'Lead meets Tier 1 Enterprise criteria. Intent score: 96/100. Assigning Enterprise AE (Sarah M.)', '#7C3AED');
         }, 1100);
         setTimeout(() => {
-          logTerminal('ACTION', 'Sent calendar invitation & dispatched Slack notification to #gtm-inbound-vip in 18.4 seconds.', '#10B981');
+          logTerminal('ACTION', 'Sent calendar invitation & dispatched Slack notification to #gtm-inbound-vip in 18.4 seconds.', '#059669');
         }, 1700);
       } else if (type === 'outbound') {
-        logTerminal('TRIGGER', 'Intent event: "Stripe posted 4 Senior RevOps Manager openings on Greenhouse"', '#38BDF8');
+        logTerminal('TRIGGER', 'Intent event: "Stripe posted 4 Senior RevOps Manager openings on Greenhouse"', '#2563EB');
         setTimeout(() => {
-          logTerminal('TOOL CALL', 'apollo_waterfall_reveal(company="Stripe", titles=["VP RevOps", "Head of Sales Ops"]) ➔ Found 2 Verified Contacts', '#FBBF24');
+          logTerminal('TOOL CALL', 'apollo_waterfall_reveal(company="Stripe", titles=["VP RevOps", "Head of Sales Ops"]) ➔ Found 2 Verified Contacts', '#B45309');
         }, 600);
         setTimeout(() => {
-          logTerminal('LLM_PAS', 'Authoring 3-sentence pain-point email highlighting automated pipeline deduplication & hygiene...', '#A78BFA');
+          logTerminal('LLM_PAS', 'Authoring 3-sentence pain-point email highlighting automated pipeline deduplication & hygiene...', '#7C3AED');
         }, 1200);
         setTimeout(() => {
-          logTerminal('STATUS', 'Enrolled in Smartlead Campaign "Q3 RevOps Pain". First message scheduled for 9:15 AM ET.', '#10B981');
+          logTerminal('STATUS', 'Enrolled in Smartlead Campaign "Q3 RevOps Pain". First message scheduled for 9:15 AM ET.', '#059669');
         }, 1800);
       } else if (type === 'presales') {
-        logTerminal('TRIGGER', 'Calendar event in 10 minutes: "Demo with Acme Logistics (COO & Head of IT)"', '#38BDF8');
+        logTerminal('TRIGGER', 'Calendar event in 10 minutes: "Demo with Acme Logistics (COO & Head of IT)"', '#2563EB');
         setTimeout(() => {
-          logTerminal('TOOL CALL', 'crawl_linkedin_and_news(target="Acme Logistics") ➔ Recent $15M Series A, migrating to HubSpot', '#FBBF24');
+          logTerminal('TOOL CALL', 'crawl_linkedin_and_news(target="Acme Logistics") ➔ Recent $15M Series A, migrating to HubSpot', '#B45309');
         }, 600);
         setTimeout(() => {
-          logTerminal('DOSSIER', 'Generated 1-Page Executive Battlecard with 3 tailored discovery questions.', '#A78BFA');
+          logTerminal('DOSSIER', 'Generated 1-Page Executive Battlecard with 3 tailored discovery questions.', '#7C3AED');
         }, 1200);
         setTimeout(() => {
-          logTerminal('DELIVERY', 'Sent briefing direct message to AE on Slack channel @rep-dave.', '#10B981');
+          logTerminal('DELIVERY', 'Sent briefing direct message to AE on Slack channel @rep-dave.', '#059669');
         }, 1800);
       } else if (type === 'pipeline') {
-        logTerminal('CRON', 'Trigger: 8:00 AM Pipeline Health Audit', '#38BDF8');
+        logTerminal('CRON', 'Trigger: 8:00 AM Pipeline Health Audit', '#2563EB');
         setTimeout(() => {
-          logTerminal('QUERY', 'SELECT * FROM crm_deals WHERE stage != "Closed" AND last_activity_days > 5', '#FBBF24');
+          logTerminal('QUERY', 'SELECT * FROM crm_deals WHERE stage != "Closed" AND last_activity_days > 5', '#B45309');
         }, 600);
         setTimeout(() => {
-          logTerminal('AUDIT', 'Found 3 stalled deals ($142k total pipeline) requiring immediate rep re-engagement.', '#F87171');
+          logTerminal('AUDIT', 'Found 3 stalled deals ($142k total pipeline) requiring immediate rep re-engagement.', '#DC2626');
         }, 1200);
         setTimeout(() => {
-          logTerminal('REPORT', 'Posted Daily Execution Scorecard to #sales-leadership with rep action items.', '#10B981');
+          logTerminal('REPORT', 'Posted Daily Execution Scorecard to #sales-leadership with rep action items.', '#059669');
         }, 1800);
       }
     }
@@ -380,10 +380,10 @@
     function runCustomPrompt() {
       const val = document.getElementById('agentInput').value.trim();
       if (!val) return;
-      logTerminal('USER', val, '#FFFFFF');
+      logTerminal('USER', val, 'var(--text-heading)');
       document.getElementById('agentInput').value = '';
       setTimeout(() => {
-        logTerminal('AGENT', `Executing instruction: "${val}". Calling registered GTM tools and compiling response...`, '#10B981');
+        logTerminal('AGENT', `Executing instruction: "${val}". Calling registered GTM tools and compiling response...`, '#059669');
       }, 500);
     }
 
