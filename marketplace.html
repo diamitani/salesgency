@@ -94,40 +94,43 @@
         <aside class="filter-sidebar">
           <div class="filter-group">
             <span class="filter-group-title">Search</span>
-            <input type="text" class="filter-search" id="filterSearch" placeholder="Search packages…">
+            <input type="text" class="filter-search" id="marketplaceSearch" placeholder="Search packages…">
           </div>
 
           <div class="filter-group">
             <span class="filter-group-title">Category</span>
             <div class="filter-pills">
-              <button class="filter-pill active" data-filter-category="all">All</button>
-              <button class="filter-pill" data-filter-category="inbound">Inbound</button>
-              <button class="filter-pill" data-filter-category="outbound">Outbound</button>
-              <button class="filter-pill" data-filter-category="revops">Rev Ops</button>
-              <button class="filter-pill" data-filter-category="custom-skills">Skills</button>
-              <button class="filter-pill" data-filter-category="custom-templates">Templates</button>
-              <button class="filter-pill" data-filter-category="custom-agents">Agents</button>
-              <button class="filter-pill" data-filter-category="bundle">Bundles</button>
-              <button class="filter-pill" data-filter-category="session">Sessions</button>
+              <button class="filter-pill active" data-category-filter="all">All</button>
+              <button class="filter-pill" data-category-filter="inbound">Inbound</button>
+              <button class="filter-pill" data-category-filter="outbound">Outbound</button>
+              <button class="filter-pill" data-category-filter="revops">Rev Ops</button>
+              <button class="filter-pill" data-category-filter="custom-skills">Skills</button>
+              <button class="filter-pill" data-category-filter="custom-templates">Templates</button>
+              <button class="filter-pill" data-category-filter="custom-agents">Agents</button>
+              <button class="filter-pill" data-category-filter="bundle">Bundles</button>
+              <button class="filter-pill" data-category-filter="session">Sessions</button>
+              <button class="filter-pill" data-category-filter="builder">Builder Plans</button>
+              <button class="filter-pill" data-category-filter="portal">Portal</button>
             </div>
           </div>
 
           <div class="filter-group">
             <span class="filter-group-title">Type</span>
             <div class="filter-pills">
-              <button class="filter-pill active" data-filter-type="all">All</button>
-              <button class="filter-pill" data-filter-type="package">Packages</button>
-              <button class="filter-pill" data-filter-type="skill">Skills</button>
-              <button class="filter-pill" data-filter-type="template">Templates</button>
-              <button class="filter-pill" data-filter-type="agent">Agents</button>
-              <button class="filter-pill" data-filter-type="session">Sessions</button>
-              <button class="filter-pill" data-filter-type="bundle">Bundles</button>
+              <button class="filter-pill active" data-type-filter="all">All</button>
+              <button class="filter-pill" data-type-filter="package">Packages</button>
+              <button class="filter-pill" data-type-filter="skill">Skills</button>
+              <button class="filter-pill" data-type-filter="template">Templates</button>
+              <button class="filter-pill" data-type-filter="agent">Agents</button>
+              <button class="filter-pill" data-type-filter="session">Sessions</button>
+              <button class="filter-pill" data-type-filter="bundle">Bundles</button>
+              <button class="filter-pill" data-type-filter="subscription">Subscriptions</button>
             </div>
           </div>
 
           <div class="filter-group">
             <span class="filter-group-title">Sort By</span>
-            <select class="filter-sort-select" id="filterSort">
+            <select class="filter-sort-select" id="marketplaceSort">
               <option value="popular">Popular First</option>
               <option value="price-asc">Price: Low → High</option>
               <option value="price-desc">Price: High → Low</option>
@@ -138,10 +141,14 @@
         <!-- Product Grid -->
         <div>
           <div class="product-grid-header">
-            <span class="product-grid-count" id="productCount">Loading…</span>
+            <span class="product-grid-count" id="resultCount">Loading…</span>
           </div>
-          <div class="product-grid" id="productGrid">
+          <div class="product-grid" id="marketplaceGrid">
             <!-- Loaded dynamically by marketplace.js -->
+          </div>
+          <div id="marketplaceEmpty" style="display: none; text-align: center; padding: 60px 20px; color: var(--text-secondary);">
+            <p style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">No packages match those filters.</p>
+            <p style="font-size: 14px;">Try clearing a filter or searching for something else.</p>
           </div>
         </div>
 
@@ -167,18 +174,5 @@
   <script src="assets/salesgency-interactive.js"></script>
   <script src="assets/stripe-client.js"></script>
   <script src="assets/marketplace.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check URL params for pre-selected category
-      const params = new URLSearchParams(window.location.search);
-      const category = params.get('category');
-
-      SalesgencyMarketplace.init().then(() => {
-        if (category) {
-          SalesgencyMarketplace.setCategory(category);
-        }
-      });
-    });
-  </script>
 </body>
 </html>
