@@ -851,6 +851,7 @@
   "id": "build-portal-199",
   "name": "Package Builder Portal",
   "tagline": "Chat wizard builds your personalized automation package",
+  "badge": "Portal",
   "category": "portal",
   "tags": [
    "portal",
@@ -877,6 +878,7 @@
   "id": "cold-mql-bundle",
   "name": "Cold MQL Re-engagement System",
   "tagline": "Bring your dead MQLs back to life \u2014 the exact system, packaged",
+  "badge": "Template",
   "category": "custom-templates",
   "tags": [
    "template",

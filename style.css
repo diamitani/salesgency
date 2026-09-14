@@ -3394,6 +3394,7 @@ ul, ol {
 .product-card-badge.template { background: #E0E7FF; color: #3730A3; }
 .product-card-badge.live-sprint { background: #CFFAFE; color: #155E75; }
 .product-card-badge.with-founder { background: #FEF3C7; color: #78350F; }
+.product-card-badge.portal { background: #DBEAFE; color: #1E40AF; }
 
 .product-card-name {
   font-size: 16px;

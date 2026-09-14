@@ -45,7 +45,8 @@
       'Agent': 'agent',
       'Template': 'template',
       'Live Sprint': 'live-sprint',
-      'With Founder': 'with-founder'
+      'With Founder': 'with-founder',
+      'Portal': 'portal'
     };
     return map[badge] || '';
   }
