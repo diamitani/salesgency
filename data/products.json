@@ -872,5 +872,39 @@
    "Re-download anytime in your portal"
   ],
   "popular": true
+ },
+ {
+  "id": "cold-mql-bundle",
+  "name": "Cold MQL Re-engagement System",
+  "tagline": "Bring your dead MQLs back to life \u2014 the exact system, packaged",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "mql",
+   "re-engagement",
+   "hubspot",
+   "revops"
+  ],
+  "type": "template",
+  "price": 19900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "The exact cold-MQL re-engagement system built, run, and measured in a production B2B revenue environment: SOP playbook, segmentation & scoring rules, HubSpot workflow build guide, message templates, launch checklist, and Loom walkthrough.",
+  "features": [
+   "Cold MQL Re-engagement SOP (PDF)",
+   "Segmentation & scoring rules \u2014 copy-paste criteria for any CRM",
+   "HubSpot workflow build guide",
+   "Re-engagement message templates (first touch, follow-up, break-up)",
+   "Launch checklist \u2014 pre-flight to go-live",
+   "Loom walkthrough video (3-5 minutes)"
+  ],
+  "includes": [
+   "MQL-REENGAGEMENT-SOP.pdf",
+   "SEGMENTATION-SCORING.md",
+   "HUBSPOT-BUILD-GUIDE.md",
+   "MESSAGE-TEMPLATES.md",
+   "LAUNCH-CHECKLIST.md",
+   "LOOM-WALKTHROUGH"
+  ]
  }
 ]
