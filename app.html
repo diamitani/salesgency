@@ -246,6 +246,27 @@
       background: #F1F5F9;
       color: #0F172A;
     }
+
+    @media (max-width: 900px) {
+      body {
+        height: auto;
+        overflow-y: auto;
+        flex-direction: column;
+      }
+      aside.app-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 14px 16px;
+      }
+      main.app-main {
+        overflow-y: visible;
+        min-height: calc(100vh - 120px);
+      }
+      .grid-3, .grid-4 {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
