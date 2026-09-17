@@ -24,19 +24,19 @@ header.sgu-nav {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(15, 23, 42, 0.1);
+  border: 1px solid rgba(9, 13, 22, 0.12);
   border-radius: 9999px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(9, 13, 22, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
   pointer-events: auto;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sgu-nav-inner:hover {
-  border-color: rgba(15, 23, 42, 0.18);
-  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.12);
+  border-color: rgba(9, 13, 22, 0.22);
+  box-shadow: 0 14px 38px rgba(9, 13, 22, 0.12);
 }
 
 .sgu-brand {
@@ -64,7 +64,7 @@ ul.sgu-links {
 ul.sgu-links li a {
   display: block;
   padding: 7px 12px;
-  color: #475569;
+  color: #334155;
   font-family: 'Geist', 'Outfit', -apple-system, sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -75,7 +75,7 @@ ul.sgu-links li a {
 }
 
 ul.sgu-links li a:hover {
-  color: #0F172A;
+  color: #090D16;
   background: #F1F5F9;
 }
 
@@ -98,8 +98,8 @@ ul.sgu-links li a.sgu-active {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #0284C7;
-  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+  background: #10B981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
   animation: sguPulse 2s infinite ease-in-out;
 }
 
@@ -118,9 +118,9 @@ a.sgu-portal-btn {
   font-size: 0.825rem;
   font-weight: 600;
   text-decoration: none;
-  background: #F1F5F9;
-  border: 1px solid #E2E8F0;
-  color: #0F172A;
+  background: #F8FAFC;
+  border: 1px solid #CBD5E1;
+  color: #090D16;
   transition: all 0.15s ease;
   white-space: nowrap;
 }
@@ -141,9 +141,10 @@ a.sgu-cta-btn {
   font-size: 0.825rem;
   font-weight: 700;
   text-decoration: none;
-  background: #0F172A;
+  background: #090D16;
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
+  border: 1px solid #090D16;
+  box-shadow: 0 4px 14px rgba(9, 13, 22, 0.18);
   transition: all 0.2s ease;
   white-space: nowrap;
 }
@@ -151,7 +152,7 @@ a.sgu-cta-btn {
 a.sgu-cta-btn:hover {
   background: #1E293B;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 6px 20px rgba(9, 13, 22, 0.25);
   color: #FFFFFF;
 }
 
@@ -164,7 +165,7 @@ button.sgu-burger {
   background: transparent;
   border: 1px solid #CBD5E1;
   border-radius: 8px;
-  color: #0F172A;
+  color: #090D16;
   padding: 6px 10px;
   font-size: 1.15rem;
   cursor: pointer;
