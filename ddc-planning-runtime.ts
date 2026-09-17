@@ -86,7 +86,7 @@ export const STAGE_TEACHING: Record<Stage, string> = {
   jtbd:
     "Jobs to be done name the situation, the action, and the outcome. Features follow jobs.",
   npao:
-    "Now, Next, Later, Out of scope. This stops us from building a mall when you needed a shop.",
+    "Necessity, Priority, Anxiety, Opportunity (from rostr-paper.vercel.app). Classifies non-negotiable needs, sequencing priorities, friction/risks, and revenue expansion opportunities.",
   documentation:
     "Stories, map of pages, flows, PRD, and specs. This is the blueprint a stranger could build from.",
   architecture:
