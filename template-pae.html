@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAE Workflow Template — The 7-Step Compile — SalesGency</title>
+<meta name="description" content="The Prospect Automation Engine compile order: gather input, trigger, data, CRM, research, messaging, sequence. The free workflow template.">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div id="sg-header"></div>
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumb" style="text-align:left"><a href="index.html">Home</a> / <a href="templates.html">Templates</a> / PAE</div>
+    <span class="badge">🎯 Workflow Template</span>
+    <h1 class="mt-2">Prospect Automation Engine: The 7-Step Compile</h1>
+    <p class="lead">The PAE compiler builds your outbound graph in a fixed order — never skip ahead. Gather the input pack, compile the trigger, wire data, CRM, research, messaging, then sequence. This is the template every PAE run is built from.</p>
+    <div class="hero-actions">
+      <a href="packages.html" class="btn btn-primary">Have It Compiled For You</a>
+      <a href="templates.html" class="btn btn-outline">All Templates</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="stats-band">
+      <div class="stats">
+        <div><div class="stat-num">7</div><div class="stat-label">Compile steps, in order</div></div>
+        <div><div class="stat-num">4</div><div class="stat-label">Adapter categories (CRM · LLM · Outreach · Data)</div></div>
+        <div><div class="stat-num">7</div><div class="stat-label">Assertions in the pre-ship quick test</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="text-center">The compile order</h2>
+    <p class="lead text-center" style="margin:0 auto 36px">The compiler builds the graph in this order. Do not skip ahead.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div><h3>1 · Gather user input</h3><p>Collect the instruction pack once — company background, offer and proof, ICP, persona, tools, volume, and send policy. This pack feeds every later step. Never ask for API key values here: provider and access level only.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>2 · Create the trigger</h3><p>Two trigger families, one primary path per run: a scheduled data-tool search on your ICP and signals, or a webhook that fires when you upload a CSV. Both write a company table, filtered against CRM stages so you never re-work live deals.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>3 · Configure data</h3><p>Company enrich plus people search on the company table. JSON filters from your intake — departments, titles, signals — with a hard cap of N contacts per company. Output: the contact table.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>4 · Configure CRM</h3><p>Batch create-or-update contacts, matched on email or domain + name. Writes CRM ids back onto the row. No enrollment from this node — this is the write step; the trigger filter was the read.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>5 · Configure research</h3><p>AI node plus web search, with a system prompt compiled from your intake. Pulls company, product, team, and news datapoints and drafts a pain-point hypothesis as structured JSON. Separate node from email — never collapse research and copy.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>6 · Configure messaging</h3><p>System instructions compiled from the same intake produce the campaign copy: emails 1–7 (subject + body) plus LinkedIn connection note, DM, and InMail. One node returning JSON for the full set — cheaper and easier to test. Copy only, no send.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>7 · Configure sequence enrollment</h3><p>Bind enrollment: sequence, list, or mailbox send (Resend, Gmail, custom API) mapped to a specific inbox. If you have no outreach tool, keep the copy and stop after step 6.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <h2 class="text-center">The input pack</h2>
+    <p class="lead text-center" style="margin:0 auto 32px">Collected once in step 1. Every later step draws from it.</p>
+    <div class="feature-grid">
+      <div class="feature"><span class="fi">✓</span><p><strong>Company background</strong>Feeds the research and email system prompts.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>Product, offer, proof, banned claims</strong>Shapes the hypothesis and keeps claims honest.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>ICP</strong>Firmographics, signals, and disqualifiers — the trigger's search and filters.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>Persona</strong>Titles, departments, language — the data search and the email voice.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>Tools</strong>CRM, data, LLM, outreach, n8n URL — node types and credential plan.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>Volume + send policy</strong>Companies per day, contacts per company, and the approval gate before send.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="text-center">What a compiled run delivers</h2>
+    <ul class="outputs mt-3">
+      <li><span><strong>company_table</strong> — name, domain, url, linkedin_url, crm_stage, source.</span></li>
+      <li><span><strong>contact_table</strong> — name, title, email, phone, linkedin, company_domain, crm_id.</span></li>
+      <li><span><strong>research_object</strong> — datapoints, pain-point hypothesis, value proposition.</span></li>
+      <li><span><strong>campaign_copy</strong> — emails 1–7 with subject + body, LinkedIn connect / DM / InMail.</span></li>
+      <li><span><strong>enroll_receipt</strong> — tool, sequence or list, inbox, status (when step 7 is armed).</span></li>
+      <li><span><strong>Build package</strong> — workflow.json, the n8n Engineer skill that can edit it, both AI system prompts, credential instructions, and a test checklist.</span></li>
+    </ul>
+    <div class="callout mt-4">
+      <h4>The trust cut</h4>
+      <p>PAE ships three things: a JSON compiler that customizes the template, the reference template, and the build package. No hosted send. No black-box runtime. You own the graph and everything that made it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <h2 class="text-center">Supported adapters</h2>
+    <p class="lead text-center" style="margin:0 auto 32px">HTTP Request unless a native n8n node is complete for the operation. Unknown tool? The compiler fetches the docs and binds. If the docs are missing, the run stops for clarification — it never fakes a node.</p>
+    <div class="feature-grid">
+      <div class="feature"><span class="fi">✓</span><p><strong>CRM</strong>HubSpot, Salesforce, Zoho, Pipedrive, Attio.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>LLM</strong>Anthropic, OpenAI, Azure, AWS Bedrock, OpenRouter, Gemini.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>Outreach</strong>HubSpot Sales, Salesforce, Amplemarket, Clay, Instantly, Zoho, Attio, Resend / Gmail / custom API.</p></div>
+      <div class="feature"><span class="fi">✓</span><p><strong>Data</strong>Clay, Amplemarket, ZoomInfo, Apollo, Reply.io.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="text-center">The quick test (required before done)</h2>
+    <ul class="outputs mt-3">
+      <li><span><strong>1</strong> — Dry-run the trigger with a limit of one company.</span></li>
+      <li><span><strong>2</strong> — The company table row exists, and the CRM filter didn't drop a clean account.</span></li>
+      <li><span><strong>3</strong> — At least one contact with an email, or a typed skip reason.</span></li>
+      <li><span><strong>4</strong> — The CRM upsert returned an id, or a typed skip.</span></li>
+      <li><span><strong>5</strong> — The research JSON contains a pain-point hypothesis.</span></li>
+      <li><span><strong>6</strong> — Email 1 has a subject and a body.</span></li>
+      <li><span><strong>7</strong> — Sequence / send stays OFF in test unless you explicitly arm it.</span></li>
+    </ul>
+    <div class="callout mt-4">
+      <h4>Fail any assertion, ship nothing</h4>
+      <p>If the quick test fails, the JSON doesn't ship as successful — you get the node error and a patch plan instead.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container text-center">
+    <h2>Want this compiled for your stack?</h2>
+    <p class="lead" style="margin:0 auto 28px">The template is free and the compile order is public. When you want the backend agent to build your custom graph — your ICP, your tools, your voice — that's a build package.</p>
+    <a href="packages.html" class="btn btn-primary">See Build Packages</a>
+    <a href="templates.html" class="btn btn-outline" style="margin-left:12px">All Templates</a>
+  </div>
+</section>
+
+</main>
+<div id="sg-footer"></div>
+<script src="assets/js/site.js"></script>
+<script>SG.init('templates');</script>
+</body>
+</html>
