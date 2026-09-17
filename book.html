@@ -1,127 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book a Build Session — Workflow Qualification Wizard | SalesGency®</title>
-  <meta name="description" content="Answer 4 quick questions and get a personalized recommendation for your GTM automation build. Book a $1,000 Build Session or buy the right package instantly.">
-  <meta name="keywords" content="Build Session, GTM Qualification, Workflow Wizard, Book Automation Session, SalesGency Booking">
-  <link rel="canonical" href="https://salesgency.com/book.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://salesgency.com/book.html">
-  <meta property="og:site_name" content="SalesGency®">
-  <meta property="og:title" content="Book a Build Session | SalesGency®">
-  <meta property="og:description" content="4 questions → personalized recommendation → secure checkout. Build Sessions start at $1,000.">
-
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="assets/unified.css">
-  <script src="assets/unified-nav.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Call — SalesGency</title>
+<meta name="description" content="Book a working session with SalesGency. Answer 4 quick questions and we'll recommend the right package.">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
+<div id="sg-header"></div>
+<main>
 
-  <!-- Navigation -->
-  <header class="nav-wrapper">
-    <nav class="nav-bar">
-      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
-        salesgency<span class="brand-symbol">®</span>
-      </a>
-      <div class="nav-menu">
-        <a href="marketplace.html" class="nav-item">
-          <span>Marketplace</span>
-          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$39+</span>
-        </a>
-        <a href="book.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">
-          <span>Build Session</span>
-          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
-        </a>
-        <a href="architecture.html" class="nav-item">Architecture</a>
-        <a href="pricing.html" class="nav-item">Pricing</a>
-      </div>
-      <div class="nav-actions">
-        <a href="book.html" class="btn-book-call" style="background: var(--accent-blue); border-color: var(--accent-blue);">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>Booking Now</span>
-        </a>
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">Menu</button>
-      </div>
-    </nav>
-  </header>
-
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <a href="index.html" class="mobile-link">Home</a>
-    <a href="marketplace.html" class="mobile-link">Marketplace ($39+)</a>
-    <a href="book.html" class="mobile-link" style="font-weight: 700; color: var(--text-heading);">Book a Build Session ($1,000)</a>
-    <a href="architecture.html" class="mobile-link">System Architecture</a>
-    <a href="pricing.html" class="mobile-link">Pricing</a>
+<section class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Book</div>
+    <h1 class="mt-2">Book a Call</h1>
+    <p class="lead">Answer four quick questions. We'll recommend the right package — or tell you honestly if a free template is all you need.</p>
   </div>
+</section>
 
-  <div class="site-wrapper">
-
-    <!-- Header -->
-    <section style="padding: clamp(120px, 14vw, 160px) 0 0; text-align: center;">
-      <div class="container" style="max-width: 640px;">
-        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
-          <span class="live-telemetry-badge">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>4 Questions → Personalized Recommendation → Checkout</span>
-          </span>
-        </div>
-        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 900; color: var(--text-heading); line-height: 1.1; letter-spacing: -0.02em;">
-          Let's Find Your <span class="serif-italic">Perfect Build.</span>
-        </h1>
-        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 10px;">
-          Our Workflow Architect will walk you through a few questions and recommend the right package or session.
-        </p>
-      </div>
-    </section>
-
-    <!-- Chat Wizard -->
-    <section style="padding: 20px 0 clamp(60px, 8vw, 100px);">
-      <div class="wizard-chat-container">
-        <div class="wizard-chat-messages" id="wizardMessages">
-          <!-- Dynamically populated by booking-wizard.js -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Skip Option -->
-    <section style="padding: 0 0 40px; text-align: center;">
-      <div class="container" style="max-width: 600px;">
-        <div style="border-top: 1px solid var(--border-hairline); padding-top: 24px;">
-          <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 12px;">Already know what you need?</p>
-          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <a href="marketplace.html" style="font-size: 13px; color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px;">Browse marketplace →</a>
-            <a href="pricing.html" style="font-size: 13px; color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px;">View pricing →</a>
+<section class="section-tight">
+  <div class="container">
+    <div class="two-col">
+      <div class="card">
+        <h3>The 4-question qualifier</h3>
+        <form id="book-wizard">
+          <div class="field">
+            <label for="q-team">How big is your GTM team?</label>
+            <select id="q-team" name="team" required>
+              <option value="">Select…</option>
+              <option>Just me</option>
+              <option>2–5 people</option>
+              <option>6–20 people</option>
+              <option>20+ people</option>
+            </select>
           </div>
+          <div class="field">
+            <label for="q-crm">Which CRM do you use?</label>
+            <select id="q-crm" name="crm" required>
+              <option value="">Select…</option>
+              <option>HubSpot</option>
+              <option>Salesforce</option>
+              <option>Attio</option>
+              <option>Pipedrive</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-bottleneck">What's your #1 bottleneck?</label>
+            <select id="q-bottleneck" name="bottleneck" required>
+              <option value="">Select…</option>
+              <option>Not enough pipeline</option>
+              <option>Slow follow-up / speed-to-lead</option>
+              <option>Messy CRM data</option>
+              <option>No visibility into what's working</option>
+              <option>Reps drowning in manual work</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-volume">Leads per month?</label>
+            <select id="q-volume" name="volume" required>
+              <option value="">Select…</option>
+              <option>Under 100</option>
+              <option>100–500</option>
+              <option>500–2,000</option>
+              <option>2,000+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-email">Work email</label>
+            <input type="email" id="q-email" name="email" placeholder="you@company.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Get My Recommendation</button>
+        </form>
+        <div id="wizard-result" class="callout callout-blue mt-3" style="display:none"></div>
+      </div>
+      <div>
+        <h2>What happens next</h2>
+        <div class="steps">
+          <div class="step"><div class="step-num"></div><div><h3>We read your answers</h3><p>A human reviews your stack and bottleneck — no auto-drip nonsense.</p></div></div>
+          <div class="step"><div class="step-num"></div><div><h3>You get a recommendation</h3><p>The right package, template, or sprint — or an honest "start free."</p></div></div>
+          <div class="step"><div class="step-num"></div><div><h3>We book 30 minutes</h3><p>A working call, not a pitch. We map your stack and show you what we'd build first.</p></div></div>
+        </div>
+        <div class="callout mt-4">
+          <h4>Prefer email?</h4>
+          <p>Reach us at <a href="mailto:Patrick.Diamitani@gmail.com">Patrick.Diamitani@gmail.com</a> — tell us your CRM and your bottleneck.</p>
         </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border-hairline);">
-      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 800; color: var(--text-heading);">salesgency<span style="color: var(--text-muted);">®</span></span>
-          <span style="font-size: 12px; color: var(--text-dim); margin-left: 12px;">© 2026 SalesGency LLC</span>
-        </div>
-        <div style="display: flex; gap: 20px; font-size: 12px;">
-          <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms</a>
-          <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy</a>
-        </div>
-      </div>
-    </footer>
-
+    </div>
   </div>
+</section>
 
-  <script src="assets/salesgency-interactive.js"></script>
-  <script src="assets/stripe-client.js"></script>
-  <script src="assets/booking-wizard.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      SalesgencyWizard.init();
-    });
-  </script>
+<script>
+document.getElementById('book-wizard').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var team = f.team.value, crm = f.crm.value, bottleneck = f.bottleneck.value, volume = f.volume.value;
+  var rec, cta;
+  if (bottleneck === 'Not enough pipeline') {
+    rec = 'Based on your answers, start with the <strong>Prospect Automation Engine</strong> — our flagship outbound system. A Pro build package ($149/mo) gets it built and wired to your ' + crm + '.';
+    cta = '<a href="packages.html" class="btn btn-primary btn-sm mt-2">See Build Packages</a>';
+  } else if (bottleneck === 'Slow follow-up / speed-to-lead') {
+    rec = 'Speed-to-lead is an inbound-triage problem. The <strong>Inbound Automation Engine</strong> template is free — and an Agency Sprint ($2,500) gets it installed on your ' + crm + ' in days.';
+    cta = '<a href="templates.html" class="btn btn-primary btn-sm mt-2">Get the Free Template</a>';
+  } else if (bottleneck === 'Messy CRM data') {
+    rec = 'Start with the free <strong>CRM Hygiene Scorer</strong> template. When the data is clean, a build package automates keeping it that way.';
+    cta = '<a href="templates.html" class="btn btn-primary btn-sm mt-2">Get the Free Template</a>';
+  } else if (bottleneck === "No visibility into what's working") {
+    rec = 'You need the <strong>Daily GTM Report</strong> — free template, daily pipeline velocity and forecast in Slack.';
+    cta = '<a href="templates.html" class="btn btn-primary btn-sm mt-2">Get the Free Template</a>';
+  } else {
+    rec = 'Manual work is exactly what the <strong>GTM Agent portal</strong> ($199, one-time) is for — four agent modules that build your workflows, skills, and souls.';
+    cta = '<a href="gtm-agent.html" class="btn btn-primary btn-sm mt-2">Enter the Portal</a>';
+  }
+  var box = document.getElementById('wizard-result');
+  box.style.display = 'block';
+  box.innerHTML = '<h4>Your recommendation</h4><p>' + rec + '</p><p class="mb-0">We\'ll follow up at <strong>' + f.email.value + '</strong> to schedule your call.</p><p>' + cta + '</p>';
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+</script>
+
+</main>
+<div id="sg-footer"></div>
+<script src="assets/js/site.js"></script>
+<script>SG.init('book');</script>
 </body>
 </html>

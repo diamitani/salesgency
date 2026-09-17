@@ -1,7 +1,0 @@
-.DS_Store
-.vercel
-templates/
-node_modules/
-.env
-.env.local
-.env.*

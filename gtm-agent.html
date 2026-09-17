@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTM Agent Portal — SalesGency</title>
+<meta name="description" content="The GTM Agent SaaS portal: your backend command center for GTM engineering — Enably tech-stack setup, Automation Engineer, Skill Builder, Soul Builder. Powered by ROSTR/PAL.">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div id="sg-header"></div>
+<main>
+
+<section class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / GTM Agent</div>
+    <span class="badge">🖥️ Backend SaaS Portal</span>
+    <h1 class="mt-2">The GTM Agent Portal</h1>
+    <p class="lead">Your backend command center for GTM engineering. Sign in and get a team of specialized agents — powered by the ROSTR/PAL framework — that set up your stack, build your workflows, write your skills, and engineer your agents' souls.</p>
+    <div class="hero-actions" style="justify-content:flex-start;margin-top:24px">
+      <button class="btn btn-primary" data-stripe-checkout="build-portal-199">Get Portal Access — $199</button>
+      <a href="#signin" class="btn btn-outline">Sign In</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <h2 class="text-center">Four modules, one portal</h2>
+    <p class="lead text-center" style="margin:0 auto 36px">Each module is a specialized agent, not a dashboard widget.</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <span class="card-tag tag-gtm">Module 01</span>
+        <div class="card-icon">🏗️</div>
+        <h3>Enably — Tech Stack Setup</h3>
+        <p>Powered by the Enably skill. Tell it your CRM, sequencer, and data providers — it designs your GTM tech stack: tool evaluation matrices, setup blueprints, and the wiring order. <a href="skill-enably.html">Learn more →</a></p>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-gtm">Module 02</span>
+        <div class="card-icon">🔧</div>
+        <h3>Automation Engineer</h3>
+        <p>Powered by the n8n Engineer + PAE skills. Describe the workflow you need — it authors the production n8n graph, handles the API wiring, and gives you the importable JSON. <a href="skill-n8n-engineer.html">Learn more →</a></p>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-gtm">Module 03</span>
+        <div class="card-icon">🎁</div>
+        <h3>Skill Builder</h3>
+        <p>Describe the job, get a SKILL.md pack: instructions, references, scripts, templates. Built for your tools and your voice — ready to drop into any agent runtime.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag tag-gtm">Module 04</span>
+        <div class="card-icon">💠</div>
+        <h3>Soul Builder / Instruction Architect</h3>
+        <p>Powered by the Soul Builder + Instruction Architect skills. Pick an archetype, tune the voice, set the constraints — get a validated soul package you can inject into any agent. <a href="skill-soul-builder.html">Learn more →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <h2 class="text-center">How it works</h2>
+    <div class="steps mt-3">
+      <div class="step"><div class="step-num"></div><div><h3>Get access — $199 one-time</h3><p>No subscription, no seat tax. One payment, lifetime access to the portal.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Sign in with your receipt email</h3><p>Your purchase receipt unlocks the portal — simple and secure, no password to manage.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Chat with your agent team</h3><p>A conversational wizard collects what you need — no forms. The agents do the rest.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Download your outputs</h3><p>Personalized n8n workflow JSON, setup playbooks, config checklists — zipped and downloadable. Your "My Packages" library keeps your last 8 builds, re-downloadable anytime.</p></div></div>
+    </div>
+    <div class="callout mt-4">
+      <h4>Powered by ROSTR / PAL</h4>
+      <p>Every module runs on the ROSTR framework: PAL intent compilation, JTBD instructions, NPAO orchestration, and RAG knowledge grounding. The same engine behind our flagship skills — now as a service you sign into.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="signin">
+  <div class="container">
+    <div class="two-col" style="align-items:center">
+      <div>
+        <h2>Already a member?</h2>
+        <p class="lead">Sign in with the email from your purchase receipt to unlock the portal.</p>
+        <form id="portal-signin" onsubmit="return sgPortalSignin(event)">
+          <div class="field">
+            <label for="portal-email">Receipt email</label>
+            <input type="email" id="portal-email" name="email" placeholder="you@company.com" required>
+          </div>
+          <button type="submit" class="btn btn-navy">Sign In to Portal</button>
+        </form>
+        <p id="portal-signin-msg" class="mt-2" style="font-size:0.92rem;color:var(--sg-muted)"></p>
+      </div>
+      <div class="card price-card">
+        <div class="tier">Portal Access</div>
+        <div class="price">$199</div>
+        <div class="price-note">One-time · lifetime access</div>
+        <ul>
+          <li>All 4 agent modules</li>
+          <li>Conversational build wizard</li>
+          <li>Personalized n8n workflows + playbooks</li>
+          <li>"My Packages" library (last 8 builds)</li>
+          <li>Re-download anytime</li>
+        </ul>
+        <button class="btn btn-primary btn-block" data-stripe-checkout="build-portal-199">Get Access — $199</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function sgPortalSignin(e) {
+  e.preventDefault();
+  var email = document.getElementById('portal-email').value.trim();
+  var msg = document.getElementById('portal-signin-msg');
+  if (!email) { msg.textContent = 'Please enter your receipt email.'; return false; }
+  // Receipt-trust model: the purchase receipt email unlocks the portal.
+  try { localStorage.setItem('sg_portal_receipt', email); } catch (err) {}
+  msg.textContent = 'Signed in as ' + email + '. Portal access unlocked on this device.';
+  return false;
+}
+(function () {
+  try {
+    var saved = localStorage.getItem('sg_portal_receipt');
+    if (saved) document.getElementById('portal-email').value = saved;
+  } catch (err) {}
+})();
+</script>
+
+</main>
+<div id="sg-footer"></div>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/stripe-client.js"></script>
+<script>SG.init('gtm-agent');</script>
+</body>
+</html>

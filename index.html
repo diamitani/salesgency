@@ -1,206 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Salesgency — The Prospect Automation Engine, installed in your stack</title>
-  <meta name="description" content="Salesgency installs an AI Prospect Automation Engine inside your CRM and sales stack — it finds your buyers, researches them, and writes personalized outreach, with human approval before anything external.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/sg.css">
-  <link rel="stylesheet" href="assets/unified.css">
-  <script src="assets/unified-nav.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SalesGency — Your In-House GTM Agency</title>
+<meta name="description" content="SalesGency is your in-house GTM agency: an AI engine that finds your buyers, researches them, and writes the outreach — inside your CRM. Free skills, free workflow templates, build packages, and the GTM Agent portal.">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
+<div id="sg-header"></div>
+<main>
 
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html" aria-label="SalesGency Home">salesgency<span class="brand-symbol">&reg;</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav-links" id="navLinks">
-        <a href="agency.html">Agency</a>
-        <a href="activations.html">Activations</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="portal.html">Portal</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn btn-primary" href="build-session.html">Book a build session — $1,000</a>
+<section class="hero">
+  <div class="container">
+    <span class="badge">⚡ Built on the ROSTR Framework</span>
+    <h1>Your in-house GTM agency: an AI engine that <em style="font-style:normal;color:var(--sg-blue)">finds your buyers, researches them, and writes the outreach</em> — inside your CRM.</h1>
+    <p class="lead">Download a free skill and deploy it yourself. Grab a free workflow template. Or buy a build package and let our backend agent build it for you — you own 100% of the code. No retainer, no seat tax, no black box.</p>
+    <div class="hero-actions">
+      <a href="skills.html" class="btn btn-primary">Browse Free Skills</a>
+      <a href="packages.html" class="btn btn-outline">See Build Packages</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <h2 class="text-center">Three ways to work with us</h2>
+    <p class="lead text-center" style="margin:0 auto 32px">Pick the path that fits where you are.</p>
+    <div class="grid grid-3">
+      <a href="skills.html" class="card clickable">
+        <span class="card-tag tag-free">Free</span>
+        <div class="card-icon">🎁</div>
+        <h3>Download Free Skills</h3>
+        <p>42 production skills — prospecting engines, outreach copywriters, sales enablement, n8n automation, agent builders. Download the zip, install, run.</p>
+        <span class="card-cta">Browse the library →</span>
+      </a>
+      <a href="templates.html" class="card clickable">
+        <span class="card-tag tag-free">Free</span>
+        <div class="card-icon">🧩</div>
+        <h3>Grab a Workflow Template</h3>
+        <p>Free, importable n8n workflow templates: outreach automation, inbound triage, CRM hygiene, daily execution reports. Scrubbed clean, ready to import.</p>
+        <span class="card-cta">See templates →</span>
+      </a>
+      <a href="packages.html" class="card clickable">
+        <span class="card-tag tag-build">Done-for-you</span>
+        <div class="card-icon">🤖</div>
+        <h3>Buy a Build Package</h3>
+        <p>Our backend agent builds it for you: n8n workflows, custom skills, agent souls, playbooks. You pay, you get the outputs. From $49/mo.</p>
+        <span class="card-cta">See packages →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="stats-band">
+      <div class="stats">
+        <div><div class="stat-num">42</div><div class="stat-label">Free skills in the library</div></div>
+        <div><div class="stat-num">10</div><div class="stat-label">Free n8n workflow templates</div></div>
+        <div><div class="stat-num">9</div><div class="stat-label">Nodes in the flagship PAE graph</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Of the code is yours to keep</div></div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <!-- Hero: the point, in one sentence -->
-    <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container">
-        <p class="eyebrow reveal">Pay for a build session or a build package — own the engine forever</p>
-        <h1 class="reveal">Salesgency installs an AI engine that <span class="accent">finds your buyers, researches them, and writes the outreach</span> — inside your CRM.</h1>
-        <p class="lede reveal">Built for B2B companies whose reps drown in manual prospecting. Grab a build package and deploy it yourself, co-build with us in a build session, or hand us the keys for an agency sprint. Either way, you own 100% of the code — no retainer, no seat tax, no black box.</p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-primary btn-lg" href="marketplace.html">Shop build packages</a>
-          <a class="btn btn-ghost btn-lg" href="build-session.html">Book a build session</a>
-        </div>
-        <div class="hero-stats reveal">
-          <div class="stat"><span class="stat-num">Find</span><span class="stat-label">intent-based accounts pulled from your CRM — never a purchased list</span></div>
-          <div class="stat"><span class="stat-num">Research</span><span class="stat-label">an AI agent drafts a pain-point hypothesis for every account</span></div>
-          <div class="stat"><span class="stat-num">Write</span><span class="stat-label">personalized outreach drafted per contact, queued for review</span></div>
-          <div class="stat"><span class="stat-num">Approve</span><span class="stat-label">your team approves before anything external ever sends</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- What Salesgency is -->
-    <section class="section section--alt">
-      <div class="container">
-        <p class="eyebrow reveal">What Salesgency is</p>
-        <h2 class="reveal">An AI revenue-workflow studio. <span class="accent">One flagship engine, five supporting activations.</span></h2>
-        <p class="section-sub reveal">The flagship is the <strong>Prospect Automation Engine</strong>: an autonomous outbound pipeline that pulls target companies from your CRM, shields active deals from collisions, reveals verified contacts, researches each account, and drafts personalized outreach for human approval. Around it, five supporting activations cover the rest of the motion — inbound triage, pre-call briefings, post-call follow-up, execution reporting, and a daily executive brief — so the whole GTM motion runs as one governed system.</p>
-        <div class="package-grid">
-          <div class="package-card reveal">
-            <h3>It lives in your stack</h3>
-            <p>Built on your CRM (HubSpot, Salesforce), your data tools (Clay, Apollo), your sequencer (Smartlead, Instantly), orchestrated in n8n. Nothing to rip out, no parallel universe to maintain.</p>
-          </div>
-          <div class="package-card reveal">
-            <h3>Humans approve before anything external</h3>
-            <p>The engine researches and drafts; your team approves. Every send, every CRM write, every reply route passes a review gate you control. Automation does the robot work — people make the decisions.</p>
-          </div>
-          <div class="package-card reveal">
-            <h3>You keep the engine</h3>
-            <p>We build it, prove it on a 90-day pilot against your real pipeline, then transfer it — workflows, prompts, skills, runbooks — to your team. You own the code and the knowledge, not a subscription dependency.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="section" id="how-it-works">
-      <div class="container">
-        <p class="eyebrow reveal">How it works</p>
-        <h2 class="reveal">The engine's eight stages, <span class="accent">every run.</span></h2>
-        <p class="section-sub reveal">This is the actual production architecture — taken from the deployed workflow blueprints, not a diagram drawn for marketing. A scheduled run executes all eight stages; the inbound engine runs the mirror image on every form submission.</p>
-        <div class="steps">
-          <div class="step reveal"><span class="step-num">01</span><div><h3>Target <span class="def">— intent-based company pull</span></h3><p>The run starts inside your CRM, pulling companies showing buying intent — funding, hiring, expansion signals — not a purchased list.</p></div></div>
-          <div class="step reveal"><span class="step-num">02</span><div><h3>Shield <span class="def">— collision &amp; ICP filters</span></h3><p>Companies with open deals, recent sales activity, competitors, and out-of-ICP segments are removed before a single contact is touched. Zero rep collisions, by construction.</p></div></div>
-          <div class="step reveal"><span class="step-num">03</span><div><h3>Assign <span class="def">— territory round-robin</span></h3><p>Surviving accounts are assigned across your territories automatically, so coverage is even and no account is worked twice.</p></div></div>
-          <div class="step reveal"><span class="step-num">04</span><div><h3>Reveal <span class="def">— contact waterfall</span></h3><p>Multi-provider email and phone waterfall with live verification. Bad addresses never enter a sequence — that's how sender reputation stays intact.</p></div></div>
-          <div class="step reveal"><span class="step-num">05</span><div><h3>Rank <span class="def">— best contacts first</span></h3><p>Contacts are scored and ranked per account; only the top decision-makers move forward. One decision-maker per company, capped.</p></div></div>
-          <div class="step reveal"><span class="step-num">06</span><div><h3>Research <span class="def">— AI pain-point hypothesis</span></h3><p>An AI agent researches each account and drafts a pain-point hypothesis, written back to the CRM where your reps can see and correct it.</p></div></div>
-          <div class="step reveal"><span class="step-num">07</span><div><h3>Write <span class="def">— personalized PAS emails</span></h3><p>AI agents draft problem-agitate-solve emails and subject lines per contact — researched, under 85 words, zero buzzwords — queued for human approval.</p></div></div>
-          <div class="step reveal"><span class="step-num">08</span><div><h3>Sync <span class="def">— CRM write-back &amp; handoff</span></h3><p>Approved contacts, notes, and hypotheses sync to the CRM; sequences enroll with staggered inbox load-balancing. Every step logged to the run ledger.</p></div></div>
-        </div>
-        <p class="section-sub reveal" style="margin-top:48px"><strong>The inbound engine</strong> runs the mirror image on every form submission: an AI agent classifies intent into categories (speak with sales, partnerships, careers, press, support…), sets the MQL lifecycle stage, routes partners, drafts a grounded reply to sales-ready leads — and attributes every downstream deal to the exact workflow execution that created it.</p>
-        <div class="cta-row reveal">
-          <a class="btn btn-primary" href="activations.html#outbound">The engine, in technical detail</a>
-          <a class="btn btn-ghost" href="workflows.html">See the workflows</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Proof -->
-    <section class="section section--alt">
-      <div class="container">
-        <p class="eyebrow reveal">How it works, end to end</p>
-        <h2 class="reveal">Production systems. <span class="accent">Traceable to the run.</span></h2>
-        <p class="section-sub reveal">These are production systems with execution-level attribution — every outcome traceable to a real workflow run or a live CRM record. Here's what each one does and how it stays trustworthy.</p>
-        <div class="package-grid">
-          <div class="package-card reveal">
-            <p class="eyebrow">AI inbound automation · production</p>
-            <h3>Every form submission, triaged in seconds</h3>
-            <p>An AI agent classifies each inbound submission by intent, sets the lifecycle stage in the CRM, routes partnerships to the right owner, and drafts a grounded reply to sales-ready leads. A measurement pipeline then matches every workflow execution against live CRM deals — a deal counts only if it was created after the contact's run, so attribution stays conservative by construction.</p>
-          </div>
-          <div class="package-card reveal">
-            <p class="eyebrow">AI customer agent · production</p>
-            <h3>Site visitors qualified by an agent, every thread traceable</h3>
-            <p>A production agent on the pricing page qualifies visitors behind versioned guardrails. Every execution is logged, and a weekly attribution stamper writes sourced and influenced tiers onto deals — so any deal can be traced back to the chat thread that started it.</p>
-          </div>
-          <div class="package-card reveal">
-            <p class="eyebrow">Prospect data pipeline · SDR agency</p>
-            <h3>Clean contacts, deduped against everything already called</h3>
-            <p>A pipeline merges multiple enrichment exports, dedupes every record against the full history of already-contacted accounts, verifies contact data before it enters a sequence, and ranks weekly call plans by tier. The calling agency gets fresh, verified prospects — never a burned list.</p>
-          </div>
-          <div class="package-card reveal">
-            <p class="eyebrow">Prospect Automation Engine · client deployments</p>
-            <h3>The eight stages, running in clients' stacks</h3>
-            <p>Target, shield, assign, reveal, rank, research, write, sync — the full engine installed in the client's own CRM and tooling. Collision shields protect active deals, the contact waterfall verifies before anyone is sequenced, and every step lands in a run ledger the client's team can audit.</p>
-          </div>
-        </div>
-        <div class="cta-row reveal">
-          <a class="btn btn-ghost" href="case-studies.html">Read the case studies</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Engagement -->
-    <section class="section">
-      <div class="container">
-        <p class="eyebrow reveal">How an engagement works</p>
-        <h2 class="reveal">A six-month engagement. <span class="accent">Then it's yours.</span></h2>
-        <p class="section-sub reveal">The first 90 days prove the engine on your real pipeline; months four through six harden it and transfer it to your team — code, prompts, and runbooks.</p>
-        <div class="steps">
-          <div class="step reveal"><span class="step-num">W1</span><div><h3>Activation workshop <span class="def">— 60–90 minutes</span></h3><p><strong>We do:</strong> map your current process end to end, score the six activations by value and readiness, select the first pilot with its baseline. <strong>You do:</strong> bring the decision-maker, your CRM admin, and one skeptical sales leader.</p></div></div>
-          <div class="step reveal"><span class="step-num">D90</span><div><h3>90-day activation <span class="def">— pilot to production</span></h3><p><strong>We do:</strong> build the engine against your real CRM and data, run a controlled pilot, review acceptance evidence with you weekly. <strong>You do:</strong> approve messaging, confirm ICP and exclusions, give the pilot a real segment.</p></div></div>
-          <div class="step reveal"><span class="step-num">M6</span><div><h3>Harden &amp; transfer <span class="def">— it becomes yours</span></h3><p><strong>We do:</strong> add the remaining activations, document every workflow, train your operators, hand over code, prompts, and runbooks. <strong>You do:</strong> run it — with us on call while you take the wheel.</p></div></div>
-        </div>
-        <div class="cta-row reveal">
-          <a class="btn btn-primary btn-lg" href="build-session.html">Book a build session — $1,000</a>
-          <a class="btn btn-ghost btn-lg" href="outreach.html">See the outreach template</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="section section--cta">
-      <div class="container">
-        <p class="eyebrow reveal">Two ways to pay, one thing you own</p>
-        <h2 class="reveal">Buy the package. <span class="accent">Or book the session.</span></h2>
-        <p class="section-sub reveal">Skills from $39, build packages from $199 — deploy the engine yourself this week. Build sessions at $1,000 — co-build it with us across 6 sessions, credited in full toward an agency sprint. Either way, the code is yours.</p>
-        <div class="cta-row reveal">
-          <a class="btn btn-primary btn-lg" href="marketplace.html">Shop build packages</a>
-          <a class="btn btn-ghost btn-lg" href="build-session.html">Book the build session — $1,000</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p class="footer-note">Salesgency — the Prospect Automation Engine, installed in your stack. Built by Patrick Diamitani.</p>
-      <div class="footer-links">
-        <a href="agency.html">Agency</a>
-        <a href="activations.html">Activations</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="portal.html">Portal</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="about.html">About</a>
-      </div>
+<section class="section">
+  <div class="container">
+    <h2 class="text-center">The flagship engine: autonomous outbound prospecting</h2>
+    <p class="lead text-center" style="margin:0 auto 40px">The Prospect Automation Engine (PAE) is our canonical 9-node n8n graph. Eight stages, one pipeline.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div><h3>Target</h3><p>Intent-based company pull — start from buying signals, not static lists.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Shield</h3><p>Collision &amp; ICP filters — the CRM Dedupe Shield halts on open deals and active clients. Nothing touches your CRM unprotected.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Assign</h3><p>Territory round-robin — accounts route to the right rep automatically.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Reveal</h3><p>Contact waterfall with live verification — Clay, Apollo, ZoomInfo, Amplemarket.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Rank</h3><p>Best contacts first — scored and sequenced for maximum reply probability.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Research</h3><p>AI pain-point hypothesis written back to your CRM — the LLM works only here, where judgment matters.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Write</h3><p>Personalized PAS emails under 85 words, zero buzzwords, approved by you before anything sends.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h3>Sync</h3><p>CRM write-back plus a full run ledger — every execution attributed and auditable.</p></div></div>
     </div>
-  </footer>
+    <div class="text-center mt-4">
+      <a href="skill-pae.html" class="btn btn-navy">Explore the PAE Skill</a>
+      <a href="templates.html" class="btn btn-outline" style="margin-left:12px">Download the Template Free</a>
+    </div>
+  </div>
+</section>
 
-  <script>
-    (function () {
-      var revealEls = document.querySelectorAll(".reveal");
-      if ("IntersectionObserver" in window) {
-        var o = new IntersectionObserver(function (es) {
-          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); o.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-        revealEls.forEach(function (el) { o.observe(el); });
-      } else { revealEls.forEach(function (el) { el.classList.add("visible"); }); }
-      var t = document.getElementById("navToggle"), l = document.getElementById("navLinks"), c = document.querySelector(".nav-cta");
-      if (t && l) t.addEventListener("click", function () {
-        var open = l.classList.toggle("open");
-        if (c) c.classList.toggle("open", open);
-        t.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-    })();
-  </script>
+<section class="section section-soft">
+  <div class="container">
+    <h2 class="text-center">More than downloads</h2>
+    <p class="lead text-center" style="margin:0 auto 32px">When you need it built, installed, and running — that's the agency.</p>
+    <div class="grid grid-2">
+      <a href="agency.html" class="card clickable">
+        <span class="card-tag tag-agency">Agency</span>
+        <div class="card-icon">🏢</div>
+        <h3>Agency Services</h3>
+        <p>Six core GTM workflows — inbound triage, outbound prospecting, pre-call dossiers, post-call notes, daily execution and GTM reports — plus custom agents, workflows, and skills. Agency Sprints from $2,500.</p>
+        <span class="card-cta">See services →</span>
+      </a>
+      <a href="gtm-agent.html" class="card clickable">
+        <span class="card-tag tag-gtm">SaaS Portal</span>
+        <div class="card-icon">🖥️</div>
+        <h3>The GTM Agent Portal</h3>
+        <p>Your backend command center: Enably tech-stack setup, an Automation Engineer, a Skill Builder, and a Soul Builder — powered by the ROSTR/PAL framework. $199 one-time.</p>
+        <span class="card-cta">Enter the portal →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container text-center">
+    <h2>Ready when you are.</h2>
+    <p class="lead" style="margin:0 auto 28px">Start free with the skills library, or book a working session and we'll build your first workflow with you.</p>
+    <a href="skills.html" class="btn btn-primary">Start Free</a>
+    <a href="book.html" class="btn btn-outline" style="margin-left:12px">Book a Call</a>
+  </div>
+</section>
+
+</main>
+<div id="sg-footer"></div>
+<script src="assets/js/site.js"></script>
+<script>SG.init('home');</script>
 </body>
 </html>
