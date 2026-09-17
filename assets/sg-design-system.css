@@ -412,9 +412,9 @@ p {
 }
 
 .section-hero {
-  padding: 108px 0 56px;
+  padding: 80px 0 28px;
   text-align: center;
-  min-height: calc(100dvh - 20px);
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
