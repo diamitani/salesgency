@@ -21,7 +21,7 @@ SalesGency organizes its offerings into three clear tiers, prioritizing self-ser
 
 ---
 
-### 📦 Product 1 (#1 Commercial Priority) — Build Packages & Templates
+### 📦 Product 1 (#1 Commercial Priority) - Build Packages & Templates
 > *"Everything you need to deploy GTM automation yourself."*
 
 A modular, downloadable marketplace of production-tested code assets, n8n JSON workflows, Python CLI scrapers, SQL telemetry packs, and injectable LLM Agent Skills (`SKILL.md`).
@@ -44,7 +44,7 @@ A modular, downloadable marketplace of production-tested code assets, n8n JSON w
 
 ---
 
-### ⚡ Product 2 — The $1,000 Build Session (Co-Build Sprint)
+### ⚡ Product 2 - The $1,000 Build Session (Co-Build Sprint)
 > *"4 Hours Total across 6 Dedicated Sessions: live working prototype & data."*
 
 An intensive, structured co-building sprint where we design, architect, and live-prototype your revenue automation engine alongside your team.
@@ -74,7 +74,7 @@ An intensive, structured co-building sprint where we design, architect, and live
 
 ---
 
-### 🏗️ Product 3 — Selective Agency Engagements
+### 🏗️ Product 3 - Selective Agency Engagements
 > *"Turnkey, full-service GTM engineering for high-growth teams."*
 
 For revenue teams that want a white-glove, production-ready system deployed directly into their private cloud instance. Limited to a cohort of 3–5 clients per month.

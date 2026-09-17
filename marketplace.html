@@ -1,178 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketplace — Build Packages, Skills, Templates & Agents | SalesGency®</title>
-  <meta name="description" content="Browse and buy production-ready GTM automation packages, injectable AI skills, workflow templates, and autonomous agents. Filter by category, type, and price.">
-  <meta name="keywords" content="GTM Marketplace, Build Packages, AI Skills, Workflow Templates, Custom Agents, Revenue Automation">
-  <link rel="canonical" href="https://salesgency.com/marketplace.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://salesgency.com/marketplace.html">
-  <meta property="og:site_name" content="SalesGency®">
-  <meta property="og:title" content="Marketplace — Build Packages & Templates | SalesGency®">
-  <meta property="og:description" content="Production-ready GTM automation packages from $39. Browse, filter, buy, and deploy.">
-  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
-
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
-  <link rel="stylesheet" href="style.css">
+  <title>GTM Marketplace - SalesGency</title>
+  <meta name="description" content="Browse and deploy autonomous GTM engines, production AI prompt skills, n8n workflow templates, and done-for-you build packages. 100% code ownership.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/sg-design-system.css">
   <link rel="stylesheet" href="assets/unified.css">
   <script src="assets/unified-nav.js" defer></script>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="nav-wrapper">
-    <nav class="nav-bar">
-      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
-        salesgency<span class="brand-symbol">®</span>
-      </a>
-      <div class="nav-menu">
-        <a href="builder.html" class="nav-item">
-          <span>AI Builder</span>
-          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">NEW</span>
-        </a>
-        <a href="marketplace.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">
-          <span>Marketplace</span>
-          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$39+</span>
-        </a>
-        <a href="book.html" class="nav-item">
-          <span>Build Session</span>
-          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
-        </a>
-        <a href="architecture.html" class="nav-item">Architecture</a>
-        <a href="pricing.html" class="nav-item">Pricing</a>
-      </div>
-      <div class="nav-actions">
-        <a href="builder.html" class="btn-book-call" style="margin-right: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981;">
-          <span>⚡ Prompt to App</span>
-        </a>
-        <a href="book.html" class="btn-book-call">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>Book a Build Session</span>
-        </a>
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">Menu</button>
-      </div>
-    </nav>
-  </header>
-
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <a href="index.html" class="mobile-link">Home</a>
-    <a href="builder.html" class="mobile-link" style="color: #10B981; font-weight: 700;">⚡ AI Sales Builder (New)</a>
-    <a href="marketplace.html" class="mobile-link" style="font-weight: 700; color: var(--text-heading);">Marketplace ($39+)</a>
-    <a href="book.html" class="mobile-link">Book a Build Session ($1,000)</a>
-    <a href="architecture.html" class="mobile-link">System Architecture</a>
-    <a href="pricing.html" class="mobile-link">Pricing</a>
+  <!-- Ambient Glowing Background -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="ambient-grid"></div>
   </div>
 
-  <div class="site-wrapper">
-
-    <!-- Hero -->
-    <section style="padding: clamp(120px, 14vw, 160px) 0 clamp(30px, 4vw, 50px); text-align: center;">
-      <div class="container" style="max-width: 700px;">
-        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
-          <span class="live-telemetry-badge">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>Production-Ready Code · 100% Client-Owned</span>
-          </span>
+  <main>
+    <!-- MARKETPLACE HEADER -->
+    <section class="section" style="padding-top:104px; padding-bottom:40px;">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Solutions &amp; Artifacts</span>
+          </div>
+          <h1 class="section-title">Autonomous GTM Engines &amp; Workflows</h1>
+          <p class="section-subtitle">
+            Deploy production-tested revenue automation into your stack. Choose from free open-source prompt skills, importable n8n workflows, or turnkey done-for-you packages.
+          </p>
         </div>
-        <h1 style="font-size: clamp(30px, 4.5vw, 46px); font-weight: 900; color: var(--text-heading); line-height: 1.1; letter-spacing: -0.03em;">
-          Build Package <span class="serif-italic">Marketplace</span>
-        </h1>
-        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 12px; max-width: 500px; margin-left: auto; margin-right: auto;">
-          Browse, filter, and buy automation engines, skills, templates, and agents. Deploy in minutes.
-        </p>
+
+        <!-- SEARCH & FILTER CONTROLS -->
+        <div style="max-width: 900px; margin: 0 auto 36px;">
+          <!-- Search Bar -->
+          <div style="position:relative; margin-bottom: 20px;">
+            <input type="text" id="marketSearch" class="form-input" placeholder="Search engines, skills, templates, workflows (e.g. 'outbound', 'waterfall', 'PAS', 'inbound')..." style="padding-left:44px; height:50px; font-size:1rem; border-radius:var(--radius-pill);">
+            <svg style="position:absolute; left:16px; top:16px; color:var(--text-muted);" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div style="display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;" id="catFilters">
+            <button class="tab-btn active" data-filter="all">All Products (25)</button>
+            <button class="tab-btn" data-filter="outbound">Outbound PAE</button>
+            <button class="tab-btn" data-filter="inbound">Inbound Speed-to-Lead</button>
+            <button class="tab-btn" data-filter="revops">RevOps &amp; Intel</button>
+            <button class="tab-btn" data-filter="custom-skills">Skills Library</button>
+            <button class="tab-btn" data-filter="custom-templates">Templates</button>
+            <button class="tab-btn" data-filter="session">Live Sessions</button>
+            <button class="tab-btn" data-filter="builder">SaaS Plans</button>
+          </div>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="grid-3" id="productGrid" style="gap:24px;">
+          <!-- Loaded via dynamic script from data/products.json -->
+          <div style="grid-column: 1 / -1; text-align:center; padding:40px; color:var(--text-muted);">
+            Loading products catalog...
+          </div>
+        </div>
       </div>
     </section>
+  </main>
 
-    <!-- Marketplace Layout -->
-    <section style="padding: 0 0 clamp(60px, 8vw, 100px);">
-      <div class="marketplace-layout">
-
-        <!-- Filter Sidebar -->
-        <aside class="filter-sidebar">
-          <div class="filter-group">
-            <span class="filter-group-title">Search</span>
-            <input type="text" class="filter-search" id="marketplaceSearch" placeholder="Search packages…">
-          </div>
-
-          <div class="filter-group">
-            <span class="filter-group-title">Category</span>
-            <div class="filter-pills">
-              <button class="filter-pill active" data-category-filter="all">All</button>
-              <button class="filter-pill" data-category-filter="inbound">Inbound</button>
-              <button class="filter-pill" data-category-filter="outbound">Outbound</button>
-              <button class="filter-pill" data-category-filter="revops">Rev Ops</button>
-              <button class="filter-pill" data-category-filter="custom-skills">Skills</button>
-              <button class="filter-pill" data-category-filter="custom-templates">Templates</button>
-              <button class="filter-pill" data-category-filter="custom-agents">Agents</button>
-              <button class="filter-pill" data-category-filter="bundle">Bundles</button>
-              <button class="filter-pill" data-category-filter="session">Sessions</button>
-              <button class="filter-pill" data-category-filter="builder">Builder Plans</button>
-              <button class="filter-pill" data-category-filter="portal">Portal</button>
-            </div>
-          </div>
-
-          <div class="filter-group">
-            <span class="filter-group-title">Type</span>
-            <div class="filter-pills">
-              <button class="filter-pill active" data-type-filter="all">All</button>
-              <button class="filter-pill" data-type-filter="package">Packages</button>
-              <button class="filter-pill" data-type-filter="skill">Skills</button>
-              <button class="filter-pill" data-type-filter="template">Templates</button>
-              <button class="filter-pill" data-type-filter="agent">Agents</button>
-              <button class="filter-pill" data-type-filter="session">Sessions</button>
-              <button class="filter-pill" data-type-filter="bundle">Bundles</button>
-              <button class="filter-pill" data-type-filter="subscription">Subscriptions</button>
-            </div>
-          </div>
-
-          <div class="filter-group">
-            <span class="filter-group-title">Sort By</span>
-            <select class="filter-sort-select" id="marketplaceSort">
-              <option value="popular">Popular First</option>
-              <option value="price-asc">Price: Low → High</option>
-              <option value="price-desc">Price: High → Low</option>
-            </select>
-          </div>
-        </aside>
-
-        <!-- Product Grid -->
-        <div>
-          <div class="product-grid-header">
-            <span class="product-grid-count" id="resultCount">Loading…</span>
-          </div>
-          <div class="product-grid" id="marketplaceGrid">
-            <!-- Loaded dynamically by marketplace.js -->
-          </div>
-          <div id="marketplaceEmpty" style="display: none; text-align: center; padding: 60px 20px; color: var(--text-secondary);">
-            <p style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">No packages match those filters.</p>
-            <p style="font-size: 14px;">Try clearing a filter or searching for something else.</p>
-          </div>
-        </div>
-
+  <!-- PRODUCT QUICK VIEW MODAL -->
+  <div class="modal-backdrop" id="productModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalClose">&times;</button>
+      <div id="modalContent">
+        <!-- Injected via JavaScript -->
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border-hairline);">
-      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 800; color: var(--text-heading);">salesgency<span style="color: var(--text-muted);">®</span></span>
-          <span style="font-size: 12px; color: var(--text-dim); margin-left: 12px;">© 2026 SalesGency LLC</span>
-        </div>
-        <div style="display: flex; gap: 20px; font-size: 12px;">
-          <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms</a>
-          <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy</a>
-        </div>
-      </div>
-    </footer>
-
+    </div>
   </div>
 
-  <script src="assets/salesgency-interactive.js"></script>
-  <script src="assets/stripe-client.js"></script>
-  <script src="assets/marketplace.js"></script>
+  <!-- FOOTER -->
+  <footer class="sg-footer" style="border-top:1px solid var(--border-subtle); padding:64px 0 32px; background:#070A10;">
+    <div class="container">
+      <div class="footer-grid" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap:32px; margin-bottom:48px;">
+        <div class="footer-brand">
+          <a class="sgu-brand" href="index.html" style="margin-bottom:16px; display:inline-block;" aria-label="SalesGency Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="160" height="30" style="display:block;">
+              <defs>
+                <linearGradient id="sg-foot-grad-svg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00C2FF"/>
+                  <stop offset="100%" stop-color="#7C3AED"/>
+                </linearGradient>
+                <filter id="sg-foot-glow-svg" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g transform="translate(2, 4)">
+                <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(14,21,36,0.8)" stroke="url(#sg-foot-grad-svg)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M16,2 L16,16 L28,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <path d="M4,9 L16,16 L4,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <circle cx="16" cy="16" r="2.8" fill="#00C2FF" filter="url(#sg-foot-glow-svg)"/>
+                <circle cx="16" cy="2" r="1.4" fill="#00C2FF"/>
+                <circle cx="28" cy="9" r="1.4" fill="#7C3AED"/>
+                <circle cx="28" cy="23" r="1.4" fill="#7C3AED"/>
+                <circle cx="16" cy="30" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="23" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="9" r="1.4" fill="#00C2FF"/>
+              </g>
+              <g transform="translate(42, 28)">
+                <text font-family="Geist, Outfit, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">
+                  <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#00C2FF" filter="url(#sg-foot-glow-svg)" dx="1">.</tspan>
+                </text>
+              </g>
+            </svg>
+          </a>
+          <p style="font-size:0.9rem; color:var(--text-secondary); max-width:320px; line-height:1.6;">The sovereign GTM marketplace. Turnkey automation workflows, autonomous prompt skills, and custom revenue engineering.</p>
+        </div>
+        <div class="footer-col">
+          <h5 style="color:#FFFFFF; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Platform</h5>
+          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="app.html" style="color:var(--text-secondary); text-decoration:none;">Agent Console</a></li>
+            <li><a href="skills.html" style="color:var(--text-secondary); text-decoration:none;">Skills Library</a></li>
+
+            <li><a href="templates.html">Workflow Templates</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Agency</h5>
+          <ul class="footer-links">
+            <li><a href="agency.html">Agency Sprints</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="book.html">Book Build Session</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency Inc. All rights reserved.</div>
+        <div>100% Code &amp; Workflow Ownership Guarantee</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MARKETPLACE SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      let catalog = [];
+      const grid = document.getElementById('productGrid');
+      const searchInput = document.getElementById('marketSearch');
+      const catButtons = document.querySelectorAll('#catFilters .tab-btn');
+      const modal = document.getElementById('productModal');
+      const modalClose = document.getElementById('modalClose');
+      const modalContent = document.getElementById('modalContent');
+
+      // Check URL query parameters for category
+      const urlParams = new URLSearchParams(window.location.search);
+      let currentFilter = urlParams.get('category') || 'all';
+
+      // Set active button
+      catButtons.forEach(btn => {
+        if (btn.dataset.filter === currentFilter) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      try {
+        const res = await fetch('data/products.json');
+        catalog = await res.json();
+        renderProducts();
+      } catch (err) {
+        console.error('Failed to load products:', err);
+        grid.innerHTML = '<div style="grid-column:1/-1; color:#F43F5E;">Failed to load catalog data.</div>';
+      }
+
+      function formatPrice(p) {
+        if (p.price === 0) return 'Free Download';
+        const formatted = '$' + (p.price / 100).toLocaleString('en-US');
+        if (p.type === 'subscription') return formatted + '/mo';
+        return formatted;
+      }
+
+      function getBadge(p) {
+        if (p.badge) return `<span class="badge badge-cyan">${p.badge}</span>`;
+        if (p.popular) return `<span class="badge badge-violet">Popular</span>`;
+        if (p.type === 'skill') return `<span class="badge badge-emerald">Open Skill</span>`;
+        if (p.type === 'template') return `<span class="badge badge-cyan">n8n Template</span>`;
+        if (p.type === 'session') return `<span class="badge badge-amber">Live 1-on-1</span>`;
+        return `<span class="badge">${p.type}</span>`;
+      }
+
+      function renderProducts() {
+        const query = (searchInput.value || '').toLowerCase().trim();
+        const filtered = catalog.filter(p => {
+          const matchCat = currentFilter === 'all' || p.category === currentFilter || (currentFilter === 'custom-templates' && (p.category === 'custom-templates' || p.type === 'template'));
+          const matchQuery = !query || 
+            p.name.toLowerCase().includes(query) || 
+            (p.tagline && p.tagline.toLowerCase().includes(query)) ||
+            (p.description && p.description.toLowerCase().includes(query)) ||
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(query)));
+          return matchCat && matchQuery;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--text-muted);"><h3>No products match your search</h3><p>Try clearing filters or search terms.</p></div>';
+          return;
+        }
+
+        grid.innerHTML = filtered.map(p => `
+          <div class="card-glass card-glow-cyan" style="display:flex; flex-direction:column; justify-content:space-between; padding:28px;">
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; gap:8px;">
+                ${getBadge(p)}
+                <span style="font-family:var(--font-mono); font-size:1.1rem; font-weight:700; color:#00C2FF;">${formatPrice(p)}</span>
+              </div>
+              <h3 style="font-size:1.2rem; margin-bottom:8px; line-height:1.3;">${p.name}</h3>
+              <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px; line-height:1.5;">${p.tagline || p.description.slice(0, 110) + '...'}</p>
+              
+              ${p.features && p.features.length ? `
+                <div style="border-top:1px solid var(--border-subtle); padding-top:14px; margin-bottom:18px;">
+                  <div style="font-size:0.75rem; font-family:var(--font-mono); text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;">Highlights:</div>
+                  <ul style="list-style:none; display:flex; flex-direction:column; gap:6px; font-size:0.82rem; color:var(--text-secondary);">
+                    ${p.features.slice(0, 3).map(f => `<li style="display:flex; gap:6px;"><span style="color:#10B981;">✓</span> <span>${f}</span></li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            </div>
+
+            <div style="display:flex; gap:8px; margin-top:10px;">
+              <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="openProductModal('${p.id}')">Inspect</button>
+              ${p.price === 0 || p.type === 'skill' || p.type === 'template' ? `
+                <a href="${p.type === 'skill' ? 'skills.html' : 'templates.html'}" class="btn btn-primary btn-sm" style="flex:1;">Get Free</a>
+              ` : `
+                <a href="book.html?product=${p.id}" class="btn btn-primary btn-sm" style="flex:1;">Deploy</a>
+              `}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Filter clicks
+      catButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          catButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.dataset.filter;
+          renderProducts();
+        });
+      });
+
+      // Search input
+      searchInput.addEventListener('input', renderProducts);
+
+      // Modal open function
+      window.openProductModal = function (id) {
+        const p = catalog.find(x => x.id === id);
+        if (!p) return;
+
+        modalContent.innerHTML = `
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-right:30px;">
+            ${getBadge(p)}
+            <span style="font-family:var(--font-mono); font-size:1.4rem; font-weight:800; color:#00C2FF;">${formatPrice(p)}</span>
+          </div>
+          <h2 style="font-size:1.6rem; margin-bottom:10px;">${p.name}</h2>
+          <p style="font-size:1rem; color:var(--text-secondary); margin-bottom:24px;">${p.description}</p>
+          
+          ${p.features && p.features.length ? `
+            <div style="margin-bottom:24px;">
+              <h4 style="margin-bottom:12px; font-size:0.95rem; text-transform:uppercase; font-family:var(--font-mono); color:#A5B4FC;">Full Feature Architecture:</h4>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9rem;">
+                ${p.features.map(f => `<li style="display:flex; gap:8px;"><span style="color:#10B981; font-weight:bold;">✓</span> <span style="color:var(--text-main);">${f}</span></li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          ${p.includes && p.includes.length ? `
+            <div style="margin-bottom:28px; background:rgba(0,0,0,0.4); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:16px;">
+              <div style="font-size:0.8rem; font-family:var(--font-mono); text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;">Included Deliverable Files:</div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                ${p.includes.map(inc => `<span class="badge" style="font-family:var(--font-mono); background:rgba(255,255,255,0.06); color:#A5B4FC;">${inc}</span>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          <div style="display:flex; gap:12px; justify-content:flex-end;">
+            <button class="btn btn-ghost" onclick="document.getElementById('productModal').classList.remove('active')">Close</button>
+            <a href="book.html?product=${p.id}" class="btn btn-primary">Proceed with Setup &rarr;</a>
+          </div>
+        `;
+        modal.classList.add('active');
+      };
+
+      modalClose.addEventListener('click', () => modal.classList.remove('active'));
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+    });
+  </script>
+
 </body>
 </html>

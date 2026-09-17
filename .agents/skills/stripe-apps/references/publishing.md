@@ -1,4 +1,4 @@
-# Publishing — versioning, releases, test vs live mode, marketplace
+# Publishing - versioning, releases, test vs live mode, marketplace
 
 ## Publishing
 
@@ -29,16 +29,16 @@ name: My App
 
 Use semantic versioning:
 
-- `1.0.0` — initial release
-- `1.0.1` — bug fix
-- `1.1.0` — new feature (backward compatible)
-- `2.0.0` — breaking change or major feature
+- `1.0.0` - initial release
+- `1.0.1` - bug fix
+- `1.1.0` - new feature (backward compatible)
+- `2.0.0` - breaking change or major feature
 
 **Rules:**
 
-- Versions must be uploaded in order — if you upload `2.0.0` before `1.0.0`, `2.0.0` won’t be available for release
+- Versions must be uploaded in order - if you upload `2.0.0` before `1.0.0`, `2.0.0` won’t be available for release
 - You can have multiple uploaded versions; you choose which one to install
-- Stripe auto-upgrades installed users to the latest release — they don’t need to do anything **unless** you changed permissions
+- Stripe auto-upgrades installed users to the latest release - they don’t need to do anything **unless** you changed permissions
 
 ## Upload and release workflow
 
@@ -58,7 +58,7 @@ This is a common source of bugs. When you add new permissions:
 1. Update `stripe-app.yaml` with the new permissions
 2. Bump the version and upload
 3. Existing users are notified by email
-4. The **“Review Permissions”** button appears — but only on the **Apps workload page** ([dashboard.stripe.com/apps](https://dashboard.stripe.com/apps)), **not on the app itself**
+4. The **“Review Permissions”** button appears - but only on the **Apps workload page** ([dashboard.stripe.com/apps](https://dashboard.stripe.com/apps)), **not on the app itself**
 5. The app returns an **invalid-request error** for the new permissions until the user clicks “Review Permissions” and re-authorizes
 
 **Always warn users about this step** when you change permissions. Many users miss the notification and think the app is broken.
@@ -67,7 +67,7 @@ This is a common source of bugs. When you add new permissions:
 
 ## Publishing to the Stripe Apps Marketplace
 
-For public apps — making your app available to all Stripe users.
+For public apps - making your app available to all Stripe users.
 
 ### Requirements
 
@@ -121,7 +121,7 @@ Your app has been uploaded to version 0.0.1.
 
 **Debugging steps when upload fails:**
 
-1. Read the full error message — it usually says exactly what’s wrong
+1. Read the full error message - it usually says exactly what’s wrong
 2. Run `pnpm build` to check for TypeScript/build errors locally
 3. Validate your stripe-app.yaml has all required fields (id, version, name, declarations)
 4. Check that file paths match (ui/src/views/App.tsx, not a renamed file)
@@ -133,7 +133,7 @@ Sandboxes provide isolated environments for safe app development and testing.
 
 **Benefits of using Sandboxes:**
 
-- Isolated from your live account — test destructive operations safely
+- Isolated from your live account - test destructive operations safely
 - Each sandbox has its own app installation and signing secrets
 - Useful for testing onboarding flows, uninstall/reinstall cycles, and permission changes
 

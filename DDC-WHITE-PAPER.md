@@ -28,7 +28,7 @@ Three failures repeat:
 2. **No ordered artifacts.** Intent, jobs, Now/Next/Later, and a PRD never exist as versioned files.
 3. **No lock on build.** Code starts before quality, legal, or architecture can say no.
 
-DDC exists so a studio, agency, or product company can run the same cycle by hand in Asana or by agent in Cursor, Claude, Codex, Hermes, OpenClaw, or Perplexity — and get the same shape of output.
+DDC exists so a studio, agency, or product company can run the same cycle by hand in Asana or by agent in Cursor, Claude, Codex, Hermes, OpenClaw, or Perplexity - and get the same shape of output.
 
 ---
 
@@ -39,7 +39,7 @@ DDC is four things that must stay together:
 | Layer | Role |
 |---|---|
 | **Cycle** | Nine operator stages: Intake → Documentation → Scaffolding → Scripts → Connecting → Deploying → Testing → Refining → Maintaining |
-| **PAL** | Parse, Ambiguity Scan, Latent Intent, Expand, Compile — thinking before typing |
+| **PAL** | Parse, Ambiguity Scan, Latent Intent, Expand, Compile - thinking before typing |
 | **ROSTR** | Orchestrated artifacts: intent → evidence → JTBD → NPAO → instruction pack → PRD → quality |
 | **Runtime** | A state machine that will not advance if a gate fails |
 
@@ -79,7 +79,7 @@ Education mode defaults **on**. It may be turned off. Each stage below is writte
 
 1. PAL Parse / Ambiguity / Latent / Expand / Compile
 2. Intent spec (fence and non-goals)
-3. Evidence ledger and **resource map** (three category leaders; visual, IA, SEO, trust, speed scores — “is this Upwork-level?” becomes a number)
+3. Evidence ledger and **resource map** (three category leaders; visual, IA, SEO, trust, speed scores - “is this Upwork-level?” becomes a number)
 4. JTBD
 5. NPAO (Now / Next / Later / Out)
 6. Stories, IA, sitemap, flows
@@ -170,7 +170,7 @@ Messaging psychology is bounded: clarity, proof, specific promise, one primary a
 ## 7. Taste, UI library, resource map, SEO
 
 - **Taste Skill** (`design-taste-frontend`) is the anti-slop gate.
-- **UI template library:** landing, OAuth, pricing, checkout, app shell, chat, directory, gallery — same tokens, different adapters per `site_type`.
+- **UI template library:** landing, OAuth, pricing, checkout, app shell, chat, directory, gallery - same tokens, different adapters per `site_type`.
 - **Resource map:** three live peers per type; scores for visual, information architecture, SEO (title, H1, intent match, speed), trust (legal, proof), and job completion.
 - Quality question example: “Is my freelance site the same level as Upwork?” Answer with a scored gap, not a compliment.
 

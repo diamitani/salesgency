@@ -1,4 +1,4 @@
-# Backend — when and how to add server-side logic
+# Backend - when and how to add server-side logic
 
 ## When you need a backend
 
@@ -13,7 +13,7 @@ You need a backend if your app needs to:
 **You don’t need a backend if:**
 
 - Your app only reads and displays Stripe data (use the SDK client directly in the UI)
-- You only need to store a small amount of sensitive data — use the Secret Store API instead
+- You only need to store a small amount of sensitive data - use the Secret Store API instead
 
 ## Canonical documentation
 
@@ -34,9 +34,9 @@ Your app’s `stripe_api_access_type` controls how the backend authenticates. Se
 
 ### CORS configuration
 
-CORS (`Access-Control-Allow-Origin: *`) is needed ONLY on endpoints called by the UI extension. The UI runs in a sandboxed iframe with a `null` origin — specific origin allowlisting will not work.
+CORS (`Access-Control-Allow-Origin: *`) is needed ONLY on endpoints called by the UI extension. The UI runs in a sandboxed iframe with a `null` origin - specific origin allowlisting will not work.
 
-Webhook endpoints do NOT need CORS — they receive requests from Stripe’s servers, not from the browser.
+Webhook endpoints do NOT need CORS - they receive requests from Stripe’s servers, not from the browser.
 
 ### fetchStripeSignature verification
 
@@ -57,7 +57,7 @@ Webhook setup depends on your app’s distribution and auth type:
 | --- | --- |
 | Private (your account only) | ONE standard webhook endpoint |
 | Public with platform keys | ONE webhook with “Listen to events on Connected accounts” enabled |
-| Public with restricted API keys | Can’t use Connect webhook fanout — each merchant manages their own webhooks |
+| Public with restricted API keys | Can’t use Connect webhook fanout - each merchant manages their own webhooks |
 
 The `event_read` permission MUST be declared in your manifest, plus read permissions for each event type you want to receive.
 
@@ -67,7 +67,7 @@ For firewall allowlisting of inbound webhook traffic, see https://docs.stripe.co
 
 ## Secret Store API
 
-**Plain-language:** “Stripe has a built-in secure place to store passwords, tokens, and API keys for your app — you don’t need to build your own database for secrets.”
+**Plain-language:** “Stripe has a built-in secure place to store passwords, tokens, and API keys for your app - you don’t need to build your own database for secrets.”
 
 ### Two scopes
 

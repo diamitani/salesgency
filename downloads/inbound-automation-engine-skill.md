@@ -6,7 +6,7 @@ author: "Patrick Diamitani (SalesGency®)"
 compatibility: ["Claude 3.5 Sonnet", "GPT-4o", "Gemini 1.5 Pro", "Cursor", "Antigravity", "n8n"]
 ---
 
-# Inbound Automation Engine (IAE) — Architecture & Prompt Spec
+# Inbound Automation Engine (IAE) - Architecture & Prompt Spec
 
 Use this skill when designing, compiling, or executing sub-minute inbound speed-to-lead automation pipelines for high-velocity B2B revenue teams.
 

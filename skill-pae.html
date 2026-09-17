@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prospect Automation Engine (PAE) - SalesGency Skill</title>
+  <meta name="description" content="PAE is the canonical 5-pillar, 9-node autonomous outbound prospecting skill for n8n, HubSpot, and Clay. Free download & specification.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/sg-design-system.css">
+  <link rel="stylesheet" href="assets/unified.css">
+  <script src="assets/unified-nav.js" defer></script>
+</head>
+<body>
+
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="section section-hero" style="padding-top:104px; padding-bottom:48px;">
+      <div class="container">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span>Flagship Skill</span>
+        </div>
+        <h1 class="section-title">Prospect Automation Engine <br><span class="text-gradient">(PAE) Architecture</span></h1>
+        <p class="lede" style="margin:20px auto 32px; max-width: 620px;">
+          Autonomous 5-pillar outbound pipeline pulling high-intent buyers, shielding CRM collisions, and drafting verified PAS outreach.
+        </p>
+
+
+        <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:48px;">
+          <a class="btn btn-primary btn-lg" href="downloads/prospect-automation-engine-skill.md" download>Download Skill (.md)</a>
+          <a class="btn btn-secondary btn-lg" href="downloads/prospect-automation-engine.json" download>Download n8n Blueprint (.json)</a>
+          <a class="btn btn-ghost btn-lg" href="app.html">Test in Agent Console &rarr;</a>
+        </div>
+
+        <div class="grid-4" style="max-width:1000px; margin:0 auto; text-align:left;">
+          <div class="card-glass" style="padding:20px;">
+            <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:800; color:#0284C7;">5 Pillars</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Unified Outbound Graph</div>
+          </div>
+          <div class="card-glass" style="padding:20px;">
+            <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:800; color:#10B981;">9 Nodes</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Deterministic n8n Flow</div>
+          </div>
+          <div class="card-glass" style="padding:20px;">
+            <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:800; color:#7C3AED;">0 Collisions</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">CRM Dedupe Shield</div>
+          </div>
+          <div class="card-glass" style="padding:20px;">
+            <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:800; color:#F59E0B;">&lt; 85 Words</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">AI PAS Copywriting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 PILLARS DETAILED -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">The 5 Core Pillars</div>
+          <h2 class="section-title">Engineered For Zero Waste &amp; High Reply Rates</h2>
+          <p class="section-subtitle">Every execution walks 5 sequential gates designed to protect domain reputation and maximize executive engagement.</p>
+        </div>
+
+        <div class="grid-3" style="gap:24px;">
+          <div class="card-glass card-glow-cyan">
+            <span class="badge badge-cyan" style="margin-bottom:12px;">Pillar 01</span>
+            <h3>Trigger &amp; Ingest</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:14px;">
+              Pulls intent-based accounts triggered by buying signals (funding announcements, hiring surges, technology adoption) instead of stale purchased lists.
+            </p>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#0284C7;">Tech: Webhook / Factors.ai / Apollo API</div>
+          </div>
+
+          <div class="card-glass card-glow-violet">
+            <span class="badge badge-emerald" style="margin-bottom:12px;">Pillar 02</span>
+            <h3>CRM Dedupe Shield</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:14px;">
+              Queries your CRM for open opportunities, recent touches, competitor domains, and active customers. Automatically halts if a conflict exists.
+            </p>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#10B981;">Tech: HubSpot &amp; Salesforce API Search</div>
+          </div>
+
+          <div class="card-glass card-glow-cyan">
+            <span class="badge badge-violet" style="margin-bottom:12px;">Pillar 03</span>
+            <h3>Waterfall Reveal</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:14px;">
+              Cascading multi-provider waterfall (Clay &rarr; Apollo &rarr; ZoomInfo) with live SMTP deliverability verification before a record enters a sequence.
+            </p>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#7C3AED;">Tech: Clay HTTP Node / MillionVerifier</div>
+          </div>
+
+          <div class="card-glass card-glow-violet">
+            <span class="badge badge-amber" style="margin-bottom:12px;">Pillar 04</span>
+            <h3>AI PAS Copywriter</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:14px;">
+              Researches company pain points and crafts bespoke Problem-Agitate-Solve emails under 85 words with zero generic buzzwords.
+            </p>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#F59E0B;">Tech: Claude 3.5 Sonnet / GPT-4o</div>
+          </div>
+
+          <div class="card-glass card-glow-cyan">
+            <span class="badge badge-cyan" style="margin-bottom:12px;">Pillar 05</span>
+            <h3>Sequencer &amp; Ledger</h3>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:14px;">
+              Staggered sequencer enrollment across secondary inboxes with volume throttling, write-back to CRM, and complete immutable run telemetry.
+            </p>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#0284C7;">Tech: Smartlead / Instantly / SQL Ledger</div>
+          </div>
+
+          <div class="card-glass" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:rgba(0,194,255,0.04); border-color:var(--cyan-border);">
+            <h4 style="margin-bottom:8px;">Ready to Deploy?</h4>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">Download the free open-source skill or have us install it in a 2-week sprint.</p>
+            <a class="btn btn-primary btn-sm" href="downloads/prospect-automation-engine-skill.md" download>Download Skill</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9-NODE WORKFLOW VISUALIZER -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Executable Node Architecture</div>
+          <h2 class="section-title">The 9-Node n8n Blueprint</h2>
+          <p class="section-subtitle">Every node in the graph is isolated with catch-error handlers and idempotency keys.</p>
+        </div>
+
+        <div class="code-window" style="margin-bottom:32px;">
+          <div class="code-header">
+            <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+            <div class="code-title">Prospect Automation Engine - Template.json (9 Nodes)</div>
+          </div>
+          <pre class="code-content" style="max-height:360px;">
+1. [Webhook: Trigger Ingest] -> Reads buying intent JSON payload
+2. [Code: Normalize Domain] -> Cleans URL and strips protocols
+3. [HubSpot: Query Company] -> Checks active deals, exclusions & rep owners
+4. [IF: Dedupe Shield Gate] -> Evaluates collision flag (True = HALT, False = PROCEED)
+5. [HTTP: Clay Contact Waterfall] -> Fetches VP/Director level decision-makers
+6. [HTTP: Live SMTP Verifier] -> Validates deliverability score (>95%)
+7. [Anthropic: PAS Copywriter] -> Crafts sub-85 word email draft from pain-point synthesis
+8. [HubSpot: Writeback & Review Gate] -> Logs note & hypothesis to CRM
+9. [Smartlead: Sequence Enroll] -> Staggered sequence launch with inbox load-balancing</pre>
+        </div>
+
+        <div style="text-align:center;">
+          <a class="btn btn-primary" href="downloads/prospect-automation-engine.json" download>Download n8n JSON Blueprint</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="sg-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="sgu-brand" href="index.html" style="margin-bottom:16px; display:inline-block;" aria-label="SalesGency Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="160" height="30" style="display:block;">
+              <defs>
+                <linearGradient id="sg-foot-grad-svg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00C2FF"/>
+                  <stop offset="100%" stop-color="#7C3AED"/>
+                </linearGradient>
+                <filter id="sg-foot-glow-svg" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g transform="translate(2, 4)">
+                <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(14,21,36,0.8)" stroke="url(#sg-foot-grad-svg)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M16,2 L16,16 L28,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <path d="M4,9 L16,16 L4,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <circle cx="16" cy="16" r="2.8" fill="#00C2FF" filter="url(#sg-foot-glow-svg)"/>
+                <circle cx="16" cy="2" r="1.4" fill="#00C2FF"/>
+                <circle cx="28" cy="9" r="1.4" fill="#7C3AED"/>
+                <circle cx="28" cy="23" r="1.4" fill="#7C3AED"/>
+                <circle cx="16" cy="30" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="23" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="9" r="1.4" fill="#00C2FF"/>
+              </g>
+              <g transform="translate(42, 28)">
+                <text font-family="Geist, Outfit, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">
+                  <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#00C2FF" filter="url(#sg-foot-glow-svg)" dx="1">.</tspan>
+                </text>
+              </g>
+            </svg>
+          </a>
+          <p>The Prospect Automation Engine (PAE) production skill specification.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="app.html">Agent Console</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="skills.html">Skills Library</a></li>
+            <li><a href="templates.html">Templates</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Agency</h5>
+          <ul class="footer-links">
+            <li><a href="agency.html">Agency Sprints</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="book.html">Book Build Session</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency Inc. All rights reserved.</div>
+        <div>Open Sovereign GTM Skill</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

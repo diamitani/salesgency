@@ -1,4 +1,4 @@
-# DDC Stage: Architecture & Well-Architected Framework (WAF) — v1
+# DDC Stage: Architecture & Well-Architected Framework (WAF) - v1
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `architecture`  

@@ -1,4 +1,4 @@
-# DDC Intake — v1 (Immutable)
+# DDC Intake - v1 (Immutable)
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Timestamp:** 2026-09-10T22:19:00-05:00  
@@ -24,14 +24,14 @@
 
 ## 2. Inferred Capabilities & Scope Options
 We can engineer this at multiple levels through the DDC roadmap:
-1. **Option A — Full-Stack AI Prompt-to-App SaaS Platform:**
+1. **Option A - Full-Stack AI Prompt-to-App SaaS Platform:**
    - Interactive prompt input bar with instant AI streaming generation.
    - Dynamic layout & component composer with code export & live sandbox.
    - Stripe recurring billing ($49/mo Pro, $149/mo Custom), user authentication, token metering, and cloud project saving.
-2. **Option B — Bespoke High-Converting Landing Page / Agency Funnel:**
+2. **Option B - Bespoke High-Converting Landing Page / Agency Funnel:**
    - Pixel-perfect, ultra-fast implementation of this exact aesthetic (dark mode, glassmorphism, micro-animations, interactive process timeline, dynamic pricing cards).
    - Hooked up to Salesgency's existing lead capture, Stripe checkout session endpoints, and n8n autonomous webhook triggers.
-3. **Option C — Component / Template Engine for Salesgency Suite:**
+3. **Option C - Component / Template Engine for Salesgency Suite:**
    - Integrate this as a reusable template within the Salesgency marketplace/templates directory for rapid deployment across client projects.
 
 ---

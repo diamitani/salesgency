@@ -1,4 +1,4 @@
-# DDC Stage: Quality Plan & Build Unlock — v1
+# DDC Stage: Quality Plan & Build Unlock - v1
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `quality_plan`  

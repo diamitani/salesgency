@@ -1,4 +1,4 @@
-# DDC Stage: Design System & Taste Specification — v1
+# DDC Stage: Design System & Taste Specification - v1
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `design_system`  

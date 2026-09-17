@@ -14,7 +14,7 @@
     },
     {
       id: 'teamSize',
-      bot: "First — how many sales reps are on your team?",
+      bot: "First - how many sales reps are on your team?",
       type: 'chips',
       options: ['1–5', '6–15', '16–50', '50+']
     },
@@ -45,7 +45,7 @@
     },
     {
       id: 'recommendation',
-      bot: null, // Dynamic — set by generateRecommendation()
+      bot: null, // Dynamic - set by generateRecommendation()
       type: 'recommendation'
     },
     {

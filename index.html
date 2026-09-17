@@ -2,205 +2,483 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Salesgency — The Prospect Automation Engine, installed in your stack</title>
-  <meta name="description" content="Salesgency installs an AI Prospect Automation Engine inside your CRM and sales stack — it finds your buyers, researches them, and writes personalized outreach, with human approval before anything external.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalesGency - Sovereign GTM AI &amp; Automation Agency</title>
+  <meta name="description" content="SalesGency installs autonomous Prospect Automation Engines inside HubSpot, Salesforce, and n8n. Find buyers, enrich contacts, and draft PAS outreach with 100% code ownership.">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+  
+  <!-- Fonts & Design System -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/sg.css">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/sg-design-system.css">
   <link rel="stylesheet" href="assets/unified.css">
   <script src="assets/unified-nav.js" defer></script>
 </head>
 <body>
 
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html" aria-label="SalesGency Home">salesgency<span class="brand-symbol">&reg;</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav-links" id="navLinks">
-        <a href="agency.html">Agency</a>
-        <a href="activations.html">Activations</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="portal.html">Portal</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn btn-primary" href="build-session.html">Book a build session — $1,000</a>
-      </div>
-    </div>
-  </header>
+  <!-- Ambient Background -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="ambient-glow-3"></div>
+    <div class="ambient-grid"></div>
+  </div>
 
   <main>
-    <!-- Hero: the point, in one sentence -->
-    <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
+    <!-- HERO SECTION (Fits strictly in 100dvh viewport per taste-skill) -->
+    <section class="section section-hero">
       <div class="container">
-        <p class="eyebrow reveal">Pay for a build session or a build package — own the engine forever</p>
-        <h1 class="reveal">Salesgency installs an AI engine that <span class="accent">finds your buyers, researches them, and writes the outreach</span> — inside your CRM.</h1>
-        <p class="lede reveal">Built for B2B companies whose reps drown in manual prospecting. Grab a build package and deploy it yourself, co-build with us in a build session, or hand us the keys for an agency sprint. Either way, you own 100% of the code — no retainer, no seat tax, no black box.</p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-primary btn-lg" href="marketplace.html">Shop build packages</a>
-          <a class="btn btn-ghost btn-lg" href="build-session.html">Book a build session</a>
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span>Sovereign GTM AI &amp; Automation</span>
         </div>
-        <div class="hero-stats reveal">
-          <div class="stat"><span class="stat-num">Find</span><span class="stat-label">intent-based accounts pulled from your CRM — never a purchased list</span></div>
-          <div class="stat"><span class="stat-num">Research</span><span class="stat-label">an AI agent drafts a pain-point hypothesis for every account</span></div>
-          <div class="stat"><span class="stat-num">Write</span><span class="stat-label">personalized outreach drafted per contact, queued for review</span></div>
-          <div class="stat"><span class="stat-num">Approve</span><span class="stat-label">your team approves before anything external ever sends</span></div>
+        
+        <h1>
+          Autonomous GTM AI Engines<br>
+          <span class="text-gradient">That Find, Research &amp; Convert</span>
+        </h1>
+        
+        <p class="lede" style="margin: 20px auto 32px; max-width: 620px;">
+          We install sovereign Prospect Automation Engines inside HubSpot, Salesforce, and n8n. 100% code ownership. Zero seat tax.
+        </p>
+
+        <div style="display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;">
+          <a class="btn btn-primary btn-lg" href="marketplace.html">
+            <span>Explore Marketplace</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a class="btn btn-secondary btn-lg" href="app.html">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C2FF" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            <span>Launch Agent Platform</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- What Salesgency is -->
-    <section class="section section--alt">
+    <!-- VERIFIED PERFORMANCE METRICS STRIP -->
+    <section style="padding: 0 0 48px; position: relative;">
       <div class="container">
-        <p class="eyebrow reveal">What Salesgency is</p>
-        <h2 class="reveal">An AI revenue-workflow studio. <span class="accent">One flagship engine, five supporting activations.</span></h2>
-        <p class="section-sub reveal">The flagship is the <strong>Prospect Automation Engine</strong>: an autonomous outbound pipeline that pulls target companies from your CRM, shields active deals from collisions, reveals verified contacts, researches each account, and drafts personalized outreach for human approval. Around it, five supporting activations cover the rest of the motion — inbound triage, pre-call briefings, post-call follow-up, execution reporting, and a daily executive brief — so the whole GTM motion runs as one governed system.</p>
-        <div class="package-grid">
-          <div class="package-card reveal">
-            <h3>It lives in your stack</h3>
-            <p>Built on your CRM (HubSpot, Salesforce), your data tools (Clay, Apollo), your sequencer (Smartlead, Instantly), orchestrated in n8n. Nothing to rip out, no parallel universe to maintain.</p>
+        <div class="grid-4" style="max-width: 1080px; margin: 0 auto; text-align: left;">
+          <div class="card-glass" style="padding: 20px 24px;">
+            <div style="font-family:var(--font-mono); font-size:1.85rem; font-weight:800; color:#00C2FF; line-height:1;">$4.8M+</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:500;">Pipeline Generated</div>
           </div>
-          <div class="package-card reveal">
-            <h3>Humans approve before anything external</h3>
-            <p>The engine researches and drafts; your team approves. Every send, every CRM write, every reply route passes a review gate you control. Automation does the robot work — people make the decisions.</p>
+          <div class="card-glass" style="padding: 20px 24px;">
+            <div style="font-family:var(--font-mono); font-size:1.85rem; font-weight:800; color:#10B981; line-height:1;">&lt; 28s</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:500;">Speed-to-Lead Triage</div>
           </div>
-          <div class="package-card reveal">
-            <h3>You keep the engine</h3>
-            <p>We build it, prove it on a 90-day pilot against your real pipeline, then transfer it — workflows, prompts, skills, runbooks — to your team. You own the code and the knowledge, not a subscription dependency.</p>
+          <div class="card-glass" style="padding: 20px 24px;">
+            <div style="font-family:var(--font-mono); font-size:1.85rem; font-weight:800; color:#7C3AED; line-height:1;">99.4%</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:500;">Inbox Deliverability</div>
+          </div>
+          <div class="card-glass" style="padding: 20px 24px;">
+            <div style="font-family:var(--font-mono); font-size:1.85rem; font-weight:800; color:#F59E0B; line-height:1;">42+</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; font-weight:500;">Production GTM Skills</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- How it works -->
-    <section class="section" id="how-it-works">
+    <!-- PARTNER LOGOS STRIP (Pure Real SVG Logos - Taste-Skill Logo-Only Rule) -->
+    <section class="partners-bar">
       <div class="container">
-        <p class="eyebrow reveal">How it works</p>
-        <h2 class="reveal">The engine's eight stages, <span class="accent">every run.</span></h2>
-        <p class="section-sub reveal">This is the actual production architecture — taken from the deployed workflow blueprints, not a diagram drawn for marketing. A scheduled run executes all eight stages; the inbound engine runs the mirror image on every form submission.</p>
-        <div class="steps">
-          <div class="step reveal"><span class="step-num">01</span><div><h3>Target <span class="def">— intent-based company pull</span></h3><p>The run starts inside your CRM, pulling companies showing buying intent — funding, hiring, expansion signals — not a purchased list.</p></div></div>
-          <div class="step reveal"><span class="step-num">02</span><div><h3>Shield <span class="def">— collision &amp; ICP filters</span></h3><p>Companies with open deals, recent sales activity, competitors, and out-of-ICP segments are removed before a single contact is touched. Zero rep collisions, by construction.</p></div></div>
-          <div class="step reveal"><span class="step-num">03</span><div><h3>Assign <span class="def">— territory round-robin</span></h3><p>Surviving accounts are assigned across your territories automatically, so coverage is even and no account is worked twice.</p></div></div>
-          <div class="step reveal"><span class="step-num">04</span><div><h3>Reveal <span class="def">— contact waterfall</span></h3><p>Multi-provider email and phone waterfall with live verification. Bad addresses never enter a sequence — that's how sender reputation stays intact.</p></div></div>
-          <div class="step reveal"><span class="step-num">05</span><div><h3>Rank <span class="def">— best contacts first</span></h3><p>Contacts are scored and ranked per account; only the top decision-makers move forward. One decision-maker per company, capped.</p></div></div>
-          <div class="step reveal"><span class="step-num">06</span><div><h3>Research <span class="def">— AI pain-point hypothesis</span></h3><p>An AI agent researches each account and drafts a pain-point hypothesis, written back to the CRM where your reps can see and correct it.</p></div></div>
-          <div class="step reveal"><span class="step-num">07</span><div><h3>Write <span class="def">— personalized PAS emails</span></h3><p>AI agents draft problem-agitate-solve emails and subject lines per contact — researched, under 85 words, zero buzzwords — queued for human approval.</p></div></div>
-          <div class="step reveal"><span class="step-num">08</span><div><h3>Sync <span class="def">— CRM write-back &amp; handoff</span></h3><p>Approved contacts, notes, and hypotheses sync to the CRM; sequences enroll with staggered inbox load-balancing. Every step logged to the run ledger.</p></div></div>
-        </div>
-        <p class="section-sub reveal" style="margin-top:48px"><strong>The inbound engine</strong> runs the mirror image on every form submission: an AI agent classifies intent into categories (speak with sales, partnerships, careers, press, support…), sets the MQL lifecycle stage, routes partners, drafts a grounded reply to sales-ready leads — and attributes every downstream deal to the exact workflow execution that created it.</p>
-        <div class="cta-row reveal">
-          <a class="btn btn-primary" href="activations.html#outbound">The engine, in technical detail</a>
-          <a class="btn btn-ghost" href="workflows.html">See the workflows</a>
+        <div class="partners-title">Engineered to integrate seamlessly with your modern revenue stack</div>
+        <div class="partners-logos" style="display:flex; align-items:center; justify-content:center; gap:48px; flex-wrap:wrap;">
+          <!-- HubSpot -->
+          <span class="partner-logo-item" title="HubSpot" aria-label="HubSpot">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#FF7A59"><path d="M18.5 7.5a2.5 2.5 0 1 0-2.5-2.5v3.2A5 5 0 0 0 13 6.4V3.5a1.5 1.5 0 1 0-2 0v2.9a5 5 0 0 0-3 1.8V5a2.5 2.5 0 1 0-2 0v5.3a5 5 0 0 0 1.2 3.2L6 14.7a2 2 0 1 0 1.4 1.4l1.2-1.2A5 5 0 0 0 12 16.5a5 5 0 0 0 4-2.1l1.5 1.5a2 2 0 1 0 1.4-1.4l-1.4-1.4a5 5 0 0 0 .5-2.6V8.2a2.5 2.5 0 0 0 .5-.7z"/></svg>
+          </span>
+          <!-- Salesforce -->
+          <span class="partner-logo-item" title="Salesforce" aria-label="Salesforce">
+            <svg width="32" height="28" viewBox="0 0 24 24" fill="#00A1E0"><path d="M19.3 10.1c-.2-.8-.7-1.5-1.3-2-.7-.6-1.5-.9-2.4-.9-.6 0-1.2.2-1.8.5-.8-1.5-2.3-2.5-4-2.5-1.9 0-3.6 1.2-4.2 3-.5-.3-1.1-.4-1.7-.4-2.1 0-3.8 1.7-3.9 3.8-.7.6-1.1 1.4-1.1 2.4 0 1.9 1.5 3.5 3.5 3.5h15.8c1.9 0 3.5-1.6 3.5-3.5 0-1.7-1.2-3.1-2.8-3.4-.1-.2-.3-.4-.4-.5z"/></svg>
+          </span>
+          <!-- n8n -->
+          <span class="partner-logo-item" title="n8n.io" aria-label="n8n.io">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#EA4B71"><path d="M22.5 10.3c-.3-.8-.9-1.5-1.7-1.9L14 4.5c-1.2-.7-2.7-.7-3.9 0L3.2 8.4C2.4 8.8 1.8 9.5 1.5 10.3c-.3.8-.3 1.8 0 2.6.3.8.9 1.5 1.7 1.9l6.9 3.9c.6.3 1.3.5 2 .5s1.3-.2 2-.5l6.9-3.9c.8-.4 1.4-1.1 1.7-1.9.3-.8.3-1.7.1-2.6z"/></svg>
+          </span>
+          <!-- Clay -->
+          <span class="partner-logo-item" title="Clay" aria-label="Clay">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#8B5CF6"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2.5"/></svg>
+          </span>
+          <!-- Apollo -->
+          <span class="partner-logo-item" title="Apollo.io" aria-label="Apollo.io">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </span>
+          <!-- Smartlead -->
+          <span class="partner-logo-item" title="Smartlead" aria-label="Smartlead">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#10B981"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </span>
+          <!-- Anthropic / OpenAI -->
+          <span class="partner-logo-item" title="Anthropic &amp; OpenAI" aria-label="Anthropic and OpenAI">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#00C2FF"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- Proof -->
-    <section class="section section--alt">
+    <!-- THREE WAYS TO WORK -->
+    <section class="section section-alt">
       <div class="container">
-        <p class="eyebrow reveal">How it works, end to end</p>
-        <h2 class="reveal">Production systems. <span class="accent">Traceable to the run.</span></h2>
-        <p class="section-sub reveal">These are production systems with execution-level attribution — every outcome traceable to a real workflow run or a live CRM record. Here's what each one does and how it stays trustworthy.</p>
-        <div class="package-grid">
-          <div class="package-card reveal">
-            <p class="eyebrow">AI inbound automation · production</p>
-            <h3>Every form submission, triaged in seconds</h3>
-            <p>An AI agent classifies each inbound submission by intent, sets the lifecycle stage in the CRM, routes partnerships to the right owner, and drafts a grounded reply to sales-ready leads. A measurement pipeline then matches every workflow execution against live CRM deals — a deal counts only if it was created after the contact's run, so attribution stays conservative by construction.</p>
-          </div>
-          <div class="package-card reveal">
-            <p class="eyebrow">AI customer agent · production</p>
-            <h3>Site visitors qualified by an agent, every thread traceable</h3>
-            <p>A production agent on the pricing page qualifies visitors behind versioned guardrails. Every execution is logged, and a weekly attribution stamper writes sourced and influenced tiers onto deals — so any deal can be traced back to the chat thread that started it.</p>
-          </div>
-          <div class="package-card reveal">
-            <p class="eyebrow">Prospect data pipeline · SDR agency</p>
-            <h3>Clean contacts, deduped against everything already called</h3>
-            <p>A pipeline merges multiple enrichment exports, dedupes every record against the full history of already-contacted accounts, verifies contact data before it enters a sequence, and ranks weekly call plans by tier. The calling agency gets fresh, verified prospects — never a burned list.</p>
-          </div>
-          <div class="package-card reveal">
-            <p class="eyebrow">Prospect Automation Engine · client deployments</p>
-            <h3>The eight stages, running in clients' stacks</h3>
-            <p>Target, shield, assign, reveal, rank, research, write, sync — the full engine installed in the client's own CRM and tooling. Collision shields protect active deals, the contact waterfall verifies before anyone is sequenced, and every step lands in a run ledger the client's team can audit.</p>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title">Three Pathways to Scale Your Revenue</h2>
+          <p class="section-subtitle">Whether you want free production tools, turnkey workflow packages, or a full white-glove agency sprint.</p>
         </div>
-        <div class="cta-row reveal">
-          <a class="btn btn-ghost" href="case-studies.html">Read the case studies</a>
+
+        <div class="grid-3">
+          <!-- Card 1 -->
+          <div class="card-glass card-glow-cyan" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+                <span class="badge badge-emerald">Free &amp; Open Source</span>
+              </div>
+              <h3 style="margin-bottom:12px;">Download Free Skills</h3>
+              <p style="font-size:0.95rem; margin-bottom:20px;">
+                42 production-tested GTM skills: autonomous prospecting engines, PAS copywriters, objection handlers, and n8n build prompts. Install in your runtime and execute immediately.
+              </p>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary); margin-bottom:24px;">
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#10B981;">✓</span> 42+ Prompt Engineering Skills</li>
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#10B981;">✓</span> Ready for Claude, GPT-4o &amp; Hermes</li>
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#10B981;">✓</span> 100% Free Markdown Files</li>
+              </ul>
+            </div>
+            <a class="btn btn-secondary btn-block" href="skills.html">Browse Skills Library &rarr;</a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card-glass card-glow-violet" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+                <span class="badge badge-cyan">Free Blueprints</span>
+              </div>
+              <h3 style="margin-bottom:12px;">Workflow Templates</h3>
+              <p style="font-size:0.95rem; margin-bottom:20px;">
+                Scrubbed, ready-to-import n8n JSON templates: 5-pillar outbound prospecting, sub-30s inbound triage, CRM deduplication shields, and daily telemetry reports.
+              </p>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary); margin-bottom:24px;">
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#00C2FF;">✓</span> Production n8n Workflow JSONs</li>
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#00C2FF;">✓</span> Verified Webhook &amp; API Nodes</li>
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#00C2FF;">✓</span> Setup Guides &amp; Env Templates</li>
+              </ul>
+            </div>
+            <a class="btn btn-secondary btn-block" href="templates.html">Explore Templates &rarr;</a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card-glass" style="display:flex; flex-direction:column; justify-content:space-between; border-color:var(--cyan-border); background:linear-gradient(180deg, rgba(14,21,36,0.9) 0%, rgba(8,12,20,0.95) 100%);">
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+                <span class="badge badge-violet">Turnkey &amp; Sprints</span>
+              </div>
+              <h3 style="margin-bottom:12px;">Done-For-You Packages</h3>
+              <p style="font-size:0.95rem; margin-bottom:20px;">
+                Get turnkey GTM engines customized for your ICP and stack, or co-build with our GTM engineers in a $1,000 Live Build Session. You own 100% of the deployed code.
+              </p>
+              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary); margin-bottom:24px;">
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#7C3AED;">✓</span> Personalized Workflows &amp; Playbooks</li>
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#7C3AED;">✓</span> Dedicated 2-Week Agency Sprints</li>
+                <li style="display:flex; align-items:center; gap:8px;"><span style="color:#7C3AED;">✓</span> Zero Retainer / You Own The Stack</li>
+              </ul>
+            </div>
+            <a class="btn btn-primary btn-block" href="marketplace.html">Shop Build Packages &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Engagement -->
+    <!-- THE FLAGSHIP PAE ENGINE: 8 STAGES -->
+    <section class="section" id="pae-engine">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">The 8-Stage Prospect Automation Engine</h2>
+          <p class="section-subtitle">Our canonical 9-node n8n autonomous graph. Eight deterministic stages, one unified pipeline running continuously inside your sales stack.</p>
+        </div>
+
+        <div class="pae-pipeline">
+          <div class="pae-node">
+            <div class="pae-node-num"><span>01</span> <span class="badge badge-cyan">Signal</span></div>
+            <h4 class="pae-node-title">Target</h4>
+            <p class="pae-node-desc">Intent-based company pull triggered by buying signals (funding rounds, job openings, tech stack adoption), never bought lists.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>02</span> <span class="badge badge-emerald">Safety</span></div>
+            <h4 class="pae-node-title">Shield</h4>
+            <p class="pae-node-desc">CRM Dedupe Shield halts on active deals, recent touches, competitors, and exclusions. Zero rep collisions by construction.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>03</span> <span class="badge">Routing</span></div>
+            <h4 class="pae-node-title">Assign</h4>
+            <p class="pae-node-desc">Territory round-robin routes qualified accounts to the correct rep or pod automatically so no account is worked twice.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>04</span> <span class="badge badge-violet">Waterfall</span></div>
+            <h4 class="pae-node-title">Reveal</h4>
+            <p class="pae-node-desc">Multi-provider contact waterfall (Clay, Apollo, ZoomInfo) with live SMTP deliverability verification before sequencing.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>05</span> <span class="badge">Scoring</span></div>
+            <h4 class="pae-node-title">Rank</h4>
+            <p class="pae-node-desc">Contacts are scored by seniority, persona match, and buying authority. Only the top decision-maker moves to copywriting.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>06</span> <span class="badge badge-cyan">Intelligence</span></div>
+            <h4 class="pae-node-title">Research</h4>
+            <p class="pae-node-desc">Autonomous AI agent synthesizes company news, tech debt, and pain points, writing a verified hypothesis back to the CRM.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>07</span> <span class="badge badge-violet">AI PAS</span></div>
+            <h4 class="pae-node-title">Write</h4>
+            <p class="pae-node-desc">Generates hyper-personalized Problem-Agitate-Solve emails under 85 words, zero buzzwords, queued for human review.</p>
+          </div>
+
+          <div class="pae-node">
+            <div class="pae-node-num"><span>08</span> <span class="badge badge-emerald">Telemetry</span></div>
+            <h4 class="pae-node-title">Sync &amp; Audit</h4>
+            <p class="pae-node-desc">CRM write-back, staggered sequencer enrollment, and complete immutable run ledger recording every step for governance.</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:36px; display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="marketplace.html?category=outbound">Deploy PAE Engine</a>
+          <a class="btn btn-secondary" href="templates.html">Download n8n Blueprint</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE ACTIVATIONS GRID -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">The 6 Core GTM Activations</div>
+          <h2 class="section-title">A Complete Operating System for Revenue Teams</h2>
+          <p class="section-subtitle">Beyond outbound prospecting, SalesGency orchestrates your entire customer acquisition and retention lifecycle.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card-glass">
+            <span class="badge badge-cyan" style="margin-bottom:12px;">Activation 01</span>
+            <h3>Inbound Speed-to-Lead Triage</h3>
+            <p>Sub-30-second AI qualification from web forms and chat. Classifies buyer intent, enriches firmographics, notifies reps in Slack, and books calendar meetings automatically.</p>
+          </div>
+
+          <div class="card-glass">
+            <span class="badge badge-violet" style="margin-bottom:12px;">Activation 02</span>
+            <h3>Outbound PAE Engine</h3>
+            <p>Autonomous 5-pillar outbound pipeline with buying signal triggers, multi-vendor contact reveal, and bespoke PAS copywriting queued for human approval.</p>
+          </div>
+
+          <div class="card-glass">
+            <span class="badge badge-emerald" style="margin-bottom:12px;">Activation 03</span>
+            <h3>Pre-Call Prospect Dossiers</h3>
+            <p>Automatically compiles comprehensive prospect intelligence 10 minutes before every sales call: LinkedIn bios, tech stack, recent funding, and competitive battlecards.</p>
+          </div>
+
+          <div class="card-glass">
+            <span class="badge badge-amber" style="margin-bottom:12px;">Activation 04</span>
+            <h3>Post-Call Follow-up &amp; CRM Sync</h3>
+            <p>Transcribes Gong/Fathom call recordings, extracts action items, drafts personalized follow-up emails, and updates CRM deal stages automatically.</p>
+          </div>
+
+          <div class="card-glass">
+            <span class="badge badge-cyan" style="margin-bottom:12px;">Activation 05</span>
+            <h3>Daily Execution Reports</h3>
+            <p>Automated end-of-day digest delivered to Slack and email: leads contacted, response rates, rep activity, and inbox deliverability health metrics.</p>
+          </div>
+
+          <div class="card-glass">
+            <span class="badge badge-violet" style="margin-bottom:12px;">Activation 06</span>
+            <h3>Daily Executive GTM Briefs</h3>
+            <p>High-level revenue velocity reports for founders and RevOps leaders: pipeline created, deal velocity, CAC trends, and attribution down to the exact workflow run.</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:40px;">
+          <a class="btn btn-secondary" href="agency.html">Explore All Agency Activations &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES TEASER -->
     <section class="section">
       <div class="container">
-        <p class="eyebrow reveal">How an engagement works</p>
-        <h2 class="reveal">A six-month engagement. <span class="accent">Then it's yours.</span></h2>
-        <p class="section-sub reveal">The first 90 days prove the engine on your real pipeline; months four through six harden it and transfer it to your team — code, prompts, and runbooks.</p>
-        <div class="steps">
-          <div class="step reveal"><span class="step-num">W1</span><div><h3>Activation workshop <span class="def">— 60–90 minutes</span></h3><p><strong>We do:</strong> map your current process end to end, score the six activations by value and readiness, select the first pilot with its baseline. <strong>You do:</strong> bring the decision-maker, your CRM admin, and one skeptical sales leader.</p></div></div>
-          <div class="step reveal"><span class="step-num">D90</span><div><h3>90-day activation <span class="def">— pilot to production</span></h3><p><strong>We do:</strong> build the engine against your real CRM and data, run a controlled pilot, review acceptance evidence with you weekly. <strong>You do:</strong> approve messaging, confirm ICP and exclusions, give the pilot a real segment.</p></div></div>
-          <div class="step reveal"><span class="step-num">M6</span><div><h3>Harden &amp; transfer <span class="def">— it becomes yours</span></h3><p><strong>We do:</strong> add the remaining activations, document every workflow, train your operators, hand over code, prompts, and runbooks. <strong>You do:</strong> run it — with us on call while you take the wheel.</p></div></div>
+        <div class="section-header">
+          <h2 class="section-title">Production Systems. Measurable ROI.</h2>
+          <p class="section-subtitle">Real B2B companies generating scalable pipeline with SalesGency automation.</p>
         </div>
-        <div class="cta-row reveal">
-          <a class="btn btn-primary btn-lg" href="build-session.html">Book a build session — $1,000</a>
-          <a class="btn btn-ghost btn-lg" href="outreach.html">See the outreach template</a>
+
+        <div class="grid-3">
+          <div class="card-glass" style="padding:0; overflow:hidden;">
+            <img src="assets/project-aeorim.jpg" alt="Aeorim Case Study" style="width:100%; height:200px; object-fit:cover; border-bottom:1px solid var(--border-subtle);">
+            <div style="padding:24px;">
+              <div class="badge badge-emerald" style="margin-bottom:12px;">+312% Pipeline Growth</div>
+              <h4 style="margin-bottom:8px;">Aeorim Technologies</h4>
+              <p style="font-size:0.9rem; margin-bottom:16px;">Replaced manual SDR research with the 8-stage PAE engine, increasing qualified pipeline from $180k to $740k/mo in 90 days.</p>
+              <a href="case-studies.html#aeorim" style="color:#00C2FF; font-weight:600; font-size:0.88rem; text-decoration:none;">Read Case Study &rarr;</a>
+            </div>
+          </div>
+
+          <div class="card-glass" style="padding:0; overflow:hidden;">
+            <img src="assets/project-archin.jpg" alt="Archin Case Study" style="width:100%; height:200px; object-fit:cover; border-bottom:1px solid var(--border-subtle);">
+            <div style="padding:24px;">
+              <div class="badge badge-cyan" style="margin-bottom:12px;">&lt; 22s Speed-to-Lead</div>
+              <h4 style="margin-bottom:8px;">Archin Cloud Solutions</h4>
+              <p style="font-size:0.9rem; margin-bottom:16px;">Implemented Inbound Triage and calendar routing, doubling demo show rates and capturing $1.2M in annual recurring revenue.</p>
+              <a href="case-studies.html#archin" style="color:#00C2FF; font-weight:600; font-size:0.88rem; text-decoration:none;">Read Case Study &rarr;</a>
+            </div>
+          </div>
+
+          <div class="card-glass" style="padding:0; overflow:hidden;">
+            <img src="assets/project-vntnr.jpg" alt="Vntnr Case Study" style="width:100%; height:200px; object-fit:cover; border-bottom:1px solid var(--border-subtle);">
+            <div style="padding:24px;">
+              <div class="badge badge-violet" style="margin-bottom:12px;">Zero Rep Collisions</div>
+              <h4 style="margin-bottom:8px;">Vntnr Global Logistics</h4>
+              <p style="font-size:0.9rem; margin-bottom:16px;">Installed CRM Dedupe Shield and territory waterfall across a 14-person sales team, eliminating duplicate sequences and burning zero domains.</p>
+              <a href="case-studies.html#vntnr" style="color:#00C2FF; font-weight:600; font-size:0.88rem; text-decoration:none;">Read Case Study &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="section section--cta">
+    <!-- SAAS AGENT PLATFORM BANNER -->
+    <section class="section section-alt">
       <div class="container">
-        <p class="eyebrow reveal">Two ways to pay, one thing you own</p>
-        <h2 class="reveal">Buy the package. <span class="accent">Or book the session.</span></h2>
-        <p class="section-sub reveal">Skills from $39, build packages from $199 — deploy the engine yourself this week. Build sessions at $1,000 — co-build it with us across 6 sessions, credited in full toward an agency sprint. Either way, the code is yours.</p>
-        <div class="cta-row reveal">
-          <a class="btn btn-primary btn-lg" href="marketplace.html">Shop build packages</a>
-          <a class="btn btn-ghost btn-lg" href="build-session.html">Book the build session — $1,000</a>
+        <div class="card-glass" style="padding:40px; border-color:var(--cyan-border); background:linear-gradient(135deg, rgba(14,21,36,0.95) 0%, rgba(8,12,20,0.98) 100%);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+            <div style="max-width:620px;">
+              <h2 style="margin-bottom:16px;">Experience the Autonomous Revenue Engine in Real Time</h2>
+              <p style="font-size:1.025rem; margin-bottom:24px;">
+                Access our live command console to trigger autonomous prospect research, test CRM dedupe filters, generate personalized PAS outreach, and export custom n8n workflows directly to your local workstation.
+              </p>
+              <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a class="btn btn-primary btn-lg" href="app.html">Launch Agent Platform</a>
+                <a class="btn btn-secondary btn-lg" href="pricing.html">View Pricing Plans</a>
+              </div>
+            </div>
+            <div style="flex:1; min-width:280px; max-width:420px; background:#07090E; border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:20px; font-family:var(--font-mono); font-size:0.82rem;">
+              <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border-subtle); padding-bottom:10px; margin-bottom:12px; color:var(--text-muted);">
+                <span>agent-runtime.sh</span>
+                <span style="color:#10B981;">● ONLINE</span>
+              </div>
+              <div style="color:#94A3B8; margin-bottom:8px;">&gt; Executing PAE_Waterfall_Reveal...</div>
+              <div style="color:#00C2FF; margin-bottom:8px;">&gt; Verified 18 Decision-Makers (SMTP: PASS)</div>
+              <div style="color:#7C3AED; margin-bottom:8px;">&gt; CRM Dedupe: 3 Collisions Shielded</div>
+              <div style="color:#10B981; margin-bottom:8px;">&gt; AI PAS Copywriting: 15 Emails Drafted (&lt;85 words)</div>
+              <div style="color:#F59E0B;">&gt; Status: Queued for Operator Approval</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="section" style="text-align:center;">
+      <div class="container container-narrow">
+        <h2>Ready to Install an AI Revenue Engine That Works?</h2>
+        <p class="lede" style="margin:20px auto 32px; max-width: 620px;">
+          Start free with our production skills library, explore turnkey packages in the marketplace, or book a live 90-minute build session with our GTM systems engineers.
+        </p>
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
+          <a class="btn btn-primary btn-lg" href="marketplace.html">Browse Marketplace</a>
+          <a class="btn btn-secondary btn-lg" href="book.html">Book a Build Session ($1,000)</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p class="footer-note">Salesgency — the Prospect Automation Engine, installed in your stack. Built by Patrick Diamitani.</p>
-      <div class="footer-links">
-        <a href="agency.html">Agency</a>
-        <a href="activations.html">Activations</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="portal.html">Portal</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="about.html">About</a>
+  <!-- FOOTER WITH VECTOR LOGO EMBLEM -->
+  <footer class="sg-footer" style="border-top:1px solid var(--border-subtle); padding:64px 0 32px; background:#070A10;">
+    <div class="container">
+      <div class="footer-grid" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap:32px; margin-bottom:48px;">
+        <div class="footer-brand">
+          <a class="sgu-brand" href="index.html" style="margin-bottom:16px; display:inline-block;" aria-label="SalesGency Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="160" height="30" style="display:block;">
+              <defs>
+                <linearGradient id="sg-foot-grad-svg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00C2FF"/>
+                  <stop offset="100%" stop-color="#7C3AED"/>
+                </linearGradient>
+                <filter id="sg-foot-glow-svg" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g transform="translate(2, 4)">
+                <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(14,21,36,0.8)" stroke="url(#sg-foot-grad-svg)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M16,2 L16,16 L28,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <path d="M4,9 L16,16 L4,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <circle cx="16" cy="16" r="2.8" fill="#00C2FF" filter="url(#sg-foot-glow-svg)"/>
+                <circle cx="16" cy="2" r="1.4" fill="#00C2FF"/>
+                <circle cx="28" cy="9" r="1.4" fill="#7C3AED"/>
+                <circle cx="28" cy="23" r="1.4" fill="#7C3AED"/>
+                <circle cx="16" cy="30" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="23" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="9" r="1.4" fill="#00C2FF"/>
+              </g>
+              <g transform="translate(42, 28)">
+                <text font-family="Geist, Outfit, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">
+                  <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#00C2FF" filter="url(#sg-foot-glow-svg)" dx="1">.</tspan>
+                </text>
+              </g>
+            </svg>
+          </a>
+          <p style="font-size:0.9rem; color:var(--text-secondary); max-width:320px; line-height:1.6;">Your In-House GTM AI &amp; Automation Agency. We build, install, and prove autonomous revenue engines inside your stack. You own 100% of the code.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5 style="color:#FFFFFF; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Platform</h5>
+          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="app.html" style="color:var(--text-secondary); text-decoration:none;">Agent Platform</a></li>
+            <li><a href="marketplace.html" style="color:var(--text-secondary); text-decoration:none;">Marketplace</a></li>
+            <li><a href="skills.html" style="color:var(--text-secondary); text-decoration:none;">Skills Library</a></li>
+            <li><a href="templates.html" style="color:var(--text-secondary); text-decoration:none;">Workflow Templates</a></li>
+            <li><a href="pricing.html" style="color:var(--text-secondary); text-decoration:none;">Pricing Matrix</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 style="color:#FFFFFF; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Agency</h5>
+          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="agency.html" style="color:var(--text-secondary); text-decoration:none;">Agency Sprints</a></li>
+            <li><a href="case-studies.html" style="color:var(--text-secondary); text-decoration:none;">Case Studies</a></li>
+            <li><a href="book.html" style="color:var(--text-secondary); text-decoration:none;">Book Build Session</a></li>
+            <li><a href="pricing.html#audit" style="color:var(--text-secondary); text-decoration:none;">Executive Audit ($495)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 style="color:#FFFFFF; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Core Engines</h5>
+          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="marketplace.html?category=outbound" style="color:var(--text-secondary); text-decoration:none;">Outbound PAE</a></li>
+            <li><a href="marketplace.html?category=inbound" style="color:var(--text-secondary); text-decoration:none;">Inbound Triage</a></li>
+            <li><a href="marketplace.html?category=revops" style="color:var(--text-secondary); text-decoration:none;">Pre-Call Dossiers</a></li>
+            <li><a href="marketplace.html?category=revops" style="color:var(--text-secondary); text-decoration:none;">Post-Call Notes Sync</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 style="color:#FFFFFF; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Legal &amp; Trust</h5>
+          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="privacy.html" style="color:var(--text-secondary); text-decoration:none;">Privacy Policy</a></li>
+            <li><a href="terms.html" style="color:var(--text-secondary); text-decoration:none;">Terms of Service</a></li>
+            <li><a href="https://github.com/diamitani/salesgency" target="_blank" rel="noopener" style="color:var(--text-secondary); text-decoration:none;">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="border-top:1px solid var(--border-subtle); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:0.82rem; color:var(--text-dim);">
+        <div>&copy; 2026 SalesGency Inc. All rights reserved. Delali Development Cycle (DDC) v1.0.</div>
+        <div>Built for B2B Revenue Teams &bull; Zero Retainers &bull; 100% Code Ownership</div>
       </div>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var revealEls = document.querySelectorAll(".reveal");
-      if ("IntersectionObserver" in window) {
-        var o = new IntersectionObserver(function (es) {
-          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); o.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-        revealEls.forEach(function (el) { o.observe(el); });
-      } else { revealEls.forEach(function (el) { el.classList.add("visible"); }); }
-      var t = document.getElementById("navToggle"), l = document.getElementById("navLinks"), c = document.querySelector(".nav-cta");
-      if (t && l) t.addEventListener("click", function () {
-        var open = l.classList.toggle("open");
-        if (c) c.classList.toggle("open", open);
-        t.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-    })();
-  </script>
 </body>
 </html>

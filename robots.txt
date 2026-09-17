@@ -1,5 +1,5 @@
 # ==============================================================================
-# SalesGency® Robots.txt — Full Search & AI Crawler Permissions
+# SalesGency® Robots.txt - Full Search & AI Crawler Permissions
 # ==============================================================================
 
 User-agent: *

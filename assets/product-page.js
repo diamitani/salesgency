@@ -1,6 +1,6 @@
 /**
- * SalesGency Product Page Module (Cut 2 — Corporate Enterprise Edition)
- * Dynamically loads a single product from URL param and renders executive detail view
+ * SalesGency Product Page Module (Cut 2 - Corporate Enterprise Edition)
+ * Handles individual product rendering, markdown parsing, and delivery file downloads
  */
 (function(window) {
   'use strict';

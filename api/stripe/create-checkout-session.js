@@ -52,7 +52,7 @@ module.exports = async (req, res) => {
       };
     }
 
-    // Build metadata — include qualification data from booking wizard
+    // Build metadata - include qualification data from booking wizard
     const metadata = {
       productId,
       productName: item.name,

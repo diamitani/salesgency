@@ -1,127 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book a Build Session — Workflow Qualification Wizard | SalesGency®</title>
-  <meta name="description" content="Answer 4 quick questions and get a personalized recommendation for your GTM automation build. Book a $1,000 Build Session or buy the right package instantly.">
-  <meta name="keywords" content="Build Session, GTM Qualification, Workflow Wizard, Book Automation Session, SalesGency Booking">
-  <link rel="canonical" href="https://salesgency.com/book.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://salesgency.com/book.html">
-  <meta property="og:site_name" content="SalesGency®">
-  <meta property="og:title" content="Book a Build Session | SalesGency®">
-  <meta property="og:description" content="4 questions → personalized recommendation → secure checkout. Build Sessions start at $1,000.">
-
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
-  <link rel="stylesheet" href="style.css">
+  <title>Book a Build Session or Sprint - SalesGency</title>
+  <meta name="description" content="Schedule a live 90-minute GTM Build Session, request an Executive Audit, or initiate a 2-week Agency Sprint.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/sg-design-system.css">
   <link rel="stylesheet" href="assets/unified.css">
   <script src="assets/unified-nav.js" defer></script>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="nav-wrapper">
-    <nav class="nav-bar">
-      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
-        salesgency<span class="brand-symbol">®</span>
-      </a>
-      <div class="nav-menu">
-        <a href="marketplace.html" class="nav-item">
-          <span>Marketplace</span>
-          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$39+</span>
-        </a>
-        <a href="book.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">
-          <span>Build Session</span>
-          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
-        </a>
-        <a href="architecture.html" class="nav-item">Architecture</a>
-        <a href="pricing.html" class="nav-item">Pricing</a>
-      </div>
-      <div class="nav-actions">
-        <a href="book.html" class="btn-book-call" style="background: var(--accent-blue); border-color: var(--accent-blue);">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>Booking Now</span>
-        </a>
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">Menu</button>
-      </div>
-    </nav>
-  </header>
-
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <a href="index.html" class="mobile-link">Home</a>
-    <a href="marketplace.html" class="mobile-link">Marketplace ($39+)</a>
-    <a href="book.html" class="mobile-link" style="font-weight: 700; color: var(--text-heading);">Book a Build Session ($1,000)</a>
-    <a href="architecture.html" class="mobile-link">System Architecture</a>
-    <a href="pricing.html" class="mobile-link">Pricing</a>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="ambient-grid"></div>
   </div>
 
-  <div class="site-wrapper">
-
-    <!-- Header -->
-    <section style="padding: clamp(120px, 14vw, 160px) 0 0; text-align: center;">
-      <div class="container" style="max-width: 640px;">
-        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
-          <span class="live-telemetry-badge">
-            <span class="live-dot" aria-hidden="true"></span>
-            <span>4 Questions → Personalized Recommendation → Checkout</span>
-          </span>
+  <main>
+    <section class="section" style="padding-top:104px; padding-bottom:60px;">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Direct Engagement</span>
+          </div>
+          <h1 class="section-title">Schedule a Build Session or Sprint</h1>
+          <p class="section-subtitle">
+            Tell us about your current CRM, sales stack, and primary revenue bottleneck. We will review your architecture and prepare your live session.
+          </p>
         </div>
-        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 900; color: var(--text-heading); line-height: 1.1; letter-spacing: -0.02em;">
-          Let's Find Your <span class="serif-italic">Perfect Build.</span>
-        </h1>
-        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 10px;">
-          Our Workflow Architect will walk you through a few questions and recommend the right package or session.
-        </p>
-      </div>
-    </section>
 
-    <!-- Chat Wizard -->
-    <section style="padding: 20px 0 clamp(60px, 8vw, 100px);">
-      <div class="wizard-chat-container">
-        <div class="wizard-chat-messages" id="wizardMessages">
-          <!-- Dynamically populated by booking-wizard.js -->
-        </div>
-      </div>
-    </section>
 
-    <!-- Skip Option -->
-    <section style="padding: 0 0 40px; text-align: center;">
-      <div class="container" style="max-width: 600px;">
-        <div style="border-top: 1px solid var(--border-hairline); padding-top: 24px;">
-          <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 12px;">Already know what you need?</p>
-          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <a href="marketplace.html" style="font-size: 13px; color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px;">Browse marketplace →</a>
-            <a href="pricing.html" style="font-size: 13px; color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px;">View pricing →</a>
+        <div class="card-glass" style="padding:40px; border-color:var(--border-light);">
+          <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+            <div class="grid-2" style="gap:20px;">
+              <div class="form-group">
+                <label class="form-label" for="clientName">Your Full Name *</label>
+                <input class="form-input" type="text" id="clientName" required placeholder="e.g. Alex Morgan">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="clientEmail">Work Email *</label>
+                <input class="form-input" type="email" id="clientEmail" required placeholder="alex@company.com">
+              </div>
+            </div>
+
+            <div class="grid-2" style="gap:20px;">
+              <div class="form-group">
+                <label class="form-label" for="companyName">Company &amp; Website *</label>
+                <input class="form-input" type="text" id="companyName" required placeholder="e.g. Acme Corp (acme.com)">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="engagementType">Engagement Type *</label>
+                <select class="form-select" id="engagementType">
+                  <option value="session">The $1,000 Live Build Session (90 min)</option>
+                  <option value="audit">Executive GTM Architecture Audit ($495)</option>
+                  <option value="sprint-core">2-Week Core Engine Sprint ($3,500)</option>
+                  <option value="sprint-enterprise">Full Revenue OS Sprint ($7,500)</option>
+                  <option value="general">Custom Inquiry / Questions</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid-2" style="gap:20px;">
+              <div class="form-group">
+                <label class="form-label" for="crmStack">Current CRM *</label>
+                <select class="form-select" id="crmStack">
+                  <option value="hubspot">HubSpot</option>
+                  <option value="salesforce">Salesforce</option>
+                  <option value="pipedrive">Pipedrive</option>
+                  <option value="close">Close CRM</option>
+                  <option value="other">Other / Custom</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="sequencerStack">Outbound Sequencer</label>
+                <select class="form-select" id="sequencerStack">
+                  <option value="smartlead">Smartlead</option>
+                  <option value="instantly">Instantly</option>
+                  <option value="apollo">Apollo.io</option>
+                  <option value="outreach">Outreach / Salesloft</option>
+                  <option value="none">None yet / Starting fresh</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="bottleneck">What is your #1 revenue automation priority?</label>
+              <textarea class="form-textarea" id="bottleneck" rows="3" placeholder="e.g. Our reps spend hours manually researching prospects on LinkedIn, and we need an automated waterfall with sub-85 word PAS emails..."></textarea>
+            </div>
+
+            <div style="margin-top:32px;">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Submit &amp; Confirm Booking &rarr;</button>
+              <div style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:12px;">
+                🔒 Strictly confidential &bull; No spam &bull; Direct response within 2 hours
+              </div>
+            </div>
+          </form>
+
+          <!-- Success View -->
+          <div id="bookingSuccess" style="display:none; text-align:center; padding:30px 20px;">
+            <div style="width:60px; height:60px; border-radius:50%; background:var(--emerald-subtle); color:#10B981; border:1px solid rgba(16,185,129,0.3); font-size:2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">✓</div>
+            <h2 style="font-size:1.6rem; margin-bottom:12px;">Engagement Request Received!</h2>
+            <p style="color:var(--text-secondary); max-width:480px; margin:0 auto 24px;">
+              Thank you, <span id="confirmName" style="color:#FFFFFF; font-weight:600;"></span>. Our Principal GTM Engineer will review your stack details and send calendar options directly to <span id="confirmEmail" style="color:#00C2FF; font-weight:600;"></span>.
+            </p>
+            <div style="display:flex; justify-content:center; gap:12px;">
+              <a class="btn btn-primary" href="app.html">Launch Agent Platform</a>
+              <a class="btn btn-secondary" href="marketplace.html">Explore Marketplace</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border-hairline);">
-      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 800; color: var(--text-heading);">salesgency<span style="color: var(--text-muted);">®</span></span>
-          <span style="font-size: 12px; color: var(--text-dim); margin-left: 12px;">© 2026 SalesGency LLC</span>
+  <!-- Footer -->
+  <footer class="sg-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="sgu-brand" href="index.html" style="margin-bottom:16px; display:inline-block;" aria-label="SalesGency Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="160" height="30" style="display:block;">
+              <defs>
+                <linearGradient id="sg-foot-grad-svg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00C2FF"/>
+                  <stop offset="100%" stop-color="#7C3AED"/>
+                </linearGradient>
+                <filter id="sg-foot-glow-svg" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g transform="translate(2, 4)">
+                <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(14,21,36,0.8)" stroke="url(#sg-foot-grad-svg)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M16,2 L16,16 L28,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <path d="M4,9 L16,16 L4,23" fill="none" stroke="url(#sg-foot-grad-svg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+                <circle cx="16" cy="16" r="2.8" fill="#00C2FF" filter="url(#sg-foot-glow-svg)"/>
+                <circle cx="16" cy="2" r="1.4" fill="#00C2FF"/>
+                <circle cx="28" cy="9" r="1.4" fill="#7C3AED"/>
+                <circle cx="28" cy="23" r="1.4" fill="#7C3AED"/>
+                <circle cx="16" cy="30" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="23" r="1.4" fill="#00C2FF"/>
+                <circle cx="4" cy="9" r="1.4" fill="#00C2FF"/>
+              </g>
+              <g transform="translate(42, 28)">
+                <text font-family="Geist, Outfit, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">
+                  <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#00C2FF" filter="url(#sg-foot-glow-svg)" dx="1">.</tspan>
+                </text>
+              </g>
+            </svg>
+          </a>
+          <p>Schedule your live build session or agency sprint with SalesGency.</p>
         </div>
-        <div style="display: flex; gap: 20px; font-size: 12px;">
-          <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms</a>
-          <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy</a>
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="app.html">Agent Console</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="skills.html">Skills Library</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Agency</h5>
+          <ul class="footer-links">
+            <li><a href="agency.html">Agency Sprints</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="pricing.html#audit">Executive Audit ($495)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
         </div>
       </div>
-    </footer>
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency Inc. All rights reserved.</div>
+        <div>Direct GTM Engineering Intake</div>
+      </div>
+    </div>
+  </footer>
 
-  </div>
-
-  <script src="assets/salesgency-interactive.js"></script>
-  <script src="assets/stripe-client.js"></script>
-  <script src="assets/booking-wizard.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      SalesgencyWizard.init();
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = urlParams.get('type') || urlParams.get('product');
+      if (type) {
+        const select = document.getElementById('engagementType');
+        if (type.includes('audit')) select.value = 'audit';
+        else if (type.includes('session')) select.value = 'session';
+        else if (type.includes('enterprise')) select.value = 'sprint-enterprise';
+        else if (type.includes('core')) select.value = 'sprint-core';
+      }
     });
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('clientName').value;
+      const email = document.getElementById('clientEmail').value;
+      document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('confirmName').textContent = name;
+      document.getElementById('confirmEmail').textContent = email;
+      document.getElementById('bookingSuccess').style.display = 'block';
+    }
   </script>
+
 </body>
 </html>

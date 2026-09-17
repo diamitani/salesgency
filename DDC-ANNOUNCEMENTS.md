@@ -1,4 +1,4 @@
-# Delali Development Cycle — announcements
+# Delali Development Cycle - announcements
 
 Use as-is. Do not add fake metrics or “funded by.” DDC is a framework and planning harness, not a priced round.
 
@@ -10,10 +10,10 @@ Use as-is. Do not add fake metrics or “funded by.” DDC is a framework and pl
 
 Most AI “website builders” skip the map and paint the storefront.
 
-DDC is a planning harness for people who can describe a business but should not be asked for Kubernetes — and for agents that must not free-style the order of work.
+DDC is a planning harness for people who can describe a business but should not be asked for Kubernetes - and for agents that must not free-style the order of work.
 
 **What it is**  
-A nine-stage cycle — Intake, Documentation, Scaffolding, Scripts, Connecting, Deploying, Testing, Refining, Maintaining — with PAL and ROSTR inside every stage: intent, jobs-to-be-done, Now/Next/Later, PRD, architecture, then a GTM pack (ICP, AIDA messaging, channels, SLA, brand).
+A nine-stage cycle - Intake, Documentation, Scaffolding, Scripts, Connecting, Deploying, Testing, Refining, Maintaining - with PAL and ROSTR inside every stage: intent, jobs-to-be-done, Now/Next/Later, PRD, architecture, then a GTM pack (ICP, AIDA messaging, channels, SLA, brand).
 
 **What it does**  
 You pick a type (SaaS, shop, gallery, directory, chat app…). You drop files and links. You say the goal in plain language. The system writes executive docs, scores you against category leaders (visual, IA, SEO, trust), and only then unlocks build.
@@ -53,4 +53,4 @@ If something about money or accounts is unclear, it asks **one** question. Not a
 
 This is for makers, shops, agencies, and anyone tired of tools that skip the boring stuff that actually makes a business real.
 
-Peace. Courage. Success. Love — and a checklist that does not vanish when the chat does.
+Peace. Courage. Success. Love - and a checklist that does not vanish when the chat does.

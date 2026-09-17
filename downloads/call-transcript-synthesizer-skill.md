@@ -39,7 +39,7 @@ instructions:
 
 ### Follow-Up Email Format:
 ```markdown
-Subject: {{Company_Name}} + SalesGency — Next steps & recap
+Subject: {{Company_Name}} + SalesGency - Next steps & recap
 
 Hi {{Prospect_First_Name}},
 

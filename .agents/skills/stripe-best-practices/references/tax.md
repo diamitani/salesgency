@@ -31,7 +31,7 @@ Use Stripe Tax for any subscription, invoice, or Checkout Session where the user
 
 ## Three-step setup
 
-**If you have execution access** (MCP tools or the Stripe CLI with a valid token), read the account’s current Tax Settings first — the [Tax Settings API](https://docs.stripe.com/api/tax/settings.md) or Dashboard → Tax → Settings — before you change anything below. Don’t overwrite an existing head office address or preset tax code.
+**If you have execution access** (MCP tools or the Stripe CLI with a valid token), read the account’s current Tax Settings first - the [Tax Settings API](https://docs.stripe.com/api/tax/settings.md) or Dashboard → Tax → Settings - before you change anything below. Don’t overwrite an existing head office address or preset tax code.
 
 1. Set a head office address in Tax Settings (Dashboard → Tax → Settings). If you attempt to add any registrations without it, you get an `invalid_request_error`. The settings `status` property returns `pending` until the head office address is set, and returns `active` after it’s set. `automatic_tax` won’t calculate tax while the status is `pending`.
 2. Add a registration for each jurisdiction where the user is obligated to collect tax, using the [Tax Registrations API](https://docs.stripe.com/api/tax/registrations.md) or the [Dashboard](https://docs.stripe.com/tax/registering.md). After you add it, point the user to [threshold and nexus monitoring](undefined#threshold-and-nexus-monitoring) so they know when to register in other jurisdictions. Don’t limit the conversation to the jurisdiction you just registered.
@@ -53,9 +53,9 @@ After enabling `automatic_tax`, don’t assume the setup is complete: tax is onl
 
 **If you have execution access** (MCP tools or the Stripe CLI with a valid token), run a test [Tax Calculation](https://docs.stripe.com/api/tax/calculations.md) with a customer address in the target jurisdiction and the product’s tax code. Check `tax_breakdown[].taxability_reason`, not the tax amount.
 
-- `not_collecting` means the setup is broken — a registration or tax code gap. Don’t tell the user their setup works. See [Diagnose zero tax](undefined#diagnose-zero-tax).
+- `not_collecting` means the setup is broken - a registration or tax code gap. Don’t tell the user their setup works. See [Diagnose zero tax](undefined#diagnose-zero-tax).
 - Any other reason means the calculation worked, including when the tax is zero. Zero is *correct* for an exempt tax code or an exempt customer. Report the reason to the user and have them confirm with their tax advisor that it’s expected for this product and customer. Never swap in a different tax code to produce tax.
-- Run it in the same turn. Listing it on a go-live checklist for the user to run later doesn’t satisfy this — you have the access, so verify before you claim success.
+- Run it in the same turn. Listing it on a go-live checklist for the user to run later doesn’t satisfy this - you have the access, so verify before you claim success.
 - If you only have read or advisory access, don’t claim it’s verified. Point the user to [Testing Stripe Tax](https://docs.stripe.com/tax/testing.md) to run the check themselves in a sandbox.
 
 ## Diagnose invalid customer location
@@ -77,7 +77,7 @@ When a transaction shows zero tax, first confirm `automatic_tax` is actually ena
 
 The reason worth calling out is **`not_collecting`, which is ambiguous**: it means either **no active registration** in the customer’s jurisdiction (the usual cause; check registrations with the [Tax Registrations API](https://docs.stripe.com/api/tax/registrations.md)) **or** a **Nontaxable product tax code** (`txcd_00000000`) on the product. `taxability_reason` can’t tell the two apart, so check the product’s tax code and rule out the Nontaxable code before concluding it’s a registration gap.
 
-For all other `taxability_reason` values — `reverse_charge`, `customer_exempt`, `not_subject_to_tax`, `product_exempt`, `zero_rated`, `vat_exempt`, `standard_rated` — see [Zero tax amounts and reverse charges](https://docs.stripe.com/tax/zero-tax.md). That page covers what each value means and the recommended response.
+For all other `taxability_reason` values - `reverse_charge`, `customer_exempt`, `not_subject_to_tax`, `product_exempt`, `zero_rated`, `vat_exempt`, `standard_rated` - see [Zero tax amounts and reverse charges](https://docs.stripe.com/tax/zero-tax.md). That page covers what each value means and the recommended response.
 
 **Remediation order when `automatic_tax` collects zero tax:**
 
@@ -87,7 +87,7 @@ For all other `taxability_reason` values — `reverse_charge`, `customer_exempt`
 
 Do remediation step 1 first, because creating a registration before confirming product taxability can result in a registration in a jurisdiction where the user has no taxable products.
 
-**Retroactive correction isn’t possible.** Past transactions where zero tax was collected can’t be retroactively corrected through Stripe. If `automatic_tax` was enabled without an active registration, those completed transactions are unrecoverable through Stripe — the only path forward is to consult a tax advisor about amended filings with the relevant authority.
+**Retroactive correction isn’t possible.** Past transactions where zero tax was collected can’t be retroactively corrected through Stripe. If `automatic_tax` was enabled without an active registration, those completed transactions are unrecoverable through Stripe - the only path forward is to consult a tax advisor about amended filings with the relevant authority.
 
 ## Per-integration setup
 
@@ -96,7 +96,7 @@ Every integration needs a resolvable customer address and an active registration
 - **Checkout Sessions**: set `automatic_tax: { enabled: true }`. For a new customer, Checkout collects the address it needs, so don’t force `billing_address_collection: 'required'` (unnecessary for tax, and it adds checkout friction). For an existing or returning customer, Checkout uses their saved address by default; to tax the address entered at checkout instead, set `customer_update: { address: 'auto' }` and make sure Checkout actually collects a fresh address (a collected shipping address, or `billing_address_collection: 'required'` when you don’t collect shipping), or it keeps using the saved one. See [tax on Checkout](https://docs.stripe.com/tax/checkout.md).
 - **Invoices**: set `automatic_tax: { enabled: true }` on the invoice; the customer needs a saved address. See the [Invoices API](https://docs.stripe.com/api/invoices.md).
 - **Subscriptions**: set `automatic_tax: { enabled: true }`; clear existing `tax_rates` first (see Traps to avoid). See the [Subscriptions API](https://docs.stripe.com/api/subscriptions.md).
-- **Payment Links**: set `automatic_tax: { enabled: true }`. Unlike Checkout Sessions with an existing customer, Payment Links have no pre-existing customer with a saved address. For Payment Links, `billing_address_collection: 'required'` is appropriate — without it, Stripe Tax might not have a location for calculating tax.
+- **Payment Links**: set `automatic_tax: { enabled: true }`. Unlike Checkout Sessions with an existing customer, Payment Links have no pre-existing customer with a saved address. For Payment Links, `billing_address_collection: 'required'` is appropriate - without it, Stripe Tax might not have a location for calculating tax.
 - **Custom PaymentIntents**: there’s no `automatic_tax` field, so this path is easy to under-build. Create a [tax calculation](https://docs.stripe.com/api/tax/calculations.md) with the customer’s address, set the PaymentIntent `amount` to the calculation total, and link the calculation to the PaymentIntent. You must also record a tax transaction from the calculation after payment, or the sale never appears in tax reports: the [simplified integration](https://docs.stripe.com/tax/payment-intent/simplified.md) records the transaction and refund reversals automatically once the calculation is linked, while the [custom integration](https://docs.stripe.com/tax/payment-intent/custom.md) records them yourself for line-item control.
 
 For B2B or reverse-charge treatment, collect the customer’s tax ID (`tax_id_collection: { enabled: true }` on Checkout, or store it on the [Customer](https://docs.stripe.com/billing/customer/tax-ids.md)). Without a valid tax ID, Stripe Tax treats a cross-border B2B sale as B2C and charges tax. See [collect tax IDs](https://docs.stripe.com/tax/checkout/tax-ids.md).
@@ -114,7 +114,7 @@ Once the liable entity is known:
 
 The [threshold monitoring](https://docs.stripe.com/tax/monitoring.md) tool highlights *potential* registration obligations in Dashboard → Tax → Locations → Needs attention. Stripe sends email and Dashboard alerts; there’s no public API or threshold-alert webhook. Monitoring doesn’t cover physical-presence obligations. Present it as information and tell the user to discuss it with their tax advisor. It’s up to the user to confirm whether registration is required. Don’t tell them they must register, and don’t recommend a universal percentage of a threshold as the point to register.
 
-Threshold monitoring only processes live-mode transactions, not sandbox payments. Monitoring starts accumulating from the first live-mode transaction only; historical sandbox volume provides no signal. Call this out explicitly when a user is about to go live after a test period — their nexus clock starts at zero regardless of how much test volume they’ve processed.
+Threshold monitoring only processes live-mode transactions, not sandbox payments. Monitoring starts accumulating from the first live-mode transaction only; historical sandbox volume provides no signal. Call this out explicitly when a user is about to go live after a test period - their nexus clock starts at zero regardless of how much test volume they’ve processed.
 
 ## Registration safety
 
@@ -130,14 +130,14 @@ Guide, don’t advise. Never tell a user where they must register or whether the
 - **Ask Stripe to register (US only)**: with Registration as a Service (“Register for me”), Stripe submits the registration to the tax authority and adds the completed registration to the Dashboard, so the user doesn’t record it separately. First, check [eligibility requirements](https://docs.stripe.com/tax/use-stripe-to-register.md#eligibility), and if the user qualifies, point them to Dashboard → Tax → Locations → Add registration → Register for me. See [Use Stripe to register](https://docs.stripe.com/tax/use-stripe-to-register.md).
 - **Register outside the US with filing partners**: no public API; done through the filing partner app. See [Register outside the US with Taxually](https://docs.stripe.com/tax/use-taxually-to-register.md).
 
-**Reporting and filing.** Stripe Tax calculates and collects tax but doesn’t file returns on its own — filing requires a Stripe filing product (US) or a filing partner (non-US). Point users to the Dashboard [tax reports and exports](https://docs.stripe.com/tax/reports.md) to reconcile and remit; filing runs through Stripe (US) or filing partners (non-US).
+**Reporting and filing.** Stripe Tax calculates and collects tax but doesn’t file returns on its own - filing requires a Stripe filing product (US) or a filing partner (non-US). Point users to the Dashboard [tax reports and exports](https://docs.stripe.com/tax/reports.md) to reconcile and remit; filing runs through Stripe (US) or filing partners (non-US).
 
 ## Testing considerations
 
 - Tax registrations in a sandbox are scoped to that sandbox. They don’t appear in live mode and must be re-created. Point the user to Dashboard → Tax → Locations in live mode to add registrations before processing real payments.
 - Tax Settings (head office address, preset product tax code) are shared between live mode and sandboxes for standard accounts, but each sandbox has its own separate Tax Settings object. Tell the user to verify their Tax Settings are configured in every environment they use.
 - Add live-mode registrations before the first real transaction. If a transaction occurs with no active tax registration, `automatic_tax` silently collects 0 tax, with no error or warning.
-- Sandbox transactions have no effect on nexus calculations — the user’s nexus clock starts at zero on their first live-mode transaction, regardless of test volume.
+- Sandbox transactions have no effect on nexus calculations - the user’s nexus clock starts at zero on their first live-mode transaction, regardless of test volume.
 
 ## If jurisdictions are unknown
 

@@ -1,5 +1,5 @@
 # SalesGency Operating Model & $100k/Month Activation Playbook
-**Author:** Patrick Diamitani — Founder & Principal GTM Architect  
+**Author:** Patrick Diamitani - Founder & Principal GTM Architect  
 **Entity:** SalesGency LLC (`salesgency.com`)  
 **Target Metric:** $100,000+ USD / Month in Recurring Retainers + High-Margin Cashflow  
 
@@ -24,7 +24,7 @@ To reliably generate **$100,000+/month in revenue**, the business model is divid
 | **Layer 2: Paid Audits** | 1-Hour Systems Intensive | $495 one-time | 10 sessions / month | **$4,950 / mo** |
 | **Layer 3: Growth Retainers** | Growth Engine Retainer | $7,500 / month | 4 active clients | **$30,000 / mo** |
 | **Layer 4: Flagship Retainers** | Autonomous GTM Retainer | $15,000 / month | 4 active clients | **$60,000 / mo** |
-| **TOTAL MONTHLY RUN RATE** | — | — | **8 Clients + 50 Digital Sales** | **$102,830 / mo** |
+| **TOTAL MONTHLY RUN RATE** | - | - | **8 Clients + 50 Digital Sales** | **$102,830 / mo** |
 
 > [!TIP]
 > **Total Annualized Run Rate:** **$1,233,960 / year** with an 85%+ gross margin, requiring only a core team of 1 Senior GTM Architect (Patrick) and 2 GTM Systems Engineers.
@@ -51,12 +51,12 @@ Located in [`templates.html`](file:///Users/patmini/salesgency/templates.html) a
    - *Master GTM Agent Soul & Guardrails* ($49)
 
 ### B. Stripe Payment & Automated Delivery Setup
-1. **Option A — Instant Stripe Payment Links**:
+1. **Option A - Instant Stripe Payment Links**:
    - Create 9 Payment Links in Stripe Dashboard with product metadata.
    - In the Payment Link settings, set the **After Payment** redirect URL to:
      `https://salesgency.com/templates.html?unlocked=true&product_id={PRODUCT_ID}`
    - The user's browser automatically initiates the download upon redirect.
-2. **Option B — Stripe Webhook + n8n Fulfillment Pipeline**:
+2. **Option B - Stripe Webhook + n8n Fulfillment Pipeline**:
    - Create a webhook in n8n listening for `checkout.session.completed`.
    - Parse `customer_details.email` and `metadata.product_id`.
    - Send transactional confirmation email via Resend / Postmark with temporary signed S3/Supabase download link or attached `.zip` file.
@@ -103,24 +103,24 @@ Located in [`templates.html`](file:///Users/patmini/salesgency/templates.html) a
 └─────────────┴──────────────────────────────────────────────────────────┘
 ```
 
-1. **Minutes 00:00–10:00 — Diagnostic Intake**:
+1. **Minutes 00:00–10:00 - Diagnostic Intake**:
    - Confirm primary bottleneck (Outbound reply rates, Inbound speed-to-lead, CRM data mess).
    - Review current cost per meeting and domain reputation health.
-2. **Minutes 10:00–30:00 — Live Triad Architecture Diagramming**:
+2. **Minutes 10:00–30:00 - Live Triad Architecture Diagramming**:
    - Screen-share Excalidraw or Mermaid.
    - Map their specific 3 layers:
      - **Workflows:** n8n rails connecting their CRM, email sequencers, and Slack.
      - **Skills:** Custom prompt heuristics and research formulas for their ICP.
      - **Agents:** Autonomous triage logic for incoming leads and meeting bookings.
-3. **Minutes 30:00–45:00 — Quantified ROI**:
+3. **Minutes 30:00–45:00 - Quantified ROI**:
    - Input their team size and ACV into the Tremor Pipeline Calculator.
    - Demonstrate that reclaiming 28 hrs/rep/month generates $500k–$2M+ in pipeline.
-4. **Minutes 45:00–55:00 — Proposal & Partnership Tiers**:
+4. **Minutes 45:00–55:00 - Proposal & Partnership Tiers**:
    - Present the 3 options:
      - *Growth Engine Retainer ($7,500/mo)*: 2 workflows, 1 engineer.
      - *Flagship Autonomous GTM ($15,000/mo)*: Full 5-pillar PAE, inbound chatbot, weekly reviews.
      - *30-Day Enterprise Custom Build ($35,000)*: Complete turnkey infrastructure transfer.
-5. **Minutes 55:00–60:00 — Close with Credit Guarantee**:
+5. **Minutes 55:00–60:00 - Close with Credit Guarantee**:
    - "Because you invested $495 today, your entire $495 is deducted immediately from your first month's retainer invoice. I'll send the formal statement of work by 5:00 PM."
 
 ---

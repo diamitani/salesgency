@@ -1,10 +1,10 @@
 ---
-name: atlas-gtm-agent-os
+name: sovereign-gtm-agent-os
 description: >
-  Atlas GTM Agent OS — ROSTR-powered multi-agent system for Clay, HubSpot, n8n,
+  Sovereign GTM Agent OS - ROSTR-powered multi-agent system for Clay, HubSpot, n8n,
   Amplemarket, Asana, Factors.ai, and Avoma. Fixes Clay prospecting automation,
   manages HubSpot lists and sequences, checks pipeline health, and operates the
-  full Atlas prospect automation workflow. Triggers on: any mention of Clay,
+  full Sovereign prospect automation workflow. Triggers on: any mention of Clay,
   HubSpot, n8n, Amplemarket, Asana, prospect pipeline, enrichment, sequences,
   outreach, AI Prospecting, or "fix my automation".
 allowed-tools:
@@ -17,10 +17,10 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# Atlas GTM Agent OS
+# Sovereign GTM Agent OS
 
 **ROSTR Framework**: PAL + NPAO + ContextEngine  
-**Built for**: Patrick Diamitani, Atlas HXM GTM team
+**Built for**: Patrick Diamitani, YourCompany GTM GTM team
 
 ---
 
@@ -46,7 +46,7 @@ AMP_SEQ_EMAIL="ee5feb9a588e8d0048006343b5b91cd4d224cc37"
 
 # n8n
 N8N_KEY="YOUR_N8N_API_KEY"
-N8N_BASE="https://atlas-hxm.app.n8n.cloud"
+N8N_BASE="https://your-n8n-instance.app.n8n.cloud"
 
 # Asana
 ASANA_PAT="2/1211633516501406/YOUR_ASANA_PAT_TOKEN"
@@ -55,7 +55,7 @@ ASANA_BASE="https://app.asana.com/api/1.0"
 
 ---
 
-## Step 0 — ROSTR PAL Pipeline (run silently on every request)
+## Step 0 - ROSTR PAL Pipeline (run silently on every request)
 
 Before responding, classify and route:
 
@@ -152,7 +152,7 @@ When a column isn't enriching:
 
 ## HubSpot Agent
 
-**Functional job**: Query and manage HubSpot Portal 20072142 — contacts, lists, properties, sequences.
+**Functional job**: Query and manage HubSpot Portal 20072142 - contacts, lists, properties, sequences.
 
 ### Check AI Prospecting lists
 ```bash
@@ -210,7 +210,7 @@ d = json.load(sys.stdin)
 flows = d.get('workflows', [])
 print(f'Total workflows: {len(flows)}')
 for w in flows[:10]:
-    print(f'  [{w.get(\"id\")}] {w.get(\"name\")} — enabled={w.get(\"enabled\")}')
+    print(f'  [{w.get(\"id\")}] {w.get(\"name\")} - enabled={w.get(\"enabled\")}')
 "
 ```
 
@@ -224,7 +224,7 @@ props = json.load(sys.stdin).get('results', [])
 custom = [p for p in props if not p.get('hubspotDefined', True)]
 print(f'Custom properties: {len(custom)}')
 for p in custom[:20]:
-    print(f'  {p[\"name\"]} ({p[\"type\"]}) — {p.get(\"label\",\"\")}')
+    print(f'  {p[\"name\"]} ({p[\"type\"]}) - {p.get(\"label\",\"\")}')
 "
 ```
 
@@ -234,7 +234,7 @@ for p in custom[:20]:
 
 **Functional job**: Manage outreach sequences and contact enrollment.
 
-### Check Atlas sequences
+### Check Sovereign sequences
 ```bash
 AMP_KEY="YOUR_AMP_KEY"
 
@@ -262,12 +262,12 @@ curl -s -X POST "https://api.amplemarket.com/sequences/$SEQ_ID/contacts" \
 
 ## n8n Agent
 
-**Functional job**: Monitor and manage n8n workflows on atlas-hxm.app.n8n.cloud.
+**Functional job**: Monitor and manage n8n workflows on your-n8n-instance.app.n8n.cloud.
 
 ### List all workflows
 ```bash
 N8N_KEY="YOUR_N8N_API_KEY"
-curl -s "https://atlas-hxm.app.n8n.cloud/api/v1/workflows" \
+curl -s "https://your-n8n-instance.app.n8n.cloud/api/v1/workflows" \
   -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
 import sys, json
 data = json.load(sys.stdin)
@@ -284,12 +284,12 @@ for w in wfs:
 ```bash
 N8N_KEY="YOUR_N8N_API_KEY"
 WF_ID="REPLACE_WITH_WORKFLOW_ID"
-curl -s "https://atlas-hxm.app.n8n.cloud/api/v1/executions?workflowId=$WF_ID&limit=5" \
+curl -s "https://your-n8n-instance.app.n8n.cloud/api/v1/executions?workflowId=$WF_ID&limit=5" \
   -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
 import sys, json
 execs = json.load(sys.stdin).get('data', [])
 for e in execs:
-    print(f'  [{e[\"id\"]}] {e[\"status\"]} — started {e.get(\"startedAt\",\"\")}')
+    print(f'  [{e[\"id\"]}] {e[\"status\"]} - started {e.get(\"startedAt\",\"\")}')
 "
 ```
 
@@ -298,10 +298,10 @@ for e in execs:
 N8N_KEY="YOUR_N8N_API_KEY"
 WF_ID="REPLACE"
 # Activate:
-curl -s -X PATCH "https://atlas-hxm.app.n8n.cloud/api/v1/workflows/$WF_ID/activate" \
+curl -s -X PATCH "https://your-n8n-instance.app.n8n.cloud/api/v1/workflows/$WF_ID/activate" \
   -H "X-N8N-API-KEY: $N8N_KEY"
 # Deactivate:
-curl -s -X PATCH "https://atlas-hxm.app.n8n.cloud/api/v1/workflows/$WF_ID/deactivate" \
+curl -s -X PATCH "https://your-n8n-instance.app.n8n.cloud/api/v1/workflows/$WF_ID/deactivate" \
   -H "X-N8N-API-KEY: $N8N_KEY"
 ```
 
@@ -322,7 +322,7 @@ overdue = [t for t in tasks if not t.get('completed') and t.get('due_on')]
 print(f'My tasks: {len(tasks)} ({len(overdue)} with due dates)')
 for t in tasks[:10]:
     status = '✅' if t.get('completed') else '⬜'
-    print(f'  {status} {t[\"name\"]} — due {t.get(\"due_on\",\"no date\")}')
+    print(f'  {status} {t[\"name\"]} - due {t.get(\"due_on\",\"no date\")}')
 "
 ```
 
@@ -344,13 +344,13 @@ curl -s -X POST "https://app.asana.com/api/1.0/tasks" \
 
 ## Prospect Automation Agent (sub-agent)
 
-**Functional job**: Full pipeline health check and orchestration — Clay → HubSpot → Amplemarket.
+**Functional job**: Full pipeline health check and orchestration - Clay → HubSpot → Amplemarket.
 
 ### Full pipeline health check
 Run these in sequence and report status:
 
 ```bash
-# 1. Clay — verify tables exist
+# 1. Clay - verify tables exist
 CLAY_KEY="YOUR_CLAY_KEY"
 echo "=== CLAY TABLES ==="
 curl -s "https://api.clay.com/v1/tables" \
@@ -363,7 +363,7 @@ for t in data[:5]:
     print(f'  [{t.get(\"id\",\"?\")}] {t.get(\"name\",\"unnamed\")}')
 "
 
-# 2. HubSpot — check list counts
+# 2. HubSpot - check list counts
 HS_TOKEN="pat-na1-YOUR_HUBSPOT_TOKEN"
 echo ""
 echo "=== HUBSPOT LISTS ==="
@@ -374,11 +374,11 @@ for LIST in 30109 30623; do
   echo "  $LABEL List ($LIST): $COUNT contacts"
 done
 
-# 3. n8n — check prospect workflow active
+# 3. n8n - check prospect workflow active
 N8N_KEY="YOUR_N8N_API_KEY"
 echo ""
 echo "=== N8N WORKFLOWS ==="
-curl -s "https://atlas-hxm.app.n8n.cloud/api/v1/workflows" \
+curl -s "https://your-n8n-instance.app.n8n.cloud/api/v1/workflows" \
   -H "X-N8N-API-KEY: $N8N_KEY" | python3 -c "
 import sys, json
 wfs = json.load(sys.stdin).get('data', [])
@@ -389,7 +389,7 @@ for w in wfs:
     print(f'  {s} {w[\"name\"]}')
 "
 
-# 4. Amplemarket — check sequence status
+# 4. Amplemarket - check sequence status
 AMP_KEY="YOUR_AMP_KEY"
 echo ""
 echo "=== AMPLEMARKET SEQUENCES ==="
@@ -437,4 +437,4 @@ Always use:
 - Always confirm before enrolling contacts in sequences
 - Run health check first before diagnosing specific issues
 - If an API call fails, show the error and suggest the fix
-- Be direct — Patrick needs answers fast, not explanations
+- Be direct - Patrick needs answers fast, not explanations

@@ -1,4 +1,4 @@
-# DDC Stage: JTBD & NPAO Playbook — v1
+# DDC Stage: JTBD & NPAO Playbook - v1
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `jtbd_npao`  

@@ -188,7 +188,7 @@
         email: 'alex.mercer@cloudscale.io',
         latencies: ['12ms', '34ms', '88ms', '204ms', '22ms'],
         emailSubject: 're: CloudScale\'s Series A & enterprise outbound ramp',
-        emailBody: `Hi Alex,\n\nSaw CloudScale just closed $14M to accelerate enterprise revenue—congrats on the milestone.\n\nMost VP RevOps scaling from Seed to Series A run into the same bottleneck: SDRs burning through domain reputations with unverified lists, resulting in 60%+ deal collision and burnt Google workspaces.\n\nSalesGency engineered the Prospect Automation Engine (PAE) to eliminate that friction: deterministic CRM deduplication paired with a 4-layer waterfall reveal (Findymail + Clay) and bespoke Problem-Agitate-Solution sequences. Teams like Archin Robotics scaled to $1.4M pipeline with 0% domain burn.\n\nWorth a 15-minute architecture walk next Tuesday at 2pm CST to see the n8n blueprint?`,
+        emailBody: `Hi Alex,\n\nSaw CloudScale just closed $14M to accelerate enterprise revenue - congrats on the milestone.\n\nMost VP RevOps scaling from Seed to Series A run into the same bottleneck: SDRs burning through domain reputations with unverified lists, resulting in 60%+ deal collision and burnt Google workspaces.\n\nSalesGency engineered the Prospect Automation Engine (PAE) to eliminate that friction: deterministic CRM deduplication paired with a 4-layer waterfall reveal (Findymail + Clay) and bespoke Problem-Agitate-Solution sequences. Teams like Archin Robotics scaled to $1.4M pipeline with 0% domain burn.\n\nWorth a 15-minute architecture walk next Tuesday at 2pm CST to see the n8n blueprint?`,
         jsonPayload: {
           event_id: "evt_9984_pae_trigger",
           timestamp: "2026-09-07T22:40:00Z",
@@ -275,7 +275,7 @@
         email: 'marcus@logixflow.com',
         latencies: ['11ms', '31ms', '74ms', '198ms', '20ms'],
         emailSubject: 'Fixing inbox delivery on LogixFlow\'s new Smartlead cluster',
-        emailBody: `Marcus,\n\nNoticed LogixFlow recently migrated deliverability infrastructure over to Smartlead—smart move on warm inbox clustering.\n\nThe friction most RevOps teams hit after migration isn't the sequencer; it's bad data entering the top of the funnel. A single 4% bounce rate trips Google's spam filters and burns secondary domains within 3 weeks.\n\nOur CRM Shield & Waterfall Reveal workflow filters every prospect through a 4-tier verification cascade before enrollment, guaranteeing a 99/100 sender score.\n\nOpen to reviewing the n8n sanitization schema?`,
+        emailBody: `Marcus,\n\nNoticed LogixFlow recently migrated deliverability infrastructure over to Smartlead - smart move on warm inbox clustering.\n\nThe friction most RevOps teams hit after migration isn't the sequencer; it's bad data entering the top of the funnel. A single 4% bounce rate trips Google's spam filters and burns secondary domains within 3 weeks.\n\nOur CRM Shield & Waterfall Reveal workflow filters every prospect through a 4-tier verification cascade before enrollment, guaranteeing a 99/100 sender score.\n\nOpen to reviewing the n8n sanitization schema?`,
         jsonPayload: {
           event_id: "evt_9986_pae_trigger",
           timestamp: "2026-09-07T22:40:00Z",

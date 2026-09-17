@@ -2,7 +2,7 @@
  * POST /api/portal/generate
  * Body: { engine, crm, sequencer, dataProvider, company, website, icp, email }
  * Builds a personalized automation package: n8n workflow JSON (tokens replaced),
- * a personalized PLAYBOOK.md, and a CONFIG-CHECKLIST.md — zipped and returned
+ * a personalized PLAYBOOK.md, and a CONFIG-CHECKLIST.md - zipped and returned
  * as base64 for instant download in the portal.
  */
 const { TEMPLATES, ENGINE_META } = require('./templates');
@@ -89,7 +89,7 @@ function slug(s) {
 }
 
 function playbook(ctx, meta) {
-  return `# ${meta.label} — Setup Playbook
+  return `# ${meta.label} - Setup Playbook
 Built for **${ctx.company}** (${ctx.website}) by Salesgency Package Portal.
 
 ## What you got
@@ -115,7 +115,7 @@ Your stack, as you described it:
 ## Tuning
 - Reply rate under 2%? Shorten copy, sharpen the pain hypothesis, check your sending domain (SPF/DKIM/DMARC).
 - Too much volume? Lower the daily cap in the trigger/config node.
-- Wrong ICP? Edit the Signal Config node — everything downstream reads from it.
+- Wrong ICP? Edit the Signal Config node - everything downstream reads from it.
 
 ## Need it done for you?
 A Build Session ($1,000, 4 hours, credited toward a Sprint) gets this installed and tuned with you live: https://salesgency-6136.vercel.app/build-session.html
@@ -127,7 +127,7 @@ Built ${new Date().toISOString().slice(0, 10)} · ${ctx.email} · Salesgency (d/
 
 function checklist(ctx, meta) {
   const lines = [
-    `# Config Checklist — ${meta.label}`,
+    `# Config Checklist - ${meta.label}`,
     `Company: ${ctx.company} · ${ctx.website}`,
     ``,
     `Fill these in before activating the workflow in n8n:`,
@@ -149,7 +149,7 @@ function checklist(ctx, meta) {
     `- [ ] ${ctx.crm} deals/contacts endpoint`,
     ``,
     `## Before first live run`,
-    `- [ ] Approval gates reviewed — nothing external sends without human OK`,
+    `- [ ] Approval gates reviewed - nothing external sends without human OK`,
     `- [ ] Tested with 5 records, output inspected`,
     `- [ ] Sending domain has SPF, DKIM, DMARC (for outbound engines)`,
     `- [ ] Exclusion list loaded (competitors, open deals, do-not-contact)`,

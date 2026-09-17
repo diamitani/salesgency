@@ -4,7 +4,7 @@
 
 Run this interview **before writing any code**. Ask one question at a time. Never use Stripe-internal jargon until after routing is complete.
 
-### Question 1 — What do you want to do?
+### Question 1 - What do you want to do?
 
 ```
 What would you like your app to do? Pick the option that sounds closest:
@@ -15,14 +15,14 @@ What would you like your app to do? Pick the option that sounds closest:
 2. Automatically do something when a payment or event happens
    (for example: send a confirmation email, update a spreadsheet, sync data)
 
-3. Both — add something to the Dashboard AND react to Stripe events
+3. Both - add something to the Dashboard AND react to Stripe events
 
 4. Let merchants connect their Stripe account to my service without sharing API keys
 
 5. Add custom logic to how Stripe calculates bills or routes payments
-   (advanced — private preview)
+   (advanced - private preview)
 
-6. I'm not sure — ask me more questions
+6. I'm not sure - ask me more questions
 ```
 
 **Routing:**
@@ -31,10 +31,10 @@ What would you like your app to do? Pick the option that sounds closest:
 - Option 2 → Backend-only app. Ask Question 3. Then read `backend.md`, `webhooks.md`, `authentication.md`, `workflow.md`.
 - Option 3 → Full-stack app. Ask Question 2, then Question 3. Read all references.
 - Option 4 → App-as-authentication. Read `authentication.md`, `workflow.md`.
-- Option 5 → Extension interfaces (private preview). Tell the user: “This is in private preview — check [/stripe-apps](https://docs.stripe.com/stripe-apps.md) for the latest access information. I can help you get started once access is confirmed.”
+- Option 5 → Extension interfaces (private preview). Tell the user: “This is in private preview - check [/stripe-apps](https://docs.stripe.com/stripe-apps.md) for the latest access information. I can help you get started once access is confirmed.”
 - Option 6 → Ask follow-up: “What problem are you trying to solve? For example: tracking sales, notifying customers, connecting a third-party tool?”
 
-### Question 2 — Where do you want your app to appear? (only if UI)
+### Question 2 - Where do you want your app to appear? (only if UI)
 
 ```
 Where in the Stripe Dashboard should your app show up?
@@ -58,34 +58,34 @@ Where in the Stripe Dashboard should your app show up?
 | Next to a product | `stripe.dashboard.product.detail` |
 | On any list page | `stripe.dashboard.customer.list`, `.payment.list`, etc. |
 | Everywhere (side panel) | `stripe.dashboard.drawer.default` |
-| Full-screen page | Full-page app — `stripe.dashboard.fullpage` |
+| Full-screen page | Full-page app - `stripe.dashboard.fullpage` |
 | Dashboard homepage | `stripe.dashboard.home.overview` |
 | Settings | `settings` viewport |
 | Setup guide (first run) | `onboarding` viewport |
 
-If the answer is “full-screen page”, read `ui-extensions.md` (full-page apps section). If the answer is “setup guide”, also read `onboarding-ux.md`. If “I’m not sure”, ask: “When someone opens Stripe and looks at a customer’s page — would your app show up there? Or would it be more like its own separate page?”
+If the answer is “full-screen page”, read `ui-extensions.md` (full-page apps section). If the answer is “setup guide”, also read `onboarding-ux.md`. If “I’m not sure”, ask: “When someone opens Stripe and looks at a customer’s page - would your app show up there? Or would it be more like its own separate page?”
 
-### Question 3 — Who is this for?
+### Question 3 - Who is this for?
 
 ```
 Who will use this app?
 
 1. Just me / my own Stripe account (private app)
-2. Other Stripe users — I want to publish it to the marketplace
+2. Other Stripe users - I want to publish it to the marketplace
 ```
 
 **Routing:**
 
-- Option 1 → Private app. Simpler workflow — no marketplace submission needed.
+- Option 1 → Private app. Simpler workflow - no marketplace submission needed.
 - Option 2 → Public app. Will need account activation (verified email and business details). Note this in the plan.
 
-### Question 3b — Authentication type (only for public apps that need backend access)
+### Question 3b - Authentication type (only for public apps that need backend access)
 
-If the user chose public/marketplace AND their app needs to access merchant data from a backend, determine the authentication type. Read `authentication.md` for the full comparison — restricted API keys are the recommended default unless the app specifically needs Connect-style access or OAuth.
+If the user chose public/marketplace AND their app needs to access merchant data from a backend, determine the authentication type. Read `authentication.md` for the full comparison - restricted API keys are the recommended default unless the app specifically needs Connect-style access or OAuth.
 
-For private apps or frontend-only apps, skip this question — restricted API keys or platform keys both work, and RAKs are simpler.
+For private apps or frontend-only apps, skip this question - restricted API keys or platform keys both work, and RAKs are simpler.
 
-### Question 4 — Will your app need to remember things or talk to other services?
+### Question 4 - Will your app need to remember things or talk to other services?
 
 ```
 Will your app need to:
@@ -93,17 +93,17 @@ Will your app need to:
 1. Remember settings or store information (for example: a user's login for another service,
    preferences, or data not already in Stripe)
 2. Talk to another service (for example: send emails, update a spreadsheet, call a third-party API)
-3. No — it will only show Stripe data
+3. No - it will only show Stripe data
 ```
 
 **Routing:**
 
 - Option 1 or 2 → Needs backend or Secret Store API. Read `backend.md`.
-  - If storing credentials/tokens → use the Secret Store API (plain-language: “Stripe has a built-in secure place to store passwords and tokens — you don’t need to build your own database for secrets”)
+  - If storing credentials/tokens → use the Secret Store API (plain-language: “Stripe has a built-in secure place to store passwords and tokens - you don’t need to build your own database for secrets”)
   - If running server-side logic → needs a self-hosted backend
 - Option 3 → Frontend-only. Only the SDK’s Stripe client and `@stripe/ui-extension-sdk/ui` needed. No backend.
 
-### After the interview — show a summary
+### After the interview - show a summary
 
 Before writing any code, confirm your understanding with the user:
 
@@ -122,7 +122,7 @@ Only proceed after the user confirms. If they correct anything, update your unde
 
 ### Private preview feature detection
 
-Some Stripe Apps features are in **private preview** — they require the user to be gated in before they can use them. Detect these during or after the interview:
+Some Stripe Apps features are in **private preview** - they require the user to be gated in before they can use them. Detect these during or after the interview:
 
 **Private preview features:**
 
@@ -154,10 +154,10 @@ Use these explanations when you need to introduce technical terms after routing:
 | UI extension | The part of your app that shows up inside the Stripe Dashboard |
 | Viewport | Which specific Dashboard page your app appears on |
 | Extension interface | A hook that lets your app change how Stripe processes billing or payments |
-| Platform keys | How your app accesses merchant data when they install it — no manual key-sharing needed |
+| Platform keys | How your app accesses merchant data when they install it - no manual key-sharing needed |
 | Connected account | A merchant who has installed your app |
 | Permissions | What Stripe data your app is allowed to read or write; must be declared before use |
 | Secret Store | Stripe’s built-in way for your app to save sensitive information like passwords or tokens |
 | stripe-app.yaml | The configuration file that tells Stripe what your app is called, what it needs access to, and where it appears |
-| Custom objects | Custom data types you define and store inside Stripe (in private preview — requires access) |
-| Sandbox | An isolated Stripe test environment for safe testing — useful for testing destructive operations or onboarding flows |
+| Custom objects | Custom data types you define and store inside Stripe (in private preview - requires access) |
+| Sandbox | An isolated Stripe test environment for safe testing - useful for testing destructive operations or onboarding flows |

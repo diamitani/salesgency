@@ -1,8 +1,8 @@
-# Canonical documentation — sources of truth for code patterns
+# Canonical documentation - sources of truth for code patterns
 
 ## Canonical documentation
 
-Before writing any code file, read the relevant canonical docs page using WebFetch. These docs are the source of truth for API patterns, component usage, and configuration — do NOT reproduce code examples from memory or from this skill file.
+Before writing any code file, read the relevant canonical docs page using WebFetch. These docs are the source of truth for API patterns, component usage, and configuration - do NOT reproduce code examples from memory or from this skill file.
 
 If you cannot access the docs, tell the user you need them to provide the current patterns rather than guessing.
 
@@ -31,7 +31,7 @@ If you cannot access the docs, tell the user you need them to provide the curren
 
 1. Identify which topics are relevant to the app you’re building (based on discovery answers)
 2. WebFetch each relevant page BEFORE writing code
-3. Follow the patterns shown in the docs exactly — field names, import paths, constructor signatures
+3. Follow the patterns shown in the docs exactly - field names, import paths, constructor signatures
 4. If a pattern in your training data conflicts with what the docs show, the docs win
 
 ## Common lookup scenarios

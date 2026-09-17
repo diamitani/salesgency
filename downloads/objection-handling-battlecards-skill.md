@@ -33,7 +33,7 @@ Every objection response must strictly execute:
 
 ### Case 1: "We are building this in-house with engineering"
 ```markdown
-Understood, {{first_name}} — with strong engineers on the team, building custom scripts is often the first instinct.
+Understood, {{first_name}} - with strong engineers on the team, building custom scripts is often the first instinct.
 
 Where we typically see teams hit a wall 60 days in isn't the initial webhook, but ongoing edge-case maintenance: rate limit backoffs, token refresh failures, and CRM deduplication changes whenever HubSpot updates an API endpoint.
 
@@ -42,7 +42,7 @@ We put together an architectural comparison detailing the 4 breaking points in-h
 
 ### Case 2: "No budget until next quarter"
 ```markdown
-Totally fair, {{first_name}} — fiscal timing is everything, and forcing an off-cycle purchase never makes sense.
+Totally fair, {{first_name}} - fiscal timing is everything, and forcing an off-cycle purchase never makes sense.
 
 Curious: are you planning to manually triage inbound leads in the interim, or did you find a temporary workaround? 
 
@@ -51,7 +51,7 @@ If it's helpful, we have an open-source JSON node you can import into your self-
 
 ### Case 3: "We already use Zapier / Make"
 ```markdown
-Makes complete sense, {{first_name}} — Zapier is great for simple 2-step triggers.
+Makes complete sense, {{first_name}} - Zapier is great for simple 2-step triggers.
 
 The primary reason technical GTM teams migrate to our sovereign n8n engines is high-volume task cost (avoiding $800+/mo Zapier tier spikes) and sovereign execution without 3rd-party data leaks.
 

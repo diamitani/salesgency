@@ -1,6 +1,6 @@
-# Workflow — end-to-end build order
+# Workflow - end-to-end build order
 
-## MANDATORY — Full development loop (quick reference)
+## MANDATORY - Full development loop (quick reference)
 
 Follow this exact sequence for every new app. Do NOT skip or reorder steps.
 
@@ -18,15 +18,15 @@ Follow this exact sequence for every new app. Do NOT skip or reorder steps.
 11. stripe feedback                                              ← one report per build session (see references/feedback.md)
 ```
 
-**BLOCKED:** Do NOT use `stripe apps create` — it does not scaffold correctly. Always use `stripe generate app`.
+**BLOCKED:** Do NOT use `stripe apps create` - it does not scaffold correctly. Always use `stripe generate app`.
 
-**MANDATORY:** Do NOT create files manually when `stripe generate app` provides them. The scaffold creates a V2 workspace: `stripe-app.yaml`, `package.json`, `pnpm-workspace.yaml`, and `ui/src/views/App.tsx` with the correct structure. Only create files that the scaffold doesn’t provide (e.g., `server.js` for your backend). Modify scaffolded files as needed — don’t rewrite them from scratch.
+**MANDATORY:** Do NOT create files manually when `stripe generate app` provides them. The scaffold creates a V2 workspace: `stripe-app.yaml`, `package.json`, `pnpm-workspace.yaml`, and `ui/src/views/App.tsx` with the correct structure. Only create files that the scaffold doesn’t provide (e.g., `server.js` for your backend). Modify scaffolded files as needed - don’t rewrite them from scratch.
 
 ## End-to-end build order (detailed)
 
 Follow this sequence exactly. Deviating from it is the #1 source of confusion when building Stripe Apps.
 
-### Step 1 — Prerequisites (one-time setup)
+### Step 1 - Prerequisites (one-time setup)
 
 Install the Stripe CLI, then install the required plugins:
 
@@ -46,7 +46,7 @@ Verify your CLI version is 1.25.0 or newer:
 stripe version
 ```
 
-### Step 2 — Create the app
+### Step 2 - Create the app
 
 ```bash
 stripe generate app <your-app-name>
@@ -59,7 +59,7 @@ This creates a new V2 workspace with the correct directory structure, `stripe-ap
 
 ```
 <your-app-name>/
-├── stripe-app.yaml          # V2 app manifest (YAML) — name, permissions, viewports
+├── stripe-app.yaml          # V2 app manifest (YAML) - name, permissions, viewports
 ├── package.json             # workspace root
 ├── pnpm-workspace.yaml      # declares workspace packages
 ├── ui/
@@ -71,13 +71,13 @@ This creates a new V2 workspace with the correct directory structure, `stripe-ap
 └── README.md
 ```
 
-### Step 3 — Install dependencies
+### Step 3 - Install dependencies
 
 ```bash
 pnpm install
 ```
 
-### Step 4 — Build and test (UI apps)
+### Step 4 - Build and test (UI apps)
 
 For apps with a UI extension, compile TypeScript and run tests:
 
@@ -88,13 +88,13 @@ pnpm test
 
 Backend-only apps without TypeScript can skip this step.
 
-### Step 5 — Develop locally
+### Step 5 - Develop locally
 
 ```bash
 stripe apps start
 ```
 
-**Plain-language:** “This opens your app live in your Stripe Dashboard while you build it. Changes you save show up immediately — you don’t need to upload anything yet.”
+**Plain-language:** “This opens your app live in your Stripe Dashboard while you build it. Changes you save show up immediately - you don’t need to upload anything yet.”
 
 **What this does:**
 
@@ -104,11 +104,11 @@ stripe apps start
 
 **Notes:**
 
-- `stripe apps start` requires browser access; Safari is not supported — use Chrome or Firefox
-- This does **not** persist — your app is only visible while the command is running
+- `stripe apps start` requires browser access; Safari is not supported - use Chrome or Firefox
+- This does **not** persist - your app is only visible while the command is running
 - The app is not installed on your account yet; it’s only previewed locally
 
-### Step 6 — Upload a version (when ready to share or test permissions and secrets)
+### Step 6 - Upload a version (when ready to share or test permissions and secrets)
 
 ```bash
 stripe apps upload
@@ -132,7 +132,7 @@ stripe apps upload
 - Using `fetchStripeSignature` to authenticate the UI to a backend
 - Testing permissions that require the app to be installed
 
-### Step 7 — Install in live mode (when ready to use with real data)
+### Step 7 - Install in live mode (when ready to use with real data)
 
 1. Go to the [Dashboard → Apps page](https://dashboard.stripe.com/apps)
 2. Select your app
@@ -142,7 +142,7 @@ stripe apps upload
 
 **Plain-language:** “Test mode uses fake data so you can try things safely. Live mode uses real customer data. Always test in test mode first.”
 
-### Step 8 — Ship a new version
+### Step 8 - Ship a new version
 
 1. Bump `version` in `stripe-app.yaml` (use semantic versioning: `1.0.0`, `1.0.1`, `2.0.0`)
 2. Upload:
@@ -153,7 +153,7 @@ stripe apps upload
 
 **Important:** Versions must be uploaded in order. If you upload `2.0.0` before `1.0.0`, `2.0.0` won’t be available for release.
 
-### Step 9 — Publish to the marketplace (optional)
+### Step 9 - Publish to the marketplace (optional)
 
 To submit your app for marketplace review:
 
@@ -167,7 +167,7 @@ To submit your app for marketplace review:
 - Business details filled in
 - App passes [review requirements](https://docs.stripe.com/stripe-apps/review-requirements.md)
 
-### Final step — Submit feedback (after a build session)
+### Final step - Submit feedback (after a build session)
 
 If you ran toolchain commands this session, submit one `stripe feedback` report summarizing what worked and what got in the way, then print the returned id. See `references/feedback.md` for the command, version requirement, sentiment guidance, and what not to report.
 
@@ -180,19 +180,19 @@ If you ran toolchain commands this session, submit one `stripe feedback` report 
 |  | `stripe apps start` | `stripe apps upload` |
 | --- | --- | --- |
 | Purpose | Local development | Publish a version |
-| Persistence | Not persistent — only while command runs | Persists in Stripe Dashboard |
+| Persistence | Not persistent - only while command runs | Persists in Stripe Dashboard |
 | Secret Store | Not available | Available after upload |
 | `fetchStripeSignature` | Only works after at least one upload | Works after upload |
 
 **After updating permissions:**
 
 - Users must re-authorize the app
-- The “Review Permissions” button only appears on the **Apps workload page** — not on the app itself
+- The “Review Permissions” button only appears on the **Apps workload page** - not on the app itself
 - The app returns an invalid-request error for undeclared permissions until the user re-authorizes
 - Always warn users about this step when you change permissions
 
 **Sandboxes for app development:**
 
-- Use sandboxes for safe testing — they provide isolated environments where you can test without affecting live data
+- Use sandboxes for safe testing - they provide isolated environments where you can test without affecting live data
 - Each sandbox has its own app installation and signing secrets
 - Useful for testing destructive operations or onboarding flows

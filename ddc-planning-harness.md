@@ -1,4 +1,4 @@
-# Delali Development Cycle — Planning Harness
+# Delali Development Cycle - Planning Harness
 
 **Codename:** DDC Planning Runtime  
 **Version:** 1.0.0  
@@ -106,10 +106,10 @@ created
   → gtm                    # ICP, channels, AIDA, brand
   → design_system          # Taste Skill
   → quality_plan           # scorecard on the plan
-  → scaffolding            # DDC 3 — still planning of folders unless build unlocked
+  → scaffolding            # DDC 3 - still planning of folders unless build unlocked
   → scripts                # DDC 4
   → connecting             # DDC 5
-  → deploying              # DDC 6 — approval required
+  → deploying              # DDC 6 - approval required
   → testing                # DDC 7
   → refining               # DDC 8
   → maintaining            # DDC 9
@@ -118,9 +118,9 @@ created
 
 Alternate states (legal exits from any stage):
 
-- `needs_clarification` — one question
-- `awaiting_approval` — money, deploy, secrets, scope jump
-- `blocked` — missing tool or failed gate; prior artifacts kept
+- `needs_clarification` - one question
+- `awaiting_approval` - money, deploy, secrets, scope jump
+- `blocked` - missing tool or failed gate; prior artifacts kept
 - `cancelled`
 
 Retry resumes at the first incomplete stage. Completed artifacts are never overwritten.
@@ -131,7 +131,7 @@ Retry resumes at the first incomplete stage. Completed artifacts are never overw
 
 Each stage has: **simple why**, **executive output**, **exit gate**, **forbidden**.
 
-### 4.1 Intake — DDC 1
+### 4.1 Intake - DDC 1
 
 **Why (simple):** We write down what you said so we do not invent a different product tomorrow.
 
@@ -177,7 +177,7 @@ Each stage has: **simple why**, **executive output**, **exit gate**, **forbidden
 
 **Output:** Pointers to the ROSTR pipeline. Compile is a director, not a novelist.
 
-### 4.7 Intent spec — ROSTR
+### 4.7 Intent spec - ROSTR
 
 **Why:** Bound the product. Non-goals save months.
 
@@ -185,7 +185,7 @@ Each stage has: **simple why**, **executive output**, **exit gate**, **forbidden
 
 **Gate:** Problem, users, scope v1, non-goals, assumptions, acceptance signals.
 
-### 4.8 Evidence — RAG-DAL only
+### 4.8 Evidence - RAG-DAL only
 
 **Why:** Taste and SEO need real comparables, not vibes. “Is my freelance site at Upwork’s level?” needs a resource map.
 
@@ -280,8 +280,8 @@ Score the **plan** before code: contract, taste, usefulness, payments, a11y, sec
 
 If `education_mode: true`, every stage response has two layers:
 
-1. **Teach** — 3–6 sentences, grade 7. What this step is, why it exists, what happens if we skip it.
-2. **Deliver** — executive artifact (the actual doc).
+1. **Teach** - 3–6 sentences, grade 7. What this step is, why it exists, what happens if we skip it.
+2. **Deliver** - executive artifact (the actual doc).
 
 If `education_mode: false`, only Deliver.
 
@@ -299,10 +299,10 @@ PAL is the extractor. The harness is the walker. The user may only say “build 
 
 Optional explicit commands (not required):
 
-- `/ddc` — start or resume
+- `/ddc` - start or resume
 - `/ddc educate off`
 - `/ddc type saas`
-- `/ddc build` — only if `build_eligible`
+- `/ddc build` - only if `build_eligible`
 - `/ddc gtm off`
 
 ---

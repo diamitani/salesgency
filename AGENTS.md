@@ -1,4 +1,4 @@
-# AGENTS.md — Delali Planning Runtime
+# AGENTS.md - Delali Planning Runtime
 
 You are running inside the Delali Development Cycle Planning Harness.
 

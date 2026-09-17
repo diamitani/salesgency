@@ -4,7 +4,7 @@
 
 Stripe Apps supports five extension types. Use the discovery interview in `discovery.md` to determine which one the user needs.
 
-### 1. UI extension — “show something in the Dashboard”
+### 1. UI extension - “show something in the Dashboard”
 
 Renders custom UI inside the Stripe Dashboard using the Stripe UI toolkit. Runs in a sandboxed iframe.
 
@@ -26,13 +26,13 @@ Renders custom UI inside the Stripe Dashboard using the Stripe UI toolkit. Runs 
 **Key constraints:**
 
 - React 17 only (not 18+)
-- Only `@stripe/ui-extension-sdk/ui` components — no Tailwind, HTML, or third-party UI libraries
+- Only `@stripe/ui-extension-sdk/ui` components - no Tailwind, HTML, or third-party UI libraries
 - Can’t access `window`, `document`, or `localStorage`
 - Must use the SDK’s Stripe API client (see canonical docs for initialization pattern)
 
 **Read:** `ui-extensions.md`, `workflow.md`
 
-### 2. Backend-only app — “react to events, no Dashboard UI”
+### 2. Backend-only app - “react to events, no Dashboard UI”
 
 Runs on the developer’s server. Receives Stripe webhooks and calls the Stripe API. No Dashboard UI.
 
@@ -47,11 +47,11 @@ Runs on the developer’s server. Receives Stripe webhooks and calls the Stripe 
 
 - Your server receives Stripe events (webhooks)
 - Your server calls the Stripe API using platform keys (no manual key-sharing with merchants)
-- No UI — all logic runs server-side
+- No UI - all logic runs server-side
 
 **Read:** `authentication.md`, `webhooks.md`, `backend.md`, `workflow.md`
 
-### 3. Full-stack app — “Dashboard UI + backend server”
+### 3. Full-stack app - “Dashboard UI + backend server”
 
 Combines a UI extension with a backend server. The UI can show data from external services and trigger server-side actions.
 
@@ -69,7 +69,7 @@ Combines a UI extension with a backend server. The UI can show data from externa
 
 **Read:** all reference files
 
-### 4. Extension interfaces — “plug into Stripe’s billing or payments engine” (private preview)
+### 4. Extension interfaces - “plug into Stripe’s billing or payments engine” (private preview)
 
 Lets your app change how Stripe processes billing or payments. Available types:
 
@@ -91,7 +91,7 @@ Lets your app change how Stripe processes billing or payments. Available types:
 3. Ask them to check access and return when they have it
 4. Do not attempt to build anything until access is confirmed
 
-### 5. Embedded apps — “embed a third-party Stripe App inside your platform” (private preview)
+### 5. Embedded apps - “embed a third-party Stripe App inside your platform” (private preview)
 
 For Connect platforms that want to surface third-party Stripe Apps (like QuickBooks, Xero, or Mailchimp) directly inside their own product.
 
@@ -101,7 +101,7 @@ For Connect platforms that want to surface third-party Stripe Apps (like QuickBo
 
 ## Full viewport routing table
 
-For UI extensions — maps plain-language descriptions to viewport IDs:
+For UI extensions - maps plain-language descriptions to viewport IDs:
 
 | What the user wants | Viewport ID |
 | --- | --- |
@@ -116,7 +116,7 @@ For UI extensions — maps plain-language descriptions to viewport IDs:
 | Next to a specific product | `stripe.dashboard.product.detail` |
 | On the products list page | `stripe.dashboard.product.list` |
 | Everywhere in the Dashboard (side panel) | `stripe.dashboard.drawer.default` |
-| As its own full-screen page | Full-page app — `stripe.dashboard.fullpage` |
+| As its own full-screen page | Full-page app - `stripe.dashboard.fullpage` |
 | On the Dashboard homepage | `stripe.dashboard.home.overview` |
 | App settings page | `settings` |
 | First-run setup after install | `onboarding` |

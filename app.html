@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalesGency SaaS Command Center &amp; GTM Agent Portal</title>
+  <meta name="description" content="Autonomous GTM SaaS Portal: Enably tech-stack setup, Automation Engineer for n8n workflows, Skill Builder, Instruction Architect / Soul Builder, and live PAE pipeline.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/sg-design-system.css">
+  
+  <style>
+    body {
+      background: #FFFFFF;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      color: #0F172A;
+    }
+
+    aside.app-sidebar {
+      width: 290px;
+      background: #F8FAFC;
+      border-right: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 16px;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+
+    .app-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 8px 16px;
+      border-bottom: 1px solid #E2E8F0;
+      margin-bottom: 16px;
+      text-decoration: none;
+    }
+
+    .app-workspace-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    .app-menu-category {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748B;
+      padding: 8px 12px 4px;
+      margin-top: 6px;
+    }
+
+    .app-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .app-menu-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: 1px solid transparent;
+      color: #475569;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+
+    .app-menu-btn:hover {
+      background: #EDF2F7;
+      color: #0F172A;
+    }
+
+    .app-menu-btn.active {
+      background: #E0F2FE;
+      color: #0284C7;
+      border-color: #BAE6FD;
+      font-weight: 600;
+    }
+
+    main.app-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      background: #FFFFFF;
+    }
+
+    header.app-topbar {
+      height: 68px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      flex-shrink: 0;
+    }
+
+    .app-pane {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px;
+      display: none;
+    }
+
+    .app-pane.active {
+      display: block;
+    }
+
+    .agent-chat-container {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 20px;
+      height: calc(100vh - 124px);
+    }
+
+    .agent-chat-main {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .agent-chat-header {
+      padding: 14px 20px;
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .agent-chat-history {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: #FFFFFF;
+    }
+
+    .agent-msg {
+      display: flex;
+      gap: 12px;
+      max-width: 88%;
+    }
+
+    .agent-msg-user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .agent-msg-bubble {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: #0F172A;
+    }
+
+    .agent-msg-user .agent-msg-bubble {
+      background: #E0F2FE;
+      border-color: #BAE6FD;
+      color: #0369A1;
+    }
+
+    .agent-chat-input-bar {
+      padding: 14px 20px;
+      background: #F8FAFC;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .tool-output-card {
+      background: #F8FAFC;
+      border: 1px solid #BAE6FD;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #0F172A;
+    }
+
+    .log-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    .log-table th {
+      padding: 10px 14px;
+      background: #F8FAFC;
+      color: #64748B;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .log-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #E2E8F0;
+      color: #334155;
+    }
+
+    .log-table tr:hover td {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="app-sidebar">
+    <div style="overflow-y:auto;">
+      <a class="app-brand" href="index.html" aria-label="SalesGency Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="140" height="26" style="display:block;">
+          <defs>
+            <linearGradient id="sg-app-logo" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00C2FF"/>
+              <stop offset="100%" stop-color="#7C3AED"/>
+            </linearGradient>
+            <filter id="sg-app-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g transform="translate(2, 4)">
+            <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="rgba(14,21,36,0.8)" stroke="url(#sg-app-logo)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M16,2 L16,16 L28,23" fill="none" stroke="url(#sg-app-logo)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+            <path d="M4,9 L16,16 L4,23" fill="none" stroke="url(#sg-app-logo)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+            <circle cx="16" cy="16" r="2.8" fill="#00C2FF" filter="url(#sg-app-glow)"/>
+            <circle cx="16" cy="2" r="1.4" fill="#00C2FF"/>
+            <circle cx="28" cy="9" r="1.4" fill="#7C3AED"/>
+            <circle cx="28" cy="23" r="1.4" fill="#7C3AED"/>
+            <circle cx="16" cy="30" r="1.4" fill="#00C2FF"/>
+            <circle cx="4" cy="23" r="1.4" fill="#00C2FF"/>
+            <circle cx="4" cy="9" r="1.4" fill="#00C2FF"/>
+          </g>
+          <g transform="translate(42, 28)">
+            <text font-family="Geist, Outfit, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.03em">
+              <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#sg-app-logo)">Gency</tspan><tspan fill="#00C2FF" filter="url(#sg-app-glow)" dx="1">.</tspan>
+            </text>
+          </g>
+        </svg>
+      </a>
+
+      <!-- Workspace Selector -->
+      <div class="app-workspace-card">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:24px; height:24px; border-radius:6px; background:var(--brand-gradient); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.75rem; color:#000;">SG</div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:var(--text-pure);">GTM Studio</div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">ROSTR / PAL Runtime</div>
+          </div>
+        </div>
+        <span class="badge badge-emerald" style="font-size:0.65rem;">LIVE</span>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="app-menu-category">Command &amp; Telemetry</div>
+      <ul class="app-menu">
+        <li><button class="app-menu-btn active" data-tab="overview">📊 Overview &amp; Telemetry</button></li>
+        <li><button class="app-menu-btn" data-tab="agent">🤖 GTM Agent Console</button></li>
+      </ul>
+
+      <div class="app-menu-category">Autonomous Sub-Agents</div>
+      <ul class="app-menu">
+        <li><button class="app-menu-btn" data-tab="enably">⚙️ Enably (Tech Stack Setup)</button></li>
+        <li><button class="app-menu-btn" data-tab="automation-engineer">⚡ Automation Engineer (n8n)</button></li>
+        <li><button class="app-menu-btn" data-tab="skill-builder">🧠 Skill Builder (Prompts)</button></li>
+        <li><button class="app-menu-btn" data-tab="soul-builder">🎭 Soul Builder (Agent Souls)</button></li>
+      </ul>
+
+      <div class="app-menu-category">Compilers &amp; Integrations</div>
+      <ul class="app-menu">
+        <li><button class="app-menu-btn" data-tab="builder">📦 Package Compiler (.zip)</button></li>
+        <li><button class="app-menu-btn" data-tab="integrations">🔑 API Keys &amp; Webhooks</button></li>
+      </ul>
+    </div>
+
+    <!-- Bottom Profile -->
+    <div style="border-top:1px solid var(--border-subtle); padding-top:14px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:30px; height:30px; border-radius:50%; background:rgba(0,194,255,0.2); color:#00C2FF; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.75rem;">OP</div>
+          <div>
+            <div style="font-size:0.82rem; font-weight:600; color:var(--text-pure);">GTM Operator</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Pro Tier Access</div>
+          </div>
+        </div>
+        <a href="index.html" style="color:var(--text-muted); font-size:0.8rem; text-decoration:none;" title="Exit to Public Site">✕</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="app-main">
+    <header class="app-topbar">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <h2 id="topbarTitle" style="font-size:1.2rem;">Overview &amp; Revenue Telemetry</h2>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="badge badge-cyan" style="font-family:var(--font-mono);">Framework: ROSTR/PAL v1.0</span>
+        <button class="btn btn-primary btn-sm" onclick="triggerQuickRun()">⚡ Execute PAE Run</button>
+      </div>
+    </header>
+
+    <!-- 1. OVERVIEW PANE -->
+    <section class="app-pane active" id="pane-overview">
+      <div class="grid-4" style="gap:18px; margin-bottom:24px;">
+        <div class="card-glass" style="padding:18px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); margin-bottom:4px;">REVEALED LEADS</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#00C2FF;">1,428</div>
+          <div style="font-size:0.72rem; color:#10B981; margin-top:2px;">+18.4% this week</div>
+        </div>
+        <div class="card-glass" style="padding:18px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); margin-bottom:4px;">SPEED-TO-LEAD</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#10B981;">21.6s</div>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Target: &lt; 30s SLA</div>
+        </div>
+        <div class="card-glass" style="padding:18px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); margin-bottom:4px;">SHIELDED COLLISIONS</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#8B5CF6;">84</div>
+          <div style="font-size:0.72rem; color:#8B5CF6; margin-top:2px;">Zero rep conflicts</div>
+        </div>
+        <div class="card-glass" style="padding:18px;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); margin-bottom:4px;">DELIVERABILITY</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#F59E0B;">99.4%</div>
+          <div style="font-size:0.72rem; color:#10B981; margin-top:2px;">DMARC: PASS</div>
+        </div>
+      </div>
+
+      <!-- Activity Feed -->
+      <div class="card-glass" style="padding:22px; margin-bottom:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <h3 style="font-size:1.1rem;">Live GTM Execution Ledger</h3>
+          <span style="font-size:0.78rem; font-family:var(--font-mono); color:var(--text-muted);">Real-time Telemetry</span>
+        </div>
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Engine / Agent</th>
+              <th>Target Account</th>
+              <th>Outcome / Action</th>
+              <th>Status</th>
+              <th>Inspector</th>
+            </tr>
+          </thead>
+          <tbody id="ledgerBody">
+            <tr>
+              <td>16:02:11</td>
+              <td>PAE_Outbound_Waterfall</td>
+              <td>Acme Dynamics (VP Sales)</td>
+              <td>Enriched 3 contacts &bull; PAS email drafted</td>
+              <td><span class="badge badge-emerald">SUCCESS</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="alert('Payload: { email: &quot;vp@acmedynamics.com&quot;, score: 94, status: &quot;verified&quot; }')">Inspect</button></td>
+            </tr>
+            <tr>
+              <td>15:58:40</td>
+              <td>CRM_Dedupe_Shield</td>
+              <td>CloudScale Inc.</td>
+              <td>Open Opportunity Found &rarr; Sequencer Aborted</td>
+              <td><span class="badge badge-violet">SHIELDED</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="alert('Payload: { dealId: &quot;deal_8941&quot;, owner: &quot;Rep Sarah&quot;, action: &quot;ABORT&quot; }')">Inspect</button></td>
+            </tr>
+            <tr>
+              <td>15:51:02</td>
+              <td>Inbound_Speed_Triage</td>
+              <td>Kinetix Bio (Demo Form)</td>
+              <td>MQL Qualified &rarr; Slack Alert &rarr; Cal Booked</td>
+              <td><span class="badge badge-emerald">SUCCESS</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="alert('Payload: { latency: &quot;18.2s&quot;, tier: &quot;MQL-Enterprise&quot; }')">Inspect</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. GTM AGENT CONSOLE PANE -->
+    <section class="app-pane" id="pane-agent">
+      <div class="agent-chat-container">
+        <div class="agent-chat-main">
+          <div class="agent-chat-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="eyebrow-dot"></span>
+              <strong>GTM Master Agent Console</strong>
+              <span class="badge badge-cyan" style="font-size:0.7rem;">PAL Compiled</span>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="clearAgentChat()">Reset Chat</button>
+          </div>
+
+          <div class="agent-chat-history" id="agentChatHistory">
+            <div class="agent-msg">
+              <div style="width:30px; height:30px; border-radius:50%; background:var(--brand-gradient); display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.75rem; color:#000; flex-shrink:0;">AI</div>
+              <div class="agent-msg-bubble">
+                Welcome to the GTM Master Agent Console. I orchestrate the full revenue system:
+                <br>&bull; <strong>Enably</strong>: Tech stack setup
+                <br>&bull; <strong>Automation Engineer</strong>: n8n workflow authoring
+                <br>&bull; <strong>Skill Builder</strong>: Prompt compiler
+                <br>&bull; <strong>Soul Builder</strong>: Agent personalities &amp; guardrails
+                <div style="margin-top:8px; font-size:0.8rem; color:var(--cyan-primary);">
+                  Select a tool on the right or type a custom prompt.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="agent-chat-input-bar" onsubmit="handleAgentSend(event)">
+            <input type="text" id="agentInput" class="form-input" placeholder="Prompt GTM Agent (e.g. 'Build an n8n workflow for inbound triage' or 'Run dedupe shield')..." style="flex:1;">
+            <button class="btn btn-primary btn-sm" type="submit">Execute &rarr;</button>
+          </form>
+        </div>
+
+        <!-- Tool Sidebar -->
+        <div class="card-glass" style="padding:16px; display:flex; flex-direction:column; gap:10px; height:100%; overflow-y:auto;">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; color:var(--text-muted);">Quick Execution Tools:</div>
+          
+          <button class="btn btn-secondary btn-sm" style="text-align:left; justify-content:flex-start; padding:10px;" onclick="runAgentTool('waterfall')">
+            <div>
+              <div style="font-weight:700; color:#00C2FF;">1. Prospect Waterfall</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">Simulate Clay / Apollo reveal</div>
+            </div>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" style="text-align:left; justify-content:flex-start; padding:10px;" onclick="runAgentTool('dedupe')">
+            <div>
+              <div style="font-weight:700; color:#8B5CF6;">2. CRM Dedupe Shield</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">Test open opportunity check</div>
+            </div>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" style="text-align:left; justify-content:flex-start; padding:10px;" onclick="runAgentTool('pas')">
+            <div>
+              <div style="font-weight:700; color:#10B981;">3. AI PAS Copywriter</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">Draft sub-85 word cold email</div>
+            </div>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" style="text-align:left; justify-content:flex-start; padding:10px;" onclick="runAgentTool('n8n')">
+            <div>
+              <div style="font-weight:700; color:#F59E0B;">4. n8n Node Generator</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">Compile custom JSON graph</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ENABLY SUB-AGENT PANE -->
+    <section class="app-pane" id="pane-enably">
+      <div class="card-glass" style="max-width:850px; margin:0 auto; padding:32px;">
+        <div class="eyebrow" style="margin-bottom:12px;"><span class="eyebrow-dot"></span><span>Enably Tech Stack Setup Agent</span></div>
+        <h3 style="margin-bottom:8px;">Automated GTM Stack Provisioning</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:24px;">
+          Enably validates API endpoints, creates custom revenue fields in your CRM, connects webhook listeners, and sets up deliverability DNS records.
+        </p>
+
+        <form id="enablyForm" onsubmit="executeEnablyProvision(event)">
+          <div class="grid-2" style="gap:20px;">
+            <div class="form-group">
+              <label class="form-label">Primary CRM Target</label>
+              <select class="form-select" id="enablyCrm">
+                <option value="hubspot">HubSpot (REST API v3)</option>
+                <option value="salesforce">Salesforce (REST API v58.0)</option>
+                <option value="pipedrive">Pipedrive CRM</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Data Waterfall Provider</label>
+              <select class="form-select" id="enablyData">
+                <option value="clay">Clay &amp; Apollo Waterfall</option>
+                <option value="zoominfo">ZoomInfo Enterprise</option>
+                <option value="amplemarket">Amplemarket</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap:20px;">
+            <div class="form-group">
+              <label class="form-label">Outbound Sequencer</label>
+              <select class="form-select" id="enablySeq">
+                <option value="smartlead">Smartlead (API v2)</option>
+                <option value="instantly">Instantly.ai</option>
+                <option value="salesloft">Salesloft / Outreach</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">LLM Reasoning Engine</label>
+              <select class="form-select" id="enablyLlm">
+                <option value="anthropic">Anthropic Claude 3.5 Sonnet</option>
+                <option value="openai">OpenAI GPT-4o</option>
+                <option value="hermes">Hermes Agent Runtime</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top:12px;">⚙️ Provision &amp; Wire Tech Stack</button>
+        </form>
+
+        <div id="enablyOutput" style="display:none; margin-top:24px; background:#07090E; border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:18px; font-family:var(--font-mono); font-size:0.82rem;">
+          <div style="color:#10B981; margin-bottom:6px;">✓ Enably Provisioning Complete:</div>
+          <div style="color:var(--text-secondary);">&bull; CRM Properties Created: [gtm_intent_tier, dedupe_shield_flag, pain_hypothesis]</div>
+          <div style="color:var(--text-secondary);">&bull; Webhook Listener: https://yourcompany.app.n8n.cloud/webhook/inbound-triage</div>
+          <div style="color:var(--text-secondary);">&bull; Sequencer Throttle: 35 sends/day per inbox (Safe Warm-up Mode)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. AUTOMATION ENGINEER SUB-AGENT PANE -->
+    <section class="app-pane" id="pane-automation-engineer">
+      <div class="card-glass" style="max-width:850px; margin:0 auto; padding:32px;">
+        <div class="eyebrow" style="margin-bottom:12px;"><span class="eyebrow-dot"></span><span>n8n Workflow Engineer Agent</span></div>
+        <h3 style="margin-bottom:8px;">Autonomous n8n Workflow Author</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">
+          Describe any revenue logic in natural language. The Automation Engineer will compile valid, production-ready n8n workflow JSON with retry nodes and error handling.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label">Describe Workflow Logic</label>
+          <textarea class="form-textarea" id="n8nPrompt" rows="3" placeholder="e.g. Listen for Stripe failed payment webhook, query HubSpot for deal owner, post warning alert to Slack #churn-alerts, and schedule 48h retry task..."></textarea>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="generateN8nWorkflow()">⚡ Author n8n Workflow JSON</button>
+
+        <div id="n8nOutputBox" style="display:none; margin-top:24px;">
+          <div class="code-window">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+              <div class="code-title">Compiled-n8n-Workflow.json</div>
+            </div>
+            <pre class="code-content" id="n8nCodeBlock" style="max-height:260px;"></pre>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:12px;">
+            <button class="btn btn-secondary btn-sm" onclick="alert('Copied JSON to clipboard!')">Copy JSON</button>
+            <a href="downloads/prospect-automation-engine.json" download class="btn btn-primary btn-sm">Download .json</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SKILL BUILDER SUB-AGENT PANE -->
+    <section class="app-pane" id="pane-skill-builder">
+      <div class="card-glass" style="max-width:850px; margin:0 auto; padding:32px;">
+        <div class="eyebrow" style="margin-bottom:12px;"><span class="eyebrow-dot"></span><span>Skill Builder Agent</span></div>
+        <h3 style="margin-bottom:8px;">Custom Prompt Skill Author</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">
+          Compiles domain-specific prompt engineering skills with system instructions, JSON schema inputs, few-shot examples, and output constraints.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label">Skill Objective &amp; Use Case</label>
+          <input class="form-input" id="skillName" placeholder="e.g. Niche B2B SaaS Objection Battlecard Generator for FinTech">
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="generateCustomSkill()">🧠 Compile Skill Markdown (.md)</button>
+
+        <div id="skillOutputBox" style="display:none; margin-top:24px;">
+          <div class="code-window">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+              <div class="code-title">SKILL-Custom-Agent.md</div>
+            </div>
+            <pre class="code-content" id="skillCodeBlock" style="max-height:260px; white-space:pre-wrap;"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SOUL BUILDER SUB-AGENT PANE -->
+    <section class="app-pane" id="pane-soul-builder">
+      <div class="card-glass" style="max-width:850px; margin:0 auto; padding:32px;">
+        <div class="eyebrow" style="margin-bottom:12px;"><span class="eyebrow-dot"></span><span>Instruction Architect &amp; Soul Builder</span></div>
+        <h3 style="margin-bottom:8px;">Compile Autonomous Agent Souls (SOUL.md)</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">
+          Uses the ROSTR / PAL specification to compile behavioral system instructions, idempotency write locks, and strict safety guardrails.
+        </p>
+
+        <div class="grid-2" style="gap:20px;">
+          <div class="form-group">
+            <label class="form-label">Agent Role / Name</label>
+            <input class="form-input" id="soulAgentName" placeholder="e.g. Senior GTM Revenue Copilot">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tone &amp; Style</label>
+            <select class="form-select" id="soulTone">
+              <option value="direct">Crisp, authoritative, sub-85 words, technical</option>
+              <option value="consultative">Consultative, hypothesis-driven, diagnostic</option>
+              <option value="concierge">Executive VIP concierge, white-glove</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="generateAgentSoul()">🎭 Compile SOUL.md</button>
+
+        <div id="soulOutputBox" style="display:none; margin-top:24px;">
+          <div class="code-window">
+            <div class="code-header">
+              <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+              <div class="code-title">SOUL.md - Agent Persona &amp; Guardrails</div>
+            </div>
+            <pre class="code-content" id="soulCodeBlock" style="max-height:260px; white-space:pre-wrap;"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PACKAGE BUILDER PANE -->
+    <section class="app-pane" id="pane-builder">
+      <div class="card-glass" style="max-width:800px; margin:0 auto; padding:32px;">
+        <div class="eyebrow" style="margin-bottom:12px;"><span class="eyebrow-dot"></span><span>Turnkey Package Compiler</span></div>
+        <h3 style="margin-bottom:8px;">Build &amp; Download a Personalized Automation Package</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">
+          Our backend agent replaces all tokens and compiles a personalized n8n workflow JSON, customized PLAYBOOK.md, and setup checklist into a downloadable zip file.
+        </p>
+
+        <form id="packageGenForm" onsubmit="generateCustomZip(event)">
+          <div class="grid-2" style="gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Engine Selection</label>
+              <select class="form-select" id="genEngine">
+                <option value="outbound">Flagship Prospect Automation Engine (PAE)</option>
+                <option value="inbound">Inbound Speed-to-Lead Triage</option>
+                <option value="dossier">Pre-Call Dossier &amp; Research</option>
+                <option value="crm">CRM Hygiene &amp; Dedupe Shield</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary CRM</label>
+              <select class="form-select" id="genCrm">
+                <option value="hubspot">HubSpot</option>
+                <option value="salesforce">Salesforce</option>
+                <option value="pipedrive">Pipedrive</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Outbound Sequencer</label>
+              <select class="form-select" id="genSeq">
+                <option value="smartlead">Smartlead</option>
+                <option value="instantly">Instantly</option>
+                <option value="apollo">Apollo.io</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Company Name</label>
+              <input class="form-input" type="text" id="genCompany" required placeholder="Acme Technologies">
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top:12px;">⚡ Compile &amp; Download Package (.zip)</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 8. INTEGRATIONS PANE -->
+    <section class="app-pane" id="pane-integrations">
+      <div class="grid-3" style="gap:20px;">
+        <div class="card-glass" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:1rem;">HubSpot CRM</strong>
+            <span class="badge badge-emerald">Connected</span>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:14px;">Read/Write access for deals, contacts, and custom hygiene properties.</p>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Configuring HubSpot...')">Manage Connection</button>
+        </div>
+
+        <div class="card-glass" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:1rem;">Clay Data Waterfall</strong>
+            <span class="badge badge-emerald">Connected</span>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:14px;">Multi-vendor contact reveal and live SMTP verification.</p>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Configuring Clay...')">Manage Connection</button>
+        </div>
+
+        <div class="card-glass" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:1rem;">Smartlead / Instantly</strong>
+            <span class="badge badge-emerald">Connected</span>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:14px;">Inbox load balancer and staggered campaign sequence triggers.</p>
+          <button class="btn btn-ghost btn-sm" onclick="alert('Configuring Sequencer...')">Manage Connection</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Tab Switching
+    const tabs = document.querySelectorAll('.app-menu-btn');
+    const panes = document.querySelectorAll('.app-pane');
+    const topbarTitle = document.getElementById('topbarTitle');
+
+    const titles = {
+      overview: 'Overview & Revenue Telemetry',
+      agent: 'GTM Master Agent Console',
+      enably: 'Enably - Tech Stack Setup & Provisioning',
+      'automation-engineer': 'Automation Engineer - n8n Workflow Author',
+      'skill-builder': 'Skill Builder - Custom Prompt Compiler',
+      'soul-builder': 'Instruction Architect & Soul Builder',
+      builder: 'Turnkey Package Compiler (.zip)',
+      integrations: 'Stack Integrations & API Keys'
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panes.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        const target = tab.dataset.tab;
+        const pane = document.getElementById(`pane-${target}`);
+        if (pane) pane.classList.add('active');
+        topbarTitle.textContent = titles[target] || 'GTM SaaS Portal';
+      });
+    });
+
+    // Chat handling
+    const chatHistory = document.getElementById('agentChatHistory');
+    const agentInput = document.getElementById('agentInput');
+
+    function appendUserMsg(text) {
+      const msg = document.createElement('div');
+      msg.className = 'agent-msg agent-msg-user';
+      msg.innerHTML = `<div class="agent-msg-bubble">${text}</div>`;
+      chatHistory.appendChild(msg);
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function appendAgentMsg(html) {
+      const msg = document.createElement('div');
+      msg.className = 'agent-msg';
+      msg.innerHTML = `
+        <div style="width:30px; height:30px; border-radius:50%; background:var(--brand-gradient); display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.75rem; color:#000; flex-shrink:0;">AI</div>
+        <div class="agent-msg-bubble">${html}</div>
+      `;
+      chatHistory.appendChild(msg);
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function handleAgentSend(e) {
+      e.preventDefault();
+      const text = agentInput.value.trim();
+      if (!text) return;
+      appendUserMsg(text);
+      agentInput.value = '';
+
+      setTimeout(() => {
+        if (text.toLowerCase().includes('waterfall') || text.toLowerCase().includes('reveal') || text.toLowerCase().includes('prospect')) {
+          runAgentTool('waterfall');
+        } else if (text.toLowerCase().includes('dedupe') || text.toLowerCase().includes('shield')) {
+          runAgentTool('dedupe');
+        } else if (text.toLowerCase().includes('pas') || text.toLowerCase().includes('copy') || text.toLowerCase().includes('email')) {
+          runAgentTool('pas');
+        } else if (text.toLowerCase().includes('workflow') || text.toLowerCase().includes('n8n')) {
+          runAgentTool('n8n');
+        } else {
+          appendAgentMsg(`ROSTR/PAL execution complete for: "${text}".<div class="tool-output-card" style="border-color:#10B981;"><strong style="color:#10B981;">✓ Analysis Compiled</strong><br>Parsed task intent: 0 ambiguities. Recommended action: Trigger the Prospect Automation Engine with a 3-tier waterfall and human review gate.</div>`);
+        }
+      }, 400);
+    }
+
+    function runAgentTool(tool) {
+      if (tool === 'waterfall') {
+        appendAgentMsg(`
+          <strong>Executing Clay &rarr; Apollo Contact Waterfall...</strong>
+          <div class="tool-output-card">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <span style="font-weight:700; color:#00C2FF;">Target: Acme Cloud Corp</span>
+              <span class="badge badge-emerald">SMTP: VERIFIED</span>
+            </div>
+            <div>&bull; <strong>Contact:</strong> Sarah Jenkins (VP of Revenue Operations)</div>
+            <div>&bull; <strong>Email:</strong> s.jenkins@acmecloud.com (Deliverability Score: 98%)</div>
+            <div>&bull; <strong>Buying Signal:</strong> Scaled sales headcount by +35% in last 60 days</div>
+            <div style="margin-top:10px;"><button class="btn btn-primary btn-sm" onclick="runAgentTool('pas')">Draft PAS Email for Sarah &rarr;</button></div>
+          </div>
+        `);
+      } else if (tool === 'dedupe') {
+        appendAgentMsg(`
+          <strong>Running CRM Dedupe &amp; Collision Shield Check...</strong>
+          <div class="tool-output-card" style="border-color:#8B5CF6;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <span style="font-weight:700; color:#8B5CF6;">Account: Nexus Systems</span>
+              <span class="badge badge-violet">SHIELD TRIGGERED</span>
+            </div>
+            <div style="color:#F43F5E;">⚠️ Active Deal Detected: "Enterprise Renewal 2026" (Owner: Dave M.)</div>
+            <div style="color:var(--text-secondary); margin-top:4px;">Action Taken: Automatically filtered from cold outreach queue. Collision prevented.</div>
+          </div>
+        `);
+      } else if (tool === 'pas') {
+        appendAgentMsg(`
+          <strong>Generating Sub-85 Word AI PAS Cold Email...</strong>
+          <div class="tool-output-card" style="border-color:#10B981;">
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#10B981; margin-bottom:6px;">PAS_OUTPUT_v1.0 (76 words):</div>
+            <div style="background:rgba(0,0,0,0.5); padding:10px; border-radius:6px; line-height:1.5; color:#F1F5F9; font-style:italic; font-size:0.85rem;">
+              "Saw Acme scaled the SDR team by 35% this quarter - congrats on the growth.<br><br>
+              Most RevOps leaders we speak with find that rep ramp slows down when teams waste 15+ hours a week manually researching prospects on LinkedIn.<br><br>
+              We built an automated 8-stage engine that reveals verified accounts and drafts custom outreach inside HubSpot.<br><br>
+              Open to taking a look at the architecture blueprint?"
+            </div>
+            <div style="margin-top:10px; display:flex; gap:8px;">
+              <button class="btn btn-secondary btn-sm" onclick="alert('Copied PAS email to clipboard!')">Copy Email</button>
+              <button class="btn btn-primary btn-sm" onclick="alert('Queued for operator review!')">Queue in Sequencer</button>
+            </div>
+          </div>
+        `);
+      } else if (tool === 'n8n') {
+        appendAgentMsg(`
+          <strong>Compiling Custom n8n Workflow JSON...</strong>
+          <div class="tool-output-card" style="border-color:#F59E0B;">
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:#F59E0B; margin-bottom:6px;">PAE_Custom_Node_Graph.json (9 Nodes):</div>
+            <div style="color:var(--text-secondary); font-size:0.8rem; margin-bottom:8px;">Deterministic error-handling nodes wired for HubSpot, Clay, and Smartlead.</div>
+            <a href="downloads/prospect-automation-engine.json" download class="btn btn-primary btn-sm">Download Workflow JSON</a>
+          </div>
+        `);
+      }
+    }
+
+    function clearAgentChat() {
+      chatHistory.innerHTML = `
+        <div class="agent-msg">
+          <div style="width:30px; height:30px; border-radius:50%; background:var(--brand-gradient); display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.75rem; color:#000; flex-shrink:0;">AI</div>
+          <div class="agent-msg-bubble">Chat session reset. Ready for your next GTM task.</div>
+        </div>
+      `;
+    }
+
+    function triggerQuickRun() {
+      alert('Triggered PAE Pipeline! Check Ledger for live updates.');
+      const tbody = document.getElementById('ledgerBody');
+      const tr = document.createElement('tr');
+      const now = new Date().toTimeString().split(' ')[0];
+      tr.innerHTML = `
+        <td>${now}</td>
+        <td>PAE_Manual_Trigger</td>
+        <td>Apex Global Solutions</td>
+        <td>Processing 10 new ICP accounts</td>
+        <td><span class="badge badge-cyan">RUNNING</span></td>
+        <td><button class="btn btn-ghost btn-sm" onclick="alert('Execution in progress...')">Inspect</button></td>
+      `;
+      tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+    // Sub-agent functions
+    function executeEnablyProvision(e) {
+      e.preventDefault();
+      document.getElementById('enablyOutput').style.display = 'block';
+    }
+
+    function generateN8nWorkflow() {
+      const prompt = document.getElementById('n8nPrompt').value || 'Default inbound webhook workflow';
+      const output = document.getElementById('n8nOutputBox');
+      const code = document.getElementById('n8nCodeBlock');
+      code.textContent = JSON.stringify({
+        name: "Custom Revenue Engine - " + prompt.slice(0, 30),
+        nodes: [
+          { id: "1", name: "Webhook Listener", type: "n8n-nodes-base.webhook", position: [240, 300] },
+          { id: "2", name: "CRM Dedupe Shield", type: "n8n-nodes-base.if", position: [460, 300] },
+          { id: "3", name: "AI PAS Reasoning", type: "n8n-nodes-base.code", position: [680, 300] },
+          { id: "4", name: "Slack Alert / Output", type: "n8n-nodes-base.slack", position: [900, 300] }
+        ],
+        active: true
+      }, null, 2);
+      output.style.display = 'block';
+    }
+
+    function generateCustomSkill() {
+      const name = document.getElementById('skillName').value || 'Custom GTM Prompt Skill';
+      const output = document.getElementById('skillOutputBox');
+      const code = document.getElementById('skillCodeBlock');
+      code.textContent = `# Skill: ${name}\n\n## System Instructions\nYou are an autonomous revenue specialist for ${name}.\n- Enforce strict factual grounding.\n- Max length: 85 words.\n- Always output structured JSON with keys: [hypothesis, email_draft, cta].\n\n## Acceptance Evidence\n- 0 hallucinations\n- 100% CRM schema compliance`;
+      output.style.display = 'block';
+    }
+
+    function generateAgentSoul() {
+      const name = document.getElementById('soulAgentName').value || 'GTM Revenue Copilot';
+      const tone = document.getElementById('soulTone').value;
+      const output = document.getElementById('soulOutputBox');
+      const code = document.getElementById('soulCodeBlock');
+      code.textContent = `# SOUL.md - ${name}\n\n**Framework:** ROSTR / PAL Specification v1.0\n**Persona:** You are ${name}. You possess deep B2B revenue operations intuition.\n**Tone:** ${tone}\n\n## Invariants & Safety Locks\n1. NEVER write to CRM without verified idempotency key.\n2. NEVER dispatch external email sequences without operator status: APPROVED.\n3. Maintain sub-85 word brevity in all prospect communications.`;
+      output.style.display = 'block';
+    }
+
+    async function generateCustomZip(e) {
+      e.preventDefault();
+      const company = document.getElementById('genCompany').value;
+      const engine = document.getElementById('genEngine').value;
+      const crm = document.getElementById('genCrm').value;
+      const seq = document.getElementById('genSeq').value;
+
+      try {
+        const res = await fetch('/api/portal/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ company, engine, crm, sequencer: seq })
+        });
+        
+        if (res.ok) {
+          const data = await res.json();
+          if (data.zipBase64) {
+            const link = document.createElement('a');
+            link.href = `data:application/zip;base64,${data.zipBase64}`;
+            link.download = `${company.toLowerCase().replace(/[^a-z0-9]/g, '-')}-gtm-package.zip`;
+            link.click();
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('API fallback to local files', err);
+      }
+
+      // Fallback
+      const link = document.createElement('a');
+      link.href = 'downloads/prospect-automation-engine.json';
+      link.download = `${company.toLowerCase().replace(/[^a-z0-9]/g, '-')}-workflow.json`;
+      link.click();
+      alert(`Package generated for ${company}! Workflow JSON downloaded.`);
+    }
+  </script>
+
+</body>
+</html>

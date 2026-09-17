@@ -80,7 +80,7 @@ Verify capability statuses with `stripe.v2.core.accounts.retrieve(id)` before en
 ### H. Fee structure
 - Platform fee model: [percentage / flat / tiered / mixed]
 - `application_fee_amount` strategy: [platform fee only | platform fee + estimated Stripe processing fee]
-- [Describe the fee structure, whether customers pay the connected account (seller) or platform, whether fees are paid to Stripe or to the platform, and whether anything is transferred from the platform to the seller. Pricing varies by region or payment method — check [stripe.com/pricing](https://stripe.com/pricing).]
+- [Describe the fee structure, whether customers pay the connected account (seller) or platform, whether fees are paid to Stripe or to the platform, and whether anything is transferred from the platform to the seller. Pricing varies by region or payment method - check [stripe.com/pricing](https://stripe.com/pricing).]
 - [Funds flow diagram with seller or provider net amount explanation:]
 
    {customerRole} pays ${amount}
@@ -126,7 +126,7 @@ Do NOT recommend creating a separate v1 Customer object for SaaS billing connect
 
 Include this wording (adapted to context) when charge pattern is destination or separate charges and transfers:
 
-“Each connected account needs the recipient configuration (`configuration.recipient`) with `stripe_transfers` on `stripe_balance` requested, so the account can receive transfers from the platform. Marketplace connected accounts should NOT request merchant configuration or `card_payments` capability — this is unnecessary and causes longer onboarding.”
+“Each connected account needs the recipient configuration (`configuration.recipient`) with `stripe_transfers` on `stripe_balance` requested, so the account can receive transfers from the platform. Marketplace connected accounts should NOT request merchant configuration or `card_payments` capability - this is unnecessary and causes longer onboarding.”
 
 #### Webhook section guardrails
 
@@ -142,7 +142,7 @@ Always present loss liability and risk management as separate concepts:
 - **Loss liability** (`losses_collector`): who is financially responsible for negative balances on connected accounts.
 - **Risk management**: who detects and prevents fraud (Stripe Radar vs platform-managed).
 
-When `losses_collector: application` (platform owns loss liability), emphasize that Radar is essential — fraudulent charges that slip through come directly out of the platform’s balance. For marketplaces using destination charges, the platform is merchant of record and must manage risk.
+When `losses_collector: application` (platform owns loss liability), emphasize that Radar is essential - fraudulent charges that slip through come directly out of the platform’s balance. For marketplaces using destination charges, the platform is merchant of record and must manage risk.
 
 ### Fee guidance rules
 
@@ -160,7 +160,7 @@ When `losses_collector: application` (platform owns loss liability), emphasize t
 
 - Always link to [stripe.com/pricing](https://stripe.com/pricing).
 
-- For platform-owned pricing, recommend [Platform Pricing Tool](https://dashboard.stripe.com/settings/connect/platform_pricing) and [margin report](https://docs.stripe.com/connect/margin-reports.md). Platform Pricing Tool and explicit `application_fee_amount` are mutually exclusive — don’t recommend both.
+- For platform-owned pricing, recommend [Platform Pricing Tool](https://dashboard.stripe.com/settings/connect/platform_pricing) and [margin report](https://docs.stripe.com/connect/margin-reports.md). Platform Pricing Tool and explicit `application_fee_amount` are mutually exclusive - don’t recommend both.
 
 - Mention Brazil or Malaysia cross-border fee-collection constraints where relevant.
 
@@ -199,7 +199,7 @@ To disambiguate, ask: “Are you trying to make X% margin, or do you want your u
 
 When destination or direct flow uses `application_fee_amount`, choose guidance as follows:
 
-- Margin-preserving recommendation: `application_fee_amount = platform fee + estimated Stripe processing fee` (still an approximation — actual rates vary by region, card type, and payment method)
+- Margin-preserving recommendation: `application_fee_amount = platform fee + estimated Stripe processing fee` (still an approximation - actual rates vary by region, card type, and payment method)
 - Platform-absorbs-fees recommendation: `application_fee_amount = platform fee only`
 - If unclear: present both options concisely with the tradeoff and call out what assumption decides the recommendation
 
