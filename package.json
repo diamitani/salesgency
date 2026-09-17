@@ -18,6 +18,13 @@
   },
   "homepage": "https://github.com/diamitani/salesgency#readme",
   "dependencies": {
-    "stripe": "^22.6.1"
+    "@ai-sdk/openai": "^4.0.69",
+    "@types/node": "^26.6.1",
+    "ai": "^7.0.105",
+    "dotenv": "^18.0.0",
+    "stripe": "^22.6.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "zod": "^4.6.5"
   }
 }
