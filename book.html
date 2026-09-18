@@ -5,16 +5,16 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book a Build Session or Sprint - SalesGency</title>
-  <meta name="description" content="Schedule a live 90-minute GTM Build Session, request an Executive Audit, or initiate a 2-week Agency Sprint.">
+  <title>Get a GTM Teardown | SalesGency</title>
+  <meta name="description" content="Schedule a GTM Teardown, 90-minute Live Build Session, Executive Audit, or 2-week Agency Sprint with SalesGency.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="assets/sg-design-system.css?v=4.0">
-  <link rel="stylesheet" href="assets/unified.css?v=4.0">
-  <script src="assets/unified-nav.js?v=4.0" defer></script>
+  <link rel="stylesheet" href="assets/sg-design-system.css?v=4.1">
+  <link rel="stylesheet" href="assets/unified.css?v=4.1">
+  <script src="assets/unified-nav.js?v=4.1" defer></script>
 </head>
 <body>
 
@@ -30,14 +30,13 @@
         <div class="section-header" style="margin-bottom:48px;">
           <div class="eyebrow" style="margin-bottom:24px;">
             <span class="eyebrow-dot"></span>
-            <span>Direct Engagement</span>
+            <span>Direct GTM Engineering Engagement</span>
           </div>
-          <h1 class="section-title" style="margin-bottom:20px;">Schedule a Build Session or Sprint</h1>
+          <h1 class="section-title" style="margin-bottom:20px;">Get a GTM Teardown</h1>
           <p class="section-subtitle" style="max-width:680px; margin:0 auto; line-height:1.6;">
             Tell us about your current CRM, sales stack, and primary revenue bottleneck. We will review your architecture and prepare your live session.
           </p>
         </div>
-
 
         <div class="card-glass" style="padding:40px; border-color:var(--border-light);">
           <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
@@ -60,11 +59,12 @@
               <div class="form-group">
                 <label class="form-label" for="engagementType">Engagement Type *</label>
                 <select class="form-select" id="engagementType">
-                  <option value="session">The $1,000 Live Build Session (90 min)</option>
+                  <option value="teardown">Get a GTM Teardown (Architecture Review)</option>
+                  <option value="session">The $1,000 Live Build Session (90-Min Co-Build)</option>
                   <option value="audit">Executive GTM Architecture Audit ($495)</option>
-                  <option value="sprint-core">2-Week Core Engine Sprint ($3,500)</option>
-                  <option value="sprint-enterprise">Full Revenue OS Sprint ($7,500)</option>
-                  <option value="general">Custom Inquiry / Questions</option>
+                  <option value="sprint-core">2-Week Turnkey Agency Sprint ($2,500)</option>
+                  <option value="sprint-enterprise">Enterprise Multi-Workstream Transformation</option>
+                  <option value="general">Custom Architecture / General Inquiry</option>
                 </select>
               </div>
             </div>
@@ -94,13 +94,13 @@
 
             <div class="form-group">
               <label class="form-label" for="bottleneck">What is your #1 revenue automation priority?</label>
-              <textarea class="form-textarea" id="bottleneck" rows="3" placeholder="e.g. Our reps spend hours manually researching prospects on LinkedIn, and we need an automated waterfall with sub-85 word PAS emails..."></textarea>
+              <textarea class="form-textarea" id="bottleneck" rows="3" placeholder="e.g. Reps spend 60%+ of their time on manual research and CRM data entry. We need automated inbound qualification and sub-85 word personalized outbound drafts..."></textarea>
             </div>
 
             <div style="margin-top:32px;">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Submit &amp; Confirm Booking &rarr;</button>
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Request &rarr;</button>
               <div style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:12px;">
-                🔒 Strictly confidential &bull; No spam &bull; Direct response within 2 hours
+                Strictly confidential &bull; No spam &bull; Direct response within 2 hours
               </div>
             </div>
           </form>
@@ -108,9 +108,9 @@
           <!-- Success View -->
           <div id="bookingSuccess" style="display:none; text-align:center; padding:30px 20px;">
             <div style="width:60px; height:60px; border-radius:50%; background:var(--emerald-subtle); color:#059669; border:1px solid #A7F3D0; font-size:2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:bold;">✓</div>
-            <h2 style="font-size:1.6rem; margin-bottom:12px;">Engagement Request Received!</h2>
+            <h2 style="font-size:1.6rem; margin-bottom:12px;">Request Received</h2>
             <p style="color:var(--text-secondary); max-width:480px; margin:0 auto 24px;">
-              Thank you, <span id="confirmName" style="color:var(--text-pure); font-weight:700;"></span>. Our Principal GTM Engineer will review your stack details and send calendar options directly to <span id="confirmEmail" style="color:#0284C7; font-weight:700;"></span>.
+              Thank you, <span id="confirmName" style="color:var(--text-pure); font-weight:700;"></span>. Our GTM Engineer will review your stack details and send calendar options directly to <span id="confirmEmail" style="color:#0284C7; font-weight:700;"></span>.
             </p>
             <div style="display:flex; justify-content:center; gap:12px;">
               <a class="btn btn-primary" href="app.html">Launch Agent Platform</a>
@@ -131,18 +131,20 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="138" height="28" style="display:block;">
               <defs>
                 <linearGradient id="sg-foot-grad-svg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0284C7"/>
-                  <stop offset="100%" stop-color="#7C3AED"/>
+                  <stop offset="0%" stop-color="#00B4D8"/>
+                  <stop offset="100%" stop-color="#0284C7"/>
                 </linearGradient>
               </defs>
               <g transform="translate(2, 26)">
                 <text font-family="Geist, Outfit, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="25" font-weight="800" letter-spacing="-0.035em">
-                  <tspan fill="#090D16">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#0284C7" dx="1">.</tspan>
+                  <tspan fill="#090D16">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#00B4D8" dx="1">.</tspan>
                 </text>
               </g>
             </svg>
           </a>
-          <p style="font-size:0.9rem; color:var(--text-secondary); max-width:320px; line-height:1.6;">Schedule your live build session or agency sprint with SalesGency.</p>
+          <p style="font-size:0.9rem; color:var(--text-secondary); max-width:320px; line-height:1.6;">
+            A Diamitani Industries Company. We build, install, and prove client-owned AI revenue engines inside your existing stack.
+          </p>
         </div>
         <div class="footer-col">
           <h5 style="color:#090D16; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; font-weight:700;">Platform</h5>
@@ -169,7 +171,7 @@
         </div>
       </div>
       <div class="footer-bottom" style="border-top:1px solid var(--border-subtle); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:0.82rem; color:var(--text-muted);">
-        <div>&copy; 2026 SalesGency Inc. All rights reserved.</div>
+        <div>&copy; 2026 SalesGency &bull; Diamitani Industries. All rights reserved.</div>
         <div>Direct GTM Engineering Intake</div>
       </div>
     </div>
@@ -184,7 +186,8 @@
         if (type.includes('audit')) select.value = 'audit';
         else if (type.includes('session')) select.value = 'session';
         else if (type.includes('enterprise')) select.value = 'sprint-enterprise';
-        else if (type.includes('core')) select.value = 'sprint-core';
+        else if (type.includes('core') || type.includes('sprint')) select.value = 'sprint-core';
+        else if (type.includes('teardown')) select.value = 'teardown';
       }
     });
 

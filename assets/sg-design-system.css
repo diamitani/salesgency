@@ -627,6 +627,155 @@ p {
   line-height: 1.6;
 }
 
+/* Public Proof & Verification Grid (Defensible Baseline Standard) */
+.proof-section {
+  background: #0A192F;
+  border-top: 1px solid #1E293B;
+  border-bottom: 1px solid #1E293B;
+  padding: 72px 0;
+  color: #FFFFFF;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.proof-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.proof-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 180, 216, 0.4);
+  transform: translateY(-2px);
+}
+
+.proof-val {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #00B4D8;
+  margin-bottom: 8px;
+}
+
+.proof-lbl {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.proof-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #64748B;
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* Three Engines Framework Cards */
+.engines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.engine-card {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.engine-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--brand-gradient);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.engine-card:hover {
+  border-color: #BAE6FD;
+  box-shadow: 0 16px 40px -10px rgba(2, 132, 199, 0.12);
+  transform: translateY(-3px);
+}
+
+.engine-card:hover::before {
+  opacity: 1;
+}
+
+/* Commercial Ladder Grid */
+.ladder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.ladder-card {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.ladder-card.featured {
+  border-color: #0284C7;
+  box-shadow: 0 16px 48px -8px rgba(2, 132, 199, 0.18);
+  transform: scale(1.02);
+}
+
+.ladder-price {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-pure);
+  letter-spacing: -0.04em;
+  margin: 16px 0 6px;
+}
+
+@media (max-width: 1024px) {
+  .proof-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .engines-grid, .ladder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Grids */
 .grid-3 {
   display: grid;

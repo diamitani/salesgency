@@ -33,7 +33,7 @@
     brand.setAttribute('aria-label', 'SalesGency Home');
     
     // Inline SVG with Clean Brand Wordmark (No icon mark) for Light Mode
-    brand.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="138" height="28" style="display:block;"><defs><linearGradient id="sg-nav-grad-light" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0284C7"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient></defs><g transform="translate(2, 26)"><text font-family="Geist, Outfit, -apple-system, BlinkMacSystemFont, \'Segoe UI\', sans-serif" font-size="25" font-weight="800" letter-spacing="-0.035em"><tspan fill="#090D16">Sales</tspan><tspan fill="url(#sg-nav-grad-light)">Gency</tspan><tspan fill="#0284C7" dx="1">.</tspan></text></g></svg>';
+    brand.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="138" height="28" style="display:block;"><defs><linearGradient id="sg-nav-grad-light" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00B4D8"/><stop offset="100%" stop-color="#0284C7"/></linearGradient></defs><g transform="translate(2, 26)"><text font-family="Geist, Outfit, -apple-system, BlinkMacSystemFont, \'Segoe UI\', sans-serif" font-size="25" font-weight="800" letter-spacing="-0.035em"><tspan fill="#090D16">Sales</tspan><tspan fill="url(#sg-nav-grad-light)">Gency</tspan><tspan fill="#00B4D8" dx="1">.</tspan></text></g></svg>';
 
     var ul = document.createElement('ul');
     ul.className = 'sgu-links';
@@ -60,7 +60,7 @@
     var cta = document.createElement('a');
     cta.className = 'sgu-cta-btn';
     cta.href = 'book.html';
-    cta.textContent = 'Book Build Session';
+    cta.textContent = 'Get a GTM teardown';
 
     var burger = document.createElement('button');
     burger.className = 'sgu-burger';
