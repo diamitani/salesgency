@@ -423,22 +423,73 @@ p {
 }
 
 .section-hero, .section-top {
-  padding: 196px 0 80px;
-  text-align: center;
+  padding: 180px 0 80px;
   min-height: auto;
+}
+
+/* Two-Column Hero Architecture (Figma SaaS Executive Grade) */
+.hero-2col {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-left {
+  text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-left h1 {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.038em;
+  line-height: 1.08;
+  margin-bottom: 20px;
+  color: var(--text-pure);
+}
+
+.hero-left .lede {
+  font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+  color: var(--text-secondary);
+  line-height: 1.62;
+  margin: 0 0 32px 0;
+  max-width: 580px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.hero-trust-bar {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-right {
+  width: 100%;
 }
 
 /* Hero Showcase Window (Figma SaaS Signature Component) */
 .hero-showcase-window {
-  max-width: 1040px;
-  margin: 48px auto 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
   background: #FFFFFF;
   border: 1px solid #CBD5E1;
   border-radius: 16px;
-  box-shadow: 0 24px 64px -12px rgba(9, 13, 22, 0.12), 0 6px 20px rgba(9, 13, 22, 0.05);
+  box-shadow: 0 20px 50px -10px rgba(9, 13, 22, 0.12), 0 4px 12px rgba(9, 13, 22, 0.04);
   overflow: hidden;
   text-align: left;
 }
@@ -484,7 +535,7 @@ p {
 }
 
 .showcase-window-body {
-  padding: 24px;
+  padding: 20px;
   background: #FAFAFA;
 }
 
@@ -492,21 +543,21 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin-bottom: 18px;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
   overflow-x: auto;
 }
 
 .showcase-node {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  border-radius: 8px;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
   white-space: nowrap;
@@ -522,19 +573,34 @@ p {
 .showcase-connector {
   color: #94A3B8;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   flex-shrink: 0;
 }
 
 .showcase-telemetry-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
-@media (max-width: 768px) {
-  .showcase-telemetry-grid {
+@media (max-width: 1024px) {
+  .hero-2col {
     grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero-left {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-left .lede {
+    margin: 0 auto 28px;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-trust-bar {
+    justify-content: center;
   }
 }
 
