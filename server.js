@@ -102,13 +102,23 @@ const server = http.createServer(async (req, res) => {
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': contentType });
+    res.writeHead(200, {
+      'Content-Type': contentType,
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    });
     fs.createReadStream(filePath).pipe(res);
   } else {
     // 404 handler
     const notFoundPath = path.join(__dirname, 'index.html');
     if (fs.existsSync(notFoundPath)) {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
+      res.writeHead(200, {
+        'Content-Type': 'text/html; charset=UTF-8',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      });
       fs.createReadStream(notFoundPath).pipe(res);
     } else {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
