@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/stripe/:match*",
+      "destination": "/api/stripe?match=:match*"
+    }
+  ]
+}

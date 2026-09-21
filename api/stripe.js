@@ -147,6 +147,22 @@ async function getRawBody(req) {
   });
 }
 
+async function getParsedBody(req) {
+  if (req.body && typeof req.body === 'object' && !Buffer.isBuffer(req.body) && Object.keys(req.body).length > 0) {
+    return req.body;
+  }
+  if (typeof req.body === 'string') {
+    try { return JSON.parse(req.body); } catch (_) {}
+  }
+  const raw = await getRawBody(req);
+  if (!raw || !raw.length) return {};
+  try {
+    return JSON.parse(raw.toString('utf8'));
+  } catch (_) {
+    return {};
+  }
+}
+
 async function handleWebhook(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -466,10 +482,13 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   // Extract the sub-route: /api/stripe/[sub-route]
-  // req.url will be something like /api/stripe/create-checkout-session
-  const urlParts = (req.url || '').split('?')[0].split('/').filter(Boolean);
-  // urlParts: ['api', 'stripe', 'create-checkout-session']
-  const subRoute = urlParts[urlParts.length - 1];
+  const parsedUrl = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
+  const urlParts = parsedUrl.pathname.split('/').filter(Boolean);
+  let subRoute = urlParts[urlParts.length - 1];
+  
+  if ((subRoute === 'stripe' || !ROUTES[subRoute]) && parsedUrl.searchParams.get('match')) {
+    subRoute = parsedUrl.searchParams.get('match');
+  }
 
   const handler = ROUTES[subRoute];
   if (!handler) {
@@ -477,6 +496,14 @@ module.exports = async (req, res) => {
       error: `Unknown Stripe route: ${subRoute}`,
       available: Object.keys(ROUTES),
     });
+  }
+
+  if (subRoute !== 'webhook') {
+    try {
+      req.body = await getParsedBody(req);
+    } catch (e) {
+      console.warn('[Body Parse Warning]', e.message);
+    }
   }
 
   return handler(req, res);
