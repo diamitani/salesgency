@@ -16,6 +16,8 @@ const ALIASES = {
   'builder-starter': 'gtm-agent-subscription',
   'builder-pro': 'sprint-14day',
   'builder-enterprise': 'sprint-30day',
+  '14-day-build-sprint': 'sprint-14day',
+  '30-day-build-sprint': 'sprint-30day',
   'paid-audit': 'build-session',
 };
 
