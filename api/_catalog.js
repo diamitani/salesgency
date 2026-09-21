@@ -19,6 +19,12 @@ const ALIASES = {
   '14-day-build-sprint': 'sprint-14day',
   '30-day-build-sprint': 'sprint-30day',
   'paid-audit': 'build-session',
+  'skill-plugin-pas': 'skill-plugin-pae',
+  'skill-plugin-enrich': 'skill-plugin-pae',
+  'skill-plugin-crm': 'skill-plugin-automation-engineer',
+  'skill-plugin-dns': 'skill-plugin-gtm-coe',
+  'skill-plugin-gtm-arch': 'skill-plugin-gtm-coe',
+  'free-b2b-prompts': 'free-template-download',
 };
 
 function loadProducts() {
