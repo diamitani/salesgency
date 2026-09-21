@@ -4,15 +4,17 @@
  */
 
 const http = require('http');
+const https = require('https');
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 function makeRequest(method, path, body = null) {
   return new Promise((resolve, reject) => {
     const url = new URL(path, BASE_URL);
+    const client = url.protocol === 'https:' ? https : http;
     const options = {
       hostname: url.hostname,
-      port: url.port,
+      port: url.port || (url.protocol === 'https:' ? 443 : 80),
       path: url.pathname + url.search,
       method: method,
       headers: {
@@ -20,7 +22,7 @@ function makeRequest(method, path, body = null) {
       },
     };
 
-    const req = http.request(options, (res) => {
+    const req = client.request(options, (res) => {
       let data = '';
       res.on('data', (chunk) => (data += chunk));
       res.on('end', () => {
