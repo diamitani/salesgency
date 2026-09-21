@@ -1,0 +1,16 @@
+Price ID,Product ID,Product Name,Product Statement Descriptor,Product Tax Code,Description,Created (UTC),Amount,Currency,Interval,Interval Count,Usage Type,Aggregate Usage,Billing Scheme,Trial Period Days,Tax Behavior
+price_1UHxUpKuSRnusODlg33HadhZ,prod_VIYcBZ7oNQbemd,Agent Build Package,,txcd_10000000,,2026-09-21 03:02,19.99,usd,,,,,per_unit,,exclusive
+price_1UHxUQKuSRnusODl9u37vCcw,prod_VIYbemePi53Swt,Free Skill Download,,txcd_10000000,,2026-09-21 03:01,0.00,usd,,,,,per_unit,,exclusive
+price_1UHxU8KuSRnusODlsvry9MFe,prod_VIYbHFU1XbMRmP,Free Template Download,,txcd_10000000,,2026-09-21 03:01,0.00,usd,,,,,per_unit,,exclusive
+price_1UHxTdKuSRnusODlIw45dv1v,prod_VIYar3D1BSCtTO,GTM Agent Subscription,,txcd_10000000,,2026-09-21 03:01,99.00,usd,month,1,licensed,,per_unit,,exclusive
+price_1UHwwyKuSRnusODlBblDqnsR,prod_VIY3P83n0cJDKt,14-Day Build Sprint,,txcd_10000000,,2026-09-21 02:27,2999.00,usd,,,,,per_unit,,exclusive
+price_1UHwwSKuSRnusODlpWCU8DSB,prod_VIY28I5G6tmvkU,30-Day Build Sprint,,txcd_10000000,,2026-09-21 02:26,4999.00,usd,,,,,per_unit,,exclusive
+price_1UHwv4KuSRnusODlTQqrvuzO,prod_VIY19dahamcObA,Full Build - Prospect Automation Engine,,txcd_10000000,,2026-09-21 02:25,4999.00,usd,,,,,per_unit,,exclusive
+price_1UHwuCKuSRnusODlcRsFRB0Q,prod_VIY05YRJfZzHkW,Fractional GTM Engineer,,txcd_10000000,,2026-09-21 02:24,19999.00,usd,month,1,licensed,,per_unit,,exclusive
+price_1UHwS9KuSRnusODlaf7D8uDY,prod_VIXXS7cTrlS1o5,Build Session - 1 Hour,,txcd_10000000,,2026-09-21 01:55,999.00,usd,,,,,per_unit,,exclusive
+price_1UHwQVKuSRnusODlwNUAcRNF,prod_VIXVigI4gXZd3i,GTM Center of Excellence (COE) Skills Plugin,,txcd_10000000,,2026-09-21 01:53,199.00,usd,,,,,per_unit,,exclusive
+price_1UHwPDKuSRnusODlbHP3KfiL,prod_VIXUKDPfMV9PJy,Automation Engineer Skills Plugin,,txcd_10000000,,2026-09-21 01:52,199.00,usd,,,,,per_unit,,exclusive
+price_1UHwORKuSRnusODl8xye8ood,prod_VIXTzry441QP9X,Post-Sales Call Automation Skills Plugin,,txcd_10000000,,2026-09-21 01:51,199.00,usd,,,,,per_unit,,exclusive
+price_1UHwNiKuSRnusODlBUY9Fha9,prod_VIXSQCbSU4KQSN,Pre-Sales Call Automation Skills Plugin,,txcd_10000000,,2026-09-21 01:50,199.00,usd,,,,,per_unit,,exclusive
+price_1UHwMwKuSRnusODliDN1ZlxF,prod_VIXRrPdownuYEe,Inbound Automation Engine Skills Plugin,,txcd_10000000,,2026-09-21 01:50,199.00,usd,,,,,per_unit,,exclusive
+price_1UHwMDKuSRnusODlX8sZADYV,prod_VIXRZbEhvt6k9T,Prospect Automation Engine Skill Plugin,,txcd_10000000,,2026-09-21 01:49,199.00,usd,,,,,per_unit,,exclusive

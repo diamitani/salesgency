@@ -25,6 +25,12 @@ const ALIASES = {
   'skill-plugin-dns': 'skill-plugin-gtm-coe',
   'skill-plugin-gtm-arch': 'skill-plugin-gtm-coe',
   'free-b2b-prompts': 'free-template-download',
+  // New Brand Architecture Aliases
+  'gtm-teardown': 'build-session',
+  'revenue-engine-sprint': 'sprint-14day',
+  'ai-native-gtm-system': 'sprint-30day',
+  'priority-build': 'sprint-30day',
+  'monitoring-tuneups': 'fractional-gtm-engineer',
 };
 
 function loadProducts() {

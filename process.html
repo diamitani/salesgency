@@ -1,307 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTM AI Engineering Process &amp; 30-Day Deployment Roadmap - SalesGency®</title>
-  <meta name="description" content="How SalesGency deploys in-house GTM AI infrastructure in 30 days: The Delali Development Cycle (DDC), PAL methodology, and 100% client code ownership.">
-  <meta name="keywords" content="GTM AI Engineering Process, 30 Day GTM Deployment, Delali Development Cycle, PAL Methodology, n8n Systems Engineering">
-  <link rel="canonical" href="https://salesgency.com/process.html">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://salesgency.com/process.html">
-  <meta property="og:site_name" content="SalesGency®">
-  <meta property="og:title" content="GTM AI Engineering Process &amp; 30-Day Deployment Roadmap - SalesGency®">
-  <meta property="og:description" content="Predictable 30-day GTM engineering cycle. Expand from audit to production deployment in 4 sprints.">
-  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://salesgency.com/process.html">
-  <meta name="twitter:title" content="GTM AI Engineering Process &amp; 30-Day Deployment Roadmap">
-  <meta name="twitter:description" content="Predictable 30-day GTM engineering cycle.">
-  <meta name="twitter:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
-
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Structured Data: HowTo (30-Day DDC Deployment Cycle) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How SalesGency Engineers GTM AI Infrastructure in 30 Days",
-    "description": "Step-by-step 4-sprint methodology for deploying production GTM AI workflows, scrapers, and autonomous revenue agents inside private client cloud environments.",
-    "totalTime": "P30D",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Phase 1: GTM System Audit & Architecture Blueprinting",
-        "text": "Map revenue tech stacks, identify bottleneck data-flows, and author comprehensive automation specifications."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Phase 2: Prompt Skills & Scraper Cluster Construction",
-        "text": "Author domain prompt intelligence schemas and configure multi-source intent scrapers."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Phase 3: Deterministic n8n Workflows & CRM Shield",
-        "text": "Assemble production n8n execution pipelines, automated deduplication, and sub-minute webhook triggers."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Phase 4: Autonomous Agents, Telemetry & Code Handoff",
-        "text": "Deploy goal-oriented agents with Slack telemetry and complete 100% source code repository handoff."
-      }
-    ]
-  }
-  </script>
+  <title>How It Works | SalesGency</title>
+  <meta name="description" content="Our 30-day process to engineer custom AI revenue workflows inside your tech stack.">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/salesgencytokens.css">
   <link rel="stylesheet" href="assets/unified.css">
   <script src="assets/unified-nav.js" defer></script>
 </head>
 <body>
 
-    <!-- Floating Navigation -->
-  <header class="nav-wrapper">
-    <nav class="nav-bar">
-      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
-        salesgency<span class="brand-symbol">®</span>
-      </a>
-
-      <div class="nav-menu">
-        <div class="nav-dropdown-trigger">
-          <a href="agency.html" class="nav-item">Agency ▾</a>
-          <div class="nav-dropdown-menu">
-            <a href="inbound-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">1. Inbound Automation Workflow</span>
-              <span class="nav-dropdown-sub">Sub-30s speed-to-lead &amp; triage</span>
-            </a>
-            <a href="outbound-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">2. Outbound Automation Workflow</span>
-              <span class="nav-dropdown-sub">Intent waterfall &amp; PAS personalization</span>
-            </a>
-            <a href="pre-sales-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">3. Pre Sales Call Automation</span>
-              <span class="nav-dropdown-sub">Autonomous prospect dossiers</span>
-            </a>
-            <a href="post-sales-automation.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">4. Post Sales Call Automation</span>
-              <span class="nav-dropdown-sub">Transcript extraction &amp; CRM sync</span>
-            </a>
-            <a href="daily-execution-report.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">5. Daily Execution Report</span>
-              <span class="nav-dropdown-sub">Rep telemetry &amp; stuck deals</span>
-            </a>
-            <a href="daily-gtm-report.html" class="nav-dropdown-item">
-              <span class="nav-dropdown-title">6. Daily GTM Report</span>
-              <span class="nav-dropdown-sub">Executive pipeline &amp; CAC velocity</span>
-            </a>
-            <a href="build-session.html" class="nav-dropdown-item" style="border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
-              <span class="nav-dropdown-title" style="color: var(--accent-blue);">⚡ Book a Build Session</span>
-              <span class="nav-dropdown-sub">Custom scoped 30% value-added build</span>
-            </a>
-          </div>
-        </div>
-        <a href="marketplace.html" class="nav-item">
-          <span>Marketplace</span>
-          <span class="blueprint-pill">Skills &amp; Tools</span>
-        </a>
-        <a href="agent.html" class="nav-item">Agent</a>
-        <a href="pricing.html" class="nav-item">Pricing</a>
-        <a href="work.html" class="nav-item">Case Studies</a>
-      </div>
-
-      <div class="nav-actions">
-        <a href="build-session.html" class="btn-book-call">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span>Book a Build Session</span>
-        </a>
-        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
-          Menu
-        </button>
-      </div>
-    </nav>
-  </header>
-
-    <!-- Mobile Menu Drawer -->
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <a href="index.html" class="mobile-link">Home</a>
-    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Products)</a>
-    <a href="marketplace.html" class="mobile-link" style="font-weight: 700;">2. Marketplace (Skills &amp; Blueprints)</a>
-    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammate Platform)</a>
-    <a href="pricing.html" class="mobile-link">Pricing Guide</a>
-    <a href="work.html" class="mobile-link">Case Studies</a>
-    <a href="build-session.html" class="btn btn-primary" style="margin-top: 8px;">Book a Build Session</a>
-  </div>
-
-<div class="site-wrapper">
-
-    <!-- Process Hero -->
-    <section class="hero-section" style="padding-top: clamp(120px, 14vw, 170px); padding-bottom: 40px;">
-      <div class="container">
-        
-        <div class="badge-tag">Predictable 30-Day Cycle</div>
-        <h1 class="hero-headline">
-          From audit to production <br>
-          <span class="serif-italic">in 30 days.</span>
-        </h1>
-        <p class="hero-description">
-          We use the structured Delali Development Cycle (DDC) and PAL compilation methodology to deploy robust, self-healing GTM software directly into your stack.
+  <main>
+    <section class="sg-section" style="background: var(--sg-mist); padding-top: 140px;">
+      <div class="sg-container" style="max-width: 800px; text-align: center;">
+        <span class="sg-badge" style="background: var(--sg-accent); color: var(--sg-ink); margin-bottom: 16px; border-radius: 4px; padding: 4px 12px; font-weight: 700; text-transform: uppercase; font-size: 11px;">The Delali Development Cycle</span>
+        <h1 class="sg-h1" style="margin-bottom: 24px;">From audit to production in 30 days.</h1>
+        <p class="sg-body" style="color: var(--sg-slate); max-width: 600px; margin: 0 auto 48px;">
+          We build robust, deterministic revenue workflows directly in your private infrastructure. No black boxes. No recurring SaaS fees.
         </p>
-
-        <div class="hero-cta-group">
-          <a href="qualification.html" class="btn btn-primary">Start with Audit ($495)</a>
-          <a href="pricing.html" class="btn btn-secondary">Explore Retainer Option</a>
-        </div>
-
       </div>
     </section>
 
-    <!-- 4 Sprints Timeline -->
-    <section style="padding: 40px 0 80px; width: 100%;">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="badge-tag">Sprint Breakdown</div>
-          <h2 class="section-title">
-            The 4-phase <span class="serif-italic">deployment roadmap.</span>
-          </h2>
-          <p class="section-subtitle">
-            Every step is transparent, documented, and built directly within your private infrastructure.
-          </p>
-        </div>
-
-        <div class="process-steps-container">
+    <!-- PAL Methodology -->
+    <section class="sg-section">
+      <div class="sg-container" style="max-width: 1000px;">
+        <h2 class="sg-h2" style="text-align: center; margin-bottom: 64px;">The PAL Engineering Framework</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
           
-          <!-- Step 1 -->
-          <div class="process-step-item">
-            <div class="step-badge-number">01</div>
-            <div class="step-content-box">
-              <div class="step-timeline-tag">Days 1 – 7 &bull; Diagnostic &amp; Architecture</div>
-              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
-                GTM System Audit &amp; Data-Flow Blueprinting
-              </h3>
-              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
-                We map your entire revenue tech stack (CRM, email sequencers, forms, scrapers, databases). We uncover duplicate records, ghosting leads, and manual bottlenecks, producing a detailed engineering specification diagram.
-              </p>
-              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
-                <div class="flow-node"><span>Deliverable: Full Architectural Blueprint</span><span class="flow-status-pill">Signed Off</span></div>
-                <div class="flow-node"><span>Deliverable: Prioritized High-ROI Workflow Backlog</span><span class="flow-status-pill">Ready</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="process-step-item">
-            <div class="step-badge-number">02</div>
-            <div class="step-content-box">
-              <div class="step-timeline-tag">Days 8 – 15 &bull; Core Intelligence Layer</div>
-              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
-                Prompt Skills &amp; Scraper Cluster Construction
-              </h3>
-              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
-                We author and benchmark domain-specific prompt skill engines (PAS copywriting, objection handling, intent classification) and deploy headless scrapers for LinkedIn, Apollo, and company hiring signals.
-              </p>
-              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
-                <div class="flow-node"><span>Deliverable: 3-5 Custom Prompt Skill Packs</span><span class="flow-status-pill">Benchmarked</span></div>
-                <div class="flow-node"><span>Deliverable: Multi-Source Scraping Webhooks</span><span class="flow-status-pill">Live</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="process-step-item">
-            <div class="step-badge-number">03</div>
-            <div class="step-content-box">
-              <div class="step-timeline-tag">Days 16 – 23 &bull; Orchestration &amp; Sync</div>
-              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
-                Deterministic n8n Workflows &amp; CRM Shield
-              </h3>
-              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
-                We assemble the production n8n execution pipelines connecting scrapers, LLMs, sequencers, and your CRM. We install bidirectional deduplication, bounce filters, and sub-minute webhook triggers.
-              </p>
-              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
-                <div class="flow-node"><span>Deliverable: Production n8n Engine Deployed</span><span class="flow-status-pill">Tested</span></div>
-                <div class="flow-node"><span>Deliverable: CRM Shield &amp; Deduplication Node</span><span class="flow-status-pill">Active</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="process-step-item">
-            <div class="step-badge-number">04</div>
-            <div class="step-content-box">
-              <div class="step-timeline-tag">Days 24 – 30 &bull; Autonomous Deployment &amp; Handoff</div>
-              <h3 style="font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">
-                Autonomous Agents, Telemetry &amp; 100% Code Handoff
-              </h3>
-              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
-                We activate autonomous agents with human-in-the-loop overrides, set up real-time Slack telemetry dashboards, and conduct full operational handoff training with your revenue leadership team.
-              </p>
-              <div class="work-preview-flow" style="background: var(--bg-card-subtle);">
-                <div class="flow-node"><span>Deliverable: Slack &amp; Email Telemetry Alerts</span><span class="flow-status-pill">Monitoring</span></div>
-                <div class="flow-node"><span>Deliverable: 100% Source Code &amp; Credentials Transferred</span><span class="flow-status-pill">Client-Owned</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PAL Methodology Section -->
-    <section class="section" style="padding: 70px 0; background: var(--bg-card-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); width: 100%;">
-      <div class="container">
-        <div class="section-header">
-          <div class="badge-tag">Engineering Rigor</div>
-          <h2 class="section-title">
-            The PAL <span class="serif-italic">methodology.</span>
-          </h2>
-          <p class="section-subtitle">
-            How we translate complex sales operations into deterministic, zero-error AI workflows.
-          </p>
-        </div>
-
-        <div class="work-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-          
-          <div class="work-card" style="padding: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--accent-blue); margin-bottom: 8px;">P</div>
-            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Parse</h4>
-            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
-              Deconstruct manual SDR &amp; AE workflows into raw operational constraints, data inputs, and desired trigger conditions.
+          <div class="sg-card">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-ink); margin-bottom: 12px;">P</div>
+            <h4 class="sg-h4" style="margin-bottom: 8px;">Parse</h4>
+            <p class="sg-caption" style="color: var(--sg-slate);">
+              We deconstruct your manual workflows into raw operational constraints, data inputs, and desired trigger conditions.
             </p>
           </div>
 
-          <div class="work-card" style="padding: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--accent-green); margin-bottom: 8px;">A</div>
-            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Ambiguity Scan</h4>
-            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+          <div class="sg-card">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-ink); margin-bottom: 12px;">A</div>
+            <h4 class="sg-h4" style="margin-bottom: 8px;">Ambiguity Scan</h4>
+            <p class="sg-caption" style="color: var(--sg-slate);">
               Identify edge cases, API rate limits, catch-all domains, and missing data schemas before authoring code.
             </p>
           </div>
 
-          <div class="work-card" style="padding: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--accent-rose); margin-bottom: 8px;">L</div>
-            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Latent Intent</h4>
-            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+          <div class="sg-card">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-ink); margin-bottom: 12px;">L</div>
+            <h4 class="sg-h4" style="margin-bottom: 8px;">Latent Intent</h4>
+            <p class="sg-caption" style="color: var(--sg-slate);">
               Uncover buyer psychological triggers to ensure AI-generated messaging resonates with high-conviction value.
             </p>
           </div>
 
-          <div class="work-card" style="padding: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">C</div>
-            <h4 style="font-size: 17px; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Compile</h4>
-            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
-              Synthesize tested n8n JSON nodes, prompt schemas, and webhook listeners ready for immediate production execution.
+          <div class="sg-card" style="background: var(--sg-ink); color: var(--sg-white);">
+            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-white); margin-bottom: 12px;">C</div>
+            <h4 class="sg-h4" style="margin-bottom: 8px; color: var(--sg-white);">Compile</h4>
+            <p class="sg-caption" style="color: var(--sg-mist); opacity: 0.8;">
+              Synthesize tested n8n JSON nodes, prompt schemas, and webhook listeners ready for production.
             </p>
           </div>
 
@@ -309,58 +70,72 @@
       </div>
     </section>
 
-    <!-- Mega Bottom CTA Banner -->
-    <section class="bottom-cta-section">
-      <div class="container">
-        <div class="bottom-cta-card">
-          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
-            salesgency<span class="brand-symbol">®</span>
+    <!-- The Sprints -->
+    <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-mist);">
+      <div class="sg-container" style="max-width: 800px;">
+        <h2 class="sg-h2" style="text-align: center; margin-bottom: 64px;">The 4-Sprint Deployment Roadmap</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+          <!-- Sprint 1 -->
+          <div style="display: flex; gap: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">01</div>
+            <div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 1–7</div>
+              <h3 class="sg-h4" style="margin-bottom: 12px;">System Audit &amp; Architecture Blueprinting</h3>
+              <p class="sg-body" style="color: var(--sg-slate);">We map your entire revenue tech stack (CRM, email sequencers, forms, scrapers). We uncover duplicate records and bottleneck data-flows, producing a detailed engineering specification diagram.</p>
+            </div>
           </div>
-          <h2 class="bottom-cta-headline">
-            Start your 30-day <span class="serif-italic">build cycle.</span>
-          </h2>
-          <p class="bottom-cta-subtitle">
-            Kick off with a 60-minute GTM Architecture Audit ($495, 100% credited to your retainer) or partner on a dedicated retainer.
-          </p>
-          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
-            <a href="qualification.html" class="btn btn-primary">Book Paid Audit ($495)</a>
-            <a href="pricing.html" class="btn btn-secondary">See Retainer Plans</a>
+          <!-- Sprint 2 -->
+          <div style="display: flex; gap: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">02</div>
+            <div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 8–15</div>
+              <h3 class="sg-h4" style="margin-bottom: 12px;">Prompt Skills &amp; Scraper Cluster Construction</h3>
+              <p class="sg-body" style="color: var(--sg-slate);">We author and benchmark domain-specific prompt skill engines (PAS copywriting, intent classification) and deploy headless scrapers for hiring signals and firmographics.</p>
+            </div>
+          </div>
+          <!-- Sprint 3 -->
+          <div style="display: flex; gap: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">03</div>
+            <div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 16–23</div>
+              <h3 class="sg-h4" style="margin-bottom: 12px;">Deterministic Workflows &amp; CRM Shield</h3>
+              <p class="sg-body" style="color: var(--sg-slate);">We assemble the production n8n execution pipelines connecting scrapers, LLMs, sequencers, and your CRM. We install bidirectional deduplication and sub-minute webhook triggers.</p>
+            </div>
+          </div>
+          <!-- Sprint 4 -->
+          <div style="display: flex; gap: 24px;">
+            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">04</div>
+            <div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 24–30</div>
+              <h3 class="sg-h4" style="margin-bottom: 12px;">Autonomous Deployment &amp; Handoff</h3>
+              <p class="sg-body" style="color: var(--sg-slate);">We activate autonomous workflows with human-in-the-loop overrides, set up Slack telemetry, and conduct full source code handoff with your leadership team.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-        <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-inner">
-          <div class="footer-copyright">
-            © 2026 SalesGency®. GTM AI Architecture. 100% client-owned code.
-          </div>
-          <div class="footer-links">
-            <a href="index.html" class="footer-link">Home</a>
-            <a href="agency.html" class="footer-link">Agency</a>
-            <a href="marketplace.html" class="footer-link">Marketplace</a>
-            <a href="agent.html" class="footer-link">Agent</a>
-            <a href="pricing.html" class="footer-link">Pricing Guide</a>
-            <a href="build-session.html" class="footer-link">Book Build Session</a>
-          </div>
-        </div>
+    <!-- CTA -->
+    <section class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); text-align: center;">
+      <div class="sg-container">
+        <h2 class="sg-h2" style="color: var(--sg-white); margin-bottom: 24px;">Ready to build?</h2>
+        <p class="sg-body" style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 32px; opacity: 0.8;">
+          Start with a $299 GTM Teardown to map your architecture, fully credited towards any 14-day or 30-day build sprint.
+        </p>
+        <a href="pricing.html" class="sg-btn sg-btn-primary">View Pricing</a>
       </div>
-    </footer>
+    </section>
+  </main>
 
-  </div>
-
-  <script>
-    const mobileToggle = document.getElementById('mobileNavToggle');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    if (mobileToggle && mobileDrawer) {
-      mobileToggle.addEventListener('click', () => {
-        mobileDrawer.classList.toggle('open');
-        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
-      });
-    }
-  </script>
+  <footer class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); padding: 60px 0 40px; text-align: center;">
+    <div class="sg-container">
+      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency" style="height: 24px; margin-bottom: 24px;">
+      <p class="sg-caption" style="color: var(--sg-mist); opacity: 0.7; max-width: 400px; margin: 0 auto;">
+        &copy; 2026 SalesGency. GTM AI Architecture. 100% client-owned code.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>

@@ -3,1409 +3,261 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SalesGency — AI Revenue Engineering | Diamitani Industries</title>
-  <meta name="description" content="SalesGency installs production-grade AI revenue workflows inside HubSpot, Salesforce, Clay, and n8n. We design, build, and prove client-owned GTM engines for B2B revenue teams.">
+  <title>SalesGency — AI Revenue Workflows</title>
+  <meta name="description" content="SalesGency installs AI revenue workflows inside your existing stack. Turn every inquiry into a next step.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
-
-  <!-- Fonts -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Design System -->
-  <link rel="stylesheet" href="assets/sg-design-system.css?v=5.0">
-  <link rel="stylesheet" href="assets/unified.css?v=5.0">
-  <script src="assets/unified-nav.js?v=4.1" defer></script>
-  <script src="assets/stripe-client.js?v=5.0" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/salesgencytokens.css">
+  <link rel="stylesheet" href="assets/unified.css">
+  
+  <!-- The script dynamically inserts the unified nav -->
+  <script src="assets/unified-nav.js" defer></script>
+  <script src="assets/stripe-client.js" defer></script>
 
   <style>
-    /* ── Page-level overrides ─────────────────────────────────────────────── */
-
-    /* Marquee */
-    .marquee-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
+    body {
+      background-color: var(--sg-mist);
+      color: var(--sg-ink);
+      font-family: var(--sg-font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      margin: 0;
     }
-    .marquee-container::before,
-    .marquee-container::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
+    h1, h2, h3, h4 {
+      font-family: var(--sg-font-display);
+      letter-spacing: -0.02em;
+      color: var(--sg-ink);
     }
-    .marquee-container::before {
-      left: 0;
-      background: linear-gradient(90deg, var(--bg-paper) 0%, transparent 100%);
-    }
-    .marquee-container::after {
-      right: 0;
-      background: linear-gradient(270deg, var(--bg-paper) 0%, transparent 100%);
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee-scroll 55s linear infinite;
-    }
-    .marquee-container:hover .marquee-track {
-      animation-play-state: paused;
-    }
-    @keyframes marquee-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .marquee-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 28px;
-      white-space: nowrap;
-      color: var(--text-tertiary);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: -0.01em;
-      transition: color 0.15s ease;
-    }
-    .marquee-item:hover { color: var(--text-primary); }
-    .marquee-logo {
-      width: 20px;
-      height: 20px;
-      border-radius: 3px;
-      object-fit: contain;
-      flex-shrink: 0;
-      filter: grayscale(1);
-      opacity: 0.65;
-      transition: opacity 0.15s ease, filter 0.15s ease;
-    }
-    .marquee-item:hover .marquee-logo {
-      filter: grayscale(0);
-      opacity: 1;
-    }
-
-    /* ── Hero Section ─────────────────────────────────────────────────────── */
-    .hero-section {
-      background: var(--bg-obsidian);
-      padding: 96px 0 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Subtle dot grid on dark background */
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 36px 36px;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.05fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-dark);
-      margin-bottom: 24px;
-    }
-
-    .hero-eyebrow-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent-dark);
-    }
-
-    .hero-h1 {
-      font-size: clamp(2.4rem, 4.8vw, 3.8rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.06;
-      color: #FFFFFF;
-      margin-bottom: 20px;
-    }
-
-    .hero-h1 em {
-      font-style: normal;
-      color: var(--accent-dark);
-    }
-
-    .hero-lede {
-      font-size: clamp(1rem, 1.3vw, 1.15rem);
-      color: rgba(255, 255, 255, 0.82);
-      line-height: 1.65;
-      max-width: 52ch;
-      margin-bottom: 36px;
-      font-weight: 400;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 52px;
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 28px;
-    }
-
-    .hero-metric {
-      padding-right: 28px;
-      border-right: 1px solid rgba(255,255,255,0.12);
-    }
-    .hero-metric:last-child {
-      padding-right: 0;
-      border-right: none;
-      padding-left: 28px;
-    }
-    .hero-metric:not(:first-child):not(:last-child) {
-      padding: 0 28px;
-    }
-
-    .hero-metric-value {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 5px;
-    }
-
-    .hero-metric-label {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.72);
-      font-weight: 500;
-    }
-
-    /* Hero right — architecture image */
-    .hero-image-wrap {
-      position: relative;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-    }
-
-    .hero-image-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .hero-image-badge {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(10,11,14,0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 4px;
-      padding: 10px 14px;
-    }
-
-    .hero-image-badge-left {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.60);
-    }
-
-    .hero-image-badge-left strong {
-      color: #FFFFFF;
-      display: block;
-      margin-bottom: 1px;
-    }
-
-    @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero-image-wrap { max-width: 600px; }
-    }
-
-    @media (max-width: 640px) {
-      .hero-section { padding: 72px 0 64px; }
-      .hero-metrics { grid-template-columns: repeat(3, 1fr); gap: 0; }
-      .hero-metric { padding-right: 16px; }
-      .hero-metric:not(:first-child):not(:last-child) { padding: 0 16px; }
-    }
-
-    /* ── Integration Rail ─────────────────────────────────────────────────── */
-    .integration-rail {
-      background: var(--bg-paper);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 28px 0;
-    }
-
-    .integration-rail-label {
+    /* Hero */
+    .sg-hero {
+      background-color: var(--sg-ink);
+      color: var(--sg-white);
+      padding: 160px 24px 100px;
       text-align: center;
-      margin-bottom: 20px;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    /* ── Activations Section ──────────────────────────────────────────────── */
-    .activation-card {
-      padding: 28px 26px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .activation-card:hover {
-      border-color: var(--border-medium);
-      box-shadow: var(--shadow-md);
-    }
-
-    .activation-number {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .activation-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-      line-height: 1.3;
-    }
-
-    .activation-card p {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .activation-sla {
-      display: inline-flex;
-      align-items: center;
-      margin-top: 16px;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    /* ── Process Section ──────────────────────────────────────────────────── */
-    .process-section {
-      background: var(--bg-obsidian);
-      padding: var(--section-pad-y) 0;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--border-dark);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-    }
-
-    .process-step {
-      padding: 36px 28px;
-      border-right: 1px solid var(--border-dark);
       position: relative;
-    }
-
-    .process-step:last-child {
-      border-right: none;
-    }
-
-    .process-step-num {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .process-step h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-      line-height: 1.3;
-    }
-
-    .process-step p {
-      font-size: 0.845rem;
-      color: rgba(255, 255, 255, 0.78);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    @media (max-width: 900px) {
-      .process-steps {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .process-step:nth-child(2) { border-right: none; }
-      .process-step:nth-child(1),
-      .process-step:nth-child(2) {
-        border-bottom: 1px solid var(--border-dark);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .process-steps { grid-template-columns: 1fr; }
-      .process-step { border-right: none; border-bottom: 1px solid var(--border-dark); }
-      .process-step:last-child { border-bottom: none; }
-    }
-
-    /* ── Services Accordion ───────────────────────────────────────────────── */
-    .services-section {
-      background: var(--bg-white);
-      padding: var(--section-pad-y) 0;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .services-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .service-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .service-item {
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      transition: border-color 0.2s ease;
-    }
-
-    .service-item.active {
-      border-color: var(--accent-border);
-    }
-
-    .service-item-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      cursor: pointer;
-      gap: 12px;
-      transition: background 0.15s ease;
-      user-select: none;
-    }
-
-    .service-item-header:hover {
-      background: var(--bg-paper);
-    }
-
-    .service-item.active .service-item-header {
-      background: var(--accent-subtle);
-    }
-
-    .service-item-title {
-      font-size: 0.925rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.015em;
-    }
-
-    .service-item.active .service-item-title {
-      color: var(--accent);
-    }
-
-    .service-item-icon {
-      width: 20px;
-      height: 20px;
-      color: var(--text-dim);
-      flex-shrink: 0;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-
-    .service-item.active .service-item-icon {
-      transform: rotate(45deg);
-      color: var(--accent);
-    }
-
-    .service-item-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.2s ease;
-    }
-
-    .service-item.active .service-item-body {
-      max-height: 200px;
-      padding: 0 20px 20px;
-    }
-
-    .service-item-body p {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin: 0;
-    }
-
-    /* Service detail panel */
-    .service-detail-panel {
-      position: sticky;
-      top: 88px;
-    }
-
-    .service-detail-card {
-      background: var(--bg-paper);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
       overflow: hidden;
     }
-
-    .service-detail-header {
-      background: var(--bg-obsidian);
-      padding: 20px 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .sg-hero h1 {
+      color: var(--sg-white);
+      font-size: clamp(48px, 8vw, 80px);
+      max-width: 900px;
+      margin: 0 auto 24px;
+      line-height: 1.05;
     }
-
-    .service-detail-title {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+    .sg-hero p {
+      color: var(--sg-mist);
+      font-size: 22px;
+      max-width: 650px;
+      margin: 0 auto 48px;
+      opacity: 0.9;
     }
-
-    .service-detail-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: -0.02em;
-    }
-
-    .service-detail-body {
-      padding: 24px;
-    }
-
-    .service-feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .service-feature {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .service-feature-check {
-      width: 16px;
-      height: 16px;
-      border-radius: 2px;
-      background: var(--accent-subtle);
-      border: 1px solid var(--accent-border);
-      display: flex;
+    
+    /* Buttons */
+    .sg-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-family: var(--sg-font-display);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      gap: 8px;
+    }
+    .sg-btn-primary {
+      background: var(--sg-white);
+      color: var(--sg-ink);
+    }
+    .sg-btn-primary:hover {
+      background: var(--sg-mist);
+      transform: translateY(-2px);
+    }
+    .sg-btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--sg-ink);
+      color: var(--sg-ink);
+    }
+    .sg-btn-secondary:hover {
+      background: rgba(10, 20, 40, 0.05);
     }
 
-    .service-feature-check svg {
-      width: 10px;
-      height: 10px;
-      color: var(--accent);
+    /* Section defaults */
+    .sg-section {
+      padding: 120px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-
-    .service-feature-text {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+    .sg-section-header {
+      text-align: center;
+      margin-bottom: 80px;
     }
-
-    @media (max-width: 900px) {
-      .services-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .service-detail-panel { position: static; }
-    }
-
-    /* ── Pricing Section ──────────────────────────────────────────────────── */
-    .pricing-section {
-      background: var(--bg-paper);
-      border-top: 1px solid var(--border-subtle);
-      padding: var(--section-pad-y) 0;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-    }
-
-    .pricing-card {
-      background: var(--bg-white);
-      padding: 36px 30px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pricing-card.featured {
-      background: var(--bg-obsidian);
-    }
-
-    .pricing-tier-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--text-dim);
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .pricing-card.featured .pricing-tier-label {
-      color: var(--accent-dark);
-    }
-
-    .pricing-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-
-    .pricing-card.featured .pricing-name {
-      color: #FFFFFF;
-    }
-
-    .pricing-desc {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      margin-bottom: 28px;
-    }
-
-    .pricing-card.featured .pricing-desc {
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .pricing-price {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .pricing-card.featured .pricing-price {
-      color: #FFFFFF;
-    }
-
-    .pricing-period {
-      font-size: 0.82rem;
-      color: var(--text-tertiary);
-      margin-bottom: 28px;
-    }
-
-    .pricing-card.featured .pricing-period {
-      color: rgba(255, 255, 255, 0.65);
-    }
-
-    .pricing-divider {
-      height: 1px;
-      background: var(--border-subtle);
+    .sg-section-header h2 {
+      font-size: 48px;
       margin-bottom: 24px;
     }
-
-    .pricing-card.featured .pricing-divider {
-      background: var(--border-dark);
+    .sg-section-header p {
+      color: var(--sg-slate);
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .pricing-features {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 32px;
-      flex: 1;
-    }
-
-    .pricing-feature {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.45;
-    }
-
-    .pricing-card.featured .pricing-feature {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .pricing-feature-check {
-      color: var(--accent);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 0;
-      font-size: 0.9rem;
-    }
-
-    .pricing-card.featured .pricing-feature-check {
-      color: var(--accent-dark);
-    }
-
-    @media (max-width: 900px) {
-      .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 2px;
-      }
-    }
-
-    /* ── CTA Band ─────────────────────────────────────────────────────────── */
-    .cta-band {
-      background: var(--bg-obsidian);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 64px 0;
-    }
-
-    .cta-band-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* Features/Engines Grid */
+    .sg-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
-      flex-wrap: wrap;
     }
-
-    .cta-band-copy h2 {
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-      font-weight: 800;
-      color: #FFFFFF;
-      letter-spacing: -0.035em;
-      margin-bottom: 10px;
-      line-height: 1.15;
+    .sg-feature-card {
+      padding: 40px;
+      background: var(--sg-white);
+      border: 1px solid var(--sg-line);
+      border-radius: var(--sg-radius-l);
+      transition: box-shadow 0.2s ease;
     }
-
-    .cta-band-copy p {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.80);
-      max-width: 480px;
-      line-height: 1.6;
+    .sg-feature-card:hover {
+      box-shadow: 0 12px 32px rgba(10, 20, 40, 0.06);
     }
-
-    .cta-band-actions {
-      display: flex;
+    .sg-feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .sg-feature-card p {
+      color: var(--sg-slate);
+      font-size: 16px;
+    }
+    .sg-link-arrow {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
+      gap: 8px;
+      color: var(--sg-action);
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 24px;
     }
-
+    .sg-link-arrow:hover {
+      text-decoration: underline;
+    }
+    
+    /* Stats / Trust section */
+    .sg-trust {
+      background: var(--sg-white);
+      border-top: 1px solid var(--sg-line);
+      border-bottom: 1px solid var(--sg-line);
+      padding: 80px 24px;
+    }
+    .sg-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .sg-stat-num {
+      font-family: var(--sg-font-display);
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--sg-ink);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .sg-stat-label {
+      color: var(--sg-slate);
+      font-size: 16px;
+      font-weight: 500;
+    }
     @media (max-width: 768px) {
-      .cta-band-inner { flex-direction: column; align-items: flex-start; }
-      .cta-band-actions { flex-wrap: wrap; }
-    }
-
-    /* ── Reveal animation ─────────────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.45s cubic-bezier(0,0,0.2,1), transform 0.45s cubic-bezier(0,0,0.2,1);
-    }
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* ── Responsive section pad ───────────────────────────────────────────── */
-    .section-pad {
-      padding-top: clamp(72px, 8vw, 112px);
-      padding-bottom: clamp(72px, 8vw, 112px);
+      .sg-stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================================================================= -->
-  <!-- NAVIGATION -->
-  <!-- ================================================================= -->
-  <header class="sgu-nav" id="sgu-nav">
-    <div class="sgu-nav-inner">
-      <!-- Brand -->
-      <a class="sgu-brand" href="index.html" aria-label="SalesGency Home">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="132" height="26">
-          <defs>
-            <linearGradient id="nav-logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4D93E8"/>
-              <stop offset="100%" stop-color="#1B6FD8"/>
-            </linearGradient>
-          </defs>
-          <g transform="translate(2, 26)">
-            <text font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.04em">
-              <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#nav-logo-grad)">Gency</tspan>
-            </text>
-          </g>
-        </svg>
-        <span class="sgu-brand-divider"></span>
-        <span class="sgu-brand-sub">Diamitani Industries</span>
-      </a>
-
-      <!-- Nav Links -->
-      <ul class="sgu-links">
-        <li><a href="agency.html">Services</a></li>
-        <li><a href="marketplace.html">Marketplace</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="templates.html">Templates</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="work.html">Work</a></li>
-      </ul>
-
-      <!-- Actions -->
-      <div class="sgu-nav-actions">
-        <div class="sgu-nav-status">
-          <span class="sgu-pulse-dot"></span>
-          All Systems Active
-        </div>
-        <a href="portal.html" class="sgu-portal-btn">Client Portal</a>
-        <a href="build-session.html" class="sgu-cta-btn">Book a Build Session</a>
-        <button class="sgu-burger" id="sgu-burger" aria-label="Open menu">☰</button>
-      </div>
-    </div>
-  </header>
-
   <main>
+    <section class="sg-hero">
+      <h1>Turn every inquiry into a next step.</h1>
+      <p>We install AI revenue workflows inside your existing stack. Give every target account a reason to respond, and make every conversation useful.</p>
+      <div style="display: flex; justify-content: center; gap: 16px;">
+        <a href="build-session.html" class="sg-btn sg-btn-primary">Get a GTM teardown</a>
+        <a href="services.html" class="sg-btn" style="background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: white;">Explore Engines</a>
+      </div>
+    </section>
 
-    <!-- ================================================================= -->
-    <!-- HERO — Dark, Left-Aligned, Two-Column                             -->
-    <!-- ================================================================= -->
-    <section class="hero-section">
-      <div class="container-wide">
-        <div class="hero-grid">
-
-          <!-- Left: Copy & Actions -->
-          <div>
-            <div class="hero-eyebrow">
-              <span class="hero-eyebrow-dot"></span>
-              GTM Engineering · Revenue Infrastructure
-            </div>
-
-            <h1 class="hero-h1">
-              AI Revenue Engines.<br>
-              <em>Production-Installed.</em>
-            </h1>
-
-            <p class="hero-lede">
-              SalesGency designs, installs, and proves client-owned AI revenue workflows inside your existing stack — HubSpot, Salesforce, Clay, and n8n. No prompt wrappers. No retainers. Production infrastructure you own forever.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-inverse btn-lg" href="build-session.html">
-                Book a Build Session
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-              <a class="btn btn-outline-dark btn-lg" href="marketplace.html">View Marketplace</a>
-            </div>
-
-            <!-- Metrics bar -->
-            <div class="hero-metrics">
-              <div class="hero-metric">
-                <div class="hero-metric-value">&lt;30s</div>
-                <div class="hero-metric-label">Lead response SLA</div>
-              </div>
-              <div class="hero-metric">
-                <div class="hero-metric-value">6</div>
-                <div class="hero-metric-label">Core GTM activations</div>
-              </div>
-              <div class="hero-metric">
-                <div class="hero-metric-value">100%</div>
-                <div class="hero-metric-label">Client-owned code</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Architecture Diagram -->
-          <div>
-            <div class="hero-image-wrap">
-              <img
-                src="assets/hero-architecture.jpg"
-                alt="SalesGency Revenue Engine Architecture — 3-tier AI workflow diagram"
-                width="720"
-                height="405"
-                loading="eager"
-              >
-              <div class="hero-image-badge">
-                <div class="hero-image-badge-left">
-                  <strong>PAE Outbound Engine</strong>
-                  n8n · Clay · HubSpot · Smartlead
-                </div>
-                <span class="status-chip on-dark">
-                  <span class="status-dot"></span>
-                  Active · 0 Errors
-                </span>
-              </div>
-            </div>
-          </div>
-
+    <section class="sg-trust">
+      <div class="sg-stats-grid">
+        <div>
+          <div class="sg-stat-num">3x</div>
+          <div class="sg-stat-label">Faster Pipeline Generation</div>
+        </div>
+        <div>
+          <div class="sg-stat-num">0</div>
+          <div class="sg-stat-label">New Platforms to Learn</div>
+        </div>
+        <div>
+          <div class="sg-stat-num">100%</div>
+          <div class="sg-stat-label">Client Owned IP</div>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================= -->
-    <!-- INTEGRATION RAIL — Logo marquee (1 per page)                      -->
-    <!-- ================================================================= -->
-    <section class="integration-rail">
-      <div class="integration-rail-label">Build on your existing stack</div>
-      <div class="marquee-container">
-        <div class="marquee-track">
-          <!-- Set 1 -->
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=n8n.io&sz=128" alt="n8n" loading="lazy"><span>n8n</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=make.com&sz=128" alt="Make.com" loading="lazy"><span>Make.com</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=128" alt="HubSpot" loading="lazy"><span>HubSpot</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=clay.com&sz=128" alt="Clay" loading="lazy"><span>Clay</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=apollo.io&sz=128" alt="Apollo" loading="lazy"><span>Apollo.io</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=salesforce.com&sz=128" alt="Salesforce" loading="lazy"><span>Salesforce</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=smartlead.ai&sz=128" alt="Smartlead" loading="lazy"><span>Smartlead</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=instantly.ai&sz=128" alt="Instantly" loading="lazy"><span>Instantly</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=attio.com&sz=128" alt="Attio" loading="lazy"><span>Attio</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude" loading="lazy"><span>Claude</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" alt="OpenAI" loading="lazy"><span>OpenAI</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128" alt="AWS" loading="lazy"><span>AWS Bedrock</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=azure.microsoft.com&sz=128" alt="Azure" loading="lazy"><span>Azure AI</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini" loading="lazy"><span>Gemini SDK</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=monday.com&sz=128" alt="Monday" loading="lazy"><span>Monday.com</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=zoho.com&sz=128" alt="Zoho" loading="lazy"><span>Zoho CRM</span></div>
-          <!-- Set 2 (duplicate for seamless loop) -->
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=n8n.io&sz=128" alt="n8n" loading="lazy"><span>n8n</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=make.com&sz=128" alt="Make.com" loading="lazy"><span>Make.com</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=128" alt="HubSpot" loading="lazy"><span>HubSpot</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=clay.com&sz=128" alt="Clay" loading="lazy"><span>Clay</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=apollo.io&sz=128" alt="Apollo" loading="lazy"><span>Apollo.io</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=salesforce.com&sz=128" alt="Salesforce" loading="lazy"><span>Salesforce</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=smartlead.ai&sz=128" alt="Smartlead" loading="lazy"><span>Smartlead</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=instantly.ai&sz=128" alt="Instantly" loading="lazy"><span>Instantly</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=attio.com&sz=128" alt="Attio" loading="lazy"><span>Attio</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude" loading="lazy"><span>Claude</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" alt="OpenAI" loading="lazy"><span>OpenAI</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128" alt="AWS" loading="lazy"><span>AWS Bedrock</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=azure.microsoft.com&sz=128" alt="Azure" loading="lazy"><span>Azure AI</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini" loading="lazy"><span>Gemini SDK</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=monday.com&sz=128" alt="Monday" loading="lazy"><span>Monday.com</span></div>
-          <div class="marquee-item"><img class="marquee-logo" src="https://www.google.com/s2/favicons?domain=zoho.com&sz=128" alt="Zoho" loading="lazy"><span>Zoho CRM</span></div>
+    <section class="sg-section">
+      <div class="sg-section-header">
+        <h2>Three Engines for Revenue</h2>
+        <p>Built directly into your CRM. You own the code, the accounts, and the outcome.</p>
+      </div>
+      
+      <div class="sg-grid-3">
+        <div class="sg-feature-card">
+          <h3>Inbound Conversion</h3>
+          <p>Qualify and enrich new leads. Route by fit, territory, or urgency, and trigger the right response instantly.</p>
+          <a href="services.html" class="sg-link-arrow">See Inbound Engine &rarr;</a>
+        </div>
+        <div class="sg-feature-card">
+          <h3>Outbound Pipeline</h3>
+          <p>Research accounts and buying context. Generate account-specific messaging and coordinate sequences automatically.</p>
+          <a href="services.html" class="sg-link-arrow">See Outbound Engine &rarr;</a>
+        </div>
+        <div class="sg-feature-card">
+          <h3>Deal Intelligence</h3>
+          <p>Extract qualification and objections. Draft follow-ups and write approved information back to your CRM automatically.</p>
+          <a href="services.html" class="sg-link-arrow">See Deal Engine &rarr;</a>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================= -->
-    <!-- 6 CORE ACTIVATIONS — 2×3 bento grid, no eyebrow                  -->
-    <!-- ================================================================= -->
-    <section class="section-light section-pad" id="activations">
-      <div class="container-wide">
-        <div class="section-header reveal">
-          <h2>Six Production GTM Activations</h2>
-          <p>Deterministic revenue workflows for B2B teams. Each activation is deployed directly inside your stack — not a SaaS subscription, not a prompt tool.</p>
-        </div>
-
-        <div class="grid-3" style="gap: 2px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden;">
-          <div class="activation-card reveal" style="border-radius: 0; border: none; border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
-            <div class="activation-number">Activation 01</div>
-            <h3>Inbound Speed-to-Lead Triage</h3>
-            <p>Sub-30-second AI qualification from web forms and chat. Classifies buyer intent, enriches firmographics, notifies reps in Slack, and books calendar meetings automatically.</p>
-            <div class="activation-sla">&lt;30s SLA</div>
-          </div>
-
-          <div class="activation-card reveal" style="border-radius: 0; border: none; border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
-            <div class="activation-number">Activation 02</div>
-            <h3>Outbound PAE Engine</h3>
-            <p>Autonomous 5-pillar outbound pipeline with buying signal triggers, multi-vendor contact reveal, and bespoke PAS copywriting queued for human approval.</p>
-            <div class="activation-sla">5-Pillar PAE</div>
-          </div>
-
-          <div class="activation-card reveal" style="border-radius: 0; border: none; border-bottom: 1px solid var(--border-subtle);">
-            <div class="activation-number">Activation 03</div>
-            <h3>Pre-Call Prospect Dossiers</h3>
-            <p>Automatically compiles comprehensive prospect intelligence 10 minutes before every sales call: LinkedIn bios, tech stack, recent funding, and competitive battlecards.</p>
-            <div class="activation-sla">Pre-Meeting AI</div>
-          </div>
-
-          <div class="activation-card reveal" style="border-radius: 0; border: none; border-right: 1px solid var(--border-subtle);">
-            <div class="activation-number">Activation 04</div>
-            <h3>Post-Call Follow-up & CRM Sync</h3>
-            <p>Transcribes Gong/Fathom call recordings, extracts action items, drafts personalized follow-up emails, and updates CRM deal stages automatically.</p>
-            <div class="activation-sla">Zero Data Entry</div>
-          </div>
-
-          <div class="activation-card reveal" style="border-radius: 0; border: none; border-right: 1px solid var(--border-subtle);">
-            <div class="activation-number">Activation 05</div>
-            <h3>Daily Execution Telemetry</h3>
-            <p>Automated end-of-day digest delivered to Slack and email: leads contacted, response rates, rep activity, and inbox deliverability health metrics.</p>
-            <div class="activation-sla">Daily Health</div>
-          </div>
-
-          <div class="activation-card reveal" style="border-radius: 0; border: none;">
-            <div class="activation-number">Activation 06</div>
-            <h3>Executive GTM Briefs</h3>
-            <p>High-level revenue velocity reports for founders and RevOps leaders: pipeline created, deal velocity, CAC trends, and attribution down to the exact workflow run.</p>
-            <div class="activation-sla">Executive KPI</div>
-          </div>
-        </div>
-
-        <div style="margin-top: 32px;">
-          <a class="btn btn-secondary" href="agency.html">
-            View All Agency Activations
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-      </div>
+    <section class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); max-width: none; text-align: center; padding: 120px 24px;">
+      <h2 style="color: var(--sg-white); margin-bottom: 24px; font-size: 48px;">Stop paying for platform taxes.</h2>
+      <p style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 48px; font-size: 20px;">
+        Start owning your revenue architecture. Get a complete teardown of your current GTM workflows.
+      </p>
+      <a href="build-session.html" class="sg-btn sg-btn-primary">Get a GTM teardown</a>
     </section>
-
-    <!-- ================================================================= -->
-    <!-- PROCESS — Dark numbered steps, breaks zigzag pattern              -->
-    <!-- ================================================================= -->
-    <section class="process-section" id="process">
-      <div class="container-wide">
-        <div class="section-header on-dark reveal" style="margin-bottom: 48px;">
-          <!-- Eyebrow 1 of 3 allowed -->
-          <div class="eyebrow on-dark">How We Operate</div>
-          <h2 style="color: #FFFFFF;">From brief to production in 30 days.</h2>
-          <p class="lede" style="color: rgba(255,255,255,0.50);">A structured engineering cycle — not agency theater. Every sprint ends with deployed, tested, client-owned infrastructure.</p>
-        </div>
-
-        <div class="process-steps reveal">
-          <div class="process-step">
-            <div class="process-step-num">Step 01</div>
-            <h4>GTM Architecture Teardown</h4>
-            <p>We audit your current stack, ICP, and pipeline motion. You receive a written architecture brief before we write a line of code.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">Step 02</div>
-            <h4>Workflow Design & Approval</h4>
-            <p>We design the full n8n or Make workflow graph with data schemas, CRM field maps, and dedupe rules — signed off before build.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">Step 03</div>
-            <h4>Production Build & Testing</h4>
-            <p>Forward-deployed sprint. We build, wire, and execute dry runs with your real CRM data. All edge cases handled before handoff.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step-num">Step 04</div>
-            <h4>Handoff & Telemetry</h4>
-            <p>SOPs, user manuals, and 30 days of post-launch tuning. You own 100% of the code. No vendor dependency. No ongoing license.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- SERVICES — Accordion layout (different pattern from activations)  -->
-    <!-- ================================================================= -->
-    <section class="services-section" id="services">
-      <div class="container-wide">
-        <div class="services-layout">
-
-          <!-- Left: Accordion -->
-          <div>
-            <div class="section-header reveal" style="margin-bottom: 36px;">
-              <h2>What We Build</h2>
-              <p>Three engineering practices. One integrated revenue engine.</p>
-            </div>
-
-            <div class="service-list">
-              <!-- Workflow Engineering -->
-              <div class="service-item active" id="svc-1">
-                <div class="service-item-header" onclick="toggleService('svc-1')">
-                  <span class="service-item-title">Workflow Engineering — n8n & Make</span>
-                  <svg class="service-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                </div>
-                <div class="service-item-body">
-                  <p>Self-hosted or cloud workflow deployments on n8n and Make.com. Multi-vendor data enrichment waterfalls, bidirectional CRM syncs, idempotent webhook handling, and automated dead-letter queue recovery.</p>
-                </div>
-              </div>
-
-              <!-- LLM-Agnostic Skills -->
-              <div class="service-item" id="svc-2">
-                <div class="service-item-header" onclick="toggleService('svc-2')">
-                  <span class="service-item-title">LLM-Agnostic Skill Packs</span>
-                  <svg class="service-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                </div>
-                <div class="service-item-body">
-                  <p>Standardized SKILL.md execution packs that run deterministically across Claude, GPT-4o, Codex, Hermes, and Gemini. Typed input/output schemas. Zero model lock-in. Pre-flight guardrails enforced before any external API mutation.</p>
-                </div>
-              </div>
-
-              <!-- Agent Harnesses -->
-              <div class="service-item" id="svc-3">
-                <div class="service-item-header" onclick="toggleService('svc-3')">
-                  <span class="service-item-title">Production Agent Harnesses</span>
-                  <svg class="service-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                </div>
-                <div class="service-item-body">
-                  <p>Enterprise agent infrastructure on AWS Bedrock, Azure AI Foundry, Google Gemini SDK, and Vercel AI SDK. Context trees, soul.md personas, AGENTS.md constraint files, token budget governance, and real-time OpenTelemetry observability.</p>
-                </div>
-              </div>
-
-              <!-- Self-Serve Blueprints -->
-              <div class="service-item" id="svc-4">
-                <div class="service-item-header" onclick="toggleService('svc-4')">
-                  <span class="service-item-title">Self-Serve Blueprint Packs</span>
-                  <svg class="service-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                </div>
-                <div class="service-item-body">
-                  <p>Battle-tested n8n JSON exports, CRM property maps, PAS prompt frameworks, and step-by-step SOP deployment manuals. One-time purchase, no subscription. Build in-house at fraction of the agency cost.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Detail Panel -->
-          <div class="service-detail-panel">
-            <div class="service-detail-card">
-              <div class="service-detail-header">
-                <div class="service-detail-title">Selected Practice</div>
-                <div class="service-detail-name" id="detail-name">Workflow Engineering — n8n &amp; Make</div>
-              </div>
-              <div class="service-detail-body">
-                <div class="service-feature-list" id="detail-features">
-                  <div class="service-feature">
-                    <span class="service-feature-check">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
-                    <span class="service-feature-text">Self-hosted n8n or cloud Make.com deployments — 100% client-owned</span>
-                  </div>
-                  <div class="service-feature">
-                    <span class="service-feature-check">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
-                    <span class="service-feature-text">CRM collision detection and deduplication shields</span>
-                  </div>
-                  <div class="service-feature">
-                    <span class="service-feature-check">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
-                    <span class="service-feature-text">Idempotency keys, rate-limit throttles, dead-letter recovery</span>
-                  </div>
-                  <div class="service-feature">
-                    <span class="service-feature-check">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
-                    <span class="service-feature-text">Multi-vendor data enrichment waterfall (Clay → Apollo → Prospeo)</span>
-                  </div>
-                </div>
-                <a href="build-session.html" class="btn btn-primary btn-block">Book a Build Session</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- PRICING LADDER — Clean 3-col                                      -->
-    <!-- ================================================================= -->
-    <section class="pricing-section" id="pricing">
-      <div class="container-wide">
-        <div class="section-header centered reveal" style="margin-bottom: 48px;">
-          <!-- Eyebrow 2 of 3 allowed -->
-          <div class="eyebrow" style="justify-content: center;"><span class="eyebrow-accent"></span> Engagement Tiers</div>
-          <h2>Transparent Commercial Ladder</h2>
-          <p>Choose the engagement tier that matches your build requirements. Zero per-seat taxes. Zero retainers. 100% client-owned production code.</p>
-        </div>
-
-        <div class="pricing-grid reveal">
-          <!-- Tier 1 -->
-          <div class="pricing-card">
-            <div class="pricing-tier-label">Tier 01 · Done-With-You</div>
-            <div class="pricing-name">1-Hour Build Sprint</div>
-            <p class="pricing-desc">Live paired engineering session. One workflow, one activation, deployed inside your stack.</p>
-            <div class="pricing-price">$999</div>
-            <div class="pricing-period">per 60-minute sprint · 100% credited</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>60-min live screen-share paired build</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Tailored to your specific ICP &amp; CRM</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Live dry-run &amp; end-to-end testing</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>100% credited toward any 14 or 30-Day Sprint</li>
-            </ul>
-            <button class="btn btn-secondary btn-block" data-stripe-product="build-session">Book Build Sprint ($999)</button>
-          </div>
-
-          <!-- Tier 2 — Featured -->
-          <div class="pricing-card featured">
-            <div class="pricing-tier-label">Tier 02 · Done-For-You · Most Popular</div>
-            <div class="pricing-name">30-Day Turnkey Sprint</div>
-            <p class="pricing-desc">Full forward-deployed engineering sprint. End-to-end build, test, and production rollout. Also available: 14-Day Sprint ($2,999).</p>
-            <div class="pricing-price">$4,999</div>
-            <div class="pricing-period">single engagement · 100% client-owned code</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>30-day turnkey production build &amp; rollout</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Custom multi-tool connectors &amp; CRM shields</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Team user manuals &amp; quick-start SOPs</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>30 days of post-launch tuning &amp; telemetry</li>
-            </ul>
-            <button class="btn btn-inverse btn-block" data-stripe-product="sprint-30day">Start 30-Day Sprint ($4,999)</button>
-          </div>
-
-          <!-- Tier 3 -->
-          <div class="pricing-card">
-            <div class="pricing-tier-label">Tier 03 · Executive Leader · Midmarket Flagship</div>
-            <div class="pricing-name">Fractional GTM Engineer</div>
-            <p class="pricing-desc">Dedicated forward-deployed AI and GTM engineering leadership for scaling revenue teams.</p>
-            <div class="pricing-price">$19,999</div>
-            <div class="pricing-period">per month · dedicated embedded engineer</div>
-            <div class="pricing-divider"></div>
-            <ul class="pricing-features">
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>All 6 Core Workflows + Full Infrastructure</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Custom Autonomous SDR &amp; Enablement Agents</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Weekly standups &amp; dedicated direct line</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Continuous prompt, skill &amp; harness tuning</li>
-            </ul>
-            <button class="btn btn-secondary btn-block" data-stripe-product="fractional-gtm-engineer">Start Fractional Retainer ($19,999/mo)</button>
-          </div>
-        </div>
-
-        <!-- Self-serve note -->
-        <div style="margin-top: 24px; padding: 20px 24px; background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
-          <div>
-            <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 3px;">Self-Serve Blueprint Packs &amp; Skill Plugins — $19.99 to $199</div>
-            <div style="font-size: 0.83rem; color: var(--text-tertiary);">Download battle-tested n8n JSONs, CRM maps, and SOPs. Build in-house. Own forever.</div>
-          </div>
-          <a href="bundles.html" class="btn btn-secondary btn-sm">Browse Blueprint Packs</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- CTA BAND — Dark horizontal strip                                   -->
-    <!-- ================================================================= -->
-    <section class="cta-band">
-      <div class="container-wide">
-        <div class="cta-band-inner">
-          <div class="cta-band-copy">
-            <!-- Eyebrow 3 of 3 allowed -->
-            <div class="eyebrow on-dark" style="margin-bottom: 16px;"><span class="eyebrow-accent" style="background: var(--accent-dark);"></span> Free GTM Architecture Review</div>
-            <h2>Stop losing pipeline to manual work.</h2>
-            <p>Book a 30-minute architecture teardown. We audit your current stack and deliver a written GTM infrastructure brief — at no cost.</p>
-          </div>
-          <div class="cta-band-actions">
-            <a href="book.html" class="btn btn-inverse btn-lg">Book a Build Session</a>
-            <a href="marketplace.html" class="btn btn-outline-dark btn-lg">Browse Marketplace</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- ================================================================= -->
-  <!-- FOOTER — Dark obsidian                                             -->
-  <!-- ================================================================= -->
-  <footer class="sg-footer">
-    <div class="container-wide">
-      <div class="footer-grid">
-        <!-- Brand -->
-        <div class="footer-col">
-          <a href="index.html" style="display: inline-block; margin-bottom: 16px;" aria-label="SalesGency">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="120" height="24">
-              <defs>
-                <linearGradient id="foot-logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#4D93E8"/>
-                  <stop offset="100%" stop-color="#1B6FD8"/>
-                </linearGradient>
-              </defs>
-              <g transform="translate(2, 26)">
-                <text font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.04em">
-                  <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#foot-logo-grad)">Gency</tspan>
-                </text>
-              </g>
-            </svg>
-          </a>
-          <p style="font-size: 0.865rem; color: rgba(255,255,255,0.40); max-width: 280px; line-height: 1.6;">
-            A Diamitani Industries company. We build, install, and prove client-owned AI revenue engines inside your existing stack.
-          </p>
-        </div>
-
-        <!-- Platform -->
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <ul class="footer-links">
-            <li><a href="app.html">Agent Platform</a></li>
-            <li><a href="marketplace.html">Marketplace</a></li>
-            <li><a href="skills.html">Skills Library</a></li>
-            <li><a href="templates.html">Workflow Templates</a></li>
-            <li><a href="pricing.html">Pricing Matrix</a></li>
-          </ul>
-        </div>
-
-        <!-- Agency -->
-        <div class="footer-col">
-          <h5>Agency</h5>
-          <ul class="footer-links">
-            <li><a href="agency.html">Agency Sprints</a></li>
-            <li><a href="book.html">Book a Build Session</a></li>
-            <li><a href="work.html">Case Studies</a></li>
-            <li><a href="pricing.html#ladder">Commercial Tiers</a></li>
-          </ul>
-        </div>
-
-        <!-- Architecture -->
-        <div class="footer-col">
-          <h5>Architecture</h5>
-          <ul class="footer-links">
-            <li><a href="#workflows">Workflows</a></li>
-            <li><a href="#skills">LLM Skills</a></li>
-            <li><a href="#agents">Agent Harnesses</a></li>
-            <li><a href="#activations">6 Core Activations</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal -->
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <ul class="footer-links">
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="https://github.com/diamitani/salesgency" target="_blank" rel="noopener">GitHub</a></li>
-          </ul>
-        </div>
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; justify-content: center; gap: 24px;">
+        <a href="index.html" style="color: var(--sg-slate); text-decoration: none;">Home</a>
+        <a href="services.html" style="color: var(--sg-slate); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-slate); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-slate); text-decoration: none;">About</a>
       </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 SalesGency · Diamitani Industries. All rights reserved.</div>
-        <div>Zero Retainers · 100% Client-Owned Code · Production-Grade GTM Engineering</div>
+      <div>
+        SalesGency is a d/b/a of Diamitani Industries.
       </div>
     </div>
   </footer>
-
-  <script>
-    // ── Scroll reveal ─────────────────────────────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in-view');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // ── Nav scroll state ──────────────────────────────────────────────────
-    const nav = document.getElementById('sgu-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('sgu-scrolled', window.scrollY > 16);
-    }, { passive: true });
-
-    // ── Service accordion ─────────────────────────────────────────────────
-    const serviceData = {
-      'svc-1': {
-        name: 'Workflow Engineering — n8n &amp; Make',
-        features: [
-          'Self-hosted n8n or cloud Make.com deployments — 100% client-owned',
-          'CRM collision detection and deduplication shields',
-          'Idempotency keys, rate-limit throttles, dead-letter recovery',
-          'Multi-vendor data enrichment waterfall (Clay → Apollo → Prospeo)',
-        ]
-      },
-      'svc-2': {
-        name: 'LLM-Agnostic Skill Packs',
-        features: [
-          'Typed SKILL.md schemas — runs on Claude, GPT-4o, Gemini, Hermes',
-          'Zero model lock-in across any LLM runtime',
-          'Pre-flight PII masking and outbound rate-limit enforcement',
-          'Tool contracts with boundary assertions and output validation',
-        ]
-      },
-      'svc-3': {
-        name: 'Production Agent Harnesses',
-        features: [
-          'AWS Bedrock, Azure AI Foundry, Gemini SDK, Vercel AI SDK',
-          'soul.md personas + AGENTS.md constraints + PAL context trees',
-          'Circuit breakers, token budget caps, model fallback routing',
-          'Real-time observability with OpenTelemetry and Langfuse',
-        ]
-      },
-      'svc-4': {
-        name: 'Self-Serve Blueprint Packs',
-        features: [
-          'Pre-built n8n workflow JSON exports — deploy in minutes',
-          'CRM property maps and HubSpot/Salesforce field schemas',
-          'PAS copywriting prompt frameworks and evaluation rubrics',
-          'Step-by-step SOP deployment manuals for your internal team',
-        ]
-      }
-    };
-
-    function toggleService(id) {
-      const items = document.querySelectorAll('.service-item');
-      items.forEach(item => item.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-
-      const data = serviceData[id];
-      if (data) {
-        document.getElementById('detail-name').innerHTML = data.name;
-        const featuresEl = document.getElementById('detail-features');
-        featuresEl.innerHTML = data.features.map(f => `
-          <div class="service-feature">
-            <span class="service-feature-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span class="service-feature-text">${f}</span>
-          </div>
-        `).join('');
-      }
-    }
-  </script>
 
 </body>
 </html>

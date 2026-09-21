@@ -7,12 +7,10 @@
   'use strict';
 
   var LINKS = [
-    { href: 'agency.html', label: 'Services' },
-    { href: 'marketplace.html', label: 'Marketplace' },
-    { href: 'skills.html', label: 'Skills' },
-    { href: 'templates.html', label: 'Templates' },
+    { href: 'services.html', label: 'Engines' },
+    { href: 'process.html', label: 'How it works' },
     { href: 'pricing.html', label: 'Pricing' },
-    { href: 'work.html', label: 'Work' }
+    { href: 'about.html', label: 'About' }
   ];
 
   function currentPage() {
@@ -35,23 +33,7 @@
     brand.href = 'index.html';
     brand.setAttribute('aria-label', 'SalesGency Home');
 
-    // High-contrast SVG Wordmark (#FFFFFF on #0A0B0E) with Phosphor Blue accent
-    brand.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="132" height="26" style="display:block;">' +
-        '<defs>' +
-          '<linearGradient id="sgu-nav-logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">' +
-            '<stop offset="0%" stop-color="#4D93E8"/>' +
-            '<stop offset="100%" stop-color="#1B6FD8"/>' +
-          '</linearGradient>' +
-        '</defs>' +
-        '<g transform="translate(2, 26)">' +
-          '<text font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.04em">' +
-            '<tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#sgu-nav-logo-grad)">Gency</tspan>' +
-          '</text>' +
-        '</g>' +
-      '</svg>' +
-      '<span class="sgu-brand-divider"></span>' +
-      '<span class="sgu-brand-sub">Diamitani Industries</span>';
+    brand.innerHTML = '<img src="assets/salesgency-wordmark-light.svg" alt="SalesGency" width="160" height="32" style="display:block;">';
 
     var ul = document.createElement('ul');
     ul.className = 'sgu-links';
@@ -82,7 +64,7 @@
     var cta = document.createElement('a');
     cta.className = 'sgu-cta-btn';
     cta.href = 'build-session.html';
-    cta.textContent = 'Book a Build Session';
+    cta.textContent = 'Get a GTM teardown';
 
     var burger = document.createElement('button');
     burger.className = 'sgu-burger';

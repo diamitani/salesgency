@@ -1,0 +1,16 @@
+id,Name,Type,Date (UTC),Description,Statement Descriptor,Unit Label,Url,Tax Code
+prod_VIYcBZ7oNQbemd,Agent Build Package,service,2026-09-21 03:02,Skill plus custom instructions to build with your own Agent Harness.,,,,txcd_10000000
+prod_VIYbemePi53Swt,Free Skill Download,service,2026-09-21 03:01,Free Skill Download,,,,txcd_10000000
+prod_VIYbHFU1XbMRmP,Free Template Download,service,2026-09-21 03:01,Free Workflow Template,,,,txcd_10000000
+prod_VIYar3D1BSCtTO,GTM Agent Subscription,service,2026-09-21 03:01,Full service GTM app. BYOK.,,,,txcd_10000000
+prod_VIY3P83n0cJDKt,14-Day Build Sprint,service,2026-09-21 02:27,"14-day build sprint for one automation package (agents, skills and workflows included). Output includes completed product.",,,,txcd_10000000
+prod_VIY28I5G6tmvkU,30-Day Build Sprint,service,2026-09-21 02:26,"30-day build sprint for one automation package (agents, skills and workflows included). Output includes completed product.",,,,txcd_10000000
+prod_VIY19dahamcObA,Full Build - Prospect Automation Engine,service,2026-09-21 02:25,Build full-stack prospect automation engines for your team. 30-day sprint or until product completed.,,,,txcd_10000000
+prod_VIY05YRJfZzHkW,Fractional GTM Engineer,service,2026-09-21 02:24,Full Service GTM Engineer and team support. Monthly retainer. 12 month contract (6 month renewal option).,,,,txcd_10000000
+prod_VIXXS7cTrlS1o5,Build Session - 1 Hour,service,2026-09-21 01:55,"1 Hour Build Session with SalesGency. Includes 60 minute Zoom call, pre-meeting file transfer and production ready workflow/agent pilot at end of session. Overflow work done on consultant's time, off camera, within 48 hours.",,,,txcd_10000000
+prod_VIXVigI4gXZd3i,GTM Center of Excellence (COE) Skills Plugin,service,2026-09-21 01:53,"Skills Plugin for the GTM Center of Excellence Package, by SalesGency, A Diamitani Industries, Incorporated company.",,,,txcd_10000000
+prod_VIXUKDPfMV9PJy,Automation Engineer Skills Plugin,service,2026-09-21 01:52,"Skills Plugin for the Automation Engineer, by SalesGency, A Diamitani Industries, Incorporated company.",,,,txcd_10000000
+prod_VIXTzry441QP9X,Post-Sales Call Automation Skills Plugin,service,2026-09-21 01:51,"Skills Plugin for the Post-Sales Call Automation, by SalesGency, A Diamitani Industries, Incorporated company.",,,,txcd_10000000
+prod_VIXSQCbSU4KQSN,Pre-Sales Call Automation Skills Plugin,service,2026-09-21 01:50,"Skills Plugin for the Pre-Sales Call Automation, by SalesGency, A Diamitani Industries, Incorporated company.",,,,txcd_10000000
+prod_VIXRrPdownuYEe,Inbound Automation Engine Skills Plugin,service,2026-09-21 01:50,"Skills Plugin for the Inbound Automation Engine, by SalesGency, A Diamitani Industries, Incorporated company.",,,,txcd_10000000
+prod_VIXRZbEhvt6k9T,Prospect Automation Engine Skill Plugin,service,2026-09-21 01:49,"Skills Plugin for the Prospect Automation Engine, by SalesGency, A Diamitani Industries, Incorporated company.",,,,txcd_10000000
