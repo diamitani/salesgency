@@ -9,133 +9,216 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="assets/salesgencytokens.css">
   <link rel="stylesheet" href="assets/unified.css">
+  <link rel="stylesheet" href="assets/premium.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <script src="assets/unified-nav.js" defer></script>
 </head>
-<body>
+<body style="overflow-x: hidden;">
 
   <main>
-    <section class="sg-section" style="background: var(--sg-mist); padding-top: 140px;">
-      <div class="sg-container" style="max-width: 800px; text-align: center;">
-        <span class="sg-badge" style="background: var(--sg-accent); color: var(--sg-ink); margin-bottom: 16px; border-radius: 4px; padding: 4px 12px; font-weight: 700; text-transform: uppercase; font-size: 11px;">The Delali Development Cycle</span>
-        <h1 class="sg-h1" style="margin-bottom: 24px;">From audit to production in 30 days.</h1>
-        <p class="sg-body" style="color: var(--sg-slate); max-width: 600px; margin: 0 auto 48px;">
-          We build robust, deterministic revenue workflows directly in your private infrastructure. No black boxes. No recurring SaaS fees.
+    <!-- Dark Premium Hero -->
+    <section class="sg-hero" style="min-height: 70vh; padding: 180px 24px 100px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+      <div class="sg-mesh-bg">
+        <div class="sg-mesh-blob cyan" style="left: auto; right: -10vw; top: -10vw;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">The Delali Development Cycle</span>
+        <h1 class="sg-hero-title gs-reveal" style="color: var(--sg-white); font-size: clamp(48px, 8vw, 88px); max-width: 900px; margin: 0 auto 24px; line-height: 1.05;">
+          From audit to production <span class="sg-signature-gradient">in 30 days.</span>
+        </h1>
+        <p class="gs-reveal" style="color: var(--sg-mist); font-size: clamp(18px, 3vw, 22px); max-width: 600px; margin: 0 auto 40px; opacity: 0.9;">
+          We build robust, deterministic revenue workflows directly in your private infrastructure. No black boxes.
         </p>
       </div>
     </section>
 
-    <!-- PAL Methodology -->
-    <section class="sg-section">
-      <div class="sg-container" style="max-width: 1000px;">
-        <h2 class="sg-h2" style="text-align: center; margin-bottom: 64px;">The PAL Engineering Framework</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
-          
-          <div class="sg-card">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-ink); margin-bottom: 12px;">P</div>
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Parse</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">
-              We deconstruct your manual workflows into raw operational constraints, data inputs, and desired trigger conditions.
-            </p>
-          </div>
-
-          <div class="sg-card">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-ink); margin-bottom: 12px;">A</div>
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Ambiguity Scan</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">
-              Identify edge cases, API rate limits, catch-all domains, and missing data schemas before authoring code.
-            </p>
-          </div>
-
-          <div class="sg-card">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-ink); margin-bottom: 12px;">L</div>
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Latent Intent</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">
-              Uncover buyer psychological triggers to ensure AI-generated messaging resonates with high-conviction value.
-            </p>
-          </div>
-
-          <div class="sg-card" style="background: var(--sg-ink); color: var(--sg-white);">
-            <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sg-white); margin-bottom: 12px;">C</div>
-            <h4 class="sg-h4" style="margin-bottom: 8px; color: var(--sg-white);">Compile</h4>
-            <p class="sg-caption" style="color: var(--sg-mist); opacity: 0.8;">
-              Synthesize tested n8n JSON nodes, prompt schemas, and webhook listeners ready for production.
-            </p>
-          </div>
-
-        </div>
+    <!-- PAL Methodology (Bento Grid) -->
+    <section class="sg-section" style="padding: 140px 24px; max-width: 1200px; margin: 0 auto;">
+      <div class="sg-section-header gs-reveal" style="margin-bottom: 80px;">
+        <span class="sg-eyebrow">Methodology</span>
+        <h2 style="font-size: clamp(40px, 5vw, 56px); line-height: 1.1; margin-bottom: 24px;">The PAL Engineering Framework</h2>
+        <p style="color: var(--sg-slate); font-size: 20px; max-width: 600px;">Every deployment begins with a rigorous deconstruction of your sales reality.</p>
       </div>
-    </section>
 
-    <!-- The Sprints -->
-    <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-mist);">
-      <div class="sg-container" style="max-width: 800px;">
-        <h2 class="sg-h2" style="text-align: center; margin-bottom: 64px;">The 4-Sprint Deployment Roadmap</h2>
+      <div class="sg-bento-grid">
         
-        <div style="display: flex; flex-direction: column; gap: 40px;">
-          <!-- Sprint 1 -->
-          <div style="display: flex; gap: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">01</div>
-            <div>
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 1–7</div>
-              <h3 class="sg-h4" style="margin-bottom: 12px;">System Audit &amp; Architecture Blueprinting</h3>
-              <p class="sg-body" style="color: var(--sg-slate);">We map your entire revenue tech stack (CRM, email sequencers, forms, scrapers). We uncover duplicate records and bottleneck data-flows, producing a detailed engineering specification diagram.</p>
-            </div>
-          </div>
-          <!-- Sprint 2 -->
-          <div style="display: flex; gap: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">02</div>
-            <div>
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 8–15</div>
-              <h3 class="sg-h4" style="margin-bottom: 12px;">Prompt Skills &amp; Scraper Cluster Construction</h3>
-              <p class="sg-body" style="color: var(--sg-slate);">We author and benchmark domain-specific prompt skill engines (PAS copywriting, intent classification) and deploy headless scrapers for hiring signals and firmographics.</p>
-            </div>
-          </div>
-          <!-- Sprint 3 -->
-          <div style="display: flex; gap: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">03</div>
-            <div>
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 16–23</div>
-              <h3 class="sg-h4" style="margin-bottom: 12px;">Deterministic Workflows &amp; CRM Shield</h3>
-              <p class="sg-body" style="color: var(--sg-slate);">We assemble the production n8n execution pipelines connecting scrapers, LLMs, sequencers, and your CRM. We install bidirectional deduplication and sub-minute webhook triggers.</p>
-            </div>
-          </div>
-          <!-- Sprint 4 -->
-          <div style="display: flex; gap: 24px;">
-            <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--sg-slate); margin-top: 4px;">04</div>
-            <div>
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sg-slate); letter-spacing: 0.05em; margin-bottom: 4px;">Days 24–30</div>
-              <h3 class="sg-h4" style="margin-bottom: 12px;">Autonomous Deployment &amp; Handoff</h3>
-              <p class="sg-body" style="color: var(--sg-slate);">We activate autonomous workflows with human-in-the-loop overrides, set up Slack telemetry, and conduct full source code handoff with your leadership team.</p>
-            </div>
+        <!-- P -->
+        <div class="sg-bento-item sg-bento-col-4 sg-glass-light gs-reveal" style="background: var(--sg-white); border: 1px solid var(--sg-line);">
+          <div style="font-family: var(--sg-font-display); font-size: 64px; font-weight: 800; color: var(--sg-ink); line-height: 1; margin-bottom: 24px; letter-spacing: -0.05em;">P</div>
+          <h3 style="font-size: 24px; margin-bottom: 12px;">Parse</h3>
+          <p style="color: var(--sg-slate); font-size: 16px;">We deconstruct your manual workflows into raw operational constraints, data inputs, and desired trigger conditions.</p>
+        </div>
+
+        <!-- A -->
+        <div class="sg-bento-item sg-bento-col-4 sg-glass-light gs-reveal" style="background: var(--sg-white); border: 1px solid var(--sg-line);">
+          <div style="font-family: var(--sg-font-display); font-size: 64px; font-weight: 800; color: var(--sg-ink); line-height: 1; margin-bottom: 24px; letter-spacing: -0.05em;">A</div>
+          <h3 style="font-size: 24px; margin-bottom: 12px;">Ambiguity Scan</h3>
+          <p style="color: var(--sg-slate); font-size: 16px;">Identify edge cases, API rate limits, catch-all domains, and missing data schemas before authoring code.</p>
+        </div>
+
+        <!-- L -->
+        <div class="sg-bento-item sg-bento-col-4 sg-glass-light gs-reveal" style="background: var(--sg-mist); border: 1px solid var(--sg-line);">
+          <div style="font-family: var(--sg-font-display); font-size: 64px; font-weight: 800; color: var(--sg-ink); line-height: 1; margin-bottom: 24px; letter-spacing: -0.05em;">L</div>
+          <h3 style="font-size: 24px; margin-bottom: 12px;">Latent Intent</h3>
+          <p style="color: var(--sg-slate); font-size: 16px;">Uncover buyer psychological triggers to ensure AI-generated messaging resonates with high-conviction value.</p>
+        </div>
+
+        <!-- Compile - Wide -->
+        <div class="sg-bento-item sg-bento-col-12 sg-glass-light gs-reveal" style="background: var(--sg-ink); color: var(--sg-white); border: none; display: flex; align-items: center; gap: 48px; padding: 64px;">
+          <div style="font-family: var(--sg-font-display); font-size: 120px; font-weight: 800; color: var(--sg-action); line-height: 1; letter-spacing: -0.05em;">C</div>
+          <div>
+            <h3 style="font-size: 32px; color: var(--sg-white); margin-bottom: 16px;">Compile</h3>
+            <p style="color: var(--sg-mist); font-size: 18px; opacity: 0.9; max-width: 600px;">Synthesize tested n8n JSON nodes, prompt schemas, and webhook listeners ready for production. Zero guesswork.</p>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); text-align: center;">
-      <div class="sg-container">
-        <h2 class="sg-h2" style="color: var(--sg-white); margin-bottom: 24px;">Ready to build?</h2>
-        <p class="sg-body" style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 32px; opacity: 0.8;">
-          Start with a $299 GTM Teardown to map your architecture, fully credited towards any 14-day or 30-day build sprint.
+    <!-- The 4 Sprints (Asymmetric Layout) -->
+    <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-line); padding: 140px 24px;">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px;">
+        
+        <!-- Left Sticky Header -->
+        <div class="gs-reveal" style="display: flex; flex-direction: column; @media(min-width: 1024px) { flex-direction: row; gap: 80px; }">
+          <div style="flex: 1; margin-bottom: 64px; @media(min-width: 1024px) { margin-bottom: 0; position: sticky; top: 120px; height: fit-content; }">
+             <span class="sg-eyebrow">The 4-Sprint Roadmap</span>
+             <h2 style="font-size: clamp(40px, 5vw, 56px); line-height: 1.1; margin-bottom: 24px;">From whiteboard to fully autonomous workflow.</h2>
+             <p style="color: var(--sg-slate); font-size: 20px; max-width: 400px;">We follow a strict 4-sprint deployment roadmap to guarantee timeline and quality.</p>
+          </div>
+
+          <!-- Right Scrolling Timeline -->
+          <div style="flex: 1.5; display: flex; flex-direction: column; gap: 40px;">
+            
+            <!-- Sprint 1 -->
+            <div class="gs-reveal" style="position: relative; background: var(--sg-mist); border: 1px solid var(--sg-line); border-radius: var(--sg-radius-m); padding: 48px; overflow: hidden;">
+              <div style="position: absolute; right: -20px; bottom: -40px; font-family: var(--sg-font-display); font-weight: 800; font-size: 240px; color: var(--sg-white); opacity: 0.5; line-height: 1; pointer-events: none;">01</div>
+              <div class="sg-relative-content">
+                <span class="sg-eyebrow" style="color: var(--sg-slate);">Days 1–7</span>
+                <h3 style="font-size: 28px; margin-bottom: 16px;">System Audit & Architecture</h3>
+                <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6; max-width: 480px;">We map your entire revenue tech stack (CRM, email sequencers, forms, scrapers). We uncover duplicate records and bottleneck data-flows, producing a detailed engineering specification diagram.</p>
+              </div>
+            </div>
+
+            <!-- Sprint 2 -->
+            <div class="gs-reveal" style="position: relative; background: var(--sg-mist); border: 1px solid var(--sg-line); border-radius: var(--sg-radius-m); padding: 48px; overflow: hidden;">
+              <div style="position: absolute; right: -20px; bottom: -40px; font-family: var(--sg-font-display); font-weight: 800; font-size: 240px; color: var(--sg-white); opacity: 0.5; line-height: 1; pointer-events: none;">02</div>
+              <div class="sg-relative-content">
+                <span class="sg-eyebrow" style="color: var(--sg-slate);">Days 8–15</span>
+                <h3 style="font-size: 28px; margin-bottom: 16px;">Scraper Cluster Construction</h3>
+                <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6; max-width: 480px;">We author and benchmark domain-specific prompt skill engines (PAS copywriting, intent classification) and deploy headless scrapers for hiring signals and firmographics.</p>
+              </div>
+            </div>
+
+            <!-- Sprint 3 -->
+            <div class="gs-reveal" style="position: relative; background: var(--sg-ink); border: 1px solid var(--sg-ink-2); border-radius: var(--sg-radius-m); padding: 48px; overflow: hidden; color: var(--sg-white);">
+              <div style="position: absolute; right: -20px; bottom: -40px; font-family: var(--sg-font-display); font-weight: 800; font-size: 240px; color: var(--sg-ink-2); line-height: 1; pointer-events: none;">03</div>
+              <div class="sg-relative-content">
+                <span class="sg-eyebrow" style="color: var(--sg-signal);">Days 16–23</span>
+                <h3 style="font-size: 28px; margin-bottom: 16px; color: var(--sg-white);">Deterministic Workflows & CRM Shield</h3>
+                <p style="color: var(--sg-mist); font-size: 18px; line-height: 1.6; max-width: 480px; opacity: 0.9;">We assemble the production n8n execution pipelines connecting scrapers, LLMs, sequencers, and your CRM. We install bidirectional deduplication and sub-minute webhook triggers.</p>
+              </div>
+            </div>
+
+            <!-- Sprint 4 -->
+            <div class="gs-reveal" style="position: relative; background: var(--sg-mist); border: 1px solid var(--sg-line); border-radius: var(--sg-radius-m); padding: 48px; overflow: hidden;">
+              <div style="position: absolute; right: -20px; bottom: -40px; font-family: var(--sg-font-display); font-weight: 800; font-size: 240px; color: var(--sg-white); opacity: 0.5; line-height: 1; pointer-events: none;">04</div>
+              <div class="sg-relative-content">
+                <span class="sg-eyebrow" style="color: var(--sg-slate);">Days 24–30</span>
+                <h3 style="font-size: 28px; margin-bottom: 16px;">Autonomous Deployment & Handoff</h3>
+                <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6; max-width: 480px;">We activate autonomous workflows with human-in-the-loop overrides, set up Slack telemetry, and conduct full source code handoff with your leadership team.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="sg-hero" style="min-height: auto; padding: 160px 24px;">
+      <div class="sg-mesh-bg" style="opacity: 0.3;">
+        <div class="sg-mesh-blob indigo" style="left: -10vw; bottom: -10vw; top: auto;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <h2 class="gs-reveal" style="color: var(--sg-white); font-size: clamp(40px, 5vw, 64px); margin-bottom: 24px; max-width: 800px; line-height: 1.1;">Ready to build?</h2>
+        <p class="gs-reveal" style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 48px; font-size: 20px;">
+          Start with a $299 GTM Teardown to map your architecture, fully credited towards any 30-day build sprint.
         </p>
-        <a href="pricing.html" class="sg-btn sg-btn-primary">View Pricing</a>
+        <div class="gs-reveal" style="display: flex; justify-content: center; gap: 16px;">
+          <a href="pricing.html" class="sg-btn sg-btn-primary sg-btn-magnetic" style="padding: 16px 32px; gap: 10px; border-radius: 10px;">
+            <span>View Pricing</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); padding: 60px 0 40px; text-align: center;">
-    <div class="sg-container">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency" style="height: 24px; margin-bottom: 24px;">
-      <p class="sg-caption" style="color: var(--sg-mist); opacity: 0.7; max-width: 400px; margin: 0 auto;">
-        &copy; 2026 SalesGency. GTM AI Architecture. 100% client-owned code.
-      </p>
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; justify-content: center; gap: 24px;">
+        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
+        <a href="process.html" style="color: var(--sg-mist); text-decoration: none;">Process</a>
+      </div>
+      <div style="opacity: 0.7;">
+        SalesGency is a d/b/a of Diamitani Industries.
+      </div>
     </div>
   </footer>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 1. Reveal Animations
+      const revealElements = document.querySelectorAll(".gs-reveal");
+      revealElements.forEach((el, index) => {
+        gsap.to(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          opacity: 1,
+          y: 0,
+          visibility: "visible",
+          duration: 0.8,
+          ease: "power3.out",
+          delay: (el.closest('.sg-hero') ? index * 0.1 : 0)
+        });
+      });
+
+      // 2. Magnetic Buttons
+      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
+      magneticButtons.forEach((btn) => {
+        const text = btn.querySelector("span");
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const h = rect.width / 2;
+          const v = rect.height / 2;
+          const x = e.clientX - rect.left - h;
+          const y = e.clientY - rect.top - v;
+          gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
+          if(text) gsap.to(text, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          if(text) gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+        });
+      });
+    });
+  </script>
 </body>
 </html>

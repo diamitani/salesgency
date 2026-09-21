@@ -13,7 +13,12 @@
   
   <link rel="stylesheet" href="assets/salesgencytokens.css">
   <link rel="stylesheet" href="assets/unified.css">
+  <link rel="stylesheet" href="assets/premium.css">
   
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <!-- The script dynamically inserts the unified nav -->
   <script src="assets/unified-nav.js" defer></script>
   <script src="assets/stripe-client.js" defer></script>
@@ -32,25 +37,28 @@
       letter-spacing: -0.02em;
       color: var(--sg-ink);
     }
+    
     /* Hero */
     .sg-hero {
-      background-color: var(--sg-ink);
-      color: var(--sg-white);
-      padding: 160px 24px 100px;
-      text-align: center;
       position: relative;
-      overflow: hidden;
+      padding: 200px 24px 140px;
+      text-align: center;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .sg-hero h1 {
       color: var(--sg-white);
-      font-size: clamp(48px, 8vw, 80px);
-      max-width: 900px;
+      font-size: clamp(64px, 10vw, 120px);
+      max-width: 1000px;
       margin: 0 auto 24px;
-      line-height: 1.05;
+      line-height: 1.0;
     }
     .sg-hero p {
       color: var(--sg-mist);
-      font-size: 22px;
+      font-size: clamp(18px, 3vw, 24px);
       max-width: 650px;
       margin: 0 auto 48px;
       opacity: 0.9;
@@ -61,98 +69,82 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 28px;
+      padding: 16px 32px;
       border-radius: 10px;
       font-family: var(--sg-font-display);
       font-weight: 600;
       font-size: 16px;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.2s ease;
       border: none;
-      gap: 8px;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
     }
     .sg-btn-primary {
       background: var(--sg-white);
       color: var(--sg-ink);
     }
-    .sg-btn-primary:hover {
-      background: var(--sg-mist);
-      transform: translateY(-2px);
+    .sg-btn-primary::after {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sg-signal);
     }
-    .sg-btn-secondary {
-      background: transparent;
-      border: 1.5px solid var(--sg-ink);
-      color: var(--sg-ink);
+    .sg-btn-outline-light {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--sg-white);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    .sg-btn-secondary:hover {
-      background: rgba(10, 20, 40, 0.05);
+    .sg-btn-primary-dark {
+      background: var(--sg-ink);
+      color: var(--sg-white);
+    }
+    .sg-btn-primary-dark::after {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sg-signal);
     }
 
     /* Section defaults */
     .sg-section {
-      padding: 120px 24px;
+      padding: 140px 24px;
       max-width: 1200px;
       margin: 0 auto;
     }
     .sg-section-header {
-      text-align: center;
       margin-bottom: 80px;
+      text-align: left;
+    }
+    .sg-section-header.center {
+      text-align: center;
     }
     .sg-section-header h2 {
-      font-size: 48px;
+      font-size: clamp(40px, 5vw, 56px);
       margin-bottom: 24px;
+      line-height: 1.1;
     }
     .sg-section-header p {
       color: var(--sg-slate);
       font-size: 20px;
       max-width: 600px;
+    }
+    .sg-section-header.center p {
       margin: 0 auto;
     }
 
-    /* Features/Engines Grid */
-    .sg-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 40px;
-    }
-    .sg-feature-card {
-      padding: 40px;
-      background: var(--sg-white);
-      border: 1px solid var(--sg-line);
-      border-radius: var(--sg-radius-l);
-      transition: box-shadow 0.2s ease;
-    }
-    .sg-feature-card:hover {
-      box-shadow: 0 12px 32px rgba(10, 20, 40, 0.06);
-    }
-    .sg-feature-card h3 {
-      font-size: 24px;
-      margin-bottom: 16px;
-    }
-    .sg-feature-card p {
-      color: var(--sg-slate);
-      font-size: 16px;
-    }
-    .sg-link-arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--sg-action);
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 24px;
-    }
-    .sg-link-arrow:hover {
-      text-decoration: underline;
-    }
-    
     /* Stats / Trust section */
     .sg-trust {
-      background: var(--sg-white);
-      border-top: 1px solid var(--sg-line);
-      border-bottom: 1px solid var(--sg-line);
       padding: 80px 24px;
+      border-bottom: 1px solid var(--sg-line);
+      background: var(--sg-white);
     }
     .sg-stats-grid {
       display: grid;
@@ -164,7 +156,7 @@
     }
     .sg-stat-num {
       font-family: var(--sg-font-display);
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 800;
       color: var(--sg-ink);
       line-height: 1;
@@ -174,6 +166,8 @@
       color: var(--sg-slate);
       font-size: 16px;
       font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
     @media (max-width: 768px) {
       .sg-stats-grid {
@@ -185,79 +179,188 @@
 <body>
 
   <main>
+    <!-- Dark Premium Hero -->
     <section class="sg-hero">
-      <h1>Turn every inquiry into a next step.</h1>
-      <p>We install AI revenue workflows inside your existing stack. Give every target account a reason to respond, and make every conversation useful.</p>
-      <div style="display: flex; justify-content: center; gap: 16px;">
-        <a href="build-session.html" class="sg-btn sg-btn-primary">Get a GTM teardown</a>
-        <a href="services.html" class="sg-btn" style="background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: white;">Explore Engines</a>
+      <div class="sg-mesh-bg">
+        <div class="sg-mesh-blob cyan"></div>
+        <div class="sg-mesh-blob indigo"></div>
+      </div>
+      <div class="sg-relative-content">
+        <h1 class="sg-hero-title gs-reveal">
+          Sales<span class="sg-signature-gradient">Gency</span>
+        </h1>
+        <p class="gs-reveal" style="font-weight: 500;">
+          AI revenue workflows installed in your stack.
+        </p>
+        <div class="gs-reveal" style="display: flex; justify-content: center; gap: 16px;">
+          <a href="build-session.html" class="sg-btn sg-btn-primary sg-btn-magnetic">
+            <span>Get a GTM teardown</span>
+          </a>
+          <a href="services.html" class="sg-btn sg-btn-outline-light sg-btn-magnetic">
+            <span>Explore Engines</span>
+          </a>
+        </div>
       </div>
     </section>
 
+    <!-- Trust Stats -->
     <section class="sg-trust">
       <div class="sg-stats-grid">
-        <div>
+        <div class="gs-reveal">
           <div class="sg-stat-num">3x</div>
-          <div class="sg-stat-label">Faster Pipeline Generation</div>
+          <div class="sg-stat-label">Faster Pipeline Gen</div>
         </div>
-        <div>
+        <div class="gs-reveal">
           <div class="sg-stat-num">0</div>
-          <div class="sg-stat-label">New Platforms to Learn</div>
+          <div class="sg-stat-label">Platform Taxes</div>
         </div>
-        <div>
+        <div class="gs-reveal">
           <div class="sg-stat-num">100%</div>
           <div class="sg-stat-label">Client Owned IP</div>
         </div>
       </div>
     </section>
 
+    <!-- Bento Grid section -->
     <section class="sg-section">
-      <div class="sg-section-header">
-        <h2>Three Engines for Revenue</h2>
-        <p>Built directly into your CRM. You own the code, the accounts, and the outcome.</p>
+      <div class="sg-section-header gs-reveal">
+        <span class="sg-eyebrow">The Engines</span>
+        <h2>Built for your exact sales motion.</h2>
+        <p>We do not sell a SaaS platform. We diagnose your friction points and build deterministic AI workflows directly into your CRM.</p>
       </div>
       
-      <div class="sg-grid-3">
-        <div class="sg-feature-card">
-          <h3>Inbound Conversion</h3>
-          <p>Qualify and enrich new leads. Route by fit, territory, or urgency, and trigger the right response instantly.</p>
-          <a href="services.html" class="sg-link-arrow">See Inbound Engine &rarr;</a>
+      <div class="sg-bento-grid">
+        <!-- Outbound Pipeline - Large Cell -->
+        <div class="sg-bento-item sg-bento-col-8 sg-glass-light gs-reveal" style="background: var(--sg-white); border-color: var(--sg-line);">
+          <div style="margin-bottom: 64px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--sg-ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <h3 style="font-size: 32px; margin-bottom: 16px;">Outbound Pipeline</h3>
+          <p style="color: var(--sg-slate); font-size: 18px; max-width: 400px; margin-bottom: 32px;">Research accounts and buying context automatically. Generate account-specific messaging, coordinate sequences, and hand qualified replies to a human rep.</p>
+          <a href="services.html" style="color: var(--sg-action); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">Explore Outbound &rarr;</a>
         </div>
-        <div class="sg-feature-card">
-          <h3>Outbound Pipeline</h3>
-          <p>Research accounts and buying context. Generate account-specific messaging and coordinate sequences automatically.</p>
-          <a href="services.html" class="sg-link-arrow">See Outbound Engine &rarr;</a>
+
+        <!-- Inbound Conversion - Tall Cell -->
+        <div class="sg-bento-item sg-bento-col-4 sg-glass-light gs-reveal" style="background: var(--sg-ink); color: var(--sg-white); border: none;">
+          <div style="margin-bottom: 64px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--sg-white)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3 style="font-size: 32px; margin-bottom: 16px; color: var(--sg-white);">Inbound Conversion</h3>
+          <p style="color: var(--sg-mist); font-size: 18px; opacity: 0.9;">Turn every inquiry into a fast, informed next step. Qualify, enrich, and route leads by urgency in under 60 seconds.</p>
         </div>
-        <div class="sg-feature-card">
-          <h3>Deal Intelligence</h3>
-          <p>Extract qualification and objections. Draft follow-ups and write approved information back to your CRM automatically.</p>
-          <a href="services.html" class="sg-link-arrow">See Deal Engine &rarr;</a>
+
+        <!-- Deal Intelligence - Wide Cell -->
+        <div class="sg-bento-item sg-bento-col-12 sg-glass-light gs-reveal" style="background: var(--sg-white); border-color: var(--sg-line); display: flex; align-items: center; gap: 40px; padding: 48px;">
+          <div style="flex: 1;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--sg-ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 24px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <h3 style="font-size: 32px; margin-bottom: 16px;">Deal Intelligence</h3>
+            <p style="color: var(--sg-slate); font-size: 18px; max-width: 600px;">Make every sales conversation useful after the call ends. We extract signals, draft follow-ups, and write approved MEDDIC data back to your CRM.</p>
+          </div>
+          <div style="flex-shrink: 0; display: none; @media(min-width: 768px) { display: block; }">
+             <a href="services.html" class="sg-btn sg-btn-primary-dark sg-btn-magnetic">
+               <span>See Deal Engine</span>
+             </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); max-width: none; text-align: center; padding: 120px 24px;">
-      <h2 style="color: var(--sg-white); margin-bottom: 24px; font-size: 48px;">Stop paying for platform taxes.</h2>
-      <p style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 48px; font-size: 20px;">
-        Start owning your revenue architecture. Get a complete teardown of your current GTM workflows.
-      </p>
-      <a href="build-session.html" class="sg-btn sg-btn-primary">Get a GTM teardown</a>
+    <!-- Final CTA -->
+    <section class="sg-hero" style="min-height: auto; padding: 160px 24px;">
+      <div class="sg-mesh-bg" style="opacity: 0.3;">
+        <div class="sg-mesh-blob cyan" style="left: auto; right: -10vw; top: -10vw;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <h2 class="gs-reveal" style="color: var(--sg-white); font-size: clamp(40px, 5vw, 64px); margin-bottom: 24px; max-width: 800px; line-height: 1.1;">Stop paying platform taxes.</h2>
+        <p class="gs-reveal" style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 48px; font-size: 20px;">
+          Start owning your revenue architecture today. Get a complete teardown of your current GTM workflows.
+        </p>
+        <div class="gs-reveal">
+          <a href="build-session.html" class="sg-btn sg-btn-primary sg-btn-magnetic">
+            <span>Get a GTM teardown</span>
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px;">
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
     <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
       <div style="display: flex; justify-content: center; gap: 24px;">
-        <a href="index.html" style="color: var(--sg-slate); text-decoration: none;">Home</a>
-        <a href="services.html" style="color: var(--sg-slate); text-decoration: none;">Engines</a>
-        <a href="pricing.html" style="color: var(--sg-slate); text-decoration: none;">Pricing</a>
-        <a href="about.html" style="color: var(--sg-slate); text-decoration: none;">About</a>
+        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
       </div>
-      <div>
+      <div style="opacity: 0.7;">
         SalesGency is a d/b/a of Diamitani Industries.
       </div>
     </div>
   </footer>
 
+  <!-- Scripts for Interactions -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 1. Reveal Animations
+      const revealElements = document.querySelectorAll(".gs-reveal");
+      revealElements.forEach((el, index) => {
+        gsap.to(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%", // when top of element hits 85% viewport
+            toggleActions: "play none none reverse"
+          },
+          opacity: 1,
+          y: 0,
+          visibility: "visible",
+          duration: 0.8,
+          ease: "power3.out",
+          delay: (el.closest('.sg-hero') ? index * 0.1 : 0) // cascade hero elements
+        });
+      });
+
+      // 2. Magnetic Buttons
+      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
+      
+      magneticButtons.forEach((btn) => {
+        const text = btn.querySelector("span");
+        
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const h = rect.width / 2;
+          const v = rect.height / 2;
+          const x = e.clientX - rect.left - h;
+          const y = e.clientY - rect.top - v;
+
+          // Move the button itself slightly
+          gsap.to(btn, {
+            x: x * 0.2,
+            y: y * 0.2,
+            duration: 0.4,
+            ease: "power2.out"
+          });
+          
+          // Move the inner text slightly more
+          if(text) {
+             gsap.to(text, {
+               x: x * 0.3,
+               y: y * 0.3,
+               duration: 0.4,
+               ease: "power2.out"
+             });
+          }
+        });
+
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          if(text) {
+             gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

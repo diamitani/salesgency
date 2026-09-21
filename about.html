@@ -9,108 +9,261 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="assets/salesgencytokens.css">
   <link rel="stylesheet" href="assets/unified.css">
+  <link rel="stylesheet" href="assets/premium.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <script src="assets/unified-nav.js" defer></script>
+
+  <style>
+    body {
+      background-color: var(--sg-mist);
+      color: var(--sg-ink);
+      font-family: var(--sg-font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--sg-font-display);
+      letter-spacing: -0.02em;
+      color: var(--sg-ink);
+    }
+    /* Hero */
+    .sg-hero {
+      position: relative;
+      padding: 180px 24px 100px;
+      text-align: center;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .sg-hero h1 {
+      color: var(--sg-white);
+      font-size: clamp(48px, 8vw, 88px);
+      max-width: 900px;
+      margin: 0 auto 24px;
+      line-height: 1.05;
+    }
+    .sg-hero p {
+      color: var(--sg-mist);
+      font-size: clamp(18px, 3vw, 22px);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+    
+    /* Editorial Layout */
+    .sg-editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 24px;
+    }
+    @media (min-width: 1024px) {
+      .sg-editorial-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 120px;
+      }
+    }
+
+    /* Buttons */
+    .sg-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-family: var(--sg-font-display);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      gap: 10px;
+      position: relative;
+    }
+    .sg-btn-primary {
+      background: var(--sg-white);
+      color: var(--sg-ink);
+    }
+  </style>
 </head>
 <body>
 
   <main>
-    <section class="sg-section" style="background: var(--sg-mist); padding-top: 140px; padding-bottom: 80px;">
-      <div class="sg-container" style="max-width: 800px; text-align: center;">
-        <h1 class="sg-h1" style="margin-bottom: 24px;">Drive value cost-effectively with software you actually own.</h1>
-        <p class="sg-body" style="color: var(--sg-slate); max-width: 600px; margin: 0 auto;">
-          SalesGency is about one thing: <strong>your go-to-market architecture</strong>. We engineer custom workflows, skills, and agents so high-growth B2B teams can capture more revenue and streamline operations without bloated agency retainers or software markups.
+    <!-- Dark Premium Hero -->
+    <section class="sg-hero">
+      <div class="sg-mesh-bg">
+        <div class="sg-mesh-blob indigo" style="left: -10vw; top: -10vw; bottom: auto; right: auto;"></div>
+        <div class="sg-mesh-blob cyan" style="right: -10vw; bottom: -10vw; left: auto; top: auto;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">The SalesGency Mission</span>
+        <h1 class="sg-hero-title gs-reveal" style="color: var(--sg-white); font-size: clamp(48px, 8vw, 88px); max-width: 900px; margin: 0 auto 24px; line-height: 1.05;">
+          Drive value cost-effectively with <span class="sg-signature-gradient">code you own.</span>
+        </h1>
+        <p class="gs-reveal" style="color: var(--sg-mist); font-size: clamp(18px, 3vw, 22px); max-width: 650px; margin: 0 auto 40px; opacity: 0.9;">
+          We engineer custom workflows, skills, and agents so high-growth B2B teams can capture more revenue without bloated agency retainers.
         </p>
       </div>
     </section>
 
-    <!-- The Problem -->
-    <section class="sg-section" style="background: var(--sg-white);">
-      <div class="sg-container" style="max-width: 1000px;">
-        <h2 class="sg-h2" style="text-align: center; margin-bottom: 64px;">Why traditional lead gen is broken.</h2>
+    <!-- The Problem (High Contrast Dark Section) -->
+    <section class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); padding: 140px 24px; text-align: center; border-bottom: 1px solid var(--sg-ink-2);">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <h2 class="gs-reveal" style="color: var(--sg-white); font-size: clamp(40px, 5vw, 56px); margin-bottom: 64px;">Why traditional lead gen is broken.</h2>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
-          <div class="sg-card">
-            <h3 class="sg-h4" style="margin-bottom: 12px; color: var(--sg-signal);">The Agency Trap</h3>
-            <p class="sg-body" style="color: var(--sg-slate);">
-              When you stop paying their monthly retainer, your pipeline goes to zero. You own no data, no code, and no workflows. It's a rental model.
-            </p>
+        <div class="sg-bento-grid gs-reveal">
+          <div class="sg-bento-item sg-bento-col-6 sg-glass" style="border: 1px solid var(--sg-ink-2); text-align: left;">
+            <h3 style="color: var(--sg-white); font-size: 24px; margin-bottom: 16px;">The Agency Trap</h3>
+            <p style="color: var(--sg-mist); opacity: 0.8; font-size: 18px; line-height: 1.6;">When you stop paying their monthly retainer, your pipeline goes to zero. You own no data, no code, and no workflows. It's a rental model.</p>
+          </div>
+          
+          <div class="sg-bento-item sg-bento-col-6 sg-glass" style="border: 1px solid var(--sg-ink-2); text-align: left;">
+            <h3 style="color: var(--sg-white); font-size: 24px; margin-bottom: 16px;">The SaaS Seat Tax</h3>
+            <p style="color: var(--sg-mist); opacity: 0.8; font-size: 18px; line-height: 1.6;">Paying thousands per rep for siloed tools that don't talk to each other and still require 30+ hours of manual CRM logging every week.</p>
           </div>
 
-          <div class="sg-card">
-            <h3 class="sg-h4" style="margin-bottom: 12px; color: var(--sg-warning);">The SaaS Seat Tax</h3>
-            <p class="sg-body" style="color: var(--sg-slate);">
-              Paying thousands per rep for siloed tools that don't talk to each other and still require 30+ hours of manual CRM logging every week.
-            </p>
-          </div>
-
-          <div class="sg-card" style="border-color: var(--sg-accent); box-shadow: 0 8px 24px rgba(59,130,246,0.1);">
-            <h3 class="sg-h4" style="margin-bottom: 12px; color: var(--sg-accent);">The SalesGency Model</h3>
-            <p class="sg-body" style="color: var(--sg-slate);">
-              We engineer custom workflows, skills, and agents directly in your private cloud. You own 100% of the code forever — no retainer, no seat tax, no black box.
-            </p>
+          <div class="sg-bento-item sg-bento-col-12 sg-glass" style="border: 1px solid rgba(0,194,255,0.3); text-align: left; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--sg-signal);"></div>
+            <h3 style="color: var(--sg-signal); font-size: 24px; margin-bottom: 16px;">The SalesGency Model</h3>
+            <p style="color: var(--sg-white); font-size: 18px; line-height: 1.6; max-width: 800px;">We engineer custom workflows, skills, and agents directly in your private cloud. You own 100% of the code forever — no retainer, no seat tax, no black box.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- The Builder -->
-    <section class="sg-section" style="background: var(--sg-mist);">
-      <div class="sg-container" style="max-width: 800px;">
-        <h2 class="sg-h2" style="text-align: center; margin-bottom: 32px;">One founder. Six talents.</h2>
-        <p class="sg-body" style="color: var(--sg-slate); text-align: center; margin-bottom: 48px;">
-          SalesGency is a d/b/a of Diamitani Industries, run by Patrick Diamitani. Background in tech sales, so the process is understood first and automated second. Every engagement draws on the same six talents:
-        </p>
+    <!-- The Builder (Editorial Grid) -->
+    <section style="background: var(--sg-white);">
+      <div class="sg-editorial-grid">
+        <div class="gs-reveal" style="position: sticky; top: 120px; height: fit-content;">
+          <span class="sg-eyebrow">The Builder</span>
+          <h2 style="font-size: clamp(40px, 5vw, 56px); line-height: 1.1; margin-bottom: 24px;">One founder.<br>Six talents.</h2>
+          <p style="color: var(--sg-slate); font-size: 20px; line-height: 1.6;">
+            SalesGency is a d/b/a of Diamitani Industries, run by Patrick Diamitani. Background in tech sales, so the process is understood first and automated second. 
+          </p>
+        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-          <div class="sg-card" style="background: var(--sg-white);">
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Workflow engineering</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">Production systems—triggers, data nodes, CRM sync, research and messaging agents.</p>
+        <div class="gs-reveal" style="display: flex; flex-direction: column; gap: 40px;">
+          
+          <div style="border-bottom: 1px solid var(--sg-line); padding-bottom: 32px;">
+            <h4 style="font-size: 24px; margin-bottom: 12px;">Workflow Engineering</h4>
+            <p style="color: var(--sg-slate); font-size: 18px;">Production systems—triggers, data nodes, CRM sync, research and messaging agents.</p>
           </div>
-          <div class="sg-card" style="background: var(--sg-white);">
-            <h4 class="sg-h4" style="margin-bottom: 8px;">AI agent builds</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">Custom agents deployed inside your stack via your own keys—guarded and logged.</p>
+
+          <div style="border-bottom: 1px solid var(--sg-line); padding-bottom: 32px;">
+            <h4 style="font-size: 24px; margin-bottom: 12px;">AI Agent Builds</h4>
+            <p style="color: var(--sg-slate); font-size: 18px;">Custom agents deployed inside your stack via your own keys—guarded and logged.</p>
           </div>
-          <div class="sg-card" style="background: var(--sg-white);">
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Custom skills</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">Reusable skills that encode your process—prospecting, enrichment, copywriting.</p>
+
+          <div style="border-bottom: 1px solid var(--sg-line); padding-bottom: 32px;">
+            <h4 style="font-size: 24px; margin-bottom: 12px;">Custom Skills</h4>
+            <p style="color: var(--sg-slate); font-size: 18px;">Reusable skills that encode your process—prospecting, enrichment, copywriting.</p>
           </div>
-          <div class="sg-card" style="background: var(--sg-white);">
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Outbound engines</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">Intent signals, contact waterfall, pain-point research, and PAS messaging.</p>
+
+          <div style="border-bottom: 1px solid var(--sg-line); padding-bottom: 32px;">
+            <h4 style="font-size: 24px; margin-bottom: 12px;">Outbound Engines</h4>
+            <p style="color: var(--sg-slate); font-size: 18px;">Intent signals, contact waterfall, pain-point research, and PAS messaging.</p>
           </div>
-          <div class="sg-card" style="background: var(--sg-white);">
-            <h4 class="sg-h4" style="margin-bottom: 8px;">RevOps &amp; data hygiene</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">Import formatters, deal updates, dedupe shields, and CRM optimization.</p>
+
+          <div style="border-bottom: 1px solid var(--sg-line); padding-bottom: 32px;">
+            <h4 style="font-size: 24px; margin-bottom: 12px;">RevOps & Data Hygiene</h4>
+            <p style="color: var(--sg-slate); font-size: 18px;">Import formatters, deal updates, dedupe shields, and CRM optimization.</p>
           </div>
-          <div class="sg-card" style="background: var(--sg-white);">
-            <h4 class="sg-h4" style="margin-bottom: 8px;">Enablement playbooks</h4>
-            <p class="sg-caption" style="color: var(--sg-slate);">Tool setup, training curriculums, and playbook execution for the handover.</p>
+
+          <div style="padding-bottom: 32px;">
+            <h4 style="font-size: 24px; margin-bottom: 12px;">Enablement Playbooks</h4>
+            <p style="color: var(--sg-slate); font-size: 18px;">Tool setup, training curriculums, and playbook execution for the handover.</p>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); text-align: center;">
-      <div class="sg-container">
-        <h2 class="sg-h2" style="color: var(--sg-white); margin-bottom: 24px;">Ready to own your pipeline?</h2>
-        <a href="pricing.html" class="sg-btn sg-btn-primary">View Pricing</a>
+    <!-- Final CTA -->
+    <section class="sg-hero" style="min-height: auto; padding: 160px 24px;">
+      <div class="sg-mesh-bg" style="opacity: 0.3;">
+        <div class="sg-mesh-blob cyan" style="left: auto; right: -10vw; top: -10vw;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <h2 class="gs-reveal" style="color: var(--sg-white); font-size: clamp(40px, 5vw, 64px); margin-bottom: 24px; max-width: 800px; line-height: 1.1;">Ready to own your pipeline?</h2>
+        <div class="gs-reveal" style="display: flex; justify-content: center; gap: 16px; margin-top: 48px;">
+          <a href="pricing.html" class="sg-btn sg-btn-primary sg-btn-magnetic">
+            <span>View Pricing</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); padding: 60px 0 40px; text-align: center;">
-    <div class="sg-container">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency" style="height: 24px; margin-bottom: 24px;">
-      <p class="sg-caption" style="color: var(--sg-mist); opacity: 0.7; max-width: 400px; margin: 0 auto;">
-        &copy; 2026 SalesGency. GTM AI Architecture. 100% client-owned code.
-      </p>
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; justify-content: center; gap: 24px;">
+        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
+        <a href="process.html" style="color: var(--sg-mist); text-decoration: none;">Process</a>
+      </div>
+      <div style="opacity: 0.7;">
+        SalesGency is a d/b/a of Diamitani Industries.
+      </div>
     </div>
   </footer>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 1. Reveal Animations
+      const revealElements = document.querySelectorAll(".gs-reveal");
+      revealElements.forEach((el, index) => {
+        gsap.to(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          opacity: 1,
+          y: 0,
+          visibility: "visible",
+          duration: 0.8,
+          ease: "power3.out",
+          delay: (el.closest('.sg-hero') ? index * 0.1 : 0)
+        });
+      });
+
+      // 2. Magnetic Buttons
+      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
+      magneticButtons.forEach((btn) => {
+        const text = btn.querySelector("span");
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const h = rect.width / 2;
+          const v = rect.height / 2;
+          const x = e.clientX - rect.left - h;
+          const y = e.clientY - rect.top - v;
+          gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
+          if(text) gsap.to(text, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          if(text) gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+        });
+      });
+    });
+  </script>
 </body>
 </html>

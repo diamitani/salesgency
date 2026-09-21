@@ -9,146 +9,340 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="assets/salesgencytokens.css">
   <link rel="stylesheet" href="assets/unified.css">
+  <link rel="stylesheet" href="assets/premium.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <script src="assets/unified-nav.js" defer></script>
   <script src="assets/stripe-client.js" defer></script>
 
   <style>
-    .pricing-hero {
+    body {
+      background-color: var(--sg-mist);
+      color: var(--sg-ink);
+      font-family: var(--sg-font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--sg-font-display);
+      letter-spacing: -0.02em;
+      color: var(--sg-ink);
+    }
+    /* Hero */
+    .sg-hero {
+      position: relative;
+      padding: 180px 24px 140px;
+      text-align: center;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .sg-hero h1 {
+      color: var(--sg-white);
+      font-size: clamp(48px, 8vw, 88px);
+      max-width: 900px;
+      margin: 0 auto 24px;
+      line-height: 1.05;
+    }
+    .sg-hero p {
+      color: var(--sg-mist);
+      font-size: clamp(18px, 3vw, 22px);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .sg-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 10px;
+      font-family: var(--sg-font-display);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .sg-btn-primary {
       background: var(--sg-ink);
       color: var(--sg-white);
-      padding: 160px 0 80px;
-      text-align: center;
     }
-    .pricing-grid {
+    .sg-btn-secondary {
+      background: transparent;
+      border: 1px solid var(--sg-line);
+      color: var(--sg-ink);
+    }
+    .sg-btn-secondary:hover {
+      background: var(--sg-mist);
+      border-color: var(--sg-ink);
+    }
+
+    /* Pricing Section */
+    .sg-pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      max-width: 1200px;
-      margin: -40px auto 80px;
-      padding: 0 24px;
+      gap: 32px;
+    }
+    .sg-price-card {
+      background: var(--sg-white);
+      border: 1px solid var(--sg-line);
+      border-radius: var(--sg-radius-m);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sg-price-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 64px rgba(10, 20, 40, 0.08);
+      border-color: rgba(10, 20, 40, 0.2);
+    }
+    .sg-price-card.featured {
+      border: 2px solid var(--sg-ink);
+      position: relative;
+    }
+    .sg-price-card.featured:hover {
+      box-shadow: 0 24px 64px rgba(124, 58, 237, 0.15); /* Indigo glow */
+    }
+    .sg-price-header {
+      margin-bottom: 24px;
+    }
+    .sg-price-header h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .sg-price-amount {
+      font-family: var(--sg-font-display);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--sg-ink);
+      margin-bottom: 32px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .sg-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 48px 0;
+      flex-grow: 1;
+    }
+    .sg-feature-list li {
+      font-size: 16px;
+      color: var(--sg-slate);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .sg-feature-list li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sg-signal);
+      margin-top: 10px;
+      flex-shrink: 0;
     }
   </style>
 </head>
 <body>
 
   <main>
-    <section class="pricing-hero">
-      <div class="sg-container" style="max-width: 800px; margin: 0 auto;">
-        <h1 class="sg-h1" style="color: var(--sg-white); margin-bottom: 24px;">Simple, outcome-driven pricing.</h1>
-        <p class="sg-body" style="color: var(--sg-mist); opacity: 0.9;">
-          No complex retainers. Choose the engagement level that matches your urgency. You own 100% of the deployed code and workflows forever.
+    <!-- Dark Premium Hero -->
+    <section class="sg-hero">
+      <div class="sg-mesh-bg">
+        <div class="sg-mesh-blob cyan" style="left: -10vw; bottom: -10vw; top: auto;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">Pricing Architecture</span>
+        <h1 class="sg-hero-title gs-reveal">
+          Simple, outcome-driven <span class="sg-signature-gradient">pricing.</span>
+        </h1>
+        <p class="gs-reveal">
+          No complex retainers. Choose the engagement level that matches your urgency. You own 100% of the deployed code forever.
         </p>
       </div>
     </section>
 
-    <div class="pricing-grid">
+    <div class="sg-pricing-grid gs-reveal" style="max-width: 1200px; margin: -100px auto 140px; padding: 0 24px; position: relative; z-index: 10;">
       <!-- Tier 1 -->
       <div class="sg-price-card">
         <div class="sg-price-header">
-          <h3 class="sg-h4">GTM Teardown</h3>
-          <p class="sg-caption" style="color: var(--sg-slate);">Identify the bottlenecks</p>
+          <h3>GTM Teardown</h3>
+          <p style="color: var(--sg-slate); font-size: 14px;">Identify the bottlenecks</p>
         </div>
-        <div class="sg-price-amount">$299<span style="font-size: 14px; font-weight: 500; color: var(--sg-slate);"> / flat</span></div>
+        <div class="sg-price-amount">$299<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
         <ul class="sg-feature-list">
-          <li>Complete CRM &amp; Stack Audit</li>
+          <li>Complete CRM & Stack Audit</li>
           <li>Detailed Engineering Architecture Blueprint</li>
           <li>Identified Workflow Bottlenecks</li>
           <li>Credited towards any Build Sprint</li>
         </ul>
-        <button class="sg-btn sg-btn-secondary" style="width: 100%; margin-top: auto;" data-stripe-product="gtm-teardown">Book Teardown</button>
+        <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="gtm-teardown">
+          <span>Book Teardown</span>
+        </button>
       </div>
 
       <!-- Tier 2 -->
-      <div class="sg-price-card">
+      <div class="sg-price-card featured">
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--sg-ink); color: var(--sg-white); font-size: 12px; padding: 6px 16px; border-radius: var(--sg-radius-pill); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Standard Sprint</div>
         <div class="sg-price-header">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h3 class="sg-h4">Revenue Engine Sprint</h3>
-            <span style="font-size: 11px; font-weight: 700; background: var(--sg-ink); color: var(--sg-white); padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">Standard</span>
-          </div>
-          <p class="sg-caption" style="color: var(--sg-slate);">14-Day deployment cycle</p>
+          <h3>Revenue Engine Sprint</h3>
+          <p style="color: var(--sg-slate); font-size: 14px;">14-Day deployment cycle</p>
         </div>
-        <div class="sg-price-amount">$2,500<span style="font-size: 14px; font-weight: 500; color: var(--sg-slate);"> / flat</span></div>
+        <div class="sg-price-amount">$2,500<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
         <ul class="sg-feature-list">
           <li>1 Core Engine (Inbound, Outbound, or Deal Intel)</li>
           <li>Fully built, tested, and deployed inside your stack</li>
           <li>Custom CRM Dedupe Shields</li>
-          <li>Live paired engineering session &amp; handover</li>
+          <li>Live paired engineering session & handover</li>
         </ul>
-        <button class="sg-btn sg-btn-primary" style="width: 100%; margin-top: auto;" data-stripe-product="revenue-engine-sprint">Start Standard Sprint</button>
+        <button class="sg-btn sg-btn-primary sg-btn-magnetic" data-stripe-product="revenue-engine-sprint">
+          <span>Start Standard Sprint</span>
+        </button>
       </div>
 
       <!-- Tier 3 -->
-      <div class="sg-price-card" style="border-color: var(--sg-signal); box-shadow: 0 12px 32px rgba(239,68,68,0.15);">
+      <div class="sg-price-card" style="border-color: var(--sg-signal); box-shadow: 0 12px 32px rgba(0,194,255,0.1);">
         <div class="sg-price-header">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h3 class="sg-h4">Priority Build</h3>
-            <span style="font-size: 11px; font-weight: 700; background: var(--sg-signal); color: var(--sg-white); padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">Fast-track</span>
+            <h3>Priority Build</h3>
+            <span style="font-size: 11px; font-weight: 700; background: var(--sg-signal); color: var(--sg-ink); padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">Fast-track</span>
           </div>
-          <p class="sg-caption" style="color: var(--sg-slate);">Accelerated 30-Day Turnkey</p>
+          <p style="color: var(--sg-slate); font-size: 14px;">Accelerated 30-Day Turnkey</p>
         </div>
-        <div class="sg-price-amount">$5,000<span style="font-size: 14px; font-weight: 500; color: var(--sg-slate);"> / flat</span></div>
+        <div class="sg-price-amount">$5,000<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
         <ul class="sg-feature-list">
           <li>All 3 Core Engines deployed (Full Architecture)</li>
           <li>Accelerated turnkey delivery</li>
-          <li>Custom multi-tool connectors &amp; scrapers</li>
+          <li>Custom multi-tool connectors & scrapers</li>
           <li>Executive revenue telemetry dashboard</li>
         </ul>
-        <button class="sg-btn sg-btn-primary" style="background: var(--sg-signal); border-color: var(--sg-signal); width: 100%; margin-top: auto;" data-stripe-product="priority-build">Start Priority Build</button>
+        <button class="sg-btn sg-btn-primary sg-btn-magnetic" style="background: var(--sg-signal); border-color: var(--sg-signal); color: var(--sg-ink);" data-stripe-product="priority-build">
+          <span>Start Priority Build</span>
+        </button>
       </div>
 
       <!-- Tier 4 -->
       <div class="sg-price-card">
         <div class="sg-price-header">
-          <h3 class="sg-h4">Monitoring &amp; Tune-ups</h3>
-          <p class="sg-caption" style="color: var(--sg-slate);">Ongoing fractional support</p>
+          <h3>Monitoring & Tune-ups</h3>
+          <p style="color: var(--sg-slate); font-size: 14px;">Ongoing fractional support</p>
         </div>
-        <div class="sg-price-amount">$1,250<span style="font-size: 14px; font-weight: 500; color: var(--sg-slate);"> / mo</span></div>
+        <div class="sg-price-amount">$1,250<span style="font-size: 16px; color: var(--sg-slate);"> / mo</span></div>
         <ul class="sg-feature-list">
-          <li>Continuous prompt &amp; skill tuning</li>
+          <li>Continuous prompt & skill tuning</li>
           <li>Weekly engineering standups</li>
-          <li>Error-handling &amp; break-fix monitoring</li>
+          <li>Error-handling & break-fix monitoring</li>
           <li>Cancel anytime, zero lock-in</li>
         </ul>
-        <button class="sg-btn sg-btn-secondary" style="width: 100%; margin-top: auto;" data-stripe-product="monitoring-tuneups">Add Monitoring</button>
+        <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="monitoring-tuneups">
+          <span>Add Monitoring</span>
+        </button>
       </div>
     </div>
 
     <!-- FAQ Section -->
-    <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-mist); padding-top: 80px;">
-      <div class="sg-container" style="max-width: 800px; margin: 0 auto;">
-        <h2 class="sg-h2" style="text-align: center; margin-bottom: 48px;">Frequently Asked Questions</h2>
-        
-        <div style="margin-bottom: 32px;">
-          <h4 class="sg-h4" style="margin-bottom: 8px;">Do we own 100% of the deployed code?</h4>
-          <p class="sg-body" style="color: var(--sg-slate);">Yes. All n8n workflow blueprints, prompt files, custom scripts, and documentation belong to your organization permanently without recurring software lock-in.</p>
+    <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-line); padding: 140px 24px;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="gs-reveal" style="text-align: center; margin-bottom: 80px;">
+          <span class="sg-eyebrow">FAQ</span>
+          <h2 style="font-size: clamp(40px, 5vw, 56px); line-height: 1.1;">Frequently Asked Questions</h2>
         </div>
         
-        <div style="margin-bottom: 32px;">
-          <h4 class="sg-h4" style="margin-bottom: 8px;">What tech stacks do you support?</h4>
-          <p class="sg-body" style="color: var(--sg-slate);">We build directly inside HubSpot, Salesforce, Clay, Apollo.io, Smartlead, Instantly, n8n (self-hosted or cloud), and Claude / OpenAI / Gemini API harnesses.</p>
+        <div class="gs-reveal" style="margin-bottom: 48px;">
+          <h4 style="font-size: 24px; margin-bottom: 12px;">Do we own 100% of the deployed code?</h4>
+          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">Yes. All n8n workflow blueprints, prompt files, custom scripts, and documentation belong to your organization permanently without recurring software lock-in.</p>
+        </div>
+        
+        <div class="gs-reveal" style="margin-bottom: 48px;">
+          <h4 style="font-size: 24px; margin-bottom: 12px;">What tech stacks do you support?</h4>
+          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">We build directly inside HubSpot, Salesforce, Clay, Apollo.io, Smartlead, Instantly, n8n (self-hosted or cloud), and Claude / OpenAI / Gemini API harnesses.</p>
         </div>
 
-        <div style="margin-bottom: 32px;">
-          <h4 class="sg-h4" style="margin-bottom: 8px;">How does the $299 GTM Teardown work?</h4>
-          <p class="sg-body" style="color: var(--sg-slate);">You get a comprehensive audit of your current stack, mapping out data flows and bottlenecks. If you decide to proceed with a Sprint or Priority Build, the $299 is fully credited toward that engagement.</p>
+        <div class="gs-reveal" style="margin-bottom: 48px;">
+          <h4 style="font-size: 24px; margin-bottom: 12px;">How does the $299 GTM Teardown work?</h4>
+          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">You get a comprehensive audit of your current stack, mapping out data flows and bottlenecks. If you decide to proceed with a Sprint or Priority Build, the $299 is fully credited toward that engagement.</p>
         </div>
 
       </div>
     </section>
   </main>
 
-  <footer class="sg-section" style="background: var(--sg-ink); color: var(--sg-white); padding: 60px 0 40px; text-align: center;">
-    <div class="sg-container">
-      <img src="assets/salesgency-wordmark-light.svg" alt="SalesGency" style="height: 24px; margin-bottom: 24px;">
-      <p class="sg-caption" style="color: var(--sg-mist); opacity: 0.7; max-width: 400px; margin: 0 auto;">
-        &copy; 2026 SalesGency. GTM AI Architecture. 100% client-owned code.
-      </p>
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; justify-content: center; gap: 24px;">
+        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
+        <a href="process.html" style="color: var(--sg-mist); text-decoration: none;">Process</a>
+      </div>
+      <div style="opacity: 0.7;">
+        SalesGency is a d/b/a of Diamitani Industries.
+      </div>
     </div>
   </footer>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 1. Reveal Animations
+      const revealElements = document.querySelectorAll(".gs-reveal");
+      revealElements.forEach((el, index) => {
+        gsap.to(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          opacity: 1,
+          y: 0,
+          visibility: "visible",
+          duration: 0.8,
+          ease: "power3.out",
+          delay: (el.closest('.sg-hero') ? index * 0.1 : 0)
+        });
+      });
+
+      // 2. Magnetic Buttons
+      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
+      magneticButtons.forEach((btn) => {
+        const text = btn.querySelector("span");
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const h = rect.width / 2;
+          const v = rect.height / 2;
+          const x = e.clientX - rect.left - h;
+          const y = e.clientY - rect.top - v;
+          gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
+          if(text) gsap.to(text, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          if(text) gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
