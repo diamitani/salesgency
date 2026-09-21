@@ -6,6 +6,8 @@ User-agent: *
 Allow: /
 Disallow: /assets/*.psd$
 Disallow: /scratch/
+Disallow: /api/
+Disallow: /checkout-success.html
 
 # Specific AI & LLM Search Crawlers (AEO / Answer Engine Optimization)
 User-agent: Googlebot

@@ -1,12 +1,15 @@
-# DDC Stage: Design System & Taste Specification - v2.0
-
-**Run ID:** `ddc_20260921_salesgency_live`  
-**Stage:** `design_system`  
-**Framework:** Delali Development Cycle (DDC) Planning Runtime v2.0.0  
-**Status:** Approved  
-**Timestamp:** 2026-09-21T02:14:00-05:00  
-
 ---
+artifact_type: design_system
+project_id: salesgency
+version: v2.0.0
+status: approved
+owner: design
+reviewers: [design, eng, a11y]
+well_architected_review: pass
+last_updated: 2026-09-21
+---
+
+# SalesGency® Canonical Design System & Taste Guidelines
 
 ## 1. Design Philosophy & Anti-Slop Principles
 
