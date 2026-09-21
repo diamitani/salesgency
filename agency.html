@@ -186,7 +186,7 @@
                 <span class="badge badge-cyan">Most Popular</span>
                 <span style="font-size:0.8rem; font-family:var(--font-mono); color:#0284C7; font-weight:700;">30-DAY SPRINT</span>
               </div>
-              <div style="font-family:var(--font-mono); font-size:2rem; font-weight:800; color:#0284C7; margin-bottom:8px;">$9,999 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">starting at</span></div>
+              <div style="font-family:var(--font-mono); font-size:2rem; font-weight:800; color:#0284C7; margin-bottom:8px;">$4,999 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">flat</span></div>
               <h3 style="margin-bottom:12px;">30-Day Turnkey Build Sprint</h3>
               <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">
                 Full turnkey delivery and configuration of your sovereign GTM revenue engines, integrations, and CRM waterfall pipelines.
@@ -198,15 +198,15 @@
                 <li><span style="color:#059669; font-weight:bold;">✓</span> 30-day monitored execution &amp; handover</li>
               </ul>
             </div>
-            <a class="btn btn-primary btn-block" href="book.html">Start 30-Day Sprint &rarr;</a>
+            <button class="btn btn-primary btn-block" data-stripe-product="30-day-sprint">Start 30-Day Sprint ($4,999) &rarr;</button>
           </div>
 
           <!-- Tier 3: Fractional Director / Agency Partnership -->
           <div class="card-glass" style="display:flex; flex-direction:column; justify-content:space-between; padding:32px;">
             <div>
-              <span class="badge badge-violet" style="margin-bottom:12px;">Retainer &amp; CoE</span>
-              <div style="font-family:var(--font-mono); font-size:2rem; font-weight:800; color:#7C3AED; margin-bottom:8px;">$19,999 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">/mo starting at</span></div>
-              <h3 style="margin-bottom:12px;">Fractional Director / Partnership</h3>
+              <span class="badge badge-violet" style="margin-bottom:12px;">Enterprise Retainer</span>
+              <div style="font-family:var(--font-mono); font-size:2rem; font-weight:800; color:#7C3AED; margin-bottom:8px;">$19,999 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">/month</span></div>
+              <h3 style="margin-bottom:12px;">Fractional GTM Engineer</h3>
               <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">
                 Dedicated GTM Systems Architect &amp; ongoing engineering pod. Complete autonomous pipeline buildouts, custom agent harnesses, and GTM CoE.
               </p>
@@ -217,7 +217,7 @@
                 <li><span style="color:#7C3AED; font-weight:bold;">✓</span> Dedicated Slack channel &amp; priority SLA</li>
               </ul>
             </div>
-            <a class="btn btn-secondary btn-block" href="book.html">Apply for Partnership &rarr;</a>
+            <button class="btn btn-secondary btn-block" data-stripe-product="fractional-gtm-engineer">Start Fractional Retainer ($19,999/mo) &rarr;</button>
           </div>
         </div>
       </div>
@@ -297,5 +297,6 @@
     </div>
   </footer>
 
+  <script src="assets/stripe-client.js"></script>
 </body>
 </html>

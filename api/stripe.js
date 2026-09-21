@@ -16,21 +16,15 @@
 
 const crypto = require('crypto');
 const { stripe } = require('./_stripe');
-const { CATALOG } = require('./_catalog');
-
-// ─── Webhook needs raw body — buffer before JSON parse ────────────────────────
-async function getRawBody(req) {
-  if (req.rawBody) return req.rawBody;
-  if (Buffer.isBuffer(req.body)) return req.body;
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    req.on('data', (chunk) => chunks.push(chunk));
-    req.on('end', () => resolve(Buffer.concat(chunks)));
-    req.on('error', (err) => reject(err));
-  });
-}
+const { getCatalog } = require('./_catalog');
 
 // ─── Route handlers ───────────────────────────────────────────────────────────
+
+async function handleConfig(req, res) {
+  return res.status(200).json({
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || '',
+  });
+}
 
 async function handleCreateCheckoutSession(req, res) {
   if (req.method !== 'POST') {
@@ -39,35 +33,53 @@ async function handleCreateCheckoutSession(req, res) {
   }
   try {
     const { productId, customerEmail, clientReferenceId, returnUrl, qualificationData } = req.body || {};
+    const catalog = getCatalog();
 
-    if (!productId || !CATALOG[productId]) {
+    if (!productId || !catalog[productId]) {
       return res.status(400).json({
         error: 'Invalid or missing productId',
-        validProductIds: Object.keys(CATALOG),
+        validProductIds: Object.keys(catalog),
       });
     }
 
-    const item = CATALOG[productId];
+    const item = catalog[productId];
     const origin = returnUrl || req.headers.origin || 'https://salesgency.com';
+
+    // Handle $0 free downloads directly
+    if (item.amount === 0 || item.price === 0) {
+      return res.status(200).json({
+        sessionId: 'free_download',
+        url: `${origin}/checkout-success.html?product=${encodeURIComponent(item.id || productId)}&status=free`,
+      });
+    }
+
     const randomSuffix = crypto.randomBytes(4).toString('hex');
     const integrationIdentifier = `salesgency_${randomSuffix}`;
 
-    const lineItemData = {
-      price_data: {
-        currency: item.currency,
-        product_data: { name: item.name, description: item.description },
-        unit_amount: item.amount,
-      },
-      quantity: 1,
-    };
-
-    if (item.mode === 'subscription') {
-      lineItemData.price_data.recurring = { interval: item.interval || 'month' };
+    let lineItemData;
+    if (item.stripePriceId) {
+      lineItemData = {
+        price: item.stripePriceId,
+        quantity: 1,
+      };
+    } else {
+      lineItemData = {
+        price_data: {
+          currency: item.currency || 'usd',
+          product_data: { name: item.name, description: item.description },
+          unit_amount: item.amount || item.price,
+        },
+        quantity: 1,
+      };
+      if (item.mode === 'subscription') {
+        lineItemData.price_data.recurring = { interval: item.interval || 'month' };
+      }
     }
 
     const metadata = {
-      productId,
+      productId: item.id || productId,
       productName: item.name,
+      stripeProductId: item.stripeProductId || '',
       environment: process.env.NODE_ENV || 'production',
     };
 
@@ -80,10 +92,10 @@ async function handleCreateCheckoutSession(req, res) {
     }
 
     const sessionParams = {
-      mode: item.mode,
+      mode: item.mode || 'payment',
       line_items: [lineItemData],
-      success_url: `${origin}/checkout-success.html?session_id={CHECKOUT_SESSION_ID}&product=${encodeURIComponent(productId)}&status=success`,
-      cancel_url: `${origin}/marketplace.html?cancelled=true`,
+      success_url: `${origin}/checkout-success.html?session_id={CHECKOUT_SESSION_ID}&product=${encodeURIComponent(item.id || productId)}&status=success`,
+      cancel_url: `${origin}/pricing.html?cancelled=true`,
       integration_identifier: integrationIdentifier,
       metadata,
     };
@@ -121,6 +133,18 @@ async function handleCustomerPortal(req, res) {
     console.error('[Stripe Customer Portal Error]', error);
     return res.status(500).json({ error: error.message || 'Failed to generate Customer Portal session' });
   }
+}
+
+// ─── Webhook needs raw body — buffer before JSON parse ────────────────────────
+async function getRawBody(req) {
+  if (req.rawBody) return req.rawBody;
+  if (Buffer.isBuffer(req.body)) return req.body;
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on('data', (chunk) => chunks.push(chunk));
+    req.on('end', () => resolve(Buffer.concat(chunks)));
+    req.on('error', (err) => reject(err));
+  });
 }
 
 async function handleWebhook(req, res) {
@@ -423,6 +447,7 @@ async function handleTerminal(req, res) {
 // ─── Main dispatcher ──────────────────────────────────────────────────────────
 
 const ROUTES = {
+  'config':                  handleConfig,
   'create-checkout-session': handleCreateCheckoutSession,
   'customer-portal':         handleCustomerPortal,
   'webhook':                 handleWebhook,

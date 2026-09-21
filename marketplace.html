@@ -12,9 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="assets/sg-design-system.css?v=4.0">
-  <link rel="stylesheet" href="assets/unified.css?v=4.0">
-  <script src="assets/unified-nav.js?v=4.0" defer></script>
+  <link rel="stylesheet" href="assets/sg-design-system.css?v=5.0">
+  <link rel="stylesheet" href="assets/unified.css?v=5.0">
+  <script src="assets/unified-nav.js?v=4.1" defer></script>
+  <script src="assets/stripe-client.js?v=5.0" defer></script>
 </head>
 <body>
 
@@ -50,14 +51,13 @@
 
           <!-- Category Filter Pills -->
           <div style="display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;" id="catFilters">
-            <button class="tab-btn active" data-filter="all">All Products (25)</button>
+            <button class="tab-btn active" data-filter="all">All Solutions</button>
             <button class="tab-btn" data-filter="outbound">Outbound PAE</button>
             <button class="tab-btn" data-filter="inbound">Inbound Speed-to-Lead</button>
             <button class="tab-btn" data-filter="revops">RevOps &amp; Intel</button>
-            <button class="tab-btn" data-filter="custom-skills">Skills Library</button>
-            <button class="tab-btn" data-filter="custom-templates">Templates</button>
-            <button class="tab-btn" data-filter="session">Live Sessions</button>
-            <button class="tab-btn" data-filter="builder">SaaS Plans</button>
+            <button class="tab-btn" data-filter="custom-skills">Skills Plugins</button>
+            <button class="tab-btn" data-filter="session">Live Sprints</button>
+            <button class="tab-btn" data-filter="custom-agents">Agent SaaS</button>
           </div>
         </div>
 
@@ -225,14 +225,16 @@
 
             <div style="display:flex; gap:8px; margin-top:10px;">
               <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="openProductModal('${p.id}')">Inspect</button>
-              ${p.price === 0 || p.type === 'skill' || p.type === 'template' ? `
-                <a href="${p.type === 'skill' ? 'skills.html' : 'templates.html'}" class="btn btn-primary btn-sm" style="flex:1;">Get Free</a>
-              ` : `
-                <a href="book.html?product=${p.id}" class="btn btn-primary btn-sm" style="flex:1;">Deploy</a>
-              `}
+              <button class="btn btn-primary btn-sm" style="flex:1;" data-stripe-product="${p.id}">
+                ${p.price === 0 ? 'Free ($0)' : 'Deploy →'}
+              </button>
             </div>
           </div>
         `).join('');
+
+        if (window.SalesgencyStripe && typeof window.SalesgencyStripe.bindCheckoutButtons === 'function') {
+          window.SalesgencyStripe.bindCheckoutButtons(grid);
+        }
       }
 
       // Filter clicks
@@ -281,7 +283,7 @@
 
           <div style="display:flex; gap:12px; justify-content:flex-end;">
             <button class="btn btn-ghost" onclick="document.getElementById('productModal').classList.remove('active')">Close</button>
-            <a href="book.html?product=${p.id}" class="btn btn-primary">Proceed with Setup &rarr;</a>
+            <button class="btn btn-primary" data-stripe-product="${p.id}" onclick="if (window.SalesgencyStripe) window.SalesgencyStripe.checkout('${p.id}');">Deploy Now (${formatPrice(p)}) &rarr;</button>
           </div>
         `;
         modal.classList.add('active');

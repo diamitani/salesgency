@@ -27,13 +27,14 @@
   --signal-green:      #0D9B60;
   --signal-green-dark: #2DCC85;   /* On dark backgrounds */
 
-  /* ── Text System ─────────────────────────────────────────────────────── */
-  --text-primary:      #0A0B0E;   /* Maximum contrast headlines */
-  --text-secondary:    #374151;   /* Body copy */
-  --text-tertiary:     #6B7280;   /* Captions, meta */
-  --text-dim:          #9CA3AF;   /* Placeholder, disabled */
-  --text-inverse:      #F7F6F2;   /* On dark backgrounds */
-  --text-inverse-dim:  #94A3B8;   /* Secondary on dark */
+  /* ── Text System (WCAG 2.2 AA High Contrast) ────────────────────────── */
+  --text-primary:      #0A0B0E;   /* Maximum contrast headlines (>18:1) */
+  --text-secondary:    #272E3B;   /* Body copy (>9:1 on white, >8:1 on paper) */
+  --text-tertiary:     #4B5563;   /* Captions, meta, timestamps (>6:1) */
+  --text-dim:          #52525B;   /* Minimum readable contrast (>5:1) */
+  --text-inverse:      #FFFFFF;   /* Pure white on dark surfaces (>18:1) */
+  --text-inverse-dim:  rgba(255, 255, 255, 0.78); /* Crisp secondary on dark (>9:1) */
+  --text-inverse-meta: rgba(255, 255, 255, 0.62); /* Meta on dark (>6:1) */
 
   /* ── Borders & Dividers ──────────────────────────────────────────────── */
   --border-subtle:     #E5E2DC;   /* Light surface hairline */
@@ -598,7 +599,7 @@ p {
 
 .footer-links li a {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.72);
   display: block;
   padding: 3px 0;
   transition: color var(--duration-fast) var(--ease-corporate);
@@ -616,8 +617,8 @@ p {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 @media (max-width: 1024px) {

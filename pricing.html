@@ -3,295 +3,490 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing &amp; The Commercial Ladder - SalesGency | Diamitani Industries</title>
-  <meta name="description" content="Transparent sovereign GTM pricing: $999 1-Hour Build Sprint, $9,999 30-Day Build Sprint, and $19,999 Fractional Director of AI &amp; Automation. 100% client code ownership.">
+  <title>Pricing &amp; The Commercial Ladder — SalesGency | Diamitani Industries</title>
+  <meta name="description" content="Transparent sovereign GTM pricing: $999 1-Hour Build Sprint, $2,999 14-Day Sprint, $4,999 30-Day Build Sprint, and $19,999/mo Fractional GTM Engineer. 100% client code ownership.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
-  
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="assets/sg-design-system.css?v=4.1">
-  <link rel="stylesheet" href="assets/unified.css?v=4.1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="assets/sg-design-system.css?v=5.0">
+  <link rel="stylesheet" href="assets/unified.css?v=5.0">
   <script src="assets/unified-nav.js?v=4.1" defer></script>
+  <script src="assets/stripe-client.js?v=5.0" defer></script>
+
+  <style>
+    .pricing-header {
+      background: var(--bg-obsidian);
+      padding: 96px 0 64px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .pricing-header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .pricing-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 20px;
+    }
+    .pricing-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+    }
+    .pricing-h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+    }
+    .pricing-lede {
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      color: rgba(255,255,255,0.80);
+      line-height: 1.65;
+      margin: 0 auto;
+    }
+    .pricing-grid-main {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: -36px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 64px;
+    }
+    .pricing-card-box {
+      background: var(--bg-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 38px 32px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .pricing-card-box:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-md);
+    }
+    .pricing-card-box.featured {
+      background: var(--bg-obsidian);
+      border-color: rgba(77,147,232,0.4);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .pricing-tier-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .pricing-card-box.featured .pricing-tier-tag {
+      color: var(--accent-dark);
+    }
+    .pricing-tier-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .pricing-card-box.featured .pricing-tier-title {
+      color: #FFFFFF;
+    }
+    .pricing-tier-summary {
+      font-size: 0.885rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+    .pricing-card-box.featured .pricing-tier-summary {
+      color: rgba(255,255,255,0.78);
+    }
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-card-box.featured .pricing-amount {
+      color: #FFFFFF;
+    }
+    .pricing-cadence {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+      margin-bottom: 24px;
+    }
+    .pricing-card-box.featured .pricing-cadence {
+      color: rgba(255,255,255,0.65);
+    }
+    .pricing-sep {
+      height: 1px;
+      background: var(--border-subtle);
+      margin-bottom: 24px;
+    }
+    .pricing-card-box.featured .pricing-sep {
+      background: var(--border-dark);
+    }
+    .pricing-item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex: 1;
+    }
+    .pricing-item-entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .pricing-card-box.featured .pricing-item-entry {
+      color: rgba(255,255,255,0.85);
+    }
+    .pricing-check-icon {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .pricing-card-box.featured .pricing-check-icon {
+      color: var(--accent-dark);
+    }
+    .sub-sprint-note {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+    }
+    @media (max-width: 1024px) {
+      .pricing-grid-main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="ambient-bg" aria-hidden="true">
-    <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
-    <div class="ambient-grid"></div>
-  </div>
-
   <main>
-    <section class="section section-top">
-      <div class="container">
-        <div class="section-header" style="margin-bottom:56px;">
-          <div class="eyebrow" style="margin-bottom:20px;">
-            <span class="eyebrow-dot"></span>
-            <span>The Commercial Ladder</span>
+    <!-- Header -->
+    <section class="pricing-header">
+      <div class="container-wide">
+        <div class="pricing-header-inner">
+          <div class="pricing-eyebrow">
+            <span class="pricing-eyebrow-dot"></span>
+            The Commercial Ladder
           </div>
-          <div style="font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; color: var(--cyan-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
-            "We don't pitch AI. We ship it."
-          </div>
-          <h1 class="section-title" style="margin-bottom:20px;">Transparent Pricing. Zero Retainers.</h1>
-          <p class="section-subtitle" style="max-width:720px; margin:0 auto; line-height:1.6;">
-            Choose the engagement level that fits your pipeline motion. You own 100% of the deployed code, workflow JSONs, and prompt files.
+          <h1 class="pricing-h1">Deterministic Revenue Infrastructure.<br>Zero Retainers.</h1>
+          <p class="pricing-lede">
+            Choose the engagement tier that matches your pipeline velocity. You own 100% of the deployed code, workflow JSONs, and prompt files forever.
           </p>
         </div>
+      </div>
+    </section>
 
-        <!-- THE COMMERCIAL LADDER GRID -->
-        <div class="ladder-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 60px;">
-          <!-- Tier 1: 1-Hour Build Sprint -->
-          <div class="ladder-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 36px 30px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; box-shadow: 0 4px 16px rgba(9, 13, 22, 0.04);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-                <span class="badge badge-cyan">1-Hour Live Co-Build</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #0284C7; font-weight: 700;">Done-With-You</span>
-              </div>
-              <div class="ladder-price" style="font-size: 2.75rem; font-weight: 800; color: #090D16; margin-bottom: 12px; letter-spacing: -0.04em;">$999 <span style="font-size:1rem; font-weight:500; color:var(--text-muted);">/ 60-min sprint</span></div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Screen-share deployment &bull; 100% guarantee</div>
-              <h3 style="margin-bottom: 12px; font-size: 1.3rem;">1-Hour Build Sprint</h3>
-              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6;">
-                Co-build with our Principal GTM Engineer. We configure, connect, and deploy a working revenue automation, custom skill, or API integration directly inside your stack.
-              </p>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 32px;">
-                <li><span style="color: #0284C7; font-weight: bold;">✓</span> 60-min live paired engineering session</li>
-                <li><span style="color: #0284C7; font-weight: bold;">✓</span> Tailored to your specific ICP &amp; CRM</li>
-                <li><span style="color: #0284C7; font-weight: bold;">✓</span> Live dry-run &amp; end-to-end testing</li>
-                <li><span style="color: #0284C7; font-weight: bold;">✓</span> 100% credited toward any 30-Day Sprint</li>
-              </ul>
-            </div>
-            <a class="btn btn-secondary btn-block" href="build-session.html">Book 1-Hour Build ($999) &rarr;</a>
-          </div>
-
-          <!-- Tier 2: 30-Day Build Sprint (Featured) -->
-          <div class="ladder-card featured" style="display: flex; flex-direction: column; justify-content: space-between; padding: 36px 30px; border-radius: 16px; background: #FFFFFF; border: 2px solid #7C3AED; box-shadow: 0 16px 40px rgba(124, 58, 237, 0.12); position: relative;">
-            <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%);">
-              <span class="badge badge-violet" style="background:#7C3AED; color:#FFFFFF; border:none; padding:5px 16px; font-weight:700; font-size:0.75rem; letter-spacing:0.04em;">MOST POPULAR &bull; TURNKEY</span>
-            </div>
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; margin-top: 6px;">
-                <span class="badge badge-violet">Turnkey Deployment</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #7C3AED; font-weight: 700;">Done-For-You</span>
-              </div>
-              <div class="ladder-price" style="font-size: 2.75rem; font-weight: 800; color: #090D16; margin-bottom: 12px; letter-spacing: -0.04em;">$9,999 <span style="font-size:1rem; font-weight:500; color:var(--text-muted);">starting at</span></div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Fixed-fee 30-day build &bull; Monitored rollout</div>
-              <h3 style="margin-bottom: 12px; font-size: 1.3rem;">30-Day Build Sprint</h3>
-              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6;">
-                Full forward deployed turnkey engineering sprint. End-to-end architecture, custom connectors, CRM dedupe shields, and production deployment of your core revenue workflows.
-              </p>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 32px;">
-                <li><span style="color: #7C3AED; font-weight: bold;">✓</span> 30-day turnkey production build &amp; rollout</li>
-                <li><span style="color: #7C3AED; font-weight: bold;">✓</span> Custom multi-tool connectors &amp; CRM shields</li>
-                <li><span style="color: #7C3AED; font-weight: bold;">✓</span> Team user manuals &amp; quick-start SOPs</li>
-                <li><span style="color: #7C3AED; font-weight: bold;">✓</span> 30 days of post-launch tuning &amp; telemetry</li>
-              </ul>
-            </div>
-            <a class="btn btn-primary btn-block" href="book.html">Start 30-Day Sprint ($9,999) &rarr;</a>
-          </div>
-
-          <!-- Tier 3: Fractional Director of AI & Automation -->
-          <div class="ladder-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 36px 30px; border-radius: 16px; background: #FFFFFF; border: 1px solid #E2E8F0; box-shadow: 0 4px 16px rgba(9, 13, 22, 0.04);">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-                <span class="badge badge-emerald">Agency Partnership</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #059669; font-weight: 700;">Executive Leader</span>
-              </div>
-              <div class="ladder-price" style="font-size: 2.75rem; font-weight: 800; color: #090D16; margin-bottom: 12px; letter-spacing: -0.04em;">$19,999 <span style="font-size:1rem; font-weight:500; color:var(--text-muted);">/mo starting at</span></div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Dedicated embedded GTM engineering</div>
-              <h3 style="margin-bottom: 12px; font-size: 1.3rem;">Fractional Director of AI &amp; Automation</h3>
-              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6;">
-                Dedicated forward deployed AI &amp; GTM engineering leadership. Complete deployment of all 6 core revenue systems, custom autonomous agents, multi-SDK infrastructure, and continuous ROI scaling.
-              </p>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 32px;">
-                <li><span style="color: #059669; font-weight: bold;">✓</span> All 6 Core Production Workflows + Infrastructure</li>
-                <li><span style="color: #059669; font-weight: bold;">✓</span> Custom Autonomous SDR &amp; Enablement Agents</li>
-                <li><span style="color: #059669; font-weight: bold;">✓</span> Weekly standups &amp; dedicated direct line</li>
-                <li><span style="color: #059669; font-weight: bold;">✓</span> Continuous prompt, skill &amp; harness tuning</li>
-              </ul>
-            </div>
-            <a class="btn btn-secondary btn-block" href="book.html">Apply for Partnership &rarr;</a>
-          </div>
-        </div>
-
-        <!-- SEPARATE SECTION: SELF-SERVE BUILD PACKAGES & BLUEPRINT PACKS -->
-        <div class="card-glass" style="padding: 48px; border-color: #CBD5E1; background: #FFFFFF; box-shadow: 0 12px 36px rgba(9, 13, 22, 0.05); margin-bottom: 60px;">
-          <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center;">
-            <div>
-              <div class="eyebrow" style="margin-bottom: 12px;">
-                <span class="eyebrow-dot" style="background:#0284C7;"></span>
-                <span>Self-Serve Blueprint Packs &bull; Build In-House</span>
-              </div>
-              <h2 style="font-size: 2.1rem; font-weight: 800; letter-spacing: -0.035em; line-height: 1.2; margin-bottom: 16px; color: #090D16;">
-                Pre-Built Production Workflows &amp; SOPs
-              </h2>
-              <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 24px;">
-                Looking to build in-house? Download our battle-tested n8n workflow JSONs, CRM property maps, prompt frameworks, and step-by-step SOP deployment manuals. Zero recurring subscriptions. You own 100% of the code forever.
-              </p>
-              <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-                <a class="btn btn-primary btn-lg" href="bundles.html">
-                  <span>Explore Build Packages ($199–$499)</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-                <a class="btn btn-secondary btn-lg" href="marketplace.html">View Skills Marketplace</a>
-              </div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-weight: 700; font-size: 0.95rem; color: #090D16; margin-bottom: 2px;">Inbound Speed-to-Lead Starter Kit</div>
-                  <div style="font-size: 0.82rem; color: var(--text-muted);">n8n Webhook Listener + Slack Alert + HubSpot Triage</div>
-                </div>
-                <span class="badge badge-cyan" style="font-size: 0.85rem; font-weight: 800; padding: 4px 10px;">$199</span>
-              </div>
-
-              <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-weight: 700; font-size: 0.95rem; color: #090D16; margin-bottom: 2px;">Outbound PAE Waterfall Engine Kit</div>
-                  <div style="font-size: 0.82rem; color: var(--text-muted);">Clay + Apollo Waterfall + Dedupe Shield + AI PAS Copywriter</div>
-                </div>
-                <span class="badge badge-violet" style="font-size: 0.85rem; font-weight: 800; padding: 4px 10px;">$299</span>
-              </div>
-
-              <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-weight: 700; font-size: 0.95rem; color: #090D16; margin-bottom: 2px;">Pre &amp; Post-Call Meeting Intelligence Kit</div>
-                  <div style="font-size: 0.82rem; color: var(--text-muted);">Google Cal Sync + Gong Transcript Parser + MEDDPICC CRM Sync</div>
-                </div>
-                <span class="badge badge-emerald" style="font-size: 0.85rem; font-weight: 800; padding: 4px 10px;">$399</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SPECIAL ONE-OFF AUDIT & SAAS PLATFORM -->
-        <div class="grid-2" style="gap:28px; margin-bottom:60px;">
-          <div class="card-glass" style="padding:32px; border-color:var(--border-light);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <span class="badge badge-cyan">48-Hour SLA</span>
-              <span style="font-family:var(--font-mono); font-size:1.4rem; font-weight:800; color:#00B4D8;">$495</span>
-            </div>
-            <h4 style="font-size:1.25rem; margin-bottom:8px;">Executive GTM Architecture Audit</h4>
-            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:16px;">
-              A comprehensive technical review of your CRM hygiene, contact reveal waterfalls, deliverability DNS, and lead leakage points with actionable bottleneck fixes.
+    <!-- Pricing Grid -->
+    <section class="section-paper section-pad" style="padding-top: 0;">
+      <div class="container-wide">
+        
+        <div class="pricing-grid-main">
+          
+          <!-- Tier 01: 1-Hour Build Session -->
+          <div class="pricing-card-box">
+            <div class="pricing-tier-tag">Tier 01 · Done-With-You</div>
+            <div class="pricing-tier-title">1-Hour Build Session</div>
+            <p class="pricing-tier-summary">
+              Live paired engineering screen share with our Principal GTM Engineer. Configure, test, and deploy one core activation directly inside your CRM.
             </p>
-            <a class="btn btn-secondary btn-sm" href="book.html">Request Executive Audit &rarr;</a>
+            <div class="pricing-amount">$999</div>
+            <div class="pricing-cadence">per 60-min sprint · 100% credited toward sprint</div>
+            <div class="pricing-sep"></div>
+            <ul class="pricing-item-list">
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>60-min live paired engineering co-build</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Configured inside your existing HubSpot / Salesforce / n8n stack</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Live dry run and production testing before call ends</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>100% fee credited toward any 14-day or 30-day build sprint</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>100% money-back guarantee if not completely satisfied</li>
+            </ul>
+            <button class="btn btn-secondary btn-block" data-stripe-product="build-session">Book 1-Hour Build ($999)</button>
           </div>
 
-          <div class="card-glass" style="padding:32px; border-color:var(--border-light);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <span class="badge badge-violet">Self-Serve Platform</span>
-              <span style="font-family:var(--font-mono); font-size:1.4rem; font-weight:800; color:#7C3AED;">From $49/mo</span>
-            </div>
-            <h4 style="font-size:1.25rem; margin-bottom:8px;">Builder SaaS Agent Platform</h4>
-            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:16px;">
-              Access our live Agent Console to test prompt skills, generate turnkey workflow packages, and inspect real-time execution logs with your own API keys.
+          <!-- Tier 02: 30-Day Build Sprint (Featured) -->
+          <div class="pricing-card-box featured">
+            <div class="pricing-tier-tag">Tier 02 · Done-For-You · Most Popular</div>
+            <div class="pricing-tier-title">30-Day Turnkey Sprint</div>
+            <p class="pricing-tier-summary">
+              Full forward-deployed turnkey engineering sprint. Architecture, custom connectors, CRM dedupe shields, and production deployment of your core revenue workflows.
             </p>
-            <a class="btn btn-secondary btn-sm" href="app.html">Launch Agent Platform &rarr;</a>
+            <div class="pricing-amount">$4,999</div>
+            <div class="pricing-cadence">single turnkey engagement · 100% client-owned code</div>
+            <div class="pricing-sep"></div>
+            <ul class="pricing-item-list">
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>30-day turnkey production build and monitored rollout</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Custom multi-tool connectors &amp; CRM dedupe collision shields</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>5-Pillar Prospect Automation Engine or Speed-to-Lead Triage</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Team user manuals, SOPs, and video runbooks</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>30 days of post-launch tuning, edge-case handling &amp; telemetry</li>
+            </ul>
+            <button class="btn btn-inverse btn-block" data-stripe-product="sprint-30day">Start 30-Day Sprint ($4,999)</button>
+            <div class="sub-sprint-note">
+              Single-engine 14-Day Sprint also available for <a href="#" data-stripe-product="sprint-14day" style="color: var(--accent-dark); text-decoration: underline; font-weight: 600;">$2,999</a>
+            </div>
           </div>
+
+          <!-- Tier 03: Fractional GTM Engineer (Midmarket Flagship) -->
+          <div class="pricing-card-box">
+            <div class="pricing-tier-tag">Tier 03 · Executive Leader · Midmarket Flagship</div>
+            <div class="pricing-tier-title">Fractional GTM Engineer</div>
+            <p class="pricing-tier-summary">
+              Dedicated forward-deployed AI &amp; GTM engineering leadership for scaling B2B revenue teams with up to $20k/mo in automation spend.
+            </p>
+            <div class="pricing-amount">$19,999</div>
+            <div class="pricing-cadence">per month · 12-month contract (6-mo renewal option)</div>
+            <div class="pricing-sep"></div>
+            <ul class="pricing-item-list">
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>All 6 Core Production Workflows deployed &amp; maintained</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Custom Autonomous SDR and revenue enablement agent harnesses</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Dedicated Slack channel and direct phone/Zoom engineering access</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Continuous prompt, skill &amp; harness tuning across Claude &amp; GPT-4o</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Weekly engineering standups and executive revenue telemetry</li>
+              <li class="pricing-item-entry"><span class="pricing-check-icon">✓</span>Zero software markups — 100% client code ownership</li>
+            </ul>
+            <button class="btn btn-primary btn-block" data-stripe-product="fractional-gtm-engineer">Start Fractional Retainer ($19,999/mo)</button>
+          </div>
+
         </div>
 
-        <!-- VERIFIED PUBLIC PROOF BANNER -->
-        <div class="proof-section" style="border-radius:var(--radius-lg); margin-bottom:60px;">
-          <div class="container">
-            <div style="text-align:center; max-width:760px; margin:0 auto;">
-              <div class="badge" style="background:rgba(0,180,216,0.15); color:#00B4D8; border-color:rgba(0,180,216,0.3); margin-bottom:12px;">
-                Verified Baseline Dataset
+        <!-- MODULAR SKILLS PLUGINS SECTION ($199 each) -->
+        <div style="background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 40px; margin-bottom: 48px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-accent"></span> Production Plugin Catalog</div>
+              <h2 style="font-size: 1.75rem; margin-bottom: 8px;">Modular Skills Plugins ($199 each)</h2>
+              <p style="color: var(--text-secondary); max-width: 620px;">
+                Download standardized SKILL.md execution packs and n8n node graphs. Run deterministically across Claude, GPT-4o, and Gemini with typed schemas.
+              </p>
+            </div>
+            <a href="marketplace.html" class="btn btn-secondary btn-sm">Browse Full Marketplace</a>
+          </div>
+
+          <div class="grid-3" style="gap: 16px;">
+            
+            <div style="padding: 20px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--bg-paper);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="chip chip-accent">Skill Plugin</span>
+                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent);">$199</span>
               </div>
-              <h2 style="color:#FFFFFF; margin-bottom:12px;">Verifiable Execution Metrics</h2>
+              <h4 style="font-size: 1rem; margin-bottom: 6px;">Prospect Automation Engine</h4>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+                5-Pillar outbound orchestration with AI PAS copywriting and multi-provider contact reveals.
+              </p>
+              <button class="btn btn-secondary btn-sm btn-block" data-stripe-product="skill-plugin-pae">Deploy Plugin ($199)</button>
             </div>
-            <div class="proof-grid">
-              <div class="proof-card"><div class="proof-val">$6.38M</div><div class="proof-lbl">Attributed Pipeline</div></div>
-              <div class="proof-card"><div class="proof-val">29</div><div class="proof-lbl">Direct Deals</div></div>
-              <div class="proof-card"><div class="proof-val">101</div><div class="proof-lbl">MQLs Automated</div></div>
-              <div class="proof-card"><div class="proof-val">$9.06M</div><div class="proof-lbl">Business Impact</div></div>
-              <div class="proof-card"><div class="proof-val">166</div><div class="proof-lbl">Collision-Free Runs</div></div>
+
+            <div style="padding: 20px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--bg-paper);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="chip chip-accent">Skill Plugin</span>
+                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent);">$199</span>
+              </div>
+              <h4 style="font-size: 1rem; margin-bottom: 6px;">Inbound Speed-to-Lead</h4>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+                Sub-30s web form triage, AI intent scoring, territory assignment, and calendar dispatch.
+              </p>
+              <button class="btn btn-secondary btn-sm btn-block" data-stripe-product="skill-plugin-inbound">Deploy Plugin ($199)</button>
             </div>
-            <div class="proof-note">
-              Attribution is strictly tied to individual workflow runs and excludes pre-existing CRM deals.
+
+            <div style="padding: 20px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--bg-paper);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="chip chip-accent">Skill Plugin</span>
+                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent);">$199</span>
+              </div>
+              <h4 style="font-size: 1rem; margin-bottom: 6px;">Pre-Sales Call Dossier</h4>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+                Generates complete prospect briefing dossiers 10 minutes prior to discovery calls.
+              </p>
+              <button class="btn btn-secondary btn-sm btn-block" data-stripe-product="skill-plugin-presales">Deploy Plugin ($199)</button>
+            </div>
+
+            <div style="padding: 20px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--bg-paper);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="chip chip-accent">Skill Plugin</span>
+                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent);">$199</span>
+              </div>
+              <h4 style="font-size: 1rem; margin-bottom: 6px;">Post-Sales Call Synthesis</h4>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+                Parses Gong/Fathom calls, extracts MEDDPICC scorecards, and updates CRM deal stages.
+              </p>
+              <button class="btn btn-secondary btn-sm btn-block" data-stripe-product="skill-plugin-postsales">Deploy Plugin ($199)</button>
+            </div>
+
+            <div style="padding: 20px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--bg-paper);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="chip chip-accent">Skill Plugin</span>
+                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent);">$199</span>
+              </div>
+              <h4 style="font-size: 1rem; margin-bottom: 6px;">Automation Engineer</h4>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+                n8n workflow engineering, idempotency shields, and dead-letter queue recovery flows.
+              </p>
+              <button class="btn btn-secondary btn-sm btn-block" data-stripe-product="skill-plugin-automation-engineer">Deploy Plugin ($199)</button>
+            </div>
+
+            <div style="padding: 20px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--bg-paper);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="chip chip-accent">Skill Plugin</span>
+                <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent);">$199</span>
+              </div>
+              <h4 style="font-size: 1rem; margin-bottom: 6px;">GTM Center of Excellence</h4>
+              <p style="font-size: 0.825rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+                Enterprise GTM architecture standards, prompt governance, and quality assurance rubrics.
+              </p>
+              <button class="btn btn-secondary btn-sm btn-block" data-stripe-product="skill-plugin-gtm-coe">Deploy Plugin ($199)</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SAAS PLATFORM & STARTER PACKAGE -->
+        <div class="grid-2" style="gap: 24px; margin-bottom: 48px;">
+          
+          <div style="background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="chip chip-dark">Agent Platform SaaS</span>
+              <span style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 800; color: var(--accent);">$99/mo</span>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">GTM Agent Subscription</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+              Full service GTM app console. Bring Your Own Keys (BYOK) for Anthropic, OpenAI, and Google Gemini. Live prompt testing, blueprint generation, and execution logs.
+            </p>
+            <button class="btn btn-secondary btn-block" data-stripe-product="gtm-agent-subscription">Subscribe ($99/mo)</button>
+          </div>
+
+          <div style="background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="chip chip-outline">Developer Kit</span>
+              <span style="font-family: var(--font-mono); font-size: 1.3rem; font-weight: 800; color: var(--text-primary);">$19.99</span>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Agent Build Package</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+              Skill plus custom instructions to build with your own Agent Harness. Includes soul.md persona, AGENTS.md system constraints, and prompt orchestration instructions.
+            </p>
+            <button class="btn btn-secondary btn-block" data-stripe-product="agent-build-package">Buy Build Package ($19.99)</button>
+          </div>
+
+        </div>
+
+        <!-- FAQ -->
+        <div style="background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 40px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 24px; text-align: center;">Frequently Asked Questions</h3>
+          <div class="grid-2" style="gap: 28px;">
+            <div>
+              <h4 style="font-size: 0.975rem; margin-bottom: 6px; color: var(--text-primary);">Do we own 100% of the deployed code?</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">Yes. All n8n workflow blueprints, prompt files, custom scripts, and documentation belong to your organization permanently without recurring software lock-in.</p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.975rem; margin-bottom: 6px; color: var(--text-primary);">What tech stacks do you support?</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">We build directly inside HubSpot, Salesforce, Clay, Apollo.io, Smartlead, Instantly, n8n (self-hosted or cloud), and Claude / OpenAI / Gemini API harnesses.</p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.975rem; margin-bottom: 6px; color: var(--text-primary);">How does the $999 Build Sprint co-build work?</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">You join a 60-minute paired engineering screen share with our Principal GTM Engineer. We review your architecture, wire your integrations, and deploy a working workflow before the call ends. 100% credited toward larger sprints.</p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.975rem; margin-bottom: 6px; color: var(--text-primary);">What is the $19,999/mo Fractional GTM Engineer?</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">Dedicated embedded AI &amp; GTM engineering leadership for midmarket revenue teams. We deploy, manage, and continuously tune all 6 core revenue engines with dedicated Slack access and weekly sprints.</p>
             </div>
           </div>
         </div>
 
-        <!-- FREQUENTLY ASKED QUESTIONS -->
-        <div class="card-glass" style="padding:40px;">
-          <h3 style="margin-bottom:28px; text-align:center;">Frequently Asked Questions</h3>
-          <div class="grid-2" style="gap:24px;">
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:6px; color:var(--text-pure);">Do we really own 100% of the code?</h4>
-              <p style="font-size:0.88rem; color:var(--text-secondary);">Yes. All n8n workflow blueprints, prompt files, custom scripts, and documentation belong to your organization permanently without recurring software lock-in.</p>
-            </div>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:6px; color:var(--text-pure);">What tech stacks do you support?</h4>
-              <p style="font-size:0.88rem; color:var(--text-secondary);">We build primarily on HubSpot, Salesforce, Clay, Apollo.io, ZoomInfo, Smartlead, Instantly, n8n (self-hosted or cloud), and OpenAI / Anthropic API models.</p>
-            </div>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:6px; color:var(--text-pure);">How does the $999 Build Sprint work?</h4>
-              <p style="font-size:0.88rem; color:var(--text-secondary);">You join a 60-minute screen share with our Principal GTM Engineer. We review your architecture, configure your integrations, and deploy a working workflow before the call ends.</p>
-            </div>
-            <div>
-              <h4 style="font-size:1rem; margin-bottom:6px; color:var(--text-pure);">Is there a money-back guarantee?</h4>
-              <p style="font-size:0.88rem; color:var(--text-secondary);">Yes. If our $999 Build Sprint or Executive Audit does not deliver immediate, quantifiable value, we will refund 100% of your fee on the spot.</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="sg-footer" style="border-top:1px solid var(--border-subtle); padding:64px 0 32px; background:#F8FAFC;">
-    <div class="container">
-      <div class="footer-grid" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:32px; margin-bottom:48px;">
-        <div class="footer-brand">
-          <a class="sgu-brand" href="index.html" style="margin-bottom:16px; display:inline-block;" aria-label="SalesGency Home">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="138" height="28" style="display:block;">
+  <!-- Canonical Dark Footer -->
+  <footer class="sg-footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" style="display: inline-block; margin-bottom: 16px;" aria-label="SalesGency">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 34" width="120" height="24">
               <defs>
-                <linearGradient id="sg-foot-grad-svg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#00B4D8"/>
-                  <stop offset="100%" stop-color="#0284C7"/>
+                <linearGradient id="foot-logo-grad-p" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#4D93E8"/>
+                  <stop offset="100%" stop-color="#1B6FD8"/>
                 </linearGradient>
               </defs>
               <g transform="translate(2, 26)">
-                <text font-family="Geist, Outfit, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="25" font-weight="800" letter-spacing="-0.035em">
-                  <tspan fill="#090D16">Sales</tspan><tspan fill="url(#sg-foot-grad-svg)">Gency</tspan><tspan fill="#00B4D8" dx="1">.</tspan>
+                <text font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.04em">
+                  <tspan fill="#FFFFFF">Sales</tspan><tspan fill="url(#foot-logo-grad-p)">Gency</tspan>
                 </text>
               </g>
             </svg>
           </a>
-          <p style="font-size:0.9rem; color:var(--text-secondary); max-width:320px; line-height:1.6;">
-            A Diamitani Industries Company. Transparent pricing, zero retainers, 100% code ownership.
+          <p style="font-size: 0.865rem; color: rgba(255,255,255,0.70); max-width: 280px; line-height: 1.6;">
+            A Diamitani Industries company. Transparent pricing, zero retainers, 100% client-owned code.
           </p>
         </div>
+
         <div class="footer-col">
-          <h5 style="color:#090D16; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; font-weight:700;">Platform</h5>
-          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
-            <li><a href="app.html" style="color:var(--text-secondary); text-decoration:none;">Agent Console</a></li>
-            <li><a href="marketplace.html" style="color:var(--text-secondary); text-decoration:none;">Marketplace</a></li>
-            <li><a href="skills.html" style="color:var(--text-secondary); text-decoration:none;">Skills Library</a></li>
-            <li><a href="templates.html" style="color:var(--text-secondary); text-decoration:none;">Templates</a></li>
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="app.html">Agent Platform</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="skills.html">Skills Library</a></li>
+            <li><a href="templates.html">Workflow Templates</a></li>
+            <li><a href="pricing.html">Pricing Matrix</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
-          <h5 style="color:#090D16; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; font-weight:700;">Agency</h5>
-          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
-            <li><a href="agency.html" style="color:var(--text-secondary); text-decoration:none;">Agency Sprints</a></li>
-            <li><a href="book.html" style="color:var(--text-secondary); text-decoration:none;">Get a GTM Teardown</a></li>
+          <h5>Agency</h5>
+          <ul class="footer-links">
+            <li><a href="agency.html">Agency Sprints</a></li>
+            <li><a href="build-session.html">Book a Build Session</a></li>
+            <li><a href="work.html">Case Studies</a></li>
+            <li><a href="pricing.html">Commercial Tiers</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
-          <h5 style="color:#090D16; font-size:0.875rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; font-weight:700;">Legal</h5>
-          <ul class="footer-links" style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
-            <li><a href="privacy.html" style="color:var(--text-secondary); text-decoration:none;">Privacy Policy</a></li>
-            <li><a href="terms.html" style="color:var(--text-secondary); text-decoration:none;">Terms of Service</a></li>
+          <h5>Legal</h5>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="https://github.com/diamitani/salesgency" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom" style="border-top:1px solid var(--border-subtle); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:0.82rem; color:var(--text-muted);">
-        <div>&copy; 2026 SalesGency &bull; Diamitani Industries. All rights reserved.</div>
-        <div>Transparent Sovereign Pricing</div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 SalesGency · Diamitani Industries. All rights reserved.</div>
+        <div>Zero Retainers · 100% Client-Owned Code · Production-Grade GTM Engineering</div>
       </div>
     </div>
   </footer>

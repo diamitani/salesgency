@@ -36,7 +36,7 @@ const server = http.createServer(async (req, res) => {
     else if (cleanPath === 'builder') apiFile = 'api/builder.js';
     else if (cleanPath === 'catalog') apiFile = 'api/catalog.js';
     else if (cleanPath === 'portal/generate') apiFile = 'api/portal/generate.js';
-    else if (cleanPath.startsWith('stripe/')) apiFile = `api/${cleanPath}.js`;
+    else if (cleanPath === 'stripe' || cleanPath.startsWith('stripe/')) apiFile = 'api/stripe.js';
     else apiFile = `api/${cleanPath}.js`;
 
     const fullApiPath = path.join(__dirname, apiFile);

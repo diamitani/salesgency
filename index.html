@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="assets/sg-design-system.css?v=5.0">
   <link rel="stylesheet" href="assets/unified.css?v=5.0">
   <script src="assets/unified-nav.js?v=4.1" defer></script>
+  <script src="assets/stripe-client.js?v=5.0" defer></script>
 
   <style>
     /* ── Page-level overrides ─────────────────────────────────────────────── */
@@ -145,7 +146,7 @@
 
     .hero-lede {
       font-size: clamp(1rem, 1.3vw, 1.15rem);
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.82);
       line-height: 1.65;
       max-width: 52ch;
       margin-bottom: 36px;
@@ -164,13 +165,13 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.12);
       padding-top: 28px;
     }
 
     .hero-metric {
       padding-right: 28px;
-      border-right: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid rgba(255,255,255,0.12);
     }
     .hero-metric:last-child {
       padding-right: 0;
@@ -192,8 +193,8 @@
     }
 
     .hero-metric-label {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.40);
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.72);
       font-weight: 500;
     }
 
@@ -370,7 +371,7 @@
 
     .process-step p {
       font-size: 0.845rem;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.78);
       line-height: 1.6;
       margin: 0;
     }
@@ -506,7 +507,7 @@
     .service-detail-title {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.65);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 6px;
@@ -631,7 +632,7 @@
     }
 
     .pricing-card.featured .pricing-desc {
-      color: rgba(255,255,255,0.50);
+      color: rgba(255, 255, 255, 0.78);
     }
 
     .pricing-price {
@@ -650,12 +651,12 @@
 
     .pricing-period {
       font-size: 0.82rem;
-      color: var(--text-dim);
+      color: var(--text-tertiary);
       margin-bottom: 28px;
     }
 
     .pricing-card.featured .pricing-period {
-      color: rgba(255,255,255,0.35);
+      color: rgba(255, 255, 255, 0.65);
     }
 
     .pricing-divider {
@@ -686,7 +687,7 @@
     }
 
     .pricing-card.featured .pricing-feature {
-      color: rgba(255,255,255,0.60);
+      color: rgba(255, 255, 255, 0.85);
     }
 
     .pricing-feature-check {
@@ -735,7 +736,7 @@
 
     .cta-band-copy p {
       font-size: 1rem;
-      color: rgba(255,255,255,0.50);
+      color: rgba(255, 255, 255, 0.80);
       max-width: 480px;
       line-height: 1.6;
     }
@@ -1167,24 +1168,24 @@
             <div class="pricing-name">1-Hour Build Sprint</div>
             <p class="pricing-desc">Live paired engineering session. One workflow, one activation, deployed inside your stack.</p>
             <div class="pricing-price">$999</div>
-            <div class="pricing-period">per 60-minute sprint</div>
+            <div class="pricing-period">per 60-minute sprint · 100% credited</div>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>60-min live screen-share paired build</li>
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Tailored to your specific ICP &amp; CRM</li>
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Live dry-run &amp; end-to-end testing</li>
-              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>100% credited toward any 30-Day Sprint</li>
+              <li class="pricing-feature"><span class="pricing-feature-check">✓</span>100% credited toward any 14 or 30-Day Sprint</li>
             </ul>
-            <a href="build-session.html" class="btn btn-secondary btn-block">Book Build Sprint ($999)</a>
+            <button class="btn btn-secondary btn-block" data-stripe-product="build-session">Book Build Sprint ($999)</button>
           </div>
 
           <!-- Tier 2 — Featured -->
           <div class="pricing-card featured">
             <div class="pricing-tier-label">Tier 02 · Done-For-You · Most Popular</div>
             <div class="pricing-name">30-Day Turnkey Sprint</div>
-            <p class="pricing-desc">Full forward-deployed engineering sprint. End-to-end build, test, and production rollout.</p>
-            <div class="pricing-price">$9,999</div>
-            <div class="pricing-period">starting at · single engagement</div>
+            <p class="pricing-desc">Full forward-deployed engineering sprint. End-to-end build, test, and production rollout. Also available: 14-Day Sprint ($2,999).</p>
+            <div class="pricing-price">$4,999</div>
+            <div class="pricing-period">single engagement · 100% client-owned code</div>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>30-day turnkey production build &amp; rollout</li>
@@ -1192,16 +1193,16 @@
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Team user manuals &amp; quick-start SOPs</li>
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>30 days of post-launch tuning &amp; telemetry</li>
             </ul>
-            <a href="book.html" class="btn btn-inverse btn-block">Start 30-Day Sprint ($9,999)</a>
+            <button class="btn btn-inverse btn-block" data-stripe-product="sprint-30day">Start 30-Day Sprint ($4,999)</button>
           </div>
 
           <!-- Tier 3 -->
           <div class="pricing-card">
-            <div class="pricing-tier-label">Tier 03 · Executive Leader</div>
-            <div class="pricing-name">Fractional GTM Director</div>
+            <div class="pricing-tier-label">Tier 03 · Executive Leader · Midmarket Flagship</div>
+            <div class="pricing-name">Fractional GTM Engineer</div>
             <p class="pricing-desc">Dedicated forward-deployed AI and GTM engineering leadership for scaling revenue teams.</p>
             <div class="pricing-price">$19,999</div>
-            <div class="pricing-period">per month · starting at</div>
+            <div class="pricing-period">per month · dedicated embedded engineer</div>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>All 6 Core Workflows + Full Infrastructure</li>
@@ -1209,14 +1210,14 @@
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Weekly standups &amp; dedicated direct line</li>
               <li class="pricing-feature"><span class="pricing-feature-check">✓</span>Continuous prompt, skill &amp; harness tuning</li>
             </ul>
-            <a href="book.html" class="btn btn-secondary btn-block">Apply for Partnership</a>
+            <button class="btn btn-secondary btn-block" data-stripe-product="fractional-gtm-engineer">Start Fractional Retainer ($19,999/mo)</button>
           </div>
         </div>
 
         <!-- Self-serve note -->
         <div style="margin-top: 24px; padding: 20px 24px; background: var(--bg-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
           <div>
-            <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 3px;">Self-Serve Blueprint Packs — $199 to $499</div>
+            <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 3px;">Self-Serve Blueprint Packs &amp; Skill Plugins — $19.99 to $199</div>
             <div style="font-size: 0.83rem; color: var(--text-tertiary);">Download battle-tested n8n JSONs, CRM maps, and SOPs. Build in-house. Own forever.</div>
           </div>
           <a href="bundles.html" class="btn btn-secondary btn-sm">Browse Blueprint Packs</a>

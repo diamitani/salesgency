@@ -1,912 +1,540 @@
 [
- {
-  "id": "inbound-automation",
-  "name": "Inbound Automation Engine",
-  "tagline": "Sub-30s speed-to-lead triage & intelligent routing",
-  "category": "inbound",
-  "tags": [
-   "n8n",
-   "webhook",
-   "speed-to-lead",
-   "MQL",
-   "routing",
-   "triage"
-  ],
-  "type": "package",
-  "price": 29900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Full inbound lead automation: sub-30-second MQL qualification, AI-powered triage, Slack alerts, and automatic calendar booking. Connects your form submissions, chatbot, and CRM into one deterministic routing engine.",
-  "features": [
-   "Sub-30s speed-to-lead response from form submit to rep notification",
-   "AI-powered MQL scoring and lead qualification",
-   "Automatic calendar booking for qualified leads",
-   "Slack real-time alert routing by territory and segment",
-   "Dual-inbox email routing and deduplication",
-   "CRM auto-create with enriched firmographic data",
-   "Full n8n workflow JSON with setup documentation"
-  ],
-  "includes": [
-   "inbound-automation-workflow.json",
-   "mql-ai-research-automation.json",
-   "ENV_TEMPLATE.md",
-   "SETUP_GUIDE.md"
-  ],
-  "icon": "inbound",
-  "badge": "Core Engine",
-  "popular": true,
-  "engineOrder": 1
- },
- {
-  "id": "outbound-automation",
-  "name": "Outbound Automation Engine",
-  "tagline": "5-Pillar Prospect Automation Engine (PAE) with AI copywriting",
-  "category": "outbound",
-  "tags": [
-   "n8n",
-   "PAE",
-   "prospecting",
-   "email",
-   "PAS",
-   "copywriting",
-   "waterfall"
-  ],
-  "type": "package",
-  "price": 39900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "The complete 5-Pillar Prospect Automation Engine: Trigger Ingest \u2192 CRM Dedupe Shield \u2192 Contact Reveal Waterfall \u2192 AI PAS Copywriting \u2192 Sequence Enrollment. End-to-end outbound pipeline on autopilot.",
-  "features": [
-   "5-pillar deterministic outbound pipeline",
-   "Intent signal trigger ingestion (hiring, funding, tech adoption)",
-   "CRM deduplication shield prevents wasted sequences",
-   "Multi-provider contact waterfall enrichment",
-   "AI PAS (Problem-Agitate-Solve) hyper-personalized copywriting",
-   "Automatic sequence enrollment with throttle controls",
-   "Full n8n workflow JSON + Python scraper scripts"
-  ],
-  "includes": [
-   "Prospect Automation Engine - Template.json",
-   "n8n-factors-to-clay-webhook.json",
-   "SKILL-cold-outreach.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "outbound",
-  "badge": "Core Engine",
-  "popular": true,
-  "engineOrder": 2
- },
- {
-  "id": "pre-call-automation",
-  "name": "Pre-Call Automation Engine",
-  "tagline": "10-minute autonomous prospect dossier & meeting prep",
-  "category": "revops",
-  "tags": [
-   "n8n",
-   "meeting-prep",
-   "dossier",
-   "research",
-   "calendar"
-  ],
-  "type": "package",
-  "price": 24900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Automatically generates comprehensive prospect dossiers 10 minutes before every sales call. Pulls LinkedIn bios, company news, tech stack, hiring signals, and competitive intel into a single brief delivered to Slack and email.",
-  "features": [
-   "Calendar-triggered 10-minute pre-call research agent",
-   "LinkedIn profile and company page intelligence",
-   "Tech stack detection and competitive positioning",
-   "Recent hiring signals and funding round detection",
-   "Auto-generated talk track and objection handling notes",
-   "Delivered via Slack DM and email before every meeting",
-   "n8n workflow JSON + calendar sync setup guide"
-  ],
-  "includes": [
-   "Daily Meeting Sync - Pre-Call Summary - FIXED.json",
-   "ENV_TEMPLATE.md",
-   "SETUP_GUIDE.md"
-  ],
-  "icon": "pre-call",
-  "badge": "Core Engine",
-  "popular": true,
-  "engineOrder": 3
- },
- {
-  "id": "post-call-automation",
-  "name": "Post-Call Automation Engine",
-  "tagline": "Transcript extraction, MEDDPICC sync & CRM auto-update",
-  "category": "revops",
-  "tags": [
-   "n8n",
-   "transcript",
-   "MEDDPICC",
-   "CRM",
-   "post-call",
-   "sync"
-  ],
-  "type": "package",
-  "price": 19900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Automatically processes meeting recordings: extracts transcripts, maps key moments to MEDDPICC fields, updates CRM deal records, and sends structured follow-up summaries to the rep and manager.",
-  "features": [
-   "Automatic meeting transcript extraction and summarization",
-   "MEDDPICC field mapping from conversation analysis",
-   "CRM deal record auto-update (HubSpot, Salesforce, Close)",
-   "Structured follow-up email drafts with action items",
-   "Manager visibility dashboard with call scoring",
-   "Competitive mention and objection pattern detection",
-   "n8n workflow JSON + integration setup guide"
-  ],
-  "includes": [
-   "post-call-sync-workflow.json",
-   "MEDDPICC-MAPPING.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "post-call",
-  "badge": "Core Engine",
-  "popular": false,
-  "engineOrder": 4
- },
- {
-  "id": "daily-execution-report",
-  "name": "Daily Execution Report",
-  "tagline": "8 AM rep telemetry, pipeline health & stuck deal alerts",
-  "category": "revops",
-  "tags": [
-   "n8n",
-   "reporting",
-   "telemetry",
-   "pipeline",
-   "daily",
-   "scorecard"
-  ],
-  "type": "package",
-  "price": 19900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Automated 8 AM daily report delivered to Slack and email: rep activity scorecard, pipeline movement, stuck deal alerts, email deliverability health, and meeting conversion rates.",
-  "features": [
-   "Automated 8 AM daily delivery to Slack and email",
-   "Per-rep activity scorecard (calls, emails, meetings)",
-   "Pipeline movement tracking and stuck deal detection",
-   "Email deliverability health monitoring",
-   "Meeting-to-opportunity conversion tracking",
-   "Weekly trend comparison and manager roll-up",
-   "n8n workflow JSON + SQL telemetry queries"
-  ],
-  "includes": [
-   "daily-execution-report.json",
-   "SQL-QUERIES.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "execution",
-  "badge": "Core Engine",
-  "popular": true,
-  "engineOrder": 5
- },
- {
-  "id": "daily-gtm-report",
-  "name": "Daily GTM Report",
-  "tagline": "Executive pipeline velocity & go-to-market intelligence",
-  "category": "revops",
-  "tags": [
-   "n8n",
-   "reporting",
-   "executive",
-   "GTM",
-   "pipeline",
-   "velocity"
-  ],
-  "type": "package",
-  "price": 19900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Executive-level daily GTM report: pipeline velocity metrics, conversion funnel analysis, revenue forecast accuracy, channel attribution, and strategic recommendations generated by AI.",
-  "features": [
-   "Executive pipeline velocity dashboard",
-   "Full-funnel conversion analysis (lead \u2192 MQL \u2192 SQL \u2192 closed)",
-   "Revenue forecast accuracy tracking",
-   "Channel attribution and ROI analysis",
-   "AI-generated strategic recommendations",
-   "Board-ready weekly and monthly roll-ups",
-   "n8n workflow JSON + executive template"
-  ],
-  "includes": [
-   "daily-gtm-report.json",
-   "EXECUTIVE-TEMPLATE.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "gtm",
-  "badge": "Core Engine",
-  "popular": true,
-  "engineOrder": 6
- },
- {
-  "id": "apollo-scraper",
-  "name": "Apollo Waterfall Lead Scraper",
-  "tagline": "Multi-source autonomous lead scraping & enrichment",
-  "category": "outbound",
-  "tags": [
-   "python",
-   "scraper",
-   "Apollo",
-   "LinkedIn",
-   "leads",
-   "enrichment"
-  ],
-  "type": "package",
-  "price": 49700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Autonomous multi-source lead scraping and waterfall enrichment system. Pulls from Apollo, LinkedIn, and hiring boards, then enriches with firmographic data through a multi-provider waterfall.",
-  "features": [
-   "Multi-source lead scraping (Apollo, LinkedIn, job boards)",
-   "Waterfall enrichment across 4+ data providers",
-   "Automatic deduplication and data normalization",
-   "Python CLI with configurable ICP targeting filters",
-   "CSV and CRM-ready output formats",
-   "Rate limiting and anti-detection built in",
-   "Python scripts + setup documentation"
-  ],
-  "includes": [
-   "apollo-scraper.py",
-   "enrichment-waterfall.py",
-   "ENV_TEMPLATE.md",
-   "SETUP_GUIDE.md"
-  ],
-  "icon": "apollo",
-  "badge": "Advanced",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "crm-hygiene",
-  "name": "CRM Hygiene & Dedupe Engine",
-  "tagline": "Automated deduplication & normalization for HubSpot and Salesforce",
-  "category": "revops",
-  "tags": [
-   "n8n",
-   "CRM",
-   "deduplication",
-   "HubSpot",
-   "Salesforce",
-   "data-quality"
-  ],
-  "type": "package",
-  "price": 39700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Automated deduplication and normalization engine for HubSpot and Salesforce. Prevents duplicate records, normalizes company and contact data, and maintains ongoing data hygiene.",
-  "features": [
-   "Real-time duplicate detection and merge logic",
-   "Company and contact data normalization",
-   "Field standardization (phone, address, job titles)",
-   "Ongoing scheduled hygiene sweeps",
-   "Merge conflict resolution rules engine",
-   "Audit trail and rollback capability",
-   "n8n workflow JSON + CRM field mapping guide"
-  ],
-  "includes": [
-   "crm-dedupe-shield.json",
-   "FIELD-MAPPING.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "crm",
-  "badge": "Advanced",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "cold-outreach",
-  "name": "AI Cold Outreach & PAS Copywriting Engine",
-  "tagline": "Autonomous research & hyper-personalized outbound email generation",
-  "category": "outbound",
-  "tags": [
-   "n8n",
-   "AI",
-   "copywriting",
-   "PAS",
-   "outbound",
-   "email",
-   "personalization"
-  ],
-  "type": "package",
-  "price": 69700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Autonomous prospect research and hyper-personalized outbound email generator. Uses Problem-Agitate-Solve framework with AI to generate emails that reference real prospect context.",
-  "features": [
-   "AI-powered prospect research and context extraction",
-   "PAS (Problem-Agitate-Solve) email framework",
-   "Hyper-personalized opening lines from real prospect data",
-   "Multi-variant copy generation for A/B testing",
-   "Sequence-ready output (3-5 email touches)",
-   "Tone and brand voice calibration",
-   "n8n workflow JSON + SKILL.md prompt pack"
-  ],
-  "includes": [
-   "cold-outreach-engine.json",
-   "SKILL-pas-copywriter.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "copy",
-  "badge": "Premium",
-  "popular": true,
-  "engineOrder": null
- },
- {
-  "id": "firmographic-enricher",
-  "name": "Firmographic Waterfall Enricher",
-  "tagline": "Multi-provider tech stack, headcount & revenue enrichment",
-  "category": "outbound",
-  "tags": [
-   "n8n",
-   "enrichment",
-   "firmographic",
-   "tech-stack",
-   "waterfall"
-  ],
-  "type": "package",
-  "price": 39700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Multi-provider waterfall enrichment for tech stack detection, employee headcount, annual revenue estimates, and funding history. Cascades across providers until data is complete.",
-  "features": [
-   "Multi-provider waterfall enrichment cascade",
-   "Tech stack detection (50+ technology categories)",
-   "Employee headcount and growth rate tracking",
-   "Annual revenue estimation and funding history",
-   "Industry and sub-industry classification",
-   "CRM field auto-population on enrichment",
-   "n8n workflow JSON + provider API setup guide"
-  ],
-  "includes": [
-   "firmographic-enricher.json",
-   "PROVIDER-SETUP.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "enrich",
-  "badge": "Advanced",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "deliverability-dns",
-  "name": "DNS & Email Deliverability Engine",
-  "tagline": "Automated SPF, DKIM, DMARC config & inbox monitoring",
-  "category": "outbound",
-  "tags": [
-   "n8n",
-   "deliverability",
-   "DNS",
-   "SPF",
-   "DKIM",
-   "DMARC",
-   "email"
-  ],
-  "type": "package",
-  "price": 29700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Automated email deliverability engine: SPF, DKIM, DMARC configuration validation, inbox rotation monitoring, domain reputation scoring, and blacklist detection alerts.",
-  "features": [
-   "Automated SPF, DKIM, DMARC validation",
-   "Inbox rotation and warm-up monitoring",
-   "Domain reputation scoring and trending",
-   "Blacklist detection with instant alerts",
-   "Multi-domain management dashboard",
-   "Weekly deliverability health report",
-   "n8n workflow JSON + DNS configuration guide"
-  ],
-  "includes": [
-   "deliverability-monitor.json",
-   "DNS-SETUP.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "dns",
-  "badge": "Advanced",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "revops-dashboard",
-  "name": "RevOps Executive Dashboard",
-  "tagline": "Full-funnel conversion attribution & pipeline analytics",
-  "category": "revops",
-  "tags": [
-   "n8n",
-   "SQL",
-   "dashboard",
-   "analytics",
-   "RevOps",
-   "attribution"
-  ],
-  "type": "package",
-  "price": 49700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Full-funnel conversion attribution and pipeline health analytics dashboard. Tracks lead source ROI, rep performance, deal velocity, and revenue forecast accuracy.",
-  "features": [
-   "Full-funnel conversion attribution (source \u2192 close)",
-   "Lead source ROI and channel performance",
-   "Rep performance scorecards and ranking",
-   "Deal velocity and stage-by-stage analysis",
-   "Revenue forecast vs. actual tracking",
-   "Custom SQL telemetry query library",
-   "n8n workflow JSON + SQL query pack + dashboard template"
-  ],
-  "includes": [
-   "revops-dashboard.json",
-   "SQL-QUERIES.md",
-   "DASHBOARD-TEMPLATE.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "revops",
-  "badge": "Premium",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "master-bundle",
-  "name": "Master GTM Automation Bundle",
-  "tagline": "Complete 6-engine suite + all advanced packages + lifetime updates",
-  "category": "bundle",
-  "tags": [
-   "bundle",
-   "all-access",
-   "PAE",
-   "master",
-   "complete"
-  ],
-  "type": "bundle",
-  "price": 199700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Everything in one package: all 6 Core Engines, every advanced automation package, agent skills, Python scrapers, SQL packs, and lifetime version drops. Private repo access included.",
-  "features": [
-   "All 6 Core Automation Engines included",
-   "All advanced packages (Apollo, CRM, Cold Outreach, etc.)",
-   "All Agent Skills and Prompt Packs",
-   "Master GTM Agent Soul & Guardrails",
-   "Private GitHub repo access",
-   "Video runbook walkthroughs for every package",
-   "Lifetime version drops and updates"
-  ],
-  "includes": [
-   "ALL PACKAGES",
-   "VIDEO-RUNBOOKS",
-   "PRIVATE-REPO-ACCESS"
-  ],
-  "icon": "bundle",
-  "badge": "Best Value",
-  "popular": true,
-  "engineOrder": null
- },
- {
-  "id": "skill-pas-copywriter",
-  "name": "AI PAS Copywriting Master Skill",
-  "tagline": "Injectable LLM prompt skill for Problem-Agitate-Solve emails",
-  "category": "custom-skills",
-  "tags": [
-   "SKILL.md",
-   "LLM",
-   "prompt",
-   "PAS",
-   "copywriting",
-   "AI"
-  ],
-  "type": "skill",
-  "price": 3900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Production-tested SKILL.md prompt file for LLM-powered PAS copywriting. Drop into any AI agent to generate hyper-personalized outbound emails using the Problem-Agitate-Solve framework.",
-  "features": [
-   "SKILL.md format \u2014 works with any LLM agent",
-   "PAS (Problem-Agitate-Solve) framework built in",
-   "Tone calibration for enterprise, mid-market, and SMB",
-   "Multi-variant generation for A/B testing",
-   "Context-aware personalization prompts",
-   "Plug-and-play with n8n AI nodes"
-  ],
-  "includes": [
-   "SKILL-pas-copywriter.md",
-   "USAGE_GUIDE.md"
-  ],
-  "icon": "skill",
-  "badge": "Skill",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "skill-gtm-architect",
-  "name": "GTM Architect & Proposal Builder Skill",
-  "tagline": "AI agent skill for automated GTM architecture proposals",
-  "category": "custom-skills",
-  "tags": [
-   "SKILL.md",
-   "LLM",
-   "prompt",
-   "GTM",
-   "architecture",
-   "proposal"
-  ],
-  "type": "skill",
-  "price": 3900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "AI agent skill that generates GTM architecture proposals from intake data. Feed it CRM constraints, team size, and bottlenecks \u2014 it outputs a full system diagram and implementation plan.",
-  "features": [
-   "SKILL.md format \u2014 works with any LLM agent",
-   "Generates full GTM architecture proposals",
-   "Intake-to-diagram automation",
-   "Implementation timeline and milestones",
-   "Tool and vendor recommendation engine",
-   "Budget estimation and ROI projections"
-  ],
-  "includes": [
-   "SKILL-gtm-architect.md",
-   "USAGE_GUIDE.md"
-  ],
-  "icon": "skill",
-  "badge": "Skill",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "soul-master-gtm",
-  "name": "Master GTM Agent Soul & Guardrails",
-  "tagline": "Complete agent personality, constraints & operating rules",
-  "category": "custom-agents",
-  "tags": [
-   "soul",
-   "agent",
-   "guardrails",
-   "personality",
-   "LLM"
-  ],
-  "type": "agent",
-  "price": 4900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Pre-built agent soul file that defines the personality, constraints, guardrails, and operating rules for a GTM automation agent. Drop into any LLM-based agent framework.",
-  "features": [
-   "Complete agent identity and personality definition",
-   "Operating guardrails and safety constraints",
-   "Revenue-focused decision-making rules",
-   "CRM interaction protocols",
-   "Escalation and handoff logic",
-   "Plug-and-play with any LLM framework"
-  ],
-  "includes": [
-   "00-Master-Soul.md",
-   "GUARDRAILS.md"
-  ],
-  "icon": "agent",
-  "badge": "Agent",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "template-inbound-kit",
-  "name": "Inbound Speed-to-Lead & Dual-Inbox Kit",
-  "tagline": "Complete template kit for inbound routing and MQL research",
-  "category": "custom-templates",
-  "tags": [
-   "template",
-   "inbound",
-   "routing",
-   "MQL",
-   "Slack",
-   "webhook"
-  ],
-  "type": "template",
-  "price": 19700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Template kit for rapid inbound deployment: routing JSON, MQL AI research workflow, Slack webhook router, and dual-inbox configuration. Deploy in under 30 minutes.",
-  "features": [
-   "Inbound lead routing n8n JSON template",
-   "MQL AI research workflow template",
-   "Slack webhook router configuration",
-   "Dual-inbox email routing setup",
-   "30-minute deployment guide",
-   "Pre-configured environment variables"
-  ],
-  "includes": [
-   "inbound-routing-template.json",
-   "mql-research-template.json",
-   "SLACK-SETUP.md",
-   "ENV_TEMPLATE.md"
-  ],
-  "icon": "template",
-  "badge": "Template",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "template-outbound-pack",
-  "name": "Outbound Signal & PAS Copy Engine Pack",
-  "tagline": "Complete template pack for outbound signal detection and AI copy",
-  "category": "custom-templates",
-  "tags": [
-   "template",
-   "outbound",
-   "PAS",
-   "signal",
-   "copy",
-   "Clay"
-  ],
-  "type": "template",
-  "price": 29700,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Template pack for outbound deployment: PAE 5-Pillar n8n JSON, Factors-to-Clay webhook, Master Soul configuration, and AI Prospecting Skill. Full outbound stack in templates.",
-  "features": [
-   "PAE 5-Pillar n8n JSON workflow template",
-   "Factors-to-Clay webhook integration template",
-   "Master Soul agent configuration",
-   "AI Prospecting Skill prompt template",
-   "Signal detection rules engine template",
-   "Complete deployment documentation"
-  ],
-  "includes": [
-   "pae-template.json",
-   "factors-clay-webhook.json",
-   "SKILL-prospecting.md",
-   "00-Master-Soul.md"
-  ],
-  "icon": "template",
-  "badge": "Template",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "build-session",
-  "name": "The $1,000 Build Session",
-  "tagline": "4 hours across 6 dedicated sessions \u2014 live working prototype & data",
-  "category": "session",
-  "tags": [
-   "co-build",
-   "sprint",
-   "prototype",
-   "strategy",
-   "live"
-  ],
-  "type": "session",
-  "price": 100000,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "An intensive co-building sprint: 2\u00d7 1-hour strategy sessions + 4\u00d7 30-minute rapid prototyping rounds. You leave with a working prototype running on real prospect data, plus all source code.",
-  "features": [
-   "Session 1 (60m): Business intake, offer & deal economics, bottleneck extraction",
-   "Session 2 (60m): GTM architecture mapping, data waterfall selection, tool keysheet",
-   "Sessions 3-5 (30m each): Rapid prototyping \u2014 scraper setup, dedupe shield, prompt tuning",
-   "Session 6 (30m): Live prototype execution on real data, review & asset handover",
-   "Complete production build packages (.json, .py, .md)",
-   "Enriched target prospect data & pipeline records",
-   "Path A (DIY): Deploy independently with zero fees, or Path B: Apply $1,000 credit toward Agency Sprint"
-  ],
-  "includes": [
-   "CUSTOM-BUILD-PACKAGES",
-   "ENRICHED-PROSPECT-DATA",
-   "ARCHITECTURE-DIAGRAM",
-   "SETUP-DOCUMENTATION"
-  ],
-  "icon": "session",
-  "badge": "Live Sprint",
-  "popular": true,
-  "engineOrder": null
- },
- {
-  "id": "paid-audit",
-  "name": "Executive GTM Architecture Audit",
-  "tagline": "60-minute intensive systems audit with founder Patrick Diamitani",
-  "category": "session",
-  "tags": [
-   "audit",
-   "strategy",
-   "architecture",
-   "consultation",
-   "live"
-  ],
-  "type": "session",
-  "price": 49500,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "60-minute deep architectural review with founder Patrick Diamitani. Diagnose revenue leaks, receive a custom architecture diagram, and credit 100% of the $495 toward your first retainer invoice.",
-  "features": [
-   "60-minute live diagnostic session via Google Meet",
-   "Custom GTM architecture diagram (Excalidraw/Mermaid)",
-   "Quantified ROI model: rep hours saved & pipeline lift",
-   "Partnership proposal with tier recommendations",
-   "100% audit fee credited toward first retainer invoice",
-   "Post-audit SOW delivered within 2 hours"
-  ],
-  "includes": [
-   "ARCHITECTURE-DIAGRAM",
-   "ROI-MODEL",
-   "SOW-TEMPLATE"
-  ],
-  "icon": "audit",
-  "badge": "With Founder",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "builder-starter",
-  "name": "Builder Starter Plan",
-  "tagline": "Prompt-to-Sales-Infrastructure engine for solo founders & small teams",
-  "category": "builder",
-  "tags": [
-   "builder",
-   "subscription",
-   "agent",
-   "workflow",
-   "n8n",
-   "skills"
-  ],
-  "type": "subscription",
-  "price": 4900,
-  "currency": "usd",
-  "mode": "subscription",
-  "description": "Access the autonomous Sales Infrastructure Builder: generate up to 50 workflows, custom skills, and agent souls per month with sandbox execution and template downloads.",
-  "features": [
-   "50 autonomous agent synthesis runs / month",
-   "Automation Builder (n8n JSON compiler)",
-   "Skill Builder (PAS & GTM prompts)",
-   "Agent Builder (SOUL.md & guardrails)",
-   "Interactive Sandbox CLI preview & live logs",
-   "Standard template downloads included",
-   "Community support"
-  ],
-  "includes": [
-   "AGENT-CLI-ACCESS",
-   "UNLIMITED-EXPORTS",
-   "COMMUNITY-SUPPORT"
-  ],
-  "icon": "builder",
-  "badge": "Starter",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "builder-pro",
-  "name": "Builder Pro Growth Plan",
-  "tagline": "High-velocity sales infrastructure generation & dedicated sandbox compute",
-  "category": "builder",
-  "tags": [
-   "builder",
-   "subscription",
-   "agent",
-   "workflow",
-   "n8n",
-   "pro",
-   "growth"
-  ],
-  "type": "subscription",
-  "price": 14900,
-  "currency": "usd",
-  "mode": "subscription",
-  "description": "For scaling teams and agencies: generate up to 250 workflows, custom skills, and agent souls per month with prioritized sandbox execution and all premium template packages.",
-  "features": [
-   "250 autonomous agent synthesis runs / month",
-   "Full access to Automation, Skill & Agent Builders",
-   "Priority sandbox compute & fast CLI streaming",
-   "All premium template downloads & version drops",
-   "Direct webhook dispatch to your n8n / CRM endpoints",
-   "Up to 5 team member seats",
-   "Priority email & Slack support"
-  ],
-  "includes": [
-   "PRIORITY-SANDBOX",
-   "ALL-TEMPLATES-ACCESS",
-   "TEAM-SEATS",
-   "SLACK-SUPPORT"
-  ],
-  "icon": "builder",
-  "badge": "Most Popular",
-  "popular": true,
-  "engineOrder": null
- },
- {
-  "id": "builder-enterprise",
-  "name": "Builder Enterprise Scale Plan",
-  "tagline": "Unlimited autonomous generation, custom node development & dedicated cluster",
-  "category": "builder",
-  "tags": [
-   "builder",
-   "subscription",
-   "enterprise",
-   "unlimited",
-   "custom-nodes"
-  ],
-  "type": "subscription",
-  "price": 49900,
-  "currency": "usd",
-  "mode": "subscription",
-  "description": "Unlimited sales infrastructure engineering: dedicated sandbox environment, custom n8n node development, custom system integrations, and white-glove onboarding.",
-  "features": [
-   "Unlimited agent synthesis runs & sandbox executions",
-   "Dedicated isolated sandbox compute cluster",
-   "Custom n8n node compilation & private repository syncing",
-   "Bespoke CRM & ERP connector authoring",
-   "Unlimited team seats & role-based access",
-   "Dedicated Slack channel & monthly 1-on-1 strategy calls",
-   "99.9% uptime SLA"
-  ],
-  "includes": [
-   "DEDICATED-CLUSTER",
-   "CUSTOM-NODES",
-   "WHITE-GLOVE-ONBOARDING",
-   "DEDICATED-SLACK"
-  ],
-  "icon": "builder",
-  "badge": "Enterprise",
-  "popular": false,
-  "engineOrder": null
- },
- {
-  "id": "build-portal-199",
-  "name": "Package Builder Portal",
-  "tagline": "Chat wizard builds your personalized automation package",
-  "badge": "Portal",
-  "category": "portal",
-  "tags": [
-   "portal",
-   "wizard",
-   "n8n",
-   "package",
-   "personalized"
-  ],
-  "type": "package",
-  "price": 19900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "Portal access + conversational wizard that builds a personalized automation package for your stack: n8n workflow JSON, setup playbook, and config checklist. Yours to download and keep forever.",
-  "features": [
-   "Conversational build wizard",
-   "Personalized n8n workflow JSON",
-   "Setup playbook for your stack",
-   "Config checklist",
-   "Re-download anytime in your portal"
-  ],
-  "popular": true
- },
- {
-  "id": "cold-mql-bundle",
-  "name": "Cold MQL Re-engagement System",
-  "tagline": "Bring your dead MQLs back to life \u2014 the exact system, packaged",
-  "badge": "Template",
-  "category": "custom-templates",
-  "tags": [
-   "template",
-   "mql",
-   "re-engagement",
-   "hubspot",
-   "revops"
-  ],
-  "type": "template",
-  "price": 19900,
-  "currency": "usd",
-  "mode": "payment",
-  "description": "The exact cold-MQL re-engagement system built, run, and measured in a production B2B revenue environment: SOP playbook, segmentation & scoring rules, HubSpot workflow build guide, message templates, launch checklist, and Loom walkthrough.",
-  "features": [
-   "Cold MQL Re-engagement SOP (PDF)",
-   "Segmentation & scoring rules \u2014 copy-paste criteria for any CRM",
-   "HubSpot workflow build guide",
-   "Re-engagement message templates (first touch, follow-up, break-up)",
-   "Launch checklist \u2014 pre-flight to go-live",
-   "Loom walkthrough video (3-5 minutes)"
-  ],
-  "includes": [
-   "MQL-REENGAGEMENT-SOP.pdf",
-   "SEGMENTATION-SCORING.md",
-   "HUBSPOT-BUILD-GUIDE.md",
-   "MESSAGE-TEMPLATES.md",
-   "LAUNCH-CHECKLIST.md",
-   "LOOM-WALKTHROUGH"
-  ]
- }
+  {
+    "id": "build-session",
+    "stripeProductId": "prod_VIXXS7cTrlS1o5",
+    "stripePriceId": "price_1UHwS9KuSRnusODlaf7D8uDY",
+    "name": "Build Session - 1 Hour",
+    "tagline": "Live screen-share co-build sprint with Principal GTM Engineer",
+    "category": "session",
+    "tags": [
+      "Co-Build",
+      "1-Hour Sprint",
+      "n8n",
+      "Live Paired",
+      "Production Pilot"
+    ],
+    "type": "session",
+    "price": 99900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "1 Hour Build Session with SalesGency. Includes 60-minute paired engineering screen share, pre-meeting file transfer, and production-ready workflow or agent pilot deployed inside your stack at end of session. 100% credited toward any build sprint.",
+    "features": [
+      "60-min live paired engineering screen-share session",
+      "Configured and deployed directly inside your CRM and n8n stack",
+      "Tailored to your specific ICP, tech stack, and pipeline motion",
+      "Live dry-run and end-to-end data validation before call ends",
+      "100% credited toward any 14-Day or 30-Day Build Sprint",
+      "100% money-back guarantee if not completely satisfied"
+    ],
+    "includes": [
+      "Live 60-min engineering session",
+      "Pre-meeting stack audit",
+      "Production workflow JSON",
+      "Session video recording"
+    ],
+    "icon": "session",
+    "badge": "Done-With-You",
+    "popular": true,
+    "engineOrder": 1
+  },
+  {
+    "id": "sprint-14day",
+    "stripeProductId": "prod_VIY3P83n0cJDKt",
+    "stripePriceId": "price_1UHwwyKuSRnusODlBblDqnsR",
+    "name": "14-Day Build Sprint",
+    "tagline": "Rapid turnkey deployment of one complete GTM automation engine",
+    "category": "session",
+    "tags": [
+      "14-Day Sprint",
+      "Turnkey",
+      "Single Engine",
+      "Client-Owned"
+    ],
+    "type": "package",
+    "price": 299900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "14-day build sprint for one complete automation package (agents, skills, and workflows included). Output includes fully tested production product, custom CRM property mappings, and team handoff.",
+    "features": [
+      "14-day turnkey production build and deployment",
+      "One complete core revenue engine (Inbound, Outbound PAE, or Intelligence)",
+      "Custom CRM property maps and dedupe filters",
+      "Live testing with actual pipeline records",
+      "Team user manual and operational SOPs",
+      "14 days of post-launch monitoring and telemetry"
+    ],
+    "includes": [
+      "Production workflow graph",
+      "Custom CRM connectors",
+      "Prompt schemas",
+      "Operational SOPs"
+    ],
+    "icon": "execution",
+    "badge": "Turnkey Sprint",
+    "popular": false,
+    "engineOrder": 2
+  },
+  {
+    "id": "sprint-30day",
+    "stripeProductId": "prod_VIY28I5G6tmvkU",
+    "stripePriceId": "price_1UHwwSKuSRnusODlpWCU8DSB",
+    "name": "30-Day Build Sprint",
+    "tagline": "Full forward-deployed engineering sprint for core revenue systems",
+    "category": "session",
+    "tags": [
+      "30-Day Sprint",
+      "Most Popular",
+      "Enterprise Engine",
+      "Full Handoff"
+    ],
+    "type": "package",
+    "price": 499900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "30-day build sprint for core automation systems (agents, skills, and workflows included). Complete forward-deployed engineering, custom multi-tool connectors, CRM collision shields, and 30 days of monitored rollout.",
+    "features": [
+      "30-day turnkey production build and rollout",
+      "Multi-engine deployment tailored to your sales architecture",
+      "Custom multi-tool connectors (HubSpot, Salesforce, Clay, n8n, Apollo)",
+      "CRM collision detection and deduplication shields",
+      "Executive telemetry dashboard and Slack alert feeds",
+      "30 days of post-launch tuning, edge-case handling, and telemetry"
+    ],
+    "includes": [
+      "Multi-engine workflow graphs",
+      "Custom API connectors",
+      "Executive dashboard",
+      "30-day SLA monitoring"
+    ],
+    "icon": "bundle",
+    "badge": "Most Popular",
+    "popular": true,
+    "engineOrder": 3
+  },
+  {
+    "id": "full-build-pae",
+    "stripeProductId": "prod_VIY19dahamcObA",
+    "stripePriceId": "price_1UHwv4KuSRnusODlTQqrvuzO",
+    "name": "Full Build - Prospect Automation Engine",
+    "tagline": "Complete 5-Pillar Prospect Automation Engine (PAE) production rollout",
+    "category": "outbound",
+    "tags": [
+      "PAE",
+      "5-Pillar",
+      "Outbound Engine",
+      "Full Build",
+      "Waterfall"
+    ],
+    "type": "package",
+    "price": 499900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Build full-stack prospect automation engines for your team. 30-day sprint or until product completed: Trigger Ingest -> CRM Dedupe Shield -> Multi-Vendor Contact Reveal -> AI PAS Copywriting -> Sequence Dispatch.",
+    "features": [
+      "Full 5-Pillar Prospect Automation Engine deployment",
+      "Multi-provider intent signal triggers (hiring, funding, tech installs)",
+      "Bidirectional CRM dedupe shield to prevent duplicate outreach",
+      "Clay, Apollo, and Prospeo contact reveal waterfall",
+      "Sub-85-word AI PAS personalized copywriting with human approval gate",
+      "Smartlead, Instantly, or Salesloft auto-enrollment with throttles"
+    ],
+    "includes": [
+      "5-Pillar Orchestration JSON",
+      "Scraper scripts",
+      "CRM dedupe filters",
+      "PAS prompt rubrics"
+    ],
+    "icon": "outbound",
+    "badge": "Flagship Outbound",
+    "popular": true,
+    "engineOrder": 4
+  },
+  {
+    "id": "fractional-gtm-engineer",
+    "stripeProductId": "prod_VIY05YRJfZzHkW",
+    "stripePriceId": "price_1UHwuCKuSRnusODlcRsFRB0Q",
+    "name": "Fractional GTM Engineer",
+    "tagline": "Dedicated embedded AI & GTM engineering leadership for scaling teams",
+    "category": "session",
+    "tags": [
+      "Executive Tier",
+      "Midmarket Flagship",
+      "Retainer",
+      "Dedicated Support"
+    ],
+    "type": "package",
+    "price": 1999900,
+    "currency": "usd",
+    "mode": "subscription",
+    "interval": "month",
+    "description": "Full Service GTM Engineer and team support. Monthly retainer. 12-month contract (6-month renewal option). Complete deployment, monitoring, and continuous evolution of all 6 core revenue workflows, custom autonomous agents, multi-model infrastructure, and weekly sprint planning.",
+    "features": [
+      "All 6 Core Production Workflows deployed and maintained",
+      "Custom Autonomous SDR and revenue enablement agent harnesses",
+      "Dedicated Slack channel and direct phone/Zoom engineering access",
+      "Continuous prompt, skill, and harness tuning across Claude, GPT-4o, and Gemini",
+      "Weekly engineering standups and executive revenue telemetry",
+      "100% client code ownership — zero vendor lock-in"
+    ],
+    "includes": [
+      "Full platform infrastructure",
+      "Dedicated GTM engineer",
+      "Weekly sprints",
+      "Enterprise SLA support"
+    ],
+    "icon": "revops",
+    "badge": "Executive Leader",
+    "popular": true,
+    "engineOrder": 5
+  },
+  {
+    "id": "gtm-agent-subscription",
+    "stripeProductId": "prod_VIYar3D1BSCtTO",
+    "stripePriceId": "price_1UHxTdKuSRnusODlIw45dv1v",
+    "name": "GTM Agent Subscription",
+    "tagline": "Full service GTM app console with BYOK model freedom",
+    "category": "custom-agents",
+    "tags": [
+      "SaaS",
+      "App Console",
+      "BYOK",
+      "Monthly",
+      "Agent Platform"
+    ],
+    "type": "agent",
+    "price": 9900,
+    "currency": "usd",
+    "mode": "subscription",
+    "interval": "month",
+    "description": "Full service GTM app. BYOK (Bring Your Own Keys). Access live agent console, prompt skills library, workflow package generator, and real-time execution telemetry.",
+    "features": [
+      "Full access to SalesGency Agent Platform console",
+      "BYOK support for Anthropic, OpenAI, and Google Gemini",
+      "One-click workflow blueprint generator",
+      "Prompt skills execution tester and validator",
+      "Live execution logs and OpenTelemetry tracking",
+      "Monthly recurring license with no per-seat penalty"
+    ],
+    "includes": [
+      "Agent console access",
+      "Prompt skill runner",
+      "API key manager",
+      "Community support"
+    ],
+    "icon": "agent",
+    "badge": "Platform SaaS",
+    "popular": false,
+    "engineOrder": 6
+  },
+  {
+    "id": "skill-plugin-pae",
+    "stripeProductId": "prod_VIXRZbEhvt6k9T",
+    "stripePriceId": "price_1UHwMDKuSRnusODlX8sZADYV",
+    "name": "Prospect Automation Engine Skill Plugin",
+    "tagline": "Production SKILL.md execution pack for autonomous prospecting",
+    "category": "custom-skills",
+    "tags": [
+      "SKILL.md",
+      "PAE",
+      "Plugin",
+      "Outbound",
+      "n8n"
+    ],
+    "type": "skill",
+    "price": 19900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skills Plugin for the Prospect Automation Engine, by SalesGency, A Diamitani Industries, Incorporated company. Typed schema, tool contracts, and PAS prompt rubrics.",
+    "features": [
+      "Standardized SKILL.md execution pack for Claude, GPT-4o, and Gemini",
+      "Deterministic PAS (Problem-Agitate-Solve) copywriter schemas",
+      "Pre-flight contact validation and PII masking rules",
+      "CRM collision dedupe decision trees",
+      "Production n8n workflow integration blueprints"
+    ],
+    "includes": [
+      "SKILL-pae.md",
+      "Workflow integration JSON",
+      "ENV_TEMPLATE.md"
+    ],
+    "icon": "copy",
+    "badge": "Skill Plugin",
+    "popular": true,
+    "engineOrder": 7
+  },
+  {
+    "id": "skill-plugin-inbound",
+    "stripeProductId": "prod_VIXRrPdownuYEe",
+    "stripePriceId": "price_1UHwMwKuSRnusODliDN1ZlxF",
+    "name": "Inbound Automation Engine Skills Plugin",
+    "tagline": "Sub-30-second speed-to-lead qualification & routing plugin",
+    "category": "custom-skills",
+    "tags": [
+      "SKILL.md",
+      "Inbound",
+      "Plugin",
+      "Speed-to-Lead",
+      "Routing"
+    ],
+    "type": "skill",
+    "price": 19900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skills Plugin for the Inbound Automation Engine, by SalesGency, A Diamitani Industries, Incorporated company. AI qualification, territory assignment, and calendar scheduling.",
+    "features": [
+      "Sub-30-second MQL scoring and buyer classification rules",
+      "Automated territory mapping and Slack alert schemas",
+      "Dual-inbox routing logic and anti-spam filters",
+      "HubSpot and Salesforce property update payloads"
+    ],
+    "includes": [
+      "SKILL-inbound.md",
+      "n8n Webhook listener JSON",
+      "Slack block template"
+    ],
+    "icon": "inbound",
+    "badge": "Skill Plugin",
+    "popular": false,
+    "engineOrder": 8
+  },
+  {
+    "id": "skill-plugin-presales",
+    "stripeProductId": "prod_VIXSQCbSU4KQSN",
+    "stripePriceId": "price_1UHwNiKuSRnusODlBUY9Fha9",
+    "name": "Pre-Sales Call Automation Skills Plugin",
+    "tagline": "Executive pre-meeting prospect dossier compiler plugin",
+    "category": "custom-skills",
+    "tags": [
+      "SKILL.md",
+      "Pre-Sales",
+      "Plugin",
+      "Dossier",
+      "Intelligence"
+    ],
+    "type": "skill",
+    "price": 19900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skills Plugin for the Pre-Sales Call Automation, by SalesGency, A Diamitani Industries, Incorporated company. Gathers attendee intelligence 10 minutes prior to discovery calls.",
+    "features": [
+      "Calendar webhook parser for Google Calendar and Outlook",
+      "LinkedIn and company firmographic enrichment synthesizer",
+      "Competitive battlecard generator tailored to buyer tech stack",
+      "Slack DM briefing card dispatch"
+    ],
+    "includes": [
+      "SKILL-presales.md",
+      "Dossier markdown template",
+      "n8n research flow"
+    ],
+    "icon": "pre-call",
+    "badge": "Skill Plugin",
+    "popular": false,
+    "engineOrder": 9
+  },
+  {
+    "id": "skill-plugin-postsales",
+    "stripeProductId": "prod_VIXTzry441QP9X",
+    "stripePriceId": "price_1UHwORKuSRnusODl8xye8ood",
+    "name": "Post-Sales Call Automation Skills Plugin",
+    "tagline": "Call transcript synthesis, MEDDPICC extraction & CRM sync",
+    "category": "custom-skills",
+    "tags": [
+      "SKILL.md",
+      "Post-Sales",
+      "Plugin",
+      "MEDDPICC",
+      "CRM Sync"
+    ],
+    "type": "skill",
+    "price": 19900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skills Plugin for the Post-Sales Call Automation, by SalesGency, A Diamitani Industries, Incorporated company. Transcribes calls, extracts action items, and updates CRM deal stages.",
+    "features": [
+      "Gong, Fathom, and Fireflies transcript parser",
+      "MEDDPICC deal scorecard and stage progression logic",
+      "Personalized follow-up email generator with objection addressing",
+      "Bidirectional HubSpot / Salesforce deal field synchronization"
+    ],
+    "includes": [
+      "SKILL-postsales.md",
+      "MEDDPICC evaluation rubric",
+      "CRM sync flow"
+    ],
+    "icon": "post-call",
+    "badge": "Skill Plugin",
+    "popular": false,
+    "engineOrder": 10
+  },
+  {
+    "id": "skill-plugin-automation-engineer",
+    "stripeProductId": "prod_VIXUKDPfMV9PJy",
+    "stripePriceId": "price_1UHwPDKuSRnusODlbHP3KfiL",
+    "name": "Automation Engineer Skills Plugin",
+    "tagline": "n8n workflow engineering, error recovery, and dead-letter queue plugin",
+    "category": "custom-skills",
+    "tags": [
+      "SKILL.md",
+      "Automation",
+      "Plugin",
+      "n8n",
+      "DevOps"
+    ],
+    "type": "skill",
+    "price": 19900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skills Plugin for the Automation Engineer, by SalesGency, A Diamitani Industries, Incorporated company. Standardized node graph patterns, error handling, and queue management.",
+    "features": [
+      "Idempotent webhook receivers and collision detection",
+      "Dead-letter queue recovery and automated retry throttles",
+      "Multi-vendor API waterfall error branching",
+      "Telemetry logging to Slack and OpenTelemetry"
+    ],
+    "includes": [
+      "SKILL-n8n-engineer.md",
+      "Base node templates",
+      "Error boundary JSON"
+    ],
+    "icon": "revops",
+    "badge": "Skill Plugin",
+    "popular": false,
+    "engineOrder": 11
+  },
+  {
+    "id": "skill-plugin-gtm-coe",
+    "stripeProductId": "prod_VIXVigI4gXZd3i",
+    "stripePriceId": "price_1UHwQVKuSRnusODlwNUAcRNF",
+    "name": "GTM Center of Excellence (COE) Skills Plugin",
+    "tagline": "Enterprise revenue architecture, SOP governance, and quality scorecards",
+    "category": "custom-skills",
+    "tags": [
+      "SKILL.md",
+      "COE",
+      "Plugin",
+      "Governance",
+      "Enterprise"
+    ],
+    "type": "skill",
+    "price": 19900,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skills Plugin for the GTM Center of Excellence Package, by SalesGency, A Diamitani Industries, Incorporated company. Enterprise standards, prompt governance, and quality audits.",
+    "features": [
+      "GTM architecture teardown and gap analysis frameworks",
+      "Enterprise prompt evaluation rubrics and safety gates",
+      "Data classification and compliance checklists (SOC2, GDPR)",
+      "Operational playbooks and team training guides"
+    ],
+    "includes": [
+      "SKILL-gtm-coe.md",
+      "Architecture rubric",
+      "Audit templates"
+    ],
+    "icon": "execution",
+    "badge": "Skill Plugin",
+    "popular": false,
+    "engineOrder": 12
+  },
+  {
+    "id": "agent-build-package",
+    "stripeProductId": "prod_VIYcBZ7oNQbemd",
+    "stripePriceId": "price_1UHxUpKuSRnusODlg33HadhZ",
+    "name": "Agent Build Package",
+    "tagline": "Skill plus custom instructions to build with your own Agent Harness",
+    "category": "custom-agents",
+    "tags": [
+      "Starter",
+      "Agent Harness",
+      "Custom Instructions",
+      "Self-Serve"
+    ],
+    "type": "agent",
+    "price": 1999,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Skill plus custom instructions to build with your own Agent Harness. Includes soul.md persona, AGENTS.md system constraints, and prompt orchestration instructions.",
+    "features": [
+      "Core agent prompt configuration files",
+      "soul.md persona and AGENTS.md system rules",
+      "Typed inputs and output formatting constraints",
+      "Compatible with Cursor, Claude Code, Vercel AI SDK, and OpenAI"
+    ],
+    "includes": [
+      "soul.md",
+      "AGENTS.md",
+      "SETUP_GUIDE.md"
+    ],
+    "icon": "agent",
+    "badge": "Starter Package",
+    "popular": true,
+    "engineOrder": 13
+  },
+  {
+    "id": "free-skill-download",
+    "stripeProductId": "prod_VIYbemePi53Swt",
+    "stripePriceId": "price_1UHxUQKuSRnusODl9u37vCcw",
+    "name": "Free Skill Download",
+    "tagline": "Free production prompt skill for revenue teams",
+    "category": "custom-skills",
+    "tags": [
+      "Free",
+      "Skill",
+      "SKILL.md",
+      "Open Source"
+    ],
+    "type": "skill",
+    "price": 0,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Free Skill Download by SalesGency. Test our deterministic SKILL.md format inside your agent harness at zero cost.",
+    "features": [
+      "Production-tested SKILL.md specification",
+      "Structured input and output schemas",
+      "Pre-flight prompt guardrails",
+      "Zero cost, instant access"
+    ],
+    "includes": [
+      "FREE-SKILL.md",
+      "QUICKSTART.md"
+    ],
+    "icon": "skill",
+    "badge": "Free Download",
+    "popular": false,
+    "engineOrder": 14
+  },
+  {
+    "id": "free-template-download",
+    "stripeProductId": "prod_VIYbHFU1XbMRmP",
+    "stripePriceId": "price_1UHxU8KuSRnusODlsvry9MFe",
+    "name": "Free Template Download",
+    "tagline": "Free n8n revenue workflow template",
+    "category": "custom-templates",
+    "tags": [
+      "Free",
+      "Template",
+      "n8n",
+      "Workflow"
+    ],
+    "type": "template",
+    "price": 0,
+    "currency": "usd",
+    "mode": "payment",
+    "description": "Free Workflow Template by SalesGency. Import directly into self-hosted or cloud n8n and test automated lead handling.",
+    "features": [
+      "Importable n8n workflow JSON file",
+      "Webhook listener and data normalizer",
+      "Slack notification node config",
+      "Zero cost, instant download"
+    ],
+    "includes": [
+      "free-workflow-template.json",
+      "README.md"
+    ],
+    "icon": "template",
+    "badge": "Free Download",
+    "popular": false,
+    "engineOrder": 15
+  }
 ]

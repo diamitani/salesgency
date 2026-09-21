@@ -21,15 +21,15 @@
   --bg-tag: #F3F4F6;
   --bg-tag-hover: #E5E7EB;
 
-  /* Ink & Text - Maximum Buyer Contrast */
-  --text-main: #111827;
+  /* Ink & Text - Maximum Buyer Contrast (WCAG 2.2 AA) */
+  --text-main: #0A0B0E;
   --text-heading: #000000;
-  --text-secondary: #4B5563;
-  --text-muted: #6B7280;
-  --text-dim: #9CA3AF;
-  --text-subtle: #D1D5DB;
+  --text-secondary: #272E3B;
+  --text-muted: #4B5563;
+  --text-dim: #52525B;
+  --text-subtle: #94A3B8;
   --text-inverse: #FFFFFF;
-  --text-inverse-muted: #9CA3AF;
+  --text-inverse-muted: rgba(255, 255, 255, 0.78);
 
   /* Accents */
   --accent-green: #10B981;
