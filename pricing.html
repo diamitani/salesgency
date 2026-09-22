@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing | SalesGency</title>
-  <meta name="description" content="Transparent pricing for GTM architecture and revenue engineering. From $299 GTM Teardowns to $5,000 Priority Builds.">
+  <meta name="description" content="Named annual retainers for CEOs and CROs from $250,000, plus a self-serve GTM Studio from $199 skills to a $999 Teardown.">
   <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -161,6 +161,38 @@
       margin-top: 10px;
       flex-shrink: 0;
     }
+
+    /* Retainer band */
+    .sg-retainer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1200px;
+      margin: -100px auto 0;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+    }
+    @media (max-width: 900px) { .sg-retainer-grid { grid-template-columns: 1fr; } }
+    .sg-retainer-card {
+      background: var(--sg-white);
+      border: 1px solid var(--sg-line);
+      border-radius: var(--sg-radius-m);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .sg-retainer-card.featured { border: 2px solid var(--sg-ink); box-shadow: 0 24px 64px rgba(10,20,40,0.10); }
+    .sg-retainer-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--sg-ink); color: var(--sg-white); font-size: 12px; padding: 6px 16px;
+      border-radius: var(--sg-radius-pill); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+    }
+    .sg-retainer-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sg-action); margin-bottom: 12px; }
+    .sg-retainer-amount { font-family: var(--sg-font-display); font-size: 38px; font-weight: 800; color: var(--sg-ink); line-height: 1; margin-bottom: 4px; }
+    .sg-retainer-cadence { color: var(--sg-muted); font-size: 13px; margin-bottom: 20px; }
+    .sg-retainer-desc { color: var(--sg-slate); font-size: 15px; margin-bottom: 24px; flex-grow: 1; }
   </style>
 </head>
 <body>
@@ -174,91 +206,135 @@
       <div class="sg-relative-content">
         <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">Pricing Architecture</span>
         <h1 class="sg-hero-title gs-reveal">
-          Simple, outcome-driven <span class="sg-signature-gradient">pricing.</span>
+          Two ways to buy, <span class="sg-signature-gradient">one firm.</span>
         </h1>
         <p class="gs-reveal">
-          No complex retainers. Choose the engagement level that matches your urgency. You own 100% of the deployed code forever.
+          CEOs and CROs retain us by the year. Owners and operators start in the studio. Either way, you own 100% of the deployed code forever.
         </p>
       </div>
     </section>
 
-    <div class="sg-pricing-grid gs-reveal" style="max-width: 1200px; margin: -100px auto 140px; padding: 0 24px; position: relative; z-index: 10;">
-      <!-- Tier 1 -->
-      <div class="sg-price-card">
-        <div class="sg-price-header">
-          <h3>GTM Teardown</h3>
-          <p style="color: var(--sg-slate); font-size: 14px;">Identify the bottlenecks</p>
-        </div>
-        <div class="sg-price-amount">$299<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
-        <ul class="sg-feature-list">
-          <li>Complete CRM & Stack Audit</li>
-          <li>Detailed Engineering Architecture Blueprint</li>
-          <li>Identified Workflow Bottlenecks</li>
-          <li>Credited towards any Build Sprint</li>
-        </ul>
-        <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="gtm-teardown">
-          <span>Book Teardown</span>
-        </button>
+    <!-- Retainers -->
+    <div class="sg-retainer-grid gs-reveal">
+      <div class="sg-retainer-card">
+        <div class="sg-retainer-name">Foundation</div>
+        <div class="sg-retainer-amount">$250,000<span style="font-size: 14px; color: var(--sg-muted); font-weight: 500;">/yr</span></div>
+        <div class="sg-retainer-cadence">billed quarterly</div>
+        <p class="sg-retainer-desc">1 dedicated engineer, 1 core engine live, quarterly roadmap review.</p>
+        <a href="request-briefing.html?tier=foundation" class="sg-btn sg-btn-secondary sg-btn-magnetic">
+          <span>Request a briefing</span>
+        </a>
       </div>
-
-      <!-- Tier 2 -->
-      <div class="sg-price-card featured">
-        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--sg-ink); color: var(--sg-white); font-size: 12px; padding: 6px 16px; border-radius: var(--sg-radius-pill); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Standard Sprint</div>
-        <div class="sg-price-header">
-          <h3>Revenue Engine Sprint</h3>
-          <p style="color: var(--sg-slate); font-size: 14px;">14-Day deployment cycle</p>
-        </div>
-        <div class="sg-price-amount">$2,500<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
-        <ul class="sg-feature-list">
-          <li>1 Core Engine (Inbound, Outbound, or Deal Intel)</li>
-          <li>Fully built, tested, and deployed inside your stack</li>
-          <li>Custom CRM Dedupe Shields</li>
-          <li>Live paired engineering session & handover</li>
-        </ul>
-        <button class="sg-btn sg-btn-primary sg-btn-magnetic" data-stripe-product="revenue-engine-sprint">
-          <span>Start Standard Sprint</span>
-        </button>
+      <div class="sg-retainer-card featured">
+        <div class="sg-retainer-badge">Typical start</div>
+        <div class="sg-retainer-name">Command</div>
+        <div class="sg-retainer-amount">$500,000<span style="font-size: 14px; color: var(--sg-muted); font-weight: 500;">/yr</span></div>
+        <div class="sg-retainer-cadence">billed quarterly</div>
+        <p class="sg-retainer-desc">2 engineers, all 3 engines, monthly executive readout.</p>
+        <a href="request-briefing.html?tier=command" class="sg-btn sg-btn-primary sg-btn-magnetic">
+          <span>Request a briefing</span>
+        </a>
       </div>
-
-      <!-- Tier 3 -->
-      <div class="sg-price-card" style="border-color: var(--sg-signal); box-shadow: 0 12px 32px rgba(0,194,255,0.1);">
-        <div class="sg-price-header">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h3>Priority Build</h3>
-            <span style="font-size: 11px; font-weight: 700; background: var(--sg-signal); color: var(--sg-ink); padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">Fast-track</span>
-          </div>
-          <p style="color: var(--sg-slate); font-size: 14px;">Accelerated 30-Day Turnkey</p>
-        </div>
-        <div class="sg-price-amount">$5,000<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
-        <ul class="sg-feature-list">
-          <li>All 3 Core Engines deployed (Full Architecture)</li>
-          <li>Accelerated turnkey delivery</li>
-          <li>Custom multi-tool connectors & scrapers</li>
-          <li>Executive revenue telemetry dashboard</li>
-        </ul>
-        <button class="sg-btn sg-btn-primary sg-btn-magnetic" style="background: var(--sg-signal); border-color: var(--sg-signal); color: var(--sg-ink);" data-stripe-product="priority-build">
-          <span>Start Priority Build</span>
-        </button>
-      </div>
-
-      <!-- Tier 4 -->
-      <div class="sg-price-card">
-        <div class="sg-price-header">
-          <h3>Monitoring & Tune-ups</h3>
-          <p style="color: var(--sg-slate); font-size: 14px;">Ongoing fractional support</p>
-        </div>
-        <div class="sg-price-amount">$1,250<span style="font-size: 16px; color: var(--sg-slate);"> / mo</span></div>
-        <ul class="sg-feature-list">
-          <li>Continuous prompt & skill tuning</li>
-          <li>Weekly engineering standups</li>
-          <li>Error-handling & break-fix monitoring</li>
-          <li>Cancel anytime, zero lock-in</li>
-        </ul>
-        <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="monitoring-tuneups">
-          <span>Add Monitoring</span>
-        </button>
+      <div class="sg-retainer-card">
+        <div class="sg-retainer-name">Board</div>
+        <div class="sg-retainer-amount">$1,000,000<span style="font-size: 14px; color: var(--sg-muted); font-weight: 500;">/yr</span></div>
+        <div class="sg-retainer-cadence">billed quarterly</div>
+        <p class="sg-retainer-desc">Full embedded pod across GTM, CS &amp; RevOps strategy.</p>
+        <a href="request-briefing.html?tier=board" class="sg-btn sg-btn-secondary sg-btn-magnetic">
+          <span>Request a briefing</span>
+        </a>
       </div>
     </div>
+    <div class="gs-reveal" style="text-align: center; margin: 24px auto 0; max-width: 1200px; padding: 0 24px;">
+      <a href="engagements.html" style="color: var(--sg-action); font-weight: 600; text-decoration: none;">See the full comparison and who we decline &rarr;</a>
+    </div>
+
+    <!-- Studio -->
+    <section id="studio" style="padding-top: 140px;">
+      <div class="sg-section-header center gs-reveal" style="max-width: 1200px; margin: 0 auto 64px; padding: 0 24px; text-align: center;">
+        <span class="sg-eyebrow" style="color: var(--sg-action);">The Studio</span>
+        <h2 style="font-size: clamp(32px, 4vw, 44px); margin-bottom: 16px;">Not there yet? Start here.</h2>
+        <p style="color: var(--sg-slate); font-size: 18px; max-width: 620px; margin: 0 auto;">Self-serve, fixed-price engagements for owners and operators. Every dollar below is fully credited toward a future retainer.</p>
+      </div>
+
+      <div class="sg-pricing-grid gs-reveal" style="max-width: 1200px; margin: 0 auto 140px; padding: 0 24px;">
+        <!-- Tier 1 -->
+        <div class="sg-price-card">
+          <div class="sg-price-header">
+            <h3>GTM Teardown</h3>
+            <p style="color: var(--sg-slate); font-size: 14px;">Identify the bottlenecks</p>
+          </div>
+          <div class="sg-price-amount">$999<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
+          <ul class="sg-feature-list">
+            <li>Complete CRM & Stack Audit</li>
+            <li>Detailed Engineering Architecture Blueprint</li>
+            <li>Identified Workflow Bottlenecks</li>
+            <li>Credited in full toward any Sprint or a Foundation retainer</li>
+          </ul>
+          <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="gtm-teardown">
+            <span>Book Teardown</span>
+          </button>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="sg-price-card featured">
+          <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--sg-ink); color: var(--sg-white); font-size: 12px; padding: 6px 16px; border-radius: var(--sg-radius-pill); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Most Popular</div>
+          <div class="sg-price-header">
+            <h3>14-Day Build Sprint</h3>
+            <p style="color: var(--sg-slate); font-size: 14px;">Standard deployment cycle</p>
+          </div>
+          <div class="sg-price-amount">$2,999<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
+          <ul class="sg-feature-list">
+            <li>1 Core Engine (Inbound, Outbound, or Deal Intel)</li>
+            <li>Fully built, tested, and deployed inside your stack</li>
+            <li>Custom CRM Dedupe Shields</li>
+            <li>Live paired engineering session & handover</li>
+          </ul>
+          <button class="sg-btn sg-btn-primary sg-btn-magnetic" data-stripe-product="revenue-engine-sprint">
+            <span>Start 14-Day Sprint</span>
+          </button>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="sg-price-card" style="border-color: var(--sg-signal); box-shadow: 0 12px 32px rgba(0,194,255,0.1);">
+          <div class="sg-price-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h3>30-Day Build Sprint</h3>
+              <span style="font-size: 11px; font-weight: 700; background: var(--sg-signal); color: var(--sg-ink); padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">Fast-track</span>
+            </div>
+            <p style="color: var(--sg-slate); font-size: 14px;">Full-architecture turnkey</p>
+          </div>
+          <div class="sg-price-amount">$4,999<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
+          <ul class="sg-feature-list">
+            <li>All 3 Core Engines deployed (Full Architecture)</li>
+            <li>Accelerated turnkey delivery</li>
+            <li>Custom multi-tool connectors & scrapers</li>
+            <li>Executive revenue telemetry dashboard</li>
+          </ul>
+          <button class="sg-btn sg-btn-primary sg-btn-magnetic" style="background: var(--sg-signal); border-color: var(--sg-signal); color: var(--sg-ink);" data-stripe-product="priority-build">
+            <span>Start 30-Day Sprint</span>
+          </button>
+        </div>
+
+        <!-- Tier 4 -->
+        <div class="sg-price-card">
+          <div class="sg-price-header">
+            <h3>Fractional GTM Engineer</h3>
+            <p style="color: var(--sg-slate); font-size: 14px;">Embedded, ongoing engineering</p>
+          </div>
+          <div class="sg-price-amount">$19,999<span style="font-size: 16px; color: var(--sg-slate);"> / mo</span></div>
+          <ul class="sg-feature-list">
+            <li>Dedicated fractional engineer, monthly</li>
+            <li>Continuous engine tuning & new builds</li>
+            <li>Weekly engineering standups</li>
+            <li>Cancel anytime — the on-ramp to a named retainer</li>
+          </ul>
+          <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="monitoring-tuneups">
+            <span>Start Fractional</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- FAQ Section -->
     <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-line); padding: 140px 24px;">
@@ -279,8 +355,13 @@
         </div>
 
         <div class="gs-reveal" style="margin-bottom: 48px;">
-          <h4 style="font-size: 24px; margin-bottom: 12px;">How does the $299 GTM Teardown work?</h4>
-          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">You get a comprehensive audit of your current stack, mapping out data flows and bottlenecks. If you decide to proceed with a Sprint or Priority Build, the $299 is fully credited toward that engagement.</p>
+          <h4 style="font-size: 24px; margin-bottom: 12px;">How does the $999 GTM Teardown work?</h4>
+          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">You get a comprehensive audit of your current stack, mapping out data flows and bottlenecks. If you decide to proceed with a Sprint or a Foundation retainer, the $999 is fully credited toward that engagement.</p>
+        </div>
+
+        <div class="gs-reveal" style="margin-bottom: 48px;">
+          <h4 style="font-size: 24px; margin-bottom: 12px;">Why does a retainer cost more than a rented agency?</h4>
+          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">It doesn't rent anything. A named retainer buys dedicated engineers building owned infrastructure inside your stack. When the engagement ends, the code, data, and workflows stay yours. See the full breakdown on <a href="engagements.html" style="color: var(--sg-action); font-weight: 600;">Engagements</a>.</p>
         </div>
 
       </div>
@@ -289,8 +370,9 @@
 
   <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
     <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-      <div style="display: flex; justify-content: center; gap: 24px;">
+      <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
         <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="engagements.html" style="color: var(--sg-mist); text-decoration: none;">Engagements</a>
         <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
         <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
         <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>

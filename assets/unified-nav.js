@@ -7,6 +7,7 @@
   'use strict';
 
   var LINKS = [
+    { href: 'engagements.html', label: 'Engagements' },
     { href: 'services.html', label: 'Engines' },
     { href: 'process.html', label: 'How it works' },
     { href: 'pricing.html', label: 'Pricing' },
@@ -58,12 +59,12 @@
 
     var portalBtn = document.createElement('a');
     portalBtn.className = 'sgu-portal-btn';
-    portalBtn.href = 'portal.html';
+    portalBtn.href = 'app.html';
     portalBtn.textContent = 'Client Portal';
 
     var cta = document.createElement('a');
     cta.className = 'sgu-cta-btn';
-    cta.href = 'build-session.html';
+    cta.href = 'pricing.html#studio';
     cta.textContent = 'Get a GTM teardown';
 
     var burger = document.createElement('button');

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Briefing | SalesGency</title>
+  <meta name="description" content="A 30-minute working session with the principal to scope a named annual GTM retainer, or point you to the right starting place.">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/salesgencytokens.css">
+  <link rel="stylesheet" href="assets/unified.css">
+  <link rel="stylesheet" href="assets/premium.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script src="assets/unified-nav.js" defer></script>
+
+  <style>
+    body {
+      background-color: var(--sg-mist);
+      color: var(--sg-ink);
+      font-family: var(--sg-font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: var(--sg-font-display); letter-spacing: -0.02em; color: var(--sg-ink); }
+    .sg-hero {
+      position: relative;
+      padding: 160px 24px 100px;
+      text-align: center;
+      min-height: 48vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .sg-hero h1 { color: var(--sg-white); font-size: clamp(40px, 6vw, 64px); max-width: 800px; margin: 0 auto 20px; line-height: 1.08; }
+    .sg-hero p { color: var(--sg-mist); font-size: clamp(17px, 2.4vw, 20px); max-width: 600px; margin: 0 auto; opacity: 0.9; }
+
+    .sg-briefing-wrap { max-width: 800px; margin: -60px auto 140px; padding: 0 24px; position: relative; z-index: 10; }
+    .sg-briefing-card {
+      background: var(--sg-white);
+      border: 1px solid var(--sg-line);
+      border-radius: var(--sg-radius-m);
+      padding: 48px;
+      box-shadow: 0 24px 64px rgba(10, 20, 40, 0.08);
+    }
+    @media (max-width: 600px) { .sg-briefing-card { padding: 32px 24px; } }
+
+    .sg-form-row { margin-bottom: 24px; }
+    .sg-form-row label {
+      display: block;
+      font-family: var(--sg-font-display);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--sg-ink);
+      margin-bottom: 8px;
+    }
+    .sg-form-row input,
+    .sg-form-row select,
+    .sg-form-row textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border: 1px solid var(--sg-line);
+      border-radius: var(--sg-radius-s);
+      font-family: var(--sg-font-body);
+      font-size: 16px;
+      color: var(--sg-ink);
+      background: var(--sg-mist);
+      transition: border-color 0.2s ease;
+    }
+    .sg-form-row input:focus,
+    .sg-form-row select:focus,
+    .sg-form-row textarea:focus {
+      outline: none;
+      border-color: var(--sg-ink);
+      background: var(--sg-white);
+    }
+    .sg-form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 600px) { .sg-form-grid-2 { grid-template-columns: 1fr; } }
+
+    #sg-studio-nudge {
+      display: none;
+      margin-bottom: 28px;
+      padding: 20px 22px;
+      border-radius: var(--sg-radius-m);
+      background: rgba(0, 194, 255, 0.08);
+      border: 1px solid rgba(0, 194, 255, 0.35);
+      font-size: 15px;
+      color: var(--sg-ink);
+      line-height: 1.55;
+    }
+    #sg-studio-nudge a { color: var(--sg-action); font-weight: 700; text-decoration: none; }
+    #sg-studio-nudge a:hover { text-decoration: underline; }
+
+    .sg-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 16px 24px; border-radius: 10px;
+      font-family: var(--sg-font-display); font-weight: 600; font-size: 16px;
+      text-decoration: none; cursor: pointer; border: none; width: 100%; box-sizing: border-box;
+    }
+    .sg-btn-primary { background: var(--sg-ink); color: var(--sg-white); }
+    .sg-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    #sg-confirm {
+      display: none;
+      text-align: center;
+      padding: 8px 0 4px;
+    }
+    #sg-confirm h3 { font-size: 26px; margin-bottom: 12px; }
+    #sg-confirm p { color: var(--sg-slate); font-size: 16px; margin-bottom: 28px; }
+
+    .sg-trust-line { text-align: center; color: var(--sg-muted); font-size: 13px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="sg-hero">
+      <div class="sg-mesh-bg"><div class="sg-mesh-blob cyan"></div><div class="sg-mesh-blob indigo"></div></div>
+      <div class="sg-relative-content">
+        <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">Request a Briefing</span>
+        <h1 class="sg-hero-title gs-reveal">30 minutes with the principal.</h1>
+        <p class="gs-reveal">No deck, no pitch. Bring your current stack and we'll tell you plainly whether a retainer is the right next step.</p>
+      </div>
+    </section>
+
+    <div class="sg-briefing-wrap gs-reveal">
+      <div class="sg-briefing-card">
+
+        <div id="sg-studio-nudge"></div>
+
+        <form id="sg-briefing-form" novalidate>
+          <div class="sg-form-grid-2">
+            <div class="sg-form-row">
+              <label for="sg-name">Full name</label>
+              <input type="text" id="sg-name" name="name" required>
+            </div>
+            <div class="sg-form-row">
+              <label for="sg-title">Title</label>
+              <input type="text" id="sg-title" name="title" placeholder="CEO, CRO, VP Sales…" required>
+            </div>
+          </div>
+
+          <div class="sg-form-grid-2">
+            <div class="sg-form-row">
+              <label for="sg-email">Work email</label>
+              <input type="email" id="sg-email" name="email" required>
+            </div>
+            <div class="sg-form-row">
+              <label for="sg-company">Company</label>
+              <input type="text" id="sg-company" name="company" required>
+            </div>
+          </div>
+
+          <div class="sg-form-row">
+            <label for="sg-arr">Annual recurring revenue</label>
+            <select id="sg-arr" name="arr" required>
+              <option value="">Select a range…</option>
+              <option value="under-2m">Under $2M ARR</option>
+              <option value="2m-10m">$2M – $10M ARR</option>
+              <option value="10m-50m">$10M – $50M ARR</option>
+              <option value="50m-plus">$50M+ ARR</option>
+            </select>
+          </div>
+
+          <div class="sg-form-row">
+            <label for="sg-tier">Engagement of interest</label>
+            <select id="sg-tier" name="tier">
+              <option value="not-sure">Not sure yet — help me decide</option>
+              <option value="foundation">Foundation — $250,000/yr</option>
+              <option value="command">Command — $500,000/yr</option>
+              <option value="board">Board — $1,000,000/yr</option>
+            </select>
+          </div>
+
+          <div class="sg-form-row">
+            <label for="sg-context">Where is revenue leaking today?</label>
+            <textarea id="sg-context" name="context" rows="4" placeholder="Current stack, biggest bottleneck, budget owner…"></textarea>
+          </div>
+
+          <button type="submit" class="sg-btn sg-btn-primary sg-btn-magnetic" id="sg-submit-btn">
+            <span>Request a briefing</span>
+          </button>
+          <p class="sg-trust-line">Opens a prefilled email to the principal. Nothing is sent automatically, and nothing is shared.</p>
+        </form>
+
+        <div id="sg-confirm">
+          <h3>Your briefing request is drafted.</h3>
+          <p>We opened your email client with everything filled in — just hit send. We reply within one business day.</p>
+          <a href="index.html" class="sg-btn sg-btn-primary" style="width: auto; padding-left: 32px; padding-right: 32px; display: inline-flex;">
+            <span>Back to Home</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="engagements.html" style="color: var(--sg-mist); text-decoration: none;">Engagements</a>
+        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
+      </div>
+      <div style="opacity: 0.7;">SalesGency is a d/b/a of Diamitani Industries.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+      document.querySelectorAll(".gs-reveal").forEach((el, index) => {
+        gsap.to(el, {
+          scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none reverse" },
+          opacity: 1, y: 0, visibility: "visible", duration: 0.7, ease: "power3.out",
+          delay: (el.closest('.sg-hero') ? index * 0.1 : 0)
+        });
+      });
+
+      // Preselect tier from ?tier= query param (set by engagements.html cards)
+      const params = new URLSearchParams(window.location.search);
+      const tierParam = params.get('tier');
+      const tierSelect = document.getElementById('sg-tier');
+      if (tierParam && tierSelect.querySelector('option[value="' + tierParam + '"]')) {
+        tierSelect.value = tierParam;
+      }
+
+      // Live ARR-based studio nudge — mirrors what a $250k+ retainer actually requires
+      const arrSelect = document.getElementById('sg-arr');
+      const nudge = document.getElementById('sg-studio-nudge');
+      arrSelect.addEventListener('change', () => {
+        if (arrSelect.value === 'under-2m') {
+          nudge.style.display = 'block';
+          nudge.innerHTML = 'Based on your revenue, a named annual retainer likely isn\'t the right fit yet. ' +
+            'The <a href="pricing.html#studio">SalesGency Studio</a> — a $999 GTM Teardown, credited in full toward a future retainer, ' +
+            'or a 14-/30-day Build Sprint — is the honest place to start. You\'re welcome to submit this briefing anyway.';
+        } else {
+          nudge.style.display = 'none';
+        }
+      });
+
+      // Submit: build a mailto with the form data (no backend required, no fake success)
+      const form = document.getElementById('sg-briefing-form');
+      const submitBtn = document.getElementById('sg-submit-btn');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('sg-name').value.trim();
+        const title = document.getElementById('sg-title').value.trim();
+        const email = document.getElementById('sg-email').value.trim();
+        const company = document.getElementById('sg-company').value.trim();
+        const arr = arrSelect.options[arrSelect.selectedIndex]?.text || '';
+        const tier = tierSelect.options[tierSelect.selectedIndex]?.text || '';
+        const context = document.getElementById('sg-context').value.trim();
+
+        if (!name || !title || !email || !company || !arrSelect.value) {
+          form.reportValidity();
+          return;
+        }
+
+        const subject = encodeURIComponent('Briefing request — ' + company + ' (' + tier + ')');
+        const body = encodeURIComponent(
+          'Name: ' + name + '\n' +
+          'Title: ' + title + '\n' +
+          'Email: ' + email + '\n' +
+          'Company: ' + company + '\n' +
+          'ARR: ' + arr + '\n' +
+          'Engagement of interest: ' + tier + '\n\n' +
+          'Where revenue is leaking:\n' + (context || '(not provided)')
+        );
+
+        window.location.href = 'mailto:Patrick.Diamitani@gmail.com?subject=' + subject + '&body=' + body;
+
+        form.style.display = 'none';
+        document.getElementById('sg-confirm').style.display = 'block';
+      });
+
+      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
+      magneticButtons.forEach((btn) => {
+        const text = btn.querySelector("span");
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const h = rect.width / 2, v = rect.height / 2;
+          const x = e.clientX - rect.left - h, y = e.clientY - rect.top - v;
+          gsap.to(btn, { x: x * 0.15, y: y * 0.15, duration: 0.4, ease: "power2.out" });
+          if (text) gsap.to(text, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          if (text) gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

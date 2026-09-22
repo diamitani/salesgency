@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engagements | SalesGency</title>
+  <meta name="description" content="Named annual GTM engineering retainers for CEOs and CROs. Foundation, Command, and Board — briefing first, code owned forever.">
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/salesgencytokens.css">
+  <link rel="stylesheet" href="assets/unified.css">
+  <link rel="stylesheet" href="assets/premium.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script src="assets/unified-nav.js" defer></script>
+
+  <style>
+    body {
+      background-color: var(--sg-mist);
+      color: var(--sg-ink);
+      font-family: var(--sg-font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--sg-font-display);
+      letter-spacing: -0.02em;
+      color: var(--sg-ink);
+    }
+    .sg-hero {
+      position: relative;
+      padding: 180px 24px 120px;
+      text-align: center;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .sg-hero h1 {
+      color: var(--sg-white);
+      font-size: clamp(44px, 7vw, 76px);
+      max-width: 920px;
+      margin: 0 auto 24px;
+      line-height: 1.05;
+    }
+    .sg-hero p {
+      color: var(--sg-mist);
+      font-size: clamp(18px, 3vw, 22px);
+      max-width: 680px;
+      margin: 0 auto 16px;
+      opacity: 0.9;
+    }
+    .sg-section { padding: 120px 24px; max-width: 1200px; margin: 0 auto; }
+    .sg-section-header { margin-bottom: 72px; text-align: center; }
+    .sg-section-header h2 { font-size: clamp(36px, 4.5vw, 52px); margin-bottom: 20px; line-height: 1.1; }
+    .sg-section-header p { color: var(--sg-slate); font-size: 19px; max-width: 640px; margin: 0 auto; }
+
+    /* Retainer cards */
+    .sg-retainer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .sg-retainer-grid { grid-template-columns: 1fr; }
+    }
+    .sg-retainer-card {
+      background: var(--sg-white);
+      border: 1px solid var(--sg-line);
+      border-radius: var(--sg-radius-m);
+      padding: 44px 36px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .sg-retainer-card.featured {
+      border: 2px solid var(--sg-ink);
+      box-shadow: 0 24px 64px rgba(10, 20, 40, 0.10);
+      transform: translateY(-8px);
+    }
+    .sg-retainer-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sg-ink);
+      color: var(--sg-white);
+      font-size: 12px;
+      padding: 6px 16px;
+      border-radius: var(--sg-radius-pill);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .sg-retainer-name { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sg-action); margin-bottom: 16px; }
+    .sg-retainer-amount { font-family: var(--sg-font-display); font-size: 44px; font-weight: 800; color: var(--sg-ink); line-height: 1; margin-bottom: 4px; }
+    .sg-retainer-cadence { color: var(--sg-muted); font-size: 14px; margin-bottom: 28px; }
+    .sg-retainer-desc { color: var(--sg-slate); font-size: 16px; margin-bottom: 28px; }
+    .sg-retainer-list { list-style: none; padding: 0; margin: 0 0 32px 0; flex-grow: 1; }
+    .sg-retainer-list li { font-size: 15px; color: var(--sg-slate); margin-bottom: 14px; display: flex; gap: 10px; align-items: flex-start; }
+    .sg-retainer-list li::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sg-signal);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .sg-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 10px;
+      font-family: var(--sg-font-display);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .sg-btn-primary { background: var(--sg-ink); color: var(--sg-white); }
+    .sg-btn-secondary { background: transparent; border: 1px solid var(--sg-line); color: var(--sg-ink); }
+    .sg-btn-secondary:hover { background: var(--sg-mist); border-color: var(--sg-ink); }
+
+    /* Comparison table */
+    .sg-compare-wrap { overflow-x: auto; border: 1px solid var(--sg-line); border-radius: var(--sg-radius-m); background: var(--sg-white); }
+    table.sg-compare { width: 100%; border-collapse: collapse; min-width: 720px; }
+    table.sg-compare th, table.sg-compare td {
+      padding: 18px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--sg-line);
+      font-size: 15px;
+    }
+    table.sg-compare th { font-family: var(--sg-font-display); font-weight: 700; color: var(--sg-ink); background: var(--sg-mist); }
+    table.sg-compare td { color: var(--sg-slate); }
+    table.sg-compare td:first-child, table.sg-compare th:first-child { font-weight: 600; color: var(--sg-ink); }
+    table.sg-compare tr:last-child td { border-bottom: none; }
+    table.sg-compare td.sg-check { color: var(--sg-action); font-weight: 700; }
+
+    .sg-decline-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 700px) { .sg-decline-list { grid-template-columns: 1fr; } }
+    .sg-decline-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 20px; background: var(--sg-white); border: 1px solid var(--sg-line); border-radius: var(--sg-radius-m);
+      font-size: 15px; color: var(--sg-slate);
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Hero -->
+    <section class="sg-hero">
+      <div class="sg-mesh-bg">
+        <div class="sg-mesh-blob cyan"></div>
+        <div class="sg-mesh-blob indigo"></div>
+      </div>
+      <div class="sg-relative-content">
+        <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">For CEOs &amp; CROs</span>
+        <h1 class="sg-hero-title gs-reveal">
+          Named retainers. <span class="sg-signature-gradient">Owned infrastructure.</span>
+        </h1>
+        <p class="gs-reveal">
+          A dedicated GTM engineering team assigned to your revenue architecture, on a named annual retainer.
+          Not a rented tool. Not an agency subscription. Code you own, built by people you can call.
+        </p>
+        <div class="gs-reveal" style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
+          <a href="request-briefing.html" class="sg-btn sg-btn-primary sg-btn-magnetic" style="width: auto; padding-left: 32px; padding-right: 32px;">
+            <span>Request a briefing</span>
+          </a>
+          <a href="pricing.html#studio" class="sg-btn sg-btn-outline-light sg-btn-magnetic" style="width: auto; padding-left: 32px; padding-right: 32px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: var(--sg-white);">
+            <span>Not there yet? See studio pricing</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The three retainers -->
+    <section class="sg-section">
+      <div class="sg-section-header gs-reveal">
+        <span class="sg-eyebrow" style="color: var(--sg-action);">The Engagements</span>
+        <h2>Three annual retainers. One decision.</h2>
+        <p>Every retainer is a briefing first, never a self-serve cart. We meet, we scope your GTM stack, and we tell you plainly whether the fit is right before either side commits.</p>
+      </div>
+
+      <div class="sg-retainer-grid gs-reveal">
+        <!-- Foundation -->
+        <div class="sg-retainer-card">
+          <div class="sg-retainer-name">Foundation</div>
+          <div class="sg-retainer-amount">$250,000</div>
+          <div class="sg-retainer-cadence">per year, billed quarterly</div>
+          <p class="sg-retainer-desc">One dedicated engineer embedded with your team. The entry point for a CRO who needs one revenue engine built right, owned outright, and maintained.</p>
+          <ul class="sg-retainer-list">
+            <li>1 dedicated GTM engineer</li>
+            <li>1 core engine live (Inbound, Outbound, or Deal Intelligence)</li>
+            <li>Quarterly roadmap &amp; architecture review</li>
+            <li>Dedicated Slack channel, 2 business-day SLA</li>
+            <li>100% code and data ownership, forever</li>
+            <li>$999 GTM Teardown fully credited if you started there</li>
+          </ul>
+          <a href="request-briefing.html?tier=foundation" class="sg-btn sg-btn-secondary sg-btn-magnetic">
+            <span>Request a briefing</span>
+          </a>
+        </div>
+
+        <!-- Command -->
+        <div class="sg-retainer-card featured">
+          <div class="sg-retainer-badge">Typical start</div>
+          <div class="sg-retainer-name">Command</div>
+          <div class="sg-retainer-amount">$500,000</div>
+          <div class="sg-retainer-cadence">per year, billed quarterly</div>
+          <p class="sg-retainer-desc">Where most CROs land. Two engineers, all three engines, and a monthly executive readout your board actually reads.</p>
+          <ul class="sg-retainer-list">
+            <li>2 dedicated GTM engineers + architect oversight</li>
+            <li>All 3 core engines: Inbound, Outbound, Deal Intelligence</li>
+            <li>Monthly executive revenue-architecture readout</li>
+            <li>Direct integration with your existing RevOps stack</li>
+            <li>Priority SLA, same business-day response</li>
+            <li>100% code and data ownership, forever</li>
+          </ul>
+          <a href="request-briefing.html?tier=command" class="sg-btn sg-btn-primary sg-btn-magnetic">
+            <span>Request a briefing</span>
+          </a>
+        </div>
+
+        <!-- Board -->
+        <div class="sg-retainer-card">
+          <div class="sg-retainer-name">Board</div>
+          <div class="sg-retainer-amount">$1,000,000</div>
+          <div class="sg-retainer-cadence">per year, billed quarterly</div>
+          <p class="sg-retainer-desc">A full embedded pod covering GTM, CS, and RevOps architecture, reporting directly into strategic planning.</p>
+          <ul class="sg-retainer-list">
+            <li>3+ engineers and a dedicated architect</li>
+            <li>Custom agent builds across GTM, CS, and RevOps</li>
+            <li>Embedded in quarterly strategic planning</li>
+            <li>Board-ready reporting package every quarter</li>
+            <li>Same-day SLA, direct line to the principal</li>
+            <li>100% code and data ownership, forever</li>
+          </ul>
+          <a href="request-briefing.html?tier=board" class="sg-btn sg-btn-secondary sg-btn-magnetic">
+            <span>Request a briefing</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="sg-section" style="background: var(--sg-white); max-width: 100%; border-top: 1px solid var(--sg-line); border-bottom: 1px solid var(--sg-line);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="sg-section-header gs-reveal" style="text-align: left; margin-bottom: 48px;">
+          <span class="sg-eyebrow" style="color: var(--sg-action);">Send This Upstairs</span>
+          <h2>The comparison your CFO will ask for.</h2>
+        </div>
+        <div class="sg-compare-wrap gs-reveal">
+          <table class="sg-compare">
+            <thead>
+              <tr>
+                <th>Engagement</th>
+                <th>Foundation</th>
+                <th>Command</th>
+                <th>Board</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Annual investment</td>
+                <td>$250,000</td>
+                <td>$500,000</td>
+                <td>$1,000,000</td>
+              </tr>
+              <tr>
+                <td>Dedicated engineers</td>
+                <td>1</td>
+                <td>2 + architect</td>
+                <td>3+ &amp; dedicated architect</td>
+              </tr>
+              <tr>
+                <td>Engines included</td>
+                <td>1 core engine</td>
+                <td>All 3 core engines</td>
+                <td>All 3 + custom CS/RevOps builds</td>
+              </tr>
+              <tr>
+                <td>Executive reporting</td>
+                <td>Quarterly</td>
+                <td>Monthly</td>
+                <td>Quarterly, board-ready</td>
+              </tr>
+              <tr>
+                <td>SLA response</td>
+                <td>2 business days</td>
+                <td>Same business day</td>
+                <td>Same day, direct to principal</td>
+              </tr>
+              <tr>
+                <td>Code &amp; data ownership</td>
+                <td class="sg-check">Yes, forever</td>
+                <td class="sg-check">Yes, forever</td>
+                <td class="sg-check">Yes, forever</td>
+              </tr>
+              <tr>
+                <td>Ideal for</td>
+                <td>First dedicated GTM build</td>
+                <td>Full-funnel automation, one CRO owner</td>
+                <td>Multi-department GTM/CS/RevOps strategy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we decline -->
+    <section class="sg-section">
+      <div class="sg-section-header gs-reveal">
+        <span class="sg-eyebrow" style="color: var(--sg-action);">Fit, Both Ways</span>
+        <h2>Who we decline.</h2>
+        <p>A retainer is a real commitment on both sides. We say no upfront rather than take a check we can't deliver against.</p>
+      </div>
+      <ul class="sg-decline-list gs-reveal">
+        <li>Teams without a named budget owner at the CEO or CRO level who can approve a six-figure annual engagement.</li>
+        <li>Anyone looking for a rented SaaS seat rather than infrastructure they'll own outright when the engagement ends.</li>
+        <li>Organizations unwilling to grant engineering access to their CRM and revenue stack — we build inside your systems, not around them.</li>
+        <li>Companies under roughly $2M ARR without a clear near-term path past it. The Studio, not a retainer, is the honest starting point there.</li>
+      </ul>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="sg-hero" style="min-height: auto; padding: 140px 24px;">
+      <div class="sg-mesh-bg" style="opacity: 0.3;">
+        <div class="sg-mesh-blob cyan" style="left: auto; right: -10vw; top: -10vw;"></div>
+      </div>
+      <div class="sg-relative-content">
+        <h2 class="gs-reveal" style="color: var(--sg-white); font-size: clamp(36px, 4.5vw, 56px); margin-bottom: 24px; max-width: 800px; line-height: 1.1;">Bring your CRO. We'll bring the architecture.</h2>
+        <p class="gs-reveal" style="color: var(--sg-mist); max-width: 560px; margin: 0 auto 40px; font-size: 19px;">
+          A briefing is a 30-minute working session with the principal — no deck, no pitch, just your current stack and where it's leaking revenue.
+        </p>
+        <div class="gs-reveal">
+          <a href="request-briefing.html" class="sg-btn sg-btn-primary sg-btn-magnetic" style="width: auto; padding-left: 32px; padding-right: 32px;">
+            <span>Request a briefing</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
+        <a href="engagements.html" style="color: var(--sg-mist); text-decoration: none;">Engagements</a>
+        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
+        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
+        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
+        <a href="process.html" style="color: var(--sg-mist); text-decoration: none;">Process</a>
+      </div>
+      <div style="opacity: 0.7;">
+        SalesGency is a d/b/a of Diamitani Industries.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+      const revealElements = document.querySelectorAll(".gs-reveal");
+      revealElements.forEach((el, index) => {
+        gsap.to(el, {
+          scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none reverse" },
+          opacity: 1, y: 0, visibility: "visible", duration: 0.8, ease: "power3.out",
+          delay: (el.closest('.sg-hero') ? index * 0.1 : 0)
+        });
+      });
+      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
+      magneticButtons.forEach((btn) => {
+        const text = btn.querySelector("span");
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const h = rect.width / 2, v = rect.height / 2;
+          const x = e.clientX - rect.left - h, y = e.clientY - rect.top - v;
+          gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
+          if (text) gsap.to(text, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+          if (text) gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
