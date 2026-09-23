@@ -87,7 +87,7 @@
     },
 
     /**
-     * Bind checkout buttons directly - the method marketplace.js and
+     * Bind checkout buttons directly — the method marketplace.js and
      * product-page.js call after rendering dynamic product cards.
      * Safe to call repeatedly; already-bound buttons are skipped.
      */

@@ -6,12 +6,12 @@ Research a company using its website URL or a text description, then map finding
 
 You will receive one or both of:
 
-- **Company URL** - a website to fetch and analyze
-- **Company description** - freeform text about what the business does
+- **Company URL** — a website to fetch and analyze
+- **Company description** — freeform text about what the business does
 
 ### Instructions
 
-#### Step 1 - Gather company information from the web
+#### Step 1 — Gather company information from the web
 
 **If a URL is provided:**
 
@@ -19,27 +19,27 @@ You will receive one or both of:
 
 2. Attempt to fetch deeper pages for additional signals. Try these URL suffixes in parallel and use whatever succeeds:
 
-   - `/about`, `/about-us`, `/how-it-works` - for business model clarity
-   - `/pricing`, `/plans` - for fee structure
+   - `/about`, `/about-us`, `/how-it-works` — for business model clarity
+   - `/pricing`, `/plans` — for fee structure
 
 3. If the homepage fetch fails (403, 404, timeout, empty content), fall back to `WebSearch` using the domain name plus “business model how it works”.
 
 **If only a description is provided (no URL):**
 
 1. `WebSearch` for the company name (if identifiable) plus “business model” and “pricing”.
-2. If the description is generic (for example, “I’m building a marketplace”), skip web search - classify directly from the description text. Maximum confidence for description-only inferences is MEDIUM.
+2. If the description is generic (for example, “I’m building a marketplace”), skip web search — classify directly from the description text. Maximum confidence for description-only inferences is MEDIUM.
 
 **If both `WebFetch` and `WebSearch` are unavailable or fail:**
 
 If no description text is available (URL-only input and web research failed), return the early-exit output from Step 4 with all dimensions set to LOW confidence and the note: “Web research unavailable and no description provided. Cannot perform research.”
 
-Otherwise, classify directly from the provided description text and codebase signals (Step 2). Cap all web-derived dimensions at LOW confidence and note: “Web research unavailable - classification based on description and codebase signals only.”
+Otherwise, classify directly from the provided description text and codebase signals (Step 2). Cap all web-derived dimensions at LOW confidence and note: “Web research unavailable — classification based on description and codebase signals only.”
 
 **If neither URL nor description is provided:**
 
 Return the early-exit output (see Step 4 failure format) with all dimensions set to LOW confidence and the note: “No company URL or description provided. Cannot perform research.”
 
-#### Step 2 - Cross-reference with codebase signals (if a project exists)
+#### Step 2 — Cross-reference with codebase signals (if a project exists)
 
 Check if there’s an existing project to scan:
 
@@ -54,9 +54,9 @@ Check if there’s an existing project to scan:
 
 3. Use codebase signals to corroborate or strengthen web research findings. For example, if the homepage says “marketplace” and the codebase has terms like `commission`, `payout`, `split`, `listing`, `booking`, `cart`, `order`, `storefront`, or `seller`/`vendor`/`provider` patterns, that’s stronger confirmation.
 
-#### Step 3 - Assess confidence per dimension
+#### Step 3 — Assess confidence per dimension
 
-For each of the 6 dimensions below, report what you found and how confident you are. Do NOT interpret the decision matrix or derive a recommended configuration - that happens downstream.
+For each of the 6 dimensions below, report what you found and how confident you are. Do NOT interpret the decision matrix or derive a recommended configuration — that happens downstream.
 
 | Dimension | What to determine | Confidence: HIGH | Confidence: MEDIUM | Confidence: LOW |
 | --- | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ For each of the 6 dimensions below, report what you found and how confident you 
 | **Dispute responsibility** | Platform handles, sellers handle, or shared | Explicitly stated in terms/policies | Inferred from model (marketplace → platform usually) | No information |
 | **Fee structure** | Percentage, flat, tiered, subscription+tx | Pricing page shows exact fee structure | Inferred from competitor patterns or partial information | No pricing information found |
 
-#### Step 4 - Produce structured output
+#### Step 4 — Produce structured output
 
 Write the Summary section as if speaking directly to the user, using second person. Say “Your barbers are…” not “The barbers are…”. Frame findings as a conversational confirmation seeking validation.
 
@@ -77,7 +77,7 @@ Return your analysis in this exact format:
 ## Company Research: [Company Name or "Unknown"]
 
 ### Summary
-[2-3 sentences speaking directly to the user: what their company does, their key parties, and how money flows. Use "you/your" - for example, "Your platform connects customers with barbers who provide services. You collect payment from customers and pay out barbers after taking a platform fee."]
+[2-3 sentences speaking directly to the user: what their company does, their key parties, and how money flows. Use "you/your" — for example, "Your platform connects customers with barbers who provide services. You collect payment from customers and pay out barbers after taking a platform fee."]
 
 ### Research Findings
 
@@ -94,7 +94,7 @@ Return your analysis in this exact format:
 - [list each URL fetched or search query used]
 ```
 
-#### Step 5 - Handle edge cases
+#### Step 5 — Handle edge cases
 
 | Scenario | What to do |
 | --- | --- |
@@ -102,5 +102,5 @@ Return your analysis in this exact format:
 | **URL is a SPA with minimal HTML** | `WebFetch` may return little content. Fall back to `WebSearch`. Check meta tags and page title. |
 | **Pricing is behind a login** | Fee structure confidence drops to LOW. Note: “Pricing not publicly available.” |
 | **Company does multiple things** | Note the ambiguity. Classify based on the primary product. Set confidence to MEDIUM with reasoning about which facet you chose. |
-| **Not a marketplace or platform** | If the business is purely B2C with no multi-party payments, flag clearly: “This business appears to be a direct seller - standard Stripe integration may be more appropriate than Stripe Connect.” Set Business Model confidence to HIGH with value “not-connect”. |
+| **Not a marketplace or platform** | If the business is purely B2C with no multi-party payments, flag clearly: “This business appears to be a direct seller — standard Stripe integration may be more appropriate than Stripe Connect.” Set Business Model confidence to HIGH with value “not-connect”. |
 | **Conflicting signals** | Note the conflict explicitly. Set confidence to MEDIUM. Provide your best inference with reasoning about why you chose one interpretation over the other. |

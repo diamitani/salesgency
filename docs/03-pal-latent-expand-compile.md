@@ -1,4 +1,4 @@
-# DDC Stage: PAL Latent Intent, Expand & Compile - v1
+# DDC Stage: PAL Latent Intent, Expand & Compile — v1
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `pal_compile`  

@@ -2,7 +2,7 @@
 
 Use this reference when running Step 3 discovery. It contains the full user interaction scripts, option mappings, and edge-case logic.
 
-### Step 3 - Ask remaining discovery questions
+### Step 3 — Ask remaining discovery questions
 
 For any dimension NOT already filled with HIGH confidence from Step 1, ask the corresponding question using AskUserQuestion. Skip questions that were auto-filled. For MEDIUM confidence items where the user confirmed the suggestion, skip those too.
 
@@ -65,7 +65,7 @@ Choose direct charges when the behavior matches SaaS enablement: each seller run
 
 Hold-and-release detection: If the user selects “Platform holds funds, releases to sellers after delivery/confirmation” OR the business description mentions any of: delivery confirmation before payout, hold-and-release, release on completion, manual transfer trigger, multiple sellers per checkout, or shipping with delayed payout, recommend separate charges and transfers. Destination charges transfer funds automatically upon payment success and can’t hold funds. For hold-and-release, the charge is created on the platform (no `transfer_data`), the platform holds funds in its own balance, and after delivery or service confirmation the platform creates a transfer to the connected account.
 
-Don’t describe destination charges as “holding funds before release” or “initiating transfers after delivery” - that language applies only to separate charges and transfers.
+Don’t describe destination charges as “holding funds before release” or “initiating transfers after delivery” — that language applies only to separate charges and transfers.
 
 B2B enterprise carve-out: For B2B enterprise platforms with complex billing, multi-vendor purchase orders, or independent settlement timing, prefer separate charges and transfers over destination charges. B2B platforms often need per-vendor invoicing, partial payments, and independent settlement timing that destination charges can’t support. If the user’s needs exceed typical automated patterns (complex multi-vendor billing, purchase orders), trigger Step 3c (sales-led detection).
 
@@ -79,9 +79,9 @@ What level of Stripe access should your sellers/providers have?
 
 Options:
 
-- “Lightweight Express dashboard - simple view of earnings/payouts (recommended)”
-- “Full Stripe dashboard - sellers manage their own Stripe account independently”
-- “No dashboard - fully embedded or white-labeled in my platform”
+- “Lightweight Express dashboard — simple view of earnings/payouts (recommended)”
+- “Full Stripe dashboard — sellers manage their own Stripe account independently”
+- “No dashboard — fully embedded or white-labeled in my platform”
 
 Map answers to v2 config:
 
@@ -92,7 +92,7 @@ Map answers to v2 config:
 When selecting `dashboard: "none"`, include this warning:
 
 ```
-WARNING: dashboard: none - Full Scope Warning:
+WARNING: dashboard: none — Full Scope Warning:
 - You must build custom onboarding and ongoing remediation logic (higher operational overhead than embedded/hosted)
 - You must build refund management UI (connected accounts have no Stripe dashboard)
 - You must build dispute management flows (connected accounts can't manage disputes themselves)
@@ -160,8 +160,8 @@ If Q1 = Marketplace:
   How do you want to handle fraud protection?
   ```
 - Options:
-  - “Radar defaults - Stripe’s ML-based fraud detection (recommended)”
-  - “Radar + custom rules - add business-specific rules on top (more setup)”
+  - “Radar defaults — Stripe’s ML-based fraud detection (recommended)”
+  - “Radar + custom rules — add business-specific rules on top (more setup)”
   - “Use Stripe defaults for now”
 - Map:
   - Radar defaults → `riskManagement: { owner: "platform", radarEnabled: true, radarCustomRules: false }`
@@ -175,8 +175,8 @@ If Q1 = Platform with service providers or SaaS:
   How do you want to handle fraud protection?
   ```
 - Options:
-  - “Let Stripe manage it - lower implementation overhead (recommended)”
-  - “I’ll manage it with Radar - more control, more complexity”
+  - “Let Stripe manage it — lower implementation overhead (recommended)”
+  - “I’ll manage it with Radar — more control, more complexity”
   - “Use Stripe defaults for now”
 - Map:
   - Stripe-managed → `riskManagement: { owner: "stripe", radarEnabled: false }`
@@ -210,13 +210,13 @@ or fraud occurs. It's separate from fraud detection (Radar handles that).
 
 Example: A customer disputes a $100 charge.
   → Platform-owned: Stripe debits the platform's balance $100. The platform must
-    reverse the prior transfer to recover funds from the connected account - which
+    reverse the prior transfer to recover funds from the connected account — which
     may drive that account's balance negative.
-    Required for marketplaces - `losses_collector: "application"` enables connected
+    Required for marketplaces — `losses_collector: "application"` enables connected
     account balances to go negative for transfer reversals.
   → Stripe-owned: If the connected account's balance goes negative and remains
     unresolved, Stripe absorbs the unrecovered amount.
-    Recommended for SaaS - simpler, connected account is already merchant of record.
+    Recommended for SaaS — simpler, connected account is already merchant of record.
 ```
 
 For marketplace destination or separate:
@@ -231,8 +231,8 @@ Who should bear the financial risk for disputes and fraud losses?
 
 Options:
 
-- “Stripe - simpler, less financial risk (recommended for SaaS)”
-- “My platform - more control, I have a risk team”
+- “Stripe — simpler, less financial risk (recommended for SaaS)”
+- “My platform — more control, I have a risk team”
 - “Explain the tradeoffs”
 
 If user asks for tradeoffs, show side-by-side pros and cons and then re-ask with first two options.
@@ -275,7 +275,7 @@ Options:
 
 #### Q6b: `application_fee_amount` calculation (conditional)
 
-Ask only when charge pattern is destination. Don’t ask about `application_fee_amount` for separate charges and transfers - use transfer math instead. For direct charges with Stripe-owned pricing (`fees_collector: "stripe"`), the connected account pays Stripe fees and this question is moot. For direct charges with platform-owned pricing (`fees_collector: "application"`), the platform pays Stripe fees - use the Platform Pricing Tool.
+Ask only when charge pattern is destination. Don’t ask about `application_fee_amount` for separate charges and transfers — use transfer math instead. For direct charges with Stripe-owned pricing (`fees_collector: "stripe"`), the connected account pays Stripe fees and this question is moot. For direct charges with platform-owned pricing (`fees_collector: "application"`), the platform pays Stripe fees — use the Platform Pricing Tool.
 
 Read the “Fee Calculation & Fee Economics” section in `decision-matrix.md` for full context.
 
@@ -305,7 +305,7 @@ Fee language interpretation rules:
 
 Critical rule: if `applicationFeeIncludes = "stripe_fee_estimate"`, `application_fee_amount` must include both platform fee and Stripe fee estimate.
 
-### Step 3b - Hybrid business model detection
+### Step 3b — Hybrid business model detection
 
 If the business has two distinct payment flows (for example, SaaS + marketplace), don’t force one charge pattern.
 
@@ -320,7 +320,7 @@ If the business has two distinct payment flows (for example, SaaS + marketplace)
 3. Explain shared account reality: the same connected account may participate in multiple flows.
 4. Show fee arithmetic separately for each side.
 
-### Step 3c - Sales-led and scope detection
+### Step 3c — Sales-led and scope detection
 
 Trigger this check when any of these appear:
 

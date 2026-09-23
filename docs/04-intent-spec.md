@@ -1,4 +1,4 @@
-# DDC Stage: Intent Specification - v1
+# DDC Stage: Intent Specification — v1
 
 **Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `intent`  

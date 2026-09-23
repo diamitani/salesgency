@@ -14,7 +14,7 @@ Connect offers three ways to create charges involving connected accounts. The ch
 | **Platform fee** | `application_fee_amount` | `application_fee_amount` or calculate using `transfer_data.amount` | Manual calculation |
 | **Refund source** | Connected account’s balance | Platform’s balance | Platform’s balance |
 | **Multi-seller split** | No (one seller per charge) | No (one destination per charge) | Yes (multiple transfers) |
-| **Account requirements** | Most v2 configs - see BLOCKED combinations in the controller compatibility note below; the only charge type safe with `losses_collector: 'stripe'` | Requires `losses_collector: 'application'` | Requires `losses_collector: 'application'` |
+| **Account requirements** | Most v2 configs — see BLOCKED combinations in the controller compatibility note below; the only charge type safe with `losses_collector: 'stripe'` | Requires `losses_collector: 'application'` | Requires `losses_collector: 'application'` |
 | **Complexity** | Low | Low | High |
 | **Best for** | SaaS, seller-owned transactions | Marketplaces, on-demand | Multi-seller carts, complex splits |
 
@@ -24,7 +24,7 @@ Connect offers three ways to create charges involving connected accounts. The ch
 
 #### How it works
 
-The charge is created directly on the connected account. The connected account is the merchant of record - their name appears on the customer’s bank statement. The platform collects an application fee.
+The charge is created directly on the connected account. The connected account is the merchant of record — their name appears on the customer’s bank statement. The platform collects an application fee.
 
 #### Code pattern
 
@@ -178,7 +178,7 @@ const refund = await stripe.refunds.create({
 - When you want the platform name on bank statements
 - Express dashboard accounts (common pairing)
 - When the platform handles disputes
-- **NOT for hold-and-release or delivery-gated payouts** - funds transfer automatically to the connected account upon payment success. Use separate charges and transfers for delivery-gated payouts or any scenario requiring the platform to hold funds before releasing.
+- **NOT for hold-and-release or delivery-gated payouts** — funds transfer automatically to the connected account upon payment success. Use separate charges and transfers for delivery-gated payouts or any scenario requiring the platform to hold funds before releasing.
 
 #### Destination Charges with `on_behalf_of`
 
@@ -186,15 +186,15 @@ const refund = await stripe.refunds.create({
 > 
 > If your integration requires `on_behalf_of`, consult the [Stripe Connect documentation](https://docs.stripe.com/connect/charges.md) or [contact Stripe sales](https://stripe.com/contact/sales).
 > 
-> **Do NOT use `on_behalf_of` for marketplace use cases** - the platform should be the merchant of record. Use regular destination charges instead.
+> **Do NOT use `on_behalf_of` for marketplace use cases** — the platform should be the merchant of record. Use regular destination charges instead.
 
 ### Separate Charges and Transfers
 
-> **Controller Property Compatibility:** REQUIRES `losses_collector: 'application'`. Same negative balance liability issue as destination charges - using separate charges and transfers with `losses_collector: 'stripe'` means the platform actually carries the losses despite the configuration. See `compatibility-matrix.md` for details.
+> **Controller Property Compatibility:** REQUIRES `losses_collector: 'application'`. Same negative balance liability issue as destination charges — using separate charges and transfers with `losses_collector: 'stripe'` means the platform actually carries the losses despite the configuration. See `compatibility-matrix.md` for details.
 
 #### How it works
 
-The charge and transfer are separate API calls. This gives maximum flexibility - you can split a single payment across multiple connected accounts, delay transfers, or create complex fee structures.
+The charge and transfer are separate API calls. This gives maximum flexibility — you can split a single payment across multiple connected accounts, delay transfers, or create complex fee structures.
 
 #### Code pattern
 
@@ -208,7 +208,7 @@ const paymentIntent = await stripe.paymentIntents.create({
   },
 });
 
-// Step 2: After payment_intent.succeeded webhook fires - latest_charge is null
+// Step 2: After payment_intent.succeeded webhook fires — latest_charge is null
 // at creation time and only populated on the confirmed PaymentIntent from the event
 // IMPORTANT: Always verify the webhook signature before processing event data.
 // See https://stripe.com/docs/webhooks/signatures for verification steps.
@@ -233,7 +233,7 @@ await stripe.paymentIntents.create({
   currency: 'usd',
 });
 
-// After payment_intent.succeeded webhook fires - latest_charge is null at creation time.
+// After payment_intent.succeeded webhook fires — latest_charge is null at creation time.
 // IMPORTANT: Always verify the webhook signature before processing event data.
 // See https://stripe.com/docs/webhooks/signatures for verification steps.
 const confirmedIntent = event.data.object; // payment_intent.succeeded payload

@@ -1,94 +1,65 @@
-# DDC Stage: Design System & Taste Specification - v2.0
+# DDC Stage: Design System & Taste Specification — v1
 
-**Run ID:** `ddc_20260921_salesgency_live`  
+**Run ID:** `ddc_20260910_prompt2app_init`  
 **Stage:** `design_system`  
-**Framework:** Delali Development Cycle (DDC) Planning Runtime v2.0.0  
-**Status:** Approved  
-**Timestamp:** 2026-09-21T02:14:00-05:00  
+**Framework:** Delali Development Cycle (DDC) Planning Runtime v1.0.0  
+**Timestamp:** 2026-09-10T22:36:00-05:00  
 
 ---
 
 ## 1. Design Philosophy & Anti-Slop Principles
-
-SalesGency's interface design embodies industrial precision, technical authority, and zero generic AI slop:
-- **Depth & Layered Obsidian Surfaces:** Avoiding flat dull grays in favor of deep obsidian tones (`#070A11`, `#0B0F19`, `#0F172A`) paired with paper-white clean reading planes (`#F8FAFC`, `#FFFFFF`).
-- **Precision Color Accents:** Phosphor Blue (`#1B6FD8`), Midnight Blue (`#0A2540`), and Electric Glow (`#60A5FA`), engineered to evoke high-reliability infrastructure rather than marketing fluff.
-- **Micro-Delight & Interactive Feedback:** Subtly glowing borders on focus, smooth card lift transitions (`translateY(-2px)`), crisp status chips, and interactive code preview blocks.
-- **Zero Ambiguity in Commercial Offerings:** Clear typography, transparent pricing without hidden fees, and single-click checkout or free bypass.
-
----
-
-## 2. Color Palette & WCAG 2.2 AA Contrast Compliance
-
-All color tokens adhere strictly to WCAG 2.2 AA standards, ensuring high readability across light and dark viewports:
-
-| Token Name | Hex / Value | Contrast Ratio | Usage & Placement |
-|---|---|:---:|---|
-| `--text-primary` | `#0F172A` | **15.8:1** (on white) | Primary headings, titles, price tags |
-| `--text-secondary` | `#272E3B` | **12.1:1** (on white) | Subheadings, feature bullets, card descriptions |
-| `--text-tertiary` | `#4B5563` | **7.1:1** (on white) | Metadata, secondary labels, helper text |
-| `--text-dim` | `#52525B` | **6.8:1** (on white) | Footnotes, copyright, subtle timestamps |
-| `--text-inverse-primary` | `#FFFFFF` | **18.2:1** (on dark) | Obsidian navbar wordmark, dark card headings |
-| `--text-inverse-dim` | `rgba(255,255,255,0.78)` | **10.4:1** (on dark) | Dark hero subtext, obsidian card bullets |
-| `--accent` | `#1B6FD8` | **4.9:1** (on white) | Primary action buttons, active links, brand glyphs |
-| `--accent-dark` | `#60A5FA` | **8.2:1** (on dark) | Dark mode highlight badges, phosphor accents |
-| `--bg-obsidian` | `#0B0F19` | N/A | Obsidian dark backgrounds, navbar canvas |
-| `--bg-paper` | `#F8FAFC` | N/A | Clean content reading sections |
+Taking inspiration from the refined dark aesthetic of `prompt2app.prebuiltui.com` and elevating it to enterprise-grade finish:
+- **No generic flat colors:** Deep layered obsidian tones (`#070a11`, `#0d131f`, `#131b2e`).
+- **Gradients & Accents:** Subtle radial glow backgrounds, emerald (`#10b981`), electric cyan (`#06b6d4`), and indigo (`#6366f1`).
+- **Glassmorphism:** Frosted borders with 1px semi-transparent outlines (`rgba(255, 255, 255, 0.08)`), subtle backdrop-filter blurs (`backdrop-filter: blur(16px)`).
+- **Typography:** Modern clean sans-serif stack (`Outfit` / `Inter`, `SF Pro Display`, system fallback) with calibrated line-heights and tight tracking on headings.
+- **Micro-animations:** Hover card scale effects, glowing input outlines on focus, animated terminal typing cursor, and smooth tab transitions.
 
 ---
 
-## 3. Typography Hierarchy
+## 2. Core Tokens
 
-### 3.1 Font Families
-- **Display & Body Font:** `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`
-  - Weights: `300` (light accent), `400` (body), `500` (medium label), `600` (subheading), `700`/`800` (display headings).
-  - Tracking: `-0.03em` to `-0.04em` on large headlines (`clamp(2.4rem, 4.5vw, 3.6rem)`).
-- **Technical & Metric Font:** `'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace`
-  - Used for code blocks, live Stripe price displays (`$199`, `$999`, `$19,999/mo`), currency symbols, and API endpoints.
-
----
-
-## 4. Component Standards
-
-### 4.1 Navigation (`assets/unified-nav.js`)
-- Fixed obsidian header bar with glassmorphism backdrop filter (`backdrop-filter: blur(12px)`).
-- Wordmark: High-contrast white `#FFFFFF` "Sales" + gradient phosphor blue `#60A5FA` "Gency".
-- Universal navigation items: `Platform`, `Solutions`, `Pricing`, `Agency`, `Blueprints`, `Book Architecture Call`.
-- Automated removal of legacy duplicate mobile drawers and unstyled DOM elements (`removeLegacyNav()`).
-
-### 4.2 Buttons (`.btn`)
-- `.btn-primary`: Solid Phosphor Blue background (`#1B6FD8`), white bold text, subtle elevation on hover.
-- `.btn-secondary`: Crisp 1px border (`#D1D5DB`), high-contrast dark text (`#0F172A`), hover background `#F1F5F9`.
-- `.btn-dark`: Deep obsidian button for light paper backgrounds with high contrast.
-- `.btn-block`: Full-width utility for checkout and modal action triggers.
-
-### 4.3 Chips & Badges (`.chip`, `.eyebrow`)
-- `.chip`: Compact pill indicator (`border-radius: 9999px`) with uppercase or title-case text (`0.75rem`).
-- `.chip-accent`: Phosphor blue light background (`rgba(27, 111, 216, 0.08)`) with vibrant text (`#1B6FD8`).
-- `.eyebrow`: Section category kicker with inline colored accent pill (`.eyebrow-accent`).
-
-### 4.4 Cards (`.bundle-card`, `.pricing-card`)
-- Clean white surface (`#FFFFFF`) with 1px border (`var(--border-subtle)`).
-- Featured elevation: Accent blue border outline (`#1B6FD8`) with layered drop shadow (`0 8px 28px rgba(27, 111, 216, 0.08)`).
-- Structured vertical flex layout: Eyebrow + Price tag → Title → Summary → Checkmarked deliverable bullets → CTA button.
+```css
+:root {
+  --bg-dark: #070a11;
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --bg-card-hover: rgba(30, 41, 59, 0.8);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(16, 185, 129, 0.3);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-emerald: #10b981;
+  --accent-cyan: #06b6d4;
+  --accent-indigo: #6366f1;
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #6366f1 100%);
+  --glow-emerald: 0 0 30px rgba(16, 185, 129, 0.2);
+}
+```
 
 ---
 
-## 5. Commercial Ladder Design Alignment
-
-Every page showcasing pricing, packages, or blueprints must adhere to the 15 synchronized live Stripe tiers:
-1. **Pilot Tier:** `$999.00` 1-Hour Live Co-Build Session
-2. **Sprint Tiers:** `$2,999.00` (14-Day Sprint) and `$4,999.00` (30-Day Sprint / Prospect Automation)
-3. **Retainer Tier:** `$19,999.00/mo` Fractional GTM Engineer
-4. **Subscription Tier:** `$99.00/mo` GTM Agent Platform
-5. **Modular Skill Plugins:** `$199.00` (Inbound, PAS Copywriter, Firmographic Enricher, CRM Hygiene, Deliverability DNS, GTM Architect)
-6. **Digital Bundles:** `$19.99` Agent Build Package
-7. **Free Guides:** `$0.00` (Instant zero-friction bypass directly to `/checkout-success.html`)
-
----
-
-## 6. Responsiveness & Accessibility Checklist
-- [x] Responsive layout testing across 375px mobile, 768px tablet, and 1440px desktop.
-- [x] All interactive buttons include visible keyboard `:focus-visible` outlines.
-- [x] Color contrast ratios verified via Chrome DevTools / Lighthouse audits (> 7:1).
-- [x] Screen-reader friendly semantic tags (`<header>`, `<main>`, `<section>`, `<nav>`, `<footer>`).
+## 3. Component Architecture
+1. **Header / Navbar:** Logo mark with pill navigation (`Home`, `Automation Builder`, `Skill Builder`, `Agent Builder`, `Templates`, `Pricing`, `Launch Sandbox`).
+2. **Hero Section:**
+   - Pill badge: `✨ AI-Powered Sales Infrastructure Engine`
+   - Bold display headline: `Build Production Sales Infrastructure with AI`
+   - Subtitle: `No complex manual scripts. Just describe your sales stack and launch autonomous n8n workflows, custom skills, and agent souls instantly.`
+   - Interactive Mode Switcher tabs: `Automation Builder` | `Skill Builder` | `Agent Builder` | `Browse Templates`
+   - Multi-line Smart Prompt Input Bar with live "Generate in Sandbox" button.
+3. **Interactive Agent Sandbox / Terminal:**
+   - Dual-pane layout: Interactive CLI Terminal on left (with simulated live execution stream) + Generated Code Viewer on right (JSON / Markdown with syntax highlighting and instant Download / Copy buttons).
+4. **3 Core Feature Pillars:**
+   - ⚡ *Autonomous System Connectors* (HubSpot, Apollo, Clay, Smartlead, Stripe)
+   - 🧠 *Workflow & Skill Synthesizer* (Deterministic n8n node compiler & PAS prompt architect)
+   - 🛡️ *Sandbox CLI & Isolated Execution* (Live tool calling, AST linting, zero-downtime deployment)
+5. **4-Step Interactive Process:**
+   - *Step 1: Describe Your Stack & Goals*
+   - *Step 2: Agent Handshake & Sandbox Setup*
+   - *Step 3: Synthesis of Workflows & Skills*
+   - *Step 4: Deploy to Stack or Download JSON*
+6. **Template Marketplace & Download Grid:**
+   - Filterable catalog (All, Inbound, Outbound, RevOps, Skills, Agents, Bundles) pulling live from the backend with instant Stripe checkout triggers.
+7. **Pricing & Plans:**
+   - Starter ($49/mo), Pro Growth ($149/mo), Enterprise Scale, plus individual template downloads.
+8. **Testimonial Grid, FAQ & Footer.**

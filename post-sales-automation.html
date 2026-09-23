@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Sales Call Automation | AI Transcript Extraction &amp; CRM Sync — SalesGency®</title>
+  <meta name="description" content="Production Post Sales Call Automation: Instant meeting transcript synthesis, automatic CRM deal stage updates, Linear/Asana task creation, and bespoke follow-up email drafting in 5 minutes.">
+  <meta name="keywords" content="Post Sales Call Automation, Meeting Transcript AI, Sales Follow-Up Automation, Gong n8n Automation, HubSpot Meeting Sync, SalesGency">
+  <link rel="canonical" href="https://salesgency.com/post-sales-automation.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://salesgency.com/post-sales-automation.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Post Sales Call Automation — SalesGency®">
+  <meta property="og:description" content="Automate post-call CRM logging, action-item ticketing, and bespoke follow-up email drafting within 5 minutes of call end.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Post Sales Call Automation — SalesGency®">
+  <meta name="twitter:description" content="Instant transcript analysis, automated MEDDPICC CRM logging, and 1-click follow-up email drafts.">
+  <meta name="twitter:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="assets/di.css">
+
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Post Sales Call Automation",
+    "image": "https://salesgency.com/assets/salesgency-wordmark-dark.svg",
+    "description": "Production meeting transcription and CRM sync workflow that extracts MEDDPICC qualifiers, updates pipeline stages, creates task tickets, and drafts follow-up emails.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SalesGency®"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "The Build Package",
+        "price": "1495.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://salesgency.com/post-sales-automation.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "The Full Service",
+        "price": "2995.00",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "availability": "https://schema.org/InStock",
+        "url": "https://salesgency.com/pricing.html"
+      }
+    ]
+  }
+  </script>
+  
+  <script src="assets/di-nav.js" defer></script>
+</head>
+<body>
+
+    <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        <span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span>
+      </a>
+
+      <div class="nav-menu">
+        <div class="nav-dropdown-trigger">
+          <a href="agency.html" class="nav-item">Agency ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="inbound-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">1. Inbound Automation Workflow</span>
+              <span class="nav-dropdown-sub">Sub-30s speed-to-lead &amp; triage</span>
+            </a>
+            <a href="outbound-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">2. Outbound Automation Workflow</span>
+              <span class="nav-dropdown-sub">Intent waterfall &amp; PAS personalization</span>
+            </a>
+            <a href="pre-sales-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">3. Pre Sales Call Automation</span>
+              <span class="nav-dropdown-sub">Autonomous prospect dossiers</span>
+            </a>
+            <a href="post-sales-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">4. Post Sales Call Automation</span>
+              <span class="nav-dropdown-sub">Transcript extraction &amp; CRM sync</span>
+            </a>
+            <a href="daily-execution-report.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">5. Daily Execution Report</span>
+              <span class="nav-dropdown-sub">Rep telemetry &amp; stuck deals</span>
+            </a>
+            <a href="daily-gtm-report.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">6. Daily GTM Report</span>
+              <span class="nav-dropdown-sub">Executive pipeline &amp; CAC velocity</span>
+            </a>
+            <a href="build-session.html" class="nav-dropdown-item" style="border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
+              <span class="nav-dropdown-title" style="color: var(--accent-blue);">⚡ Book a Build Session</span>
+              <span class="nav-dropdown-sub">Custom scoped 30% value-added build</span>
+            </a>
+          </div>
+        </div>
+        <a href="marketplace.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="blueprint-pill">Skills &amp; Tools</span>
+        </a>
+        <a href="agent.html" class="nav-item">Agent</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="build-session.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book a Build Session</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+    <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Products)</a>
+    <a href="marketplace.html" class="mobile-link" style="font-weight: 700;">2. Marketplace (Skills &amp; Blueprints)</a>
+    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammate Platform)</a>
+    <a href="pricing.html" class="mobile-link">Pricing Guide</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="build-session.html" class="btn btn-primary" style="margin-top: 8px;">Book a Build Session</a>
+  </div>
+
+<div class="site-wrapper">
+
+    <!-- Breadcrumb Header -->
+    <section style="padding-top: clamp(110px, 13vw, 150px); width: 100%;">
+      <div class="container">
+        <div style="font-size: 13.5px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; margin-bottom: 20px;">
+          <a href="index.html" style="color: var(--text-secondary);">Home</a> &gt; 
+          <a href="index.html#core-products" style="color: var(--text-secondary);">Core Products</a> &gt; 
+          <span style="color: var(--text-heading); font-weight: 600;">04. Post Sales Call Automation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Hero -->
+    <section class="hero-section" style="padding-top: 0; padding-bottom: 40px;">
+      <div class="container">
+        
+        <div class="badge-tag" style="background: #0f2a4a; color: #FFFFFF;">Core Product 04 · Post-Meeting CRM &amp; Follow-Up Sync</div>
+        <h1 class="hero-headline">
+          Post Sales Call<br>
+          <span class="serif-italic">Automation.</span>
+        </h1>
+        <p class="hero-description">
+          Eliminate 45 minutes of manual CRM admin after every sales meeting. Ingests call transcripts from Fathom, Fireflies, or Gong, updates deal stages and MEDDPICC criteria in your CRM, creates team tasks in Linear/Asana, and drafts a bespoke follow-up email in the rep's inbox in under 5 minutes.
+        </p>
+
+        <div class="hero-cta-group" style="margin-top: 24px;">
+          <a href="#packages" class="btn btn-primary">Choose Your Package</a>
+          <a href="qualification.html" class="btn btn-secondary">Book Diagnostic Audit ($495)</a>
+        </div>
+
+        <!-- 4-Stat Metric Strip -->
+        <div class="impact-counter-banner" style="max-width: 960px; margin-top: 40px; margin-left: auto; margin-right: auto;">
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 30px; font-weight: 800; color: var(--text-heading); font-family: var(--font-mono);">&lt; 5 min</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Post-Call Follow-Up Delivery</div>
+          </div>
+          <div style="width: 1px; height: 36px; background: var(--border-hairline);"></div>
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 30px; font-weight: 800; color: var(--text-heading); font-family: var(--font-mono);">100%</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">CRM Field &amp; Stage Hygiene</div>
+          </div>
+          <div style="width: 1px; height: 36px; background: var(--border-hairline);"></div>
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 30px; font-weight: 800; color: var(--text-heading); font-family: var(--font-mono);">MEDDPICC</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Automated Qualification</div>
+          </div>
+          <div style="width: 1px; height: 36px; background: var(--border-hairline);"></div>
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 30px; font-weight: 800; color: var(--text-heading); font-family: var(--font-mono);">0 Manual</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Post-Call CRM Logging</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Execution Topology -->
+    <section style="padding: 40px 0; width: 100%;">
+      <div class="container">
+        
+        <div class="product-media-card" style="padding: 36px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="badge-tag" style="margin: 0; margin-bottom: 6px;">Post-Meeting Data Flow</span>
+              <h3 style="font-size: 22px; font-weight: 800; color: var(--text-heading); margin-top: 4px;">Transcript Analysis → CRM Field Updates → Follow-Up Generation</h3>
+            </div>
+            <span class="live-telemetry-badge">⚡ Sub-5m Execution</span>
+          </div>
+
+          <div class="product-workflow-diagram">
+            <div class="work-preview-flow">
+              <div class="flow-node"><span>1. Transcript Webhook: Fathom / Fireflies / Gong / Zoom Meeting Recording Upload</span><span class="flow-status-pill">Ingested</span></div>
+              <div class="flow-node"><span>2. AI MEDDPICC Extraction: Identifies Decision Criteria, Metrics, Timeline, Objections</span><span class="flow-status-pill">Extracted</span></div>
+              <div class="flow-node"><span>3. CRM Deal Update: Moves Stage, Sets Close Date, Populates Custom RevOps Fields</span><span class="flow-status-pill">Updated</span></div>
+              <div class="flow-node"><span>4. Action-Item Task Routing: Creates Linear/Asana tasks for Solution Eng &amp; Ops</span><span class="flow-status-pill">Assigned</span></div>
+              <div class="flow-node"><span>5. Follow-Up Email Synthesis: Contextual recap drafted into rep's Gmail / Outlook drafts</span><span class="flow-status-pill">Drafted</span></div>
+              <div class="flow-node"><span>6. Slack Team Broadcast: Sends meeting executive summary to #sales-pipeline</span><span class="flow-status-pill" style="background:#10B981; color:#fff;">&lt; 5m Total</span></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">Native Integrations Supported:</div>
+            <div class="tech-badge-strip">
+              <span class="tech-badge-item">⚡ n8n Core</span>
+              <span class="tech-badge-item">🎙️ Fathom / Fireflies / Gong</span>
+              <span class="tech-badge-item">🧡 HubSpot CRM</span>
+              <span class="tech-badge-item">☁️ Salesforce</span>
+              <span class="tech-badge-item">📧 Gmail / Outlook API</span>
+              <span class="tech-badge-item">📐 Linear / Asana API</span>
+              <span class="tech-badge-item">🤖 Claude 3.5 Sonnet</span>
+              <span class="tech-badge-item">💬 Slack Block Kit</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Deep Technical Feature Breakdown -->
+    <section style="padding: 40px 0 60px; width: 100%;">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="badge-tag">Production Capabilities</div>
+          <h2 class="section-title">
+            Fast follow-ups close deals. <span class="serif-italic">Zero admin overhead.</span>
+          </h2>
+          <p class="section-subtitle">
+            Sales reps hate updating CRMs. Deals stall when follow-up emails take 24 hours to send. This workflow eliminates every bottleneck.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 32px;">
+          
+          <div class="product-feature-card">
+            <div class="feature-icon-wrap">🎙️</div>
+            <h4 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Universal Notetaker Webhook</h4>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55;">
+              Ingests structured speaker-diarized transcripts from Fathom, Fireflies.ai, Gong, Otter, or native Zoom recordings the second the call finishes.
+            </p>
+          </div>
+
+          <div class="product-feature-card">
+            <div class="feature-icon-wrap">📋</div>
+            <h4 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">MEDDPICC Qualification Parser</h4>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55;">
+              Parses the exact conversation for Economic Buyer, Decision Criteria, Metrics, Identified Pain, and Champion mentions, populating CRM fields automatically.
+            </p>
+          </div>
+
+          <div class="product-feature-card">
+            <div class="feature-icon-wrap">📬</div>
+            <h4 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Inbox Draft Generation</h4>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55;">
+              Drafts a personalized, concise follow-up email addressing the specific topics agreed on, embedding relevant case studies and scheduling next steps directly in the rep's email drafts.
+            </p>
+          </div>
+
+          <div class="product-feature-card">
+            <div class="feature-icon-wrap">🔄</div>
+            <h4 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Bi-Directional CRM Deal Sync</h4>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55;">
+              Updates deal stage progression (e.g., Discovery → Demo Completed), modifies close date based on stated timeline, and updates deal size estimates.
+            </p>
+          </div>
+
+          <div class="product-feature-card">
+            <div class="feature-icon-wrap">🎯</div>
+            <h4 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Action-Item Ticketing</h4>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55;">
+              Extracts technical commitments made on the call (e.g., "send custom security docs" or "verify SAML SSO") and creates tickets in Linear or Asana assigned to the SE team.
+            </p>
+          </div>
+
+          <div class="product-feature-card">
+            <div class="feature-icon-wrap">💬</div>
+            <h4 style="font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Slack Leadership Notification</h4>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.55;">
+              Posts an executive 3-bullet summary to the leadership Slack channel with sentiment score, deal risk flags, and next milestone.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3 Delivery Channels (Custom Engagement, Custom Agent, DIY Build Package) -->
+    <section id="packages" style="padding: 60px 0; background: var(--bg-card-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); width: 100%;">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="badge-tag">Product &amp; Pricing Options</div>
+          <h2 class="section-title">
+            Three channels to deploy this <span class="serif-italic">post-call engine.</span>
+          </h2>
+          <p class="section-subtitle">
+            Choose full-service engineering delivery, platform AI agent subscription, or the self-serve DIY build package.
+          </p>
+        </div>
+
+        <div class="packages-grid">
+
+          <!-- Option 1: Build Package -->
+          <div class="package-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="package-header">
+                <span class="blueprint-pill">01 · INSTANT DOWNLOAD</span>
+                <h3 class="package-title">Post-Sales Sync Build Package</h3>
+                <p class="package-tagline">
+                  Everything you need to automate transcript parsing and MEDDPICC CRM syncing yourself.
+                </p>
+              </div>
+
+              <div class="package-price-wrap">
+                <span class="package-price-amount">$199</span>
+                <span class="package-price-period">one-time download</span>
+              </div>
+
+              <div class="package-deliverables-list">
+                <div class="package-item">
+                  <span class="package-item-icon">✓</span>
+                  <span><strong>20-Node n8n Workflow JSON</strong> — Fathom/Gong webhook &amp; CRM updater</span>
+                </div>
+                <div class="package-item">
+                  <span class="package-item-icon">✓</span>
+                  <span><strong>MEDDPICC Extractor Prompt Skill</strong> — Structured sales criteria parser</span>
+                </div>
+                <div class="package-item">
+                  <span class="package-item-icon">✓</span>
+                  <span><strong>HubSpot / Salesforce Field Schema</strong> — Automated property mapping</span>
+                </div>
+                <div class="package-item">
+                  <span class="package-item-icon">✓</span>
+                  <span><strong>Client Follow-Up Email Generator</strong> — Ready in under 60 seconds</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="marketplace.html?item=postsales" class="btn btn-primary" style="width: 100%; text-align: center; display: block; padding: 12px; font-weight: 800;">
+              Get Build Package ($199) &rarr;
+            </a>
+          </div>
+
+          <!-- Option 2: Build Session ($1,000) -->
+          <div class="package-card featured" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="package-header">
+                <span class="blueprint-pill" style="background: #2563EB; color: #FFF;">02 · CO-BUILD SPRINT</span>
+                <h3 class="package-title">The $1,000 Build Session</h3>
+                <p class="package-tagline">
+                  4 Hours Total across 6 Dedicated Sessions: 15m intake, 15m architecture, 30m live prototype.
+                </p>
+              </div>
+
+              <div class="package-price-wrap">
+                <span class="package-price-amount">$1,000</span>
+                <span class="package-price-period">flat investment</span>
+              </div>
+
+              <div class="package-deliverables-list">
+                <div class="package-item">
+                  <span class="package-item-icon" style="color:#2563EB;">⚡</span>
+                  <span><strong>2× 1-Hour Strategy Sessions</strong> — Notetaker wiring, CRM field map, webhook test</span>
+                </div>
+                <div class="package-item">
+                  <span class="package-item-icon" style="color:#2563EB;">⚡</span>
+                  <span><strong>4× 30-Minute Prototype Rounds</strong> — Live building and real recording parsing</span>
+                </div>
+                <div class="package-item">
+                  <span class="package-item-icon">📦</span>
+                  <span><strong>Full Post-Sales Build Package Included</strong></span>
+                </div>
+                <div class="package-item">
+                  <span class="package-item-icon">✓</span>
+                  <span><strong>Choice to Continue DIY or Apply to Agency Sprint</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <a href="build-session.html?product=postsales" class="btn btn-primary" style="width: 100%; text-align: center; display: block; padding: 12px; font-weight: 800; background: #2563EB; color: #FFF; border: none;">
+              Book Build Session ($1,000) &rarr;
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="brand-link" style="font-size: 19px; margin-bottom: 24px;">
+            <span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span>
+          </div>
+          <h2 class="bottom-cta-headline">
+            Automate post-call admin <span class="serif-italic">in your CRM.</span>
+          </h2>
+          <p class="bottom-cta-subtitle">
+            Book a 60-minute GTM Architecture Audit ($495) with founder Patrick Diamitani. We map your meeting notetakers, CRM properties, and email drafting prompts. 100% credited to your package.
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="qualification.html?product=post-sales-automation" class="btn btn-primary">Book Paid Audit ($495)</a>
+            <a href="pricing.html" class="btn btn-secondary">View Pricing Guide</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Footer -->
+      <footer class="footer sg-footer">
+    <div class="container footer-inner">
+      <div class="sg-footer-top">
+        <div class="sg-footer-brand">
+          <a href="index.html" aria-label="SalesGency — Your In-House GTM Agency"><span class="sg-wm sg-wm-lg"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+          <p class="sg-tagline">Your In-House GTM Agency</p>
+          <p class="sg-slogan">AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <nav class="sg-footer-paths" aria-label="Three ways to work with us">
+          <a href="marketplace.html"><strong>Buy a template</strong><span>Production-ready engines, skills, and workflows. Deploy in minutes, own the code.</span></a>
+          <a href="build-session.html"><strong>Build with our team</strong><span>Co-build your GTM engine in a working session. $1,000.</span></a>
+          <a href="agent.html"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds.</span></a>
+        </nav>
+      </div>
+      <div class="footer-links">
+        <a href="agency.html">Agency</a>
+        <a href="activations.html">Activations</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="agent.html">Agent</a>
+        <a href="workspaces.html">Workspaces</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="portal.html">Portal</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <p class="footer-note">&copy; 2026 SalesGency &middot; Diamitani Industries. Built by Patrick Diamitani.</p>
+    </div>
+  </footer>
+
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+
+</body>
+</html>

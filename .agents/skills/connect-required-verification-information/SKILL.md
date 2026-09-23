@@ -339,7 +339,7 @@ Transform the API response into one or more human-readable tables in your own re
        - If both a time limit and an amount limit exist for the same impact, join them with `or`
        - Group impacts with identical thresholds into a single sentence, for example `Capability, payments, and payouts will be paused immediately if not provided.`
        - If both `if not provided` and `if not verified` text exist, render the `if not provided` sentence(s) first and then the `if not verified` sentence(s); prefix the first `if not verified` sentence with `Also,`
-       - If neither set of limits is present, render ` - `
+       - If neither set of limits is present, render `—`
 4. If two sections share the same row-definition family, they still remain separate tables. For example, `representative` and `owners` both use the `person` row-definition family, but they render as separate `Representative` and `Owners` tables because they are different sections.
 5. Assign each section to one of the row-definition families listed below in the `Row definitions` step. The row-definition family only controls how rows are matched and labeled inside that section’s table:
    - `account` -> `account`
@@ -382,7 +382,7 @@ person: Name: `/(first|last)_name/` Name (kana): `/(first|last)_name_kana/` Name
     }
   }
   ```
-Do not use ellipses (`...`) or placeholder strings in the output - list every field name explicitly.
+Do not use ellipses (`...`) or placeholder strings in the output — list every field name explicitly.
 - this shape is a derived summary for comparison and display. It is not a raw Accounts API response.
 - If `apiVersion=v2`, inform the user that this JSON is for information only, and doesn’t match the shape of a real API response.
 - derive each field’s due bucket from the requirement’s limit fields in the `get-requirements-for-setups` response:

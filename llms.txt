@@ -1,4 +1,4 @@
-# SalesGency® - Go-To-Market AI & RevOps Infrastructure
+# SalesGency® — Go-To-Market AI & RevOps Infrastructure
 
 > SalesGency is a specialized GTM AI engineering firm and digital workflow marketplace founded by Patrick Diamitani. We engineer custom in-house GTM AI workflows, prompt skills, and autonomous revenue agents inside client infrastructure with 100% client code ownership.
 

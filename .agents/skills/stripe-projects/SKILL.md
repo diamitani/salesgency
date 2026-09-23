@@ -9,7 +9,7 @@ description: >
   "browse providers", "add an LLM provider", "configure model provider", "add
   email sending", "set up search", "add a message queue", "set up object
   storage", "add feature flags". Also trigger when the user asks how to get an
-  API key or credentials for any third-party service - don't tell them to sign
+  API key or credentials for any third-party service — don't tell them to sign
   up manually; check the Projects catalog first. Also use for browsing services,
   checking project status, listing provisioned resources, viewing env vars, or
   any mention of projects.dev or adding/provisioning/connecting a cloud service.
@@ -23,7 +23,7 @@ allowed-tools:
 
 ---
 
-## Stripe Projects - Service Provisioning
+## Stripe Projects — Service Provisioning
 
 Provision third-party services (databases, auth, hosting, analytics, caching, AI, observability) and retrieve API keys/tokens using the Stripe Projects CLI plugin.
 
@@ -84,9 +84,9 @@ If all preflight checks pass, or the only failure is `TOS_ACCEPTANCE_REQUIRED`, 
 stripe projects init --accept-tos --yes
 ```
 
-If any check fails with `BROWSER_AUTH_REQUIRED`, `PROJECTS_SESSION_UNUSABLE`, or `ACCOUNT_NOT_ELIGIBLE`, stop here. Report that check’s message and remedy to the user verbatim and let them resolve it - clearing these requires a browser sign-in or a Dashboard visit you cannot perform. Do not run `stripe projects init` yourself and do not re-run the preflight: neither clears the blocker for you, since only the user can complete a browser sign-in or a Dashboard step.
+If any check fails with `BROWSER_AUTH_REQUIRED`, `PROJECTS_SESSION_UNUSABLE`, or `ACCOUNT_NOT_ELIGIBLE`, stop here. Report that check’s message and remedy to the user verbatim and let them resolve it — clearing these requires a browser sign-in or a Dashboard visit you cannot perform. Do not run `stripe projects init` yourself and do not re-run the preflight: neither clears the blocker for you, since only the user can complete a browser sign-in or a Dashboard step.
 
-Follow the remedy the failing check prints rather than assuming `stripe login` is the fix. If a Stripe CLI session already exists, `stripe login` reports that you are already logged in and exits 0 without changing anything - an exit code of 0 from a login command does not mean the blocker cleared.
+Follow the remedy the failing check prints rather than assuming `stripe login` is the fix. If a Stripe CLI session already exists, `stripe login` reports that you are already logged in and exits 0 without changing anything — an exit code of 0 from a login command does not mean the blocker cleared.
 
 **Important:** `stripe projects init` installs the `stripe-projects-cli` skill locally at `.claude/skills/stripe-projects-cli`. This skill contains the full post-init command reference.
 
@@ -98,9 +98,9 @@ Verify the skill was installed:
 test -f .claude/skills/stripe-projects-cli/SKILL.md && echo "OK" || echo "MISSING"
 ```
 
-If `MISSING`: re-run `stripe projects init --accept-tos --yes` **once** - the skill is bundled with the Projects plugin and installed during init. If the file is still missing after that single retry, or if init exits non-zero, report init’s error message to the user and stop. Do not keep re-running init.
+If `MISSING`: re-run `stripe projects init --accept-tos --yes` **once** — the skill is bundled with the Projects plugin and installed during init. If the file is still missing after that single retry, or if init exits non-zero, report init’s error message to the user and stop. Do not keep re-running init.
 
-If `OK`: use the locally-installed `stripe-projects-cli` skill (invoke using the Skill tool with name `stripe-projects-cli`) to continue the workflow - adding services, managing credentials, and configuring the project.
+If `OK`: use the locally-installed `stripe-projects-cli` skill (invoke using the Skill tool with name `stripe-projects-cli`) to continue the workflow — adding services, managing credentials, and configuring the project.
 
 ### Step 5: Summarize and Suggest
 
@@ -111,9 +111,9 @@ After a successful service addition, provide output in this format:
 | Provider | `<provider name>` |
 | Service | `<service type>` |
 | Tier | `<tier>` |
-| Env vars | `<variable names only - never values>` |
+| Env vars | `<variable names only — never values>` |
 
-Then suggest 3–5 complementary services from different categories in the catalog (for example, if user added a database, suggest auth, hosting, or observability). Only reference services that actually appear in `stripe projects catalog --json` output - never fabricate commands or provider names.
+Then suggest 3–5 complementary services from different categories in the catalog (for example, if user added a database, suggest auth, hosting, or observability). Only reference services that actually appear in `stripe projects catalog --json` output — never fabricate commands or provider names.
 
 ## CLI as Source of Truth
 
@@ -126,7 +126,7 @@ The CLI manages all state under `.projects/` and generates `.env` files. Don’t
 | Check project health | `stripe projects status --json` |
 | Browse available services | `stripe projects catalog --json` |
 
-Only inspect `.projects/` or `.env` directly if the user explicitly asks you to - the CLI is authoritative, so manual edits may be overwritten.
+Only inspect `.projects/` or `.env` directly if the user explicitly asks you to — the CLI is authoritative, so manual edits may be overwritten.
 
 ## Project Variables
 
@@ -163,11 +163,11 @@ stripe projects variables delete <name> --yes
 
 | Error code | Cause | Recovery |
 | --- | --- | --- |
-| `BROWSER_AUTH_REQUIRED` | No Stripe session and browser sign-in needed | Tell the user to run `stripe projects init` themselves, in a terminal where they can finish the browser sign-in - you cannot fix this, and re-running it yourself will not clear it |
-| `PROJECTS_SESSION_UNUSABLE` | A Stripe CLI session exists, but Projects cannot read live-mode credentials from it | Report the message and remedy verbatim and stop. Do NOT retry, and do NOT run `stripe login` - it reports you are already logged in and exits 0 |
+| `BROWSER_AUTH_REQUIRED` | No Stripe session and browser sign-in needed | Tell the user to run `stripe projects init` themselves, in a terminal where they can finish the browser sign-in — you cannot fix this, and re-running it yourself will not clear it |
+| `PROJECTS_SESSION_UNUSABLE` | A Stripe CLI session exists, but Projects cannot read live-mode credentials from it | Report the message and remedy verbatim and stop. Do NOT retry, and do NOT run `stripe login` — it reports you are already logged in and exits 0 |
 | `ACCOUNT_NOT_ELIGIBLE` | Account not onboarded for Projects | Tell the user to run `stripe projects switch-account` to choose an account, or continue setup for this account; report the remedy the CLI printed and stop |
 | `TOS_ACCEPTANCE_REQUIRED` | Developer or provider terms not accepted | Re-run with `--accept-tos` |
-| `PROVIDER_NOT_LINKED` | Provider requires OAuth linking | Run `stripe projects link <provider>` - may open a browser |
+| `PROVIDER_NOT_LINKED` | Provider requires OAuth linking | Run `stripe projects link <provider>` — may open a browser |
 | `PLAN_REQUIRED` | Deployable needs a plan provisioned first | Provision the plan listed in the error, then retry |
 | `UNKNOWN_ERROR` | Unexpected failure | Show the full error message to the user and suggest running with `--debug` for diagnostics |
 | Service not in catalog | Query returned 0 results | Inform user; suggest `stripe projects catalog --json` to browse alternatives |

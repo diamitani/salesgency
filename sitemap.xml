@@ -4,394 +4,295 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Core Commercial & Discovery Hubs -->
+  <!-- Homepage -->
   <url>
     <loc>https://salesgency.com/</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://salesgency.com/pricing.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+
+  <!-- Autonomous Sales Infrastructure Builder (Prompt-to-App) -->
   <url>
     <loc>https://salesgency.com/builder.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Workflow Marketplace Store -->
   <url>
     <loc>https://salesgency.com/marketplace.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
-  <url>
-    <loc>https://salesgency.com/bundles.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/build-session.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/agency.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/book.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
 
-  <!-- Solutions & Revenue Engines -->
-  <url>
-    <loc>https://salesgency.com/inbound-automation.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/outbound-automation.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/pre-sales-automation.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/post-sales-automation.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/daily-execution-report.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/daily-gtm-report.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/prospect-automation.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/gtm-engineering.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/gtm-agent.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/n8n-analyst.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/uysg-growth-suite.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/services.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/qualification.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- Architecture, Trust, Evidence & Process -->
-  <url>
-    <loc>https://salesgency.com/architecture.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/process.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/work.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/case-studies.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/about.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/activations.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/outreach.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/deployment.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/app.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/portal.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <!-- Modular Catalogs (Skills, Agents, Workflows, Templates) -->
+  <!-- Templates Catalog -->
   <url>
     <loc>https://salesgency.com/templates.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <priority>0.9</priority>
   </url>
+
+  <!-- Gency — SalesGency Automation Agent (chat) -->
   <url>
-    <loc>https://salesgency.com/skills.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/agent.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.95</priority>
   </url>
+
+  <!-- Client Workspaces -->
   <url>
-    <loc>https://salesgency.com/workflows.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/workspaces.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
+
+  <!-- Integrations & API -->
   <url>
-    <loc>https://salesgency.com/agents.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/integrations.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- Dedicated Product & Blueprint Detail Pages -->
+  <!-- Pricing & Engagement Plans -->
   <url>
-    <loc>https://salesgency.com/product.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/pricing.html</loc>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
+
+  <!-- Services & GTM AI Capabilities -->
   <url>
-    <loc>https://salesgency.com/product-master-bundle.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/services.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- GTM Architecture Audit Qualification -->
+  <url>
+    <loc>https://salesgency.com/qualification.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Case Studies & Proven Outcomes -->
+  <url>
+    <loc>https://salesgency.com/work.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 30-Day Engineering Process -->
+  <url>
+    <loc>https://salesgency.com/process.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 6 Core Revenue Automation Products -->
+  <url>
+    <loc>https://salesgency.com/inbound-automation.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://salesgency.com/outbound-automation.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://salesgency.com/pre-sales-automation.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://salesgency.com/post-sales-automation.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://salesgency.com/daily-execution-report.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://salesgency.com/daily-gtm-report.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Prospect Automation Engine (PAE) Architecture -->
+  <url>
+    <loc>https://salesgency.com/prospect-automation.html</loc>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
+
+  <!-- GTM Engineering Master Architecture & Skill -->
   <url>
-    <loc>https://salesgency.com/product-apollo-scraper.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/gtm-engineering.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- n8n Execution Analyst & Debugger -->
+  <url>
+    <loc>https://salesgency.com/n8n-analyst.html</loc>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+  <!-- Unleash Your Sales Greatness (UYSG) Growth Suite -->
+  <url>
+    <loc>https://salesgency.com/uysg-growth-suite.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Autonomous Agents (Tier 3) -->
+  <url>
+    <loc>https://salesgency.com/agents.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Deterministic Workflows (Tier 2) -->
+  <url>
+    <loc>https://salesgency.com/workflows.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Domain Intelligence Skills (Tier 1) -->
+  <url>
+    <loc>https://salesgency.com/skills.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Deployment Specs & Handoff -->
+  <url>
+    <loc>https://salesgency.com/deployment.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About & Philosophy -->
+  <url>
+    <loc>https://salesgency.com/about.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Dedicated Product Detail Pages -->
+  <url>
+    <loc>https://salesgency.com/product-apollo-scraper.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-inbound-responder.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-cold-outreach.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-crm-hygiene.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-hiring-scraper.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-revops-dashboard.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-deliverability-dns.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://salesgency.com/product-firmographic-enricher.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://salesgency.com/product-builder-starter.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://salesgency.com/product-master-bundle.html</loc>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-builder-pro.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-builder-enterprise.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-cold-mql-bundle.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-paid-audit.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-skill-gtm-architect.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-skill-pas-copywriter.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-soul-master-gtm.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-template-inbound-kit.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/product-template-outbound-pack.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/agent.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/skill-enably.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/skill-n8n-engineer.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/skill-pae.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/skill-pop.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://salesgency.com/skill-soul-builder.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.95</priority>
   </url>
 
-  <!-- Legal & Compliance -->
+  <!-- Privacy Policy -->
   <url>
     <loc>https://salesgency.com/privacy.html</loc>
-    <lastmod>2026-09-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.30</priority>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
+
+  <!-- Terms of Service -->
   <url>
     <loc>https://salesgency.com/terms.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Free n8n Outreach Automation Templates -->
+  <url>
+    <loc>https://www.salesgency.com/n8n-outreach-automation-template.html</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.30</priority>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

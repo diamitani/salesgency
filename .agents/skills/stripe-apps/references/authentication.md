@@ -1,4 +1,4 @@
-# Authentication - platform keys, OAuth, restricted API keys
+# Authentication — platform keys, OAuth, restricted API keys
 
 ## Authentication
 
@@ -48,7 +48,7 @@ await stripe.customers.list({}, {
 - From `fetchStripeSignature` payload: the signed data includes `account_id`
 - From the UI extension: `userContext.account.id` (top-level prop)
 
-**Key fact:** Platform keys use the same `Stripe-Account` header mechanism as Stripe Connect. Installers are NOT onboarded as connected accounts in the traditional sense - the header simply authorizes your key to access their account within the app’s declared permissions.
+**Key fact:** Platform keys use the same `Stripe-Account` header mechanism as Stripe Connect. Installers are NOT onboarded as connected accounts in the traditional sense — the header simply authorizes your key to access their account within the app’s declared permissions.
 
 ## OAuth 2.0
 

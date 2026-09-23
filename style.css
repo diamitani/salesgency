@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SalesGency - High-Contrast Pure White Design System
+   SalesGency — High-Contrast Pure White Design System
    Aesthetic: Ultra-Crisp White Canvas + Editorial Typography + High-Contrast Commerce
    Typography: Inter (Sans) + JetBrains Mono
    Palette: Pure White Canvas (#FFFFFF), Deep Black (#000000), Crisp Charcoal (#111827), Live Green (#10B981)
@@ -21,15 +21,15 @@
   --bg-tag: #F3F4F6;
   --bg-tag-hover: #E5E7EB;
 
-  /* Ink & Text - Maximum Buyer Contrast (WCAG 2.2 AA) */
-  --text-main: #0A0B0E;
+  /* Ink & Text - Maximum Buyer Contrast */
+  --text-main: #111827;
   --text-heading: #000000;
-  --text-secondary: #272E3B;
-  --text-muted: #4B5563;
-  --text-dim: #52525B;
-  --text-subtle: #94A3B8;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --text-dim: #9CA3AF;
+  --text-subtle: #D1D5DB;
   --text-inverse: #FFFFFF;
-  --text-inverse-muted: rgba(255, 255, 255, 0.78);
+  --text-inverse-muted: #9CA3AF;
 
   /* Accents */
   --accent-green: #10B981;
@@ -3184,7 +3184,7 @@ ul, ol {
 }
 
 /* ==========================================================================
-   RESTRUCTURED SITE - NEW COMPONENT STYLES
+   RESTRUCTURED SITE — NEW COMPONENT STYLES
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -4524,7 +4524,7 @@ ul, ol {
 }
 
 /* ==========================================================================
-   SalesGency Cut 2 - Corporate Professional GTM & Revenue Agency Additions
+   SalesGency Cut 2 — Corporate Professional GTM & Revenue Agency Additions
    ========================================================================== */
 
 /* Corporate Cards & Badges */

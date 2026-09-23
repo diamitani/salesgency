@@ -8,7 +8,7 @@ description: >-
   payments, revenue sharing, multi-party payments, or similar payment
   distribution concepts, provides a company URL or business description for a
   recommendation, builds SaaS that routes money between parties (for example,
-  POS, booking, invoicing - not operational SaaS without payment routing), asks
+  POS, booking, invoicing — not operational SaaS without payment routing), asks
   about onboarding or KYC for merchants, sellers, and vendors, mentions
   connected account Dashboard or responsibility configurations, or asks about
   payment flows, white-label payments, or embedded payments.
@@ -17,17 +17,17 @@ description: >-
 
 ## Connect recommend
 
-Recommend the right Stripe Connect integration configuration. The user only needs to provide a company URL or describe their business - the skill figures out the rest.
+Recommend the right Stripe Connect integration configuration. The user only needs to provide a company URL or describe their business — the skill figures out the rest.
 
 ### Interaction model
 
-**User must confirm interactions**. Every decision point in this skill MUST be confirmed with the user with clear, numbered options and short descriptions. One question at a time - never overwhelm the user.
+**User must confirm interactions**. Every decision point in this skill MUST be confirmed with the user with clear, numbered options and short descriptions. One question at a time — never overwhelm the user.
 
 **Auto-act on low-cost actions**. Never ask permission for:
 
-- Generating the markdown recommendation plan - just generate it
-- Scanning the codebase - just scan it
-- Reading reference files - just read them
+- Generating the markdown recommendation plan — just generate it
+- Scanning the codebase — just scan it
+- Reading reference files — just read them
 
 **Never end with passive text**. Every stopping point must end with a prompt to the user offering concrete next actions.
 
@@ -42,7 +42,7 @@ Key principle: describe configurations using field values (Dashboard + fee owner
 Keep responses concise. The user is making decisions, not reading documentation.
 
 - Lead with the recommendation, follow with brief rationale
-- Technical details (API paths, capability checks) go in a “Details” section of the final markdown plan - not inline in the main recommendation
+- Technical details (API paths, capability checks) go in a “Details” section of the final markdown plan — not inline in the main recommendation
 - Warning blocks: 2-3 sentences maximum. State the issue and the fix. No mechanism deep-dives unless the user asks.
 - Decision summary: bullet points only, one line per decision
 - Never output more than ~40 lines in a single response during interactive mode
@@ -51,7 +51,7 @@ Keep responses concise. The user is making decisions, not reading documentation.
 
 ### Instructions
 
-#### Step 0 - Show progress
+#### Step 0 — Show progress
 
 Display the progress checklist so the user knows what to expect:
 
@@ -66,7 +66,7 @@ Here's what we'll do:
 Let's get started.
 ```
 
-#### Step 1 - Learn about the business (ALWAYS runs first)
+#### Step 1 — Learn about the business (ALWAYS runs first)
 
 This is the most important step. Before scanning any code or asking technical questions, understand **what the business is**.
 
@@ -76,7 +76,7 @@ This is the most important step. Before scanning any code or asking technical qu
 - A business description (for example, “I’m building a marketplace for…”, “We connect freelancers with…”)
 - A company name that can be searched
 
-**1b. If nothing was provided**, ask immediately using AskUserQuestion - this is the FIRST question the user sees:
+**1b. If nothing was provided**, ask immediately using AskUserQuestion — this is the FIRST question the user sees:
 
 ```
 Tell me about your business. Pick whichever is easiest:
@@ -84,27 +84,27 @@ Tell me about your business. Pick whichever is easiest:
 
 Options:
 
-- “I have a URL” - user provides URL, then research it
-- “Let me describe it” - user provides description, then research it
-- “Just scan my codebase” - skip to Step 2, rely on codebase signals only
-- “Skip - ask me questions instead” - skip to Step 3 with full questionnaire
+- “I have a URL” — user provides URL, then research it
+- “Let me describe it” — user provides description, then research it
+- “Just scan my codebase” — skip to Step 2, rely on codebase signals only
+- “Skip — ask me questions instead” — skip to Step 3 with full questionnaire
 
-**1c. Research the business** - read and follow the company-researcher instructions:
+**1c. Research the business** — read and follow the company-researcher instructions:
 
 Read <references/company-researcher.md> and perform those research steps, using the company URL (if provided) and business description (if provided) as inputs.
 
 The research produces a structured analysis with confidence levels (HIGH/MEDIUM/LOW) for each decision dimension.
 
-**1d. Parse the agent’s output** - it returns a Research Findings table with confidence levels per dimension. Read the decision matrix at <references/decision-matrix.md> and map the findings to a recommended configuration. Then determine pre-fill behavior per dimension:
+**1d. Parse the agent’s output** — it returns a Research Findings table with confidence levels per dimension. Read the decision matrix at <references/decision-matrix.md> and map the findings to a recommended configuration. Then determine pre-fill behavior per dimension:
 
-- **HIGH confidence**: Auto-fill - don’t ask about this dimension
+- **HIGH confidence**: Auto-fill — don’t ask about this dimension
 - **MEDIUM confidence**: Suggest the inferred value and ask for quick confirmation
 - **LOW confidence**: Ask the original open-ended question in Step 3
 
 **1e. Present what you learned** to the user (use second-person, conversational confirmation tone):
 
 ```
-Here's what I gathered about your business - let me know if anything looks off:
+Here's what I gathered about your business — let me know if anything looks off:
   ┌──────────────────────────┬────────────────────────────────┐
   │ *Business type*          │ [marketplace or SaaS platform] │
   ├──────────────────────────┼────────────────────────────────┤
@@ -122,18 +122,18 @@ Based on this, I'd recommend: [configuration description in plain language]
 I'll proceed with this unless you'd like to correct anything.
 ```
 
-For MEDIUM confidence items, append: “I’m also assuming [X] - sound right?”
+For MEDIUM confidence items, append: “I’m also assuming [X] — sound right?”
 
 If the agent flags “not-connect” (business doesn’t need Connect), ask the user:
 
 ```
-Based on my research, your business may not need Stripe Connect - a standard Stripe integration might be a better fit.
+Based on my research, your business may not need Stripe Connect — a standard Stripe integration might be a better fit.
 ```
 
 Options:
 
-- “Proceed with Connect anyway” - continue discovery
-- “Explore standard integration instead” - exit this skill, suggest standard Stripe integration
+- “Proceed with Connect anyway” — continue discovery
+- “Explore standard integration instead” — exit this skill, suggest standard Stripe integration
 
 Update the checklist:
 
@@ -161,11 +161,11 @@ Then:
 
 This check MUST run even when the fee was auto-filled with HIGH confidence. The user needs to understand the fee economics before proceeding.
 
-#### Step 2 - Auto-detect project context
+#### Step 2 — Auto-detect project context
 
-Run this AFTER Step 1 (or in parallel if the user said “scan my codebase”). Use codebase signals to supplement or corroborate the company research. **Don’t ask before scanning - just scan.**
+Run this AFTER Step 1 (or in parallel if the user said “scan my codebase”). Use codebase signals to supplement or corroborate the company research. **Don’t ask before scanning — just scan.**
 
-1. **Existing Connect config**: Check for `connect-recommend-plan.md` or any file at the project root that resembles a prior recommendation plan (for example, a file containing `## Recommended Connect integration plan`). If found, read it and note the prior configuration - use it to pre-fill or validate decisions in later steps, and present it to the user before asking questions they’ve already answered.
+1. **Existing Connect config**: Check for `connect-recommend-plan.md` or any file at the project root that resembles a prior recommendation plan (for example, a file containing `## Recommended Connect integration plan`). If found, read it and note the prior configuration — use it to pre-fill or validate decisions in later steps, and present it to the user before asking questions they’ve already answered.
 2. **Existing Stripe integration patterns**: Use Grep to search for Connect-specific patterns already in the codebase:
    - Connected account creation or references (`connected_account`, `account_id`, `stripe_account`)
    - Charge patterns in use (`destination`, `on_behalf_of`, `transfer_data`, `separate_charges`)
@@ -191,8 +191,8 @@ I found an existing Connect recommendation plan at [path].
 
 Options:
 
-- “Use it as a starting point” - pre-fill all decisions from the prior plan, then confirm each with the user in Step 3
-- “Start fresh” - ignore the prior plan and run full discovery
+- “Use it as a starting point” — pre-fill all decisions from the prior plan, then confirm each with the user in Step 3
+- “Start fresh” — ignore the prior plan and run full discovery
 
 Update the checklist:
 
@@ -203,7 +203,7 @@ Update the checklist:
   [ ] Produce recommendation plan
 ```
 
-#### Step 3 - Ask remaining discovery questions
+#### Step 3 — Ask remaining discovery questions
 
 For any dimension not already filled with HIGH confidence from Step 1, ask the corresponding question to the user. Skip dimensions that were auto-filled or explicitly confirmed.
 
@@ -238,19 +238,19 @@ Fee structure checkpoint before Step 4:
 3. Confirm whether a margin warning is required
 4. Include stripe.com/pricing link in output context
 
-#### Step 4 - Generate recommendation
+#### Step 4 — Generate recommendation
 
 Read the decision matrix at <references/decision-matrix.md> and apply it to the user’s answers. For charge pattern details, read <references/charge-patterns.md>.
 
-**Step 4a - Compatibility validation (MANDATORY before presenting recommendation)**
+**Step 4a — Compatibility validation (MANDATORY before presenting recommendation)**
 
 Read <references/compatibility-matrix.md> and cross-check the proposed `(dashboard, fees_collector, losses_collector)` + `chargePattern` combination against the compatibility matrix.
 
 1. **BLOCKED combination?** Do NOT present it. Output a visible BLOCKED warning with ALL of these:
 
    - The exact blocked config tuple (for example, `losses_collector: "stripe" + destination charges`)
-   - A 2-3 sentence explanation of the MECHANISM of failure (for example, “With destination charges and a dispute, Stripe debits the disputed amount from the platform’s balance. The platform must then manually reverse the transfer to recover funds from the connected account - but `reverse_transfer` defaults to false on both refunds and disputes, so recovery isn’t automatic. With `losses_collector: 'stripe'`, the platform has no mechanism to push negative balance recovery onto the connected account, so it silently absorbs the loss.”)
-   - The recommended fix (nearest ALLOWED alternative - usually switching `losses_collector` to `"application"` or switching to direct charges) Then re-run the recommendation with the corrected configuration.
+   - A 2-3 sentence explanation of the MECHANISM of failure (for example, “With destination charges and a dispute, Stripe debits the disputed amount from the platform’s balance. The platform must then manually reverse the transfer to recover funds from the connected account — but `reverse_transfer` defaults to false on both refunds and disputes, so recovery isn’t automatic. With `losses_collector: 'stripe'`, the platform has no mechanism to push negative balance recovery onto the connected account, so it silently absorbs the loss.”)
+   - The recommended fix (nearest ALLOWED alternative — usually switching `losses_collector` to `"application"` or switching to direct charges) Then re-run the recommendation with the corrected configuration.
 
 2. **CAUTION combination?** Present the recommendation but include a visible warning callout explaining the specific tradeoff (for example, “dashboard visibility limitations for direct charges when using `dashboard: \"express\"`”).
 
@@ -263,11 +263,11 @@ Read <references/compatibility-matrix.md> and cross-check the proposed `(dashboa
    - If `dashboard: "full"` + `fees_collector: "application"`, treat as SALES-GATED regardless of charge pattern. Do NOT recommend for self-serve paths. Redirect to [Stripe sales](https://stripe.com/contact/sales).
    - If `dashboard: "express"` + `fees_collector: "stripe"`, treat as BLOCKED and recommend either switching to full dashboard (Stripe-owned pricing) or platform-owned pricing.
 
-4. **Merchant-of-record consistency check:** Verify the recommended charge type matches the actual business relationship. Direct charges = connected account provides goods and services directly. Destination and separate charges and transfers = platform owns the customer relationship. Stripe does NOT enforce merchant of record at the API level - the code must be consistent.
+4. **Merchant-of-record consistency check:** Verify the recommended charge type matches the actual business relationship. Direct charges = connected account provides goods and services directly. Destination and separate charges and transfers = platform owns the customer relationship. Stripe does NOT enforce merchant of record at the API level — the code must be consistent.
 
 5. **Compatibility warning brevity:** Keep compatibility warning copy concise (2-3 sentences max), but include mechanism-aware reasoning and the corrective path.
 
-**Step 4b - Recommend embedded components**
+**Step 4b — Recommend embedded components**
 
 Embedded components are recommended, as they enable platforms to build full-featured dashboards of their own, especially when accounts are configured with `dashboard: "none"` and even if accounts are configured with (`dashboard: "full"` or `dashboard: "express"`). Select components based on user needs:
 
@@ -305,7 +305,7 @@ Update the checklist:
   [ ] Produce recommendation plan
 ```
 
-#### Step 5 - Generate recommendation plan
+#### Step 5 — Generate recommendation plan
 
 **Read <references/recommendation-template.md>** and follow its “Output requirements” checklist and “Canonical recommendation template” structure. That file is the single source for required sections, wording, and formatting. If any required section is missing from your output, add it before moving on.
 
@@ -315,11 +315,11 @@ Then ask the user:
 Does this recommendation look right?
 ```
 
-Options (max 4 - options hard limit):
+Options (max 4 — options hard limit):
 
-- “Looks good” - proceed to Step 6
-- “Change something” - ask which aspect to change (dashboard or responsibility settings, charge pattern, fee structure, or fee calculation) then re-ask the relevant question
-- “Explain more about the options” - read reference docs and explain alternatives
+- “Looks good” — proceed to Step 6
+- “Change something” — ask which aspect to change (dashboard or responsibility settings, charge pattern, fee structure, or fee calculation) then re-ask the relevant question
+- “Explain more about the options” — read reference docs and explain alternatives
 
 Generate the final recommendation plan. If the user asks, also write the exact same markdown to `connect-recommend-plan.md` at the project root.
 
@@ -332,7 +332,7 @@ When they accept the plan, update the checklist:
   [x] Produce recommendation plan
 ```
 
-#### Step 6 - Explain what belongs in code vs Dashboard, and next actions
+#### Step 6 — Explain what belongs in code vs Dashboard, and next actions
 
 Show a compact summary of decisions and immediate implementation priorities.
 
@@ -352,6 +352,6 @@ What would you like to do next?
 
 Options:
 
-- “Refine a decision” - adjust dashboard, responsibilities, charge pattern, or fee model
-- “Expand implementation steps” - provide a deeper technical rollout checklist
-- “Generate `connect-recommend-plan.md` and build” - write the plan to a markdown file and handoff to a coding agent
+- “Refine a decision” — adjust dashboard, responsibilities, charge pattern, or fee model
+- “Expand implementation steps” — provide a deeper technical rollout checklist
+- “Generate `connect-recommend-plan.md` and build” — write the plan to a markdown file and handoff to a coding agent

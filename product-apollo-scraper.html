@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apollo &amp; LinkedIn Intent Scraper Pro (n8n Blueprint) — SalesGency®</title>
+  <meta name="description" content="Production n8n workflow blueprint: automated Apollo &amp; LinkedIn intent scraper with multi-source waterfall email/mobile reveal and CRM deduplication shield.">
+  <meta name="keywords" content="Apollo Scraper n8n, LinkedIn Intent Scraper, GTM Automation Blueprint, Cold Email Enrichment Workflow, n8n Outbound Automation">
+  <link rel="canonical" href="https://salesgency.com/product-apollo-scraper.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://salesgency.com/product-apollo-scraper.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Apollo &amp; LinkedIn Intent Scraper Pro — SalesGency®">
+  <meta property="og:description" content="Production-ready n8n workflow for scraping hiring intent, revealing verified emails, and enrolling leads.">
+  <meta property="og:image" content="https://salesgency.com/assets/salesgency-wordmark-dark.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="assets/di.css">
+
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Apollo & LinkedIn Intent Scraper Pro (n8n Blueprint)",
+    "image": "https://salesgency.com/assets/salesgency-wordmark-dark.svg",
+    "description": "Autonomous n8n workflow blueprint that monitors hiring intent, tech stack shifts, reveals verified emails/mobiles, and shields CRM from duplicates.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SalesGency®"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://salesgency.com/product-apollo-scraper.html",
+      "priceCurrency": "USD",
+      "price": "97.00",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "48"
+    }
+  }
+  </script>
+  
+  <script src="assets/di-nav.js" defer></script>
+</head>
+<body>
+
+    <!-- Floating Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        <span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span>
+      </a>
+
+      <div class="nav-menu">
+        <div class="nav-dropdown-trigger">
+          <a href="agency.html" class="nav-item">Agency ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="inbound-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">1. Inbound Automation Workflow</span>
+              <span class="nav-dropdown-sub">Sub-30s speed-to-lead &amp; triage</span>
+            </a>
+            <a href="outbound-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">2. Outbound Automation Workflow</span>
+              <span class="nav-dropdown-sub">Intent waterfall &amp; PAS personalization</span>
+            </a>
+            <a href="pre-sales-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">3. Pre Sales Call Automation</span>
+              <span class="nav-dropdown-sub">Autonomous prospect dossiers</span>
+            </a>
+            <a href="post-sales-automation.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">4. Post Sales Call Automation</span>
+              <span class="nav-dropdown-sub">Transcript extraction &amp; CRM sync</span>
+            </a>
+            <a href="daily-execution-report.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">5. Daily Execution Report</span>
+              <span class="nav-dropdown-sub">Rep telemetry &amp; stuck deals</span>
+            </a>
+            <a href="daily-gtm-report.html" class="nav-dropdown-item">
+              <span class="nav-dropdown-title">6. Daily GTM Report</span>
+              <span class="nav-dropdown-sub">Executive pipeline &amp; CAC velocity</span>
+            </a>
+            <a href="build-session.html" class="nav-dropdown-item" style="border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
+              <span class="nav-dropdown-title" style="color: var(--accent-blue);">⚡ Book a Build Session</span>
+              <span class="nav-dropdown-sub">Custom scoped 30% value-added build</span>
+            </a>
+          </div>
+        </div>
+        <a href="marketplace.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="blueprint-pill">Skills &amp; Tools</span>
+        </a>
+        <a href="agent.html" class="nav-item">Agent</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+        <a href="work.html" class="nav-item">Case Studies</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="build-session.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book a Build Session</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">
+          Menu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+    <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="agency.html" class="mobile-link" style="font-weight: 700;">1. Agency (6 Core Products)</a>
+    <a href="marketplace.html" class="mobile-link" style="font-weight: 700;">2. Marketplace (Skills &amp; Blueprints)</a>
+    <a href="agent.html" class="mobile-link" style="font-weight: 700;">3. Agent (AI Teammate Platform)</a>
+    <a href="pricing.html" class="mobile-link">Pricing Guide</a>
+    <a href="work.html" class="mobile-link">Case Studies</a>
+    <a href="build-session.html" class="btn btn-primary" style="margin-top: 8px;">Book a Build Session</a>
+  </div>
+
+<div class="site-wrapper">
+
+    <!-- Breadcrumb Header -->
+    <section style="padding-top: clamp(110px, 13vw, 150px); width: 100%;">
+      <div class="container">
+        <div style="font-size: 13.5px; color: var(--text-muted); display: flex; gap: 8px; align-items: center; margin-bottom: 20px;">
+          <a href="index.html" style="color: var(--text-secondary);">Home</a> &gt; 
+          <a href="templates.html" style="color: var(--text-secondary);">Marketplace</a> &gt; 
+          <span style="color: var(--text-heading); font-weight: 600;">Apollo &amp; LinkedIn Scraper Pro</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Main Split Layout -->
+    <section style="width: 100%; padding-bottom: 80px;">
+      <div class="container">
+        <div class="product-detail-layout">
+          
+          <!-- Left Column: Visuals & Architecture -->
+          <div>
+            <div class="product-media-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span class="badge-tag" style="margin: 0;">Outbound Engine &bull; Version 2.4</span>              </div>
+
+              <!-- Interactive Node Flow Diagram -->
+              <div class="product-workflow-diagram">
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.05em;">
+                  Live Execution Flowchart
+                </div>
+                <div class="work-preview-flow">
+                  <div class="flow-node"><span>1. Intent Ingest: Apollo + LinkedIn Webhook</span><span class="flow-status-pill">Signal</span></div>
+                  <div class="flow-node"><span>2. CRM Deduplication &amp; Suppression Shield</span><span class="flow-status-pill">Dedupe</span></div>
+                  <div class="flow-node"><span>3. Waterfall Reveal: Clay &rarr; Prospeo &rarr; BounceBan</span><span class="flow-status-pill">Enriched</span></div>
+                  <div class="flow-node"><span>4. AI PAS Personalizer &rarr; Smartlead Auto-Enroll</span><span class="flow-status-pill">Active</span></div>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Compatible Tech Stack:</div>
+              <div class="tech-badge-strip">
+                <span class="tech-badge-item">⚡ n8n (Cloud &amp; Self-Hosted)</span>
+                <span class="tech-badge-item">🎯 Apollo.io API</span>
+                <span class="tech-badge-item">💼 LinkedIn Sales Nav</span>
+                <span class="tech-badge-item">📧 Smartlead &amp; Instantly</span>
+                <span class="tech-badge-item">🛡️ HubSpot &amp; Salesforce</span>
+                <span class="tech-badge-item">🤖 Claude 3.5 Sonnet</span>
+              </div>
+
+              <!-- Code Preview -->
+              <div style="font-size: 13px; font-weight: 700; color: var(--text-heading); margin-top: 24px;">n8n Import Quickstart:</div>
+              <div class="code-preview-block">
+// 1. Open your n8n canvas (Self-Hosted or Cloud)
+// 2. Click Menu -> "Import from File" or Paste JSON snippet
+// 3. Configure credentials: Apollo_API_Key, Smartlead_Key
+// 4. Click "Execute Workflow" to start automated ingestion</div>
+
+            </div>
+
+            <!-- What's Included Box -->
+            <div style="margin-top: 32px;">
+              <h3 style="font-size: 20px; font-weight: 700; color: var(--text-heading); margin-bottom: 16px;">What's Included in This Package</h3>
+              <div class="package-includes-grid">
+                <div class="package-item">
+                  <span style="font-size: 20px;">📦</span>
+                  <div>
+                    <strong>Production n8n JSON Blueprint</strong>
+                    Complete 18-node orchestration graph with automated error retries.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🐍</span>
+                  <div>
+                    <strong>Python Scraper Microservice</strong>
+                    Headless script for deep company news &amp; job board scraping.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🧠</span>
+                  <div>
+                    <strong>PAS Copywriting Prompts</strong>
+                    Benchmarked YAML prompt schemas tailored for 35%+ open rates.
+                  </div>
+                </div>
+                <div class="package-item">
+                  <span style="font-size: 20px;">🎥</span>
+                  <div>
+                    <strong>15-Minute Loom Video Walkthrough</strong>
+                    Step-by-step installation, API credential wiring, and live test run.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Checkout & Tool Compatibility Selector -->
+          <div class="product-info-panel">
+            
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-md);">
+              
+              <div class="product-price-headline">
+                <span class="product-price-amount">$97</span>
+                <span class="product-price-original">$249</span>
+                <span class="discount-pill">61% OFF</span>
+              </div>
+              <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px; margin-bottom: 20px;">One-time purchase &bull; Instant JSON download &bull; Lifetime updates</p>
+
+              <h1 style="font-size: 26px; font-weight: 800; color: var(--text-heading); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.02em;">
+                Apollo &amp; LinkedIn Intent Scraper Pro
+              </h1>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+                An autonomous revenue blueprint that continuously identifies accounts signaling buying intent, enriches verified mobile and catch-all emails, and safely enrolls prospects into AI-personalized cadences.
+              </p>
+
+              <!-- Interactive Stack Checker -->
+              <div class="tool-compatibility-card" style="margin-bottom: 24px;">
+                <h4>⚡ Verify Your Stack Compatibility:</h4>
+                <div class="compat-status-row">
+                  <span>Orchestrator:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ n8n (v1.0+)</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Data Sources:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Apollo, LinkedIn, Clay</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>Email Engines:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ Smartlead, Instantly, Lemlist</span>
+                </div>
+                <div class="compat-status-row">
+                  <span>CRMs:</span>
+                  <span style="color: #10B981; font-weight: 700;">✓ HubSpot, Salesforce, Pipedrive</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <button class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700; margin-bottom: 12px;" data-stripe-checkout="apollo-scraper">
+                Download Blueprint Now ($497) &rarr;
+              </button>
+
+              <a href="qualification.html" class="btn btn-secondary" style="width: 100%; padding: 14px; font-size: 14px; text-align: center; display: block;">
+                Or have us deploy &amp; customize it in-house ($495 Audit)
+              </a>
+
+              <div style="display: flex; justify-content: center; gap: 16px; font-size: 12.5px; color: var(--text-muted); margin-top: 16px;">
+                <span>🔒 Secure Stripe Checkout</span>
+                <span>•</span>
+                <span>⚡ Instant JSON Download</span>
+                <span>•</span>              </div>
+
+            </div>
+
+            <!-- Master Bundle Upsell Box -->
+            <div style="background: #F8F9FA; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; text-align: center;">
+              <span class="discount-pill" style="margin-bottom: 8px; display: inline-block;">VALUE DEAL</span>
+              <h4 style="font-size: 17px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Want all 25+ GTM Blueprints?</h4>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px;">
+                Get every single workflow, scraper, and prompt package for just <strong>$149</strong> (Total value $1,240+).
+              </p>
+              <a href="product-master-bundle.html" class="btn btn-secondary" style="width: 100%; font-size: 13px;">View All-Access Bundle ($149) &rarr;</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+        <!-- Footer -->
+      <footer class="footer sg-footer">
+    <div class="container footer-inner">
+      <div class="sg-footer-top">
+        <div class="sg-footer-brand">
+          <a href="index.html" aria-label="SalesGency — Your In-House GTM Agency"><span class="sg-wm sg-wm-lg"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+          <p class="sg-tagline">Your In-House GTM Agency</p>
+          <p class="sg-slogan">AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <nav class="sg-footer-paths" aria-label="Three ways to work with us">
+          <a href="marketplace.html"><strong>Buy a template</strong><span>Production-ready engines, skills, and workflows. Deploy in minutes, own the code.</span></a>
+          <a href="build-session.html"><strong>Build with our team</strong><span>Co-build your GTM engine in a working session. $1,000.</span></a>
+          <a href="agent.html"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds.</span></a>
+        </nav>
+      </div>
+      <div class="footer-links">
+        <a href="agency.html">Agency</a>
+        <a href="activations.html">Activations</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="agent.html">Agent</a>
+        <a href="workspaces.html">Workspaces</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="portal.html">Portal</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <p class="footer-note">&copy; 2026 SalesGency &middot; Diamitani Industries. Built by Patrick Diamitani.</p>
+    </div>
+  </footer>
+
+  </div>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileNavToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+        mobileToggle.textContent = mobileDrawer.classList.contains('open') ? 'Close' : 'Menu';
+      });
+    }
+  </script>
+  <script src="assets/stripe-client.js"></script>
+</body>
+</html>

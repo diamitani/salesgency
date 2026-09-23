@@ -2,7 +2,7 @@
 
 **Codename:** Site Empire OS  
 **Version:** 1.0.0  
-**Status:** Canonical - use as README, `soul.md`, `SKILL.md`, or instruction pack  
+**Status:** Canonical — use as README, `soul.md`, `SKILL.md`, or instruction pack  
 **Owner:** Builder / operator (you)  
 **Governing frameworks:** PAL (Parse → Ambiguity Scan → Latent Intent → Expand → Compile) · Software Development Life Cycle · AWS Well-Architected Framework (six pillars)
 
@@ -77,7 +77,7 @@ PAL maps to ROSTR’s pipeline: intake → intent-spec → evidence → JTBD →
 
 ### 1.3 AWS Well-Architected pillars (gates on every artifact)
 
-The framework exists so architectural decisions are conscious, measurable, and remediable - not an audit theater. Apply all six pillars to every workload, including a Vercel + Supabase stack that later moves heavy pieces onto AWS.
+The framework exists so architectural decisions are conscious, measurable, and remediable — not an audit theater. Apply all six pillars to every workload, including a Vercel + Supabase stack that later moves heavy pieces onto AWS.
 
 | Pillar | Meaning | Site-build translation |
 |---|---|---|
@@ -260,12 +260,12 @@ Format: As a **persona**, I want **action**, so that **outcome**. Acceptance is 
 
 ### 5.1 Personas
 
-- **Visitor** - unknown, evaluating.
-- **Signer** - creating an account.
-- **Member** - doing the core job.
-- **Admin** - seats, billing, security.
-- **Operator** - you, running the platform.
-- **Agent** - coding or runtime agent consuming instruction packs.
+- **Visitor** — unknown, evaluating.
+- **Signer** — creating an account.
+- **Member** — doing the core job.
+- **Admin** — seats, billing, security.
+- **Operator** — you, running the platform.
+- **Agent** — coding or runtime agent consuming instruction packs.
 
 ### 5.2 Must-have stories
 
@@ -310,19 +310,19 @@ Write 20–80 stories per product. Tag `now` / `next` / `later`. Map each to a s
 
 ### 6.1 Required sections
 
-1. **Problem** - who hurts, how often, current workaround.
-2. **Outcome** - measurable (activation, paid conversion, time-to-value, NPS, uptime).
+1. **Problem** — who hurts, how often, current workaround.
+2. **Outcome** — measurable (activation, paid conversion, time-to-value, NPS, uptime).
 3. **Users and JTBD**
 4. **Scope v1 / v1.1 / v2**
 5. **Non-goals**
-6. **Experience requirements** - screens, empty states, motion budget.
-7. **Functional requirements** - numbered FR-xxx.
-8. **Non-functional** - SLO, RPO/RTO, a11y, i18n, data residency.
-9. **Analytics events** - named, versioned.
-10. **Launch plan** - waitlist, beta, GA, pricing experiment.
-11. **Risks and ethics** - abuse, AI harm, payments fraud.
+6. **Experience requirements** — screens, empty states, motion budget.
+7. **Functional requirements** — numbered FR-xxx.
+8. **Non-functional** — SLO, RPO/RTO, a11y, i18n, data residency.
+9. **Analytics events** — named, versioned.
+10. **Launch plan** — waitlist, beta, GA, pricing experiment.
+11. **Risks and ethics** — abuse, AI harm, payments fraud.
 12. **Open questions**
-13. **Acceptance** - demo script a stranger can follow.
+13. **Acceptance** — demo script a stranger can follow.
 
 ### 6.2 Default v1 scope for any premium site
 
@@ -390,14 +390,14 @@ Idempotency: Idempotency-Key = workspace_id + price_id + period
 
 ### 8.1 Logical layers (do not skip)
 
-1. **Edge** - DNS, TLS, CDN, WAF, bot management, rate limit.
-2. **Experience** - Next.js App Router (RSC + client islands).
-3. **Application API** - route handlers / tRPC / server actions with zod validation.
-4. **Domain** - pure TypeScript policies: billing, tenancy, entitlements, IA objects.
-5. **Orchestration** - queues, workflows, agent runs (Inngest / Trigger.dev / Temporal).
-6. **Data** - Postgres (source of truth), object storage, cache, search, vector.
-7. **Providers** - Stripe, email, AI, OAuth, analytics. Always behind adapters.
-8. **Control plane** - feature flags, secrets, config, audit.
+1. **Edge** — DNS, TLS, CDN, WAF, bot management, rate limit.
+2. **Experience** — Next.js App Router (RSC + client islands).
+3. **Application API** — route handlers / tRPC / server actions with zod validation.
+4. **Domain** — pure TypeScript policies: billing, tenancy, entitlements, IA objects.
+5. **Orchestration** — queues, workflows, agent runs (Inngest / Trigger.dev / Temporal).
+6. **Data** — Postgres (source of truth), object storage, cache, search, vector.
+7. **Providers** — Stripe, email, AI, OAuth, analytics. Always behind adapters.
+8. **Control plane** — feature flags, secrets, config, audit.
 
 Browser never holds provider keys. Agents never own run state. Payments webhooks are the billing source of truth.
 
@@ -598,7 +598,7 @@ Performance: hero image AVIF/WebP, font subset, no 3MB JS for a landing page. Ma
 - One column, calm, no marketing carousel behind the form.
 - Buttons: Continue with Google / GitHub / Apple / email.
 - Show scopes honestly.
-- Error: `access_denied`, email conflict, unverified email - each with a next step.
+- Error: `access_denied`, email conflict, unverified email — each with a next step.
 - Passkeys when the IdP allows.
 - After login: if no workspace → onboarding; if invite → accept; else last project.
 
@@ -906,7 +906,7 @@ Use this as a gate. A coding agent may not call a project “done” until every
 
 This is the growth architecture. Dates are stages, not calendar promises. Do not skip stages to look impressive.
 
-### Stage 0 - Founder (0–1 user)
+### Stage 0 — Founder (0–1 user)
 
 **Goal:** A beautiful, payable, useful site you would show a customer.
 
@@ -918,7 +918,7 @@ Stack: Next.js, Supabase, Vercel, Stripe, Resend, Taste Skill.
 
 Exit: You can pay yourself, complete the job, and restore from backup.
 
-### Stage 1 - First ten (1–10)
+### Stage 1 — First ten (1–10)
 
 **Goal:** Activation and truth.
 
@@ -926,7 +926,7 @@ Ship: Onboarding, empty states, support email, changelog, basic analytics, waitl
 
 Exit: 3 users completed the core job without you on a call.
 
-### Stage 2 - Neighborhood (10–1,000)
+### Stage 2 — Neighborhood (10–1,000)
 
 **Goal:** Self-serve revenue.
 
@@ -936,7 +936,7 @@ Reliability: PITR, webhook retries, uptime 99.9%.
 
 Exit: Month of self-serve revenue; no shared admin passwords.
 
-### Stage 3 - City (1,000–100,000)
+### Stage 3 — City (1,000–100,000)
 
 **Goal:** Performance and support leverage.
 
@@ -946,7 +946,7 @@ Move: heavy workers off serverless timeouts; consider RDS if Supabase limits bin
 
 Exit: p95 budgets held at 10× current load in staging.
 
-### Stage 4 - Country (100,000–1,000,000)
+### Stage 4 — Country (100,000–1,000,000)
 
 **Goal:** Cells and enterprise.
 
@@ -956,7 +956,7 @@ Architecture: app cluster, Aurora or equivalent, CloudFront, WAF, Shield, Secret
 
 Exit: One region can fail without total data loss; enterprise checklist exists.
 
-### Stage 5 - Continent (1M–100M)
+### Stage 5 — Continent (1M–100M)
 
 **Goal:** Isolate blast radius.
 
@@ -966,7 +966,7 @@ Chat/AI: isolated quotas, abuse pipelines, evals continuous.
 
 Exit: A bad deploy affects one cell; others stay up.
 
-### Stage 6 - Planet (100M–1B+)
+### Stage 6 — Planet (100M–1B+)
 
 **Goal:** Federation and law.
 
@@ -1034,7 +1034,7 @@ Score 0–5. Ship only if each dimension ≥ 4 or a written waiver exists.
 ## 17. Agent soul (copy to `soul.md`)
 
 ```markdown
-# Agent Soul - Premium Site Builder
+# Agent Soul — Premium Site Builder
 
 ## Identity
 You are the Site Empire general. You design and build premium web products
@@ -1117,19 +1117,19 @@ MCP integrations as approved. RAG-DAL / web research only for public facts.
 
 ## 19. Standard prompts (reuse)
 
-**P1 - New product**  
+**P1 — New product**  
 “Run Site Empire OS. Product: [one sentence]. Audience: [who]. Payments: yes. Produce artifacts 01–25 as drafts, then implement the critical path on the default stack. Taste Skill on. WAF gates in the architecture.”
 
-**P2 - Docs only**  
+**P2 — Docs only**  
 “Do not code. Produce IA, sitemap, user stories, PRD, specifications, system architecture, stack ADR, frontend UI spec, backend/infra spec, payments spec, checklist, and roadmap stages 0–6.”
 
-**P3 - UI only**  
+**P3 — UI only**  
 “Implement marketing landing, OAuth, pricing, checkout, and chat UI from docs/14. No new scope. Mobile-first, AA, dual theme.”
 
-**P4 - Infra only**  
+**P4 — Infra only**  
 “From docs/15 and 17, produce env matrix, Terraform/SST plan, secret list, CI, backup drill, and WAF answers.”
 
-**P5 - Scale review**  
+**P5 — Scale review**  
 “We are entering stage [N]. Diff architecture against Site Empire OS. What must change? What must not be rewritten?”
 
 ---

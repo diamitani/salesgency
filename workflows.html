@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workflows — SalesGency</title>
+  <meta name="description" content="The six core Salesgency workflows and production workflow blueprints: deterministic execution rails for your revenue engine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/di.css">
+  
+  <script src="assets/di-nav.js" defer></script>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="SalesGency Home"><span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="activations.html">Activations</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="skills.html">Skills</a>
+        <a href="workflows.html" class="active">Workflows</a>
+        <a href="outreach.html">Outreach</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="build-session.html">Book a build session</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding-bottom: 60px;">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow reveal">Workflows</p>
+        <h1 class="reveal">Deterministic execution <span class="accent">rails.</span></h1>
+        <p class="lede reveal">The rock-solid plumbing of your revenue engine. Production-grade workflows with automated retries, rate-limit buffers, human review gates, and zero data loss — each one mapped to a business activation, and together they are the Prospect Automation Engine.</p>
+      </div>
+    </section>
+
+    <!-- Core workflows -->
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        <p class="eyebrow reveal">Core workflows</p>
+        <h2 class="reveal">The six workflows that run the system.</h2>
+        <p class="section-sub reveal">Each workflow is the executable form of an activation — same controls, same acceptance evidence, running on a schedule or on trigger.</p>
+        <div class="steps">
+          <div class="step reveal">
+            <span class="step-num">WF-01</span>
+            <h3>Inbound Automation Workflow <span class="def">— sub-30s speed-to-lead</span></h3>
+            <p>Webhook listener on every inbound source. Enriches, scores, routes, and dispatches the acknowledgement in under thirty seconds — then starts the SLA clock. Maps to <a href="activations.html#inbound" style="color: var(--accent-text);">Activation 02</a>.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">WF-02</span>
+            <h3>Outbound Automation Workflow <span class="def">— intent waterfall &amp; PAS personalization</span></h3>
+            <p>Signal ingestion, account research, and personalized sequence preparation with approval gates before anything sends. Maps to <a href="activations.html#outbound" style="color: var(--accent-text);">Activation 01</a>.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">WF-03</span>
+            <h3>Pre-Sales Call Automation <span class="def">— autonomous prospect dossiers</span></h3>
+            <p>Calendar-triggered briefings assembled from CRM history and approved external sources, delivered ahead of every eligible meeting. Maps to <a href="activations.html#precall" style="color: var(--accent-text);">Activation 03</a>.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">WF-04</span>
+            <h3>Post-Sales Call Automation <span class="def">— transcript extraction &amp; CRM sync</span></h3>
+            <p>Transcript ingestion, structured summaries, proposed CRM updates, and drafted follow-ups — all held at the human review gate. Maps to <a href="activations.html#postcall" style="color: var(--accent-text);">Activation 04</a>.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">WF-05</span>
+            <h3>Daily Execution Report <span class="def">— rep telemetry &amp; stuck deals</span></h3>
+            <p>Every run, every outcome, every failure — aggregated daily with owners, costs, and exceptions. Maps to <a href="activations.html#execution" style="color: var(--accent-text);">Activation 05</a>.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">WF-06</span>
+            <h3>Daily GTM Report <span class="def">— executive pipeline &amp; velocity</span></h3>
+            <p>The morning brief: movement, exceptions, and decisions required — reconciled to source-system totals. Maps to <a href="activations.html#execreport" style="color: var(--accent-text);">Activation 06</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blueprints -->
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow reveal">Blueprints</p>
+        <h2 class="reveal">Production workflow blueprints.</h2>
+        <p class="section-sub reveal">Battle-tested workflow patterns we install and adapt to your stack — not demos, not templates you assemble yourself.</p>
+        <div class="platform-grid">
+          <div class="platform-card reveal">
+            <span class="tag">Blueprint 01</span>
+            <h3>Automated Signal-to-CRM Sync Pipeline</h3>
+            <p>Periodically queries target account databases, enriches missing contact fields, checks duplicates, and inserts verified prospects directly into your CRM. 15-minute sync cycles.</p>
+          </div>
+          <div class="platform-card reveal">
+            <span class="tag">Blueprint 02</span>
+            <h3>Sub-Minute Inbound Lead Dispatcher</h3>
+            <p>Instant webhook listener triggering immediate lead enrichment, qualification scoring, and calendar dispatch — the speed-to-lead engine.</p>
+          </div>
+          <div class="platform-card reveal">
+            <span class="tag">Blueprint 03</span>
+            <h3>Positive Reply to CRM Deal Creator</h3>
+            <p>Parses incoming sequencer replies, detects interested sentiment, and creates opportunities in the CRM with the full conversation context attached.</p>
+          </div>
+          <div class="platform-card reveal">
+            <span class="tag">Blueprint 04</span>
+            <h3>Stale Opportunity Pipeline Watchdog</h3>
+            <p>Daily automated CRM scanner flagging stalled deals and notifying sales management before pipeline quietly dies.</p>
+          </div>
+        </div>
+        <p class="footnote reveal">Every blueprint ships with retry rules, dead-letter handling, idempotent writes, and an operator SOP.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--cta">
+      <div class="container">
+        <p class="eyebrow reveal">Next step</p>
+        <h2 class="reveal">See what your stack is missing.</h2>
+        <p class="section-sub reveal" style="margin-left:auto;margin-right:auto;text-align:center;">The activation workshop maps your current process against these workflows and picks the first pilot — concrete, scoped, and priced before we build anything.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary btn-lg" href="build-session.html">Book a build session — $1,000</a>
+          <a class="btn btn-ghost btn-lg" href="activations.html">Read the work breakdowns</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer class="footer sg-footer">
+    <div class="container footer-inner">
+      <div class="sg-footer-top">
+        <div class="sg-footer-brand">
+          <a href="index.html" aria-label="SalesGency — Your In-House GTM Agency"><span class="sg-wm sg-wm-lg"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+          <p class="sg-tagline">Your In-House GTM Agency</p>
+          <p class="sg-slogan">AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <nav class="sg-footer-paths" aria-label="Three ways to work with us">
+          <a href="marketplace.html"><strong>Buy a template</strong><span>Production-ready engines, skills, and workflows. Deploy in minutes, own the code.</span></a>
+          <a href="build-session.html"><strong>Build with our team</strong><span>Co-build your GTM engine in a working session. $1,000.</span></a>
+          <a href="agent.html"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds.</span></a>
+        </nav>
+      </div>
+      <div class="footer-links">
+        <a href="agency.html">Agency</a>
+        <a href="activations.html">Activations</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="agent.html">Agent</a>
+        <a href="workspaces.html">Workspaces</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="portal.html">Portal</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <p class="footer-note">&copy; 2026 SalesGency &middot; Diamitani Industries. Built by Patrick Diamitani.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var revealEls = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var o = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); o.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        revealEls.forEach(function (el) { o.observe(el); });
+      } else { revealEls.forEach(function (el) { el.classList.add("visible"); }); }
+      var t = document.getElementById("navToggle"), l = document.getElementById("navLinks"), c = document.querySelector(".nav-cta");
+      if (t && l) t.addEventListener("click", function () {
+        var open = l.classList.toggle("open");
+        if (c) c.classList.toggle("open", open);
+        t.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+  </script>
+</body>
+</html>

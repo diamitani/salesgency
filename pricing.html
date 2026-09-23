@@ -3,346 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing | SalesGency</title>
-  <meta name="description" content="Transparent pricing for GTM architecture and revenue engineering. From $299 GTM Teardowns to $5,000 Priority Builds.">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
+  <title>Pricing — Build Packages, Sessions & Agency Sprints | SalesGency®</title>
+  <meta name="description" content="SalesGency Pricing: Build Packages from $39, $1,000 Build Sessions, and Agency Sprints from $2,500. Simple, transparent pricing with 100% client-owned code.">
+  <meta name="keywords" content="GTM AI Pricing, Build Packages, Build Session, Agency Sprint, Revenue Automation Pricing">
+  <link rel="canonical" href="https://salesgency.com/pricing.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://salesgency.com/pricing.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="Pricing — SalesGency®">
+  <meta property="og:description" content="Build Packages from $39, Build Sessions at $1,000, Agency Sprints from $2,500.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="assets/di.css">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="assets/salesgencytokens.css">
-  <link rel="stylesheet" href="assets/unified.css">
-  <link rel="stylesheet" href="assets/premium.css">
-  
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <script src="assets/unified-nav.js" defer></script>
-  <script src="assets/stripe-client.js" defer></script>
-
-  <style>
-    body {
-      background-color: var(--sg-mist);
-      color: var(--sg-ink);
-      font-family: var(--sg-font-body);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-      margin: 0;
-      overflow-x: hidden;
-    }
-    h1, h2, h3, h4 {
-      font-family: var(--sg-font-display);
-      letter-spacing: -0.02em;
-      color: var(--sg-ink);
-    }
-    /* Hero */
-    .sg-hero {
-      position: relative;
-      padding: 180px 24px 140px;
-      text-align: center;
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .sg-hero h1 {
-      color: var(--sg-white);
-      font-size: clamp(48px, 8vw, 88px);
-      max-width: 900px;
-      margin: 0 auto 24px;
-      line-height: 1.05;
-    }
-    .sg-hero p {
-      color: var(--sg-mist);
-      font-size: clamp(18px, 3vw, 22px);
-      max-width: 600px;
-      margin: 0 auto 40px;
-      opacity: 0.9;
-    }
-
-    /* Buttons */
-    .sg-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 24px;
-      border-radius: 10px;
-      font-family: var(--sg-font-display);
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      box-sizing: border-box;
-      position: relative;
-    }
-    .sg-btn-primary {
-      background: var(--sg-ink);
-      color: var(--sg-white);
-    }
-    .sg-btn-secondary {
-      background: transparent;
-      border: 1px solid var(--sg-line);
-      color: var(--sg-ink);
-    }
-    .sg-btn-secondary:hover {
-      background: var(--sg-mist);
-      border-color: var(--sg-ink);
-    }
-
-    /* Pricing Section */
-    .sg-pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-    }
-    .sg-price-card {
-      background: var(--sg-white);
-      border: 1px solid var(--sg-line);
-      border-radius: var(--sg-radius-m);
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .sg-price-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 64px rgba(10, 20, 40, 0.08);
-      border-color: rgba(10, 20, 40, 0.2);
-    }
-    .sg-price-card.featured {
-      border: 2px solid var(--sg-ink);
-      position: relative;
-    }
-    .sg-price-card.featured:hover {
-      box-shadow: 0 24px 64px rgba(124, 58, 237, 0.15); /* Indigo glow */
-    }
-    .sg-price-header {
-      margin-bottom: 24px;
-    }
-    .sg-price-header h3 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-    .sg-price-amount {
-      font-family: var(--sg-font-display);
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--sg-ink);
-      margin-bottom: 32px;
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-    }
-    .sg-feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 48px 0;
-      flex-grow: 1;
-    }
-    .sg-feature-list li {
-      font-size: 16px;
-      color: var(--sg-slate);
-      margin-bottom: 16px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .sg-feature-list li::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sg-signal);
-      margin-top: 10px;
-      flex-shrink: 0;
-    }
-  </style>
+  <script src="assets/di-nav.js" defer></script>
 </head>
 <body>
 
-  <main>
-    <!-- Dark Premium Hero -->
-    <section class="sg-hero">
-      <div class="sg-mesh-bg">
-        <div class="sg-mesh-blob cyan" style="left: -10vw; bottom: -10vw; top: auto;"></div>
+  <!-- Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        <span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span>
+      </a>
+      <div class="nav-menu">
+        <a href="marketplace.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$39+</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span>Build Session</span>
+          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
+        </a>
+        <a href="architecture.html" class="nav-item">Architecture</a>
+        <a href="pricing.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">Pricing</a>
       </div>
-      <div class="sg-relative-content">
-        <span class="sg-eyebrow gs-reveal" style="color: var(--sg-mist); opacity: 0.6;">Pricing Architecture</span>
-        <h1 class="sg-hero-title gs-reveal">
-          Simple, outcome-driven <span class="sg-signature-gradient">pricing.</span>
+      <div class="nav-actions">
+        <a href="book.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book a Build Session</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">Menu</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="marketplace.html" class="mobile-link">Marketplace ($39+)</a>
+    <a href="book.html" class="mobile-link">Book a Build Session ($1,000)</a>
+    <a href="architecture.html" class="mobile-link">System Architecture</a>
+    <a href="pricing.html" class="mobile-link" style="font-weight: 700; color: var(--text-heading);">Pricing</a>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Hero -->
+    <section style="padding: clamp(120px, 14vw, 160px) 0 30px; text-align: center;">
+      <div class="container" style="max-width: 680px;">
+        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+          <span class="live-telemetry-badge">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Transparent Pricing · Zero Recurring Fees · 100% Client-Owned</span>
+          </span>
+        </div>
+        <h1 style="font-size: clamp(30px, 4.5vw, 46px); font-weight: 900; color: var(--text-heading); line-height: 1.1; letter-spacing: -0.03em;">
+          Simple, Transparent<br><span class="serif-italic">Pricing.</span>
         </h1>
-        <p class="gs-reveal">
-          No complex retainers. Choose the engagement level that matches your urgency. You own 100% of the deployed code forever.
+        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 12px; max-width: 480px; margin-left: auto; margin-right: auto;">
+          Three clear ways to deploy GTM automation. Pay once, own forever.
         </p>
       </div>
     </section>
 
-    <div class="sg-pricing-grid gs-reveal" style="max-width: 1200px; margin: -100px auto 140px; padding: 0 24px; position: relative; z-index: 10;">
-      <!-- Tier 1 -->
-      <div class="sg-price-card">
-        <div class="sg-price-header">
-          <h3>GTM Teardown</h3>
-          <p style="color: var(--sg-slate); font-size: 14px;">Identify the bottlenecks</p>
-        </div>
-        <div class="sg-price-amount">$299<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
-        <ul class="sg-feature-list">
-          <li>Complete CRM & Stack Audit</li>
-          <li>Detailed Engineering Architecture Blueprint</li>
-          <li>Identified Workflow Bottlenecks</li>
-          <li>Credited towards any Build Sprint</li>
-        </ul>
-        <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="gtm-teardown">
-          <span>Book Teardown</span>
-        </button>
-      </div>
+    <!-- Pricing Comparison -->
+    <section style="padding: 20px 0 clamp(60px, 8vw, 100px);">
+      <div class="container" style="max-width: 1100px;">
+        <div class="pricing-compare">
 
-      <!-- Tier 2 -->
-      <div class="sg-price-card featured">
-        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--sg-ink); color: var(--sg-white); font-size: 12px; padding: 6px 16px; border-radius: var(--sg-radius-pill); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Standard Sprint</div>
-        <div class="sg-price-header">
-          <h3>Revenue Engine Sprint</h3>
-          <p style="color: var(--sg-slate); font-size: 14px;">14-Day deployment cycle</p>
-        </div>
-        <div class="sg-price-amount">$2,500<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
-        <ul class="sg-feature-list">
-          <li>1 Core Engine (Inbound, Outbound, or Deal Intel)</li>
-          <li>Fully built, tested, and deployed inside your stack</li>
-          <li>Custom CRM Dedupe Shields</li>
-          <li>Live paired engineering session & handover</li>
-        </ul>
-        <button class="sg-btn sg-btn-primary sg-btn-magnetic" data-stripe-product="revenue-engine-sprint">
-          <span>Start Standard Sprint</span>
-        </button>
-      </div>
-
-      <!-- Tier 3 -->
-      <div class="sg-price-card" style="border-color: var(--sg-signal); box-shadow: 0 12px 32px rgba(0,194,255,0.1);">
-        <div class="sg-price-header">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h3>Priority Build</h3>
-            <span style="font-size: 11px; font-weight: 700; background: var(--sg-signal); color: var(--sg-ink); padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">Fast-track</span>
+          <!-- Tier 1: Build Packages -->
+          <div class="pricing-compare-card">
+            <span class="pricing-compare-tier">Self-Serve</span>
+            <h2 class="pricing-compare-name">Build Packages</h2>
+            <div class="pricing-compare-price">$39 <span>– $697</span></div>
+            <p class="pricing-compare-desc">
+              Production-ready source code, n8n JSONs, Python scripts, and setup guides. Download, deploy, and own.
+            </p>
+            <ul class="pricing-compare-features">
+              <li>Complete source code (.json, .py, .md, .sql)</li>
+              <li>Step-by-step setup guides</li>
+              <li>Zero recurring vendor fees</li>
+              <li>100% client IP ownership</li>
+              <li>Individual engines from $199</li>
+              <li>Custom Skills from $39</li>
+              <li>Custom Templates from $197</li>
+              <li>Master Bundle: $1,997</li>
+            </ul>
+            <a href="marketplace.html" class="pricing-compare-cta secondary">Browse Marketplace →</a>
           </div>
-          <p style="color: var(--sg-slate); font-size: 14px;">Accelerated 30-Day Turnkey</p>
-        </div>
-        <div class="sg-price-amount">$5,000<span style="font-size: 16px; color: var(--sg-slate);"> / flat</span></div>
-        <ul class="sg-feature-list">
-          <li>All 3 Core Engines deployed (Full Architecture)</li>
-          <li>Accelerated turnkey delivery</li>
-          <li>Custom multi-tool connectors & scrapers</li>
-          <li>Executive revenue telemetry dashboard</li>
-        </ul>
-        <button class="sg-btn sg-btn-primary sg-btn-magnetic" style="background: var(--sg-signal); border-color: var(--sg-signal); color: var(--sg-ink);" data-stripe-product="priority-build">
-          <span>Start Priority Build</span>
-        </button>
-      </div>
 
-      <!-- Tier 4 -->
-      <div class="sg-price-card">
-        <div class="sg-price-header">
-          <h3>Monitoring & Tune-ups</h3>
-          <p style="color: var(--sg-slate); font-size: 14px;">Ongoing fractional support</p>
-        </div>
-        <div class="sg-price-amount">$1,250<span style="font-size: 16px; color: var(--sg-slate);"> / mo</span></div>
-        <ul class="sg-feature-list">
-          <li>Continuous prompt & skill tuning</li>
-          <li>Weekly engineering standups</li>
-          <li>Error-handling & break-fix monitoring</li>
-          <li>Cancel anytime, zero lock-in</li>
-        </ul>
-        <button class="sg-btn sg-btn-secondary sg-btn-magnetic" data-stripe-product="monitoring-tuneups">
-          <span>Add Monitoring</span>
-        </button>
-      </div>
-    </div>
+          <!-- Tier 2: Build Session (Featured) -->
+          <div class="pricing-compare-card featured">
+            <span class="pricing-compare-tier">Co-Build</span>
+            <h2 class="pricing-compare-name">Build Session</h2>
+            <div class="pricing-compare-price">$1,000 <span>flat</span></div>
+            <p class="pricing-compare-desc">
+              4 hours across 6 dedicated sessions. Live working prototype on real prospect data. All source code included.
+            </p>
+            <ul class="pricing-compare-features">
+              <li>2× 1-hour strategy sessions</li>
+              <li>4× 30-minute rapid prototyping rounds</li>
+              <li>Working prototype on real data</li>
+              <li>Complete build packages included</li>
+              <li>Enriched prospect pipeline records</li>
+              <li>Path A: Deploy independently (DIY)</li>
+              <li>Path B: Apply $1,000 credit toward Agency Sprint</li>
+            </ul>
+            <a href="book.html" class="pricing-compare-cta primary">Book a Build Session →</a>
+          </div>
 
-    <!-- FAQ Section -->
-    <section class="sg-section" style="background: var(--sg-white); border-top: 1px solid var(--sg-line); padding: 140px 24px;">
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div class="gs-reveal" style="text-align: center; margin-bottom: 80px;">
-          <span class="sg-eyebrow">FAQ</span>
-          <h2 style="font-size: clamp(40px, 5vw, 56px); line-height: 1.1;">Frequently Asked Questions</h2>
-        </div>
-        
-        <div class="gs-reveal" style="margin-bottom: 48px;">
-          <h4 style="font-size: 24px; margin-bottom: 12px;">Do we own 100% of the deployed code?</h4>
-          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">Yes. All n8n workflow blueprints, prompt files, custom scripts, and documentation belong to your organization permanently without recurring software lock-in.</p>
-        </div>
-        
-        <div class="gs-reveal" style="margin-bottom: 48px;">
-          <h4 style="font-size: 24px; margin-bottom: 12px;">What tech stacks do you support?</h4>
-          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">We build directly inside HubSpot, Salesforce, Clay, Apollo.io, Smartlead, Instantly, n8n (self-hosted or cloud), and Claude / OpenAI / Gemini API harnesses.</p>
+          <!-- Tier 3: Agency Sprint -->
+          <div class="pricing-compare-card">
+            <span class="pricing-compare-tier">White-Glove</span>
+            <h2 class="pricing-compare-name">Agency Sprint</h2>
+            <div class="pricing-compare-price">$2,500 <span>– $5,000</span></div>
+            <p class="pricing-compare-desc">
+              Turnkey deployment into your infrastructure. We build, test, and hand over a production-ready system.
+            </p>
+            <ul class="pricing-compare-features">
+              <li>7-Day Sprint: $2,500</li>
+              <li>3-Day High-Velocity Sprint: $5,000</li>
+              <li>Full deployment & testing</li>
+              <li>Production-ready system handover</li>
+              <li>Optional: $1,250/mo optimization retainer</li>
+              <li>Limited to 3–5 clients per month</li>
+            </ul>
+            <a href="book.html" class="pricing-compare-cta secondary">Start with a Build Session →</a>
+          </div>
+
         </div>
 
-        <div class="gs-reveal" style="margin-bottom: 48px;">
-          <h4 style="font-size: 24px; margin-bottom: 12px;">How does the $299 GTM Teardown work?</h4>
-          <p style="color: var(--sg-slate); font-size: 18px; line-height: 1.6;">You get a comprehensive audit of your current stack, mapping out data flows and bottlenecks. If you decide to proceed with a Sprint or Priority Build, the $299 is fully credited toward that engagement.</p>
+        <!-- Package Portal banner -->
+        <div class="pricing-compare-card" style="margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; justify-content: space-between;">
+          <div style="flex: 1 1 320px;">
+            <span class="pricing-compare-tier">Guided</span>
+            <h2 class="pricing-compare-name" style="margin: 6px 0;">Package Portal — <span style="white-space: nowrap;">$199</span></h2>
+            <p class="pricing-compare-desc" style="margin: 0;">
+              Not sure which package fits? Answer a few questions in the chat wizard and our builder assembles a personalized automation package — n8n workflow, setup playbook, config checklist — built around your CRM and tools.
+            </p>
+          </div>
+          <a href="portal.html" class="pricing-compare-cta primary" style="flex: 0 0 auto;">Build my package →</a>
         </div>
-
       </div>
     </section>
-  </main>
 
-  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-      <div style="display: flex; justify-content: center; gap: 24px;">
-        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
-        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
-        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
-        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
-        <a href="process.html" style="color: var(--sg-mist); text-decoration: none;">Process</a>
+    <!-- GTM Audit Upsell -->
+    <section style="padding: clamp(50px, 6vw, 80px) 0; border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
+      <div class="container" style="max-width: 700px; text-align: center;">
+        <div class="badge-tag" style="margin: 0 auto 12px;">Executive Audit</div>
+        <h2 style="font-size: clamp(22px, 3vw, 30px); font-weight: 900; color: var(--text-heading); margin-bottom: 8px;">
+          GTM Architecture Audit <span class="serif-italic">· $495</span>
+        </h2>
+        <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+          60-minute intensive systems audit with founder Patrick Diamitani. Custom architecture diagram, quantified ROI model, and build proposal. <strong>100% of the $495 is credited toward a build session or done-for-you build.</strong>
+        </p>
+        <button class="btn-hero-primary" data-stripe-product="paid-audit" style="font-size: 14px; padding: 14px 32px; cursor: pointer;">
+          Book Audit · $495 →
+        </button>
       </div>
-      <div style="opacity: 0.7;">
-        SalesGency is a d/b/a of Diamitani Industries.
+    </section>
+
+    <!-- FAQ -->
+    <section style="padding: clamp(50px, 6vw, 80px) 0;">
+      <div class="container" style="max-width: 700px;">
+        <h2 style="font-size: 22px; font-weight: 900; color: var(--text-heading); margin-bottom: 24px; text-align: center;">
+          Frequently Asked <span class="serif-italic">Questions</span>
+        </h2>
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="padding: 20px 24px; border: 1px solid var(--border-hairline); border-radius: var(--radius-md);">
+            <h3 style="font-size: 15px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Do I own the source code?</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">Yes. 100% of the code, workflows, prompts, and configurations are yours. Zero recurring fees, zero vendor lock-in. Deploy on your own infrastructure.</p>
+          </div>
+          <div style="padding: 20px 24px; border: 1px solid var(--border-hairline); border-radius: var(--radius-md);">
+            <h3 style="font-size: 15px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">What's included in the Build Session?</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">4 hours across 6 sessions: 2× 1-hour strategy + 4× 30-minute rapid prototyping. You walk away with a working prototype running on your real prospect data, plus all source code and setup documentation.</p>
+          </div>
+          <div style="padding: 20px 24px; border: 1px solid var(--border-hairline); border-radius: var(--radius-md);">
+            <h3 style="font-size: 15px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Can I apply a Build Session toward an Agency Sprint?</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">Yes. Your $1,000 Build Session investment is credited 100% toward any Agency Sprint engagement if you decide to proceed within 30 days.</p>
+          </div>
+          <div style="padding: 20px 24px; border: 1px solid var(--border-hairline); border-radius: var(--radius-md);">
+            <h3 style="font-size: 15px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">What tech stack do the packages use?</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">n8n for workflow orchestration, Python for scrapers and CLIs, OpenAI for AI copywriting and research, Slack and email for notifications, and HubSpot/Salesforce/Close for CRM integration.</p>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- Footer -->
+      <footer class="footer sg-footer">
+    <div class="container footer-inner">
+      <div class="sg-footer-top">
+        <div class="sg-footer-brand">
+          <a href="index.html" aria-label="SalesGency — Your In-House GTM Agency"><span class="sg-wm sg-wm-lg"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+          <p class="sg-tagline">Your In-House GTM Agency</p>
+          <p class="sg-slogan">AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <nav class="sg-footer-paths" aria-label="Three ways to work with us">
+          <a href="marketplace.html"><strong>Buy a template</strong><span>Production-ready engines, skills, and workflows. Deploy in minutes, own the code.</span></a>
+          <a href="build-session.html"><strong>Build with our team</strong><span>Co-build your GTM engine in a working session. $1,000.</span></a>
+          <a href="agent.html"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds.</span></a>
+        </nav>
+      </div>
+      <div class="footer-links">
+        <a href="agency.html">Agency</a>
+        <a href="activations.html">Activations</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="agent.html">Agent</a>
+        <a href="workspaces.html">Workspaces</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="portal.html">Portal</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <p class="footer-note">&copy; 2026 SalesGency &middot; Diamitani Industries. Built by Patrick Diamitani.</p>
     </div>
   </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
+  </div>
 
-      // 1. Reveal Animations
-      const revealElements = document.querySelectorAll(".gs-reveal");
-      revealElements.forEach((el, index) => {
-        gsap.to(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          },
-          opacity: 1,
-          y: 0,
-          visibility: "visible",
-          duration: 0.8,
-          ease: "power3.out",
-          delay: (el.closest('.sg-hero') ? index * 0.1 : 0)
-        });
-      });
-
-      // 2. Magnetic Buttons
-      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
-      magneticButtons.forEach((btn) => {
-        const text = btn.querySelector("span");
-        btn.addEventListener("mousemove", (e) => {
-          const rect = btn.getBoundingClientRect();
-          const h = rect.width / 2;
-          const v = rect.height / 2;
-          const x = e.clientX - rect.left - h;
-          const y = e.clientY - rect.top - v;
-          gsap.to(btn, { x: x * 0.2, y: y * 0.2, duration: 0.4, ease: "power2.out" });
-          if(text) gsap.to(text, { x: x * 0.3, y: y * 0.3, duration: 0.4, ease: "power2.out" });
-        });
-        btn.addEventListener("mouseleave", () => {
-          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
-          if(text) gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
-        });
-      });
-    });
-  </script>
+  <script src="assets/salesgency-interactive.js"></script>
+  <script src="assets/stripe-client.js"></script>
 </body>
 </html>

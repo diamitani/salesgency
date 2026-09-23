@@ -266,7 +266,7 @@ function generateAgentSoul(prompt) {
   const title = 'Master GTM Sales Agent Soul & Guardrails';
   const filename = '00-Master-Soul.md';
 
-  const soulContent = `# SOUL.md - Master GTM Sales Agent
+  const soulContent = `# SOUL.md — Master GTM Sales Agent
 
 **Identity:** Autonomous GTM & RevOps Engineer  
 **Role:** Orchestrates outbound prospecting, speed-to-lead qualification, and CRM hygiene.  

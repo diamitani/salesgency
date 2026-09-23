@@ -12,7 +12,7 @@ description: >
   compressed, indexed memory layer that survives across conversations.
 ---
 
-# ContextEngine - Persistent Session Memory Layer
+# ContextEngine — Persistent Session Memory Layer
 
 A self-managing memory system that auto-caches, compresses, indexes, and retrieves session activity across conversations. Turns ephemeral Claude sessions into a durable, queryable knowledge base.
 
@@ -69,21 +69,21 @@ Every cached session compresses to this JSON structure:
 
 ## Modes
 
-### 1. CACHE - Save Session Context
+### 1. CACHE — Save Session Context
 
 Triggered when the user says: "save this session", "cache what we did", "log progress", or at natural session end. Also triggered automatically by the scheduled memory report every 60 minutes.
 
 Steps:
 1. Review the current conversation to extract session facts
-2. Populate the session record schema above - infer what you can, ask only if critical fields are ambiguous
+2. Populate the session record schema above — infer what you can, ask only if critical fields are ambiguous
 3. Generate a `session_id` using current timestamp
 4. Write to `.context-engine/sessions/{session_id}.json`
 5. Append the compressed record to `.context-engine/index/master.jsonl`
 6. Write the session summary to `.context-engine/cache/last.json` (overwrite)
-7. Update `.context-engine/CONTEXT.md` - see CONTEXT.md format below
+7. Update `.context-engine/CONTEXT.md` — see CONTEXT.md format below
 8. Confirm to the user: "Session cached. {N} total sessions in index."
 
-### 2. RETRIEVE - Context Flash (Load Last Session)
+### 2. RETRIEVE — Context Flash (Load Last Session)
 
 Triggered when the user says: "what did we work on", "context flash", "load context", "catch me up", "what's our current state".
 
@@ -95,18 +95,18 @@ Steps:
    - **Pattern across recent sessions:** any recurring blockers or themes
    - **Recommended starting point:** top open item or next step
 
-### 3. REPORT - Generate Progress Report
+### 3. REPORT — Generate Progress Report
 
 Triggered when the user says: "generate a report", "progress report", "troubleshooting log", "what have we been building", "weekly summary".
 
 Steps:
 1. Read all records from `.context-engine/index/master.jsonl`
 2. Filter by optional parameters the user provides (date range, tags, project)
-3. Generate a structured markdown report - see Report Format below
+3. Generate a structured markdown report — see Report Format below
 4. Save to `.context-engine/reports/{date}_{type}_report.md`
 5. Link the file for the user to download
 
-### 4. QUERY - Search the Index
+### 4. QUERY — Search the Index
 
 Triggered when the user asks about specific past events: "when did we fix the Clay webhook", "what was the issue with n8n last week", "find all sessions tagged hubspot".
 
@@ -116,7 +116,7 @@ Steps:
 3. Return matching sessions in a scannable format with key facts surfaced
 4. Offer to expand any specific session
 
-### 5. SCHEDULE - Set Up Periodic Reports
+### 5. SCHEDULE — Set Up Periodic Reports
 
 Triggered when the user says: "schedule a weekly report", "auto-report every Friday", "set up daily summaries".
 
@@ -133,7 +133,7 @@ Steps:
 This is the always-current human-readable state doc. Overwrite it on every CACHE operation.
 
 ```markdown
-# Project Context - Last Updated: {date}
+# Project Context — Last Updated: {date}
 
 ## Current State
 {2-3 sentences on where the project stands right now}
@@ -162,7 +162,7 @@ This is the always-current human-readable state doc. Overwrite it on every CACHE
 ## Report Format
 
 ```markdown
-# ContextEngine Report - {type} - {date range}
+# ContextEngine Report — {type} — {date range}
 
 ## Executive Summary
 {3-5 sentence narrative of the period}
@@ -171,7 +171,7 @@ This is the always-current human-readable state doc. Overwrite it on every CACHE
 {what shipped, what was solved, what advanced}
 
 ## Troubleshooting Log
-{failures, errors, dead ends - grouped by tool or workflow}
+{failures, errors, dead ends — grouped by tool or workflow}
 
 ## Decisions Made
 {key choices and their rationale}
@@ -193,12 +193,12 @@ This is the always-current human-readable state doc. Overwrite it on every CACHE
 ## Behavior Rules
 
 - Always infer session content from conversation history before asking the user to fill in blanks
-- Keep the `summary` field to 2–3 tight sentences - no bloat
+- Keep the `summary` field to 2–3 tight sentences — no bloat
 - Tags should be lowercase, consistent, reusable across sessions (e.g., `n8n`, `hubspot`, `clay`, `outreach`, `amplemarket`, `rfp`, `skill-build`)
-- When writing `what_failed`, be specific - "HTTP 401 on HubSpot auth endpoint" not "authentication issue"
+- When writing `what_failed`, be specific — "HTTP 401 on HubSpot auth endpoint" not "authentication issue"
 - CONTEXT.md should always be writable by a non-technical user and scannable in under 60 seconds
-- On RETRIEVE, lead with the most actionable thing - what to do next, not just what happened
-- Never overwrite or delete session files - the index is append-only; corrections go in a new session record
+- On RETRIEVE, lead with the most actionable thing — what to do next, not just what happened
+- Never overwrite or delete session files — the index is append-only; corrections go in a new session record
 
 ---
 

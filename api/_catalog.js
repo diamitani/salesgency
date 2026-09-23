@@ -1,37 +1,9 @@
-// Canonical product catalog for SalesGency
-// Reads from data/products.json as the single source of truth and maps directly to live Stripe IDs
+// Canonical product catalog for Salesgency
+// Reads from data/products.json as the single source of truth
 const path = require('path');
 const fs = require('fs');
 
 let _products = null;
-
-const ALIASES = {
-  'inbound-automation': 'skill-plugin-inbound',
-  'outbound-automation': 'full-build-pae',
-  'pre-call-automation': 'skill-plugin-presales',
-  'post-call-automation': 'skill-plugin-postsales',
-  'daily-execution-report': 'skill-plugin-automation-engineer',
-  'daily-gtm-report': 'skill-plugin-gtm-coe',
-  'cold-outreach': 'skill-plugin-pae',
-  'builder-starter': 'gtm-agent-subscription',
-  'builder-pro': 'sprint-14day',
-  'builder-enterprise': 'sprint-30day',
-  '14-day-build-sprint': 'sprint-14day',
-  '30-day-build-sprint': 'sprint-30day',
-  'paid-audit': 'build-session',
-  'skill-plugin-pas': 'skill-plugin-pae',
-  'skill-plugin-enrich': 'skill-plugin-pae',
-  'skill-plugin-crm': 'skill-plugin-automation-engineer',
-  'skill-plugin-dns': 'skill-plugin-gtm-coe',
-  'skill-plugin-gtm-arch': 'skill-plugin-gtm-coe',
-  'free-b2b-prompts': 'free-template-download',
-  // New Brand Architecture Aliases
-  'gtm-teardown': 'build-session',
-  'revenue-engine-sprint': 'sprint-14day',
-  'ai-native-gtm-system': 'sprint-30day',
-  'priority-build': 'sprint-30day',
-  'monitoring-tuneups': 'fractional-gtm-engineer',
-};
 
 function loadProducts() {
   if (_products) return _products;
@@ -42,44 +14,21 @@ function loadProducts() {
 }
 
 /**
- * Get the full catalog as a { [key]: product } map (backward-compatible and indexed by ID, Stripe Prod ID, and Stripe Price ID)
+ * Get the full catalog as a { [id]: product } map (backward-compatible)
  */
 function getCatalog() {
   const products = loadProducts();
   const catalog = {};
-
   for (const p of products) {
-    const entry = {
-      id: p.id,
+    catalog[p.id] = {
       name: p.name,
       amount: p.price,
-      price: p.price,
-      currency: p.currency || 'usd',
-      mode: p.mode || 'payment',
+      currency: p.currency,
+      mode: p.mode,
       description: p.description,
-      interval: p.mode === 'subscription' ? (p.interval || 'month') : undefined,
-      stripeProductId: p.stripeProductId,
-      stripePriceId: p.stripePriceId,
-      features: p.features || [],
-      badge: p.badge || '',
-      type: p.type || 'package',
+      interval: p.mode === 'subscription' ? 'month' : undefined,
     };
-
-    // Primary key: slug ID
-    catalog[p.id] = entry;
-
-    // Direct Stripe IDs for seamless dispatch
-    if (p.stripeProductId) catalog[p.stripeProductId] = entry;
-    if (p.stripePriceId) catalog[p.stripePriceId] = entry;
   }
-
-  // Map legacy aliases
-  for (const [alias, targetId] of Object.entries(ALIASES)) {
-    if (catalog[targetId]) {
-      catalog[alias] = catalog[targetId];
-    }
-  }
-
   return catalog;
 }
 
@@ -87,14 +36,8 @@ function getCatalog() {
  * Get a single product by ID (full product data)
  */
 function getProduct(id) {
-  if (!id) return null;
-  const targetId = ALIASES[id] || id;
   const products = loadProducts();
-  return (
-    products.find(
-      p => p.id === targetId || p.stripeProductId === targetId || p.stripePriceId === targetId
-    ) || null
-  );
+  return products.find(p => p.id === id) || null;
 }
 
 /**
@@ -103,10 +46,10 @@ function getProduct(id) {
 function getProducts(filters = {}) {
   let products = [...loadProducts()];
 
-  if (filters.category && filters.category !== 'all') {
+  if (filters.category) {
     products = products.filter(p => p.category === filters.category);
   }
-  if (filters.type && filters.type !== 'all') {
+  if (filters.type) {
     products = products.filter(p => p.type === filters.type);
   }
   if (filters.tag) {
@@ -116,8 +59,8 @@ function getProducts(filters = {}) {
     const q = filters.search.toLowerCase();
     products = products.filter(p =>
       p.name.toLowerCase().includes(q) ||
-      (p.tagline && p.tagline.toLowerCase().includes(q)) ||
-      (p.description && p.description.toLowerCase().includes(q)) ||
+      p.tagline.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q) ||
       (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
     );
   }
@@ -131,10 +74,7 @@ function getProducts(filters = {}) {
     products = products.filter(p => p.popular === true);
   }
   if (filters.id) {
-    const targetId = ALIASES[filters.id] || filters.id;
-    products = products.filter(
-      p => p.id === targetId || p.stripeProductId === targetId || p.stripePriceId === targetId
-    );
+    products = products.filter(p => p.id === filters.id);
   }
 
   // Sort

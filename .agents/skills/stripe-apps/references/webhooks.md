@@ -1,4 +1,4 @@
-# Webhooks - event delivery for Stripe Apps
+# Webhooks — event delivery for Stripe Apps
 
 ## Webhooks
 
@@ -14,7 +14,7 @@ Read this page using WebFetch before implementing webhook handlers.
 | --- | --- | --- |
 | Private (your account only) | Any | ONE standard webhook endpoint |
 | Public/marketplace | Platform keys | ONE webhook with “Listen to events on Connected accounts” enabled |
-| Public/marketplace | Restricted API keys | Can’t use Connect webhook fanout - each merchant manages their own |
+| Public/marketplace | Restricted API keys | Can’t use Connect webhook fanout — each merchant manages their own |
 
 A second test-mode endpoint is recommended for public apps but is not required.
 

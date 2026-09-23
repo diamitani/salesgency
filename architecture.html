@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Architecture Guide — 6 Core Revenue Engines | SalesGency®</title>
+  <meta name="description" content="Explore the SalesGency 6-Engine Revenue Operating System: Inbound, Outbound, Pre-Call, Post-Call, Daily Execution, and Daily GTM Report. Interactive architecture diagram.">
+  <meta name="keywords" content="GTM Architecture, Revenue Operating System, Inbound Outbound Automation, RevOps Architecture, System Diagram">
+  <link rel="canonical" href="https://salesgency.com/architecture.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://salesgency.com/architecture.html">
+  <meta property="og:site_name" content="SalesGency®">
+  <meta property="og:title" content="System Architecture — 6 Core Revenue Engines | SalesGency®">
+  <meta property="og:description" content="Interactive system architecture guide. Explore how the 6 Core Engines connect to automate your entire GTM pipeline.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/salesgency-wordmark-light.svg">
+  <link rel="stylesheet" href="assets/di.css">
+  
+  <script src="assets/di-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav-wrapper">
+    <nav class="nav-bar">
+      <a href="index.html" class="brand-link" aria-label="SalesGency Home">
+        <span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span>
+      </a>
+      <div class="nav-menu">
+        <a href="marketplace.html" class="nav-item">
+          <span>Marketplace</span>
+          <span class="blueprint-pill" style="background: #10B981; color: #000000; font-weight: 800;">$39+</span>
+        </a>
+        <a href="book.html" class="nav-item">
+          <span>Build Session</span>
+          <span class="blueprint-pill" style="background: #2563EB; color: #FFFFFF; font-weight: 800;">$1,000</span>
+        </a>
+        <a href="architecture.html" class="nav-item active" style="color: var(--text-heading); font-weight: 700;">Architecture</a>
+        <a href="pricing.html" class="nav-item">Pricing</a>
+      </div>
+      <div class="nav-actions">
+        <a href="book.html" class="btn-book-call">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Book a Build Session</span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open Menu">Menu</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="marketplace.html" class="mobile-link">Marketplace ($39+)</a>
+    <a href="book.html" class="mobile-link">Book a Build Session ($1,000)</a>
+    <a href="architecture.html" class="mobile-link" style="font-weight: 700; color: var(--text-heading);">System Architecture</a>
+    <a href="pricing.html" class="mobile-link">Pricing</a>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Hero -->
+    <section style="padding: clamp(120px, 14vw, 160px) 0 20px; text-align: center;">
+      <div class="container" style="max-width: 720px;">
+        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+          <span class="live-telemetry-badge">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Click any engine to explore its internals</span>
+          </span>
+        </div>
+        <h1 style="font-size: clamp(30px, 4.5vw, 46px); font-weight: 900; color: var(--text-heading); line-height: 1.1; letter-spacing: -0.03em;">
+          The 6-Engine <span class="serif-italic">Revenue Operating System</span>
+        </h1>
+        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 12px; max-width: 540px; margin-left: auto; margin-right: auto;">
+          Each engine is a self-contained automation module. Together they form a complete, deterministic GTM pipeline from signal detection to executive reporting.
+        </p>
+      </div>
+    </section>
+
+    <!-- Interactive Pipeline Diagram -->
+    <section style="padding: 20px 0 40px;">
+      <div class="container">
+        <div class="arch-pipeline" id="archPipeline">
+          <div class="arch-node" data-engine="inbound" onclick="showEngineDetail('inbound')">
+            <div class="arch-node-box">
+              <div class="arch-node-number">Engine 01</div>
+              <div class="arch-node-title">Inbound Automation</div>
+              <div class="arch-node-sub">Speed-to-Lead · $299</div>
+            </div>
+          </div>
+          <div class="arch-connector">→</div>
+          <div class="arch-node" data-engine="outbound" onclick="showEngineDetail('outbound')">
+            <div class="arch-node-box">
+              <div class="arch-node-number">Engine 02</div>
+              <div class="arch-node-title">Outbound Automation</div>
+              <div class="arch-node-sub">5-Pillar PAE · $399</div>
+            </div>
+          </div>
+          <div class="arch-connector">→</div>
+          <div class="arch-node" data-engine="precall" onclick="showEngineDetail('precall')">
+            <div class="arch-node-box">
+              <div class="arch-node-number">Engine 03</div>
+              <div class="arch-node-title">Pre-Call Automation</div>
+              <div class="arch-node-sub">Prospect Dossier · $249</div>
+            </div>
+          </div>
+          <div class="arch-connector">→</div>
+          <div class="arch-node" data-engine="postcall" onclick="showEngineDetail('postcall')">
+            <div class="arch-node-box">
+              <div class="arch-node-number">Engine 04</div>
+              <div class="arch-node-title">Post-Call Automation</div>
+              <div class="arch-node-sub">MEDDPICC Sync · $199</div>
+            </div>
+          </div>
+          <div class="arch-connector">→</div>
+          <div class="arch-node" data-engine="execution" onclick="showEngineDetail('execution')">
+            <div class="arch-node-box">
+              <div class="arch-node-number">Engine 05</div>
+              <div class="arch-node-title">Daily Execution</div>
+              <div class="arch-node-sub">Rep Telemetry · $199</div>
+            </div>
+          </div>
+          <div class="arch-connector">→</div>
+          <div class="arch-node" data-engine="gtm" onclick="showEngineDetail('gtm')">
+            <div class="arch-node-box">
+              <div class="arch-node-number">Engine 06</div>
+              <div class="arch-node-title">Daily GTM Report</div>
+              <div class="arch-node-sub">Pipeline Velocity · $199</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div id="engineDetail" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- Core Categories -->
+    <section style="padding: clamp(50px, 6vw, 80px) 0; border-top: 1px solid var(--border-hairline);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 24px;">
+          <div class="badge-tag">Core Categories</div>
+          <h2 style="font-size: clamp(24px, 3.5vw, 34px); font-weight: 900; color: var(--text-heading);">
+            Three Pillars of <span class="serif-italic">Revenue Automation</span>
+          </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <!-- Inbound -->
+          <div style="padding: 28px; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-card);">
+            <div style="font-size: 28px; margin-bottom: 12px;">📥</div>
+            <h3 style="font-size: 20px; font-weight: 900; color: var(--text-heading); margin-bottom: 8px;">Inbound</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+              Speed-to-lead automation. Sub-30-second MQL qualification, AI triage, instant routing, and calendar booking from any form submission or chatbot.
+            </p>
+            <a href="marketplace.html?category=inbound" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-decoration: underline;">Browse inbound products →</a>
+          </div>
+
+          <!-- Outbound -->
+          <div style="padding: 28px; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-card);">
+            <div style="font-size: 28px; margin-bottom: 12px;">📤</div>
+            <h3 style="font-size: 20px; font-weight: 900; color: var(--text-heading); margin-bottom: 8px;">Outbound</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+              Prospecting and outreach automation. Intent signal detection, waterfall enrichment, AI PAS copywriting, and sequence enrollment at scale.
+            </p>
+            <a href="marketplace.html?category=outbound" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-decoration: underline;">Browse outbound products →</a>
+          </div>
+
+          <!-- Rev Ops -->
+          <div style="padding: 28px; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-card);">
+            <div style="font-size: 28px; margin-bottom: 12px;">📊</div>
+            <h3 style="font-size: 20px; font-weight: 900; color: var(--text-heading); margin-bottom: 8px;">Rev Ops</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
+              Revenue operations infrastructure. CRM hygiene, pre/post-call automation, daily execution reports, pipeline analytics, and executive dashboards.
+            </p>
+            <a href="marketplace.html?category=revops" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); text-decoration: underline;">Browse rev ops products →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Layer -->
+    <section style="padding: clamp(50px, 6vw, 80px) 0; border-top: 1px solid var(--border-hairline); background: var(--bg-card-subtle);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 24px;">
+          <div class="badge-tag">Extensibility</div>
+          <h2 style="font-size: clamp(24px, 3.5vw, 34px); font-weight: 900; color: var(--text-heading);">
+            Custom <span class="serif-italic">Skills, Templates & Agents</span>
+          </h2>
+          <p style="font-size: 15px; color: var(--text-secondary); max-width: 520px; margin: 8px auto 0;">
+            Extend the core engines with injectable components. Each is plug-and-play with any LLM agent framework or n8n instance.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+          <div style="padding: 24px; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--bg-card);">
+            <span class="product-card-badge skill" style="margin-bottom: 12px;">Custom Skills</span>
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Injectable SKILL.md Prompt Files</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+              Drop-in prompt engineering files that work with any LLM agent. PAS copywriting, GTM architecture proposals, research protocols.
+            </p>
+            <a href="marketplace.html?category=custom-skills" class="arch-detail-cta" style="font-size: 12px; padding: 8px 18px;">Browse Skills →</a>
+          </div>
+
+          <div style="padding: 24px; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--bg-card);">
+            <span class="product-card-badge template" style="margin-bottom: 12px;">Custom Templates</span>
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Pre-Built Workflow Kits</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+              Complete n8n JSON workflow bundles with Slack routers, webhook configs, and environment templates. Deploy in under 30 minutes.
+            </p>
+            <a href="marketplace.html?category=custom-templates" class="arch-detail-cta" style="font-size: 12px; padding: 8px 18px;">Browse Templates →</a>
+          </div>
+
+          <div style="padding: 24px; border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--bg-card);">
+            <span class="product-card-badge agent" style="margin-bottom: 12px;">Custom Agents</span>
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Agent Souls & Guardrails</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+              Pre-built agent personality files with operating constraints, decision-making rules, and escalation logic. Plug into any LLM framework.
+            </p>
+            <a href="marketplace.html?category=custom-agents" class="arch-detail-cta" style="font-size: 12px; padding: 8px 18px;">Browse Agents →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: clamp(60px, 8vw, 100px) 0; text-align: center;">
+      <div class="container" style="max-width: 560px;">
+        <h2 style="font-size: clamp(24px, 3.5vw, 34px); font-weight: 900; color: var(--text-heading); margin-bottom: 12px;">
+          Ready to <span class="serif-italic">Build?</span>
+        </h2>
+        <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 28px;">
+          Buy individual engines from the marketplace, or book a Build Session for a fully customized co-build sprint.
+        </p>
+        <div class="hero-dual-cta">
+          <a href="marketplace.html" class="btn-hero-primary">Browse Marketplace →</a>
+          <a href="book.html" class="btn-hero-secondary">Book a Build Session · $1,000</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+      <footer class="footer sg-footer">
+    <div class="container footer-inner">
+      <div class="sg-footer-top">
+        <div class="sg-footer-brand">
+          <a href="index.html" aria-label="SalesGency — Your In-House GTM Agency"><span class="sg-wm sg-wm-lg"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+          <p class="sg-tagline">Your In-House GTM Agency</p>
+          <p class="sg-slogan">AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <nav class="sg-footer-paths" aria-label="Three ways to work with us">
+          <a href="marketplace.html"><strong>Buy a template</strong><span>Production-ready engines, skills, and workflows. Deploy in minutes, own the code.</span></a>
+          <a href="build-session.html"><strong>Build with our team</strong><span>Co-build your GTM engine in a working session. $1,000.</span></a>
+          <a href="agent.html"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds.</span></a>
+        </nav>
+      </div>
+      <div class="footer-links">
+        <a href="agency.html">Agency</a>
+        <a href="activations.html">Activations</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="agent.html">Agent</a>
+        <a href="workspaces.html">Workspaces</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="portal.html">Portal</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <p class="footer-note">&copy; 2026 SalesGency &middot; Diamitani Industries. Built by Patrick Diamitani.</p>
+    </div>
+  </footer>
+
+  </div>
+
+  <script src="assets/salesgency-interactive.js"></script>
+  <script>
+    // Engine detail data
+    const ENGINE_DATA = {
+      inbound: {
+        title: 'Inbound Automation Engine',
+        desc: 'Captures inbound form submissions, chatbot interactions, and demo requests. Qualifies leads in under 30 seconds using AI scoring, routes to the right rep via Slack, and auto-books calendar meetings.',
+        flow: ['Form Submit', 'Webhook Trigger', 'AI MQL Scoring', 'Slack Routing', 'Calendar Booking', 'CRM Create'],
+        productId: 'inbound-automation',
+        tools: 'n8n, Webhook, OpenAI, Slack, Google Calendar, HubSpot/Salesforce'
+      },
+      outbound: {
+        title: 'Outbound Automation Engine',
+        desc: 'The 5-Pillar Prospect Automation Engine: detects intent signals (hiring, funding, tech adoption), deduplicates against CRM, enriches contacts through a multi-provider waterfall, generates hyper-personalized PAS emails, and enrolls into sequences.',
+        flow: ['Intent Signal', 'CRM Dedupe', 'Contact Waterfall', 'AI PAS Copy', 'Sequence Enroll'],
+        productId: 'outbound-automation',
+        tools: 'n8n, Python, Clay, Apollo, OpenAI, Outreach/Salesloft'
+      },
+      precall: {
+        title: 'Pre-Call Automation Engine',
+        desc: 'Triggered 10 minutes before every sales call. Automatically pulls prospect LinkedIn data, company news, tech stack, hiring signals, and competitive intel into a structured dossier delivered to Slack and email.',
+        flow: ['Calendar Trigger', 'Prospect Research', 'LinkedIn Intel', 'Tech Stack Scan', 'Dossier Build', 'Slack Delivery'],
+        productId: 'pre-call-automation',
+        tools: 'n8n, Google Calendar, LinkedIn, Clearbit, OpenAI, Slack'
+      },
+      postcall: {
+        title: 'Post-Call Automation Engine',
+        desc: 'Processes meeting recordings automatically: extracts transcripts, maps key moments to MEDDPICC qualification fields, updates CRM deal records, and generates structured follow-up emails with action items.',
+        flow: ['Recording Trigger', 'Transcript Extract', 'MEDDPICC Map', 'CRM Update', 'Follow-up Draft', 'Manager Alert'],
+        productId: 'post-call-automation',
+        tools: 'n8n, Gong/Fireflies, OpenAI, HubSpot/Salesforce, Slack'
+      },
+      execution: {
+        title: 'Daily Execution Report',
+        desc: 'Delivered at 8 AM daily via Slack and email. Tracks per-rep activity (calls, emails, meetings), pipeline movement, stuck deal detection, email deliverability health, and meeting conversion rates.',
+        flow: ['8 AM Cron', 'CRM Data Pull', 'SQL Telemetry', 'Rep Scorecard', 'Stuck Deals', 'Slack/Email Report'],
+        productId: 'daily-execution-report',
+        tools: 'n8n, SQL, HubSpot/Salesforce, Slack, Email'
+      },
+      gtm: {
+        title: 'Daily GTM Report',
+        desc: 'Executive-level GTM intelligence. Full-funnel conversion analysis, revenue forecast accuracy, channel attribution, and AI-generated strategic recommendations delivered to leadership daily.',
+        flow: ['Data Aggregate', 'Funnel Analysis', 'Forecast Model', 'Attribution Calc', 'AI Insights', 'Executive Report'],
+        productId: 'daily-gtm-report',
+        tools: 'n8n, SQL, OpenAI, Slack, Email, Dashboard'
+      }
+    };
+
+    let activeEngine = null;
+
+    function showEngineDetail(engineId) {
+      const data = ENGINE_DATA[engineId];
+      if (!data) return;
+
+      // Toggle active state on nodes
+      document.querySelectorAll('.arch-node').forEach(n => n.classList.remove('active'));
+      const activeNode = document.querySelector(`.arch-node[data-engine="${engineId}"]`);
+      if (activeNode) activeNode.classList.add('active');
+
+      if (activeEngine === engineId) {
+        // Toggle off
+        document.getElementById('engineDetail').style.display = 'none';
+        activeNode.classList.remove('active');
+        activeEngine = null;
+        return;
+      }
+      activeEngine = engineId;
+
+      const flowHtml = data.flow.map((step, i) => {
+        let html = `<span class="arch-flow-step">${step}</span>`;
+        if (i < data.flow.length - 1) html += `<span class="arch-flow-arrow">→</span>`;
+        return html;
+      }).join('');
+
+      document.getElementById('engineDetail').innerHTML = `
+        <div class="arch-detail-panel">
+          <h3>${data.title}</h3>
+          <p>${data.desc}</p>
+          <div class="arch-detail-flow">${flowHtml}</div>
+          <p style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); margin-bottom: 16px;">
+            Tools: ${data.tools}
+          </p>
+          <a href="product.html?id=${data.productId}" class="arch-detail-cta">Get This Engine →</a>
+        </div>
+      `;
+      document.getElementById('engineDetail').style.display = 'block';
+
+      // Smooth scroll to detail
+      document.getElementById('engineDetail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

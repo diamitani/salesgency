@@ -2,7 +2,7 @@ const { getProducts, getProduct } = require('./_catalog');
 
 /**
  * Serverless Handler: Product Catalog API
- * GET /api/catalog - returns filtered product list
+ * GET /api/catalog — returns filtered product list
  * Query params: category, type, tag, search, sort, popular, id, minPrice, maxPrice
  */
 module.exports = async (req, res) => {

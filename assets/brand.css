@@ -1,0 +1,277 @@
+/* ==========================================================================
+   SalesGency Brand Layer — the canonical brand system.
+   Loaded by unified.css (@import) and directly by pages without it.
+   White-background system. Navy + blue two-tone wordmark.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --sg-navy: #0f2a4a;
+  --sg-blue: #1f6feb;
+  --sg-green: #1a9e5c;
+  --sg-ink: #12233a;
+  --sg-muted: #5b6b80;
+  --sg-line: #e4e9f0;
+  --sg-soft: #f5f8fc;
+  --sg-amber: #b45309;
+  --sg-amber-bg: #fffbeb;
+  --sg-font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* ---- Two-tone wordmark: "Sales" navy, "Gency" blue, both capitalized ---- */
+.sg-wm {
+  font-family: var(--sg-font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1;
+}
+.sg-wm .wm-sales { color: var(--sg-navy); }
+.sg-wm .wm-gency { color: var(--sg-blue); }
+.sg-wm .wm-reg {
+  color: var(--sg-muted);
+  font-size: 0.55em;
+  vertical-align: super;
+  font-weight: 500;
+  margin-left: 1px;
+}
+.sg-wm-lg { font-size: 1.6rem; }
+
+/* ---- Tagline under the wordmark ---- */
+.sg-tagline {
+  font-family: var(--sg-font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sg-muted);
+  margin: 2px 0 0;
+  white-space: nowrap;
+}
+.sg-slogan {
+  font-size: 0.95rem;
+  color: var(--sg-muted);
+  margin: 8px 0 0;
+  max-width: 34ch;
+  line-height: 1.55;
+}
+
+/* ---- Display headlines (taste: no Inter for display type) ---- */
+.sg-display {
+  font-family: var(--sg-font-display);
+  letter-spacing: -0.025em;
+}
+
+/* ---- Three paths band: buy a template / build with our team / use the agent.
+        Editorial numbered rows, not a 3-up card grid. ---- */
+.three-paths {
+  border-top: 1px solid var(--sg-line);
+  border-bottom: 1px solid var(--sg-line);
+  background: #fff;
+}
+.three-paths-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+.three-paths-kicker {
+  font-family: var(--sg-font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sg-blue);
+  margin: 0 0 8px;
+}
+.three-paths h2 {
+  font-family: var(--sg-font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  letter-spacing: -0.025em;
+  color: var(--sg-navy);
+  margin: 0 0 28px;
+  font-weight: 700;
+}
+.path-rows { border-top: 1px solid var(--sg-line); }
+.path-row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 22px 8px;
+  border-bottom: 1px solid var(--sg-line);
+  text-decoration: none;
+  transition: background 0.18s ease, padding-left 0.18s ease;
+}
+.path-row:hover { background: var(--sg-soft); padding-left: 16px; }
+.path-num {
+  font-family: var(--sg-font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sg-blue);
+  letter-spacing: 0.1em;
+}
+.path-body strong {
+  display: block;
+  font-family: var(--sg-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sg-navy);
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+}
+.path-body span {
+  font-size: 0.95rem;
+  color: var(--sg-muted);
+  line-height: 1.55;
+  display: block;
+  max-width: 62ch;
+}
+.path-arrow {
+  font-family: var(--sg-font-display);
+  font-size: 1.4rem;
+  color: var(--sg-blue);
+  transition: transform 0.18s ease;
+}
+.path-row:hover .path-arrow { transform: translateX(6px); }
+@media (max-width: 640px) {
+  .path-row { grid-template-columns: 44px 1fr; }
+  .path-arrow { display: none; }
+}
+
+/* ---- "Your move, Patrick" callout ---- */
+.your-move {
+  border: 1px solid #f5d48e;
+  border-left: 4px solid var(--sg-amber);
+  background: var(--sg-amber-bg);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+.your-move-label {
+  font-family: var(--sg-font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sg-amber);
+  margin: 0 0 8px;
+}
+.your-move p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #7c4a12;
+}
+.your-move code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85em;
+  background: rgba(180, 83, 9, 0.1);
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+/* ---- Status pills (integrations / workspaces) ---- */
+.sg-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sg-font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.sg-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.sg-pill-live { color: #0d7a4a; background: #e8f7ef; border-color: #bfe6d2; }
+.sg-pill-ready { color: var(--sg-blue); background: #eaf1fe; border-color: #c4d9fb; }
+.sg-pill-key { color: var(--sg-amber); background: var(--sg-amber-bg); border-color: #f5d48e; }
+
+/* ---- Canonical footer brand block ---- */
+.sg-footer .sg-footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--sg-line);
+  flex-wrap: wrap;
+}
+.sg-footer-brand { max-width: 340px; }
+.sg-footer-brand a { text-decoration: none; }
+.sg-footer-paths {
+  display: grid;
+  gap: 2px;
+  min-width: 280px;
+  flex: 1;
+  max-width: 560px;
+}
+.sg-footer-paths a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.sg-footer-paths a:hover { background: var(--sg-soft); }
+.sg-footer-paths strong {
+  display: block;
+  font-family: var(--sg-font-display);
+  font-size: 1rem;
+  color: var(--sg-navy);
+  margin-bottom: 2px;
+}
+.sg-footer-paths span { font-size: 0.88rem; color: var(--sg-muted); line-height: 1.5; }
+.sg-footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  padding: 24px 0;
+}
+.sg-footer .footer-links a {
+  font-size: 0.88rem;
+  color: var(--sg-muted);
+  text-decoration: none;
+}
+.sg-footer .footer-links a:hover { color: var(--sg-navy); }
+.sg-footer .footer-note {
+  font-size: 0.82rem;
+  color: var(--sg-muted);
+  padding-bottom: 40px;
+  margin: 0;
+}
+
+/* ---- Button-in-button: pill CTA with nested icon circle (taste pattern) ---- */
+.sg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sg-font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 8px 8px 8px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.sg-btn:hover { transform: translateY(-1px); }
+.sg-btn .sg-btn-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+}
+.sg-btn-primary { background: var(--sg-navy); color: #fff; }
+.sg-btn-primary .sg-btn-ico { background: var(--sg-blue); color: #fff; }
+.sg-btn-primary:hover { box-shadow: 0 8px 24px rgba(15, 42, 74, 0.25); }
+.sg-btn-ghost { background: #fff; color: var(--sg-navy); border-color: var(--sg-line); }
+.sg-btn-ghost .sg-btn-ico { background: var(--sg-soft); color: var(--sg-navy); }

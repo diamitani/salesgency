@@ -25,9 +25,9 @@ On API version `2026-03-25.dahlia` or later, pass the parameter `integration_ide
 
 Prioritize Stripe-hosted or embedded Checkout where possible. Use in this order of preference:
 
-1. **Payment Links** - No-code. Best for simple products.
-2. **Checkout** ([docs](https://docs.stripe.com/payments/checkout.md)) - Stripe-hosted or embedded form. Best for most web apps.
-3. **Payment Element** ([docs](https://docs.stripe.com/payments/payment-element.md)) - Embedded UI component for advanced customization.
+1. **Payment Links** — No-code. Best for simple products.
+2. **Checkout** ([docs](https://docs.stripe.com/payments/checkout.md)) — Stripe-hosted or embedded form. Best for most web apps.
+3. **Payment Element** ([docs](https://docs.stripe.com/payments/payment-element.md)) — Embedded UI component for advanced customization.
    - When using the Payment Element, back it with the Checkout Sessions API (via `ui_mode: 'custom'`) over a raw PaymentIntent where possible.
 
 **Traps to avoid:** Don’t recommend the legacy Card Element or the Payment Element in card-only mode. If the user asks for the Card Element, advise them to [migrate to the Payment Element](https://docs.stripe.com/payments/payment-element/migration.md).
@@ -40,11 +40,11 @@ For surcharging or inspecting card details before payment (e.g., rendering the P
 
 Use the [Setup Intents API](https://docs.stripe.com/api/setup_intents.md) to save a payment method for later use.
 
-**Traps to avoid:** Don’t use the Sources API to save cards to customers. The Sources API is deprecated - Setup Intents is the correct approach.
+**Traps to avoid:** Don’t use the Sources API to save cards to customers. The Sources API is deprecated — Setup Intents is the correct approach.
 
 ## Webhooks and fulfillment
 
-Drive fulfillment from an [event handler](https://docs.stripe.com/checkout/fulfillment.md), not from the success or return page. Customers aren’t guaranteed to visit the landing page - for example, someone can pay successfully and then lose their internet connection before the page loads - so any logic that only runs on the success page silently drops orders.
+Drive fulfillment from an [event handler](https://docs.stripe.com/checkout/fulfillment.md), not from the success or return page. Customers aren’t guaranteed to visit the landing page — for example, someone can pay successfully and then lose their internet connection before the page loads — so any logic that only runs on the success page silently drops orders.
 
 Handle both `checkout.session.completed` and `checkout.session.async_payment_succeeded`, and fulfill only when the session’s `payment_status` isn’t `unpaid`. With delayed-notification payment methods the completed event arrives while the session is still unpaid, so fulfilling on it alone grants access for payments that later fail and never fulfills the ones that succeed. Handle `checkout.session.async_payment_failed` for failures.
 
@@ -56,7 +56,7 @@ Webhooks are **required**, not optional, for:
 
 **Traps to avoid:**
 
-- Never describe webhook setup as “optional”, “nice to have”, or something to skip for a first pass. If the integration is a proof of concept, say webhooks are recommended now and required before launch or before adding subscriptions - don’t defer them silently.
+- Never describe webhook setup as “optional”, “nice to have”, or something to skip for a first pass. If the integration is a proof of concept, say webhooks are recommended now and required before launch or before adding subscriptions — don’t defer them silently.
 - Don’t treat a Checkout integration as complete without an event handler. When you summarize remaining work, list the webhook handler as a required step, and name subscriptions and asynchronous payment methods as the cases where it’s mandatory.
 - Always [verify event signatures](https://docs.stripe.com/webhooks.md#verify-events) before processing an event. Read the security skill reference for webhook signing secret handling.
 
@@ -77,8 +77,8 @@ See the [integration options guide](https://docs.stripe.com/payments/payment-met
 **Traps to avoid:**
 
 - Never hardcode `payment_method_types: ['card']` even if the user only mentions credit cards. Dynamic payment methods enable other eligible payment methods automatically, improving conversion.
-- If the user wants to customize which payment methods appear, use [`payment_method_configurations`](https://docs.stripe.com/payments/payment-method-configurations.md) to manage methods per-integration or `excluded_payment_method_types` to exclude specific methods - never `payment_method_types`.
-- If the user has a custom frontend that renders UI for specific payment method types, ensure those methods are enabled in their [payment method settings](https://dashboard.stripe.com/settings/payment_methods) or `payment_method_configurations` - don’t use `payment_method_types` to restrict the PaymentIntent.
+- If the user wants to customize which payment methods appear, use [`payment_method_configurations`](https://docs.stripe.com/payments/payment-method-configurations.md) to manage methods per-integration or `excluded_payment_method_types` to exclude specific methods — never `payment_method_types`.
+- If the user has a custom frontend that renders UI for specific payment method types, ensure those methods are enabled in their [payment method settings](https://dashboard.stripe.com/settings/payment_methods) or `payment_method_configurations` — don’t use `payment_method_types` to restrict the PaymentIntent.
 
 ## Deprecated APIs and migration paths
 
@@ -90,7 +90,7 @@ Don’t call other deprecated or outdated API endpoints unless there is a specif
 | --- | --- | --- | --- |
 | Charges API | Never use | Checkout Sessions or PaymentIntents | [Migration guide](https://docs.stripe.com/payments/payment-intents/migration/charges.md) |
 | Sources API | Deprecated | Setup Intents | [Setup Intents docs](https://docs.stripe.com/api/setup_intents.md) |
-| Tokens API | Outdated | Setup Intents or Checkout Sessions | - |
+| Tokens API | Outdated | Setup Intents or Checkout Sessions | — |
 | Card Element | Legacy | Payment Element | [Migration guide](https://docs.stripe.com/payments/payment-element/migration.md) |
 
 ## PCI compliance

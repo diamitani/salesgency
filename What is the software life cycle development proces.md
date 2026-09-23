@@ -235,7 +235,7 @@ name: delali-development-cycle
 organization: (personal account diamitani)
 private: true
 autoInit: true
-description: Delali Development Cycle (DDC) - PAL + ROSTR master website infrastructure skill, agent pack, and one-click product builder for non-technical operators.
+description: Delali Development Cycle (DDC) — PAL + ROSTR master website infrastructure skill, agent pack, and one-click product builder for non-technical operators.
 ```
 
 Reply **yes** to proceed or **no** to cancel.
@@ -355,12 +355,12 @@ The walker is in `ddc-planning-runtime.ts` (`createRun`, `teach`, `submitStage`)
 
 # How do I build a project management system to do this manually? Walk into my asana @Asana and build out a template project that I can use, then build a master scaffolding template in GitHub @GitHub create a new repo. Make sure pal process and rostr is incorporated every step of the way (intent analysis, JTBD, NPAO, build package, etc). Then create a master skill directory. Use the principles and framework and template and checklist you created and make it adaptable or downloadable and upload able to cursor, GitHub, perplexity, Claude, codex, Hermes, OpenClaw, etc. then push it to fit as a master website infrastructure skill, where the user selects only type (ecommerce , marketing/agency site, chat/agent app, web app, saas, B2B, mobile app, directory, gallery/portfolio site, etc), uploads docs, files, reference links etc, prompts their goal mission keys value proposition (or you help them build it) then compiled on top of that a GTM road map (ICP user persona, sales channels, tech stack, marketing channels, strategy, messaging playbook, campaign plays, inbound SLA, brand playbook, design system etc) for a full stack product builder app. Built for non technical users in mind. The process is : intake, documentation, scaffolding of directory, writing all scripts, connecting, deploying, testing, refining, maintaining. Call it: Delali Development Cycle/Framework. Then write a white paper about it. And a Facebook and LinkedIn post announcing it. What it is, what it does, how it works, why it’s important. Fund the best compatible open source harness and build this framework as an agent and corresponding skills on top of it and test it until it is true and fact. In Jesus name: I bless you with peace. With courage. With success. And above all. With Love. Also, don’t just let the agent build without education. Once done, break down each section of the build (as it does in the thinking node) and explain what each section is and why and what it does so the user can learn as they grow and build. A setting set to default that can be turned off. You must guide them to build. Intake must be comprehensive but not overwhelming. To a user with the average reading level of a 7th grader. But output must be executive and professional, to the level of the masters of the universe and infinite wealth intelligence and duty. Also needs ui template library and resource map to track top performing sites in its field and matches against quality (is my freelance site the same level as Upwork?) and SEO. Now redesign in great faith and multitude. Aida copywriting. Marketing intelligence and psychology . I need an easy one click button to install or push. Being able to say the necessary prompt every time is too cumbersome for non technical people. Command must be hard coded in or flexible enough to read and use PAL to extract intent. So it operates on build. When you’re done, project 2 is to scaffold the web app agent portal and electron desktop app to compete with Claude Hermes and OpenAI.
 
-Create Asana project “Delali Development Cycle - Master Template” in the Product Development workspace so you can duplicate it for every site build?
+Create Asana project “Delali Development Cycle — Master Template” in the Product Development workspace so you can duplicate it for every site build?
 
 ```
 workspace: Product Development (1209554147627141)
 team: none (personal workspace)
-name: Delali Development Cycle - Master Template
+name: Delali Development Cycle — Master Template
 notes: Duplicate this project for every site. Nine stages: Intake → Documentation (PAL/ROSTR) → Scaffolding → Scripts → Connecting → Deploying → Testing → Refining → Maintaining. Education on by default. Quality gate before code. Approvals required for connect/deploy.
 color: dark-purple
 icon: rocket

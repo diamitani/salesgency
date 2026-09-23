@@ -1,5 +1,5 @@
 /**
- * SalesGency Marketplace Module (Cut 2 - Corporate Enterprise Edition)
+ * SalesGency Marketplace Module (Cut 2 — Corporate Enterprise Edition)
  * Handles product fetching, filtering, sorting, and high-density corporate grid rendering
  */
 (function(window) {

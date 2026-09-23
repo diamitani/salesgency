@@ -1,9 +1,9 @@
 ---
 name: n8n-execution-analyst
 description: >
-  n8n Execution Analyst for the YourCompany GTM GTM stack. Use ANY TIME someone wants to
-  check, monitor, audit, or investigate n8n workflow executions in the YourCompany instance
-  (your-n8n-instance.app.n8n.cloud). Triggers on: "check n8n executions", "did my workflow run",
+  n8n Execution Analyst for the Atlas HXM GTM stack. Use ANY TIME someone wants to
+  check, monitor, audit, or investigate n8n workflow executions in the Atlas instance
+  (atlas-hxm.app.n8n.cloud). Triggers on: "check n8n executions", "did my workflow run",
   "why did the workflow fail", "n8n health", "what failed today", "execution log for",
   "workflow success rate", "is anything broken in n8n", "recurring failures", "which
   workflows are stalled", "run the daily n8n report", "n8n dashboard", "pull execution
@@ -16,8 +16,8 @@ description: >
 
 # n8n Execution Analyst
 
-Monitors every workflow execution in YourCompany's n8n instance, stores full history, answers
-questions about it, and alerts on failures - without inventing any data. All answers are
+Monitors every workflow execution in Atlas's n8n instance, stores full history, answers
+questions about it, and alerts on failures — without inventing any data. All answers are
 computed from stored execution records and cite real execution IDs.
 
 ## Setup (one time)
@@ -25,14 +25,14 @@ computed from stored execution records and cite real execution IDs.
 2. Set environment variables before any live run:
    ```bash
    export N8N_API_KEY="eyJ..."                       # required for live pulls
-   export N8N_BASE_URL="https://your-n8n-instance.app.n8n.cloud"
+   export N8N_BASE_URL="https://atlas-hxm.app.n8n.cloud"
    # optional alerting (off by default):
    export ALERT_WEBHOOK_URL="https://hooks.slack.com/services/..."
    export ALERT_DRY_RUN="false"                      # only when ready to send real alerts
    ```
 3. Initialize: `python scripts/store.py`
 
-## Routing - pick the action from the user's intent
+## Routing — pick the action from the user's intent
 
 | User says… | Do this |
 |---|---|
@@ -56,7 +56,7 @@ stopped) · per-node error message + failing node · full node run data + raw JS
 - **Read-only n8n API.** Only GET. Never call DELETE/activate/deactivate.
 - **Secrets from env only.** Never print, log, hardcode, or commit `N8N_API_KEY`.
 - **No fabrication.** Absent fields are stored/returned as null. If the store has no data
-  for a question, say so - never guess.
+  for a question, say so — never guess.
 - **Alerts are dry-run by default.** Confirm with the user before setting `ALERT_DRY_RUN=false`.
 - **Idempotent.** Re-running ingestion never duplicates executions (upsert on execution ID).
 

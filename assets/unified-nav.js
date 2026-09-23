@@ -1,17 +1,21 @@
 /**
- * SalesGency Unified Nav - Canonical Corporate Authority Header
- * Obsidian background (#0A0B0E), pure white and phosphor blue wordmark, high-contrast links, and mobile drawer.
- * WCAG 2.2 AA compliant contrast (>7:1 on all interactive elements).
+ * Salesgency Unified Nav — the ONE nav bar for every page.
+ * Removes legacy header/nav markup and inserts the canonical nav.
+ * Auto-marks the active page. Mobile hamburger included.
  */
 (function () {
-  'use strict';
-
   var LINKS = [
-    { href: 'services.html', label: 'Engines' },
-    { href: 'process.html', label: 'How it works' },
+    { href: 'agency.html', label: 'Agency' },
+    { href: 'activations.html', label: 'Activations' },
+    { href: 'marketplace.html', label: 'Marketplace' },
+    { href: 'agent.html', label: 'Agent' },
+    { href: 'workspaces.html', label: 'Workspaces' },
+    { href: 'portal.html', label: 'Portal' },
     { href: 'pricing.html', label: 'Pricing' },
-    { href: 'about.html', label: 'About' }
+    { href: 'case-studies.html', label: 'Case Studies' },
+    { href: 'outreach.html', label: 'Outreach' }
   ];
+  var CTA = { href: 'build-session.html', label: 'Book a build session — $1,000' };
 
   function currentPage() {
     var p = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -22,7 +26,6 @@
     var page = currentPage();
     var header = document.createElement('header');
     header.className = 'sgu-nav';
-    header.id = 'sgu-nav';
     header.setAttribute('role', 'banner');
 
     var inner = document.createElement('div');
@@ -31,9 +34,8 @@
     var brand = document.createElement('a');
     brand.className = 'sgu-brand';
     brand.href = 'index.html';
-    brand.setAttribute('aria-label', 'SalesGency Home');
-
-    brand.innerHTML = '<img src="assets/salesgency-wordmark-light.svg" alt="SalesGency" width="160" height="32" style="display:block;">';
+    brand.setAttribute('aria-label', 'SalesGency — Your In-House GTM Agency');
+    brand.innerHTML = '<span class="sg-wm"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span></span><span class="sg-tagline">Your In-House GTM Agency</span>';
 
     var ul = document.createElement('ul');
     ul.className = 'sgu-links';
@@ -42,85 +44,44 @@
       var a = document.createElement('a');
       a.href = l.href;
       a.textContent = l.label;
-      if (l.href.toLowerCase() === page) {
-        a.className = 'sgu-active';
-      }
+      if (l.href.toLowerCase() === page) a.className = 'sgu-active';
       li.appendChild(a);
       ul.appendChild(li);
     });
 
-    var actions = document.createElement('div');
-    actions.className = 'sgu-nav-actions';
-
-    var statusEl = document.createElement('div');
-    statusEl.className = 'sgu-nav-status';
-    statusEl.innerHTML = '<span class="sgu-pulse-dot"></span> All Systems Active';
-
-    var portalBtn = document.createElement('a');
-    portalBtn.className = 'sgu-portal-btn';
-    portalBtn.href = 'portal.html';
-    portalBtn.textContent = 'Client Portal';
-
     var cta = document.createElement('a');
-    cta.className = 'sgu-cta-btn';
-    cta.href = 'build-session.html';
-    cta.textContent = 'Get a GTM teardown';
+    cta.className = 'sgu-cta';
+    cta.href = CTA.href;
+    cta.textContent = CTA.label;
 
     var burger = document.createElement('button');
     burger.className = 'sgu-burger';
-    burger.id = 'sgu-burger';
-    burger.setAttribute('aria-label', 'Toggle Navigation Menu');
-    burger.innerHTML = '&#9776;';
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.textContent = '\u2630';
     burger.addEventListener('click', function () {
       header.classList.toggle('sgu-open');
-      burger.innerHTML = header.classList.contains('sgu-open') ? '&times;' : '&#9776;';
+      burger.textContent = header.classList.contains('sgu-open') ? '\u2715' : '\u2630';
     });
-
-    actions.appendChild(statusEl);
-    actions.appendChild(portalBtn);
-    actions.appendChild(cta);
-    actions.appendChild(burger);
 
     inner.appendChild(brand);
     inner.appendChild(ul);
-    inner.appendChild(actions);
+    inner.appendChild(cta);
+    inner.appendChild(burger);
     header.appendChild(inner);
-
-    window.addEventListener('scroll', function () {
-      header.classList.toggle('sgu-scrolled', window.scrollY > 16);
-    }, { passive: true });
-
     return header;
   }
 
   function removeLegacyNav() {
+    // Remove any body-level header (all of them are site navs — verified by audit)
+    // and any stray nav elements with legacy classes.
     var olds = document.querySelectorAll(
-      'body > header:not(#sgu-nav), nav.nav-bar, nav.nav-links, header.nav-wrapper, header.nav, .nav-fixed, .mobile-menu-drawer'
+      'body > header, nav.nav-bar, nav.nav-links, header.nav-wrapper'
     );
-    olds.forEach(function (el) {
-      if (el && !el.classList.contains('sgu-nav')) {
-        el.remove();
-      }
-    });
+    olds.forEach(function (el) { el.remove(); });
   }
 
   function init() {
-    // If static sgu-nav is already present, bind scroll & burger
-    var existing = document.getElementById('sgu-nav');
-    if (existing) {
-      var burger = document.getElementById('sgu-burger');
-      if (burger) {
-        burger.addEventListener('click', function () {
-          existing.classList.toggle('sgu-open');
-          burger.innerHTML = existing.classList.contains('sgu-open') ? '&times;' : '&#9776;';
-        });
-      }
-      window.addEventListener('scroll', function () {
-        existing.classList.toggle('sgu-scrolled', window.scrollY > 16);
-      }, { passive: true });
-      return;
-    }
-
+    if (document.querySelector('header.sgu-nav')) return; // already unified
     removeLegacyNav();
     var nav = buildNav();
     document.body.insertBefore(nav, document.body.firstChild);

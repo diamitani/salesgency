@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrations — every connection point, documented | SalesGency</title>
+  <meta name="description" content="Every SalesGency integration point, documented: what's live, what's ready, and which keys are still needed. Rostr API gateway, Stripe, HubSpot, Supabase, n8n, Composio, sequencers, Slack. For RevOps and GTM engineers.">
+  <link rel="canonical" href="https://www.salesgency.com/integrations">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SalesGency">
+  <meta property="og:title" content="Integrations — every connection point, documented">
+  <meta property="og:description" content="What's live, what's ready, and which keys are still your move.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/di.css">
+  
+  <script src="assets/di-nav.js" defer></script>
+  <style>
+    .int-hero { padding: clamp(110px, 12vw, 150px) 0 40px; }
+    .int-hero h1 { font-family: var(--sg-font-display); font-size: clamp(30px, 4.5vw, 48px); font-weight: 700; letter-spacing: -0.025em; color: var(--sg-navy); line-height: 1.08; margin: 14px 0 16px; max-width: 20ch; }
+    .int-hero .lede { font-size: 1.06rem; color: var(--sg-muted); line-height: 1.65; max-width: 62ch; margin: 0; }
+    .int-hero .lede strong { color: var(--sg-ink); }
+    .int-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; padding: 8px 0 20px; }
+    .int-card { border: 1px solid var(--sg-line); border-radius: 18px; padding: 24px; background: #fff; display: flex; flex-direction: column; gap: 10px; }
+    .int-card .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .int-card h3 { font-family: var(--sg-font-display); font-size: 1.12rem; color: var(--sg-navy); margin: 0; }
+    .int-card .what { font-size: 0.92rem; color: var(--sg-muted); line-height: 1.6; margin: 0; }
+    .int-card .what strong { color: var(--sg-ink); }
+    .int-card .ep { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--sg-muted); background: var(--sg-soft); border: 1px solid var(--sg-line); border-radius: 8px; padding: 8px 12px; word-break: break-all; }
+    .keys-section { padding: 56px 0 70px; }
+    .keys-section h2 { font-family: var(--sg-font-display); font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.02em; color: var(--sg-navy); margin: 0 0 10px; }
+    .keys-section .sub { color: var(--sg-muted); font-size: 1rem; line-height: 1.6; max-width: 64ch; margin: 0 0 26px; }
+    .key-row { display: grid; grid-template-columns: 220px 1fr; gap: 20px; padding: 20px 8px; border-top: 1px solid var(--sg-line); align-items: baseline; }
+    .key-row:last-child { border-bottom: 1px solid var(--sg-line); }
+    .key-row code { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--sg-navy); }
+    .key-row p { font-size: 0.93rem; color: var(--sg-muted); line-height: 1.6; margin: 0; }
+    .key-row p strong { color: var(--sg-ink); }
+    @media (max-width: 700px) { .key-row { grid-template-columns: 1fr; gap: 6px; } }
+  </style>
+</head>
+<body>
+
+<main>
+  <section class="int-hero">
+    <div class="container">
+      <p class="eyebrow">Integrations &amp; API</p>
+      <h1>Plugs into the stack you already run.</h1>
+      <p class="lede">Every integration point, documented — <strong>what's live, what's ready, and which keys are still needed</strong>. For RevOps and GTM engineers evaluating the engine, and for anyone wiring it into their own tools. No black boxes: if a connection needs a key, it's labeled, and it says whose move it is.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="int-grid">
+        <div class="int-card">
+          <div class="top"><h3>Rostr API gateway</h3><span class="sg-pill sg-pill-key"><span class="dot"></span>Mock</span></div>
+          <p class="what"><strong>Chat + agent runs.</strong> Powers the Gency chat on this site and every workspace agent. Streaming thought / action / result events over SSE.</p>
+          <p class="ep">POST https://rostr-platform.vercel.app/api/v1/run</p>
+          <div class="your-move" style="margin: 4px 0 0;">
+            <p class="your-move-label">Your move, Patrick</p>
+            <p>Add the AI gateway key to the rostr-platform project (Secure Vault flow — never chat) and redeploy. The chat UI already handles mock mode gracefully.</p>
+          </div>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>Stripe</h3><span class="sg-pill sg-pill-key"><span class="dot"></span>Needs key</span></div>
+          <p class="what"><strong>Checkout.</strong> Marketplace and portal purchases. Client-side checkout is built; server-side charge confirmation is not wired yet.</p>
+          <p class="ep">STRIPE_SECRET_KEY → server env</p>
+          <div class="your-move" style="margin: 4px 0 0;">
+            <p class="your-move-label">Your move, Patrick</p>
+            <p>The secret key was never added. Until it is, the $199 portal paywall can't take payment. Keys go through the Secure Vault, never chat or git.</p>
+          </div>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>HubSpot</h3><span class="sg-pill sg-pill-ready"><span class="dot"></span>Ready</span></div>
+          <p class="what"><strong>CRM read/write.</strong> Intent pulls, collision shielding, contact write-back, lifecycle staging. The dedupe shield runs against your portal — we never hold your token.</p>
+          <p class="ep">HUBSPOT_ACCESS_TOKEN → your workspace vault</p>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>Supabase</h3><span class="sg-pill sg-pill-key"><span class="dot"></span>Needs key</span></div>
+          <p class="what"><strong>Workspace data.</strong> Run ledger, portal library, client records. Directory and workspace features stay on local/seeded data until keys rotate in.</p>
+          <p class="ep">SUPABASE_URL + keys → project env</p>
+          <div class="your-move" style="margin: 4px 0 0;">
+            <p class="your-move-label">Your move, Patrick</p>
+            <p>Fresh keys are still pending the rotation. Self-serve workspaces and the credentials vault UI wait on this.</p>
+          </div>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>n8n</h3><span class="sg-pill sg-pill-live"><span class="dot"></span>Live</span></div>
+          <p class="what"><strong>Workflow execution.</strong> Every template and engine ships as importable n8n JSON. Runs on your instance — self-hosted or cloud — under your control.</p>
+          <p class="ep">your n8n instance → import JSON</p>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>Composio</h3><span class="sg-pill sg-pill-ready"><span class="dot"></span>Ready</span></div>
+          <p class="what"><strong>Per-user tool OAuth.</strong> 100+ tools (Gmail, Calendar, Salesforce, and more) attached to agent runs on demand. Best-effort: a run never breaks if it's unconfigured.</p>
+          <p class="ep">composio_account_id → per run</p>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>Smartlead / Instantly</h3><span class="sg-pill sg-pill-ready"><span class="dot"></span>Ready</span></div>
+          <p class="what"><strong>Sequencer enrollment.</strong> Approved contacts enroll with staggered inbox load-balancing. Sender reputation guarded by the verification waterfall.</p>
+          <p class="ep">your sequencer API key → workspace vault</p>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>Slack</h3><span class="sg-pill sg-pill-ready"><span class="dot"></span>Ready</span></div>
+          <p class="what"><strong>Approvals + notifications.</strong> The human review gate lives where your team already works: drafts arrive in Slack, approvals release the send.</p>
+          <p class="ep">your Slack workspace → approvals channel</p>
+        </div>
+        <div class="int-card">
+          <div class="top"><h3>Sandbox</h3><span class="sg-pill sg-pill-ready"><span class="dot"></span>Ready</span></div>
+          <p class="what"><strong>Safe code execution.</strong> Generated code runs in an isolated sandbox before it ever touches your stack — the same pattern behind the quickstart builds.</p>
+          <p class="ep">deny-all network · ephemeral</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="keys-section">
+    <div class="container">
+      <h2>How keys work</h2>
+      <p class="sub">Short version: <strong>you hold your keys, we never see them</strong> — and Patrick's platform keys never touch git, chat, or email.</p>
+      <div>
+        <div class="key-row">
+          <code>AI_GATEWAY_API_KEY</code>
+          <p><strong>Patrick's move.</strong> Takes the Rostr platform (and this site's Gency chat) out of mock mode. Added via the Secure Vault flow, set as a Vercel env var on rostr-platform, then redeploy.</p>
+        </div>
+        <div class="key-row">
+          <code>STRIPE_SECRET_KEY</code>
+          <p><strong>Patrick's move.</strong> Unlocks real checkout on the marketplace and the $199 portal. Server-side only — it never ships to the browser.</p>
+        </div>
+        <div class="key-row">
+          <code>Supabase keys</code>
+          <p><strong>Patrick's move.</strong> Pending rotation. Unlocks self-serve workspaces, the run ledger, and the portal library on live data.</p>
+        </div>
+        <div class="key-row">
+          <code>HubSpot / sequencer tokens</code>
+          <p><strong>Your move, client.</strong> You connect your own CRM and sequencer inside your workspace vault. We build against the APIs; your secrets stay yours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three paths -->
+  <section class="three-paths">
+    <div class="three-paths-inner">
+      <p class="three-paths-kicker">Three ways to work with us</p>
+      <h2>Buy a template, build with our team, or use the agent.</h2>
+      <div class="path-rows">
+        <a class="path-row" href="marketplace.html">
+          <span class="path-num">01</span>
+          <span class="path-body"><strong>Buy a template</strong><span>Production-ready engines, skills, and n8n workflows. Deploy in your stack in minutes and own the code forever.</span></span>
+          <span class="path-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="path-row" href="agent.html">
+          <span class="path-num">02</span>
+          <span class="path-body"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds and never touches production without your approval.</span></span>
+          <span class="path-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="path-row" href="workspaces.html">
+          <span class="path-num">03</span>
+          <span class="path-body"><strong>Get a workspace</strong><span>Your engine's private operating environment — run ledger, approvals, reporting, all in one place.</span></span>
+          <span class="path-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer class="footer sg-footer">
+    <div class="container footer-inner">
+      <div class="sg-footer-top">
+        <div class="sg-footer-brand">
+          <a href="index.html" aria-label="SalesGency — Your In-House GTM Agency"><span class="sg-wm sg-wm-lg"><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span><span class="wm-reg">&reg;</span></span></a>
+          <p class="sg-tagline">Your In-House GTM Agency</p>
+          <p class="sg-slogan">AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <nav class="sg-footer-paths" aria-label="Three ways to work with us">
+          <a href="marketplace.html"><strong>Buy a template</strong><span>Production-ready engines, skills, and workflows. Deploy in minutes, own the code.</span></a>
+          <a href="build-session.html"><strong>Build with our team</strong><span>Co-build your GTM engine in a working session. $1,000.</span></a>
+          <a href="agent.html"><strong>Use the agent</strong><span>Talk to Gency — the automation agent that plans before it builds.</span></a>
+        </nav>
+      </div>
+      <div class="footer-links">
+        <a href="agency.html">Agency</a>
+        <a href="activations.html">Activations</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="agent.html">Agent</a>
+        <a href="workspaces.html">Workspaces</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="portal.html">Portal</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="about.html">About</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <p class="footer-note">&copy; 2026 SalesGency &middot; Diamitani Industries. Built by Patrick Diamitani.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

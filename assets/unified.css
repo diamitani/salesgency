@@ -1,261 +1,134 @@
 /* ==========================================================================
-   SalesGency Corporate Navigation v5.0
-   Aesthetic: Flush dark authority header — no floating pill
+   Salesgency Unified Layer
+   One wide layout, one color system, one nav — loaded after every page's
+   own stylesheet so these rules win on equal specificity.
    ========================================================================== */
+@import url('brand.css');
 
-/* ── Corporate Header — full-width flush, dark background ─────────────────── */
-header.sgu-nav {
-  position: fixed;
+:root {
+  --sgu-wide: 1280px;
+  --sgu-navy: #0f2a4a;
+  --sgu-blue: #1f6feb;
+  --sgu-green: #1a9e5c;
+  --sgu-ink: #12233a;
+  --sgu-muted: #5b6b80;
+  --sgu-line: #e4e9f0;
+  --sgu-soft: #f5f8fc;
+}
+
+/* ---- Wide layout: every standard container goes to 1280px ---- */
+.container,
+.wrap,
+.page-wrap,
+.site-wrap,
+.content-wrap {
+  max-width: var(--sgu-wide);
+}
+
+/* ---- Unified nav bar ---- */
+.sgu-nav {
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  width: 100%;
-  background: #0A0B0E;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: none;
-  padding: 0;
-  pointer-events: auto;
-  transition: border-color 0.2s ease;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--sgu-line);
 }
-
-header.sgu-nav.sgu-scrolled {
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-}
-
 .sgu-nav-inner {
-  max-width: 1360px;
+  max-width: var(--sgu-wide);
   margin: 0 auto;
+  padding: 0 24px;
   height: 68px;
-  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
 }
-
-/* ── Brand Wordmark ─────────────────────────────────────────────────────────── */
 .sgu-brand {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--sgu-navy);
   text-decoration: none;
-  flex-shrink: 0;
-  gap: 10px;
-}
-
-.sgu-brand svg {
-  display: block;
-  height: 24px;
-  width: auto;
-}
-
-.sgu-brand-divider {
-  width: 1px;
-  height: 18px;
-  background: rgba(255,255,255,0.15);
-}
-
-.sgu-brand-sub {
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.40);
-  letter-spacing: 0.04em;
+  letter-spacing: -0.02em;
   white-space: nowrap;
+  line-height: 1.1;
 }
-
-/* ── Nav Links ──────────────────────────────────────────────────────────────── */
-ul.sgu-links {
+.sgu-brand .sg-wm { font-size: 1.25rem; }
+.sgu-brand .sg-tagline { font-size: 0.6rem; margin-top: 3px; }
+.sgu-links {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
-ul.sgu-links li a {
-  display: block;
-  padding: 8px 14px;
-  color: rgba(255, 255, 255, 0.60);
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 0.875rem;
+.sgu-links a {
+  color: var(--sgu-ink);
+  text-decoration: none;
   font-weight: 500;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: color 0.15s ease, background 0.15s ease;
-  white-space: nowrap;
-  letter-spacing: -0.005em;
-}
-
-ul.sgu-links li a:hover {
-  color: rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-ul.sgu-links li a.sgu-active {
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-/* ── Nav Right Actions ──────────────────────────────────────────────────────── */
-.sgu-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-/* Status Indicator in Nav */
-.sgu-nav-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.06em;
-  padding: 0 12px 0 0;
-  border-right: 1px solid rgba(255,255,255,0.10);
-}
-
-.sgu-pulse-dot {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #0D9B60;
-  box-shadow: 0 0 0 0 rgba(13, 155, 96, 0.4);
-  animation: sguPulseNew 2.5s ease-in-out infinite;
-}
-
-@keyframes sguPulseNew {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(13, 155, 96, 0.4); }
-  50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(13, 155, 96, 0); }
-}
-
-/* Portal button — ghost */
-a.sgu-portal-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  border-radius: 4px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.825rem;
-  font-weight: 500;
-  text-decoration: none;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.75);
-  transition: all 0.15s ease;
+  font-size: 0.92rem;
+  padding: 9px 13px;
+  border-radius: 9px;
   white-space: nowrap;
 }
-
-a.sgu-portal-btn:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.30);
-  color: #FFFFFF;
+.sgu-links a:hover { background: var(--sgu-soft); color: var(--sgu-navy); }
+.sgu-links a.sgu-active {
+  color: var(--sgu-blue);
+  font-weight: 700;
+  background: #eaf1fe;
 }
-
-/* Primary CTA button in nav */
-a.sgu-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 18px;
-  border-radius: 4px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.825rem;
-  font-weight: 600;
+.sgu-cta {
+  background: var(--sgu-navy);
+  color: #fff !important;
+  padding: 11px 20px;
+  border-radius: 11px;
   text-decoration: none;
-  background: #1B6FD8;
-  color: #FFFFFF;
-  border: 1px solid #1B6FD8;
-  transition: all 0.15s ease;
+  font-weight: 700;
+  font-size: 0.88rem;
   white-space: nowrap;
-  letter-spacing: -0.005em;
 }
-
-a.sgu-cta-btn:hover {
-  background: #1558B0;
-  border-color: #1558B0;
-  color: #FFFFFF;
-  transform: translateY(-1px);
-}
-
-a.sgu-cta-btn:active,
-a.sgu-portal-btn:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* ── Hamburger ──────────────────────────────────────────────────────────────── */
-button.sgu-burger {
+.sgu-cta:hover { background: #1a3a63; }
+.sgu-burger {
   display: none;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 4px;
-  color: rgba(255,255,255,0.75);
-  padding: 7px 10px;
-  font-size: 1rem;
+  background: none;
+  border: 1px solid var(--sgu-line);
+  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
   cursor: pointer;
-  line-height: 1;
-  transition: all 0.15s ease;
+  color: var(--sgu-navy);
 }
-
-button.sgu-burger:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.30);
-  color: #FFFFFF;
-}
-
-/* ── Mobile Drawer ──────────────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  ul.sgu-links {
-    display: none;
-  }
-
-  button.sgu-burger {
-    display: block;
-  }
-
-  .sgu-nav-status {
-    display: none;
-  }
-
-  header.sgu-nav.sgu-open ul.sgu-links {
+@media (max-width: 1020px) {
+  .sgu-links, .sgu-nav .sgu-cta { display: none; }
+  .sgu-burger { display: block; }
+  .sgu-nav.sgu-open .sgu-links {
     display: flex;
-    flex-direction: column;
     position: absolute;
     top: 68px;
     left: 0;
     right: 0;
-    background: #0A0B0E;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    background: #fff;
+    flex-direction: column;
+    align-items: stretch;
     padding: 12px 20px 20px;
+    border-bottom: 1px solid var(--sgu-line);
+    box-shadow: 0 18px 40px rgba(15, 42, 74, 0.12);
     gap: 2px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    pointer-events: auto;
   }
-
-  header.sgu-nav.sgu-open ul.sgu-links li a {
-    padding: 11px 16px;
-    font-size: 0.95rem;
-    border-radius: 4px;
-    color: rgba(255,255,255,0.70);
-  }
-
-  header.sgu-nav.sgu-open ul.sgu-links li a:hover {
-    color: #FFFFFF;
-    background: rgba(255,255,255,0.06);
+  .sgu-nav.sgu-open .sgu-links a { padding: 13px 10px; font-size: 1rem; }
+  .sgu-nav.sgu-open .sgu-cta {
+    display: block;
+    text-align: center;
+    margin: 10px 20px 0;
   }
 }
 
-/* ── Body offset for fixed nav ──────────────────────────────────────────────── */
-body {
-  padding-top: 68px;
-}
+/* ---- Color harmony: pull any stray dark-theme leftovers to the light system ---- */
+.sgu-nav, .sgu-nav * { color-scheme: light; }

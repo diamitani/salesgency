@@ -26,8 +26,8 @@ Legacy account type names can be mentioned only when explaining migration from v
 
 Stripe’s public docs define two Connect business model categories. Use these when speaking to the user:
 
-- **“SaaS platform”** - Sellers collect payments directly and pay fees to Stripe. Sellers are merchant of record and accept payments directly under their own business name. For example, an eCommerce platform that processes payments under the hood for independent sellers.
-- **“Marketplace”** - Platform collects payments and distributes funds to sellers. For example, a food delivery service that connects customers with restaurants and drivers.
+- **“SaaS platform”** — Sellers collect payments directly and pay fees to Stripe. Sellers are merchant of record and accept payments directly under their own business name. For example, an eCommerce platform that processes payments under the hood for independent sellers.
+- **“Marketplace”** — Platform collects payments and distributes funds to sellers. For example, a food delivery service that connects customers with restaurants and drivers.
 
 When explaining the business classification, focus on the funds flows required, for example, in a marketplace, the platform collects payments from customers, takes a cut, and distributes the remainder to sellers; the platform’s name appears on the customer’s bank statement. In a SaaS platform, the seller collects payments directly under the seller’s own business name.
 
@@ -67,16 +67,16 @@ When showing configuration values, ALWAYS pair them with a human-readable label.
 
 ### “Platform-owned” and “Stripe-owned” labels
 
-Don’t use “Platform-owned” or “Stripe-owned” as standalone labels - these are confusing when addressing the platform user directly. Instead say:
+Don’t use “Platform-owned” or “Stripe-owned” as standalone labels — these are confusing when addressing the platform user directly. Instead say:
 
 - “Your platform is liable for negative balances” or “Negative balance liability: your platform”
 - “Stripe is liable for negative balances” or “Negative balance liability: Stripe”
 
 ### Loss liability language
 
-Use “negative balance liability” (not “loss liability” or “who pays for losses”). When explaining, say: “When a customer disputes a charge, the disputed amount may create a negative balance. Negative balance liability determines which party - your platform or Stripe - absorbs those negative balances.”
+Use “negative balance liability” (not “loss liability” or “who pays for losses”). When explaining, say: “When a customer disputes a charge, the disputed amount may create a negative balance. Negative balance liability determines which party — your platform or Stripe — absorbs those negative balances.”
 
-Do NOT use “who pays” framing - it is too vague. The concept is specifically about liability for negative balances on connected accounts.
+Do NOT use “who pays” framing — it is too vague. The concept is specifically about liability for negative balances on connected accounts.
 
 ### Compatibility wording
 

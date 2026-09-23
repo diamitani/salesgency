@@ -2,365 +2,208 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SalesGency — AI Revenue Workflows</title>
-  <meta name="description" content="SalesGency installs AI revenue workflows inside your existing stack. Turn every inquiry into a next step.">
-  <link rel="icon" type="image/svg+xml" href="assets/salesgency-icon.svg">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SalesGency — Your In-House GTM Agency</title>
+  <meta name="description" content="SalesGency installs an AI revenue engine inside your CRM and sales stack — it finds your buyers, researches them, and writes personalized outreach, with human approval before anything external.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="assets/salesgencytokens.css">
-  <link rel="stylesheet" href="assets/unified.css">
-  <link rel="stylesheet" href="assets/premium.css">
-  
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <!-- The script dynamically inserts the unified nav -->
-  <script src="assets/unified-nav.js" defer></script>
-  <script src="assets/stripe-client.js" defer></script>
-
-  <style>
-    body {
-      background-color: var(--sg-mist);
-      color: var(--sg-ink);
-      font-family: var(--sg-font-body);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-      margin: 0;
-    }
-    h1, h2, h3, h4 {
-      font-family: var(--sg-font-display);
-      letter-spacing: -0.02em;
-      color: var(--sg-ink);
-    }
-    
-    /* Hero */
-    .sg-hero {
-      position: relative;
-      padding: 200px 24px 140px;
-      text-align: center;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .sg-hero h1 {
-      color: var(--sg-white);
-      font-size: clamp(64px, 10vw, 120px);
-      max-width: 1000px;
-      margin: 0 auto 24px;
-      line-height: 1.0;
-    }
-    .sg-hero p {
-      color: var(--sg-mist);
-      font-size: clamp(18px, 3vw, 24px);
-      max-width: 650px;
-      margin: 0 auto 48px;
-      opacity: 0.9;
-    }
-    
-    /* Buttons */
-    .sg-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-family: var(--sg-font-display);
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      gap: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-    .sg-btn-primary {
-      background: var(--sg-white);
-      color: var(--sg-ink);
-    }
-    .sg-btn-primary::after {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sg-signal);
-    }
-    .sg-btn-outline-light {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: var(--sg-white);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .sg-btn-primary-dark {
-      background: var(--sg-ink);
-      color: var(--sg-white);
-    }
-    .sg-btn-primary-dark::after {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sg-signal);
-    }
-
-    /* Section defaults */
-    .sg-section {
-      padding: 140px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .sg-section-header {
-      margin-bottom: 80px;
-      text-align: left;
-    }
-    .sg-section-header.center {
-      text-align: center;
-    }
-    .sg-section-header h2 {
-      font-size: clamp(40px, 5vw, 56px);
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-    .sg-section-header p {
-      color: var(--sg-slate);
-      font-size: 20px;
-      max-width: 600px;
-    }
-    .sg-section-header.center p {
-      margin: 0 auto;
-    }
-
-    /* Stats / Trust section */
-    .sg-trust {
-      padding: 80px 24px;
-      border-bottom: 1px solid var(--sg-line);
-      background: var(--sg-white);
-    }
-    .sg-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .sg-stat-num {
-      font-family: var(--sg-font-display);
-      font-size: 64px;
-      font-weight: 800;
-      color: var(--sg-ink);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    .sg-stat-label {
-      color: var(--sg-slate);
-      font-size: 16px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    @media (max-width: 768px) {
-      .sg-stats-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/di.css">
+  <script src="assets/di-nav.js" defer></script>
 </head>
 <body>
 
   <main>
-    <!-- Dark Premium Hero -->
-    <section class="sg-hero">
-      <div class="sg-mesh-bg">
-        <div class="sg-mesh-blob cyan"></div>
-        <div class="sg-mesh-blob indigo"></div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow reveal">Your In-House GTM Agency</p>
+        <h1 class="display reveal">The AI revenue engine, <em>installed</em> in your stack.</h1>
+        <p class="lede reveal">SalesGency finds your buyers, researches them, and writes the outreach — inside your CRM, with your team approving before anything external. <strong>Buy a template</strong> and deploy it yourself, <strong>build with our team</strong> in a working session, or <strong>put Gency to work</strong> — the automation agent that plans before it builds. You own 100% of the code. No retainer, no seat tax, no black box.</p>
+        <div class="hero-ctas reveal">
+          <a class="btn btn-primary btn-lg" href="marketplace.html">Buy a template</a>
+          <a class="btn btn-ghost btn-lg" href="book.html">Build with our team</a>
+          <a class="btn btn-ghost btn-lg" href="agent.html">Talk to Gency &rarr;</a>
+        </div>
+        <div class="stats reveal">
+          <div class="stat"><span class="stat-num">$9M<em>+</em></span><span class="stat-label">Attributed inbound pipeline from one agent suite</span></div>
+          <div class="stat"><span class="stat-num">55<em>%+</em></span><span class="stat-label">Outbound open rate on engine-written sequences</span></div>
+          <div class="stat"><span class="stat-num">~70<em>%</em></span><span class="stat-label">Enrichment cost cut vs. list vendors</span></div>
+          <div class="stat"><span class="stat-num">16</span><span class="stat-label">Production AI systems shipped and operated</span></div>
+        </div>
       </div>
-      <div class="sg-relative-content">
-        <h1 class="sg-hero-title gs-reveal">
-          Sales<span class="sg-signature-gradient">Gency</span>
-        </h1>
-        <p class="gs-reveal" style="font-weight: 500;">
-          AI revenue workflows installed in your stack.
-        </p>
-        <div class="gs-reveal" style="display: flex; justify-content: center; gap: 16px;">
-          <a href="build-session.html" class="sg-btn sg-btn-primary sg-btn-magnetic">
-            <span>Get a GTM teardown</span>
+    </section>
+
+    <!-- Three doors -->
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow reveal">Three doors. One outcome.</p>
+        <h2 class="display reveal">Pick the engagement that matches <em>how you buy.</em></h2>
+        <p class="section-sub reveal">No discovery-call maze. Every path ends with a working system inside your stack — not a slide deck about one.</p>
+        <div class="doors">
+          <a class="door reveal" href="marketplace.html">
+            <span class="door-kicker">01 — Self-serve</span>
+            <h3>Buy a template</h3>
+            <p>Production n8n workflows, skills, and outreach packs — priced from $39. Download, import, and run the same engines we install for clients.</p>
+            <span class="door-link">Browse the marketplace <span class="arr">&rarr;</span></span>
           </a>
-          <a href="services.html" class="sg-btn sg-btn-outline-light sg-btn-magnetic">
-            <span>Explore Engines</span>
+          <a class="door reveal" href="book.html">
+            <span class="door-kicker">02 — Done-with-you</span>
+            <h3>Build with our team</h3>
+            <p>A $1,000 working session where we architect your engine live, then a fixed-scope sprint to install it. You watch it get built — then you own it.</p>
+            <span class="door-link">Book a build session <span class="arr">&rarr;</span></span>
+          </a>
+          <a class="door reveal" href="agent.html">
+            <span class="door-kicker">03 — Agent-operated</span>
+            <h3>Use the agent</h3>
+            <p>Gency plans before it builds: tell it the outcome, it drafts the PRD, the workflow, and the copy — and queues everything for your approval.</p>
+            <span class="door-link">Talk to Gency <span class="arr">&rarr;</span></span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Trust Stats -->
-    <section class="sg-trust">
-      <div class="sg-stats-grid">
-        <div class="gs-reveal">
-          <div class="sg-stat-num">3x</div>
-          <div class="sg-stat-label">Faster Pipeline Gen</div>
-        </div>
-        <div class="gs-reveal">
-          <div class="sg-stat-num">0</div>
-          <div class="sg-stat-label">Platform Taxes</div>
-        </div>
-        <div class="gs-reveal">
-          <div class="sg-stat-num">100%</div>
-          <div class="sg-stat-label">Client Owned IP</div>
+    <!-- The engine -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <p class="eyebrow reveal">The flagship</p>
+        <h2 class="display reveal">One prospect engine. <em>Five supporting activations.</em></h2>
+        <p class="section-sub reveal">The <strong>Prospect Automation Engine</strong> is an autonomous outbound pipeline: it pulls target accounts from your CRM, shields active deals from collisions, reveals verified contacts, researches every account, and drafts personalized outreach for human approval. Around it, five activations cover the rest of the motion — so the whole GTM system runs as one governed whole.</p>
+        <div class="activations">
+          <div class="activation reveal">
+            <span class="activation-num">A1</span>
+            <div><h3>Prospect Automation Engine</h3><p>Intent-based accounts pulled from your CRM — never a purchased list. An agent drafts a pain-point hypothesis per account; outreach is queued for review.</p></div>
+          </div>
+          <div class="activation reveal">
+            <span class="activation-num">A2</span>
+            <div><h3>Inbound triage</h3><p>Every inbound lead researched, scored, and routed in minutes — with a drafted first reply waiting for your rep, not a round-robin black hole.</p></div>
+          </div>
+          <div class="activation reveal">
+            <span class="activation-num">A3</span>
+            <div><h3>Pre-call briefings</h3><p>Account, contact, and trigger-event research compiled before every meeting. Your reps walk in knowing more than the buyer expects.</p></div>
+          </div>
+          <div class="activation reveal">
+            <span class="activation-num">A4</span>
+            <div><h3>Post-call follow-up</h3><p>Calls summarized, next steps extracted, follow-up drafted and logged to the CRM automatically. Nothing falls through after the call.</p></div>
+          </div>
+          <div class="activation reveal">
+            <span class="activation-num">A5</span>
+            <div><h3>Execution reporting</h3><p>Daily pipeline truth in one dashboard: what the engine did, what needs approval, where the motion is compounding.</p></div>
+          </div>
+          <div class="activation reveal">
+            <span class="activation-num">A6</span>
+            <div><h3>Daily executive brief</h3><p>A morning brief for revenue leaders — pipeline movement, risks, and the three decisions that actually matter today.</p></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Bento Grid section -->
-    <section class="sg-section">
-      <div class="sg-section-header gs-reveal">
-        <span class="sg-eyebrow">The Engines</span>
-        <h2>Built for your exact sales motion.</h2>
-        <p>We do not sell a SaaS platform. We diagnose your friction points and build deterministic AI workflows directly into your CRM.</p>
+    <!-- Operating thesis -->
+    <section class="section">
+      <div class="wrap">
+        <div class="thesis-grid">
+          <div>
+            <p class="eyebrow reveal">Operating thesis</p>
+            <h2 class="display reveal">Automation does the robot work. <em>People make the decisions.</em></h2>
+            <p class="section-sub reveal">Most AI agencies sell dependency. We sell the opposite: a working engine, transferred to your team, that keeps compounding after we leave.</p>
+            <div class="hero-ctas reveal" style="margin-bottom:0">
+              <a class="btn btn-accent" href="agency.html">How the agency works</a>
+              <a class="btn btn-ghost" href="architecture.html">See the architecture</a>
+            </div>
+          </div>
+          <div class="thesis-points">
+            <div class="thesis-point reveal">
+              <span class="n">01</span>
+              <div><h3>It lives in your stack</h3><p>Built on your CRM (HubSpot, Salesforce), your data tools (Clay, Apollo), your sequencer (Smartlead, Instantly), orchestrated in n8n. Nothing to rip out, no parallel universe to maintain.</p></div>
+            </div>
+            <div class="thesis-point reveal">
+              <span class="n">02</span>
+              <div><h3>Humans approve before anything external</h3><p>The engine researches and drafts; your team approves. Every send, every CRM write, every reply route passes a review gate you control.</p></div>
+            </div>
+            <div class="thesis-point reveal">
+              <span class="n">03</span>
+              <div><h3>You keep the engine</h3><p>We build it, prove it on a 90-day pilot against your real pipeline, then transfer it — workflows, prompts, skills, runbooks — to your team. You own the code and the knowledge, not a subscription dependency.</p></div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div class="sg-bento-grid">
-        <!-- Outbound Pipeline - Large Cell -->
-        <div class="sg-bento-item sg-bento-col-8 sg-glass-light gs-reveal" style="background: var(--sg-white); border-color: var(--sg-line);">
-          <div style="margin-bottom: 64px;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--sg-ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-          </div>
-          <h3 style="font-size: 32px; margin-bottom: 16px;">Outbound Pipeline</h3>
-          <p style="color: var(--sg-slate); font-size: 18px; max-width: 400px; margin-bottom: 32px;">Research accounts and buying context automatically. Generate account-specific messaging, coordinate sequences, and hand qualified replies to a human rep.</p>
-          <a href="services.html" style="color: var(--sg-action); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">Explore Outbound &rarr;</a>
-        </div>
+    </section>
 
-        <!-- Inbound Conversion - Tall Cell -->
-        <div class="sg-bento-item sg-bento-col-4 sg-glass-light gs-reveal" style="background: var(--sg-ink); color: var(--sg-white); border: none;">
-          <div style="margin-bottom: 64px;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--sg-white)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+    <!-- Proof -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <p class="eyebrow reveal">Proof, not promises</p>
+        <h2 class="display reveal">Systems in production, <em>with receipts.</em></h2>
+        <div class="cards" style="margin-top:48px">
+          <div class="card reveal">
+            <span class="mono-tag">Outbound engine</span>
+            <h3>55%+ open rates, zero list vendors</h3>
+            <p>Intent-based account selection plus per-account research hypotheses — the engine that produced $9M+ in attributed pipeline.</p>
           </div>
-          <h3 style="font-size: 32px; margin-bottom: 16px; color: var(--sg-white);">Inbound Conversion</h3>
-          <p style="color: var(--sg-mist); font-size: 18px; opacity: 0.9;">Turn every inquiry into a fast, informed next step. Qualify, enrich, and route leads by urgency in under 60 seconds.</p>
+          <div class="card reveal">
+            <span class="mono-tag">Cost structure</span>
+            <h3>~70% cheaper enrichment</h3>
+            <p>Verified-contact reveal inside the workflow replaced per-seat data vendors. Same coverage, a fraction of the spend.</p>
+          </div>
+          <div class="card reveal">
+            <span class="mono-tag">Transfer record</span>
+            <h3>90-day pilot, then it's yours</h3>
+            <p>Every engagement ends with a transfer package: workflows, prompts, skills, runbooks. The engine stays; the agency leaves.</p>
+          </div>
         </div>
-
-        <!-- Deal Intelligence - Wide Cell -->
-        <div class="sg-bento-item sg-bento-col-12 sg-glass-light gs-reveal" style="background: var(--sg-white); border-color: var(--sg-line); display: flex; align-items: center; gap: 40px; padding: 48px;">
-          <div style="flex: 1;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--sg-ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 24px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            <h3 style="font-size: 32px; margin-bottom: 16px;">Deal Intelligence</h3>
-            <p style="color: var(--sg-slate); font-size: 18px; max-width: 600px;">Make every sales conversation useful after the call ends. We extract signals, draft follow-ups, and write approved MEDDIC data back to your CRM.</p>
-          </div>
-          <div style="flex-shrink: 0; display: none; @media(min-width: 768px) { display: block; }">
-             <a href="services.html" class="sg-btn sg-btn-primary-dark sg-btn-magnetic">
-               <span>See Deal Engine</span>
-             </a>
-          </div>
+        <div class="hero-ctas reveal" style="margin-top:44px;margin-bottom:0">
+          <a class="btn btn-ghost" href="case-studies.html">Read the case studies &rarr;</a>
         </div>
       </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="sg-hero" style="min-height: auto; padding: 160px 24px;">
-      <div class="sg-mesh-bg" style="opacity: 0.3;">
-        <div class="sg-mesh-blob cyan" style="left: auto; right: -10vw; top: -10vw;"></div>
-      </div>
-      <div class="sg-relative-content">
-        <h2 class="gs-reveal" style="color: var(--sg-white); font-size: clamp(40px, 5vw, 64px); margin-bottom: 24px; max-width: 800px; line-height: 1.1;">Stop paying platform taxes.</h2>
-        <p class="gs-reveal" style="color: var(--sg-mist); max-width: 600px; margin: 0 auto 48px; font-size: 20px;">
-          Start owning your revenue architecture today. Get a complete teardown of your current GTM workflows.
-        </p>
-        <div class="gs-reveal">
-          <a href="build-session.html" class="sg-btn sg-btn-primary sg-btn-magnetic">
-            <span>Get a GTM teardown</span>
-          </a>
+    <section class="final">
+      <div class="wrap">
+        <p class="eyebrow reveal" style="justify-content:center">One conversation</p>
+        <h2 class="display reveal">Get a <em>GTM teardown.</em></h2>
+        <p class="reveal">Thirty minutes. We audit your current pipeline motion live and show you exactly where an engine would pay for itself — whether or not you hire us.</p>
+        <div class="hero-ctas reveal" style="justify-content:center;margin-bottom:0">
+          <a class="btn btn-primary btn-lg" href="book.html">Get the teardown</a>
+          <a class="btn btn-ghost btn-lg" href="pricing.html">See pricing</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer style="padding: 64px 24px; text-align: center; color: var(--sg-muted); font-size: 14px; background: var(--sg-ink);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-      <div style="display: flex; justify-content: center; gap: 24px;">
-        <a href="index.html" style="color: var(--sg-mist); text-decoration: none;">Home</a>
-        <a href="services.html" style="color: var(--sg-mist); text-decoration: none;">Engines</a>
-        <a href="pricing.html" style="color: var(--sg-mist); text-decoration: none;">Pricing</a>
-        <a href="about.html" style="color: var(--sg-mist); text-decoration: none;">About</a>
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="di-brand" href="index.html" aria-label="SalesGency Home"><span><span class="wm-sales">Sales</span><span class="wm-gency">Gency</span></span></a>
+          <p>Your In-House GTM Agency. AI-powered go-to-market automation for sales teams.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Engage</h4>
+          <a href="marketplace.html">Buy a template</a>
+          <a href="book.html">Build with our team</a>
+          <a href="agent.html">Use the agent</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="agency.html">Agency</a>
+          <a href="case-studies.html">Case studies</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="outreach.html">Outreach</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="https://www.diamitani.com/" rel="noopener">Diamitani Industries</a>
+        </div>
       </div>
-      <div style="opacity: 0.7;">
-        SalesGency is a d/b/a of Diamitani Industries.
+      <div class="foot-bottom">
+        <p>&copy; 2026 SalesGency &middot; d/b/a Diamitani Industries</p>
+        <p>salesgency.com</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts for Interactions -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // 1. Reveal Animations
-      const revealElements = document.querySelectorAll(".gs-reveal");
-      revealElements.forEach((el, index) => {
-        gsap.to(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%", // when top of element hits 85% viewport
-            toggleActions: "play none none reverse"
-          },
-          opacity: 1,
-          y: 0,
-          visibility: "visible",
-          duration: 0.8,
-          ease: "power3.out",
-          delay: (el.closest('.sg-hero') ? index * 0.1 : 0) // cascade hero elements
-        });
-      });
-
-      // 2. Magnetic Buttons
-      const magneticButtons = document.querySelectorAll(".sg-btn-magnetic");
-      
-      magneticButtons.forEach((btn) => {
-        const text = btn.querySelector("span");
-        
-        btn.addEventListener("mousemove", (e) => {
-          const rect = btn.getBoundingClientRect();
-          const h = rect.width / 2;
-          const v = rect.height / 2;
-          const x = e.clientX - rect.left - h;
-          const y = e.clientY - rect.top - v;
-
-          // Move the button itself slightly
-          gsap.to(btn, {
-            x: x * 0.2,
-            y: y * 0.2,
-            duration: 0.4,
-            ease: "power2.out"
-          });
-          
-          // Move the inner text slightly more
-          if(text) {
-             gsap.to(text, {
-               x: x * 0.3,
-               y: y * 0.3,
-               duration: 0.4,
-               ease: "power2.out"
-             });
-          }
-        });
-
-        btn.addEventListener("mouseleave", () => {
-          gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
-          if(text) {
-             gsap.to(text, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.3)" });
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>

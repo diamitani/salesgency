@@ -20,10 +20,10 @@ Instead, configure accounts using three independent dimensions:
 | **SaaS with payments** | `full` | `stripe` | `stripe` | Direct | Embedded | Sellers want independence, own Stripe accounts, own branding |
 | **Crowdfunding** | `express` | `application` | `application` | Separate | Embedded | Multi-party splits and delayed release. Use transfer math (not `application_fee_amount`) and platform-owned loss liability for transfer reversals |
 | **Subscription platforms** | `express` | `application` | `application` | Destination | Embedded | Recurring billing, platform manages subscriptions; platform-owned pricing + loss liability required for Express |
-| **E-commerce (white-label)** | `none` | `application` | `application` | Destination or Direct | Embedded | Full branding control. Use embedded components for white-label feel. Going fully custom (no embedded components) adds significant complexity - the platform must build and maintain all connected account UX including onboarding remediation, refund and dispute flows, and ongoing requirement collection. |
+| **E-commerce (white-label)** | `none` | `application` | `application` | Destination or Direct | Embedded | Full branding control. Use embedded components for white-label feel. Going fully custom (no embedded components) adds significant complexity — the platform must build and maintain all connected account UX including onboarding remediation, refund and dispute flows, and ongoing requirement collection. |
 | **Rental marketplace** | `express` | `application` | `application` | Destination | Embedded | Platform owns booking flow; platform-owned pricing + loss liability required for Express |
 | **Event ticketing** | `express` | `application` | `application` | Destination | Embedded | Platform manages event and ticket flow; platform-owned pricing + loss liability required for Express |
-| **B2B platforms** | `none` | `application` | `application` | Separate | Embedded | For complex enterprise multi-party flows, prefer Separate charges and transfers with transfer math. Don’t default to Destination in these scenarios. Often requires sales engagement for billing complexity - [Stripe sales](https://stripe.com/contact/sales). |
+| **B2B platforms** | `none` | `application` | `application` | Separate | Embedded | For complex enterprise multi-party flows, prefer Separate charges and transfers with transfer math. Don’t default to Destination in these scenarios. Often requires sales engagement for billing complexity — [Stripe sales](https://stripe.com/contact/sales). |
 
 **Note:** `fees` and `losses` columns refer to `defaults.responsibilities.fees_collector` and `defaults.responsibilities.losses_collector` in the v2 API. Values are `"stripe"` or `"application"` (your platform).
 
@@ -115,7 +115,7 @@ Launch the most business-critical side first, stabilize webhook and reconciliati
 How much control over onboarding UX?
 ├── "Stripe handles everything" → Embedded components (recommended default)
 ├── "Some customization" → Embedded components with [appearance options API](/connect/embedded-appearance-options)
-└── "Fully custom" → API-based - NOT RECOMMENDED for platforms integrating without dedicated Stripe guidance.
+└── "Fully custom" → API-based — NOT RECOMMENDED for platforms integrating without dedicated Stripe guidance.
     Requires building custom remediation flows. Direct to [Stripe sales](https://stripe.com/contact/sales).
 ```
 
@@ -131,21 +131,21 @@ How much control over onboarding UX?
 
 **Marketplace connected accounts** (destination or separate charges):
 
-- Use `configuration.recipient` (v2) - the connected account receives transfers from the platform, not direct payments
+- Use `configuration.recipient` (v2) — the connected account receives transfers from the platform, not direct payments
 - Request `stripe_transfers` on `stripe_balance` so the account has a balance for receiving transfers
-- Do **NOT** request `configuration.merchant` or `card_payments` - marketplace connected accounts don’t accept payments directly, and requesting merchant configuration causes longer, more arduous onboarding
+- Do **NOT** request `configuration.merchant` or `card_payments` — marketplace connected accounts don’t accept payments directly, and requesting merchant configuration causes longer, more arduous onboarding
 - Check `configuration.recipient.capabilities.stripe_balance.stripe_transfers.status === 'active'` before initiating transfers
 
 **SaaS connected accounts** (direct charges):
 
-- Use `configuration.merchant` (v2) - the connected account accepts payments directly as merchant of record
+- Use `configuration.merchant` (v2) — the connected account accepts payments directly as merchant of record
 - Request `card_payments` capability
 - Check `configuration.merchant.capabilities.card_payments.status === 'active'` before processing charges
 
 **SaaS recurring fees (service fees or SaaS fees):**
 
 - If the platform charges a recurring SaaS fee (subscription), the connected account needs both `merchant` and `customer` configurations in v2
-- Pass the account as `customer_account` on SetupIntent and Subscription API calls - do NOT create a separate v1 Customer object (the customer configuration replaces it)
+- Pass the account as `customer_account` on SetupIntent and Subscription API calls — do NOT create a separate v1 Customer object (the customer configuration replaces it)
 
 ### Combining Answers
 
@@ -171,21 +171,21 @@ How much control over onboarding UX?
 
 | Business Model | Risk Owner | Radar | Stripe-Managed OK? | Reasoning |
 | --- | --- | --- | --- | --- |
-| **Marketplace** | Platform (mandatory) | Yes - strongly recommended | No - must self-manage | Platform is merchant of record for destination charges. Liable for fraud and disputes. Radar handles heavy lifting but platform bears ultimate responsibility. |
-| **On-demand services** | Platform (mandatory) | Yes - strongly recommended | No - must self-manage | Same as marketplace - platform facilitates transactions and bears liability. |
-| **Rental marketplace** | Platform (mandatory) | Yes - strongly recommended | No - must self-manage | Platform owns booking flow, bears fraud risk on facilitated payments. |
-| **SaaS with payments** | Stripe (recommended) | Optional | **Yes - recommended** | Stripe’s built-in protection handles most fraud. Platform can upgrade to Radar later if needed. |
-| **Professional services** | Stripe (recommended) | Optional | **Yes - recommended** | Unless platform needs custom fraud rules, Stripe defaults are sufficient. |
-| **Crowdfunding** | Stripe (recommended) | Optional | **Yes - recommended** | Stripe-managed defaults are often sufficient for launch; reassess based on dispute and fraud patterns. |
-| **Subscription platforms** | Stripe (recommended) | Optional | **Yes - recommended** | Recurring billing has different risk profile - churn > fraud. Stripe’s defaults usually sufficient. |
-| **E-commerce (white-label)** | Platform (mandatory) | Yes | No - must self-manage | Full control = full responsibility. Dashboard-none configurations need platform-managed risk. |
+| **Marketplace** | Platform (mandatory) | Yes — strongly recommended | No — must self-manage | Platform is merchant of record for destination charges. Liable for fraud and disputes. Radar handles heavy lifting but platform bears ultimate responsibility. |
+| **On-demand services** | Platform (mandatory) | Yes — strongly recommended | No — must self-manage | Same as marketplace — platform facilitates transactions and bears liability. |
+| **Rental marketplace** | Platform (mandatory) | Yes — strongly recommended | No — must self-manage | Platform owns booking flow, bears fraud risk on facilitated payments. |
+| **SaaS with payments** | Stripe (recommended) | Optional | **Yes — recommended** | Stripe’s built-in protection handles most fraud. Platform can upgrade to Radar later if needed. |
+| **Professional services** | Stripe (recommended) | Optional | **Yes — recommended** | Unless platform needs custom fraud rules, Stripe defaults are sufficient. |
+| **Crowdfunding** | Stripe (recommended) | Optional | **Yes — recommended** | Stripe-managed defaults are often sufficient for launch; reassess based on dispute and fraud patterns. |
+| **Subscription platforms** | Stripe (recommended) | Optional | **Yes — recommended** | Recurring billing has different risk profile — churn > fraud. Stripe’s defaults usually sufficient. |
+| **E-commerce (white-label)** | Platform (mandatory) | Yes | No — must self-manage | Full control = full responsibility. Dashboard-none configurations need platform-managed risk. |
 
 **Key rules:**
 
-- If `chargePattern` is `destination` or `separate`, the platform is the merchant of record and MUST manage risk - but Radar does the heavy lifting.
+- If `chargePattern` is `destination` or `separate`, the platform is the merchant of record and MUST manage risk — but Radar does the heavy lifting.
 - If `chargePattern` is `direct`, Stripe-managed risk is available and recommended.
 - Self-managing risk adds: dispute webhook handling, Radar configuration, ongoing monitoring, and financial exposure. Always warn the user about this added complexity.
-- Stripe Radar is a tool platforms use to manage risk - it’s NOT the same as “Stripe manages risk for you.” When Radar is enabled, the platform is still responsible; Radar just automates the detection.
+- Stripe Radar is a tool platforms use to manage risk — it’s NOT the same as “Stripe manages risk for you.” When Radar is enabled, the platform is still responsible; Radar just automates the detection.
 
 #### Fee Structure Mapping
 
@@ -206,19 +206,19 @@ For separate charges and transfers, frame fee guidance as transfer math: `platfo
 
 **Who pays Stripe’s processing fees is one of the determining factors in whether your platform is profitable.**
 
-Stripe charges processing fees on every transaction. Rates vary by region, card type, payment method, and negotiated terms - see [stripe.com/pricing](https://stripe.com/pricing) for current rates. Who actually pays these fees depends on the charge pattern:
+Stripe charges processing fees on every transaction. Rates vary by region, card type, payment method, and negotiated terms — see [stripe.com/pricing](https://stripe.com/pricing) for current rates. Who actually pays these fees depends on the charge pattern:
 
 | Charge Pattern | Who Pays Stripe Fees | Platform Net per Transaction |
 | --- | --- | --- |
 | **Destination charges** | **Platform** pays Stripe fees | `application_fee_amount − Stripe_fees` |
-| **Destination charges + on\_behalf\_of** | **Platform** still pays (changes statement descriptor, merchant of record, and dispute management - see `charge-patterns.md`) | Same as above |
-| **Direct charges** (`fees_collector: "stripe"`) | **Connected account** pays Stripe fees | `application_fee_amount` (platform retains full fee - Stripe fees paid by connected account) |
+| **Destination charges + on\_behalf\_of** | **Platform** still pays (changes statement descriptor, merchant of record, and dispute management — see `charge-patterns.md`) | Same as above |
+| **Direct charges** (`fees_collector: "stripe"`) | **Connected account** pays Stripe fees | `application_fee_amount` (platform retains full fee — Stripe fees paid by connected account) |
 | **Direct charges** (`fees_collector: "application"`) | **Platform** pays Stripe fees | `application_fee_amount − Stripe_fees` |
 | **Separate charges & transfers** | **Platform** pays Stripe fees | Must account for fees in transfer math |
 
 > **Note:** Who pays Stripe fees on direct charges depends on the [`fees_collector` responsibility setting](https://docs.stripe.com/connect/direct-charges-fee-payer-behavior.md). When `fees_collector: "stripe"` (the default for SaaS), the connected account pays Stripe fees and the platform retains their full `application_fee_amount`. With `fees_collector: "application"` (used with Platform Pricing Tool and platform-owned pricing), the platform pays Stripe fees instead.
 
-**Profitability warning:** If the platform’s desired fee margin is low relative to Stripe’s processing fees for their region, destination charges may cause per-transaction losses unless the `application_fee_amount` is set high enough to cover Stripe fees + the platform’s margin. DO NOT make definitive profit and loss claims with specific dollar amounts - pricing is situation-dependent.
+**Profitability warning:** If the platform’s desired fee margin is low relative to Stripe’s processing fees for their region, destination charges may cause per-transaction losses unless the `application_fee_amount` is set high enough to cover Stripe fees + the platform’s margin. DO NOT make definitive profit and loss claims with specific dollar amounts — pricing is situation-dependent.
 
 Strongly recommend:
 
@@ -228,21 +228,21 @@ Strongly recommend:
 
 ##### Fee calculation question (Q6b)
 
-After the user specifies their platform fee, identify the charge pattern first. This question applies to **destination charges** only. For **separate charges and transfers**, don’t ask how to set `application_fee_amount` - use transfer math instead. For direct charges with Stripe-owned pricing (`fees_collector: "stripe"`), the connected account pays Stripe fees and this question is moot. For direct charges with platform-owned pricing (`fees_collector: "application"`), the platform pays Stripe fees - use the Platform Pricing Tool.
+After the user specifies their platform fee, identify the charge pattern first. This question applies to **destination charges** only. For **separate charges and transfers**, don’t ask how to set `application_fee_amount` — use transfer math instead. For direct charges with Stripe-owned pricing (`fees_collector: "stripe"`), the connected account pays Stripe fees and this question is moot. For direct charges with platform-owned pricing (`fees_collector: "application"`), the platform pays Stripe fees — use the Platform Pricing Tool.
 
 **IMPORTANT: With destination charges, the platform ALWAYS pays Stripe’s processing fees.** They are deducted from the platform’s balance, not the connected account’s. The platform can’t make connected accounts pay Stripe fees directly. The choice is how to calculate `application_fee_amount`.
 
 Use Option A and Option B below as reference material for destination charges.
 
-**Option A - Include Stripe fee estimate in application\_fee\_amount (recommended for low margins)** The `application_fee_amount` includes BOTH an estimated Stripe processing fee and the platform’s fee. The platform takes a larger cut to cover both its margin and Stripe’s fee. The platform’s fee percentage is preserved as net margin.
+**Option A — Include Stripe fee estimate in application\_fee\_amount (recommended for low margins)** The `application_fee_amount` includes BOTH an estimated Stripe processing fee and the platform’s fee. The platform takes a larger cut to cover both its margin and Stripe’s fee. The platform’s fee percentage is preserved as net margin.
 
 ```
 Concept: application_fee_amount = estimated Stripe processing fee + platform margin
-Platform NET = the platform's full fee percentage (margin preserved - Stripe fee covered by the higher application_fee_amount)
+Platform NET = the platform's full fee percentage (margin preserved — Stripe fee covered by the higher application_fee_amount)
 Connected account receives = charge amount − application_fee_amount
 ```
 
-**Option B - Platform fee only (platform absorbs Stripe fees)** The `application_fee_amount` is only the platform’s cut. Stripe processing fees reduce the platform’s net. Only viable when the platform fee is substantially higher than Stripe’s processing fees.
+**Option B — Platform fee only (platform absorbs Stripe fees)** The `application_fee_amount` is only the platform’s cut. Stripe processing fees reduce the platform’s net. Only viable when the platform fee is substantially higher than Stripe’s processing fees.
 
 ```
 Concept: application_fee_amount = platform fee only
@@ -266,8 +266,8 @@ Connected account receives = charge amount − application_fee_amount
 
 When presenting fee recommendations:
 
-- DO NOT hardcode specific processing fee amounts (for example, “2.9% + $0.30”) - these are US-only and vary by region, card type, and payment method
-- DO NOT make definitive profit and loss claims (for example, “you WILL lose money”) - say “you may lose money at standard rates”
+- DO NOT hardcode specific processing fee amounts (for example, “2.9% + $0.30”) — these are US-only and vary by region, card type, and payment method
+- DO NOT make definitive profit and loss claims (for example, “you WILL lose money”) — say “you may lose money at standard rates”
 - DO link to [stripe.com/pricing](https://stripe.com/pricing) for region-specific rates
 - DO strongly recommend the [Platform Pricing Tool](https://dashboard.stripe.com/settings/connect/platform_pricing)
 - DO recommend monitoring the margin report in the Stripe Dashboard
@@ -275,11 +275,11 @@ When presenting fee recommendations:
 - DO return one recommended fee option for the scenario (don’t always present both Option A and Option B)
 - DO prefer margin-preserving recommendations in low-margin or uncertain-margin scenarios
 - DO use transfer-math framing for separate charges and transfers (never `application_fee_amount`)
-- NEVER say “seller pays Stripe fees” or “connected account pays Stripe fees” for destination charges - the platform always pays
+- NEVER say “seller pays Stripe fees” or “connected account pays Stripe fees” for destination charges — the platform always pays
 
 ##### Fee sanity checks
 
-- If the Platform Pricing Tool is used, ensure `application_fee_amount` is NOT set on the PaymentIntent - explicit `application_fee_amount` overrides the Platform Pricing Tool.
+- If the Platform Pricing Tool is used, ensure `application_fee_amount` is NOT set on the PaymentIntent — explicit `application_fee_amount` overrides the Platform Pricing Tool.
 - `application_fee_amount` is NOT compatible with separate charges and transfers. NEVER recommend it for separate charges and transfers.
 - For separate charges and transfers, validate the transfer-math model (`charge_amount − total_transfers − Stripe_fees`) to ensure expected platform margin.
 - Platforms based outside Brazil can’t collect application fees from Brazilian connected accounts due to regulatory requirements. Same restriction applies to Malaysia.
@@ -303,20 +303,20 @@ You can have Stripe own loss liability while still using Radar for fraud detecti
 
 **Recommendation depends on charge pattern:**
 
-- **Marketplaces (destination or separate charges):** Platform-owned loss liability. This is **required** for destination charges - it enables connected account balances to go negative, which the platform needs to reverse transfers (for example, for refunds or disputes). Also required for Express dashboard today.
+- **Marketplaces (destination or separate charges):** Platform-owned loss liability. This is **required** for destination charges — it enables connected account balances to go negative, which the platform needs to reverse transfers (for example, for refunds or disputes). Also required for Express dashboard today.
 - **SaaS (direct charges):** Stripe-owned loss liability. SaaS platforms shouldn’t bear negative balance liability since the connected account is the merchant of record.
 - **Enterprise or white-label:** Platform-owned. Full control = full responsibility.
 
 | Business Model | Recommended Loss Liability | Why |
 | --- | --- | --- |
-| **Marketplace** | **Platform** | Required for destination charges - enables connected account negative balances for transfer reversals |
-| **On-demand services** | **Platform** | Same as marketplace - uses destination charges |
-| **Professional services** | **Platform** | Same as marketplace - uses destination charges |
-| **Rental marketplace** | **Platform** | Same as marketplace - uses destination charges |
-| **Event ticketing** | **Platform** | Same as marketplace - uses destination charges |
-| **Crowdfunding** | **Platform** | Uses separate charges - platform-owned loss liability enables flexible transfer reversals |
-| **Subscription platforms** | **Platform** | Uses destination charges - platform-owned loss liability required |
-| **SaaS with payments** | **Stripe** | SaaS platforms use direct charges - connected account is merchant of record |
+| **Marketplace** | **Platform** | Required for destination charges — enables connected account negative balances for transfer reversals |
+| **On-demand services** | **Platform** | Same as marketplace — uses destination charges |
+| **Professional services** | **Platform** | Same as marketplace — uses destination charges |
+| **Rental marketplace** | **Platform** | Same as marketplace — uses destination charges |
+| **Event ticketing** | **Platform** | Same as marketplace — uses destination charges |
+| **Crowdfunding** | **Platform** | Uses separate charges — platform-owned loss liability enables flexible transfer reversals |
+| **Subscription platforms** | **Platform** | Uses destination charges — platform-owned loss liability required |
+| **SaaS with payments** | **Stripe** | SaaS platforms use direct charges — connected account is merchant of record |
 | **E-commerce (white-label)** | Platform | Full control = full responsibility (dashboard: none, platform-managed) |
 | **B2B platforms** | Platform | Enterprise requirements usually demand full control |
 
@@ -332,7 +332,7 @@ The platform profile page asks about “Negative balance liability” (formerly 
 When guiding users through this page, always:
 
 1. Explain what loss liability means in plain language with a concrete example
-2. Recommend platform-owned for marketplaces using destination or separate charges - required for transfer reversals and Express dashboard
+2. Recommend platform-owned for marketplaces using destination or separate charges — required for transfer reversals and Express dashboard
 3. Recommend Stripe-owned for SaaS platforms using direct charges
 4. Keep this decision separate from Radar and fraud detection
 
@@ -344,29 +344,29 @@ When guiding users through this page, always:
 
 These combinations are true antipatterns that Stripe will never support. Do NOT recommend them:
 
-1. **`losses_collector: "stripe"` + destination charges** - Liability and fee behavior don’t align with this charge pattern. Treat as BLOCKED when `losses_collector: "stripe"` is selected.
-2. **`losses_collector: "stripe"` + separate charges and transfers (including `on_behalf_of`)** - Same negative balance mechanism as destination charges. Platform can’t recover funds from connected accounts that only receive transfers.
-3. **Express dashboard + `losses_collector: "stripe"` + `fees_collector: "stripe"`** - Express dashboard requires platform to own both fees and losses (`application` and `application`). This is a hard API constraint - setting Express with Stripe-owned pricing produces an API rejection.
-4. **`dashboard: "full"` + destination charges or separate charges and transfers** - Full dashboard has reduced payment and dispute detail for destination and separate charges. Full dashboard provides complete payment and dispute management for direct charges only.
-5. **`fees_collector: "stripe"` + `losses_collector: "application"` (Stripe-owned pricing + platform-owned losses)** - This combination is BLOCKED for all charge types. The reverse - `fees_collector: "application"` + `losses_collector: "stripe"` - is SALES-GATED for `full` dashboard and BLOCKED for `none` and `express` dashboards.
-6. **(`on_behalf_of` is out of scope for this guide - redirect to docs or sales if encountered.)** **`on_behalf_of` with destination charges for marketplace use cases** - Do NOT use `on_behalf_of` for marketplaces. `on_behalf_of` makes the connected account the merchant of record, but in a marketplace the platform should be merchant of record. If a user requires `on_behalf_of`, direct them to [Stripe Connect docs](https://docs.stripe.com/connect/charges.md) or [Stripe sales](https://stripe.com/contact/sales).
-7. **`application_fee_amount` with separate charges and transfers** - NOT compatible. Platforms using separate charges and transfers collect fees by transferring less than the charge amount.
+1. **`losses_collector: "stripe"` + destination charges** — Liability and fee behavior don’t align with this charge pattern. Treat as BLOCKED when `losses_collector: "stripe"` is selected.
+2. **`losses_collector: "stripe"` + separate charges and transfers (including `on_behalf_of`)** — Same negative balance mechanism as destination charges. Platform can’t recover funds from connected accounts that only receive transfers.
+3. **Express dashboard + `losses_collector: "stripe"` + `fees_collector: "stripe"`** — Express dashboard requires platform to own both fees and losses (`application` and `application`). This is a hard API constraint — setting Express with Stripe-owned pricing produces an API rejection.
+4. **`dashboard: "full"` + destination charges or separate charges and transfers** — Full dashboard has reduced payment and dispute detail for destination and separate charges. Full dashboard provides complete payment and dispute management for direct charges only.
+5. **`fees_collector: "stripe"` + `losses_collector: "application"` (Stripe-owned pricing + platform-owned losses)** — This combination is BLOCKED for all charge types. The reverse — `fees_collector: "application"` + `losses_collector: "stripe"` — is SALES-GATED for `full` dashboard and BLOCKED for `none` and `express` dashboards.
+6. **(`on_behalf_of` is out of scope for this guide — redirect to docs or sales if encountered.)** **`on_behalf_of` with destination charges for marketplace use cases** — Do NOT use `on_behalf_of` for marketplaces. `on_behalf_of` makes the connected account the merchant of record, but in a marketplace the platform should be merchant of record. If a user requires `on_behalf_of`, direct them to [Stripe Connect docs](https://docs.stripe.com/connect/charges.md) or [Stripe sales](https://stripe.com/contact/sales).
+7. **`application_fee_amount` with separate charges and transfers** — NOT compatible. Platforms using separate charges and transfers collect fees by transferring less than the charge amount.
 
 #### Blessed Paths (Safe Defaults)
 
 | Business Model | Dashboard | Fees | Losses | Charge Type | Status |
 | --- | --- | --- | --- | --- | --- |
-| **Marketplace** | `express` | `application` | `application` | Destination | CAUTION - recommended path; always include Express dispute-visibility warning (see `compatibility-matrix.md`) |
-| **SaaS** | `full` | `stripe` | `stripe` | Direct | ALLOWED - connected accounts are independent merchants |
-| **Enterprise** | `none` | `application` | `application` | Any | ALLOWED - full platform control |
+| **Marketplace** | `express` | `application` | `application` | Destination | CAUTION — recommended path; always include Express dispute-visibility warning (see `compatibility-matrix.md`) |
+| **SaaS** | `full` | `stripe` | `stripe` | Direct | ALLOWED — connected accounts are independent merchants |
+| **Enterprise** | `none` | `application` | `application` | Any | ALLOWED — full platform control |
 
 **Any deviation from these blessed paths should trigger a compatibility check against `compatibility-matrix.md`.** If the user’s choices lead to a BLOCKED combination, don’t present it. Explain why it fails and recommend the nearest allowed alternative.
 
-> **Scope boundary:** This guide supports the blessed paths above. Configurations outside these paths (full+application, `on_behalf_of`, OAuth, non-payments products like Issuing, Treasury, Capital, Tax, or Terminal) should trigger sales-led detection and redirect to docs or sales. `none` dashboard requires platform-owned pricing AND platform-owned losses - no other `none` combination is valid even for sold users.
+> **Scope boundary:** This guide supports the blessed paths above. Configurations outside these paths (full+application, `on_behalf_of`, OAuth, non-payments products like Issuing, Treasury, Capital, Tax, or Terminal) should trigger sales-led detection and redirect to docs or sales. `none` dashboard requires platform-owned pricing AND platform-owned losses — no other `none` combination is valid even for sold users.
 
 #### Additional Antipatterns to Watch For
 
-- **OAuth instead of Account Links** - Developers think OAuth is simpler but lose platform control (connected account can disconnect at any time). Recommend Account Links or embedded components.
-- **Custom onboarding** (`dashboard: "none"` + API-based) - Ongoing requirement collection burden and country-specific complexity. Only for platforms with dedicated compliance engineering.
-- **Dashboard DIY without refund and dispute flows** - Platforms build earnings views but skip refund and dispute management. Connected accounts can’t respond to disputes, leading to auto-losses.
-- **Stripe does NOT enforce merchant of record at API level** - Platforms can create charges with any pattern regardless of their onboarding declaration. Code must consistently use the correct charge type for the actual business relationship.
+- **OAuth instead of Account Links** — Developers think OAuth is simpler but lose platform control (connected account can disconnect at any time). Recommend Account Links or embedded components.
+- **Custom onboarding** (`dashboard: "none"` + API-based) — Ongoing requirement collection burden and country-specific complexity. Only for platforms with dedicated compliance engineering.
+- **Dashboard DIY without refund and dispute flows** — Platforms build earnings views but skip refund and dispute management. Connected accounts can’t respond to disputes, leading to auto-losses.
+- **Stripe does NOT enforce merchant of record at API level** — Platforms can create charges with any pattern regardless of their onboarding declaration. Code must consistently use the correct charge type for the actual business relationship.

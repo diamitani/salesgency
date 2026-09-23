@@ -1,10 +1,10 @@
-# Onboarding UX - first-run user experience
+# Onboarding UX — first-run user experience
 
 ## Onboarding UX
 
 **Plain-language:** “When someone installs your app for the first time, the first thing they see is your app’s welcome or setup screen. This is called onboarding.”
 
-Design this experience carefully - it determines whether merchants understand how to use your app or give up immediately.
+Design this experience carefully — it determines whether merchants understand how to use your app or give up immediately.
 
 **Canonical page:** https://docs.stripe.com/stripe-apps/patterns/onboarding-experience
 
@@ -12,15 +12,15 @@ Read this page using WebFetch for the correct component props and patterns.
 
 ## Options from simplest to most complex
 
-### Option 1 - Zero-touch onboarding (easiest)
+### Option 1 — Zero-touch onboarding (easiest)
 
 If your app only uses Stripe data and doesn’t need its own login, there’s nothing to set up. The app works immediately after install.
 
-Use `fetchStripeSignature` to identify the user without a login screen - the user’s Stripe identity proves who they are.
+Use `fetchStripeSignature` to identify the user without a login screen — the user’s Stripe identity proves who they are.
 
 **When to use:** When your app doesn’t need third-party credentials or a separate user account.
 
-### Option 2 - OnboardingView component
+### Option 2 — OnboardingView component
 
 Show a setup screen the first time the user opens the app. Use the `onboarding` viewport to show a dedicated onboarding page.
 
@@ -40,7 +40,7 @@ For the correct `OnboardingView` component props and structure, read the canonic
 - Use the `OnboardingView` component (not `ContextView`) for the onboarding viewport
 - Include required props like `completed`, `tasks`, and `title`
 
-### Option 3 - SignInView component (third-party login)
+### Option 3 — SignInView component (third-party login)
 
 If users need to log in to a third-party service (connecting their Google account, Mailchimp, etc.), use `SignInView` to guide them.
 

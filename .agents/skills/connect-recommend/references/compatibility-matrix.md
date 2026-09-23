@@ -1,17 +1,17 @@
 ## Connect integration compatibility reference
 
-This document encodes known Connect integration incompatibilities - combinations of account controller properties and charge types that cause serious issues for platforms. Use this as a validation checklist when recommending or reviewing any Connect configuration.
+This document encodes known Connect integration incompatibilities — combinations of account controller properties and charge types that cause serious issues for platforms. Use this as a validation checklist when recommending or reviewing any Connect configuration.
 
 ### 1. Controller Property + Charge Type Compatibility Matrix
 
 Significant compatibility issues arise when account controller properties (dashboard, fees_collector, losses_collector) are paired with incompatible charge types. Each combination below is rated:
 
-- **BLOCKED** - Incompatible combination. Never recommend. Can cause liability-model mismatch, fee-model mismatch, or inability to manage key payment operations.
-- **CAUTION** - Technically functional but has significant drawbacks. Present with explicit warnings.
-- **ALLOWED** - Supported combination. Proceed normally.
-- **OUT OF SCOPE** - Not supported by this guide. Redirect to Stripe docs or sales.
-- **Reasoning depth vs output brevity** - This reference is intentionally detailed so the assistant can reason about liability and transfer mechanics. User-facing warnings should stay concise and action-oriented.
-- **Output guardrail** - Keep recommendation warnings concise (typically one to two sentences). Use the mechanism details in this document to choose the right warning and alternative path, not to dump every detail verbatim.
+- **BLOCKED** — Incompatible combination. Never recommend. Can cause liability-model mismatch, fee-model mismatch, or inability to manage key payment operations.
+- **CAUTION** — Technically functional but has significant drawbacks. Present with explicit warnings.
+- **ALLOWED** — Supported combination. Proceed normally.
+- **OUT OF SCOPE** — Not supported by this guide. Redirect to Stripe docs or sales.
+- **Reasoning depth vs output brevity** — This reference is intentionally detailed so the assistant can reason about liability and transfer mechanics. User-facing warnings should stay concise and action-oriented.
+- **Output guardrail** — Keep recommendation warnings concise (typically one to two sentences). Use the mechanism details in this document to choose the right warning and alternative path, not to dump every detail verbatim.
 
 #### Core Rule
 
@@ -19,9 +19,9 @@ Significant compatibility issues arise when account controller properties (dashb
 > 
 > For destination charges and separate charges and transfers, use `losses_collector: "application"` so responsibility aligns with dispute and transfer-reversal flows. In this guide, combinations that pair these charge patterns with `losses_collector: "stripe"` are marked BLOCKED.
 > 
-> **Exception:** Express dashboard with `losses_collector: "stripe"` (regardless of fees_collector) is blocked for ALL charge types including direct - these configs are still in beta. Don’t recommend them.
+> **Exception:** Express dashboard with `losses_collector: "stripe"` (regardless of fees_collector) is blocked for ALL charge types including direct — these configs are still in beta. Don’t recommend them.
 
-> **Note:** `on_behalf_of` configurations aren’t supported by this guide. `on_behalf_of` columns are retained in the matrix for compatibility detection only - if the assistant encounters `on_behalf_of` requirements, it should redirect to Stripe docs or sales.
+> **Note:** `on_behalf_of` configurations aren’t supported by this guide. `on_behalf_of` columns are retained in the matrix for compatibility detection only — if the assistant encounters `on_behalf_of` requirements, it should redirect to Stripe docs or sales.
 
 #### Full Matrix (v2 field names)
 
@@ -56,7 +56,7 @@ Significant compatibility issues arise when account controller properties (dashb
 
 | Business Model | Dashboard | Fees | Losses | Charge Type | Rating | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Marketplace** | `express` | `application` | `application` | Destination | CAUTION | Recommended path - CAUTION applies: connected accounts have limited dispute or refund visibility from their Express dashboard; platform must run webhook-driven recovery workflows. Always include the Express dispute-visibility warning. |
+| **Marketplace** | `express` | `application` | `application` | Destination | CAUTION | Recommended path — CAUTION applies: connected accounts have limited dispute or refund visibility from their Express dashboard; platform must run webhook-driven recovery workflows. Always include the Express dispute-visibility warning. |
 | **SaaS** | `full` | `stripe` | `stripe` | Direct | ALLOWED | Stripe-managed fee and loss defaults; connected accounts are independent merchants |
 | **Enterprise or White-label** | `none` | `application` | `application` | Destination or Direct | ALLOWED | Full platform control |
 
@@ -66,7 +66,7 @@ When `losses_collector: "stripe"` is combined with non-direct charges (destinati
 
 1. **Liability settings should align with where disputes are debited.** For destination charges and separate charges and transfers, disputes are debited from the platform balance. Use `losses_collector: "application"` so the liability model matches this funds flow.
 
-2. **Payment fees for these charge types are assessed on the platform.** For destination charges or separate charges and transfers, Stripe collects payment fees from the platform account regardless of `fees_collector`. (Rates vary by region - see [stripe.com/pricing](https://stripe.com/pricing).) Note: Legacy types behave differently, see [Fee behavior](https://docs.stripe.com/connect/direct-charges-fee-payer-behavior.md).
+2. **Payment fees for these charge types are assessed on the platform.** For destination charges or separate charges and transfers, Stripe collects payment fees from the platform account regardless of `fees_collector`. (Rates vary by region — see [stripe.com/pricing](https://stripe.com/pricing).) Note: Legacy types behave differently, see [Fee behavior](https://docs.stripe.com/connect/direct-charges-fee-payer-behavior.md).
 
 3. **Recovery from connected accounts requires explicit transfer-reversal handling.** For destination and separate disputes, Stripe debits the platform first; the platform then recovers funds by reversing transfers through the API or Dashboard. Refunds can auto-reverse transfers when `reverse_transfer: true`, but dispute recovery isn’t automatic and requires explicit logic.
 
@@ -174,15 +174,15 @@ The platform’s balance is reduced but the connected account still has the fund
 
 - Platform doesn’t listen for dispute webhooks at all
 - Platform processes disputes manually but forgets the transfer reversal step
-- Platform assumes Stripe automatically reverses the transfer (it does NOT - `reverse_transfer` defaults to `false` on both refunds and disputes)
+- Platform assumes Stripe automatically reverses the transfer (it does NOT — `reverse_transfer` defaults to `false` on both refunds and disputes)
 - Connected account balance is zero, and without `losses_collector: "application"`, there’s no mechanism to recover
 
 **Recommendation:**
 
-- Always verify incoming webhook signatures before processing - see [Verify webhook signatures](https://docs.stripe.com/webhooks.md#verify-events). Optionally restrict requests to [Stripe’s published IP addresses](https://docs.stripe.com/ips.md).
+- Always verify incoming webhook signatures before processing — see [Verify webhook signatures](https://docs.stripe.com/webhooks.md#verify-events). Optionally restrict requests to [Stripe’s published IP addresses](https://docs.stripe.com/ips.md).
 - Always implement a `charge.dispute.created` webhook handler that automatically reverses the associated transfer
 - Use `reverse_transfer: true` on refunds to make transfer reversal automatic for voluntary refunds
-- For disputes, build explicit transfer reversal logic - automatic reversal only happens for refunds, not disputes
+- For disputes, build explicit transfer reversal logic — automatic reversal only happens for refunds, not disputes
 - Ensure `losses_collector: "application"` is set so the connected account balance can go negative, enabling recovery
 - Consider alerting on unrecovered dispute amounts where transfer reversal failed (for example, connected account already withdrew funds)
 
