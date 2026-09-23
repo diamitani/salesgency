@@ -1,17 +1,6 @@
 ---
 name: n8n-execution-analyst
-description: >
-  n8n Execution Analyst for the Atlas HXM GTM stack. Use ANY TIME someone wants to
-  check, monitor, audit, or investigate n8n workflow executions in the Atlas instance
-  (atlas-hxm.app.n8n.cloud). Triggers on: "check n8n executions", "did my workflow run",
-  "why did the workflow fail", "n8n health", "what failed today", "execution log for",
-  "workflow success rate", "is anything broken in n8n", "recurring failures", "which
-  workflows are stalled", "run the daily n8n report", "n8n dashboard", "pull execution
-  data for workflow X", "what happened in execution 1234". Pulls execution logs (active +
-  inactive workflows) via the n8n Public API, extracts full node-level data + errors,
-  stores every run in a queryable history, answers plain-English questions grounded in
-  that data, renders an HTML dashboard, and pings the AI GTM team on failures/stalls.
-  Daily-scheduled and at-will.
+description: "LLM-agnostic workflow automation skill that instructs any AI model (Claude, GPT-4o, Gemini, Cursor) to work with n8n execution analyst. Use when working with n8n execution analyst."
 ---
 
 # n8n Execution Analyst

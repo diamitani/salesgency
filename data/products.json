@@ -908,5 +908,478 @@
    "LAUNCH-CHECKLIST.md",
    "LOOM-WALKTHROUGH"
   ]
+ },
+ {
+  "id": "skill-outreach-automator",
+  "name": "Outreach Automator Skill",
+  "tagline": "Personalized multi-touch outreach sequences at scale",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "outreach",
+   "sequences",
+   "email",
+   "LinkedIn",
+   "personalization"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "LLM-agnostic agent skill that generates personalized outreach sequences at scale \u2014 audience segmentation, multi-touch sequence design (email + LinkedIn + call), copy generation with personalization hooks, CRM automation rules, and A/B test variants. Bridges manual high-touch outreach and mass blasts.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "Multi-touch sequence design: email + LinkedIn + call cadences",
+   "Personalized copy generation at scale with merge tokens",
+   "A/B test variants for subject lines, body copy, CTAs",
+   "CRM automation rules: enrollment triggers, delays, exit conditions",
+   "Re-engagement sequences for cold or stalled leads"
+  ],
+  "includes": [
+   "outreach-automator-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "skill-atlassian-gtm",
+  "name": "Atlassian GTM Connector Skill",
+  "tagline": "Wire GTM work to Jira epics and Confluence playbooks",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "Jira",
+   "Confluence",
+   "Atlassian",
+   "GTM",
+   "RevOps"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Agent skill that wires GTM work to Atlassian Cloud: log tasks as Jira epics, stories, and bugs; publish and update playbook pages in Confluence; read sprint and project state back into the GTM loop. REST-first and credential-gated \u2014 it returns honest NEEDS-CREDENTIALS guidance and never fakes results.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "Log GTM work as Jira epics, stories, and bugs via REST",
+   "Publish and update playbook pages in Confluence",
+   "Read sprint and project state back into the GTM loop",
+   "Credential-gated: honest guidance when keys are missing, never faked",
+   "Self-healing loop pattern: failures \u2192 Jira issues \u2192 fix \u2192 summary"
+  ],
+  "includes": [
+   "atlassian-gtm-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "skill-prospect-pal-n8n-engineer",
+  "name": "Prospect Pal n8n Engineer Skill",
+  "tagline": "Build, customize, and debug n8n prospecting workflows",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "n8n",
+   "prospecting",
+   "workflows",
+   "automation"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "LLM-agnostic workflow automation skill that instructs any AI model to build, customize, and debug n8n prospecting workflows with expert guidance \u2014 full workflow JSON schema, node patterns, and production rollout practices for prospecting automation.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "Complete n8n workflow JSON schema reference",
+   "Node patterns for prospecting automation",
+   "Debug and customization guidance",
+   "Production rollout best practices",
+   "Import-safe workflow conventions"
+  ],
+  "includes": [
+   "prospect-pal-n8n-engineer-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "skill-n8n-engineer",
+  "name": "n8n Systems Engineer Skill \u2014 GTM Edition",
+  "tagline": "Architect production n8n workflows, agents & MCP setups",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "n8n",
+   "MCP",
+   "AI agents",
+   "GTM",
+   "architecture"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "The GTM edition of the n8n Engineer skill: treat n8n as both automation fabric and agent runtime. Covers official patterns for instance-level MCP, MCP Server Trigger, MCP Client Tool, HTTP integrations, error handling, evaluations, and production rollout \u2014 with dedicated GTM workflow patterns that create pipeline movement instead of busywork.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "n8n as automation fabric AND agent runtime",
+   "MCP server/client, sub-workflow, and HTTP patterns",
+   "GTM workflow patterns for real pipeline movement",
+   "Error handling, monitoring, rollout, and rollback ops",
+   "Importable starter workflow templates included"
+  ],
+  "includes": [
+   "n8n-engineer-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "skill-prospect-automation-engine",
+  "name": "Prospect Automation Engine Master Skill",
+  "tagline": "Master the 5-Pillar outbound architecture",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "PAE",
+   "outbound",
+   "prospecting",
+   "n8n",
+   "GTM"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Master skill across three interconnected systems: the GTM Prospect Automation Engine (5-Pillar outbound: Trigger Ingest, CRM Shield & Dedupe, Data & Contact Reveal, AI PAS Copywriting, Sequencer Enrollment), the n8n Systems Engineer, and the Execution Analyst. Design, compile, deploy, scale, and debug autonomous outbound prospecting engines.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "5-Pillar outbound architecture mastery",
+   "Autonomous GTM Architect + n8n Systems Engineer + Execution Analyst",
+   "Design, compile, deploy, and scale prospecting engines",
+   "Production n8n node graphs, expressions, sub-workflows",
+   "Debug and optimization playbooks"
+  ],
+  "includes": [
+   "prospect-automation-engine-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "skill-n8n-execution-analyst",
+  "name": "n8n Execution Analyst Skill",
+  "tagline": "Monitor every execution, alert on failures, cite real IDs",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "n8n",
+   "monitoring",
+   "observability",
+   "alerts",
+   "RevOps"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Agent skill that monitors every n8n workflow execution, stores full history, answers questions about runs, and alerts on failures \u2014 without inventing data. All answers are computed from stored execution records and cite real execution IDs. The observability layer for GTM automation.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "Full execution history storage and querying",
+   "Failure alerting with real execution IDs",
+   "Honest reporting \u2014 never invents execution data",
+   "Execution Q&A: ask what ran, what failed, why",
+   "Pairs with the Automation Health Monitor workflow"
+  ],
+  "includes": [
+   "n8n-execution-analyst-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "skill-gtm-engineering",
+  "name": "GTM Engineering Skill",
+  "tagline": "Architecture-over-tools automation for revenue teams",
+  "category": "custom-skills",
+  "tags": [
+   "SKILL.md",
+   "LLM",
+   "prompt",
+   "GTM",
+   "RevOps",
+   "architecture",
+   "AI agents",
+   "automation"
+  ],
+  "type": "skill",
+  "price": 3900,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Expert skill in GTM engineering, workflow automation architecture, and AI agent orchestration for revenue teams. Deep knowledge of n8n, Make, Zapier, Tray.io, and Workato with API-first design, event-driven architectures, and the 'architecture over tools' philosophy \u2014 turn manual GTM processes into reliable, observable, cost-efficient pipelines.",
+  "features": [
+   "SKILL.md format \u2014 works with any LLM agent",
+   "'Architecture over tools' design philosophy",
+   "Event-driven automation architectures",
+   "AI agent orchestration for GTM tasks",
+   "Multi-platform fluency: n8n, Make, Zapier, Tray.io, Workato",
+   "Cost-efficient, observable pipeline patterns"
+  ],
+  "includes": [
+   "gtm-engineering-skill.md",
+   "USAGE_GUIDE.md"
+  ],
+  "icon": "skill",
+  "badge": "Skill",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "template-gtm-outreach-automation",
+  "name": "Outreach Automation Workflow",
+  "tagline": "Signal \u2192 Draft \u2192 Approve: human-gated outreach engine",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "n8n",
+   "outreach",
+   "workflow",
+   "approval-gate",
+   "sequences"
+  ],
+  "type": "template",
+  "price": 9700,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Import-ready n8n workflow: buying-signal detection flows into AI-drafted outreach, and nothing sends without human approval. The human-gated outreach engine from the GTM Engine template library \u2014 deploy in minutes, own the JSON forever.",
+  "features": [
+   "Import-ready n8n workflow JSON (9 nodes)",
+   "Signal \u2192 Draft \u2192 Approve pipeline",
+   "Human approval gate before anything sends",
+   "Deploy in under 30 minutes",
+   "Pre-configured environment variables",
+   "Own the code forever"
+  ],
+  "includes": [
+   "engine-01-outreach-automation.json",
+   "SETUP_GUIDE.md"
+  ],
+  "icon": "template",
+  "badge": "Template",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "template-gtm-prospect-automation",
+  "name": "Prospect Automation Workflow",
+  "tagline": "Intent \u2192 Enrich \u2192 Route: autonomous prospect pipeline",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "n8n",
+   "prospecting",
+   "workflow",
+   "intent",
+   "enrichment",
+   "routing"
+  ],
+  "type": "template",
+  "price": 9700,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Import-ready n8n workflow: intent signals trigger contact enrichment and intelligent routing into sequences. The prospect-automation pillar of the GTM Engine \u2014 deterministic, observable, and yours to keep.",
+  "features": [
+   "Import-ready n8n workflow JSON (8 nodes)",
+   "Intent \u2192 Enrich \u2192 Route pipeline",
+   "Deterministic prospect routing logic",
+   "Deploy in under 30 minutes",
+   "Pre-configured environment variables",
+   "Own the code forever"
+  ],
+  "includes": [
+   "engine-02-prospect-automation.json",
+   "SETUP_GUIDE.md"
+  ],
+  "icon": "template",
+  "badge": "Template",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "template-gtm-crm-hygiene",
+  "name": "CRM Hygiene & Scorer Workflow",
+  "tagline": "Weekly audit that keeps your CRM trustworthy",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "n8n",
+   "CRM",
+   "hygiene",
+   "scoring",
+   "workflow",
+   "RevOps"
+  ],
+  "type": "template",
+  "price": 9700,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Import-ready n8n workflow: a weekly CRM audit that scores records, flags decay, and keeps your database trustworthy. Bad data never enters a sequence again.",
+  "features": [
+   "Import-ready n8n workflow JSON (9 nodes)",
+   "Weekly automated CRM audit",
+   "Record scoring and decay flagging",
+   "Dedupe and data-quality checks",
+   "Deploy in under 30 minutes",
+   "Own the code forever"
+  ],
+  "includes": [
+   "engine-03-crm-hygiene.json",
+   "SETUP_GUIDE.md"
+  ],
+  "icon": "template",
+  "badge": "Template",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "template-gtm-inbound-responder",
+  "name": "Inbound Responder Workflow",
+  "tagline": "Sub-minute triage for every inbound lead",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "n8n",
+   "inbound",
+   "triage",
+   "speed-to-lead",
+   "workflow"
+  ],
+  "type": "template",
+  "price": 9700,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Import-ready n8n workflow: sub-minute triage for inbound leads \u2014 instant qualification, enrichment, and routing to the right rep. Speed-to-lead as a deployable asset.",
+  "features": [
+   "Import-ready n8n workflow JSON (8 nodes)",
+   "Sub-minute lead triage",
+   "Instant qualification and enrichment",
+   "Intelligent rep routing",
+   "Deploy in under 30 minutes",
+   "Own the code forever"
+  ],
+  "includes": [
+   "engine-04-inbound-responder.json",
+   "SETUP_GUIDE.md"
+  ],
+  "icon": "template",
+  "badge": "Template",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "template-gtm-deliverability-dns",
+  "name": "Deliverability DNS Verifier",
+  "tagline": "Pre-flight DNS checks before every send",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "n8n",
+   "deliverability",
+   "DNS",
+   "SPF",
+   "DKIM",
+   "DMARC",
+   "workflow"
+  ],
+  "type": "template",
+  "price": 9700,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Import-ready n8n workflow: pre-flight deliverability verification \u2014 DNS, SPF, DKIM, and DMARC checks before every outbound send. Protects sender reputation at scale.",
+  "features": [
+   "Import-ready n8n workflow JSON (10 nodes)",
+   "Pre-flight DNS/SPF/DKIM/DMARC verification",
+   "Sender-reputation protection",
+   "Blocks sends on failed checks",
+   "Deploy in under 30 minutes",
+   "Own the code forever"
+  ],
+  "includes": [
+   "engine-05-deliverability-dns.json",
+   "SETUP_GUIDE.md"
+  ],
+  "icon": "template",
+  "badge": "Template",
+  "popular": false,
+  "engineOrder": null
+ },
+ {
+  "id": "template-gtm-health-monitor",
+  "name": "Automation Health Monitor Workflow",
+  "tagline": "Self-healing loop for your automation stack",
+  "category": "custom-templates",
+  "tags": [
+   "template",
+   "n8n",
+   "monitoring",
+   "health",
+   "self-healing",
+   "workflow",
+   "RevOps"
+  ],
+  "type": "template",
+  "price": 9700,
+  "currency": "usd",
+  "mode": "payment",
+  "description": "Import-ready n8n workflow: the self-healing loop for your automation stack \u2014 monitors executions, clusters errors, and keeps every workflow honest about its health. Pairs with the n8n Execution Analyst skill.",
+  "features": [
+   "Import-ready n8n workflow JSON (8 nodes)",
+   "Execution monitoring and error clustering",
+   "Self-healing loop pattern",
+   "Pairs with the Execution Analyst skill",
+   "Deploy in under 30 minutes",
+   "Own the code forever"
+  ],
+  "includes": [
+   "engine-06-automation-health-monitor.json",
+   "SETUP_GUIDE.md"
+  ],
+  "icon": "template",
+  "badge": "Template",
+  "popular": false,
+  "engineOrder": null
  }
 ]
