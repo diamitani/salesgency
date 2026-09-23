@@ -531,3 +531,20 @@ footer{border-top:1px solid var(--border);padding:56px 0 40px;background:var(--b
   .marketplace-layout{grid-template-columns:1fr}
   .filter-sidebar{position:static}
 }
+
+/* === QA overlay fixes (2026-09-23) === */
+/* 1. Inline white surfaces from the old light theme → dark card */
+[style*="background:#fff" i],[style*="background: #fff" i],
+[style*="background:white" i],[style*="background: white" i]{
+  background:var(--card)!important;
+  border-color:var(--line)!important;
+  box-shadow:0 18px 44px rgba(0,0,0,.38)!important;
+}
+/* 2. Footer "three ways" paths: stack label over description */
+.sg-footer-paths{display:grid;gap:4px;min-width:280px;flex:1;max-width:560px}
+.sg-footer-paths a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none}
+.sg-footer-paths a:hover{background:rgba(255,255,255,.045)}
+.sg-footer-paths strong{display:block;margin-bottom:2px;color:var(--ink);font-size:1rem}
+.sg-footer-paths span{font-size:.88rem;color:var(--muted);line-height:1.5}
+/* 3. Marketplace product tag row: add gap */
+.product-card-tags{display:flex;flex-wrap:wrap;gap:6px}
