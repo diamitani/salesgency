@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #faf9f7; }
+  * { box-sizing: border-box; }
+  a { color: #4f46e5; text-decoration: none; }
+  a:hover { color: #3730a3; }
+  ::selection { background: #ddd9fb; }
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #dedbd4; border-radius: 99px; border: 3px solid #faf9f7; }
+  textarea::placeholder, input::placeholder { color: #a3a099; }
+  @keyframes palPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  @keyframes palRise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes palSweep { from { transform: translateX(-100%); } to { transform: translateX(320%); } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #faf9f7; color: #1c1b18; font-family: 'Public Sans', -apple-system, sans-serif; -webkit-font-smoothing: antialiased;">
+
+  <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <nav style="display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid #eae7e0; position: sticky; top: 0; background: rgba(250,249,247,0.9); backdrop-filter: blur(14px); z-index: 40;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 27px; height: 27px; border-radius: 8px; background: #4f46e5; display: grid; place-items: center;">
+          <div style="width: 9px; height: 9px; background: #fff; transform: rotate(45deg); border-radius: 1.5px;"></div>
+        </div>
+        <span style="font-size: 16.5px; font-weight: 700; letter-spacing: -0.02em;">PAL</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 26px;">
+        <a href="#how" style="font-size: 14px; color: #55524b; font-weight: 500;">How it works</a>
+        <a href="#layers" style="font-size: 14px; color: #55524b; font-weight: 500;">What's inside</a>
+        <a href="#outputs" style="font-size: 14px; color: #55524b; font-weight: 500;">What you get</a>
+        <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 14px; font-weight: 600; color: #fff; background: #1c1b18; border: 0; border-radius: 9px; padding: 10px 17px; cursor: pointer;" style-hover="background: #35332d;">Open PAL</button>
+      </div>
+    </nav>
+
+    <section style="max-width: 980px; margin: 0 auto; padding: 96px 40px 72px; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; color: #4338ca; background: #eef0ff; border: 1px solid #dcdcfb; border-radius: 999px; padding: 6px 14px 6px 10px; margin-bottom: 28px;">
+        <span style="width: 6px; height: 6px; border-radius: 99px; background: #4f46e5; animation: palPulse 2s ease-in-out infinite;"></span>
+        Describe it in plain English
+      </div>
+      <h1 style="font-size: 62px; line-height: 1.06; letter-spacing: -0.03em; font-weight: 700; margin: 0 0 24px; text-wrap: balance;">
+        Say what you want.<br><span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #4f46e5; letter-spacing: -0.01em;">Get a plan you can actually build.</span>
+      </h1>
+      <p style="font-size: 19px; line-height: 1.62; color: #55524b; max-width: 620px; margin: 0 auto 36px; text-wrap: pretty;">
+        You don't need to know how to write a spec. Tell PAL your goal the way you'd tell a colleague — it asks the right questions, checks its facts, and hands back a complete, ready-to-build project package.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 15px; font-weight: 600; color: #fff; background: #1c1b18; border: 0; border-radius: 11px; padding: 14px 24px; cursor: pointer;" style-hover="background: #35332d;">Start for free</button>
+        <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 15px; font-weight: 600; color: #1c1b18; background: #fff; border: 1px solid #dedbd4; border-radius: 11px; padding: 14px 24px; cursor: pointer;" style-hover="border-color: #b8b4aa;">See a finished example</button>
+      </div>
+
+      <div style="margin-top: 60px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; text-align: left;">
+        <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 16px; padding: 22px 24px; box-shadow: 0 1px 2px rgba(28,27,24,0.04);">
+          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: #8e8b83; margin-bottom: 12px;">YOU SAY</div>
+          <div style="font-size: 16px; line-height: 1.6; color: #35332d; font-family: 'Instrument Serif', serif; font-size: 21px;">“I want creators on my platform to get paid automatically instead of me doing bank transfers by hand every month.”</div>
+        </div>
+        <div style="width: 34px; height: 34px; border-radius: 99px; background: #4f46e5; color: #fff; display: grid; place-items: center; font-size: 15px; flex: none;">→</div>
+        <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 16px; padding: 22px 24px; box-shadow: 0 1px 2px rgba(28,27,24,0.04);">
+          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: #8e8b83; margin-bottom: 14px;">PAL HANDS BACK</div>
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <sc-for list="{{ heroOutputs }}" as="h" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #35332d;">
+                <span style="{{ h.dotStyle }}"></span>{{ h.label }}
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" style="max-width: 1120px; margin: 0 auto; padding: 48px 40px 88px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 36px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 12px;">Eight steps, all automatic</h2>
+        <p style="font-size: 16.5px; color: #55524b; margin: 0 auto; max-width: 560px; line-height: 1.6;">You only step in where a real decision is needed. Everything else PAL handles and shows its work for.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
+        <sc-for list="{{ loopSteps }}" as="s" hint-placeholder-count="8">
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px; box-shadow: 0 1px 2px rgba(28,27,24,0.03);">
+            <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 12px;">
+              <span style="{{ s.numStyle }}">{{ s.num }}</span>
+              <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em;">{{ s.title }}</span>
+            </div>
+            <p style="font-size: 13.5px; line-height: 1.6; color: #6b6860; margin: 0;">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="layers" style="background: #f3f1ec; border-top: 1px solid #eae7e0; border-bottom: 1px solid #eae7e0;">
+      <div style="max-width: 1120px; margin: 0 auto; padding: 80px 40px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 34px;">
+          <div>
+            <h2 style="font-size: 34px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 12px;">Six specialists, working in order</h2>
+            <p style="font-size: 16px; color: #55524b; margin: 0; max-width: 600px; line-height: 1.6;">Each one hands its work to the next. You can open any of them and see exactly what it decided and why.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+          <sc-for list="{{ layers }}" as="l" hint-placeholder-count="6">
+            <div style="background: #fff; border: 1px solid #e5e1d9; border-radius: 14px; padding: 24px;">
+              <div style="width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; margin-bottom: 16px; font-size: 15px; {{ l.iconStyle }}">{{ l.icon }}</div>
+              <div style="font-size: 16.5px; font-weight: 650; letter-spacing: -0.015em; margin-bottom: 4px;">{{ l.name }}</div>
+              <div style="font-family: 'Fragment Mono', monospace; font-size: 11px; color: #a3a099; margin-bottom: 11px;">{{ l.code }}</div>
+              <p style="font-size: 14px; line-height: 1.6; color: #6b6860; margin: 0;">{{ l.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs" style="max-width: 1120px; margin: 0 auto; padding: 80px 40px;">
+      <div style="text-align: center; margin-bottom: 38px;">
+        <h2 style="font-size: 34px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 12px;">What lands in your hands</h2>
+        <p style="font-size: 16px; color: #55524b; margin: 0 auto; max-width: 560px; line-height: 1.6;">Eight documents. Written for humans, structured so an AI coding agent can execute them directly.</p>
+      </div>
+      <div style="{{ artifactCardGridStyle }}">
+        <sc-for list="{{ artifactCards }}" as="a" hint-placeholder-count="8">
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px;" style-hover="border-color: #c9c4b8; box-shadow: 0 4px 14px rgba(28,27,24,0.05);">
+            <div style="font-size: 15px; font-weight: 620; margin-bottom: 5px; letter-spacing: -0.01em;">{{ a.title }}</div>
+            <div style="font-family: 'Fragment Mono', monospace; font-size: 11px; color: #a3a099; margin-bottom: 11px;">{{ a.file }}</div>
+            <div style="font-size: 13.5px; color: #6b6860; line-height: 1.58;">{{ a.blurb }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width: 1120px; margin: 0 auto; padding: 0 40px 96px;">
+      <div style="background: #1c1b18; border-radius: 20px; padding: 48px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center;">
+        <div>
+          <h2 style="font-size: 32px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 14px; color: #fff;">Nothing happens without your say-so</h2>
+          <p style="font-size: 16px; line-height: 1.65; color: #b5b1a8; margin: 0 0 22px;">PAL works on its own when the step is safe and reversible. The moment something costs money, touches customer data, sends a message, or can't be undone, it stops and asks you first — in plain language, with the options laid out.</p>
+          <button type="button" onClick="{{ goRun }}" style="font-family: inherit; font-size: 14.5px; font-weight: 600; color: #1c1b18; background: #fff; border: 0; border-radius: 10px; padding: 12px 20px; cursor: pointer;" style-hover="background: #f3f1ec;">See an approval in action</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <sc-for list="{{ gateExamples }}" as="g" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 12px; background: #26251f; border: 1px solid #35332d; border-radius: 11px; padding: 13px 16px;">
+              <span style="{{ g.dotStyle }}"></span>
+              <span style="font-size: 14px; color: #e8e5df; flex: 1;">{{ g.label }}</span>
+              <span style="{{ g.tagStyle }}">{{ g.tag }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <footer style="border-top: 1px solid #eae7e0; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 13px; color: #8e8b83;">PAL — the Prompt Abstraction Layer</span>
+      <span style="font-size: 13px; color: #8e8b83;">Your idea in. A buildable plan out.</span>
+    </footer>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isDashboard }}">
+  <div style="display: flex; min-height: 100vh;">
+    <aside style="{{ dashSidebarStyle }}">
+      <div style="padding: 15px 18px; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; gap: 9px;">
+        <div style="width: 23px; height: 23px; border-radius: 7px; background: #4f46e5; display: grid; place-items: center;">
+          <div style="width: 7px; height: 7px; background: #fff; transform: rotate(45deg); border-radius: 1px;"></div>
+        </div>
+        <span style="font-size: 15px; font-weight: 700; letter-spacing: -0.02em;">PAL</span>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+            <button type="button" onClick="{{ n.onClick }}" style="{{ n.style }}" style-hover="background: #f0eee8;">
+              <span style="{{ n.dotStyle }}"></span>{{ n.label }}
+            </button>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: #a3a099; padding: 0 9px 8px;">YOUR PROJECTS</div>
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 7px 9px; border-radius: 8px; font-size: 13.5px; color: #55524b; cursor: pointer;" style-hover="background: #f0eee8; color: #1c1b18;">
+              <span>{{ p.name }}</span>
+              <span style="font-size: 11.5px; color: #a3a099;">{{ p.runs }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding: 14px; border-top: 1px solid #eae7e0;">
+        <div style="background: #f3f1ec; border-radius: 11px; padding: 13px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #55524b; margin-bottom: 9px;">
+            <span>This month</span><span style="font-weight: 600; color: #1c1b18;">$412 of $600</span>
+          </div>
+          <div style="height: 5px; background: #e0ddd5; border-radius: 99px; overflow: hidden;">
+            <div style="width: 69%; height: 100%; background: #4f46e5; border-radius: 99px;"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0;">
+      <header style="height: 60px; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; position: sticky; top: 0; background: rgba(250,249,247,0.92); backdrop-filter: blur(14px); z-index: 20;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h1 style="font-size: 17px; font-weight: 650; margin: 0; letter-spacing: -0.02em;">Your projects</h1>
+          <span style="font-size: 12.5px; color: #8e8b83;">{{ runCountLabel }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" onClick="{{ goLanding }}" style="font-family: inherit; font-size: 13.5px; font-weight: 500; color: #6b6860; background: transparent; border: 0; cursor: pointer; padding: 8px 4px;" style-hover="color: #1c1b18;">Home</button>
+          <button type="button" onClick="{{ goRun }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: #1c1b18; border: 0; border-radius: 8px; padding: 9px 16px; cursor: pointer;" style-hover="background: #35332d;">Start something new</button>
+        </div>
+      </header>
+
+      <div style="padding: 24px 26px 40px; display: flex; flex-direction: column; gap: 20px; max-width: 1440px;">
+        <div style="{{ metricGridStyle }}">
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px;">
+            <div style="font-size: 13px; color: #6b6860; margin-bottom: 12px;">Being worked on now</div>
+            <div style="font-size: 32px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 18px;">3</div>
+            <div style="display: flex; flex-direction: column; gap: 11px;">
+              <sc-for list="{{ inProgress }}" as="r" hint-placeholder-count="3">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px;">
+                    <span style="color: #35332d;">{{ r.project }}</span>
+                    <span style="color: #8e8b83;">{{ r.stageLabel }}</span>
+                  </div>
+                  <div style="height: 5px; background: #f0eee8; border-radius: 99px; overflow: hidden;">
+                    <div style="{{ r.barStyle }}"></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 13px; color: #6b6860;">Plan quality</span>
+              <span style="font-size: 12px; color: #059669; font-weight: 600;">↑ 6 this week</span>
+            </div>
+            <div style="font-size: 32px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 18px;">91<span style="font-size: 16px; color: #a3a099; font-weight: 500;"> / 100</span></div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; height: 46px;">
+              <sc-for list="{{ trend }}" as="t" hint-placeholder-count="12">
+                <div style="{{ t.style }}"></div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px;">
+            <div style="font-size: 13px; color: #6b6860; margin-bottom: 12px;">Spent in the last 30 days</div>
+            <div style="font-size: 32px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 18px;">$412</div>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              <sc-for list="{{ spend }}" as="s" hint-placeholder-count="4">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="{{ s.swatchStyle }}"></span>
+                  <span style="font-size: 12.5px; color: #55524b; flex: 1;">{{ s.label }}</span>
+                  <span style="font-size: 12.5px; color: #35332d; font-weight: 500;">{{ s.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span style="font-size: 13px; color: #6b6860;">Your specialists</span>
+              <span style="font-size: 12px; color: #b45309; font-weight: 600;">1 slow</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              <sc-for list="{{ agents }}" as="ag" hint-placeholder-count="6">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="{{ ag.dotStyle }}"></span>
+                  <span style="font-size: 12.5px; color: #55524b; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ ag.name }}</span>
+                  <span style="font-size: 11.5px; color: #a3a099;">{{ ag.latency }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; overflow: hidden;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid #eae7e0; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+                <button type="button" onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+              </sc-for>
+            </div>
+            <span style="font-size: 12px; color: #a3a099;">{{ sortLabel }}</span>
+          </div>
+          <div style="{{ tableHeadStyle }}">
+            <sc-for list="{{ columns }}" as="c" hint-placeholder-count="6">
+              <button type="button" onClick="{{ c.onClick }}" style="{{ c.style }}" style-hover="color: #1c1b18;">{{ c.label }}{{ c.arrow }}</button>
+            </sc-for>
+          </div>
+          <sc-for list="{{ visibleRuns }}" as="r" hint-placeholder-count="7">
+            <div onClick="{{ r.onClick }}" style="{{ r.rowStyle }}" style-hover="background: #faf9f7;">
+              <div style="min-width: 0; padding-right: 14px;">
+                <div style="font-size: 14px; font-weight: 600; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ r.title }}</div>
+                <div style="font-size: 12.5px; color: #8e8b83; margin-top: 2px;">{{ r.project }}</div>
+              </div>
+              <span style="{{ r.badgeStyle }}"><span style="{{ r.badgeDotStyle }}"></span>{{ r.statusLabel }}</span>
+              <sc-if value="{{ wideTable }}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; align-items: center; gap: 10px; padding-right: 20px;">
+                  <div style="flex: 1; height: 5px; background: #f0eee8; border-radius: 99px; overflow: hidden;">
+                    <div style="{{ r.barStyle }}"></div>
+                  </div>
+                  <span style="font-size: 11.5px; color: #a3a099; white-space: nowrap;">{{ r.stageLabel }}</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ wideTable }}" hint-placeholder-val="{{ true }}">
+                <span style="{{ r.qualityStyle }}">{{ r.quality }}</span>
+              </sc-if>
+              <span style="font-size: 13px; color: #8e8b83;">{{ r.updated }}</span>
+              <span style="font-size: 13px; color: #4f46e5; font-weight: 600; text-align: right;">{{ r.action }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="{{ bottomGridStyle }}">
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+              <span style="font-size: 14.5px; font-weight: 620; letter-spacing: -0.01em;">Recently finished documents</span>
+              <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 13px; font-weight: 500; color: #4f46e5; background: transparent; border: 0; cursor: pointer;">See all →</button>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <sc-for list="{{ recentArtifacts }}" as="ra" hint-placeholder-count="5">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 10px 8px; border-radius: 8px;" style-hover="background: #faf9f7;">
+                  <span style="{{ ra.iconStyle }}">{{ ra.icon }}</span>
+                  <span style="font-size: 13.5px; color: #1c1b18; font-weight: 500; flex: none;">{{ ra.title }}</span>
+                  <span style="font-size: 12.5px; color: #8e8b83; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ ra.project }}</span>
+                  <span style="font-size: 12px; color: #a3a099;">{{ ra.when }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background: #fffbf3; border: 1px solid #f5dfae; border-radius: 14px; padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 12px;">
+              <span style="width: 8px; height: 8px; border-radius: 99px; background: #d97706;"></span>
+              <span style="font-size: 14.5px; font-weight: 620; letter-spacing: -0.01em;">Waiting on you</span>
+              <span style="font-size: 11.5px; font-weight: 600; color: #b45309; background: #fdf0d5; border-radius: 6px; padding: 2px 7px;">2</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <sc-for list="{{ approvalsQueue }}" as="q" hint-placeholder-count="2">
+                <button type="button" onClick="{{ q.onClick }}" style="text-align: left; background: #fff; border: 1px solid #f0dcb2; border-radius: 11px; padding: 14px; cursor: pointer; font-family: inherit; display: block; width: 100%;" style-hover="border-color: #d97706;">
+                  <div style="font-size: 13.5px; font-weight: 600; color: #1c1b18; margin-bottom: 5px;">{{ q.gate }}</div>
+                  <div style="font-size: 13px; color: #6b6860; line-height: 1.5;">{{ q.detail }}</div>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isRun }}">
+  <div style="display: flex; height: 100vh; overflow: hidden;">
+    <aside style="{{ stageRailStyle }}">
+      <div style="height: 60px; flex: none; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; padding: 0 16px;">
+        <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 13.5px; font-weight: 500; color: #6b6860; background: transparent; border: 0; cursor: pointer; padding: 0;" style-hover="color: #1c1b18;">← All projects</button>
+      </div>
+      <div style="padding: 18px 16px; border-bottom: 1px solid #eae7e0;">
+        <div style="font-size: 15px; font-weight: 650; margin-bottom: 3px; letter-spacing: -0.015em;">{{ activeRunTitle }}</div>
+        <div style="font-size: 13px; color: #8e8b83;">{{ activeRunProject }}</div>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 16px 12px;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: #a3a099; padding: 0 8px 10px;">PROGRESS</div>
+        <div style="display: flex; flex-direction: column; gap: 1px;">
+          <sc-for list="{{ stageRail }}" as="s" hint-placeholder-count="8">
+            <button type="button" onClick="{{ s.onClick }}" style="{{ s.style }}" style-hover="background: #f0eee8;">
+              <span style="{{ s.dotStyle }}">{{ s.mark }}</span>
+              <span style="flex: 1; text-align: left;">{{ s.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="margin-top: 22px; padding: 15px; background: #f3f1ec; border-radius: 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #35332d; margin-bottom: 11px;">What happens next</div>
+          <div style="display: flex; flex-direction: column; gap: 11px;">
+            <sc-for list="{{ nowNextLater }}" as="n" hint-placeholder-count="3">
+              <div>
+                <div style="{{ n.tagStyle }}">{{ n.tag }}</div>
+                <div style="font-size: 12.5px; color: #55524b; line-height: 1.5;">{{ n.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; border-right: 1px solid #eae7e0;">
+      <header style="height: 60px; flex: none; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; position: relative; z-index: 70; background: #faf9f7;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <sc-if value="{{ compact }}">
+            <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 13.5px; color: #6b6860; background: transparent; border: 0; cursor: pointer; padding: 0; white-space: nowrap;" style-hover="color: #1c1b18;">← Back</button>
+          </sc-if>
+          <span style="font-size: 15px; font-weight: 620; white-space: nowrap; letter-spacing: -0.015em;">Working with PAL</span>
+          <span style="{{ runStatusBadgeStyle }}"><span style="{{ runStatusDotStyle }}"></span>{{ runStatusLabel }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; flex: none;">
+          <sc-if value="{{ showTokenLabel }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size: 12.5px; color: #a3a099; white-space: nowrap;">{{ tokenLabel }}</span>
+          </sc-if>
+          <sc-if value="{{ narrow }}">
+            <button type="button" onClick="{{ togglePane }}" style="font-family: inherit; font-size: 13px; font-weight: 600; color: #4f46e5; background: #eef0ff; border: 1px solid #dcdcfb; border-radius: 8px; padding: 8px 14px; cursor: pointer; white-space: nowrap;" style-hover="background: #e3e5ff;">{{ paneToggleLabel }}</button>
+          </sc-if>
+          <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 13px; font-weight: 600; color: #1c1b18; background: #fff; border: 1px solid #dedbd4; border-radius: 8px; padding: 8px 14px; cursor: pointer; white-space: nowrap;" style-hover="border-color: #b8b4aa;">All documents</button>
+        </div>
+      </header>
+
+      <div style="flex: 1; overflow-y: auto; padding: 28px 22px 8px;">
+        <div style="max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px;">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+            <div style="display: flex; gap: 14px; align-items: flex-start;">
+              <div style="{{ m.avatarStyle }}">{{ m.avatar }}</div>
+              <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+                <sc-if value="{{ m.hasChips }}">
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <sc-for list="{{ m.chips }}" as="c" hint-placeholder-count="3">
+                      <span style="{{ c.style }}"><span style="{{ c.dotStyle }}"></span>{{ c.label }}</span>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+                <sc-if value="{{ m.hasFacets }}">
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px;">
+                    <sc-for list="{{ m.facets }}" as="f" hint-placeholder-count="3">
+                      <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 11px; padding: 14px;">
+                        <div style="font-size: 11.5px; font-weight: 600; color: #8e8b83; margin-bottom: 8px;">{{ f.kind }}</div>
+                        <div style="font-size: 12.5px; color: #35332d; line-height: 1.6;">{{ f.items }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ m.hasGate }}">
+                  <div style="background: #fffbf3; border: 1px solid #f5dfae; border-radius: 14px; padding: 18px;">
+                    <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 10px;">
+                      <span style="width: 7px; height: 7px; border-radius: 99px; background: #d97706;"></span>
+                      <span style="font-size: 14px; font-weight: 650; color: #92400e;">I need your OK before I continue</span>
+                    </div>
+                    <div style="font-size: 14px; color: #55524b; line-height: 1.65; margin-bottom: 16px;">To test the payout system properly, I need to set up a Stripe test account and a Supabase database. Both cost money (a small amount) and need permissions you haven't given me yet. I won't touch anything real.</div>
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onClick="{{ openApproval }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: #b45309; border: 0; border-radius: 9px; padding: 10px 17px; cursor: pointer;" style-hover="background: #92400e;">Look at the details</button>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ isThinking }}">
+            <div style="display: flex; gap: 14px; align-items: flex-start;">
+              <div style="width: 30px; height: 30px; flex: none; border-radius: 9px; background: #4f46e5; display: grid; place-items: center;"><div style="width: 9px; height: 9px; background: #fff; transform: rotate(45deg); border-radius: 1px;"></div></div>
+              <div style="flex: 1; padding-top: 4px;">
+                <div style="font-size: 14px; color: #4f46e5; font-weight: 500; margin-bottom: 11px;">{{ thinkingLabel }}</div>
+                <div style="height: 3px; background: #eae7e0; border-radius: 99px; overflow: hidden; position: relative;">
+                  <div style="position: absolute; inset: 0; width: 30%; background: #4f46e5; border-radius: 99px; animation: palSweep 1.2s ease-in-out infinite;"></div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="flex: none; padding: 14px 22px 22px;">
+        <div style="max-width: 700px; margin: 0 auto;">
+          <div style="background: #fff; border: 1px solid #dedbd4; border-radius: 14px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(28,27,24,0.05);">
+            <textarea placeholder="Tell PAL what you want, in your own words…" value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onKey }}" rows="2" style="width: 100%; background: transparent; border: 0; outline: none; resize: none; color: #1c1b18; font-family: inherit; font-size: 14.5px; line-height: 1.6;"></textarea>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px;">
+              <span style="font-size: 12.5px; color: #a3a099;">Working on <span style="color: #55524b; font-weight: 500;">Artispreneur</span></span>
+              <button type="button" onClick="{{ submitPrompt }}" style="{{ sendStyle }}">{{ sendLabel }}</button>
+            </div>
+          </div>
+          <div style="font-size: 12px; color: #a3a099; text-align: center; margin-top: 10px;">PAL always asks before spending money or changing anything real.</div>
+        </div>
+      </div>
+    </main>
+
+    <sc-if value="{{ showScrim }}">
+      <div onClick="{{ closePane }}" style="position: fixed; inset: 0; background: rgba(28,27,24,0.28); z-index: 55;"></div>
+    </sc-if>
+    <sc-if value="{{ paneVisible }}" hint-placeholder-val="{{ true }}">
+    <aside style="{{ artifactPaneStyle }}">
+      <div style="height: 60px; flex: none; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; gap: 2px; padding: 0 10px; overflow-x: auto;">
+        <sc-for list="{{ artifactTabs }}" as="t" hint-placeholder-count="8">
+          <button type="button" onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="color: #1c1b18;">{{ t.label }}</button>
+        </sc-for>
+        <sc-if value="{{ narrow }}">
+          <button type="button" onClick="{{ closePane }}" aria-label="Close documents panel" style="position: sticky; right: 0; margin-left: auto; flex: none; font-family: inherit; font-size: 18px; line-height: 1; color: #8e8b83; background: #fff; border: 0; border-radius: 7px; padding: 7px 10px; cursor: pointer;" style-hover="color: #1c1b18; background: #f0eee8;">×</button>
+        </sc-if>
+      </div>
+      <div style="flex: none; padding: 14px 18px; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+        <div style="min-width: 0;">
+          <div style="font-size: 14px; font-weight: 620; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ activeArtifactTitle }}</div>
+          <div style="font-family: 'Fragment Mono', monospace; font-size: 11px; color: #a3a099; margin-top: 2px;">{{ activeArtifactFile }}</div>
+        </div>
+        <div style="display: flex; gap: 6px; flex: none;">
+          <button type="button" onClick="{{ copyArtifact }}" style="font-family: inherit; font-size: 12.5px; font-weight: 500; color: #55524b; background: #fff; border: 1px solid #dedbd4; border-radius: 7px; padding: 6px 11px; cursor: pointer;" style-hover="border-color: #b8b4aa; color: #1c1b18;">Copy</button>
+          <button type="button" onClick="{{ downloadArtifact }}" style="font-family: inherit; font-size: 12.5px; font-weight: 500; color: #55524b; background: #fff; border: 1px solid #dedbd4; border-radius: 7px; padding: 6px 11px; cursor: pointer;" style-hover="border-color: #b8b4aa; color: #1c1b18;">Download</button>
+        </div>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 20px 22px 40px; background: #fff;">
+        <div style="font-size: 13.5px; line-height: 1.75;">
+          <sc-for list="{{ artifactLines }}" as="l" hint-placeholder-count="16">
+            <div style="{{ l.style }}">{{ l.text }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </aside>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isPackages }}">
+  <div>
+    <header style="height: 60px; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; position: sticky; top: 0; background: rgba(250,249,247,0.92); backdrop-filter: blur(14px); z-index: 20;">
+      <div style="display: flex; align-items: center; gap: 14px; min-width: 0;">
+        <button type="button" onClick="{{ goRun }}" style="font-family: inherit; font-size: 13.5px; font-weight: 500; color: #6b6860; background: transparent; border: 0; cursor: pointer; padding: 0; white-space: nowrap;" style-hover="color: #1c1b18;">← Back to chat</button>
+        <span style="width: 1px; height: 16px; background: #dedbd4;"></span>
+        <span style="font-size: 15px; font-weight: 650; letter-spacing: -0.015em; white-space: nowrap;">Your project documents</span>
+      </div>
+      <button type="button" onClick="{{ downloadAll }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: #1c1b18; border: 0; border-radius: 8px; padding: 9px 16px; cursor: pointer; white-space: nowrap;" style-hover="background: #35332d;">Download everything</button>
+    </header>
+    <div style="max-width: 1120px; margin: 0 auto; padding: 34px 26px 80px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 28px; flex-wrap: wrap;">
+        <div>
+          <h1 style="font-size: 32px; font-weight: 700; letter-spacing: -0.028em; margin: 0 0 10px;">{{ activeRunTitle }}</h1>
+          <p style="font-size: 15.5px; color: #55524b; margin: 0; max-width: 600px; line-height: 1.6;">Eight documents for {{ activeRunProject }}. Read them yourself, share them with a developer, or hand them straight to an AI coding agent.</p>
+        </div>
+        <div style="display: flex; gap: 30px; flex: none;">
+          <div>
+            <div style="font-size: 12px; color: #8e8b83; margin-bottom: 5px;">Quality</div>
+            <div style="font-size: 24px; font-weight: 700; color: #059669;">94<span style="font-size: 14px; color: #a3a099; font-weight: 500;">/100</span></div>
+          </div>
+          <div>
+            <div style="font-size: 12px; color: #8e8b83; margin-bottom: 5px;">Sources checked</div>
+            <div style="font-size: 24px; font-weight: 700;">23</div>
+          </div>
+          <div>
+            <div style="font-size: 12px; color: #8e8b83; margin-bottom: 5px;">Cost to produce</div>
+            <div style="font-size: 24px; font-weight: 700;">$7.14</div>
+          </div>
+        </div>
+      </div>
+      <div style="{{ packageGridStyle }}">
+        <sc-for list="{{ packageFiles }}" as="p" hint-placeholder-count="8">
+          <div style="background: #fff; border: 1px solid #eae7e0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 16px;" style-hover="border-color: #c9c4b8; box-shadow: 0 4px 14px rgba(28,27,24,0.05);">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;">
+              <div style="min-width: 0; display: flex; gap: 13px;">
+                <span style="{{ p.iconStyle }}">{{ p.icon }}</span>
+                <div style="min-width: 0;">
+                  <div style="font-size: 15.5px; font-weight: 620; letter-spacing: -0.012em; margin-bottom: 3px;">{{ p.title }}</div>
+                  <div style="font-family: 'Fragment Mono', monospace; font-size: 11px; color: #a3a099; margin-bottom: 9px;">{{ p.file }}</div>
+                  <div style="font-size: 13.5px; color: #6b6860; line-height: 1.58;">{{ p.blurb }}</div>
+                </div>
+              </div>
+              <span style="{{ p.badgeStyle }}">{{ p.badge }}</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #f0eee8;">
+              <span style="font-size: 12px; color: #a3a099;">{{ p.meta }}</span>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" onClick="{{ p.onView }}" style="font-family: inherit; font-size: 12.5px; font-weight: 500; color: #55524b; background: #fff; border: 1px solid #dedbd4; border-radius: 7px; padding: 6px 12px; cursor: pointer;" style-hover="border-color: #b8b4aa; color: #1c1b18;">Read</button>
+                <button type="button" onClick="{{ downloadArtifact }}" style="font-family: inherit; font-size: 12.5px; font-weight: 500; color: #55524b; background: #fff; border: 1px solid #dedbd4; border-radius: 7px; padding: 6px 12px; cursor: pointer;" style-hover="border-color: #b8b4aa; color: #1c1b18;">Download</button>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ showApproval }}">
+    <div onClick="{{ closeApproval }}" style="position: fixed; inset: 0; background: rgba(28,27,24,0.4); backdrop-filter: blur(4px); z-index: 90; display: grid; place-items: center; padding: 40px;">
+      <div onClick="{{ stop }}" style="width: 580px; max-width: 100%; background: #fff; border-radius: 18px; box-shadow: 0 30px 80px -20px rgba(28,27,24,0.35); animation: palRise 0.18s ease-out; overflow: hidden;">
+        <div style="padding: 22px 26px; border-bottom: 1px solid #eae7e0; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 8px; height: 8px; border-radius: 99px; background: #d97706;"></span>
+            <span style="font-size: 17px; font-weight: 650; letter-spacing: -0.02em;">Can I go ahead?</span>
+          </div>
+          <button type="button" onClick="{{ closeApproval }}" style="font-family: inherit; font-size: 20px; line-height: 1; color: #a3a099; background: transparent; border: 0; cursor: pointer;" style-hover="color: #1c1b18;">×</button>
+        </div>
+        <div style="padding: 24px 26px; display: flex; flex-direction: column; gap: 22px; max-height: 56vh; overflow-y: auto;">
+          <sc-for list="{{ approvalSections }}" as="s" hint-placeholder-count="4">
+            <div>
+              <div style="font-size: 13px; font-weight: 650; color: #1c1b18; margin-bottom: 7px;">{{ s.label }}</div>
+              <div style="font-size: 14px; color: #55524b; line-height: 1.65;">{{ s.body }}</div>
+            </div>
+          </sc-for>
+          <div>
+            <div style="font-size: 13px; font-weight: 650; color: #1c1b18; margin-bottom: 7px;">Want to add a note?</div>
+            <textarea placeholder="Optional — anything PAL should keep in mind" rows="2" style="width: 100%; background: #faf9f7; border: 1px solid #dedbd4; border-radius: 10px; padding: 11px 13px; color: #1c1b18; font-family: inherit; font-size: 13.5px; resize: none; outline: none;"></textarea>
+          </div>
+        </div>
+        <div style="padding: 18px 26px; border-top: 1px solid #eae7e0; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #faf9f7;">
+          <span style="font-size: 12px; color: #a3a099;">Your decision is saved with the project.</span>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" onClick="{{ rejectGate }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #55524b; background: #fff; border: 1px solid #dedbd4; border-radius: 9px; padding: 10px 17px; cursor: pointer;" style-hover="border-color: #b8b4aa; color: #1c1b18;">No, find another way</button>
+            <button type="button" onClick="{{ approveGate }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #fff; background: #059669; border: 0; border-radius: 9px; padding: 10px 17px; cursor: pointer;" style-hover="background: #047857;">Yes, go ahead</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasToast }}">
+    <div style="position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%); background: #1c1b18; border-radius: 10px; padding: 12px 20px; font-size: 13.5px; color: #fff; z-index: 95; animation: palRise 0.18s ease-out; box-shadow: 0 16px 40px -10px rgba(28,27,24,0.4);">{{ toast }}</div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const STAGES = [
+  { id: 'intent', title: 'What you asked for', file: 'intent-spec.md', icon: '◎', tint: '#4f46e5', agent: 'Reading your request' },
+  { id: 'evidence', title: 'Research & sources', file: 'evidence-ledger.csv', icon: '⌕', tint: '#0891b2', agent: 'Checking the facts' },
+  { id: 'jtbd', title: 'Jobs to be done', file: 'jtbd-report.md', icon: '☰', tint: '#7c3aed', agent: 'Working out what has to be true' },
+  { id: 'plan', title: 'The build plan', file: 'build-playbook.md', icon: '⊞', tint: '#d97706', agent: 'Ordering the work' },
+  { id: 'instructions', title: 'Instructions for the AI', file: 'instruction-pack.md', icon: '⌘', tint: '#059669', agent: 'Writing the instructions' },
+  { id: 'prd', title: 'Project brief', file: 'PRD.md', icon: '▤', tint: '#4f46e5', agent: 'Writing the brief' },
+  { id: 'soul', title: "The agent's character", file: 'SOUL.md', icon: '❋', tint: '#db2777', agent: 'Defining how it should behave' },
+  { id: 'quality', title: 'Quality check', file: 'quality-scorecard.md', icon: '✓', tint: '#059669', agent: 'Double-checking everything' }
+];
+
+const ART = {
+  intent: `# What you asked for
+
+## In one sentence
+Let creators on Artispreneur get paid automatically each month,
+instead of you making bank transfers by hand.
+
+## What you said you wanted
+- Creators onboard themselves once — no back and forth with you
+- They can see what they've earned and what's on its way
+- Money goes out on a schedule, not when someone remembers
+- You can export the numbers for your accountant
+
+## What you didn't say, but almost certainly need
+- Group payouts into one batch so you don't pay a fee per creator
+- Never send the same payment twice, even if something retries
+- Catch failed payments automatically and tell the creator why
+- Make sure a creator can only ever see their own money
+- Identity checks before anyone's first payout (legally required)
+
+## What we're deliberately NOT doing yet
+- Other currencies — US dollars only for now
+- Tax forms (1099-K) — worth doing, but later
+- Handling disputes inside the app
+
+## Assumptions we made
+- Around 400 active creators, paid monthly
+- You'll keep the login system you already have
+
+## Decisions on record
+6 Aug — Use Stripe's "Express" accounts rather than building
+our own. Stripe handles the identity checks and gives creators
+their own dashboard, which cuts weeks off the build.
+Approved by: Pat`,
+  evidence: `# Research & sources
+We checked 23 sources. 68% came straight from official
+documentation — the most reliable kind.
+
+Most trustworthy (official docs)
+  Stripe — how Express accounts work
+  Stripe — sending transfers
+  Stripe — preventing duplicate payments
+  Stripe — verifying webhook messages are genuine
+  Supabase — restricting who can read which rows
+  Supabase — running scheduled jobs
+
+Expert-reviewed
+  Identity check requirements for US payouts
+  Your own Civic Pie payout notes from last year
+  Standard accounting patterns for money ledgers
+
+Community discussion
+  Real-world reports on batch transfer fees
+
+Things worth knowing
+- One older Stripe approach turned up in search; it's been
+  replaced, so we ignored it.
+- We couldn't find a reliable source on 1099-K thresholds,
+  so we left tax forms out rather than guess.`,
+  jtbd: `# Jobs to be done
+Six jobs. Everything we build has to make one of these true.
+
+## For creators
+
+1. Get paid without having to ask
+   "When I finish a paid collab, I want my money to show up on
+   a schedule I can see, so I stop messaging support about it."
+   Done when: no creator has to ask where their money is.
+
+2. Trust the number on screen
+   "When I look at my balance, I want to see what's pending
+   versus available and what the fee is, so I know what
+   actually lands in my account."
+
+3. Fix a failed payment myself
+   "When a payment fails, I want to know why and how to fix it,
+   so I'm not stuck waiting a month."
+   Done when: a creator can fix it in under five minutes.
+
+## For your team
+
+4. Close the books each month without a spreadsheet
+5. Prove a specific payment happened, months later
+6. Get a new creator set up for payouts
+
+## Also has to be true
+- A full payout run for 400 creators finishes in 90 seconds
+- Every money movement is permanently recorded, never edited
+- The dashboard loads in about a second
+
+## Things that will go wrong (and we've planned for)
+- A creator removes their bank account mid-payout
+- Stripe sends us the same notification twice
+- 7 of 400 payments fail and the rest succeed`,
+  plan: `# The build plan
+About 15 working days, in five stages.
+
+## Stage 1 — The money record   3 days
+Build the permanent, unchangeable log of who earned what.
+Everything else depends on this being right.
+
+## Stage 2 — Creator sign-up   2 days
+Creators connect their bank details through Stripe.
+Stripe handles the ID checks, so you don't hold anything sensitive.
+
+## Stage 3 — The payout run   4 days   ⚠ needs your approval
+The scheduled job that actually moves the money.
+Blocked until you approve the test accounts.
+
+## Stage 4 — The creator dashboard   4 days
+Balance, history, payout dates, and a CSV export.
+
+## Stage 5 — Safety net   2 days
+Catch failures, alert you, let creators self-fix.
+
+## Where we'll need you
+1. Setting up test accounts — waiting on you now
+2. Turning on real money movement — later, before Stage 3 ships
+
+## Right now / next / later
+Now:   Build the money record
+Next:  Creator sign-up, hidden behind a switch
+Later: Your internal admin view`,
+  instructions: `# Instructions for the AI
+This is what we hand to the coding agent. You don't need to
+read it — but everything in it comes from decisions above.
+
+## The ground rules it must follow
+You are building the payouts system for Artispreneur.
+Work through the plan in order.
+Never touch a live payment system without approval on file.
+Every payment carries a unique tag so it can never be sent twice.
+
+## Stage-by-stage, with a finish line for each
+1. Money record — proven when one creator cannot see another's
+2. Sign-up — proven when a test creator is cleared to be paid
+3. Payout run — proven by a 400-person dry run, zero duplicates
+4. Dashboard — proven when it loads in about a second
+5. Safety net — proven when a repeated notification is harmless
+
+## What it's allowed to touch
+Read Stripe account status ......... allowed
+Send money ......................... needs your approval
+Change the database structure ...... allowed
+Read database rows ................. allowed
+Passwords and keys ................. never written down, ever
+
+## How we'll know it works
+Tests for the fee maths and payment batching.
+A rehearsal of a partly-failed payout run.
+One full run-through: sign up → earn → get paid.`,
+  prd: `# Project brief
+The document you'd hand to a developer, an investor, or a
+new team member.
+
+## The short version
+Right now, paying creators is a manual job — someone makes bank
+transfers by hand every month. This builds a system that does it
+automatically: creators sign themselves up once, watch their
+balance, and get paid on schedule. Your team goes from about six
+hours a month to watching a job run.
+
+## Who it's for
+About 400 active creators earning through collaborations, and
+whoever on your team closes the books each month.
+
+## The problem today
+Creators can't see what they're owed, a failed payment can go
+unnoticed for a month, and support gets a steady stream of
+"where's my money" messages.
+
+## What success looks like
+- Nobody has to ask where their payment is
+- One monthly run, fully accounted for, no manual cleanup
+
+## What we're not doing yet
+Other currencies. Tax forms. In-app disputes.
+
+## How it's put together
+A web app, a database that permanently records every payment,
+Stripe for moving money, and a scheduled job that runs monthly.
+
+## Timeline
+Five stages, roughly 15 working days.
+
+## What could go wrong
+- A payout run half-fails → each payment tracked separately
+- Creators abandon sign-up → they can pick up where they left off
+
+## Keeping data safe
+Bank details live with Stripe, never in your database.
+You store an account reference and nothing more.`,
+  soul: `# The agent's character
+How the AI building this should behave — its temperament,
+written down.
+
+## Who it is
+The agent responsible for money on Artispreneur. It's cautious
+by design: it would rather be slow and correct than fast.
+
+## Its rules
+1. The payment record is permanent. Never edit or delete it.
+2. Every payment is tagged so it can't be sent twice.
+3. No live payment without your approval on file.
+4. Decide who can see what before writing the code that shows it.
+5. If a fact is missing, stop and ask. Never guess a fee, a
+   legal threshold, or a tax rule.
+6. Passwords and keys are never written into code or logs.
+
+## When it should refuse
+- If asked to "fix" the books by rewriting history
+- If asked to do more than you approved
+- If asked to move money in a currency nobody signed off on
+
+## What it owes you
+Clear, dated changes. Every piece of work points back to the
+job it satisfies. A plain summary at the end of each run.
+
+## When it gets stuck
+After one failed attempt, it stops and tells you what's blocking
+it, what it tried, and the smallest decision that unblocks it.`,
+  quality: `# Quality check — 94 out of 100
+
+Did we capture what you meant?          97
+Is it backed by reliable sources?       95
+Does every task trace to a real need?   98
+Is anything missing?                    92
+Is the architecture sound?              93
+Is your data protected?                 96
+Will it work with any AI tool?          88
+
+## Where it's weakest
+- We couldn't source anything reliable on tax form thresholds,
+  so we left them out on purpose and made a note.
+- The scheduled job is written for Supabase specifically.
+  If you ever move, that part gets rewritten.
+
+## The verdict
+This is ready to build. One approval is outstanding before
+the payout run can start.`
+};
+
+const RUNS = [
+  { id: 'RUN-4471', project: 'Artispreneur', title: 'Automatic creator payouts', status: 'needs you', stage: 4, quality: 94, updated: '4 min ago', action: 'Continue' },
+  { id: 'RUN-4468', project: 'Civic Pie', title: 'Constituent intake system', status: 'working', stage: 6, quality: null, updated: '11 min ago', action: 'Watch' },
+  { id: 'RUN-4462', project: 'GencyAI', title: 'Client onboarding assistant', status: 'working', stage: 2, quality: null, updated: '38 min ago', action: 'Watch' },
+  { id: 'RUN-4455', project: 'Atlas HXM', title: 'Country compliance briefs', status: 'ready', stage: 8, quality: 91, updated: '3 hours ago', action: 'Open' },
+  { id: 'RUN-4449', project: 'ArtistEPKs', title: 'Press kit PDF pipeline', status: 'ready', stage: 8, quality: 88, updated: 'Yesterday', action: 'Open' },
+  { id: 'RUN-4441', project: 'Your48', title: 'Sprint scoreboard', status: 'stuck', stage: 3, quality: null, updated: '2 days ago', action: 'Fix' },
+  { id: 'RUN-4437', project: 'ROSTR', title: 'Repo integration agent', status: 'ready', stage: 8, quality: 96, updated: '3 days ago', action: 'Open' }
+];
+
+const STATUS = {
+  ready:       { label: 'Ready',        fg: '#047857', bg: '#ecfdf5', bd: '#a7f3d0', dot: '#059669' },
+  working:     { label: 'Working',      fg: '#4338ca', bg: '#eef0ff', bd: '#c7cbfb', dot: '#4f46e5' },
+  'needs you': { label: 'Needs you',    fg: '#b45309', bg: '#fffbeb', bd: '#fcd9a0', dot: '#d97706' },
+  stuck:       { label: 'Stuck',        fg: '#be123c', bg: '#fff1f2', bd: '#fecdd3', dot: '#e11d48' }
+};
+
+class Component extends DCLogic {
+  state = {
+    view: 'landing', draft: '', stageDone: 8, running: false, artifact: 'intent',
+    sortKey: 'updated', sortAsc: false, filter: 'all', showApproval: false,
+    toast: '', gateResolved: null, extraMessages: [],
+    w: typeof window !== 'undefined' ? window.innerWidth : 1440, paneOpen: false
+  };
+
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+    this._r();
+  }
+  componentWillUnmount() {
+    clearTimeout(this._t); clearTimeout(this._tt);
+    if (this._r) window.removeEventListener('resize', this._r);
+  }
+
+  flash(msg) {
+    clearTimeout(this._tt);
+    this.setState({ toast: msg });
+    this._tt = setTimeout(() => this.setState({ toast: '' }), 2200);
+  }
+
+  advance = () => {
+    this.setState(s => {
+      const next = s.stageDone + 1;
+      if (next >= STAGES.length) return { stageDone: STAGES.length, running: false, artifact: 'quality' };
+      this._t = setTimeout(this.advance, 1000);
+      return { stageDone: next, artifact: STAGES[Math.min(next, STAGES.length - 1)].id };
+    });
+  };
+
+  startRun = () => {
+    if (this.state.running) return;
+    const text = this.state.draft.trim();
+    clearTimeout(this._t);
+    this.setState(s => ({
+      running: true, stageDone: 0, artifact: 'intent', draft: '', gateResolved: null,
+      extraMessages: text ? s.extraMessages.concat([{ role: 'user', text }]) : s.extraMessages
+    }));
+    this._t = setTimeout(this.advance, 900);
+  };
+
+  badge(key) {
+    const c = STATUS[key] || STATUS.working;
+    return {
+      statusLabel: c.label,
+      badgeStyle: 'display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: ' + c.fg + '; background: ' + c.bg + '; border: 1px solid ' + c.bd + '; border-radius: 999px; padding: 4px 11px; width: fit-content;',
+      badgeDotStyle: 'width: 6px; height: 6px; border-radius: 99px; background: ' + c.dot + ';'
+    };
+  }
+
+  lines(text) {
+    return text.split('\n').map(t => {
+      let style = 'color: #55524b; white-space: pre-wrap; word-break: break-word;';
+      if (/^#\s/.test(t)) style = 'color: #1c1b18; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; margin-bottom: 6px; white-space: pre-wrap; font-family: Public Sans, sans-serif;';
+      else if (/^##\s/.test(t)) style = 'color: #1c1b18; font-weight: 650; font-size: 14.5px; margin-top: 20px; margin-bottom: 2px; white-space: pre-wrap;';
+      else if (/^-\s/.test(t)) style = 'color: #35332d; white-space: pre-wrap; word-break: break-word;';
+      else if (/^\s*"/.test(t)) style = 'color: #4338ca; font-style: italic; white-space: pre-wrap; word-break: break-word;';
+      else if (/needs your approval|waiting on you|⚠/.test(t)) style = 'color: #b45309; font-weight: 600; white-space: pre-wrap;';
+      else if (/^\s{2,}\S/.test(t)) style = 'color: #6b6860; white-space: pre-wrap; word-break: break-word; font-family: Fragment Mono, monospace; font-size: 12px;';
+      return { text: t === '' ? '\u00a0' : t, style };
+    });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const w = s.w;
+    const narrow = w < 1280, compact = w < 1024, wideTable = w >= 1120;
+    const done = s.stageDone;
+
+    const stageRail = STAGES.map((st, i) => {
+      const k = i < done ? 'done' : (s.running && i === done ? 'active' : 'idle');
+      const sel = s.artifact === st.id;
+      const dotBase = 'width: 17px; height: 17px; flex: none; border-radius: 99px; display: grid; place-items: center; font-size: 9.5px; font-weight: 700; ';
+      return {
+        label: st.title,
+        mark: k === 'done' ? '✓' : '',
+        onClick: () => this.setState({ artifact: st.id, paneOpen: true }),
+        style: 'display: flex; align-items: center; gap: 11px; width: 100%; font-family: inherit; font-size: 13.5px; font-weight: ' + (sel ? '600' : '500') + '; text-align: left; background: ' +
+          (sel ? '#f0eee8' : 'transparent') + '; border: 0; border-radius: 9px; padding: 10px 11px; cursor: pointer; color: ' + (sel ? '#1c1b18' : '#55524b') + ';',
+        dotStyle: dotBase + (k === 'done'
+          ? 'background: #059669; color: #fff;'
+          : k === 'active'
+            ? 'background: #4f46e5; color: #fff; animation: palPulse 1.2s ease-in-out infinite;'
+            : 'background: #fff; border: 1.5px solid #dedbd4; color: transparent;')
+      };
+    });
+
+    const activeStage = STAGES.find(x => x.id === s.artifact) || STAGES[0];
+    const artifactReady = STAGES.indexOf(activeStage) < done;
+
+    const runStatusKey = s.running ? 'working' : (s.gateResolved === 'approved' ? 'ready' : (s.gateResolved === 'rejected' ? 'stuck' : 'needs you'));
+    const rb = this.badge(runStatusKey);
+
+    const baseMessages = [
+      { role: 'user', text: "I want creators on Artispreneur to get paid automatically instead of me doing bank transfers by hand every month. They should be able to see what they've earned. I'd rather not have to touch it." },
+      { role: 'agent', chips: [['Understood your goal', '#059669'], ['Checked 23 sources', '#059669'], ['Mapped out the work', '#059669']],
+        text: "Got it. Here's what I understood, and a few things you didn't mention that you'll need anyway.\n\nThe big one: I'd deliberately leave out other currencies, tax forms, and in-app disputes for now — each of those drags in legal work you didn't ask for, and none are needed to stop the manual transfers. I've written them down as \"later\" rather than dropping them.\n\nI also couldn't find a trustworthy source on tax form thresholds, so rather than guess a number, I left it out and flagged it.",
+        facets: [
+          { kind: 'Who and what', items: 'Creators, their earnings, payment batches, bank connections' },
+          { kind: 'What happens', items: 'Sign up, earn, get paid, check the books, export' },
+          { kind: 'Ground rules', items: 'Self-serve, never edit history, never pay twice, USD only' }
+        ] },
+      { role: 'agent', text: 'The plan puts the permanent money record first — before anything creators can see. Every payout bug I found in the research traced back to systems that let balances be edited after the fact. Five stages, about 15 working days.', gate: true }
+    ];
+
+    const gateNote = s.gateResolved === 'approved'
+      ? [{ role: 'agent', chips: [['You approved it', '#059669']], text: "Thanks — noted and saved with the project. I'm setting up the test accounts now, with the narrowest permissions that'll work. Stage 3 is unblocked, and the rest of your documents are finished. Quality came out at 94." }]
+      : s.gateResolved === 'rejected'
+      ? [{ role: 'agent', chips: [['You said no', '#e11d48']], text: "Understood — nothing was set up and nothing was spent. I've rewritten the plan to use fake payments instead, so stages 1, 2 and 4 can carry on without touching Stripe. Stage 3 will wait for you. Just say the word when you want real payments turned on." }]
+      : [];
+
+    const messages = baseMessages.concat(gateNote, s.extraMessages).map(m => {
+      const isUser = m.role === 'user';
+      const chips = (m.chips || []).map(c => ({
+        label: c[0],
+        style: 'display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: #35332d; background: #fff; border: 1px solid #eae7e0; border-radius: 999px; padding: 4px 11px;',
+        dotStyle: 'width: 6px; height: 6px; border-radius: 99px; background: ' + c[1] + ';'
+      }));
+      return {
+        avatar: isUser ? 'P' : '',
+        avatarStyle: isUser
+          ? 'width: 30px; height: 30px; flex: none; border-radius: 9px; background: #e5e1d9; color: #55524b; font-size: 12.5px; font-weight: 600; display: grid; place-items: center;'
+          : 'width: 30px; height: 30px; flex: none; border-radius: 9px; background: #4f46e5; display: grid; place-items: center;',
+        bubbleStyle: isUser
+          ? 'background: #fff; border: 1px solid #eae7e0; border-radius: 14px; border-top-left-radius: 4px; padding: 14px 17px; font-size: 14.5px; line-height: 1.62; color: #1c1b18;'
+          : 'font-size: 14.5px; line-height: 1.72; color: #35332d; white-space: pre-line;',
+        text: m.text,
+        hasChips: chips.length > 0, chips,
+        hasFacets: !!m.facets, facets: m.facets || [],
+        hasGate: !!m.gate && s.gateResolved === null
+      };
+    });
+
+    let rows = RUNS.filter(r => s.filter === 'all' || r.status === s.filter);
+    const dir = s.sortAsc ? 1 : -1;
+    const keyed = { title: r => r.title, status: r => r.status, stage: r => r.stage, quality: r => r.quality || 0, updated: r => -RUNS.indexOf(r), action: r => r.action };
+    rows = rows.slice().sort((a, b) => {
+      const f = keyed[s.sortKey] || keyed.updated;
+      const x = f(a), y = f(b);
+      return (x < y ? -1 : x > y ? 1 : 0) * dir;
+    });
+
+    const allCols = [['title', 'Project'], ['status', 'Status'], ['stage', 'Progress'], ['quality', 'Quality'], ['updated', 'Last activity'], ['action', '']];
+    const cols = wideTable ? allCols : allCols.filter(c => c[0] !== 'stage' && c[0] !== 'quality');
+    const gridCols = wideTable ? 'minmax(180px, 1.5fr) 132px 1fr 84px 132px 92px' : 'minmax(150px, 1fr) 132px 132px 84px';
+    const rowGrid = 'display: grid; grid-template-columns: ' + gridCols + '; align-items: center; ';
+
+    const filterOpts = [['all', 'Everything'], ['working', 'Working'], ['needs you', 'Needs you'], ['stuck', 'Stuck'], ['ready', 'Ready']];
+
+    return {
+      isLanding: s.view === 'landing', isDashboard: s.view === 'dashboard', isRun: s.view === 'run', isPackages: s.view === 'packages',
+      goLanding: () => this.setState({ view: 'landing' }),
+      goDashboard: () => this.setState({ view: 'dashboard' }),
+      goRun: () => this.setState({ view: 'run' }),
+      goPackages: () => this.setState({ view: 'packages' }),
+
+      heroOutputs: [
+        { label: 'A plain-English brief you can actually read', c: '#4f46e5' },
+        { label: 'Research, with every source shown', c: '#0891b2' },
+        { label: 'A build plan in the right order', c: '#d97706' },
+        { label: 'Instructions an AI can build from', c: '#059669' }
+      ].map(h => ({ label: h.label, dotStyle: 'width: 7px; height: 7px; flex: none; border-radius: 99px; background: ' + h.c + ';' })),
+
+      loopSteps: [
+        { title: 'Understand', body: "Works out what you actually meant, and separates it from what it thinks you'd also want." },
+        { title: 'Check', body: 'Looks things up in official documentation first. Shows you every source it used.' },
+        { title: 'Define', body: 'Turns your goal into concrete jobs — what each person and system has to be able to do.' },
+        { title: 'Prioritise', body: 'Ranks the work by what\'s essential, what\'s risky, and what unlocks the most value.' },
+        { title: 'Compile', body: 'Writes the instructions, phase by phase, with a clear finish line for each.' },
+        { title: 'Execute', body: 'Builds in stages, saving a checkpoint each time so nothing is ever lost.' },
+        { title: 'Verify', body: 'Nothing is called done without evidence — a passing test, a screenshot, or your sign-off.' },
+        { title: 'Learn', body: 'Keeps what it learned, so the next project on the same codebase starts smarter.' }
+      ].map((x, i) => ({
+        title: x.title, body: x.body, num: String(i + 1),
+        numStyle: 'width: 22px; height: 22px; flex: none; border-radius: 7px; background: #f0eee8; color: #55524b; font-size: 11.5px; font-weight: 700; display: grid; place-items: center;'
+      })),
+
+      layers: [
+        { name: 'Intent reader', code: 'PAL', icon: '◎', c: '#4f46e5', body: "Pulls apart what you wrote: your goal, who it's for, the limits, and anything unclear enough to be worth asking about." },
+        { name: 'Researcher', code: 'RAG-DAL', icon: '⌕', c: '#0891b2', body: 'Finds and ranks the knowledge needed to build it properly — official docs first, community advice last, conflicts flagged.' },
+        { name: 'Jobs mapper', code: 'JTBD', icon: '☰', c: '#7c3aed', body: 'Turns your goal into the specific things people and systems must be able to do, each with a way to prove it works.' },
+        { name: 'Prioritiser', code: 'NPAO', icon: '⊞', c: '#d97706', body: "Decides what's essential, what's risky, and what order to build in — with the reasoning written out, not just a score." },
+        { name: 'Instruction writer', code: 'ARCHITECT', icon: '⌘', c: '#059669', body: 'Compiles everything into instructions an AI coding tool can follow, including what it may and may not touch.' },
+        { name: 'Brief writer', code: 'PRD', icon: '▤', c: '#db2777', body: 'Produces the single document that captures every decision — readable by you, usable by a machine.' }
+      ].map(l => ({ name: l.name, code: l.code, icon: l.icon, body: l.body, iconStyle: 'background: ' + l.c + '18; color: ' + l.c + ';' })),
+
+      artifactCards: STAGES.map(st => ({
+        title: st.title, file: st.file,
+        blurb: {
+          intent: "Your goal in plain words, what we're deliberately leaving out, and every decision on record.",
+          evidence: 'Every source we checked, ranked by how much you should trust it.',
+          jtbd: 'What each person and system has to be able to do — and how we prove it works.',
+          plan: 'The build, stage by stage, in the order things actually have to happen.',
+          instructions: 'The handoff for an AI coding tool: what to build, and what it may not touch.',
+          prd: "The document you'd hand a developer, an investor, or a new hire.",
+          soul: 'How the AI should behave — its rules, and when it should refuse.',
+          quality: 'An honest score, including where the plan is weakest.'
+        }[st.id]
+      })),
+
+      gateExamples: [
+        { label: 'Reading your files and looking things up', tag: 'Automatic', ok: true },
+        { label: 'Writing code and running tests', tag: 'Automatic', ok: true },
+        { label: 'Setting up a paid account', tag: 'Asks first', ok: false },
+        { label: 'Sending anything to a real customer', tag: 'Asks first', ok: false }
+      ].map(g => ({
+        label: g.label, tag: g.tag,
+        dotStyle: 'width: 7px; height: 7px; flex: none; border-radius: 99px; background: ' + (g.ok ? '#34d399' : '#fbbf24') + ';',
+        tagStyle: 'font-size: 11.5px; font-weight: 600; flex: none; color: ' + (g.ok ? '#6ee7b7' : '#fcd34d') + ';'
+      })),
+
+      navItems: [
+        { label: 'Your projects', view: 'dashboard', color: '#4f46e5' },
+        { label: 'Chat with PAL', view: 'run', color: '#7c3aed' },
+        { label: 'Documents', view: 'packages', color: '#059669' },
+        { label: 'Home page', view: 'landing', color: '#c9c4b8' }
+      ].map(n => ({
+        label: n.label,
+        onClick: () => this.setState({ view: n.view }),
+        style: 'display: flex; align-items: center; gap: 11px; width: 100%; font-family: inherit; font-size: 13.5px; font-weight: ' + (s.view === n.view ? '600' : '500') + '; text-align: left; background: ' +
+          (s.view === n.view ? '#f0eee8' : 'transparent') + '; border: 0; border-radius: 9px; padding: 9px 10px; cursor: pointer; color: ' + (s.view === n.view ? '#1c1b18' : '#55524b') + ';',
+        dotStyle: 'width: 7px; height: 7px; flex: none; border-radius: 99px; background: ' + n.color + ';'
+      })),
+
+      projects: [
+        { name: 'Artispreneur', runs: '14' }, { name: 'Civic Pie', runs: '9' }, { name: 'GencyAI', runs: '7' },
+        { name: 'Atlas HXM', runs: '6' }, { name: 'ArtistEPKs', runs: '4' }, { name: 'Your48', runs: '3' }, { name: 'ROSTR', runs: '11' }
+      ],
+
+      runCountLabel: 'Showing ' + rows.length + ' of ' + RUNS.length,
+      sortLabel: 'Newest first',
+
+      inProgress: RUNS.filter(r => r.status === 'working' || r.status === 'needs you').map(r => ({
+        project: r.title, stageLabel: 'Step ' + r.stage + ' of 8',
+        barStyle: 'width: ' + Math.round(r.stage / 8 * 100) + '%; height: 100%; background: ' + (STATUS[r.status] || STATUS.working).dot + '; border-radius: 99px;'
+      })),
+
+      trend: [62, 68, 71, 70, 78, 74, 81, 85, 83, 88, 91, 94].map(v => ({
+        style: 'flex: 1; height: ' + v + '%; background: ' + (v >= 88 ? '#059669' : '#e5e1d9') + '; border-radius: 3px;'
+      })),
+
+      spend: [
+        { label: 'Understanding & jobs', value: '$118', c: '#4f46e5' },
+        { label: 'Research', value: '$164', c: '#0891b2' },
+        { label: 'Instructions & brief', value: '$97', c: '#059669' },
+        { label: 'Quality checks', value: '$33', c: '#c9c4b8' }
+      ].map(x => ({ label: x.label, value: x.value, swatchStyle: 'width: 9px; height: 9px; border-radius: 3px; flex: none; background: ' + x.c + ';' })),
+
+      agents: [
+        { name: 'Intent reader', latency: 'Fast', ok: true },
+        { name: 'Researcher', latency: 'Slow today', ok: false },
+        { name: 'Jobs mapper', latency: 'Fast', ok: true },
+        { name: 'Prioritiser', latency: 'Fast', ok: true },
+        { name: 'Instruction writer', latency: 'Fast', ok: true },
+        { name: 'Brief writer', latency: 'Fast', ok: true }
+      ].map(a => ({ name: a.name, latency: a.latency, dotStyle: 'width: 7px; height: 7px; flex: none; border-radius: 99px; background: ' + (a.ok ? '#059669' : '#d97706') + ';' })),
+
+      filters: filterOpts.map(f => ({
+        label: f[1],
+        onClick: () => this.setState({ filter: f[0] }),
+        style: 'font-family: inherit; font-size: 13px; font-weight: 500; background: ' + (s.filter === f[0] ? '#1c1b18' : 'transparent') +
+          '; border: 0; border-radius: 8px; padding: 7px 13px; cursor: pointer; color: ' + (s.filter === f[0] ? '#fff' : '#6b6860') + ';'
+      })),
+
+      wideTable,
+      tableHeadStyle: rowGrid + 'padding: 0 18px; border-bottom: 1px solid #eae7e0; background: #faf9f7;',
+      columns: cols.map(c => ({
+        label: c[1],
+        arrow: s.sortKey === c[0] ? (s.sortAsc ? ' ↑' : ' ↓') : '',
+        onClick: () => this.setState(p => ({ sortKey: c[0], sortAsc: p.sortKey === c[0] ? !p.sortAsc : false })),
+        style: 'font-family: inherit; font-size: 12px; font-weight: 600; text-align: ' + (c[0] === 'action' ? 'right' : 'left') +
+          '; background: transparent; border: 0; padding: 12px 0; cursor: pointer; color: ' + (s.sortKey === c[0] ? '#4f46e5' : '#8e8b83') + ';'
+      })),
+
+      visibleRuns: rows.map(r => Object.assign({
+        title: r.title, project: r.project, updated: r.updated, action: r.action,
+        stageLabel: r.stage + ' of 8',
+        quality: r.quality === null ? '—' : String(r.quality),
+        qualityStyle: 'font-size: 13.5px; font-weight: 600; color: ' + (r.quality === null ? '#c9c4b8' : r.quality >= 90 ? '#059669' : '#55524b') + ';',
+        barStyle: 'width: ' + Math.round(r.stage / 8 * 100) + '%; height: 100%; background: ' + (STATUS[r.status] || STATUS.working).dot + '; border-radius: 99px;',
+        rowStyle: rowGrid + 'padding: 14px 18px; border-bottom: 1px solid #f3f1ec; cursor: pointer;',
+        onClick: () => this.setState({ view: 'run' })
+      }, this.badge(r.status))),
+
+      recentArtifacts: [
+        { id: 'quality', project: 'Artispreneur · payouts', when: '4 min' },
+        { id: 'instructions', project: 'Artispreneur · payouts', when: '6 min' },
+        { id: 'evidence', project: 'Civic Pie · intake', when: '11 min' },
+        { id: 'soul', project: 'Atlas HXM · briefs', when: '3 hrs' },
+        { id: 'prd', project: 'ROSTR · integration', when: '3 days' }
+      ].map(x => {
+        const st = STAGES.find(y => y.id === x.id);
+        return { title: st.title, project: x.project, when: x.when, icon: st.icon, iconStyle: 'width: 24px; height: 24px; flex: none; border-radius: 7px; display: grid; place-items: center; font-size: 12px; background: ' + st.tint + '14; color: ' + st.tint + ';' };
+      }),
+
+      approvalsQueue: [
+        { gate: 'Set up test accounts for Artispreneur', detail: 'PAL needs a Stripe test account and a database to check the payout system works. Roughly $0–25 a month.', onClick: () => this.setState({ view: 'run', showApproval: true }) },
+        { gate: 'Let PAL edit the Your48 code', detail: 'It wants permission to make changes directly in your repository rather than suggesting them.', onClick: () => this.setState({ view: 'run', showApproval: true }) }
+      ],
+
+      activeRunProject: 'Artispreneur',
+      activeRunTitle: 'Automatic creator payouts',
+      tokenLabel: '$7.14 so far',
+      runStatusLabel: rb.statusLabel,
+      runStatusBadgeStyle: rb.badgeStyle,
+      runStatusDotStyle: rb.badgeDotStyle,
+
+      stageRail,
+      nowNextLater: [
+        { tag: 'Right now', text: 'Building the permanent record of who earned what', c: '#059669' },
+        { tag: 'Next', text: 'Creator sign-up, hidden behind a switch until you say so', c: '#4f46e5' },
+        { tag: 'Later', text: 'Your internal admin view', c: '#a3a099' }
+      ].map(n => ({ tag: n.tag, text: n.text, tagStyle: 'font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 3px; color: ' + n.c + ';' })),
+
+      messages,
+      isThinking: s.running,
+      thinkingLabel: (STAGES[Math.min(done, STAGES.length - 1)] || STAGES[0]).agent + '…',
+
+      draft: s.draft,
+      onDraft: e => this.setState({ draft: e.target.value }),
+      onKey: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.startRun(); } },
+      submitPrompt: this.startRun,
+      sendLabel: s.running ? 'Working…' : 'Send to PAL',
+      sendStyle: 'font-family: inherit; font-size: 13.5px; font-weight: 600; border: 0; border-radius: 9px; padding: 9px 17px; cursor: ' + (s.running ? 'default' : 'pointer') +
+        '; color: ' + (s.running ? '#8e8b83' : '#fff') + '; background: ' + (s.running ? '#f0eee8' : '#1c1b18') + ';',
+
+      artifactTabs: STAGES.map(st => ({
+        label: st.title, onClick: () => this.setState({ artifact: st.id }),
+        style: 'font-family: inherit; font-size: 12.5px; font-weight: ' + (s.artifact === st.id ? '600' : '500') + '; white-space: nowrap; background: transparent; border: 0; border-bottom: 2px solid ' +
+          (s.artifact === st.id ? '#4f46e5' : 'transparent') + '; color: ' + (s.artifact === st.id ? '#1c1b18' : '#8e8b83') + '; padding: 21px 10px 19px; cursor: pointer;'
+      })),
+      activeArtifactTitle: activeStage.title,
+      activeArtifactFile: activeStage.file,
+      artifactLines: artifactReady ? this.lines(ART[activeStage.id]) : [{ text: 'PAL hasn\u2019t written this one yet — it comes after the earlier steps finish.', style: 'color: #a3a099; font-style: italic;' }],
+      copyArtifact: () => this.flash('Copied "' + activeStage.title + '"'),
+      downloadArtifact: () => this.flash('Downloading "' + activeStage.title + '"'),
+      downloadAll: () => this.flash('Downloading all 8 documents as a zip'),
+
+      packageFiles: STAGES.map((st, i) => ({
+        title: st.title, file: st.file, icon: st.icon,
+        iconStyle: 'width: 34px; height: 34px; flex: none; border-radius: 10px; display: grid; place-items: center; font-size: 15px; background: ' + st.tint + '14; color: ' + st.tint + ';',
+        blurb: {
+          intent: "Your goal in plain words, plus what we're deliberately leaving out.",
+          evidence: 'Every source we checked, ranked by how much to trust it.',
+          jtbd: 'What people and systems must be able to do, and how we prove it.',
+          plan: 'The build, stage by stage, in the order things have to happen.',
+          instructions: 'The handoff for an AI coding tool.',
+          prd: "The document you'd hand a developer or an investor.",
+          soul: 'How the AI should behave, and when it should refuse.',
+          quality: 'An honest score, including where the plan is weakest.'
+        }[st.id],
+        meta: ['3 min read', '23 sources', '6 jobs', '5 stages · 15 days', '5 phases', '12 min read', 'Locked once approved', 'Scored 94'][i],
+        badge: i === 3 ? 'Needs you' : 'Checked',
+        badgeStyle: i === 3
+          ? 'font-size: 11.5px; font-weight: 600; flex: none; color: #b45309; background: #fffbeb; border: 1px solid #fcd9a0; border-radius: 999px; padding: 3px 10px;'
+          : 'font-size: 11.5px; font-weight: 600; flex: none; color: #047857; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 999px; padding: 3px 10px;',
+        onView: () => this.setState({ view: 'run', artifact: st.id, paneOpen: true })
+      })),
+
+      narrow, compact,
+      showTokenLabel: w >= 1180,
+      paneVisible: !narrow || s.paneOpen,
+      paneToggleLabel: s.paneOpen ? 'Hide documents' : 'Documents',
+      togglePane: () => this.setState(p => ({ paneOpen: !p.paneOpen })),
+      closePane: () => this.setState({ paneOpen: false }),
+      showScrim: narrow && s.paneOpen,
+      stageRailStyle: compact ? 'display: none;' : 'width: ' + (narrow ? 216 : 254) + 'px; flex: none; border-right: 1px solid #eae7e0; display: flex; flex-direction: column;',
+      artifactPaneStyle: narrow
+        ? 'position: fixed; top: 60px; right: 0; bottom: 0; width: 420px; max-width: 92vw; z-index: 60; display: flex; flex-direction: column; background: #fff; border-left: 1px solid #eae7e0; box-shadow: -24px 0 60px -20px rgba(28,27,24,0.22);'
+        : 'width: 440px; flex: none; display: flex; flex-direction: column; background: #fff; border-left: 1px solid #eae7e0;',
+      dashSidebarStyle: compact ? 'display: none;' : 'width: 234px; flex: none; border-right: 1px solid #eae7e0; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;',
+      metricGridStyle: 'display: grid; grid-template-columns: repeat(' + (w < 1100 ? 2 : 4) + ', minmax(0, 1fr)); gap: 14px;',
+      bottomGridStyle: w < 1100 ? 'display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px;' : 'display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px;',
+      packageGridStyle: 'display: grid; grid-template-columns: repeat(' + (w < 900 ? 1 : 2) + ', minmax(0, 1fr)); gap: 14px;',
+      artifactCardGridStyle: 'display: grid; grid-template-columns: repeat(' + (w < 780 ? 2 : w < 1100 ? 3 : 4) + ', minmax(0, 1fr)); gap: 14px;',
+
+      showApproval: s.showApproval,
+      openApproval: () => this.setState({ showApproval: true }),
+      closeApproval: () => this.setState({ showApproval: false }),
+      stop: e => e.stopPropagation(),
+      approveGate: () => { this.setState({ showApproval: false, gateResolved: 'approved', view: 'run' }); this.flash('Approved — PAL is carrying on'); },
+      rejectGate: () => { this.setState({ showApproval: false, gateResolved: 'rejected', view: 'run' }); this.flash("Declined — PAL switched to a no-cost approach"); },
+      approvalSections: [
+        { label: 'What I want to do', body: "Set up a Stripe test account and a database, and give myself permission to read account status and change the database structure. I will not be able to move any real money." },
+        { label: 'Why I need it', body: "I can't properly test what happens when a payment fails without a real test environment. Faking it would hide exactly the problems this is meant to catch." },
+        { label: 'What it costs you', body: 'Somewhere between nothing and about $25 a month while we build. No real money moves. Both permissions are read-only on the Stripe side.' },
+        { label: 'If you say no', body: "I'll use fake payments instead. Stages 1, 2 and 4 carry on as normal; the payout run waits about four extra days until you're comfortable." }
+      ],
+
+      hasToast: s.toast !== '',
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

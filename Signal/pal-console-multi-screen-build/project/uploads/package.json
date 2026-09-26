@@ -1,0 +1,17 @@
+{
+  "name": "rostr-pal",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @rostr/console dev",
+    "build": "pnpm --filter @rostr/console build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "db:migrate": "cd supabase && npx supabase db push",
+    "db:seed": "cd supabase && npx supabase db reset"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.1.0"
+}

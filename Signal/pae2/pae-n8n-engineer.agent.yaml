@@ -1,0 +1,58 @@
+id: pae-n8n-engineer
+name: PAE n8n Engineer
+version: 1.0.0
+status: draft
+owner: prospect-pal
+model_role: compiler
+default_model: anthropic/claude-sonnet-4.5
+
+description: >
+  Compiles a Prospect Automation Engine into n8n-importable JSON
+  from ICP, persona, product, company, and tool intake.
+
+memory_namespace: orgs/{org_id}/pae-compiler/{project_id}
+
+modes:
+  - compile
+  - edit
+
+tool_allowlist:
+  - workspace-file-read
+  - workspace-file-write
+  - sandbox-cli
+  - endpoint-http-client
+  - rag-dal-research
+
+denied_tools:
+  - raw-secret-export
+  - unapproved-external-messaging
+  - unapproved-production-write
+
+native_mcps: []
+composio_toolkits: []
+
+approval_triggers:
+  - arm_sequence_send
+  - deploy_to_n8n_instance
+  - enable_composio_canvas_push
+
+skills:
+  - skills/pae-n8n-engineer/SKILL.md
+  - skills/pae-n8n-engineer/intake.md
+
+templates:
+  core: templates/pae-core.template.json
+  adapters:
+    - templates/adapters/hubspot.adapter.json
+    - templates/adapters/amplemarket.adapter.json
+
+scripts:
+  compile: scripts/compile_pae.py
+  validate: scripts/validate_workflow.py
+
+evals: evals/cases.yaml
+
+prerequisites:
+  - n8n instance
+  - llm provider
+  - data tool

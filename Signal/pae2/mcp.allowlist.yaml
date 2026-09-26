@@ -1,0 +1,16 @@
+# Default empty. This agent compiles JSON; it does not call tenant CRMs.
+native_mcps: []
+composio_toolkits: []
+
+# Optional later (approval required)
+future:
+  - id: n8n
+    purpose: Import compiled workflow to the client's instance
+    approval_required: true
+  - id: composio-canvas
+    purpose: Push graph onto the client's n8n canvas
+    approval_required: true
+
+policy:
+  default_write_risk: deny
+  secrets: never_in_mcp_args

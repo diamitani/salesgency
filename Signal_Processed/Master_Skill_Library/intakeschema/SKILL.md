@@ -1,0 +1,88 @@
+---
+name: intakeschema
+description: Process/Note derived from intake.schema.json
+source_path: pae2/intake.schema.json
+---
+
+# intake.schema.json
+
+## Context
+This skill provides knowledge, processes, and instructions derived from the document: `intake.schema.json`.
+Use this information to inform GTM strategies, sales playbooks, automation engine logic, and CRM setup.
+
+## Knowledge Source
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pae.intake",
+  "title": "PAE compiler intake",
+  "type": "object",
+  "required": ["company", "product", "icp", "persona", "data_tool", "llm", "trigger"],
+  "additionalProperties": false,
+  "properties": {
+    "company": {
+      "type": "object",
+      "required": ["name", "background"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "background": { "type": "string", "minLength": 1 },
+        "website": { "type": "string" }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": ["offer"],
+      "properties": {
+        "offer": { "type": "string" },
+        "proof": { "type": "array", "items": { "type": "string" } },
+        "banned_claims": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "icp": {
+      "type": "object",
+      "properties": {
+        "industries": { "type": "array", "items": { "type": "string" } },
+        "headcount_min": { "type": "integer" },
+        "headcount_max": { "type": "integer" },
+        "locations": { "type": "array", "items": { "type": "string" } },
+        "signals": { "type": "array", "items": { "type": "string" } },
+        "disqualifiers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "persona": {
+      "type": "object",
+      "properties": {
+        "titles": { "type": "array", "items": { "type": "string" } },
+        "departments": { "type": "array", "items": { "type": "string" } },
+        "language": { "type": "string" }
+      }
+    },
+    "data_tool": { "type": "string" },
+    "crm": { "type": "string" },
+    "llm": { "type": "string" },
+    "outreach": {
+      "type": "object",
+      "properties": {
+        "mode": { "enum": ["sequence", "mailbox", "omitted"] },
+        "tool": { "type": "string" },
+        "sequence_id": { "type": "string" },
+        "inbox": { "type": "string" }
+      }
+    },
+    "trigger": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["search", "csv"] }
+      }
+    },
+    "volume": {
+      "type": "object",
+      "properties": {
+        "companies_per_run": { "type": "integer", "minimum": 1, "default": 1 },
+        "contacts_per_company": { "type": "integer", "minimum": 1, "default": 3 }
+      }
+    },
+    "send_policy": { "enum": ["draft", "approve", "armed"] }
+  }
+}

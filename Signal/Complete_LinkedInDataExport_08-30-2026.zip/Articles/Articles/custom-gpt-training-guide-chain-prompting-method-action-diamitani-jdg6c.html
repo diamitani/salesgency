@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>Custom GPT Training Guide - Chain Prompting Method (With Action Schemas)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img class="series-logo" src="https://media.licdn.com/dms/image/v2/D5612AQEYV4Npqpxv8w/series-logo_image-shrink_300_300/B56ZVMIneDHsAQ-/0/1740739082461?e=1789603200&v=beta&t=w64xb9r_xqBWQzHt8z7-fUki1-JSC_2d8CQWtcHpCbM" />
+    <h3>
+      <span class="series-title">LiveBuildAI</span>
+      </br>
+      <span class="series-description">Everything You Need to Know to Live and Build AI. Aggregated from the best sources across the web.</span>
+    </h3>
+    <img src="https://media.licdn.com/mediaD5612AQGpnWAYxEz-tA" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/custom-gpt-training-guide-chain-prompting-method-action-diamitani-jdg6c">Custom GPT Training Guide - Chain Prompting Method (With Action Schemas)</a></h1>
+    <p class="created">Created on 2025-05-04 07:31</p>
+  <p class="published">Published on 2025-05-04 11:00</p>
+  <div><h2>Overview</h2><p>This training guides you through the complete process of building a Custom GPT using ChatGPT’s Custom GPT Builder combined with the Chain Prompting Method.&nbsp;</p><p>Chain Prompting, as used in this training, is a structured workflow that starts by defining your assistant’s purpose, then uses a series of specialized GPTs (Instruction Architect, Knowledge Base Architect, Funky) to generate system instructions, knowledge files, and action schemas.&nbsp;</p><p>Each output feeds into the next, allowing you to create fully customized GPTs step by step - from idea to deployed assistant using repeatable, modular prompts.</p><p>By the end, you’ll have a fully functional, personalized AI assistant ready for any project and the option to publish it to the GPT Store.</p><hr><h2>What is a Custom GPT?</h2><p>A <strong>Custom GPT</strong> is a personalized AI assistant you can create using ChatGPT, allowing you to control how it behaves, what it knows, and what tasks it can perform.</p><hr><h2>Accessing the Custom GPT Builder:</h2><ul><li><p>Subscribe to <strong>ChatGPT Plus</strong> ($20/month).</p></li><li><p>Click the circle with your name (top right in ChatGPT).</p></li><li><p>Select <strong>"My GPTs."</strong></p></li><li><p>Click <strong>"Create GPT."</strong></p></li></ul><p><strong>Link:</strong> <a href="http://chatgpt.com/gpts/editor" target="_blank">chatgpt.com/gpts/editor</a></p><hr><h2>Configurations Breakdown</h2><p>When setting up your Custom GPT, you’ll fill out these fields:</p><p><strong>Name</strong></p><ul><li><p>What to enter: The name of your Assistant.</p></li><li><p>Purpose: This is how users will recognize your GPT.</p></li></ul><p><strong>Description</strong></p><ul><li><p><strong>What to enter: </strong>A short summary of what your GPT will do.</p></li><li><p><strong>Purpose:</strong> Explains the general function of your GPT to users.</p></li></ul><p><strong>System Instructions</strong></p><ul><li><p><strong>What to enter:</strong> How your GPT should act - tone, personality, tasks, and any rules.</p></li><li><p><strong>Purpose:</strong> Controls how the GPT responds and behaves.</p></li></ul><h3>Knowledge Base</h3><ul><li><p><strong>What to enter:</strong> Files or documents you want the GPT to use for extra knowledge.</p></li><li><p><strong>Purpose:</strong> Helps your GPT understand specific topics or industries beyond its default data.</p></li></ul><p><strong>Conversation Starters</strong></p><ul><li><p><strong>What to enter: </strong>Example questions or prompts for users to try.</p></li><li><p><strong>Purpose:</strong> Gives users ideas on how to interact with your GPT.</p></li></ul><p><strong>Capabilities</strong></p><ul><li><p><strong>Browsing</strong>: Lets GPT search the internet.</p></li><li><p><strong>Code Interpreter</strong>: Allows GPT to run code and handle data.</p></li><li><p><strong>DALL·E</strong>: Lets GPT generate images.</p></li><li><p><strong>File Search: </strong>Upload documents the GPT can search and reference during chats.</p></li><li><p><strong>Canvas: </strong>Split-screen interface for productivity tasks.</p></li></ul><h3>Action Schemas (Advanced/Optional)</h3><p>Action schemas are structured commands that let GPT trigger actions using APIs or webhooks.</p><ul><li><p><strong>Examples: </strong>Login to Gmail and send email, Upload a file to Google Drive Make a log entry in a CRM.</p></li><li><p><strong>Purpose:</strong> Lets GPT perform external tasks by connecting to real-world apps or services (requires scripting and hosting backend functions).</p></li></ul><hr><h2>Step 1: Create System Instructions — Instruction Architect</h2><p>This step helps you write the <strong>System Instructions</strong> that tell your GPT how to behave, what tone to use, what type of users it’s helping, and any rules or workflows it should follow. You can either write the instructions yourself or use the <a href="https://chatgpt.com/g/g-676964c88b088191b70dcd4133ae2595-1-system-instruction-architect" target="_blank"><strong>Instruction Architect</strong></a> tool to automatically generate them by providing a simple prompt describing what you want your GPT to do. The output will be a full set of instructions that you’ll paste into the GPT Build</p><ul><li><p><strong>Tool:</strong> <a href="https://chatgpt.com/g/g-676964c88b088191b70dcd4133ae2595-1-system-instruction-architect" target="_blank">Instruction Architect</a></p></li><li><p><strong>Prompt: </strong>"Please use the following prompt to generate system instructions for my assistant: (your prompt/idea)."</p></li><li><p><strong>Output:</strong> Full <strong>System Instructions</strong> (personality, tone, workflow, compliance rules).</p></li></ul><hr><h2>Step 2: Define Functions (Optional) — Funky</h2><p>This step lets you create <strong>Function Schemas</strong>, which allow your GPT to perform advanced tasks like sending emails, searching databases, or calling APIs. You can write the schemas manually or use the <strong>Funky (Function Schema Builder)</strong> tool to generate them automatically based on your System Instructions.&nbsp;</p><p>If this is too complicated, or unnecessary, just skip this part. For more details on how to fully create action schemas and deploy them, follow our instructions at the end of this guide. Even without actions, your custom GPTs can still be very powerful.</p><ul><li><p><strong>Tool</strong>: <a href="https://chatgpt.com/g/g-MW14VqXOV-funky" target="_blank">Funky (Function Schema Builder)</a></p></li><li><p><strong>Prompt:</strong> <em>"Please use the following system instructions to generate OpenAI function schemas for this assistant."</em></p></li><li><p><strong>Output: </strong>A <strong>Function Schema in JSON format</strong> (defines expected inputs/outputs for your GPT).</p></li></ul><p><strong><em>*Important:</em></strong></p><ul><li><p>Function Schemas only define the actions your GPT can call.</p></li><li><p>You must also create and host the actual backend function (the code that does the work) on a platform like <a href="https://www.vercel.com" target="_blank"><strong>Vercel</strong></a>, <a href="https://www.netlify.com" target="_blank"><strong>Netlify</strong></a>, <a href="https://www.replit.com" target="_blank"><strong>Replit</strong></a>, or your own server.</p></li><li><p>Once hosted, you'll provide the HTTPS endpoint (URL) in the GPT Builder when setting up Actions.</p></li></ul><hr><h2>Step 3: Build Knowledge Base — Knowledge Base Architect</h2><p>This step helps you gather and organize important reference information that your GPT will use to answer questions or provide expert guidance. The <strong>Knowledge Base Architect</strong> can automatically compile verified, recent information into a format that can be uploaded into GPT Builder.</p><ul><li><p><strong>Tool:</strong> <a href="https://chatgpt.com/g/g-679e8aa68d70819185c2f072b4bf2065-autonomous-rag-builder" target="_blank">Knowledge Base Architect</a></p></li><li><p><strong>Prompt: </strong>"Please use the following data to create a verified Knowledge Base from trusted, recent sources: (paste system instructions and action schema if necessary).”</p></li><li><p><strong>Output:</strong> A table of resources (Markdown or table format) with links to trusted, recent sources.</p></li></ul><p><strong>You can:</strong></p><ul><li><p>Download the table and upload it to your Custom GPT as a Knowledge File.</p></li><li><p>If a link points to a PDF, download and upload the PDF file directly.</p></li><li><p>If a link points to a website, open the page, right-click, select <em>Print</em>, and save it as a PDF. Then upload the PDF to your Custom GPT.</p></li><li><p>Alternatively, link to the live table or web pages inside your GPT’s instructions if you prefer to keep resources online.</p></li></ul><p><strong>How It Works:</strong></p><ul><li><p>You provide your GPT’s <strong>System Instructions</strong> and (optional) <strong>Function Schema</strong>.</p></li><li><p>The Knowledge Base Architect generates a table of trusted, relevant sources.</p></li><li><p>You download/save each source as a PDF or collect the table itself.</p></li><li><p>You upload the files directly into GPT Builder <em>Knowledge</em> section</p></li></ul><p><strong>Important:</strong></p><ul><li><p>If you don’t provide a Knowledge Base, your GPT will only use its default training data.</p></li><li><p>A good Knowledge Base makes your GPT much more reliable for specific topics or industries.</p></li><li><p>Update your Knowledge Base regularly to keep the content fresh.</p></li></ul><hr><h2>Closing</h2><p>And that's all, folks! Once your GPT is fully configured, you can test it, make adjustments, and publish it for private use or share it publicly in the GPT Store.</p><hr><h2>**Instructions for Hosting Functions (Basic Outline):</h2><ol><li><p><strong>Write the function code</strong> - Use <a href="https://chatgpt.com/g/g-MW14VqXOV-funky" target="_blank">Funky GPT</a></p></li><li><p><strong>Deploy the function</strong> - Use platforms like:</p></li><li><p><strong>Copy the function’s URL</strong> — You’ll paste this into GPT Builder’s <em>Action</em> setup.</p></li><li><p><strong>Test the action</strong> — Make sure the function responds correctly to the GPT’s structured requests.</p></li></ol><h2>Example Function Template + Hosting Guide</h2><p><strong>Use this to connect your GPT’s Function Schema to a working backend function.</strong></p><h3>Example: Simple "Say Hello" Function (Node.js)</h3><p>javascript</p><p>// hello.js</p><p>export default function handler(req, res) {</p><p>&nbsp;&nbsp;&nbsp;&nbsp;const name = <a href="http://req.query.name" target="_blank">req.query.name</a> || "there";</p><p>&nbsp;&nbsp;&nbsp;&nbsp;res.status(200).json({ message: Hello, $​{name}! });</p><p>}</p><hr><h3>How to Host this Function on Vercel</h3><ol><li><p><strong>Create a free account at</strong> <a href="http://vercel.com" target="_blank">vercel.com</a>.</p></li><li><p><strong>Install the Vercel CLI</strong> (optional for advanced users).</p></li><li><p><strong>Create a folder</strong> on your computer.</p></li><li><p>Inside that folder, create an api folder.</p></li><li><p>Place your function in api/hello.js. Your structure should look like:</p></li></ol><p>javascript</p><p>my-function/</p><p>├── api/</p><p>│ &nbsp; └── hello.js</p><ol><li><p><strong>Go to your terminal and run:</strong></p></li></ol><p>bash</p><p>vercel</p><ol><li><p>Vercel will upload your function and give you a <strong>public URL</strong> like:</p></li></ol><p>arduino</p><p><a href="https://my-function.vercel.app/api/hello" target="_blank">https://my-function.vercel.app/api/hello</a></p><ol><li><p><strong>Use this URL</strong> in your GPT Builder <em>Actions</em> setup.</p></li></ol><hr><h3>Example Function Schema (for GPT Builder)</h3><p>json</p><p>{</p><p>&nbsp;&nbsp;"name": "say_hello",</p><p>&nbsp;&nbsp;"description": "Greets the user by name.",</p><p>&nbsp;&nbsp;"parameters": {</p><p>&nbsp;&nbsp;&nbsp;&nbsp;"type": "object",</p><p>&nbsp;&nbsp;&nbsp;&nbsp;"properties": {</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": {</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type": "string",</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description": "The name of the person to greet"</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p>&nbsp;&nbsp;&nbsp;&nbsp;},</p><p>&nbsp;&nbsp;&nbsp;&nbsp;"required": ["name"]</p><p>&nbsp;&nbsp;}</p><p>}</p><ul><li><p><strong>Paste this in GPT Builder</strong> when adding an Action.</p></li><li><p><strong>Link it to your Vercel function’s URL</strong>.</p></li></ul><hr><h3>Summary</h3><ol><li><p>Write your function code</p></li><li><p>Deploy it to Vercel or Netlify</p></li><li><p>Get the public HTTPS URL</p></li><li><p>Add a matching Function Schema to GPT Builder</p></li><li><p>Link the URL and test</p></li></ol></div>
+</body>
+</html>

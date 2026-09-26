@@ -1,0 +1,518 @@
+---
+name: pae-coretemplate
+description: Template derived from pae-core.template.json
+source_path: pae2/pae-core.template.json
+---
+
+# pae-core.template.json
+
+## Context
+This skill provides knowledge, processes, and instructions derived from the document: `pae-core.template.json`.
+Use this information to inform GTM strategies, sales playbooks, automation engine logic, and CRM setup.
+
+## Knowledge Source
+
+{
+  "name": "PAE — {{company.slug}}",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## PAE core template v1.0.0\nCompiler: replace `https://pae.local/replace/*` URLs and `{{token}}` strings from adapters.\nNever embed API keys. Sequence node stays disabled until send is armed.\nStages: trigger → company → CRM exclude → contacts → CRM upsert → research → copy → approval → enroll/alert.",
+        "height": 220,
+        "width": 360,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-80, 40],
+      "id": "pae-note-legend",
+      "name": "Note — Compiler Legend"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * 1-5"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [360, 280],
+      "id": "pae-trigger-schedule",
+      "name": "Trigger — Schedule"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pae-company-upload",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [360, 560],
+      "id": "pae-trigger-csv",
+      "name": "Trigger — CSV Upload",
+      "webhookId": "pae-company-upload"
+    },
+    {
+      "parameters": {
+        "jsCode": "const src = $input.first().json || {};\nconst companies = Array.isArray(src.companies) ? src.companies : (src.company_name || src.domain || src.name ? [src] : []);\nconst companyLimit = Number(src.company_limit ?? '{{volume.companies_per_run}}' || 1);\nconst contactsPer = Number(src.contacts_per_company ?? '{{volume.contacts_per_company}}' || 3);\nconst rows = (companies.length ? companies : [{ source: 'empty-trigger' }]).slice(0, companyLimit);\nreturn rows.map((row) => ({\n  json: {\n    raw: row,\n    company_limit: companyLimit,\n    contacts_per_company: contactsPer,\n    send_armed: src.send_armed === true,\n    trigger: $node['Trigger — Schedule'] ? 'search' : 'csv',\n    source: row.source || 'trigger'\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [620, 400],
+      "id": "pae-set-limits",
+      "name": "Set — Run Limits"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/data-find-companies",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { limit: $json.company_limit, icp: '{{compiled.icp_query}}' } }}",
+        "options": { "timeout": 30000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [880, 280],
+      "id": "pae-data-find-companies",
+      "name": "Data — Find Companies",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json || {};\nconst raw = item.raw || item.results?.[0] || item.companies?.[0] || item.properties || item;\nconst props = raw.properties || raw;\nconst domain = String(props.company_domain || props.domain || props.website || props.url || '')\n  .replace(/^https?:\\/\\//i, '')\n  .replace(/^www\\./i, '')\n  .split('/')[0]\n  .toLowerCase();\nconst name = props.company_name || props.name || domain;\nif (!domain && !name) return [];\nreturn [{\n  json: {\n    company_name: name,\n    company_domain: domain,\n    company_url: props.company_url || props.url || (domain ? `https://${domain}` : ''),\n    linkedin_url: props.linkedin_url || props.linkedin_company_page || '',\n    employee_count: props.employee_count || props.numberofemployees || null,\n    industry: props.industry || null,\n    location: props.location || props.state || null,\n    signals: props.signals || [],\n    source: item.source || 'data',\n    crm_stage: props.lifecyclestage || props.crm_stage || null,\n    company_limit: item.company_limit,\n    contacts_per_company: item.contacts_per_company,\n    send_armed: item.send_armed === true\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1140, 400],
+      "id": "pae-normalize-company",
+      "name": "Normalize — Company Input"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/crm-exclude-company",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { domain: $json.company_domain } }}",
+        "options": { "timeout": 20000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [1400, 400],
+      "id": "pae-crm-exclude",
+      "name": "CRM — Exclude Existing",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const company = $node['Normalize — Company Input'].json;\nconst crm = $input.first().json || {};\nconst results = crm.results || crm.records || [];\nconst blocked = new Set(['opportunity','customer','evangelist','salesqualifiedlead','subscriber','lead','prospect']);\nconst hit = results.find((row) => {\n  const stage = String(row.properties?.lifecyclestage || row.crm_stage || row.stage || '').toLowerCase();\n  return blocked.has(stage);\n});\nreturn [{\n  json: {\n    ...company,\n    crm_stage: hit?.properties?.lifecyclestage || company.crm_stage,\n    crm_company_id: hit?.id || null,\n    keep_company: !hit\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1660, 400],
+      "id": "pae-crm-filter",
+      "name": "Normalize — CRM Filter"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "keep-company",
+              "leftValue": "={{ $json.keep_company }}",
+              "rightValue": true,
+              "operator": { "type": "boolean", "operation": "true", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1920, 400],
+      "id": "pae-if-keep-company",
+      "name": "IF — Keep New Company"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/data-find-contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { company_name: $json.company_name, company_domain: $json.company_domain, limit: $json.contacts_per_company } }}",
+        "options": { "timeout": 30000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [2180, 280],
+      "id": "pae-data-find-contacts",
+      "name": "Data — Find Contacts",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const company = $node['Normalize — CRM Filter'].json;\nconst payload = $input.first().json || {};\nconst people = payload.results || payload.people || payload.contacts || (payload.email || payload.work_email ? [payload] : []);\nconst limit = Number(company.contacts_per_company || 3);\nreturn people.slice(0, limit).map((person) => {\n  const p = person.properties || person;\n  return {\n    json: {\n      first_name: p.first_name || p.firstname || '',\n      last_name: p.last_name || p.lastname || '',\n      full_name: p.full_name || p.name || `${p.first_name || ''} ${p.last_name || ''}`.trim(),\n      title: p.title || p.job_title || '',\n      department: p.department || '',\n      work_email: p.work_email || p.email || '',\n      phone: p.phone || p.mobile_phone || '',\n      linkedin_url: p.linkedin_url || p.linkedin || '',\n      ample_url: p.url || p.ample_url || '',\n      company_name: company.company_name,\n      company_domain: company.company_domain,\n      company_url: company.company_url,\n      source: 'data',\n      crm_contact_id: null,\n      send_armed: company.send_armed === true,\n      contacts_per_company: company.contacts_per_company\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2440, 280],
+      "id": "pae-normalize-contact",
+      "name": "Normalize — Contact Output"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://pae.local/replace/data-get-email",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "url", "value": "={{ $json.ample_url || $json.linkedin_url }}" }
+          ]
+        },
+        "options": { "timeout": 20000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [2700, 280],
+      "id": "pae-data-get-email",
+      "name": "Data — Get Email",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const contact = $node['Normalize — Contact Output'].json;\nconst enrich = $input.first().json || {};\nconst email = enrich.email || enrich.work_email || enrich.work_emails?.[0] || contact.work_email;\nreturn [{ json: { ...contact, work_email: email || contact.work_email } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2960, 280],
+      "id": "pae-merge-email",
+      "name": "Normalize — Email Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/crm-upsert-contact",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { email: $json.work_email, firstname: $json.first_name, lastname: $json.last_name, jobtitle: $json.title, company: $json.company_name } }}",
+        "options": { "timeout": 20000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [3220, 280],
+      "id": "pae-crm-upsert",
+      "name": "CRM — Upsert Contact",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const contact = $node['Normalize — Email Merge'].json;\nconst crm = $input.first().json || {};\nconst id = crm.results?.[0]?.id || crm.id || null;\nreturn [{ json: { ...contact, crm_contact_id: id } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3480, 280],
+      "id": "pae-attach-crm-id",
+      "name": "Normalize — CRM Id"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/research-web",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { url: $json.company_url, company_name: $json.company_name } }}",
+        "options": { "timeout": 30000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [3740, 280],
+      "id": "pae-research-web",
+      "name": "Research — Web Context",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/llm-research",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { system: $env.PAE_RESEARCH_SYSTEM_PROMPT || '{{compiled.research_system_prompt}}', contact: $node['Normalize — CRM Id'].json, research: $json } }}",
+        "options": { "timeout": 60000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [4000, 280],
+      "id": "pae-ai-research",
+      "name": "AI — Pain Hypothesis"
+    },
+    {
+      "parameters": {
+        "jsCode": "const contact = $node['Normalize — CRM Id'].json;\nconst ai = $input.first().json || {};\nconst text = ai.content?.[0]?.text || ai.choices?.[0]?.message?.content || ai.pain_hypothesis || '';\nlet parsed = {};\ntry { parsed = typeof text === 'string' ? JSON.parse(text) : (ai.pain_hypothesis ? ai : text); } catch { parsed = { pain_hypothesis: String(text) }; }\nreturn [{\n  json: {\n    ...contact,\n    company_summary: parsed.company_summary || '',\n    evidence: parsed.evidence || [],\n    relevant_signals: parsed.relevant_signals || [],\n    pain_hypothesis: parsed.pain_hypothesis || '',\n    value_proposition: parsed.value_proposition || '',\n    confidence: parsed.confidence || 'low'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4260, 280],
+      "id": "pae-normalize-research",
+      "name": "Normalize — Research"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/llm-email",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { system: $env.PAE_EMAIL_SYSTEM_PROMPT || '{{compiled.email_system_prompt}}', contact: $json } }}",
+        "options": { "timeout": 60000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [4520, 280],
+      "id": "pae-ai-email",
+      "name": "AI — Campaign Copy"
+    },
+    {
+      "parameters": {
+        "jsCode": "const research = $node['Normalize — Research'].json;\nconst ai = $input.first().json || {};\nconst text = ai.content?.[0]?.text || ai.choices?.[0]?.message?.content || '';\nlet parsed = {};\ntry { parsed = typeof text === 'string' ? JSON.parse(text) : ai; } catch { parsed = {}; }\nconst emails = parsed.emails || [1,2,3,4,5,6,7].map((step) => ({ step, subject: parsed.subject || '', body: parsed.body || '' }));\nreturn [{\n  json: {\n    ...research,\n    emails,\n    linkedin: parsed.linkedin || { connection_note: '', dm: '', inmail: '' },\n    approval_status: 'draft',\n    send_armed: research.send_armed === true\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4780, 280],
+      "id": "pae-normalize-copy",
+      "name": "Normalize — Campaign Copy"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "armed",
+              "leftValue": "={{ $json.send_armed }}",
+              "rightValue": true,
+              "operator": { "type": "boolean", "operation": "true", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [5040, 280],
+      "id": "pae-if-approval",
+      "name": "Approval — Send Policy"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/sequence-enroll",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { email: $json.work_email, first_name: $json.first_name, sequence_id: '{{adapter.sequence.id}}', inbox: '{{adapter.sequence.inbox}}', body: $json.emails?.[0]?.body } }}",
+        "options": { "timeout": 20000 }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [5300, 160],
+      "id": "pae-sequence-enroll",
+      "name": "Sequence — Enroll",
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pae.local/replace/alert",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { text: 'PAE draft ready', company: $json.company_name, email: $json.work_email, hypothesis: $json.pain_hypothesis, subject: $json.emails?.[0]?.subject } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [5300, 440],
+      "id": "pae-alert",
+      "name": "Alert — Review or Failure",
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Trigger — Schedule": {
+      "main": [[{ "node": "Set — Run Limits", "type": "main", "index": 0 }]]
+    },
+    "Trigger — CSV Upload": {
+      "main": [[{ "node": "Set — Run Limits", "type": "main", "index": 0 }]]
+    },
+    "Set — Run Limits": {
+      "main": [[{ "node": "Data — Find Companies", "type": "main", "index": 0 }]]
+    },
+    "Data — Find Companies": {
+      "main": [[{ "node": "Normalize — Company Input", "type": "main", "index": 0 }]]
+    },
+    "Normalize — Company Input": {
+      "main": [[{ "node": "CRM — Exclude Existing", "type": "main", "index": 0 }]]
+    },
+    "CRM — Exclude Existing": {
+      "main": [[{ "node": "Normalize — CRM Filter", "type": "main", "index": 0 }]]
+    },
+    "Normalize — CRM Filter": {
+      "main": [[{ "node": "IF — Keep New Company", "type": "main", "index": 0 }]]
+    },
+    "IF — Keep New Company": {
+      "main": [
+        [{ "node": "Data — Find Contacts", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Data — Find Contacts": {
+      "main": [[{ "node": "Normalize — Contact Output", "type": "main", "index": 0 }]]
+    },
+    "Normalize — Contact Output": {
+      "main": [[{ "node": "Data — Get Email", "type": "main", "index": 0 }]]
+    },
+    "Data — Get Email": {
+      "main": [[{ "node": "Normalize — Email Merge", "type": "main", "index": 0 }]]
+    },
+    "Normalize — Email Merge": {
+      "main": [[{ "node": "CRM — Upsert Contact", "type": "main", "index": 0 }]]
+    },
+    "CRM — Upsert Contact": {
+      "main": [[{ "node": "Normalize — CRM Id", "type": "main", "index": 0 }]]
+    },
+    "Normalize — CRM Id": {
+      "main": [[{ "node": "Research — Web Context", "type": "main", "index": 0 }]]
+    },
+    "Research — Web Context": {
+      "main": [[{ "node": "AI — Pain Hypothesis", "type": "main", "index": 0 }]]
+    },
+    "AI — Pain Hypothesis": {
+      "main": [[{ "node": "Normalize — Research", "type": "main", "index": 0 }]]
+    },
+    "Normalize — Research": {
+      "main": [[{ "node": "AI — Campaign Copy", "type": "main", "index": 0 }]]
+    },
+    "AI — Campaign Copy": {
+      "main": [[{ "node": "Normalize — Campaign Copy", "type": "main", "index": 0 }]]
+    },
+    "Normalize — Campaign Copy": {
+      "main": [[{ "node": "Approval — Send Policy", "type": "main", "index": 0 }]]
+    },
+    "Approval — Send Policy": {
+      "main": [
+        [{ "node": "Sequence — Enroll", "type": "main", "index": 0 }],
+        [{ "node": "Alert — Review or Failure", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "paeTemplateVersion": "1.0.0",
+    "paeKind": "core",
+    "replaceUrls": [
+      "https://pae.local/replace/data-find-companies",
+      "https://pae.local/replace/crm-exclude-company",
+      "https://pae.local/replace/data-find-contacts",
+      "https://pae.local/replace/data-get-email",
+      "https://pae.local/replace/crm-upsert-contact",
+      "https://pae.local/replace/research-web",
+      "https://pae.local/replace/llm-research",
+      "https://pae.local/replace/llm-email",
+      "https://pae.local/replace/sequence-enroll",
+      "https://pae.local/replace/alert"
+    ]
+  },
+  "tags": [
+    { "name": "pae-core" }
+  ]
+}

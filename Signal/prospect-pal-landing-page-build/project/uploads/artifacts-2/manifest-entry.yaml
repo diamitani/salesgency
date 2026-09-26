@@ -1,0 +1,42 @@
+id: master-saas-webapp-builder
+name: Master SaaS Web App Builder
+version: 0.1.0
+status: draft
+owner: rostr-pal-skill-builder
+category: implementation
+entrypoint: master-saas-webapp-builder.SKILL.md
+trigger: Product brief requesting an end-to-end web application with planning, scaffolding, integrations, testing, and launch preparation.
+distinguishes_from:
+  - id: pal-website-agent
+    distinction: pal-website-agent implements a configured agent-SaaS package; this skill governs cross-product discovery, stack selection, documentation research, product artifacts, prompt orchestration, launch planning, and evidence-based QA.
+inputs:
+  - product_brief
+  - brand_and_audience
+  - constraints_and_preferences
+  - existing_repository
+outputs:
+  - discovery_and_build_contract
+  - product_document_set
+  - architecture_and_stack_decision_record
+  - scaffold_prompt_pack
+  - implementation_package
+  - qa_evidence_and_edit_backlog
+supporting_files:
+  - templates/design-reference-catalog.md
+  - templates/qa-analyst.md
+installation:
+  - Place the skill and supporting files in the project skill directory.
+  - Register this manifest entry with the Instruction Architect.
+  - Configure only approved tool bindings; no credential values belong in the package.
+  - Invoke before pal-website-agent when a project requires discovery and a build contract; invoke pal-website-agent during implementation when its agent-SaaS specialization applies.
+approval_gates:
+  - cloud_project_or_dns_change
+  - production_deployment
+  - live_payment_activation
+  - high_risk_oauth_or_agent_write_scope
+  - outbound_crm_or_marketing_communication
+acceptance_criteria:
+  - All in-scope critical user journeys have passing preview evidence.
+  - No critical security, auth, billing, or tenant-isolation defect is open.
+  - Readiness score is at least 90/100 and traceable to evidence.
+  - User receives editable documents, prompts, decision records, and a defect backlog.

@@ -1,0 +1,114 @@
+---
+name: job-applicant-saved-screening-question-responses4
+description: Process/Note derived from Job Applicant Saved Screening Question Responses_4.csv
+source_path: Complete_LinkedInDataExport_08-30-2026.zip/Job Applicant Saved Screening Question Responses_4.csv
+---
+
+# Job Applicant Saved Screening Question Responses_4.csv
+
+## Context
+This skill provides knowledge, processes, and instructions derived from the document: `Job Applicant Saved Screening Question Responses_4.csv`.
+Use this information to inform GTM strategies, sales playbooks, automation engine logic, and CRM setup.
+
+## Knowledge Source
+
+Question,Answer
+How many years of work experience do you have with Cybersecurity?,0
+How many years of work experience do you have with Architectural Design?,3
+Cover letter,
+How many years of work experience do you have with OpenAI Operator?,2
+How many years of work experience do you have with Product Management?,7
+How many years of work experience do you have with Business Development?,7
+How many years of work experience do you have with Startups?,10
+How many years of work experience do you have with SAP Products?,2
+How many years of work experience do you have with Tape?,0
+How many years of work experience do you have with Cloud Infrastructure?,2
+Do you have the following license or certification: Early Childhood Teacher (Day Care Center)?,No
+Description,
+Major / Field of study,
+How many years of work experience do you have with Salesforce.com Consulting?,0
+How many years of work experience do you have with Go-to-Market Strategy?,5
+How many years of work experience do you have with Business Relationship Management?,0
+How many years of work experience do you have with Corporate Hospitality?,2
+How many years of work experience do you have with Content Management Systems (CMS)?,5
+How many years of work experience do you have with AI Agents?,4
+How many years of work experience do you have with Business Intelligence Tools?,2
+Do you have the following license or certification: Project Management Professional?,No
+How many years of work experience do you have with Communication?,5
+How many years of work experience do you have with Persuasion?,0
+Do you have the following license or certification: urn:li:credential:20403?,Yes
+How many years of work experience do you have with Strategy Implementation?,5
+How many years of work experience do you have with Office Administration?,2
+How many years of work experience do you have with Flooring?,0
+How many years of work experience do you have with Redis?,0
+How many years of work experience do you have with Azure AI Studio?,2
+How many years of ADVR experience do you currently have?,0
+How many years of work experience do you have with IT Integration?,3
+City,
+Are you comfortable working in a hybrid setting?,Yes
+How many years of work experience do you have with Docker Products?,3
+How many years of work experience do you have with Building Business Partnerships?,5
+How many years of work experience do you have with Law Enforcement?,0
+How many years of work experience do you have with Exhibit Design?,1
+How many years of work experience do you have with Insurance Brokerage?,0
+How many years of work experience do you have with Computer Programming?,5
+How many years of work experience do you have with Medical Devices?,0
+How many years of work experience do you have with Data Analytics?,2
+How many years of work experience do you have with Building Energy Management?,0
+How many years of work experience do you have with Fine Jewelry?,0
+Do you have the following license or certification: CompTIA Security+?,No
+How many years of work experience do you have with PyTorch?,1
+How many years of urn:li:industry:53 experience do you currently have?,1
+How many years of work experience do you have with Investment Management?,0
+How many years of work experience do you have with Technical Presales?,2
+How many years of work experience do you have with Salesforce.com?,8
+How many years of work experience do you have with Microsoft Visual Studio Code?,5
+How many years of work experience do you have with Dealer Network Development?,0
+How many years of work experience do you have with Healthcare Marketing?,0
+How many years of work experience do you have with LangGraph?,1
+How many years of work experience do you have with Vertex?,3
+How many years of work experience do you have with Pivotal?,0
+How many years of work experience do you have with Account Executives?,5
+How many years of work experience do you have with Model Deployment?,4
+How many years of work experience do you have with Cyber-security?,0
+How many years of work experience do you have with XML?,5
+How many years of work experience do you have with Human Resources Information Systems (HRIS)?,1
+How many years of work experience do you have with AWS Lambda?,2
+Do you have the following license or certification: urn:li:credential:20796?,No
+How many years of work experience do you have with Building Key Relationships?,5
+How many years of work experience do you have with Enterprise Technology Sales?,5
+How many years of urn:li:industry:57 experience do you currently have?,0
+How many years of work experience do you have with Technical Product Sales?,5
+How many years of work experience do you have with R&D Operations?,5
+How many years of work experience do you have with Java?,2
+How many years of work experience do you have with API Documentation?,3
+How many years of work experience do you have with VMware Horizon View?,0
+How many years of work experience do you have with Advertising?,2
+How many years of work experience do you have with Tourism Marketing?,0
+How many years of work experience do you have with Customer Success?,2
+How many years of work experience do you have with Collaborative Project Management?,4
+How many years of work experience do you have with Presales?,5
+How many years of work experience do you have with Interactive Voice Response (IVR)?,0
+How many years of work experience do you have with Agentic AI Development?,4
+First name,
+How many years of urn:li:industry:133 experience do you currently have?,0
+How many years of work experience do you have with Amazon Lex?,2
+How many years of work experience do you have with Fundraising?,1
+How many years of work experience do you have with Policies & Procedures?,5
+Do you have the following license or certification: Respiratory Therapist?,No
+How many years of work experience do you have with Personal Finance?,0
+How many years of work experience do you have with WordPress?,10
+How many years of work experience do you have with Financial Data?,2
+How many years of work experience do you have with Partner Development?,2
+How many years of work experience do you have with React.js?,5
+How many years of work experience do you have with Contingency Staffing?,2
+How many years of urn:li:industry:36 experience do you currently have?,0
+How many years of work experience do you have with Customer Engineering?,4
+Degree,
+How many years of work experience do you have with OpenTelemetry?,2
+How many years of work experience do you have with Microsoft Office?,10
+How many years of work experience do you have with Acquisition Marketing?,3
+How many years of work experience do you have with Expert relationship builder?,5
+Gender,
+"Will you now, or in the future, require sponsorship for employment visa status (e.g. H-1B visa status)?",No
+How many years of urn:li:industry:48 experience do you currently have?,0

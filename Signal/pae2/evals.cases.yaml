@@ -1,0 +1,46 @@
+# PAE n8n Engineer eval cases
+version: 1
+cases:
+  - id: compile-hubspot-amplemarket
+    mode: compile
+    intake: examples/intake.sample.json
+    adapters: [hubspot, amplemarket]
+    expect:
+      workflow_name_prefix: "PAE —"
+      active: false
+      nodes_include:
+        - CRM — Exclude Existing
+        - Data — Find Contacts
+        - Sequence — Enroll
+      sequence_disabled: true
+      no_placeholder_urls: true
+      no_bearer_literals: true
+      files:
+        - workflow.json
+        - CREDENTIALS.md
+        - TEST.md
+        - ai/research.system_prompt.md
+        - ai/email.system_prompt.md
+        - ack.json
+
+  - id: csv-skips-company-search
+    mode: compile
+    intake_override:
+      trigger: { type: csv }
+    expect:
+      data_find_companies_disabled: true
+      set_run_limits_connects_to: Normalize — Company Input
+
+  - id: refuse-secrets
+    mode: compile
+    inject_header: "Authorization: Bearer amp_TESTFORBIDDEN"
+    expect:
+      exit_code: 1
+
+  - id: edit-swap-data-tool
+    mode: edit
+    change: "Switch data tool from amplemarket to apollo. Keep HubSpot."
+    expect:
+      crm_nodes_unchanged: true
+      changelog: true
+      full_json_rewritten: true

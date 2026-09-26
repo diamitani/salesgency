@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/styles.css">
+  <script src="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--surface-page);}
+    a{color:var(--text-link);}
+    a:hover{color:var(--text-link-hover);}
+    ::selection{background:var(--cobalt-100);}
+  </style>
+</helmet>
+
+<div style="font-family:var(--font-sans);background:var(--surface-page);min-height:100vh;">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:rgba(251,250,248,0.86);border-bottom:1px solid var(--border-hairline);">
+    <div style="max-width:var(--layout-max);margin:0 auto;padding:0 var(--layout-gutter);height:64px;display:flex;align-items:center;justify-content:space-between;">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Logo" variant="lockup" size="30" hint-size="180,32"></x-import>
+      <div style="display:flex;align-items:center;gap:var(--space-10);">
+        <a href="#operate" style="font-size:var(--text-body-sm);font-weight:500;text-decoration:none;color:var(--text-secondary);">How we operate</a>
+        <a href="#pipeline" style="font-size:var(--text-body-sm);font-weight:500;text-decoration:none;color:var(--text-secondary);">The nine nodes</a>
+        <a href="#deliverables" style="font-size:var(--text-body-sm);font-weight:500;text-decoration:none;color:var(--text-secondary);">Deliverables</a>
+        <a href="#builder" style="font-size:var(--text-body-sm);font-weight:500;text-decoration:none;color:var(--text-secondary);">Build pack engine</a>
+        <a href="#pricing" style="font-size:var(--text-body-sm);font-weight:500;text-decoration:none;color:var(--text-secondary);">Pricing</a>
+      </div>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="sm" iconRight="arrow-right" onClick="{{ scrollToBuilder }}" hint-size="170,36">Compile GTM engine</x-import>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="max-width:var(--layout-max);margin:0 auto;padding:var(--space-24) var(--layout-gutter) var(--space-20);display:grid;grid-template-columns:1.1fr minmax(0,0.9fr);gap:var(--space-24);align-items:center;">
+    <div>
+      <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:var(--space-8);">Prospect automation engine</div>
+      <h1 style="font-family:var(--font-display);font-size:var(--text-display-1);line-height:var(--leading-tight);letter-spacing:var(--tracking-display);font-weight:700;color:var(--text-primary);margin:0 0 var(--space-9);text-wrap:pretty;">Answer eight questions. Get a workflow you own.</h1>
+      <p style="font-size:18px;line-height:var(--leading-relaxed);color:var(--text-secondary);margin:0 0 var(--space-12);max-width:52ch;">Prospect PAL gates your intake, resolves every tool to a concrete n8n node, and compiles a nine-node outbound engine that deploys to your instance. Nothing runs on Prospect PAL's infrastructure after the compile.</p>
+      <div style="display:flex;gap:var(--space-8);margin-bottom:var(--space-12);">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="lg" iconRight="arrow-right" onClick="{{ scrollToBuilder }}" hint-size="220,48">Compile GTM engine</x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="lg" icon="workflow" onClick="{{ scrollToPipeline }}" hint-size="170,48">See the nine nodes</x-import>
+      </div>
+      <div style="display:flex;gap:var(--space-10);">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="verified" icon="shield-check" hint-size="auto,26">We only ask which provider — never a key</x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="neutral" icon="scale" hint-size="auto,26">Approval switch in every engine</x-import>
+      </div>
+    </div>
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="deep" pad="24px" style="{{ heroCardStyle }}" hint-size="100%,420px">
+      <div style="font-size:var(--text-micro);font-family:var(--font-mono);color:var(--champagne-300);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;margin-bottom:var(--space-9);">workflow.n8n.json — preview</div>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.PipelineRail" nodes="{{ heroPreviewNodes }}" onDeep="{{ true }}" hint-size="100%,320px"></x-import>
+    </x-import>
+  </div>
+
+  <!-- HOW WE OPERATE -->
+  <div id="operate" style="max-width:var(--layout-max);margin:0 auto;padding:var(--space-20) var(--layout-gutter) var(--space-24);">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="How we operate" title="Three ways to get the engine" description="A full-service build, a self-serve agent portal, or a free-standing template — pick the level of hands-on you want." align="center" hint-size="100%,100px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-10);margin-top:var(--space-10);align-items:stretch;">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="24px" style="{{ operateCardStyle }}" hint-size="100%,100%">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-8);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" icon="wand-sparkles" hint-size="auto,24">Agency</x-import>
+        </div>
+        <div style="font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--space-4);color:var(--text-primary);">Build with us</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.62;margin-bottom:var(--space-10);">Prospect PAL's team scopes your stack and delivers the workflow, the skills, and a managed or custom outreach agent.</div>
+        <div style="display:grid;gap:var(--space-4);padding-top:var(--space-9);border-top:1px solid var(--border-hairline);">
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">01</span><span style="font-size:var(--text-body-sm);color:var(--text-primary);">Intake call</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">02</span><span style="font-size:var(--text-body-sm);color:var(--text-primary);">Build package</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">03</span><span style="font-size:var(--text-body-sm);color:var(--text-primary);">Development</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">04</span><span style="font-size:var(--text-body-sm);color:var(--text-primary);">Revisions</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">05</span><span style="font-size:var(--text-body-sm);color:var(--text-primary);">Deliver</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--text-subtle);">06</span><span style="font-size:var(--text-body-sm);color:var(--text-muted);">Maintenance, if you want it</span></div>
+        </div>
+        <div style="margin-top:auto;padding-top:var(--space-10);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="rocket" fullWidth="{{ true }}" onClick="{{ scrollToBuilder }}" hint-size="100%,36">Book an intake call</x-import>
+        </div>
+      </x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="deep" pad="24px" style="{{ operateCardStyle }}" hint-size="100%,100%">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-8);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="premium" icon="workflow" hint-size="auto,24">Self-serve · free to run</x-import>
+        </div>
+        <div style="font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--space-4);color:var(--paper-0);">Build with agent</div>
+        <div style="font-size:var(--text-body-sm);color:var(--ink-200);line-height:1.62;margin-bottom:var(--space-10);">Run the agent as many times as you like. You only pay when you export an engine — per run, or unlimited on a plan.</div>
+        <div style="display:grid;gap:var(--space-4);padding-top:var(--space-9);border-top:1px solid var(--border-deep);">
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--champagne-300);">01</span><span style="font-size:var(--text-body-sm);color:var(--paper-0);">User intake form</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--champagne-300);">02</span><span style="font-size:var(--text-body-sm);color:var(--paper-0);">n8n Engineer skill compiles</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--champagne-300);">03</span><span style="font-size:var(--text-body-sm);color:var(--paper-0);">Export to chat, dashboard, email or instance</span></div>
+        </div>
+        <div style="margin-top:auto;padding-top:var(--space-10);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="sm" icon="wand-sparkles" fullWidth="{{ true }}" onClick="{{ scrollToBuilder }}" hint-size="100%,36">Run the agent free</x-import>
+        </div>
+      </x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="24px" style="{{ operateCardStyle }}" hint-size="100%,100%">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-8);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="neutral" icon="package" hint-size="auto,24">Pay per download</x-import>
+        </div>
+        <div style="font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 var(--space-4);color:var(--text-primary);">Download template</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.62;margin-bottom:var(--space-10);">Take the files and run the compile on your own harness. The skill is free; the compiled engine is a one-off purchase.</div>
+        <div style="display:grid;gap:var(--space-4);padding-top:var(--space-9);border-top:1px solid var(--border-hairline);">
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">01</span><span style="font-family:var(--font-mono);font-size:var(--text-body-sm);color:var(--text-primary);">workflow.n8n.json</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">02</span><span style="font-family:var(--font-mono);font-size:var(--text-body-sm);color:var(--text-primary);">build-prompt.md</span></div>
+          <div style="display:flex;gap:var(--space-6);align-items:baseline;"><span style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--cobalt-600);">03</span><span style="font-family:var(--font-mono);font-size:var(--text-body-sm);color:var(--text-primary);">n8n-engineer.SKILL.md</span></div>
+        </div>
+        <div style="margin-top:auto;padding-top:var(--space-10);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="package" fullWidth="{{ true }}" onClick="{{ downloadEngineerSkill }}" hint-size="100%,36">Download the free skill</x-import>
+        </div>
+      </x-import>
+    </div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div id="pipeline" style="background:var(--surface-deep);padding:var(--space-24) 0;">
+    <div style="max-width:var(--layout-max);margin:0 auto;padding:0 var(--layout-gutter);">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="The spine" title="The same nine nodes, every time" description="Trigger, dedupe, enrich, research, write, approve, create, enroll, alert. Prospect PAL resolves each one to your actual tools — the shape never changes." onDeep="{{ true }}" align="center" hint-size="100%,110px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.PipelineRail" nodes="{{ pipelineNodes }}" onDeep="{{ true }}" style="{{ pipelineRailStyle }}" hint-size="100%,260px"></x-import>
+    </div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <div id="deliverables" style="max-width:var(--layout-max);margin:0 auto;padding:var(--space-24) var(--layout-gutter);">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="What you get" title="The full package, not a demo" description="Every engagement compiles the same six pieces — a workflow, a skill, a QA tracker, a daily report, and an agent to run it." align="center" hint-size="100%,100px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);margin-top:var(--space-10);">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="workflow.n8n.json" label="Prospect engineer workflow" description="Twenty-six named nodes — trigger to enrollment — wired end to end and importable before credentials exist." badge="Compiled" hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="prospect-pal-n8n-engineer.SKILL.md" label="Prospect engineer skill / routine" description="The reusable authoring routine this engine was compiled from — edit and recompile anytime." badge="Reference" hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="n8n-execution-analyst.SKILL.md" label="Execution Analyst skill" description="An evidence-based QA tracker for the live engine: error clustering, approval SLA, enrollment volume." badge="QA" hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="execution-daily-report.n8n.json" label="Daily execution report" description="A scheduled n8n workflow that rolls up executions and emails a plain-language report every morning." badge="Ops" hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="custom-outreach-agent" label="Custom outreach agent" description="Built and tuned by Prospect PAL for your voice and ICP — part of a Build with us engagement." badge="Build with us" hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="managed-outreach-agent" label="Managed outreach agent (harness)" description="A hosted agent harness that runs and revises the engine for you — part of Build with agent." badge="Build with agent" hint-size="100%,150px"></x-import>
+    </div>
+  </div>
+
+  <!-- BUILDER -->
+  <div id="builder" style="background:var(--surface-sunken);padding:var(--space-24) 0;">
+    <div style="max-width:var(--layout-max);margin:0 auto;padding:0 var(--layout-gutter);">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="Build pack engine" title="Draft your build, then resolve it" description="Fill in what you know. Prospect PAL drafts a generic scaffold prompt first — then, once your tools and campaign are set, compiles the fully resolved prompt plus a ready workflow.n8n.json." hint-size="100%,110px"></x-import>
+
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.StepIndicator" steps="{{ stepLabels }}" current="{{ builderStage }}" hint-size="100%,40px"></x-import>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12);margin-top:var(--space-12);">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="24px" hint-size="100%,100%">
+          <div style="font-size:var(--text-h4);font-weight:700;color:var(--text-primary);margin-bottom:var(--space-9);">Tool bindings</div>
+          <div style="display:grid;gap:var(--space-8);">
+            <div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">CRM</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ crm }}" onChange="{{ setCrm }}" options="{{ crmOptions }}" hint-size="100%,40px"></x-import>
+            </div>
+            <div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Enrichment provider</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ enrichment }}" onChange="{{ setEnrichment }}" options="{{ enrichmentOptions }}" hint-size="100%,40px"></x-import>
+            </div>
+            <div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Research provider</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ research }}" onChange="{{ setResearch }}" options="{{ researchOptions }}" hint-size="100%,40px"></x-import>
+            </div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-6);">
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">LLM provider</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ llmProvider }}" onChange="{{ setLlmProvider }}" options="{{ llmOptions }}" hint-size="100%,40px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Model</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ llmModel }}" onChange="{{ setLlmModel }}" mono="{{ true }}" placeholder="e.g. gpt-4o-mini" hint-size="100%,40px"></x-import>
+              </div>
+            </div>
+            <div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Sequencer / outreach tool</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ sequencer }}" onChange="{{ setSequencer }}" options="{{ sequencerOptions }}" hint-size="100%,40px"></x-import>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Approval mode</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ approvalMode }}" onChange="{{ setApprovalMode }}" options="{{ approvalModeOptions }}" hint-size="100%,40px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Approval channel</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ approvalChannel }}" onChange="{{ setApprovalChannel }}" options="{{ approvalChannelOptions }}" hint-size="100%,40px"></x-import>
+              </div>
+            </div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="24px" hint-size="100%,100%">
+          <div style="font-size:var(--text-h4);font-weight:700;color:var(--text-primary);margin-bottom:var(--space-9);">Campaign and limits</div>
+          <div style="display:grid;gap:var(--space-8);">
+            <div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Value proposition</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Textarea" value="{{ valueProp }}" onChange="{{ setValueProp }}" placeholder="What Prospect PAL replaces or saves" hint-size="100%,60px"></x-import>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">ICP</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ icp }}" onChange="{{ setIcp }}" placeholder="Series A-C B2B SaaS" hint-size="100%,40px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Persona</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ persona }}" onChange="{{ setPersona }}" placeholder="VP Sales / RevOps" hint-size="100%,40px"></x-import>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Sender name</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ senderName }}" onChange="{{ setSenderName }}" hint-size="100%,40px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Sender email</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ senderEmail }}" onChange="{{ setSenderEmail }}" type="email" hint-size="100%,40px"></x-import>
+              </div>
+            </div>
+            <div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">CTA</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ cta }}" onChange="{{ setCta }}" placeholder="Worth a 15-minute look?" hint-size="100%,40px"></x-import>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-6);">
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Max daily enrollments</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ maxDaily }}" onChange="{{ setMaxDaily }}" mono="{{ true }}" hint-size="100%,40px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Minimum ICP score</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ minIcp }}" onChange="{{ setMinIcp }}" mono="{{ true }}" hint-size="100%,40px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="auto,18">Timezone</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ timezone }}" onChange="{{ setTimezone }}" mono="{{ true }}" hint-size="100%,40px"></x-import>
+              </div>
+            </div>
+          </div>
+        </x-import>
+      </div>
+
+      <div style="display:flex;gap:var(--space-8);margin-top:var(--space-10);align-items:center;flex-wrap:wrap;">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" icon="wand-sparkles" onClick="{{ onDraftScaffold }}" hint-size="220,44">Draft scaffold prompt</x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="rocket" onClick="{{ onCompileFull }}" hint-size="240,44">Compile full customization</x-import>
+        <div style="display:flex;align-items:center;gap:var(--space-6);margin-left:auto;font-size:var(--text-caption);color:var(--text-muted);">
+          <span style="font-family:var(--font-mono);">{{ runLabel }}</span>
+          <span style="color:var(--border-strong);">|</span>
+          <span>runs are free · exports are metered</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ hasScaffold }}" hint-placeholder-val="{{ false }}">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="sunken" pad="20px" style="{{ outputCardStyle }}" hint-size="100%,260px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);">
+            <div style="font-size:var(--text-body-sm);font-weight:600;color:var(--text-primary);">build-prompt-scaffold.md</div>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" size="sm" icon="package" onClick="{{ downloadScaffold }}" hint-size="150,32">Download prompt</x-import>
+          </div>
+          <pre style="font-family:var(--font-mono);font-size:12px;line-height:1.55;color:var(--text-secondary);white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;margin:0;">{{ scaffoldPreview }}</pre>
+        </x-import>
+      </sc-if>
+
+      <sc-if value="{{ hasFull }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="deep" pad="24px" style="{{ unlockCardStyle }}" hint-size="100%,120px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-12);flex-wrap:wrap;">
+              <div>
+                <div style="font-size:var(--text-h4);font-weight:700;color:var(--paper-0);margin-bottom:var(--space-3);">Your engine compiled. Preview is free — the export is metered.</div>
+                <div style="font-size:var(--text-body-sm);color:var(--ink-200);line-height:1.6;">$49 unlocks this engine's build prompt and workflow.n8n.json. $399/month unlocks unlimited exports plus the Analyst, report and trigger skills.</div>
+              </div>
+              <div style="display:flex;gap:var(--space-6);align-items:center;">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="key-round" onClick="{{ unlockExport }}" hint-size="200,40">Unlock export — $49</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="inverse" onClick="{{ scrollToPricing }}" hint-size="160,40">See plans</x-import>
+              </div>
+            </div>
+          </x-import>
+        </sc-if>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);margin-top:var(--space-8);">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="sunken" pad="20px" style="{{ exportCardStyle }}" hint-size="100%,260px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);gap:var(--space-6);">
+              <div style="font-size:var(--text-body-sm);font-weight:600;color:var(--text-primary);">build-prompt-resolved.md</div>
+              <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" size="sm" icon="package" onClick="{{ downloadCustomPrompt }}" hint-size="150,32">Download prompt</x-import>
+              </sc-if>
+              <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="attention" icon="key-round" hint-size="auto,24">Metered</x-import>
+              </sc-if>
+            </div>
+            <pre style="font-family:var(--font-mono);font-size:12px;line-height:1.55;color:var(--text-secondary);white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;margin:0;">{{ customPromptPreview }}</pre>
+          </x-import>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="sunken" pad="20px" style="{{ exportCardStyle }}" hint-size="100%,260px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);gap:var(--space-6);">
+              <div style="font-size:var(--text-body-sm);font-weight:600;color:var(--text-primary);">workflow.n8n.json</div>
+              <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" size="sm" icon="package" onClick="{{ downloadWorkflowJson }}" hint-size="150,32">Download JSON</x-import>
+              </sc-if>
+              <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="attention" icon="key-round" hint-size="auto,24">Metered</x-import>
+              </sc-if>
+            </div>
+            <pre style="font-family:var(--font-mono);font-size:12px;line-height:1.55;color:var(--text-secondary);white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;margin:0;">{{ workflowJsonPreview }}</pre>
+          </x-import>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- SKILLS LIBRARY -->
+  <div style="max-width:var(--layout-max);margin:0 auto;padding:var(--space-24) var(--layout-gutter);">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="Operate it yourself" title="Every skill in the stack" description="None of these are tied to the form above — download any of them and hand them to whichever agent or engineer runs your build." align="center" hint-size="100%,100px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);margin-top:var(--space-10);">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="20px" hint-size="100%,220px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" icon="zap" hint-size="auto,24">Skill</x-import>
+        <div style="font-size:var(--text-h4);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--text-primary);">Claude / Codex trigger skill</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.6;margin-bottom:var(--space-8);">A harness-side skill: hands a Claude or Codex agent a validated lead and posts it to your n8n webhook, no manual handoff.</div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="package" onClick="{{ downloadTriggerSkill }}" fullWidth="{{ true }}" hint-size="100%,36">prospect-pal-trigger.SKILL.md</x-import>
+      </x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="20px" hint-size="100%,220px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" icon="workflow" hint-size="auto,24">Skill</x-import>
+        <div style="font-size:var(--text-h4);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--text-primary);">n8n Engineer skill</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.6;margin-bottom:var(--space-8);">The full authoring spec for compiling and updating a Prospect Automation Engine in production — placeholder rules, credential safety, node contracts.</div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="package" onClick="{{ downloadEngineerSkill }}" fullWidth="{{ true }}" hint-size="100%,36">prospect-pal-n8n-engineer.SKILL.md</x-import>
+      </x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="20px" hint-size="100%,220px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" icon="search" hint-size="auto,24">Skill</x-import>
+        <div style="font-size:var(--text-h4);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--text-primary);">n8n Execution Analyst</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.6;margin-bottom:var(--space-8);">Evidence-based monitoring for a live engine: error clustering by node, approval SLA, enrollment volume against caps.</div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="package" onClick="{{ downloadExecutionAnalystSkill }}" fullWidth="{{ true }}" hint-size="100%,36">n8n-execution-analyst.SKILL.md</x-import>
+      </x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="paper" pad="20px" hint-size="100%,220px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" icon="radio" hint-size="auto,24">Workflow</x-import>
+        <div style="font-size:var(--text-h4);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--text-primary);">Daily execution report</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.6;margin-bottom:var(--space-8);">A scheduled n8n workflow that pulls your executions daily and emails a plain-language report with fixes, no dashboard required.</div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="package" onClick="{{ downloadReportingWorkflow }}" fullWidth="{{ true }}" hint-size="100%,36">execution-daily-report.n8n.json</x-import>
+      </x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" tone="sunken" pad="20px" hint-size="100%,220px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="attention" icon="plug" hint-size="auto,24">Optional</x-import>
+        <div style="font-size:var(--text-h4);font-weight:700;margin:var(--space-6) 0 var(--space-4);color:var(--text-primary);">Asana fix tracker</div>
+        <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:1.6;margin-bottom:var(--space-8);">Sends every failed execution and its suggested fix to Asana as a task, assigned to whoever owns the engine.</div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="package" onClick="{{ downloadAsanaSkill }}" fullWidth="{{ true }}" hint-size="100%,36">asana-fix-tracker.SKILL.md</x-import>
+      </x-import>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div id="pricing" style="background:var(--surface-sunken);padding:var(--space-24) 0;">
+    <div style="max-width:var(--layout-max);margin:0 auto;padding:0 var(--layout-gutter);">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="Pricing" title="Three ways to pay for it" description="Same six deliverables, three levels of hands-on. No usage fees after the compile — the engine runs on your instance, on your tool bills." align="center" hint-size="100%,100px"></x-import>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-10);margin-top:var(--space-10);align-items:stretch;">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.PricingCard" name="Download template" price="$49" cadence="per export" note="Skill and prompt are free" description="Run the agent as often as you like; pay only when you export a compiled engine." features="{{ starterFeatures }}" cta="{{ starterCta }}" hint-size="100%,420px"></x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.PricingCard" name="Build with agent" price="$399" cadence="/ month" note="Unlimited exports · 5 live engines" description="Unmetered runs and exports through the agent portal, plus every operating skill in the stack." features="{{ proFeatures }}" cta="{{ proCta }}" featured="{{ true }}" hint-size="100%,420px"></x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.PricingCard" name="Build with us" price="Custom" note="Retainer or project" description="Prospect PAL's team scopes, builds, and maintains the full package including a custom or managed outreach agent." features="{{ scaleFeatures }}" cta="{{ scaleCta }}" hint-size="100%,420px"></x-import>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--border-hairline);padding:var(--space-12) 0;">
+    <div style="max-width:var(--layout-max);margin:0 auto;padding:0 var(--layout-gutter);display:flex;align-items:center;justify-content:space-between;">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Logo" variant="lockup" size="22" tagline="GTM automation architect" hint-size="180,44"></x-import>
+      <div style="font-size:var(--text-caption);color:var(--text-muted);">The workflow lives entirely on your instance.</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CRM_OPTIONS = ["HubSpot","Salesforce","Pipedrive","Other"];
+const ENRICHMENT_OPTIONS = ["Clay","Apollo","Clearbit","Other"];
+const RESEARCH_OPTIONS = ["Perplexity","Clay","Custom research agent","Other"];
+const LLM_OPTIONS = ["OpenAI","Anthropic","Azure OpenAI","Other"];
+const SEQUENCER_OPTIONS = ["Smartlead","Instantly","Outreach","Salesloft","Other"];
+const APPROVAL_MODE_OPTIONS = [["required","Required (human approves)"],["auto_approved","Auto-approved (policy-gated)"]];
+const APPROVAL_CHANNEL_OPTIONS = ["Slack","Microsoft Teams"];
+
+function toOpts(list){ return list.map(v => ({ value: v, label: v })); }
+function toOptsPairs(pairs){ return pairs.map(p => ({ value: p[0], label: p[1] })); }
+
+function fillTokens(text, map){
+  let out = text;
+  for (const key of Object.keys(map)){
+    const val = map[key];
+    if (val === undefined || val === null || val === "") continue;
+    out = out.split("{{" + key + "}}").join(String(val));
+  }
+  return out;
+}
+
+const ENGINEER_SKILL_MD = `# Prospect PAL n8n Engineer — build skill
+
+## Role
+You are the Prospect PAL n8n Engineer. Produce one complete, importable n8n workflow JSON named "Prospect PAL — Prospect Automation Engine v1" from the reference architecture below. Never preserve client-specific data, brand copy, list IDs, contact IDs, bearer tokens, embedded API keys, or credential IDs from any reference file you are given.
+
+## Primary purpose
+Receive a new prospect lead through a webhook, validate and normalize it, check the CRM for duplicates, enrich person and company data, update the CRM, run structured prospect research, draft a personalized multi-email sequence, route it through an approval gate, and enroll the approved prospect into an outreach sequence.
+
+## Reference architecture (preserve this order)
+1. Webhook Trigger
+2. Verify and Normalize Lead Payload
+3. Idempotency / Duplicate Event Check
+4. CRM Contact and Company Duplicate Check
+5. Enrichment Connector
+6. Qualification Gate
+7. CRM Create or Update Contact and Company
+8. Prospect and Company Research
+9. AI Email Sequence Generation
+10. Save Research and Draft Output
+11. Approval Gate
+12. Approval Notification
+13. Sequence Enrollment
+14. CRM and Audit Log Update
+15. Error Handling and Failure Alerting
+
+## Required nodes
+01 Webhook: New Prospect Lead · 02 Code: Verify and Normalize Payload · 03 Code: Validate Required Lead Fields · 04 Data Store: Check Event Idempotency · 05 CRM: Search Existing Contact · 06 CRM: Search Existing Company · 07 IF: Existing Lead or Contact? · 08 Enrichment: Find Person and Company Data · 09 Code: Normalize Enrichment Result · 10 IF: Meets Qualification Rules? · 11 CRM: Upsert Company · 12 CRM: Upsert Contact · 13 Research: Company and Prospect Context · 14 AI: Generate Prospect Research · 15 AI: Generate Email Sequence · 16 Code: Validate Sequence Output · 17 Storage: Save Research and Draft · 18 IF: Approval Required? · 19 {{APPROVAL_PROVIDER}}: Send Approval Request · 20 Wait: Approval Response · 21 IF: Approved? · 22 Sequencer: Enroll Prospect · 23 CRM: Update Outreach Status · 24 Storage: Save Execution Audit Event · 25 Error Trigger · 26 {{APPROVAL_PROVIDER}}: Send Failure Alert
+
+## Placeholder rules
+Use {{PLACEHOLDER_NAME}} format. Required placeholders: {{CRM_PROVIDER}} {{CRM_CREDENTIAL_NAME}} {{CRM_CONTACT_OBJECT}} {{CRM_COMPANY_OBJECT}} {{ENRICHMENT_PROVIDER}} {{ENRICHMENT_CREDENTIAL_NAME}} {{RESEARCH_PROVIDER}} {{LLM_PROVIDER}} {{LLM_MODEL}} {{SEQUENCER_PROVIDER}} {{SEQUENCER_CREDENTIAL_NAME}} {{APPROVAL_PROVIDER}} {{APPROVAL_MODE}} {{WEBHOOK_SHARED_SECRET}} {{MAX_DAILY_ENROLLMENTS}} {{MINIMUM_ICP_SCORE}} {{WORKFLOW_TIMEZONE}} {{SEQUENCE_STEP_COUNT}} {{CAMPAIGN_NAME}} {{VALUE_PROPOSITION}} {{ICP_DESCRIPTION}} {{PERSONA_DESCRIPTION}} {{CTA}} {{SENDER_NAME}} {{SENDER_EMAIL}}
+
+## Credential safety rules
+1. Never include an API key, bearer token, OAuth secret, webhook secret, or credential ID.
+2. Never hardcode an Authorization header.
+3. Use native n8n credential references where a provider has a supported credential type; otherwise a generic HTTP Request node with a named placeholder credential.
+4. Add Sticky Notes stating which credential must be created in n8n for each provider.
+5. The workflow must import successfully before any credential is attached.
+
+## CRM logic
+Search contact by normalized email, search company by normalized domain. If a contact exists, preserve its ID and update only enrichment/research/campaign/outreach fields — never duplicate. If none exists, upsert the company first, then the contact, and associate them. Store crm_contact_id and crm_company_id. Use placeholder property names only — never assume a client's custom fields.
+
+## Enrichment logic
+Attempt to find or improve: work email, LinkedIn URL, title and seniority, department, company description, industry, employee count, growth signals, location, company LinkedIn URL, domain. On partial failure, continue if email, company name/domain, and one identity field are present; set enrichment_status to partial or failed and still send the record through qualification.
+
+## Qualification logic
+A Code node scores persona/title match, valid business email, valid domain, ICP/industry match, size fit, geographic fit, enrichment completeness, and suppression-list match. Output {qualification_status, icp_score, qualification_reasons[], suppression_match}. Never enroll an unqualified or suppressed lead.
+
+## Research logic
+Produce structured JSON: {company_summary, business_model, industry, recent_signals[], likely_priorities[], persona_relevance, pain_point_hypotheses[], value_angle, approved_proof_points[], personalization_facts[], confidence, source_urls[]}. Never state an inference as fact, never use scraped personal or behavioral data in outreach copy, never fabricate metrics or customer names. Weak evidence means confidence: "low" and conservative messaging.
+
+## Email sequence logic
+Generate {{SEQUENCE_STEP_COUNT}} steps as strict JSON: {sequence_name: "{{CAMPAIGN_NAME}}", prospect_email, steps: [{step_number, delay_days, channel, subject, body_html, body_text, personalization_variables, cta}], research_confidence, compliance_notes[]}. Drafts only — this workflow never sends outbound email directly. No mention of tracking or hidden intent signals, no fake signature, one clear low-pressure CTA drawn from {{CTA}}, mobile-readable, no unresolved placeholders before approval.
+
+## Approval logic
+Default {{APPROVAL_MODE}} = "required": send a {{APPROVAL_PROVIDER}} message with prospect, score, research confidence, sequence preview, and approve/reject/revise actions; pause until a response; enroll only on approval; on rejection or revision, update CRM/audit and do not enroll. When {{APPROVAL_MODE}} = "auto_approved": bypass the wait, still write an audit event citing policy-based approval, and enforce {{MAX_DAILY_ENROLLMENTS}} and suppression checks before enrollment.
+
+## Sequence enrollment logic
+Before enrolling via {{SEQUENCER_PROVIDER}}, confirm approval status, qualification_status is "qualified", suppression_match is false, no prior enrollment for this lead/campaign, and daily volume is under {{MAX_DAILY_ENROLLMENTS}}. After enrollment, save the external enrollment ID, update CRM outreach status, and save drafts, sequence ID, campaign ID, and an audit event.
+
+## Error handling and observability
+Every external call (CRM, enrichment, research, LLM, approval, storage, sequencer) gets a timeout, backoff retry where supported, an audit event on failure, and a {{APPROVAL_PROVIDER}} alert for high-severity failures. Never silently discard a lead. Track {run_id, workflow_version: "pae-v1", status, crm_contact_id, crm_company_id, external_enrollment_id, error_code, error_message}.
+
+## Design requirements
+Left-to-right layout, numbered node names, a Sticky Note before each major stage (trigger/input, dedupe, enrichment/qualification, CRM sync, research/copy, approval/enrollment, audit/error). Code nodes only for validation, normalization, scoring, and JSON shaping. Error branches on every external call, plus an Error Trigger route. Workflow inactive by default. No test leads, customer names, or reference-template private content in the output.`;
+
+const EXECUTION_ANALYST_SKILL_MD = `# n8n Execution Analyst — evidence-based run monitor
+
+## Role
+Monitor a deployed Prospect Automation Engine on the customer's own n8n instance. Report evidence, never a claim of health without a reproducible number pulled from the n8n API.
+
+## Inputs
+- {{N8N_INSTANCE_URL}} and an {{N8N_API_CREDENTIAL_NAME}} credential (read-only where available).
+- The workflow ID(s) for the compiled Prospect Automation Engine.
+- A lookback window (default: last 250 executions or 7 days, whichever is smaller).
+
+## Monitor matrix
+
+| Area | Check | Evidence | Weight |
+|---|---|---|---:|
+| Success rate | success vs error ratio over the window | execution IDs, timestamps, ratio | 25 |
+| Node-level failures | which node name fails most, clustered by node | node name, count, sample error message | 20 |
+| Approval SLA | time between "Send Approval Request" and "Approved?" resolving | median/95th percentile wait, count still pending past {{APPROVAL_SLA_HOURS}} | 15 |
+| Enrollment volume | daily enrollments vs {{MAX_DAILY_ENROLLMENTS}} | daily counts, days at/over cap | 15 |
+| Qualification integrity | unqualified/suppressed leads that reached enrollment (should be zero) | run_ids of any violation | 15 |
+| Idempotency | duplicate event_id processed more than once | duplicate run_ids | 10 |
+
+Total score: weighted pass ratio per area, same as the release QA loop. Flag any qualification-integrity violation as critical regardless of overall score.
+
+## Procedure
+1. Pull workflows and executions from the n8n API for the lookback window.
+2. Aggregate success/error counts, per-node failure counts, and per-day enrollment counts — grounded only in returned data, nothing inferred.
+3. Compute approval wait times from node-level execution timestamps where available.
+4. Cross-check any execution whose output shows qualification_status != "qualified" or suppression_match == true but still reached the enrollment node.
+5. Produce the report below and, if a Slack/Teams/email channel is configured, send it on the {{REPORT_SCHEDULE}} cadence.
+
+## Severity
+| Severity | Meaning | Action |
+|---|---|---|
+| Critical | Unqualified/suppressed lead enrolled, or duplicate enrollment | Page the workflow owner immediately |
+| High | Success rate under {{MIN_SUCCESS_RATE}}% or a single node failing over 10% of runs | Owner reviews within 24h |
+| Medium | Approval SLA breached for pending items | Note in daily report |
+| Low | Cosmetic/log-only anomalies | Log and trend |
+
+## Report template
+\`\`\`markdown
+# Execution Report — <engine name>
+Window: <start> to <end>
+Success rate: <n>% (<success>/<total>)
+Top failing node: <name> (<count> failures)
+Approval SLA: median <n>h, <n> pending over threshold
+Enrollments: <n> today, cap {{MAX_DAILY_ENROLLMENTS}}
+Integrity violations: <n> (must be 0)
+
+## Next actions
+1. <ranked remediation>
+\`\`\`
+`;
+
+const TRIGGER_SKILL_MD = `# Prospect PAL trigger skill — Claude / Codex
+
+## Role
+Run inside a Claude or Codex coding/agent harness. When a new prospect lead is identified (from a form, a CRM view, or the user pasting one in), validate it and post it to the compiled Prospect Automation Engine's webhook — never draft outreach copy yourself, that is the n8n workflow's job.
+
+## Inputs
+- {{N8N_WEBHOOK_URL}} — the "01 \u2014 Webhook: New Prospect Lead" URL from workflow.n8n.json.
+- {{WEBHOOK_SHARED_SECRET}} — sent as a header, never logged or echoed back to the user.
+- A lead: email, first/last name, company name or domain, and at least one of job title / LinkedIn URL / phone.
+
+## Procedure
+1. Confirm the lead has an email and a company name or domain. If not, ask the user for the missing field \u2014 do not guess or fabricate one.
+2. Shape the payload to the webhook input contract: {event_id, event_type: "lead.created", occurred_at, workspace_id, automation_id, source, lead: {...}, context: {campaign_id, source_record_id, intent_signal, custom_fields}}.
+3. POST to {{N8N_WEBHOOK_URL}} with the shared secret header. Never print the secret in chat or commit it to a file.
+4. Report back the run_id and status Prospect PAL returns \u2014 do not claim the lead was enrolled; enrollment depends on qualification and approval inside the workflow.
+5. On a non-2xx response, surface the exact status code and body to the user and stop \u2014 do not retry silently more than once.
+
+## Guardrails
+- Never draft, send, or approve outreach copy from this skill \u2014 that belongs to nodes 14/15/18 of the compiled workflow.
+- Never store or forward the webhook secret outside this call.
+- One lead per invocation unless the user explicitly asks for a batch, and batches still go through the same validation per row.
+`;
+
+const ASANA_SKILL_MD = `# Asana fix tracker skill (optional)
+
+## Role
+Turn a failed Prospect Automation Engine execution, as reported by the n8n Execution Analyst, into an Asana task with a concrete suggested fix \u2014 never a vague "something broke" ticket.
+
+## Inputs
+- {{ASANA_ACCESS_TOKEN}} credential and {{ASANA_PROJECT_GID}} for the engine's fix-tracker project.
+- The Execution Analyst's per-execution record: run_id, failing node name, error message, and the report's suggested remediation line.
+
+## Procedure
+1. Take one failed-execution record at a time from the daily report or a real-time alert.
+2. Create an Asana task titled "<engine name> \u2014 <failing node> \u2014 <run_id short>".
+3. Task description includes: the exact error message, the node name, the timestamp, a link back to the n8n execution, and the Execution Analyst's suggested fix as a checklist item.
+4. Assign to {{FIX_TRACKER_ASSIGNEE}} and tag with severity (critical/high/medium/low) from the Execution Analyst's matrix.
+5. If an open task already exists for the same node + error signature within {{DEDUPE_WINDOW_HOURS}} hours, comment on it instead of creating a duplicate.
+6. Never close a task automatically \u2014 closing is a human decision once the fix is verified.
+
+## Guardrails
+- Never include the shared webhook secret, API keys, or raw customer PII in a task body.
+- One task per distinct node/error signature per window \u2014 do not spam the project.
+`;
+
+function reportingWorkflowJson(){
+  return {
+    name: "Prospect PAL — Execution Daily Report",
+    nodes: [
+      { id: "schedule_trigger", name: "Schedule Trigger", type: "n8n-nodes-base.scheduleTrigger", typeVersion: 1.2, position: [0, 300],
+        parameters: { rule: { interval: [{ field: "cronExpression", expression: "0 0 6 * * *" }] } } },
+      { id: "get_workflows", name: "Get Workflows", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [240, 300],
+        parameters: { url: "={{N8N_INSTANCE_URL}}/api/v1/workflows", authentication: "predefinedCredentialType", nodeCredentialType: "n8nApi", sendQuery: true, queryParameters: { parameters: [{ name: "limit", value: "250" }] }, options: {} },
+        notes: "Bind credential: {{N8N_API_CREDENTIAL_NAME}}" },
+      { id: "get_executions", name: "Get Executions", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [480, 300],
+        parameters: { url: "={{N8N_INSTANCE_URL}}/api/v1/executions", authentication: "predefinedCredentialType", nodeCredentialType: "n8nApi", sendQuery: true, queryParameters: { parameters: [{ name: "limit", value: "250" }] }, options: {} },
+        notes: "Bind credential: {{N8N_API_CREDENTIAL_NAME}}" },
+      { id: "analyze", name: "Analyze", type: "n8n-nodes-base.code", typeVersion: 2, position: [720, 300],
+        parameters: { jsCode: "// Grounded aggregation only \u2014 no fabricated data.\nconst execs = $input.first().json.data || [];\nconst wfs = $('Get Workflows').first().json.data || [];\nconst wfName = {}; for (const w of wfs) wfName[w.id] = w.name;\nconst total = execs.length;\nconst success = execs.filter(e => e.status === 'success').length;\nconst error = execs.filter(e => e.status === 'error').length;\nconst rate = total ? (success/total*100).toFixed(1) : '0';\nconst roll = {};\nfor (const e of execs){ const k=e.workflowId; roll[k]=roll[k]||{name:wfName[k]||k,total:0,error:0}; roll[k].total++; if(e.status==='error') roll[k].error++; }\nconst failing = Object.values(roll).filter(r=>r.error>0).sort((a,b)=>b.error-a.error);\nreturn [{ json: { total, success, error, rate, failing, subject: `Prospect PAL execution report \u2014 ${rate}% success`, generatedAt: new Date().toISOString() } }];" } },
+      { id: "ai_agent", name: "AI: Summarize Report", type: "@n8n/n8n-nodes-langchain.agent", typeVersion: 3, position: [960, 300],
+        parameters: { promptType: "define", text: "={{ $json.subject }} success={{ $json.success }} error={{ $json.error }} rate={{ $json.rate }} failingNodes={{ JSON.stringify($json.failing) }}\n\nWrite a short plain-language summary of this Prospect Automation Engine execution window for a non-technical owner, then a one-paragraph summary for leadership. Ground every number in the data given \u2014 never invent a figure.", options: {} } },
+      { id: "llm_model", name: "{{LLM_PROVIDER}} Chat Model", type: "@n8n/n8n-nodes-langchain.lmChatOpenAi", typeVersion: 1, position: [960, 480],
+        parameters: { model: "{{LLM_MODEL}}", options: {} }, notes: "Bind credential: {{LLM_CREDENTIAL_NAME}}" },
+      { id: "send_report", name: "Send Report", type: "n8n-nodes-base.emailSend", typeVersion: 2.1, position: [1200, 300],
+        parameters: { toEmail: "={{REPORT_RECIPIENTS}}", subject: "={{ $('Analyze').item.json.subject }}", emailFormat: "html", html: "={{ $json.output }}" }, notes: "Bind credential: {{EMAIL_CREDENTIAL_NAME}}" }
+    ],
+    connections: {
+      "Schedule Trigger": { main: [[{ node: "Get Workflows", type: "main", index: 0 }]] },
+      "Get Workflows": { main: [[{ node: "Get Executions", type: "main", index: 0 }]] },
+      "Get Executions": { main: [[{ node: "Analyze", type: "main", index: 0 }]] },
+      "Analyze": { main: [[{ node: "AI: Summarize Report", type: "main", index: 0 }]] },
+      "AI: Summarize Report": { main: [[{ node: "Send Report", type: "main", index: 0 }]] },
+      "{{LLM_PROVIDER}} Chat Model": { ai_languageModel: [[{ node: "AI: Summarize Report", type: "ai_languageModel", index: 0 }]] }
+    },
+    settings: { executionOrder: "v1" },
+    active: false
+  };
+}
+
+function stickyNote(text, x, y, w, h, color){
+  return { id: "sticky_" + x + "_" + y, name: "Sticky Note", type: "n8n-nodes-base.stickyNote", typeVersion: 1, position: [x, y],
+    parameters: { content: text, height: h || 160, width: w || 260, color: color || 5 } };
+}
+
+function ifParams(leftExpr){
+  return { conditions: { combinator: "and", conditions: [{ leftValue: leftExpr, rightValue: true, operator: { type: "boolean", operation: "equals" } }], options: {} }, options: {} };
+}
+
+function buildWorkflowJson(v){
+  const crm = v.crm || "{{CRM_PROVIDER}}";
+  const enrichment = v.enrichment || "{{ENRICHMENT_PROVIDER}}";
+  const research = v.research || "{{RESEARCH_PROVIDER}}";
+  const seq = v.sequencer || "{{SEQUENCER_PROVIDER}}";
+  const approvalCh = v.approvalChannel || "{{APPROVAL_PROVIDER}}";
+  const llm = v.llmProvider || "{{LLM_PROVIDER}}";
+
+  const nodes = [
+    stickyNote("TRIGGER AND INPUT\nWebhook receives the lead. Nothing downstream trusts the payload until node 03 passes.", -20, 60, 480, 120, 4),
+    { id: "n01", name: "01 \u2014 Webhook: New Prospect Lead", type: "n8n-nodes-base.webhook", typeVersion: 2, position: [0, 300],
+      parameters: { httpMethod: "POST", path: "prospect-pal/lead", responseMode: "onReceived", options: {} }, notes: "Verify {{WEBHOOK_SHARED_SECRET}} before trusting this payload." },
+    { id: "n02", name: "02 \u2014 Code: Verify and Normalize Payload", type: "n8n-nodes-base.code", typeVersion: 2, position: [230, 300],
+      parameters: { jsCode: "const b = $('01 \u2014 Webhook: New Prospect Lead').item.json.body;\nreturn [{ json: {\n  run_id: crypto.randomUUID(), event_id: b.event_id, workspace_id: b.workspace_id,\n  automation_id: b.automation_id, campaign_id: b.context?.campaign_id,\n  lead: { email: (b.lead?.email||'').trim().toLowerCase(), first_name: b.lead?.first_name, last_name: b.lead?.last_name,\n    full_name: [b.lead?.first_name,b.lead?.last_name].filter(Boolean).join(' '), job_title: b.lead?.job_title,\n    linkedin_url: b.lead?.linkedin_url, phone: b.lead?.phone },\n  company: { name: b.lead?.company_name, domain: (b.lead?.company_domain||'').toLowerCase().replace(/^https?:\\/\\//,'').replace(/\\/$/,'') }\n} }];" } },
+    { id: "n03", name: "03 \u2014 Code: Validate Required Lead Fields", type: "n8n-nodes-base.code", typeVersion: 2, position: [460, 300],
+      parameters: { jsCode: "const l = $json.lead; const c = $json.company;\nconst ok = !!(l.email && (c.name || c.domain));\nif(!ok) throw new Error('Missing required lead fields: email and company name/domain');\nreturn [{ json: $json }];" } },
+    { id: "n04", name: "04 \u2014 Data Store: Check Event Idempotency", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [690, 300],
+      parameters: { url: "={{STORAGE_API_BASE_URL}}/idempotency/" + "={{ $json.event_id }}", method: "GET", options: {} }, notes: "Bind credential: {{STORAGE_CREDENTIAL_NAME}}. 404 means proceed." },
+    stickyNote("DATA QUALITY AND DEDUPLICATION\nCRM is searched by normalized email/domain before anything is created.", 900, 60, 480, 120, 4),
+    { id: "n05", name: "05 \u2014 CRM: Search Existing Contact", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [920, 220],
+      parameters: { url: "={{CRM_API_BASE_URL}}/contacts/search", method: "POST", sendBody: true, body: "={{ $json.lead.email }}", options: {} }, notes: "Provider: " + crm + ". Bind credential: {{CRM_CREDENTIAL_NAME}}." },
+    { id: "n06", name: "06 \u2014 CRM: Search Existing Company", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [920, 380],
+      parameters: { url: "={{CRM_API_BASE_URL}}/companies/search", method: "POST", sendBody: true, body: "={{ $json.company.domain }}", options: {} }, notes: "Provider: " + crm },
+    { id: "n07", name: "07 \u2014 IF: Existing Lead or Contact?", type: "n8n-nodes-base.if", typeVersion: 2, position: [1150, 300],
+      parameters: ifParams("={{ $json.contact_exists }}") },
+    { id: "n11", name: "11 \u2014 CRM: Upsert Company", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [1380, 420],
+      parameters: { url: "={{CRM_API_BASE_URL}}/companies/upsert", method: "POST", options: {} }, notes: "Object: {{CRM_COMPANY_OBJECT}}" },
+    { id: "n12", name: "12 \u2014 CRM: Upsert Contact", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [1610, 300],
+      parameters: { url: "={{CRM_API_BASE_URL}}/contacts/upsert", method: "POST", options: {} }, notes: "Object: {{CRM_CONTACT_OBJECT}}. Associates to crm_company_id when present." },
+    stickyNote("ENRICHMENT AND QUALIFICATION\nContinues on partial enrichment; never enrolls unqualified or suppressed leads.", 1820, 60, 520, 120, 4),
+    { id: "n08", name: "08 \u2014 Enrichment: Find Person and Company Data", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [1840, 300],
+      parameters: { url: "={{ENRICHMENT_API_BASE_URL}}/enrich", method: "POST", options: {} }, notes: "Provider: " + enrichment + ". Bind credential: {{ENRICHMENT_CREDENTIAL_NAME}}." },
+    { id: "n09", name: "09 \u2014 Code: Normalize Enrichment Result", type: "n8n-nodes-base.code", typeVersion: 2, position: [2070, 300],
+      parameters: { jsCode: "const e = $json.enrichment || {};\nconst status = e.email ? 'complete' : (e.company_description ? 'partial' : 'failed');\nreturn [{ json: { ...$json, enrichment_status: status } }];" } },
+    { id: "n10", name: "10 \u2014 IF: Meets Qualification Rules?", type: "n8n-nodes-base.if", typeVersion: 2, position: [2300, 300],
+      parameters: ifParams("={{ $json.qualification_status === 'qualified' }}") },
+    stickyNote("RESEARCH AND COPY GENERATION\nStructured research feeds the sequence draft; low confidence forces conservative copy.", 2520, 60, 560, 120, 4),
+    { id: "n13", name: "13 \u2014 Research: Company and Prospect Context", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [2540, 220],
+      parameters: { url: "={{RESEARCH_API_BASE_URL}}/research", method: "POST", options: {} }, notes: "Provider: " + research },
+    { id: "n14", name: "14 \u2014 AI: Generate Prospect Research", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [2770, 220],
+      parameters: { url: "={{LLM_API_BASE_URL}}/research-json", method: "POST", options: {} }, notes: "Provider: " + llm + ", model {{LLM_MODEL}}. Bind credential: {{LLM_CREDENTIAL_NAME}}." },
+    { id: "n15", name: "15 \u2014 AI: Generate Email Sequence", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [3000, 220],
+      parameters: { url: "={{LLM_API_BASE_URL}}/sequence-json", method: "POST", options: {} }, notes: "Steps: {{SEQUENCE_STEP_COUNT}}. Voice/CTA: {{CTA}}." },
+    { id: "n16", name: "16 \u2014 Code: Validate Sequence Output", type: "n8n-nodes-base.code", typeVersion: 2, position: [3230, 220],
+      parameters: { jsCode: "const s = $json.sequence;\nconst ok = s && s.steps && s.steps.every(st => st.subject && st.body_text && st.cta && !/{{.*}}/.test(st.subject+st.body_text));\nif(!ok) throw new Error('Sequence has unresolved placeholders or missing fields');\nreturn [{ json: $json }];" } },
+    { id: "n17", name: "17 \u2014 Storage: Save Research and Draft", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [3460, 220],
+      parameters: { url: "={{STORAGE_API_BASE_URL}}/drafts", method: "POST", options: {} }, notes: "Bind credential: {{STORAGE_CREDENTIAL_NAME}}. Table: {{AUDIT_TABLE_OR_COLLECTION}}." },
+    stickyNote("APPROVAL AND ENROLLMENT\nApproval is on by default; auto-approve still writes an audit event and enforces caps.", 3670, 60, 560, 120, 4),
+    { id: "n18", name: "18 \u2014 IF: Approval Required?", type: "n8n-nodes-base.if", typeVersion: 2, position: [3690, 300],
+      parameters: ifParams("={{ '" + (v.approvalMode || "{{APPROVAL_MODE}}") + "' === 'required' }}") },
+    { id: "n19", name: "19 \u2014 " + approvalCh + ": Send Approval Request", type: "n8n-nodes-base.slack", typeVersion: 2.2, position: [3920, 200],
+      parameters: { channel: "{{APPROVAL_CHANNEL_ID}}", text: "New prospect ready for review: {{ $json.lead.full_name }} \u2014 {{ $json.company.name }}" }, notes: "Bind credential: {{APPROVAL_CREDENTIAL_NAME}}." },
+    { id: "n20", name: "20 \u2014 Wait: Approval Response", type: "n8n-nodes-base.wait", typeVersion: 1.1, position: [4150, 200], parameters: { resume: "webhook", limitWaitTime: false } },
+    { id: "n21", name: "21 \u2014 IF: Approved?", type: "n8n-nodes-base.if", typeVersion: 2, position: [4380, 200], parameters: ifParams("={{ $json.decision === 'approved' }}") },
+    { id: "n22", name: "22 \u2014 Sequencer: Enroll Prospect", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [4610, 300],
+      parameters: { url: "={{SEQUENCER_API_BASE_URL}}/enroll", method: "POST", options: {} }, notes: "Provider: " + seq + ". Campaign: {{SEQUENCER_CAMPAIGN_ID}}. Checks approval, qualification, suppression, and {{MAX_DAILY_ENROLLMENTS}} before calling." },
+    { id: "n23", name: "23 \u2014 CRM: Update Outreach Status", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [4840, 300],
+      parameters: { url: "={{CRM_API_BASE_URL}}/contacts/update", method: "POST", options: {} }, notes: "Field: {{CRM_OUTREACH_STATUS_FIELD}}" },
+    stickyNote("AUDIT AND ERROR HANDLING\nEvery branch writes an audit event; failures alert, they never disappear.", 5060, 60, 480, 120, 4),
+    { id: "n24", name: "24 \u2014 Storage: Save Execution Audit Event", type: "n8n-nodes-base.httpRequest", typeVersion: 4.2, position: [5080, 300],
+      parameters: { url: "={{STORAGE_API_BASE_URL}}/audit-events", method: "POST", options: {} }, notes: "Table: {{AUDIT_TABLE_OR_COLLECTION}}" },
+    { id: "n25", name: "25 \u2014 Error Trigger", type: "n8n-nodes-base.errorTrigger", typeVersion: 1, position: [2300, 640], parameters: {} },
+    { id: "n26", name: "26 \u2014 " + approvalCh + ": Send Failure Alert", type: "n8n-nodes-base.slack", typeVersion: 2.2, position: [2530, 640],
+      parameters: { channel: "{{APPROVAL_CHANNEL_ID}}", text: "Prospect Automation Engine failure: {{ $json.execution.error.message }}" }, notes: "Bind credential: {{APPROVAL_CREDENTIAL_NAME}}." }
+  ];
+
+  const connections = {
+    "01 \u2014 Webhook: New Prospect Lead": { main: [[{ node: "02 \u2014 Code: Verify and Normalize Payload", type: "main", index: 0 }]] },
+    "02 \u2014 Code: Verify and Normalize Payload": { main: [[{ node: "03 \u2014 Code: Validate Required Lead Fields", type: "main", index: 0 }]] },
+    "03 \u2014 Code: Validate Required Lead Fields": { main: [[{ node: "04 \u2014 Data Store: Check Event Idempotency", type: "main", index: 0 }]] },
+    "04 \u2014 Data Store: Check Event Idempotency": { main: [[{ node: "05 \u2014 CRM: Search Existing Contact", type: "main", index: 0 }]] },
+    "05 \u2014 CRM: Search Existing Contact": { main: [[{ node: "06 \u2014 CRM: Search Existing Company", type: "main", index: 0 }]] },
+    "06 \u2014 CRM: Search Existing Company": { main: [[{ node: "07 \u2014 IF: Existing Lead or Contact?", type: "main", index: 0 }]] },
+    "07 \u2014 IF: Existing Lead or Contact?": { main: [[{ node: "12 \u2014 CRM: Upsert Contact", type: "main", index: 0 }], [{ node: "11 \u2014 CRM: Upsert Company", type: "main", index: 0 }]] },
+    "11 \u2014 CRM: Upsert Company": { main: [[{ node: "12 \u2014 CRM: Upsert Contact", type: "main", index: 0 }]] },
+    "12 \u2014 CRM: Upsert Contact": { main: [[{ node: "08 \u2014 Enrichment: Find Person and Company Data", type: "main", index: 0 }]] },
+    "08 \u2014 Enrichment: Find Person and Company Data": { main: [[{ node: "09 \u2014 Code: Normalize Enrichment Result", type: "main", index: 0 }]] },
+    "09 \u2014 Code: Normalize Enrichment Result": { main: [[{ node: "10 \u2014 IF: Meets Qualification Rules?", type: "main", index: 0 }]] },
+    "10 \u2014 IF: Meets Qualification Rules?": { main: [[{ node: "13 \u2014 Research: Company and Prospect Context", type: "main", index: 0 }], [{ node: "24 \u2014 Storage: Save Execution Audit Event", type: "main", index: 0 }]] },
+    "13 \u2014 Research: Company and Prospect Context": { main: [[{ node: "14 \u2014 AI: Generate Prospect Research", type: "main", index: 0 }]] },
+    "14 \u2014 AI: Generate Prospect Research": { main: [[{ node: "15 \u2014 AI: Generate Email Sequence", type: "main", index: 0 }]] },
+    "15 \u2014 AI: Generate Email Sequence": { main: [[{ node: "16 \u2014 Code: Validate Sequence Output", type: "main", index: 0 }]] },
+    "16 \u2014 Code: Validate Sequence Output": { main: [[{ node: "17 \u2014 Storage: Save Research and Draft", type: "main", index: 0 }]] },
+    "17 \u2014 Storage: Save Research and Draft": { main: [[{ node: "18 \u2014 IF: Approval Required?", type: "main", index: 0 }]] },
+    "18 \u2014 IF: Approval Required?": { main: [[{ node: "19 \u2014 " + approvalCh + ": Send Approval Request", type: "main", index: 0 }], [{ node: "22 \u2014 Sequencer: Enroll Prospect", type: "main", index: 0 }]] },
+    ["19 \u2014 " + approvalCh + ": Send Approval Request"]: { main: [[{ node: "20 \u2014 Wait: Approval Response", type: "main", index: 0 }]] },
+    "20 \u2014 Wait: Approval Response": { main: [[{ node: "21 \u2014 IF: Approved?", type: "main", index: 0 }]] },
+    "21 \u2014 IF: Approved?": { main: [[{ node: "22 \u2014 Sequencer: Enroll Prospect", type: "main", index: 0 }], [{ node: "24 \u2014 Storage: Save Execution Audit Event", type: "main", index: 0 }]] },
+    "22 \u2014 Sequencer: Enroll Prospect": { main: [[{ node: "23 \u2014 CRM: Update Outreach Status", type: "main", index: 0 }]] },
+    "23 \u2014 CRM: Update Outreach Status": { main: [[{ node: "24 \u2014 Storage: Save Execution Audit Event", type: "main", index: 0 }]] },
+    "25 \u2014 Error Trigger": { main: [[{ node: "26 \u2014 " + approvalCh + ": Send Failure Alert", type: "main", index: 0 }]] }
+  };
+
+  return { name: "Prospect PAL \u2014 Prospect Automation Engine v1", nodes, connections, settings: { executionOrder: "v1" }, active: false, versionId: "pae-v1-template" };
+}
+
+function download(filename, content, mime){
+  const blob = new Blob([content], { type: mime || "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+}
+
+function truncate(text, n){ return text.length > n ? text.slice(0, n) + "\n\u2026" : text; }
+
+class Component extends DCLogic {
+  state = {
+    crm: "HubSpot", enrichment: "Clay", research: "Perplexity", llmProvider: "OpenAI", llmModel: "gpt-4o-mini",
+    sequencer: "Smartlead", approvalMode: "required", approvalChannel: "Slack",
+    valueProp: "", icp: "", persona: "", cta: "", senderName: "", senderEmail: "",
+    maxDaily: "50", minIcp: "60", timezone: "America/New_York",
+    builderStage: 0, scaffoldText: "", customPromptText: "", workflowJsonText: "",
+    runsUsed: 0, unlocked: false
+  };
+
+  scrollToBuilder = () => { const el = document.getElementById("builder"); if (el) el.scrollIntoView({ behavior: "smooth" }); };
+  scrollToPipeline = () => { const el = document.getElementById("pipeline"); if (el) el.scrollIntoView({ behavior: "smooth" }); };
+  scrollToPricing = () => { const el = document.getElementById("pricing"); if (el) el.scrollIntoView({ behavior: "smooth" }); };
+
+  onDraftScaffold = () => {
+    const v = this.state;
+    const header = "# Prospect PAL \u2014 draft build prompt (scaffold)\n\n" +
+      "This is the generic n8n Engineer skill, annotated with what you've told Prospect PAL so far. Provider placeholders below are NOT resolved yet \u2014 use \"Compile full customization\" once your tools are set to get every token filled plus a ready workflow.n8n.json.\n\n" +
+      "## Noted so far\n- CRM: " + (v.crm || "not set") + "\n- Enrichment: " + (v.enrichment || "not set") +
+      "\n- Research: " + (v.research || "not set") + "\n- LLM: " + (v.llmProvider || "not set") + " / " + (v.llmModel || "not set") +
+      "\n- Sequencer: " + (v.sequencer || "not set") + "\n- Approval mode: " + v.approvalMode + " via " + v.approvalChannel + "\n\n---\n\n";
+    this.setState({ scaffoldText: header + ENGINEER_SKILL_MD, builderStage: Math.max(this.state.builderStage, 1), runsUsed: this.state.runsUsed + 1 });
+  };
+
+  unlockExport = () => this.setState({ unlocked: true });
+
+  onCompileFull = () => {
+    const v = this.state;
+    const map = {
+      CRM_PROVIDER: v.crm, ENRICHMENT_PROVIDER: v.enrichment, RESEARCH_PROVIDER: v.research,
+      LLM_PROVIDER: v.llmProvider, LLM_MODEL: v.llmModel, SEQUENCER_PROVIDER: v.sequencer,
+      APPROVAL_PROVIDER: v.approvalChannel, APPROVAL_MODE: v.approvalMode, SEQUENCE_STEP_COUNT: "5",
+      CAMPAIGN_NAME: (v.senderName ? v.senderName + " \u2014 " : "") + "Prospect Automation Engine",
+      VALUE_PROPOSITION: v.valueProp, ICP_DESCRIPTION: v.icp, PERSONA_DESCRIPTION: v.persona, CTA: v.cta,
+      SENDER_NAME: v.senderName, SENDER_EMAIL: v.senderEmail, MAX_DAILY_ENROLLMENTS: v.maxDaily,
+      MINIMUM_ICP_SCORE: v.minIcp, WORKFLOW_TIMEZONE: v.timezone
+    };
+    const filled = fillTokens(ENGINEER_SKILL_MD, map);
+    const header = "# Prospect PAL \u2014 fully customized build prompt\n\nResolved from your bindings below. No credential values are included \u2014 create the named credentials in n8n before importing workflow.n8n.json.\n\n---\n\n";
+    const json = buildWorkflowJson(v);
+    this.setState({ customPromptText: header + filled, workflowJsonText: JSON.stringify(json, null, 2), builderStage: 2, runsUsed: this.state.runsUsed + 1 });
+  };
+
+  downloadScaffold = () => download("build-prompt-scaffold.md", this.state.scaffoldText, "text/markdown");
+  downloadCustomPrompt = () => download("build-prompt-resolved.md", this.state.customPromptText, "text/markdown");
+  downloadWorkflowJson = () => download("workflow.n8n.json", this.state.workflowJsonText, "application/json");
+  downloadEngineerSkill = () => download("prospect-pal-n8n-engineer.SKILL.md", ENGINEER_SKILL_MD, "text/markdown");
+  downloadExecutionAnalystSkill = () => download("n8n-execution-analyst.SKILL.md", EXECUTION_ANALYST_SKILL_MD, "text/markdown");
+  downloadReportingWorkflow = () => download("execution-daily-report.n8n.json", JSON.stringify(reportingWorkflowJson(), null, 2), "application/json");
+  downloadTriggerSkill = () => download("prospect-pal-trigger.SKILL.md", TRIGGER_SKILL_MD, "text/markdown");
+  downloadAsanaSkill = () => download("asana-fix-tracker.SKILL.md", ASANA_SKILL_MD, "text/markdown");
+
+  renderVals() {
+    const s = this.state;
+    return {
+      crm: s.crm, setCrm: v => this.setState({ crm: v }), crmOptions: toOpts(CRM_OPTIONS),
+      enrichment: s.enrichment, setEnrichment: v => this.setState({ enrichment: v }), enrichmentOptions: toOpts(ENRICHMENT_OPTIONS),
+      research: s.research, setResearch: v => this.setState({ research: v }), researchOptions: toOpts(RESEARCH_OPTIONS),
+      llmProvider: s.llmProvider, setLlmProvider: v => this.setState({ llmProvider: v }), llmOptions: toOpts(LLM_OPTIONS),
+      llmModel: s.llmModel, setLlmModel: v => this.setState({ llmModel: v }),
+      sequencer: s.sequencer, setSequencer: v => this.setState({ sequencer: v }), sequencerOptions: toOpts(SEQUENCER_OPTIONS),
+      approvalMode: s.approvalMode, setApprovalMode: v => this.setState({ approvalMode: v }), approvalModeOptions: toOptsPairs(APPROVAL_MODE_OPTIONS),
+      approvalChannel: s.approvalChannel, setApprovalChannel: v => this.setState({ approvalChannel: v }), approvalChannelOptions: toOpts(APPROVAL_CHANNEL_OPTIONS),
+      valueProp: s.valueProp, setValueProp: v => this.setState({ valueProp: v }),
+      icp: s.icp, setIcp: v => this.setState({ icp: v }),
+      persona: s.persona, setPersona: v => this.setState({ persona: v }),
+      cta: s.cta, setCta: v => this.setState({ cta: v }),
+      senderName: s.senderName, setSenderName: v => this.setState({ senderName: v }),
+      senderEmail: s.senderEmail, setSenderEmail: v => this.setState({ senderEmail: v }),
+      maxDaily: s.maxDaily, setMaxDaily: v => this.setState({ maxDaily: v }),
+      minIcp: s.minIcp, setMinIcp: v => this.setState({ minIcp: v }),
+      timezone: s.timezone, setTimezone: v => this.setState({ timezone: v }),
+      builderStage: s.builderStage, stepLabels: ["Inputs", "Scaffold prompt", "Full export"],
+      onDraftScaffold: this.onDraftScaffold, onCompileFull: this.onCompileFull,
+      hasScaffold: !!s.scaffoldText, hasFull: !!s.workflowJsonText,
+      runsUsed: s.runsUsed, runLabel: s.runsUsed === 0 ? "No runs yet" : s.runsUsed + (s.runsUsed === 1 ? " run this session" : " runs this session"),
+      unlocked: s.unlocked, locked: !s.unlocked, unlockExport: this.unlockExport,
+      scaffoldPreview: truncate(s.scaffoldText, 2200), customPromptPreview: truncate(s.customPromptText, 2200), workflowJsonPreview: truncate(s.workflowJsonText, 2200),
+      downloadScaffold: this.downloadScaffold, downloadCustomPrompt: this.downloadCustomPrompt, downloadWorkflowJson: this.downloadWorkflowJson,
+      downloadEngineerSkill: this.downloadEngineerSkill, downloadExecutionAnalystSkill: this.downloadExecutionAnalystSkill, downloadReportingWorkflow: this.downloadReportingWorkflow,
+      downloadTriggerSkill: this.downloadTriggerSkill, downloadAsanaSkill: this.downloadAsanaSkill,
+      pipelineRailStyle: { marginTop: "24px" },
+      heroCardStyle: { overflow: "hidden", minWidth: 0 },
+      outputCardStyle: { marginTop: "16px", minWidth: 0 },
+      exportCardStyle: { minWidth: 0 },
+      operateCardStyle: { display: "flex", flexDirection: "column", height: "100%" },
+      unlockCardStyle: { marginTop: "16px" },
+      scrollToPricing: this.scrollToPricing,
+      pipelineNodes: [
+        { title: "Intake & Cron", subtitle: "Webhook + schedule", icon: "zap", stage: "trigger", binding: "n8n-nodes-base.webhook" },
+        { title: "Data Normalizer", subtitle: "Validate + shape", icon: "workflow", stage: "logic", binding: "n8n-nodes-base.code" },
+        { title: "CRM Dedupe Shield", subtitle: s.crm || "CRM provider", icon: "shield-check", stage: "shield", binding: "n8n-nodes-base.httpRequest" },
+        { title: "Data Tool Adapter", subtitle: s.enrichment || "Enrichment", icon: "plug", stage: "data", binding: "n8n-nodes-base.httpRequest" },
+        { title: "AI Research & PAS Copy", subtitle: llmProviderLabel(s), icon: "sparkles", stage: "ai", binding: "n8n-nodes-base.httpRequest" },
+        { title: "Approval Switch", subtitle: s.approvalMode === "required" ? "Human approves" : "Policy-gated", icon: "scale", stage: "logic", binding: "n8n-nodes-base.if" },
+        { title: "CRM Contact Creation", subtitle: s.crm || "CRM provider", icon: "database", stage: "data", binding: "n8n-nodes-base.httpRequest" },
+        { title: "Sequence Enrollment", subtitle: s.sequencer || "Sequencer", icon: "send", stage: "sequence", binding: "n8n-nodes-base.httpRequest" },
+        { title: "Review Alert", subtitle: s.approvalChannel || "Slack", icon: "radio", stage: "logic", binding: "n8n-nodes-base.slack" }
+      ],
+      heroPreviewNodes: [
+        { title: "Intake & Cron", subtitle: "Webhook + schedule", icon: "zap", stage: "trigger" },
+        { title: "CRM Dedupe Shield", subtitle: "HubSpot / Salesforce", icon: "shield-check", stage: "shield" },
+        { title: "AI Research & PAS Copy", subtitle: "Structured, grounded", icon: "sparkles", stage: "ai" },
+        { title: "Sequence Enrollment", subtitle: "Approved only", icon: "send", stage: "sequence" }
+      ],
+      starterFeatures: ["Unlimited free agent runs", "$49 unlocks one compiled engine", "workflow.n8n.json + both build prompts", "n8n Engineer skill, free"],
+      starterCta: makeCta("outline", "Run the agent free", this.scrollToBuilder),
+      proFeatures: ["Unmetered runs and exports", "Up to 5 live engines", "Execution Analyst + daily report", "Claude/Codex trigger skill"],
+      proCta: makeCta("accent", "Start with the portal", this.scrollToBuilder),
+      scaleFeatures: ["Unlimited campaigns", "Custom or managed outreach agent", "Asana fix tracker included", "Reviewed compliance pass per compile"],
+      scaleCta: makeCta("outline", "Book an intake call", this.scrollToBuilder)
+    };
+  }
+}
+
+function llmProviderLabel(s){ return (s.llmProvider || "LLM") + (s.llmModel ? " \u00b7 " + s.llmModel : ""); }
+
+function makeCta(variant, label, onClick){
+  const ns = typeof window !== "undefined" && window.ProspectPALDesignSystem_b8251d;
+  if (!ns || !ns.Button) return null;
+  return React.createElement(ns.Button, { variant, fullWidth: true, onClick }, label);
+}
+
+</script>
+</body>
+</html>

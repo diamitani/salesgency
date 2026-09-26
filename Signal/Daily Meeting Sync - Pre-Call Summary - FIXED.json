@@ -1,0 +1,486 @@
+{
+  "name": "Daily Meeting Sync - Pre-Call Summary - FIXED",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        368,
+        128
+      ],
+      "id": "718865ba-99d0-4c75-a108-ac370bd74da7",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hubapi.com/crm/v3/objects/meetings/search",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"filterGroups\": [\n    {\n      \"filters\": [\n        {\n          \"propertyName\": \"hs_meeting_start_time\",\n          \"operator\": \"GTE\",\n          \"value\": \"{{ DateTime.now().setZone('America/Chicago').startOf('day').toMillis() }}\"\n        },\n        {\n          \"propertyName\": \"hs_meeting_start_time\",\n          \"operator\": \"LTE\",\n          \"value\": \"{{ DateTime.now().setZone('America/Chicago').endOf('day').toMillis() }}\"\n        },\n        {\n          \"propertyName\": \"hubspot_owner_id\",\n          \"operator\": \"IN\",\n          \"values\": [\"89038457\",\"90231925\",\"79810165\",\"89636891\",\"732232099\",\"89038474\",\"90305033\",\"754496064\"]\n        },\n        {\n          \"propertyName\": \"hs_activity_type\",\n          \"operator\": \"IN\",\n          \"values\": [\"Demo\",\"Qualification Meeting (SQL)\",\"SQL - Additional Discovery Required\",\"Discovery Stage Meeting\",\"Validation Stage Meeting\",\"Pain Points/Proposal Meeting\",\"MSA Readiness Meeting\",\"SOW Negotiation Meeting\",\"SDR Chatbot Meeting Request\"]\n        }\n      ]\n    }\n  ],\n  \"properties\": [\"hs_meeting_title\",\"hs_meeting_body\",\"hs_meeting_start_time\",\"hs_meeting_end_time\",\"hubspot_owner_id\",\"hs_activity_type\"],\n  \"limit\": 100,\n  \"sorts\": [{ \"propertyName\": \"hs_meeting_start_time\", \"direction\": \"ASCENDING\" }]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        592,
+        112
+      ],
+      "id": "06ef674d-d94c-4ed0-a69a-08c4aaacf515",
+      "name": "Get Meetings",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        816,
+        128
+      ],
+      "id": "e7ea0b2c-3055-4430-b305-d5012688a263",
+      "name": "Split Meetings"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/objects/meetings/{{ $json.id }}/associations/contacts",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1264,
+        -16
+      ],
+      "id": "2dc3e4f4-75cc-428c-8b0c-9da7d286a4c2",
+      "name": "Get associated contacts",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/objects/contacts/{{ $json.results[0].id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "properties",
+              "value": "firstname,lastname,email,jobtitle,linkedin_url,phone,hs_lead_status"
+            },
+            {
+              "name": "associations",
+              "value": "companies"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1488,
+        -16
+      ],
+      "id": "06bcf6ac-cee6-4814-8880-aaada3129f00",
+      "name": "Get Contact Details",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/objects/companies/{{ $json.associations.companies.results[0].id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "properties",
+              "value": "name,domain,website,industry,numberofemployees,annualrevenue,country,city,state,description,lifecyclestage"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1712,
+        -16
+      ],
+      "id": "23e5a8a2-954f-490c-ac87-f71adf0028ae",
+      "name": "Get Associated Company",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.factors.ai/open/v1/account/{{ $json.properties.domain }}/journey/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1936,
+        -16
+      ],
+      "id": "789d466c-a10a-4da9-95a1-d162b210ea85",
+      "name": "Get Factors API data",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "WXK2AgBNrcih4FHC",
+          "name": "Onspring API Key"
+        },
+        "httpBearerAuth": {
+          "id": "TAtcNZO5GrGpDngz",
+          "name": "Factors Journey API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze CONTEXT\nMeeting:\n{{ JSON.stringify($('Loop Per Meeting').item.json) }}\nContact:\n{{ JSON.stringify($('Get Contact Details').item.json) }}\nCompany:\n{{ JSON.stringify($json) }}\nFactors:\n{{ JSON.stringify($('Get Factors API data').item.json) }} and prepare a precall summary brief.\n\nOnly use bullet points to break it down. up to 5 max ( full sentences).",
+        "options": {
+          "systemMessage": "=You are the Atlas HXM Pre-Call Briefing Agent.\n\nProduce a concise, rep-ready brief using only the context provided below. Report facts directly. Do not use buzzwords, promotional language, or vague interpretations.\n\nATLAS CONTEXT\n\nAtlas HXM helps companies hire, onboard, manage, and pay employees internationally without first establishing local legal entities.\n\nRelevant Atlas capabilities include:\n\n* Employer of Record\n* Global payroll and benefits\n* Compliant contracts and onboarding\n* Employment compliance\n* Immigration and work permits\n* International workforce management\n\nOnly mention capabilities that are directly relevant to the supplied data.\n\nOUTPUT FORMAT\n\n**Summary**\n\nWrite 5 bullet points including\n\n* Who the contact is\n* What the company does\n* Why the account may be relevant to Atlas\n* The strongest known signal from Factors or HubSpot activity\n\nUse direct facts. Do not describe the company as “highly interested,” “actively exploring,” or similar unless the data explicitly proves it.\n\n**Journey**\n\nList the known activity as concise bullets.\n\nUse this format:\n\n* Visited: [specific page or page category]\n* Visited: [specific page or page category]\n* Engaged with: [form, calculator, guide, meeting, email, or other known action]\n* Timing: [date, sequence, or recency if known]\n\nOnly include activity that is explicitly present in the context.\n\nWrite one sentence explaining what the activity may indicate.\n\nThe hypothesis must be tied directly to the pages or actions listed above.\n\nExample:\n\nHypothesis: Visits to EOR, payroll, and country-specific hiring pages may indicate the company is evaluating how to hire or manage employees internationally.\n\n**Talking Points**\n\nProvide exactly three concise bullets:\n\n* One based on a specific page, action, hiring signal, or country\n* One based on the contact or company context\n* One tied to a relevant Atlas capability\n\nEach bullet must be factual, specific, and no more than 25 words.\n\n**EOR Angles**\n\nProvide one or two country-specific EOR points when a country is known.\n\nFocus on:\n\n* Local entity requirements\n* Payroll\n* Benefits\n* Contracts\n* Compliance\n* Onboarding\n* Immigration\n\nIf no country is known, write:\n\nNo country-specific EOR angle identified.\n\n**Risk Flags**\n\nList only factual caution items, such as:\n\n* Missing contact title\n* No confirmed international hiring activity\n* No recent engagement date\n* Competitor mentioned\n* Company association unclear\n* Meeting intent unclear\n\n\n",
+          "enableStreaming": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2512,
+        -112
+      ],
+      "id": "677c7f2d-fd71-4295-a1f5-afc1b2898b7b",
+      "name": "Analyze prospect and company"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "responseFormat": "json_object",
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2592,
+        112
+      ],
+      "id": "8773444e-9a14-421c-a6c0-bd5273443630",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Get Contact Details').item.json.properties.email }}",
+        "additionalFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "precall_summary",
+                "value": "={{ $json.output }}"
+              },
+              {
+                "property": "journey_summary"
+              }
+            ]
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        2864,
+        128
+      ],
+      "id": "2afcd613-72c6-4824-8cf9-e7a3fcac675e",
+      "name": "Update Property",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        128
+      ],
+      "id": "d60de304-7c72-4644-8852-59a62e7e210e",
+      "name": "Loop Per Meeting"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analayze Factors: {{ JSON.stringify($('Get Factors API data').item.json) }} and create a comprehensive Journey Summary. 1-3 sentences of the companies journey and 3-5 bullet points of exact jourrney points. output clean, NLP (not ai sounding) paragraph and bullet points. (no # etc)\n\nmake sure you understand that the user can be any user at the company and not necessarily the contact so speak in regards to the prospect being the company not as the contact first person).\n\nbe specific with the exact journey. list their entire journey trend in bullet points so we get the comprehensive data set and not just a summary but a summary plus table data",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        -112
+      ],
+      "id": "34c3cf5c-af43-4629-8522-74da4a671e5d",
+      "name": "AI Agent",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        112
+      ],
+      "id": "842890fa-e66e-4028-b26b-7e5c38ec78fd",
+      "name": "Azure OpenAI Chat Model1",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Meetings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Meetings": {
+      "main": [
+        [
+          {
+            "node": "Split Meetings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Meetings": {
+      "main": [
+        [
+          {
+            "node": "Loop Per Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get associated contacts": {
+      "main": [
+        [
+          {
+            "node": "Get Contact Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contact Details": {
+      "main": [
+        [
+          {
+            "node": "Get Associated Company",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Associated Company": {
+      "main": [
+        [
+          {
+            "node": "Get Factors API data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Factors API data": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Analyze prospect and company",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze prospect and company": {
+      "main": [
+        [
+          {
+            "node": "Update Property",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Property": {
+      "main": [
+        [
+          {
+            "node": "Loop Per Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Per Meeting": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get associated contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Analyze prospect and company",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9b36d552-857b-4fde-a904-527e95e3e545",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "da98df5c5d7ca09b34ad4f795244e87a7663d8722c18682c2021c70624938526"
+  },
+  "id": "uQAaXjdZY1RAYtQx",
+  "tags": []
+}

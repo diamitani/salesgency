@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #08080a; }
+  * { box-sizing: border-box; }
+  a { color: #a5b4fc; text-decoration: none; }
+  a:hover { color: #c7d2fe; }
+  ::selection { background: rgba(99,102,241,0.35); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2a2a33; border-radius: 99px; border: 3px solid #08080a; }
+  @keyframes palPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+  @keyframes palRise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes palSweep { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #08080a; color: #e6e6ea; font-family: 'Geist', 'Helvetica Neue', Helvetica, sans-serif; -webkit-font-smoothing: antialiased;">
+
+  <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <nav style="display: flex; align-items: center; justify-content: space-between; padding: 18px 40px; border-bottom: 1px solid #1c1c22; position: sticky; top: 0; background: rgba(8,8,10,0.86); backdrop-filter: blur(14px); z-index: 40;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 26px; height: 26px; border-radius: 7px; background: #6366f1; display: grid; place-items: center; box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset;">
+          <div style="width: 9px; height: 9px; background: #fff; transform: rotate(45deg); border-radius: 1.5px;"></div>
+        </div>
+        <span style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em;">PAL</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6b78; border: 1px solid #26262d; border-radius: 5px; padding: 2px 6px; margin-left: 2px;">v1.0</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <a href="#pipeline" style="font-size: 13.5px; color: #9b9baa; font-weight: 500;">Pipeline</a>
+        <a href="#outputs" style="font-size: 13.5px; color: #9b9baa; font-weight: 500;">Outputs</a>
+        <a href="#who" style="font-size: 13.5px; color: #9b9baa; font-weight: 500;">Who it's for</a>
+        <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #08080a; background: #f2f2f5; border: 0; border-radius: 8px; padding: 9px 16px; cursor: pointer;" style-hover="background: #fff;">Open console</button>
+      </div>
+    </nav>
+
+    <section style="max-width: 1080px; margin: 0 auto; padding: 108px 40px 88px; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: #a5b4fc; background: rgba(99,102,241,0.09); border: 1px solid rgba(99,102,241,0.28); border-radius: 999px; padding: 5px 12px 5px 9px; margin-bottom: 30px;">
+        <span style="width: 6px; height: 6px; border-radius: 99px; background: #6366f1; animation: palPulse 2s ease-in-out infinite;"></span>
+        Extract · Enhance · Execute
+      </div>
+      <h1 style="font-size: 68px; line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; margin: 0 0 24px; text-wrap: balance;">
+        Vague prompt in.<br><span style="color: #6b6b78;">Production build package out.</span>
+      </h1>
+      <p style="font-size: 18.5px; line-height: 1.6; color: #9b9baa; max-width: 640px; margin: 0 auto 40px; text-wrap: pretty;">
+        PAL is the compiler between an idea and a buildable system. It extracts intent, grounds it in evidence, and executes a complete package — PRD, architecture, playbook, instruction pack, and a <span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #cdcdd6;">soul.md</span> your harness can run today.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; align-items: center;">
+        <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 14.5px; font-weight: 600; color: #08080a; background: #f2f2f5; border: 0; border-radius: 10px; padding: 13px 22px; cursor: pointer;" style-hover="background: #fff;">Start a run</button>
+        <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 14.5px; font-weight: 600; color: #e6e6ea; background: #121216; border: 1px solid #26262d; border-radius: 10px; padding: 13px 22px; cursor: pointer;" style-hover="background: #17171c; border-color: #34343d;">See an output package</button>
+      </div>
+
+      <div style="margin-top: 68px; border: 1px solid #1c1c22; border-radius: 14px; background: #0c0c0f; padding: 14px; text-align: left; box-shadow: 0 40px 120px -40px rgba(99,102,241,0.22);">
+        <div style="display: flex; align-items: center; gap: 7px; padding: 4px 6px 12px;">
+          <span style="width: 9px; height: 9px; border-radius: 99px; background: #2a2a33;"></span>
+          <span style="width: 9px; height: 9px; border-radius: 99px; background: #2a2a33;"></span>
+          <span style="width: 9px; height: 9px; border-radius: 99px; background: #2a2a33;"></span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #55555f; margin-left: 10px;">pal · run/RUN-4471 · artispreneur-v2</span>
+        </div>
+        <div style="background: #08080a; border: 1px solid #1c1c22; border-radius: 9px; padding: 20px 22px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 2;">
+          <div style="color: #6b6b78;"><span style="color: #6366f1;">▸</span> pal run "creator payouts dashboard for Artispreneur, Stripe + Supabase"</div>
+          <div style="color: #10b981;">✓ intent-spec        <span style="color: #55555f;">14 stated · 9 inferred · 4 non-goals</span></div>
+          <div style="color: #10b981;">✓ evidence-ledger    <span style="color: #55555f;">23 sources · tier-1 68%</span></div>
+          <div style="color: #10b981;">✓ jtbd-report        <span style="color: #55555f;">6 jobs · 11 outcomes</span></div>
+          <div style="color: #f59e0b;">◷ build-playbook     <span style="color: #55555f;">awaiting approval — spend gate</span></div>
+          <div style="color: #3f3f48;">· instruction-pack · final-prd · quality-score</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline" style="max-width: 1180px; margin: 0 auto; padding: 40px 40px 96px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+        <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 14px; padding: 26px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;">
+            <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.24); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #34d399; font-weight: 600;">01</div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f; letter-spacing: 0.06em;">SEMANTIC</span>
+          </div>
+          <h3 style="font-size: 18px; font-weight: 650; margin: 0 0 10px; letter-spacing: -0.015em;">Extract intent</h3>
+          <p style="font-size: 14px; line-height: 1.62; color: #8a8a99; margin: 0;">A category builder splits raw input into entities, actions and constraints — then separates what you said from what you meant, and writes down the non-goals.</p>
+        </div>
+        <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 14px; padding: 26px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;">
+            <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.26); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #a5b4fc; font-weight: 600;">02</div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f; letter-spacing: 0.06em;">RAG-DAL</span>
+          </div>
+          <h3 style="font-size: 18px; font-weight: 650; margin: 0 0 10px; letter-spacing: -0.015em;">Enhance with evidence</h3>
+          <p style="font-size: 14px; line-height: 1.62; color: #8a8a99; margin: 0;">Every claim gets a source. Retrieval across vendor docs, your knowledge base and prior architectures produces a tiered, confidence-scored resource ledger.</p>
+        </div>
+        <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 14px; padding: 26px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;">
+            <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.26); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #c4b5fd; font-weight: 600;">03</div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f; letter-spacing: 0.06em;">NPAO</span>
+          </div>
+          <h3 style="font-size: 18px; font-weight: 650; margin: 0 0 10px; letter-spacing: -0.015em;">Execute the package</h3>
+          <p style="font-size: 14px; line-height: 1.62; color: #8a8a99; margin: 0;">Needs, priorities, actions, outcomes — compiled into a dependency-ordered playbook, a harness-neutral instruction pack, and a stakeholder-readable PRD.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs" style="max-width: 1180px; margin: 0 auto; padding: 0 40px 96px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid #1c1c22;">
+        <div>
+          <h2 style="font-size: 34px; font-weight: 750; letter-spacing: -0.028em; margin: 0 0 10px;">Eight artifacts, one contract</h2>
+          <p style="font-size: 15.5px; color: #8a8a99; margin: 0; max-width: 560px; line-height: 1.6;">Each output is versioned, provenance-tagged, and validated against a schema before a run is allowed to advance.</p>
+        </div>
+        <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 13.5px; font-weight: 600; color: #e6e6ea; background: #121216; border: 1px solid #26262d; border-radius: 8px; padding: 10px 16px; cursor: pointer; white-space: nowrap;" style-hover="background: #17171c;">Browse the package →</button>
+      </div>
+      <div style="{{ artifactCardGridStyle }}">
+        <sc-for list="{{ artifactCards }}" as="a" hint-placeholder-count="8">
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 20px;" style-hover="border-color: #34343d; background: #101014;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #a5b4fc; margin-bottom: 10px; font-weight: 500;">{{ a.file }}</div>
+            <div style="font-size: 13.5px; color: #8a8a99; line-height: 1.55;">{{ a.blurb }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="who" style="max-width: 1180px; margin: 0 auto; padding: 0 40px 110px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+        <div style="border: 1px solid #1c1c22; border-radius: 14px; padding: 26px; background: linear-gradient(#0d0d10, #0a0a0c);">
+          <h3 style="font-size: 16.5px; font-weight: 650; margin: 0 0 10px;">Internal teams</h3>
+          <p style="font-size: 14px; line-height: 1.62; color: #8a8a99; margin: 0;">Stop re-litigating scope in Slack. Every run leaves a decision log and an approval trail your eng lead can audit.</p>
+        </div>
+        <div style="border: 1px solid #1c1c22; border-radius: 14px; padding: 26px; background: linear-gradient(#0d0d10, #0a0a0c);">
+          <h3 style="font-size: 16.5px; font-weight: 650; margin: 0 0 10px;">Agencies</h3>
+          <p style="font-size: 14px; line-height: 1.62; color: #8a8a99; margin: 0;">Turn a discovery call into a scoped, priced, client-readable PRD before the retainer starts. One run per pitch.</p>
+        </div>
+        <div style="border: 1px solid #1c1c22; border-radius: 14px; padding: 26px; background: linear-gradient(#0d0d10, #0a0a0c);">
+          <h3 style="font-size: 16.5px; font-weight: 650; margin: 0 0 10px;">Small businesses</h3>
+          <p style="font-size: 14px; line-height: 1.62; color: #8a8a99; margin: 0;">You describe the outcome in plain language. PAL writes the spec a contractor or an agent harness can actually execute.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer style="border-top: 1px solid #1c1c22; padding: 34px 40px; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #55555f;">PAL — Prompt Abstraction Layer</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #55555f;">harness-neutral · least-privilege · approval-gated</span>
+    </footer>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isDashboard }}">
+  <div style="display: flex; min-height: 100vh;">
+    <aside style="{{ dashSidebarStyle }}">
+      <div style="padding: 16px 18px; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; gap: 9px;">
+        <div style="width: 22px; height: 22px; border-radius: 6px; background: #6366f1; display: grid; place-items: center;">
+          <div style="width: 7px; height: 7px; background: #fff; transform: rotate(45deg); border-radius: 1px;"></div>
+        </div>
+        <span style="font-size: 14px; font-weight: 700; letter-spacing: -0.02em;">PAL</span>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.08em; padding: 0 8px 8px;">WORKSPACE</div>
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+            <button type="button" onClick="{{ n.onClick }}" style="{{ n.style }}" style-hover="background: #14141a;">
+              <span style="{{ n.dotStyle }}"></span>{{ n.label }}
+            </button>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.08em; padding: 0 8px 8px;">PROJECTS</div>
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 7px 9px; border-radius: 7px; font-size: 13px; color: #9b9baa; cursor: pointer;" style-hover="background: #14141a; color: #e6e6ea;">
+              <span>{{ p.name }}</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f;">{{ p.runs }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding: 14px; border-top: 1px solid #1c1c22;">
+        <div style="background: #0e0e12; border: 1px solid #1c1c22; border-radius: 9px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: #8a8a99; margin-bottom: 8px;">
+            <span>Monthly spend</span><span style="font-family: 'JetBrains Mono', monospace; color: #e6e6ea;">$412 / $600</span>
+          </div>
+          <div style="height: 4px; background: #1c1c22; border-radius: 99px; overflow: hidden;">
+            <div style="width: 69%; height: 100%; background: #6366f1; border-radius: 99px;"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0;">
+      <header style="height: 58px; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; position: sticky; top: 0; background: rgba(8,8,10,0.88); backdrop-filter: blur(14px); z-index: 20;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h1 style="font-size: 15px; font-weight: 620; margin: 0; letter-spacing: -0.015em;">Runs</h1>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #55555f; border: 1px solid #26262d; border-radius: 5px; padding: 2px 7px;">{{ runCountLabel }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" onClick="{{ goLanding }}" style="font-family: inherit; font-size: 13px; font-weight: 500; color: #9b9baa; background: transparent; border: 0; cursor: pointer; padding: 8px 4px;" style-hover="color: #e6e6ea;">Marketing site</button>
+          <button type="button" onClick="{{ goRun }}" style="font-family: inherit; font-size: 13px; font-weight: 600; color: #08080a; background: #f2f2f5; border: 0; border-radius: 7px; padding: 8px 14px; cursor: pointer;" style-hover="background: #fff;">New run</button>
+        </div>
+      </header>
+
+      <div style="padding: 26px; display: flex; flex-direction: column; gap: 22px; max-width: 1440px;">
+        <div style="{{ metricGridStyle }}">
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 18px;">
+            <div style="font-size: 12px; color: #8a8a99; margin-bottom: 12px;">Runs in progress</div>
+            <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px;">3</div>
+            <div style="display: flex; flex-direction: column; gap: 9px;">
+              <sc-for list="{{ inProgress }}" as="r" hint-placeholder-count="3">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 11.5px; margin-bottom: 5px;">
+                    <span style="color: #b4b4c2;">{{ r.project }}</span>
+                    <span style="font-family: 'JetBrains Mono', monospace; color: #55555f;">{{ r.stageLabel }}</span>
+                  </div>
+                  <div style="height: 3px; background: #1c1c22; border-radius: 99px; overflow: hidden;">
+                    <div style="{{ r.barStyle }}"></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 12px; color: #8a8a99;">Quality score</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #34d399;">+6 wk</span>
+            </div>
+            <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px;">91<span style="font-size: 15px; color: #55555f; font-weight: 500;">/100</span></div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; height: 46px;">
+              <sc-for list="{{ trend }}" as="t" hint-placeholder-count="12">
+                <div style="{{ t.style }}"></div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 18px;">
+            <div style="font-size: 12px; color: #8a8a99; margin-bottom: 12px;">Token spend · 30d</div>
+            <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px;">$412<span style="font-size: 15px; color: #55555f; font-weight: 500;">.30</span></div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <sc-for list="{{ spend }}" as="s" hint-placeholder-count="4">
+                <div style="display: flex; align-items: center; gap: 9px;">
+                  <span style="{{ s.swatchStyle }}"></span>
+                  <span style="font-size: 11.5px; color: #b4b4c2; flex: 1;">{{ s.label }}</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8a8a99;">{{ s.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 12px; color: #8a8a99;">Agent roster</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #f59e0b;">1 degraded</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <sc-for list="{{ agents }}" as="ag" hint-placeholder-count="7">
+                <div style="display: flex; align-items: center; gap: 9px;">
+                  <span style="{{ ag.dotStyle }}"></span>
+                  <span style="font-size: 11.5px; color: #b4b4c2; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ ag.name }}</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f;">{{ ag.latency }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; overflow: hidden;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid #1c1c22; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+                <button type="button" onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+              </sc-for>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #55555f;">{{ sortLabel }}</div>
+          </div>
+          <div style="{{ tableHeadStyle }}">
+            <sc-for list="{{ columns }}" as="c" hint-placeholder-count="7">
+              <button type="button" onClick="{{ c.onClick }}" style="{{ c.style }}" style-hover="color: #e6e6ea;">{{ c.label }}{{ c.arrow }}</button>
+            </sc-for>
+          </div>
+          <sc-for list="{{ visibleRuns }}" as="r" hint-placeholder-count="7">
+            <div onClick="{{ r.onClick }}" style="{{ r.rowStyle }}" style-hover="background: #101014;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #a5b4fc;">{{ r.id }}</span>
+              <span style="color: #e6e6ea; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 14px;">{{ r.project }}</span>
+              <span style="{{ r.badgeStyle }}"><span style="{{ r.badgeDotStyle }}"></span>{{ r.status }}</span>
+              <sc-if value="{{ wideTable }}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; align-items: center; gap: 10px; padding-right: 20px;">
+                  <div style="flex: 1; height: 3px; background: #1c1c22; border-radius: 99px; overflow: hidden;">
+                    <div style="{{ r.barStyle }}"></div>
+                  </div>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f; white-space: nowrap;">{{ r.stageLabel }}</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ wideTable }}" hint-placeholder-val="{{ true }}">
+                <span style="{{ r.qualityStyle }}">{{ r.quality }}</span>
+              </sc-if>
+              <span style="font-size: 12px; color: #8a8a99;">{{ r.updated }}</span>
+              <span style="font-size: 12px; color: #a5b4fc; font-weight: 500; text-align: right;">{{ r.action }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="{{ bottomGridStyle }}">
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 18px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+              <span style="font-size: 13px; font-weight: 600;">Recent artifacts</span>
+              <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 12px; color: #a5b4fc; background: transparent; border: 0; cursor: pointer;">View package →</button>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <sc-for list="{{ recentArtifacts }}" as="ra" hint-placeholder-count="5">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 10px 8px; border-radius: 7px;" style-hover="background: #101014;">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #a5b4fc; width: 148px; flex: none;">{{ ra.file }}</span>
+                  <span style="font-size: 12.5px; color: #8a8a99; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ ra.project }}</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f;">{{ ra.version }}</span>
+                  <span style="font-size: 11.5px; color: #55555f; width: 58px; text-align: right;">{{ ra.when }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background: #0c0c0f; border: 1px solid rgba(245,158,11,0.28); border-radius: 12px; padding: 18px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+              <span style="width: 7px; height: 7px; border-radius: 99px; background: #f59e0b;"></span>
+              <span style="font-size: 13px; font-weight: 600;">Pending approvals</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #f59e0b; background: rgba(245,158,11,0.1); border-radius: 5px; padding: 2px 6px;">2</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <sc-for list="{{ approvalsQueue }}" as="q" hint-placeholder-count="2">
+                <button type="button" onClick="{{ q.onClick }}" style="text-align: left; background: #101014; border: 1px solid #26262d; border-radius: 9px; padding: 12px; cursor: pointer; font-family: inherit; display: block; width: 100%;" style-hover="border-color: #f59e0b;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                    <span style="font-size: 12.5px; font-weight: 600; color: #e6e6ea;">{{ q.gate }}</span>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #a5b4fc;">{{ q.run }}</span>
+                  </div>
+                  <div style="font-size: 12px; color: #8a8a99; line-height: 1.5;">{{ q.detail }}</div>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isRun }}">
+  <div style="display: flex; height: 100vh; overflow: hidden;">
+    <aside style="{{ stageRailStyle }}">
+      <div style="height: 58px; flex: none; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; gap: 9px; padding: 0 16px;">
+        <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 13px; color: #9b9baa; background: transparent; border: 0; cursor: pointer; display: flex; align-items: center; gap: 7px; padding: 0;" style-hover="color: #e6e6ea;">← Runs</button>
+      </div>
+      <div style="padding: 18px 16px; border-bottom: 1px solid #1c1c22;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a5b4fc; margin-bottom: 6px;">{{ activeRunId }}</div>
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 3px; letter-spacing: -0.01em;">{{ activeRunProject }}</div>
+        <div style="font-size: 12px; color: #8a8a99;">{{ activeRunTitle }}</div>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 16px 12px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.08em; padding: 0 6px 10px;">PIPELINE</div>
+        <div style="display: flex; flex-direction: column; gap: 1px;">
+          <sc-for list="{{ stageRail }}" as="s" hint-placeholder-count="7">
+            <button type="button" onClick="{{ s.onClick }}" style="{{ s.style }}" style-hover="background: #14141a;">
+              <span style="{{ s.dotStyle }}"></span>
+              <span style="flex: 1; text-align: left;">{{ s.label }}</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f;">{{ s.tag }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="margin-top: 22px; padding: 13px; background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 10px;">
+          <div style="font-size: 11.5px; color: #8a8a99; margin-bottom: 9px;">Now / Next / Later</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <sc-for list="{{ nowNextLater }}" as="n" hint-placeholder-count="3">
+              <div style="display: flex; gap: 8px; align-items: flex-start;">
+                <span style="{{ n.tagStyle }}">{{ n.tag }}</span>
+                <span style="font-size: 11.5px; color: #b4b4c2; line-height: 1.45;">{{ n.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; border-right: 1px solid #1c1c22;">
+      <header style="height: 58px; flex: none; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; position: relative; z-index: 70; background: #08080a;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <sc-if value="{{ compact }}">
+            <button type="button" onClick="{{ goDashboard }}" style="font-family: inherit; font-size: 13px; color: #9b9baa; background: transparent; border: 0; cursor: pointer; padding: 0; white-space: nowrap;" style-hover="color: #e6e6ea;">← Runs</button>
+          </sc-if>
+          <span style="font-size: 14px; font-weight: 600; white-space: nowrap;">PAL Compiler</span>
+          <span style="{{ runStatusBadgeStyle }}"><span style="{{ runStatusDotStyle }}"></span>{{ runStatusLabel }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; flex: none;">
+          <sc-if value="{{ showTokenLabel }}" hint-placeholder-val="{{ true }}">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #55555f; white-space: nowrap;">{{ tokenLabel }}</span>
+          </sc-if>
+          <sc-if value="{{ narrow }}">
+            <button type="button" onClick="{{ togglePane }}" style="font-family: inherit; font-size: 12.5px; font-weight: 600; color: #a5b4fc; background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.28); border-radius: 7px; padding: 7px 13px; cursor: pointer; white-space: nowrap;" style-hover="background: rgba(99,102,241,0.18);">{{ paneToggleLabel }}</button>
+          </sc-if>
+          <button type="button" onClick="{{ goPackages }}" style="font-family: inherit; font-size: 12.5px; font-weight: 600; color: #e6e6ea; background: #121216; border: 1px solid #26262d; border-radius: 7px; padding: 7px 13px; cursor: pointer; white-space: nowrap;" style-hover="background: #17171c;">Output package</button>
+        </div>
+      </header>
+
+      <div style="flex: 1; overflow-y: auto; padding: 26px 22px 8px;">
+        <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px;">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+            <div style="{{ m.rowStyle }}">
+              <div style="{{ m.avatarStyle }}">{{ m.avatar }}</div>
+              <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+                <sc-if value="{{ m.hasChips }}">
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <sc-for list="{{ m.chips }}" as="c" hint-placeholder-count="3">
+                      <span style="{{ c.style }}"><span style="{{ c.dotStyle }}"></span>{{ c.label }}</span>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+                <sc-if value="{{ m.hasFacets }}">
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                    <sc-for list="{{ m.facets }}" as="f" hint-placeholder-count="3">
+                      <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 9px; padding: 12px;">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: #55555f; letter-spacing: 0.07em; margin-bottom: 8px;">{{ f.kind }}</div>
+                        <div style="font-size: 12px; color: #b4b4c2; line-height: 1.6;">{{ f.items }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ m.hasGate }}">
+                  <div style="background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.3); border-radius: 11px; padding: 16px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 9px;">
+                      <span style="width: 6px; height: 6px; border-radius: 99px; background: #f59e0b;"></span>
+                      <span style="font-size: 12.5px; font-weight: 650; color: #fbbf24;">Approval gate — external spend</span>
+                    </div>
+                    <div style="font-size: 13px; color: #b4b4c2; line-height: 1.6; margin-bottom: 14px;">The playbook provisions a Stripe Connect test account and a Supabase project. Both incur cost and require OAuth scopes not yet granted.</div>
+                    <div style="display: flex; gap: 8px;">
+                      <button type="button" onClick="{{ openApproval }}" style="font-family: inherit; font-size: 12.5px; font-weight: 600; color: #08080a; background: #fbbf24; border: 0; border-radius: 7px; padding: 8px 15px; cursor: pointer;" style-hover="background: #fcd34d;">Review gate</button>
+                      <button type="button" onClick="{{ openApproval }}" style="font-family: inherit; font-size: 12.5px; font-weight: 500; color: #b4b4c2; background: transparent; border: 1px solid #26262d; border-radius: 7px; padding: 8px 15px; cursor: pointer;" style-hover="color: #e6e6ea;">See alternatives</button>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ isThinking }}">
+            <div style="display: flex; gap: 14px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; flex: none; border-radius: 8px; background: #6366f1; display: grid; place-items: center;"><div style="width: 8px; height: 8px; background: #fff; transform: rotate(45deg); border-radius: 1px;"></div></div>
+              <div style="flex: 1;">
+                <div style="font-size: 13px; color: #a5b4fc; font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;">{{ thinkingLabel }}</div>
+                <div style="height: 2px; background: #1c1c22; border-radius: 99px; overflow: hidden; position: relative;">
+                  <div style="position: absolute; inset: 0; width: 33%; background: #6366f1; animation: palSweep 1.2s ease-in-out infinite;"></div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="flex: none; padding: 14px 22px 20px;">
+        <div style="max-width: 720px; margin: 0 auto;">
+          <div style="background: #0c0c0f; border: 1px solid #26262d; border-radius: 13px; padding: 12px 14px;">
+            <textarea placeholder="Describe what you want to build, or refine the run…" value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onKey }}" rows="2" style="width: 100%; background: transparent; border: 0; outline: none; resize: none; color: #e6e6ea; font-family: inherit; font-size: 14px; line-height: 1.55;"></textarea>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <sc-for list="{{ composerChips }}" as="cc" hint-placeholder-count="3">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #8a8a99; background: #14141a; border: 1px solid #26262d; border-radius: 6px; padding: 4px 8px;">{{ cc }}</span>
+                </sc-for>
+              </div>
+              <button type="button" onClick="{{ submitPrompt }}" style="{{ sendStyle }}">{{ sendLabel }}</button>
+            </div>
+          </div>
+          <div style="font-size: 11px; color: #55555f; text-align: center; margin-top: 9px;">Runs are approval-gated. No external action or spend executes without your sign-off.</div>
+        </div>
+      </div>
+    </main>
+
+    <sc-if value="{{ showScrim }}">
+      <div onClick="{{ closePane }}" style="position: fixed; inset: 0; background: rgba(4,4,6,0.5); z-index: 55;"></div>
+    </sc-if>
+    <sc-if value="{{ paneVisible }}" hint-placeholder-val="{{ true }}">
+    <aside style="{{ artifactPaneStyle }}">
+      <div style="height: 58px; flex: none; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; gap: 2px; padding: 0 10px; overflow-x: auto;">
+        <sc-for list="{{ artifactTabs }}" as="t" hint-placeholder-count="8">
+          <button type="button" onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="color: #e6e6ea;">{{ t.label }}</button>
+        </sc-for>
+        <sc-if value="{{ narrow }}">
+          <button type="button" onClick="{{ closePane }}" aria-label="Close artifact panel" style="position: sticky; right: 0; margin-left: auto; flex: none; font-family: inherit; font-size: 17px; line-height: 1; color: #8a8a99; background: #0a0a0c; border: 0; border-radius: 6px; padding: 7px 9px; cursor: pointer;" style-hover="color: #fff; background: #17171c;">×</button>
+        </sc-if>
+      </div>
+      <div style="flex: none; padding: 13px 18px; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 9px; min-width: 0;">
+          <span style="{{ artifactStatusDotStyle }}"></span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #e6e6ea; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ activeArtifactFile }}</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; border: 1px solid #26262d; border-radius: 5px; padding: 1px 5px; flex: none;">{{ activeArtifactVersion }}</span>
+        </div>
+        <div style="display: flex; gap: 6px; flex: none;">
+          <button type="button" onClick="{{ copyArtifact }}" style="font-family: inherit; font-size: 11.5px; color: #b4b4c2; background: #121216; border: 1px solid #26262d; border-radius: 6px; padding: 5px 10px; cursor: pointer;" style-hover="background: #17171c; color: #fff;">Copy</button>
+          <button type="button" onClick="{{ downloadArtifact }}" style="font-family: inherit; font-size: 11.5px; color: #b4b4c2; background: #121216; border: 1px solid #26262d; border-radius: 6px; padding: 5px 10px; cursor: pointer;" style-hover="background: #17171c; color: #fff;">Download</button>
+        </div>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 18px 20px 40px; background: #08080a;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.85;">
+          <sc-for list="{{ artifactLines }}" as="l" hint-placeholder-count="18">
+            <div style="{{ l.style }}">{{ l.text }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </aside>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isPackages }}">
+  <div>
+    <header style="height: 58px; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; position: sticky; top: 0; background: rgba(8,8,10,0.88); backdrop-filter: blur(14px); z-index: 20;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <button type="button" onClick="{{ goRun }}" style="font-family: inherit; font-size: 13px; color: #9b9baa; background: transparent; border: 0; cursor: pointer; padding: 0;" style-hover="color: #e6e6ea;">← Run</button>
+        <span style="width: 1px; height: 16px; background: #26262d;"></span>
+        <span style="font-size: 15px; font-weight: 620; letter-spacing: -0.015em;">Output package</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a5b4fc;">{{ activeRunId }}</span>
+      </div>
+      <button type="button" onClick="{{ downloadAll }}" style="font-family: inherit; font-size: 13px; font-weight: 600; color: #08080a; background: #f2f2f5; border: 0; border-radius: 7px; padding: 8px 14px; cursor: pointer;" style-hover="background: #fff;">Download all (.zip)</button>
+    </header>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 32px 26px 80px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 26px;">
+        <div>
+          <h1 style="font-size: 30px; font-weight: 750; letter-spacing: -0.028em; margin: 0 0 10px;">{{ activeRunProject }}</h1>
+          <p style="font-size: 14.5px; color: #8a8a99; margin: 0; max-width: 620px; line-height: 1.6;">{{ activeRunTitle }} — 8 artifacts, contract-validated. Every file is versioned and traceable to a source in the evidence ledger.</p>
+        </div>
+        <div style="display: flex; gap: 26px; flex: none;">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.07em; margin-bottom: 6px;">QUALITY</div>
+            <div style="font-size: 22px; font-weight: 700; color: #34d399;">94</div>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.07em; margin-bottom: 6px;">SOURCES</div>
+            <div style="font-size: 22px; font-weight: 700;">23</div>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.07em; margin-bottom: 6px;">COST</div>
+            <div style="font-size: 22px; font-weight: 700;">$7.14</div>
+          </div>
+        </div>
+      </div>
+      <div style="{{ packageGridStyle }}">
+        <sc-for list="{{ packageFiles }}" as="p" hint-placeholder-count="8">
+          <div style="background: #0c0c0f; border: 1px solid #1c1c22; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px;" style-hover="border-color: #34343d;">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;">
+              <div style="min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 7px;">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #a5b4fc; font-weight: 500;">{{ p.file }}</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; border: 1px solid #26262d; border-radius: 5px; padding: 1px 5px;">{{ p.version }}</span>
+                </div>
+                <div style="font-size: 13px; color: #8a8a99; line-height: 1.55;">{{ p.blurb }}</div>
+              </div>
+              <span style="{{ p.badgeStyle }}">{{ p.badge }}</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 13px; border-top: 1px solid #17171c;">
+              <div style="display: flex; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f;">
+                <span>{{ p.size }}</span><span>{{ p.meta }}</span>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" onClick="{{ p.onView }}" style="font-family: inherit; font-size: 11.5px; color: #b4b4c2; background: #121216; border: 1px solid #26262d; border-radius: 6px; padding: 5px 10px; cursor: pointer;" style-hover="color: #fff; background: #17171c;">View</button>
+                <button type="button" onClick="{{ copyArtifact }}" style="font-family: inherit; font-size: 11.5px; color: #b4b4c2; background: #121216; border: 1px solid #26262d; border-radius: 6px; padding: 5px 10px; cursor: pointer;" style-hover="color: #fff; background: #17171c;">Copy</button>
+                <button type="button" onClick="{{ downloadArtifact }}" style="font-family: inherit; font-size: 11.5px; color: #b4b4c2; background: #121216; border: 1px solid #26262d; border-radius: 6px; padding: 5px 10px; cursor: pointer;" style-hover="color: #fff; background: #17171c;">Download</button>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ showApproval }}">
+    <div onClick="{{ closeApproval }}" style="position: fixed; inset: 0; background: rgba(4,4,6,0.72); backdrop-filter: blur(6px); z-index: 90; display: grid; place-items: center; padding: 40px;">
+      <div onClick="{{ stop }}" style="width: 560px; max-width: 100%; background: #0c0c0f; border: 1px solid #2a2a33; border-radius: 16px; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8); animation: palRise 0.18s ease-out;">
+        <div style="padding: 20px 24px; border-bottom: 1px solid #1c1c22; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 7px; height: 7px; border-radius: 99px; background: #f59e0b;"></span>
+            <span style="font-size: 15px; font-weight: 650;">Approval gate</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #f59e0b; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); border-radius: 5px; padding: 2px 7px;">external spend</span>
+          </div>
+          <button type="button" onClick="{{ closeApproval }}" style="font-family: inherit; font-size: 18px; line-height: 1; color: #6b6b78; background: transparent; border: 0; cursor: pointer;" style-hover="color: #e6e6ea;">×</button>
+        </div>
+        <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 20px;">
+          <sc-for list="{{ approvalSections }}" as="s" hint-placeholder-count="4">
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.08em; margin-bottom: 8px;">{{ s.label }}</div>
+              <div style="font-size: 13.5px; color: #cdcdd6; line-height: 1.62;">{{ s.body }}</div>
+            </div>
+          </sc-for>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #55555f; letter-spacing: 0.08em; margin-bottom: 8px;">COMMENT (OPTIONAL)</div>
+            <textarea placeholder="Add a note to the decision log…" rows="2" style="width: 100%; background: #08080a; border: 1px solid #26262d; border-radius: 9px; padding: 10px 12px; color: #e6e6ea; font-family: inherit; font-size: 13px; resize: none; outline: none;"></textarea>
+          </div>
+        </div>
+        <div style="padding: 16px 24px; border-top: 1px solid #1c1c22; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #55555f;">logged to decision_log · immutable</span>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" onClick="{{ rejectGate }}" style="font-family: inherit; font-size: 13px; font-weight: 500; color: #fb7185; background: transparent; border: 1px solid rgba(244,63,94,0.35); border-radius: 8px; padding: 9px 16px; cursor: pointer;" style-hover="background: rgba(244,63,94,0.08);">Reject</button>
+            <button type="button" onClick="{{ approveGate }}" style="font-family: inherit; font-size: 13px; font-weight: 600; color: #08080a; background: #34d399; border: 0; border-radius: 8px; padding: 9px 16px; cursor: pointer;" style-hover="background: #6ee7b7;">Approve & continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasToast }}">
+    <div style="position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%); background: #14141a; border: 1px solid #34343d; border-radius: 9px; padding: 11px 18px; font-size: 13px; color: #e6e6ea; z-index: 95; animation: palRise 0.18s ease-out; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.7);">{{ toast }}</div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const STAGES = [
+  { id: 'intent', label: 'Intent Spec', tag: 'v3', file: 'intent-spec.md', agent: 'PAL Intent Compiler' },
+  { id: 'evidence', label: 'Evidence Ledger', tag: 'v2', file: 'evidence-ledger.csv', agent: 'RAG-DAL' },
+  { id: 'jtbd', label: 'JTBD Report', tag: 'v2', file: 'jtbd-report.md', agent: 'JTBD Builder' },
+  { id: 'plan', label: 'Build Playbook', tag: 'v1', file: 'build-playbook.md', agent: 'NPAO Prioritizer' },
+  { id: 'instructions', label: 'Instruction Pack', tag: 'v1', file: 'instruction-pack.md', agent: 'Instruction Architect' },
+  { id: 'prd', label: 'Final PRD', tag: 'v1', file: 'final-prd.md', agent: 'PRD Publisher' },
+  { id: 'soul', label: 'Agent soul.md', tag: 'v1', file: 'soul.md', agent: 'Agent Designer' },
+  { id: 'quality', label: 'Quality Score', tag: 'v1', file: 'quality-scorecard.md', agent: 'Quality Evaluator' }
+];
+
+const ART = {
+  intent: `# intent-spec — payouts.artispreneur
+provenance: prompt/RUN-4471 · schema: intent-spec@1.2
+
+## stated_requirements
+- creator payouts dashboard, self-serve
+- Stripe Connect for transfers, Supabase for state
+- creators see pending / paid / failed balances
+- CSV export for accounting
+
+## inferred_requirements
+- payout batching to avoid per-transfer fees
+- idempotency keys on every transfer call
+- webhook reconciliation (transfer.failed, payout.paid)
+- RLS so a creator reads only their own ledger
+- KYC gate before first payout
+
+## non_goals
+- multi-currency (USD only in v1)
+- tax form generation (1099-K deferred)
+- in-app dispute handling
+
+## assumptions
+- ~400 creators, monthly payout cadence
+- existing Supabase auth, no new identity provider
+
+## decision_log
+- 2026-08-06 chose Connect Express over Custom
+  rationale: Stripe owns KYC + dashboard, cuts scope
+  approved_by: pat`,
+  evidence: `# evidence-ledger — 23 sources
+tier_1: 68%  tier_2: 24%  tier_3: 8%  mean_confidence: 0.89
+
+name                  | tier | conf | source
+----------------------|------|------|--------------------
+Connect Express docs  |    1 | 0.98 | stripe.com/docs
+Transfers API ref     |    1 | 0.97 | stripe.com/docs
+Idempotent requests   |    1 | 0.96 | stripe.com/docs
+Webhook signatures    |    1 | 0.95 | stripe.com/docs
+Supabase RLS guide    |    1 | 0.94 | supabase.com/docs
+pg advisory locks     |    1 | 0.91 | postgresql.org
+Edge Function cron    |    1 | 0.90 | supabase.com/docs
+KYC requirements US   |    2 | 0.86 | stripe.com/docs
+Payout ledger pattern |    2 | 0.84 | kb/artispreneur
+Civic Pie payout ADR  |    2 | 0.83 | kb/internal
+Double-entry basics   |    2 | 0.79 | martinfowler.com
+Batch fee analysis    |    3 | 0.64 | community
+
+flags
+- 1 source superseded (Connect legacy Custom flow) — excluded
+- no tier-1 source found for 1099-K threshold; marked non_goal`,
+  jtbd: `# jtbd-report — 6 jobs · 11 outcomes
+trace_to_intent: complete
+
+## J1 — Get paid without asking anyone
+when I finish a paid collab
+I want my balance to move to my bank on a schedule I can see
+so I can stop DMing support about money
+outcomes: O1 payout ETA visible, O2 zero manual requests
+
+## J2 — Trust the number
+when I look at my balance
+I want pending vs available split with the fee shown
+so I know what actually arrives
+outcomes: O3 fee transparency, O4 no reconciliation disputes
+
+## J3 — Recover from a failure myself
+when a transfer fails
+I want the reason and a fix-it action
+so I am not blocked for a month
+outcomes: O5 self-serve remediation < 5 min
+
+## J4 (ops) — Close the books
+## J5 (ops) — Prove a payout happened
+## J6 (ops) — Onboard a creator to payouts
+
+## non_functional
+- payout batch completes < 90s for 400 creators
+- ledger writes are append-only and auditable
+- p95 dashboard load < 1.2s
+
+## edge_cases
+- creator deletes bank account mid-batch
+- duplicate webhook delivery
+- partial batch failure (7 of 400)`,
+  plan: `# build-playbook — NPAO
+critical_path: schema → ledger → transfer worker → dashboard
+
+## needs
+- Stripe Connect test account (BLOCKED: approval gate)
+- Supabase project + service role key
+- cron scheduler for batch window
+
+## priorities
+V1: ledger, KYC onboarding, batch transfers, creator dashboard
+V2: CSV export, failure remediation UI, ops console
+V3: multi-currency, 1099-K
+
+## milestones
+M1 Ledger + schema           3d   ██████░░░░
+M2 Connect onboarding        2d   ████░░░░░░
+M3 Batch transfer worker     4d   ░░░░░░░░░░  gated
+M4 Creator dashboard         4d   ░░░░░░░░░░
+M5 Reconciliation + alerts   2d   ░░░░░░░░░░
+
+## approval_gates
+G1 external spend — Stripe + Supabase provisioning   PENDING
+G2 write scope — production transfer capability      NOT REACHED
+
+## now_next_later
+now:   migrations for ledger_entries + payout_batches
+next:  Connect Express onboarding flow behind flag
+later: ops console, dispute surface`,
+  instructions: `# instruction-pack — harness-neutral
+target: any tool-calling harness · no provider hard-coding
+
+## master_system_instructions
+You are the Payouts Build Agent for Artispreneur.
+Execute the build-playbook in dependency order.
+Never call a live Stripe endpoint without an approved gate.
+Every money-moving call carries an idempotency key derived
+from (batch_id, creator_id).
+
+## phases
+P1 schema + RLS      exit: RLS tests pass for cross-creator reads
+P2 onboarding        exit: test creator reaches charges_enabled
+P3 transfer worker   exit: 400-row batch dry-run, 0 duplicates
+P4 dashboard         exit: p95 < 1.2s on seeded data
+P5 reconciliation    exit: webhook replay is idempotent
+
+## stack_decisions
+runtime   Next.js App Router      ADR-01
+data      Supabase Postgres + RLS ADR-02
+money     Stripe Connect Express  ADR-03
+jobs      Supabase Edge + cron    ADR-04
+
+## agent_skill_manifest
+- ledger-invariants.skill
+- idempotency-discipline.skill
+- rls-policy-authoring.skill
+
+## tool_mapping (least-privilege)
+stripe.transfers.create   scope: write   gate: G2
+stripe.accounts.retrieve  scope: read    gate: none
+supabase.sql.migrate      scope: write   gate: none
+supabase.rows.select      scope: read    gate: none
+secrets: ENV:STRIPE_SECRET_KEY, ENV:SUPABASE_SERVICE_ROLE
+
+## test_plan
+unit: fee math, batch partition
+integration: webhook replay, partial batch failure
+e2e: onboard → earn → batch → paid`,
+  prd: `# final-prd — Creator Payouts
+status: draft · stakeholder-readable · machine-usable
+
+## 1. exec_summary
+Artispreneur creators currently get paid by manual bank
+transfer initiated by ops. This ships a self-serve payout
+system: creators onboard once via Stripe Connect Express,
+see a live balance, and receive scheduled monthly transfers.
+Ops effort drops from ~6h/month to a monitored batch job.
+
+## 2. problem & users
+Primary: creators earning on collabs (~400 active).
+Secondary: ops closing books monthly.
+Pain: opaque balances, month-long failure loops, DM support.
+
+## 3. objectives & non-goals
+O1 zero manual payout requests
+O2 batch completes in one window, fully reconciled
+Non-goals: multi-currency, tax forms, dispute handling
+
+## 4. requirements → 5. jtbd acceptance
+See jtbd-report J1–J6; each FR traces to an outcome ID.
+
+## 6. architecture
+Next.js App Router · Supabase Postgres (RLS) ·
+Stripe Connect Express · Edge Function batch worker ·
+append-only ledger_entries as source of truth
+
+## 7. stack   see ADR-01..04
+## 8. delivery_plan   M1–M5, 15 working days
+## 9. risks
+R1 partial batch failure — mitigate w/ per-transfer state
+R2 KYC drop-off — mitigate w/ resumable onboarding
+## 10. security & data
+PII stays in Stripe. We store account_id, never bank details.
+## 11–14. kb index · manifest · decisions · appendix`,
+  soul: `# soul.md — Payouts Build Agent
+compiled_by: PAL · run RUN-4471 · immutable
+
+## role & identity
+You are the Payouts Build Agent for Artispreneur.
+You own the ledger and every money-moving path. You are
+conservative by construction: correctness over throughput.
+
+## core directives
+1. The ledger is append-only. Never update or delete a row.
+2. Every transfer carries an idempotency key.
+3. No live Stripe call without an approved gate in run-state.
+4. RLS first — write the policy before the query.
+5. If a source is missing, stop and ask. Never assume a
+   financial threshold, fee, or tax rule.
+6. Secrets are ENV references. Never inline, never log.
+
+## refusal conditions
+- asked to reconcile by mutating history
+- asked to widen a scope past the approved gate
+- asked to move money in an unapproved currency
+
+## expected output
+- migrations as timestamped SQL files
+- every PR body cites the FR and outcome ID it satisfies
+- a run summary: rows written, transfers created, failures
+
+## escalation
+Blocked > 1 attempt → post the blocker, the attempted fix,
+and the smallest decision that unblocks it.`,
+  quality: `# quality-scorecard — 94 / 100
+
+dimension              score  weight  note
+-----------------------------------------------------
+intent fidelity           97      20  non-goals explicit
+evidence grounding        95      20  68% tier-1
+traceability              98      15  all FRs trace to JTBD
+completeness              92      15  1099-K deferred, noted
+architecture soundness    93      10  append-only ledger
+security posture          96      10  no PII stored, RLS
+harness neutrality        88      10  cron is Supabase-specific
+
+## gaps
+- 1099-K threshold has no tier-1 source (deferred, tracked)
+- batch worker is Supabase Edge specific; abstract in V2
+
+## verdict
+Package is buildable as-is. One approval gate outstanding
+before M3 can start.`
+};
+
+const RUNS = [
+  { id: 'RUN-4471', project: 'Artispreneur', title: 'Creator payouts dashboard', status: 'awaiting approval', stage: 4, quality: 94, updated: '4m ago', action: 'Resume' },
+  { id: 'RUN-4468', project: 'Civic Pie', title: 'Constituent CRM intake', status: 'running', stage: 6, quality: null, updated: '11m ago', action: 'View' },
+  { id: 'RUN-4462', project: 'GencyAI', title: 'Agency onboarding agent', status: 'running', stage: 2, quality: null, updated: '38m ago', action: 'View' },
+  { id: 'RUN-4455', project: 'Atlas HXM', title: 'EOR compliance brief generator', status: 'complete', stage: 8, quality: 91, updated: '3h ago', action: 'Open' },
+  { id: 'RUN-4449', project: 'ArtistEPKs', title: 'EPK PDF pipeline v2', status: 'complete', stage: 8, quality: 88, updated: '1d ago', action: 'Open' },
+  { id: 'RUN-4441', project: 'Your48', title: 'Sprint scoreboard', status: 'blocked', stage: 3, quality: null, updated: '2d ago', action: 'Fix' },
+  { id: 'RUN-4437', project: 'ROSTR', title: 'Repo integration agent', status: 'complete', stage: 8, quality: 96, updated: '3d ago', action: 'Open' }
+];
+
+const STATUS_COLOR = {
+  'complete': ['#34d399', 'rgba(16,185,129,0.1)', 'rgba(16,185,129,0.24)'],
+  'running': ['#a5b4fc', 'rgba(99,102,241,0.1)', 'rgba(99,102,241,0.26)'],
+  'awaiting approval': ['#fbbf24', 'rgba(245,158,11,0.1)', 'rgba(245,158,11,0.26)'],
+  'blocked': ['#fb7185', 'rgba(244,63,94,0.1)', 'rgba(244,63,94,0.26)']
+};
+
+class Component extends DCLogic {
+  state = {
+    view: 'landing',
+    draft: '',
+    stageDone: 8,
+    running: false,
+    artifact: 'intent',
+    sortKey: 'updated',
+    sortAsc: false,
+    filter: 'all',
+    showApproval: false,
+    toast: '',
+    gateResolved: null,
+    extraMessages: [],
+    w: typeof window !== 'undefined' ? window.innerWidth : 1440,
+    paneOpen: false
+  };
+
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+    this._r();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._t); clearTimeout(this._tt);
+    if (this._r) window.removeEventListener('resize', this._r);
+  }
+
+  flash(msg) {
+    clearTimeout(this._tt);
+    this.setState({ toast: msg });
+    this._tt = setTimeout(() => this.setState({ toast: '' }), 2000);
+  }
+
+  advance = () => {
+    this.setState(s => {
+      const next = s.stageDone + 1;
+      if (next >= STAGES.length) return { stageDone: STAGES.length, running: false, artifact: 'quality' };
+      this._t = setTimeout(this.advance, 950);
+      return { stageDone: next, artifact: STAGES[Math.min(next, STAGES.length - 1)].id };
+    });
+  };
+
+  startRun = () => {
+    if (this.state.running) return;
+    const text = this.state.draft.trim();
+    clearTimeout(this._t);
+    this.setState(s => ({
+      running: true, stageDone: 0, artifact: 'intent', draft: '', gateResolved: null,
+      extraMessages: text ? s.extraMessages.concat([{ role: 'user', text }]) : s.extraMessages
+    }));
+    this._t = setTimeout(this.advance, 900);
+  };
+
+  tabStyle(active) {
+    return 'font-family: inherit; font-size: 11.5px; font-weight: 500; white-space: nowrap; background: transparent; border: 0; border-bottom: 2px solid ' +
+      (active ? '#6366f1' : 'transparent') + '; color: ' + (active ? '#fff' : '#6b6b78') +
+      '; padding: 20px 9px 18px; cursor: pointer;';
+  }
+
+  badge(status) {
+    const c = STATUS_COLOR[status] || STATUS_COLOR.running;
+    return {
+      badgeStyle: 'display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; color: ' + c[0] + '; background: ' + c[1] + '; border: 1px solid ' + c[2] + '; border-radius: 6px; padding: 3px 9px; width: fit-content;',
+      badgeDotStyle: 'width: 5px; height: 5px; border-radius: 99px; background: ' + c[0] + ';'
+    };
+  }
+
+  lines(text) {
+    return text.split('\n').map(t => {
+      let style = 'color: #9b9baa; white-space: pre-wrap; word-break: break-word;';
+      if (/^#\s/.test(t)) style = 'color: #fff; font-weight: 600; font-size: 13px; margin-bottom: 4px; white-space: pre-wrap;';
+      else if (/^##\s/.test(t)) style = 'color: #a5b4fc; font-weight: 600; margin-top: 14px; white-space: pre-wrap;';
+      else if (/^-\s/.test(t)) style = 'color: #cdcdd6; white-space: pre-wrap; word-break: break-word;';
+      else if (/^(provenance|status|tier_1|compiled_by|target|critical_path|trace_to_intent)/.test(t)) style = 'color: #55555f; white-space: pre-wrap;';
+      else if (/^(BLOCKED|PENDING)|PENDING$|gated$/.test(t)) style = 'color: #fbbf24; white-space: pre-wrap;';
+      else if (/^\s*\d+\.\s/.test(t)) style = 'color: #cdcdd6; white-space: pre-wrap; word-break: break-word;';
+      else if (/^-{3,}/.test(t)) style = 'color: #2a2a33; white-space: pre-wrap;';
+      return { text: t === '' ? '\u00a0' : t, style };
+    });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const w = s.w;
+    const narrow = w < 1280;
+    const compact = w < 1024;
+    const wideTable = w >= 1100;
+    const done = s.stageDone;
+    const stageOf = i => (i < done ? 'done' : (s.running && i === done ? 'active' : 'idle'));
+
+    const stageRail = STAGES.map((st, i) => {
+      const k = stageOf(i);
+      const col = k === 'done' ? '#34d399' : k === 'active' ? '#a5b4fc' : '#3f3f48';
+      const sel = s.artifact === st.id;
+      return {
+        label: st.label, tag: st.tag,
+        onClick: () => this.setState({ artifact: st.id }),
+        style: 'display: flex; align-items: center; gap: 10px; width: 100%; font-family: inherit; font-size: 12.5px; font-weight: 500; text-align: left; background: ' +
+          (sel ? '#14141a' : 'transparent') + '; border: 0; border-radius: 7px; padding: 9px 10px; cursor: pointer; color: ' + (sel ? '#fff' : '#9b9baa') + ';',
+        dotStyle: 'width: 6px; height: 6px; flex: none; border-radius: 99px; background: ' + col + (k === 'active' ? '; animation: palPulse 1.1s ease-in-out infinite' : '')
+      };
+    });
+
+    const activeStage = STAGES.find(x => x.id === s.artifact) || STAGES[0];
+    const activeIdx = STAGES.indexOf(activeStage);
+    const artifactReady = activeIdx < done;
+
+    const artifactTabs = STAGES.map(st => ({
+      label: st.file, onClick: () => this.setState({ artifact: st.id }), style: this.tabStyle(s.artifact === st.id)
+    }));
+
+    const runStatus = s.running ? 'running' : (s.gateResolved === 'approved' ? 'complete' : (s.gateResolved === 'rejected' ? 'blocked' : 'awaiting approval'));
+    const rb = this.badge(runStatus);
+
+    const baseMessages = [
+      { role: 'user', text: 'Creator payouts dashboard for Artispreneur. Creators onboard once, see pending vs paid balances, and get transferred monthly. Stripe + Supabase. Keep it self-serve — ops is drowning in DMs about money.' },
+      { role: 'agent', chips: [['Intent extracted', '#34d399'], ['23 sources · tier-1 68%', '#34d399'], ['JTBD compiled', '#34d399']],
+        text: 'Intent compiled. I separated four non-goals from your stated scope — multi-currency, 1099-K generation, in-app disputes, and manual ops overrides — because each pulls in a compliance surface you did not ask for. The evidence ledger is 68% tier-1 (Stripe and Supabase primary docs); one claim about 1099-K thresholds had no tier-1 source, so I deferred it rather than guess.',
+        facets: [
+          { kind: 'ENTITIES', items: 'creator · ledger_entry · payout_batch · connect_account · transfer' },
+          { kind: 'ACTIONS', items: 'onboard · accrue · batch · transfer · reconcile · export' },
+          { kind: 'CONSTRAINTS', items: 'self-serve · append-only · idempotent · USD-only · RLS-isolated' }
+        ] },
+      { role: 'agent', text: 'The playbook puts an append-only ledger on the critical path ahead of anything user-facing — every payout bug I found in the evidence set traces back to mutable balance rows. Five milestones, 15 working days. M3 is gated.', gate: true }
+    ];
+
+    const gateNote = s.gateResolved === 'approved'
+      ? [{ role: 'agent', chips: [['Gate G1 approved', '#34d399']], text: 'Gate approved and written to the decision log. Provisioning Stripe Connect test account and Supabase project with least-privilege scopes. M3 unblocked — instruction pack and PRD are final, quality scored 94.' }]
+      : s.gateResolved === 'rejected'
+      ? [{ role: 'agent', chips: [['Gate G1 rejected', '#fb7185']], text: 'Gate rejected. Run is blocked at M3. I have rewritten the playbook to a mock-transfer path so M1, M2 and M4 can proceed without spend — no live Stripe call will be made. Re-open the gate when you want real transfers.' }]
+      : [];
+
+    const messages = baseMessages.concat(gateNote, s.extraMessages).map(m => {
+      const isUser = m.role === 'user';
+      const chips = (m.chips || []).map(c => ({
+        label: c[0], style: 'display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; color: ' + c[1] + '; background: ' + c[1] + '14; border: 1px solid ' + c[1] + '3d; border-radius: 6px; padding: 3px 8px;',
+        dotStyle: 'width: 5px; height: 5px; border-radius: 99px; background: ' + c[1] + ';'
+      }));
+      return {
+        avatar: isUser ? 'PD' : '',
+        rowStyle: 'display: flex; gap: 14px; align-items: flex-start;',
+        avatarStyle: isUser
+          ? 'width: 28px; height: 28px; flex: none; border-radius: 8px; background: #1c1c22; color: #b4b4c2; font-size: 10.5px; font-weight: 600; display: grid; place-items: center;'
+          : 'width: 28px; height: 28px; flex: none; border-radius: 8px; background: #6366f1; display: grid; place-items: center;',
+        bubbleStyle: isUser
+          ? 'background: #121216; border: 1px solid #26262d; border-radius: 12px; border-top-left-radius: 3px; padding: 13px 15px; font-size: 13.5px; line-height: 1.62; color: #e6e6ea;'
+          : 'font-size: 13.5px; line-height: 1.7; color: #b4b4c2;',
+        text: m.text,
+        hasChips: chips.length > 0, chips,
+        hasFacets: !!m.facets, facets: m.facets || [],
+        hasGate: !!m.gate && s.gateResolved === null
+      };
+    });
+
+    let rows = RUNS.filter(r => s.filter === 'all' || r.status === s.filter);
+    const dir = s.sortAsc ? 1 : -1;
+    const order = { id: r => r.id, project: r => r.project, status: r => r.status, stage: r => r.stage, quality: r => r.quality || 0, updated: r => RUNS.indexOf(r) * -1, action: r => r.action };
+    rows = rows.slice().sort((a, b) => {
+      const f = order[s.sortKey] || order.updated;
+      const x = f(a), y = f(b);
+      return (x < y ? -1 : x > y ? 1 : 0) * dir;
+    });
+
+    const allCols = [
+      ['id', 'Run'], ['project', 'Project'], ['status', 'Status'], ['stage', 'Stage'], ['quality', 'Quality'], ['updated', 'Updated'], ['action', '']
+    ];
+    const cols = wideTable ? allCols : allCols.filter(c => c[0] !== 'stage' && c[0] !== 'quality');
+    const gridCols = wideTable
+      ? '118px minmax(120px, 1.4fr) 150px 1fr 92px 116px 84px'
+      : '104px minmax(96px, 1fr) 150px 92px 74px';
+    const rowGrid = 'display: grid; grid-template-columns: ' + gridCols + '; align-items: center; gap: 0; ';
+
+    const filterOpts = ['all', 'running', 'awaiting approval', 'blocked', 'complete'];
+
+    return {
+      isLanding: s.view === 'landing', isDashboard: s.view === 'dashboard', isRun: s.view === 'run', isPackages: s.view === 'packages',
+      goLanding: () => this.setState({ view: 'landing' }),
+      goDashboard: () => this.setState({ view: 'dashboard' }),
+      goRun: () => this.setState({ view: 'run' }),
+      goPackages: () => this.setState({ view: 'packages' }),
+
+      artifactCards: STAGES.map((st, i) => ({ file: st.file, blurb: [
+        'Stated vs inferred requirements, explicit non-goals, and an immutable decision log.',
+        'Every source tiered and confidence-scored. Exportable as a resource spreadsheet.',
+        'Jobs, journeys, outcomes and edge cases — each traced back to an intent line.',
+        'NPAO: needs, priorities, actions, outcomes as a dependency-ordered milestone graph.',
+        'Harness-neutral master instructions, phase exit criteria, tool map and test plan.',
+        'Fourteen sections. Readable by a stakeholder, parseable by an agent.',
+        'The compiled agent identity: role, directives, refusal conditions, output contract.',
+        'Weighted score across fidelity, grounding, traceability and security posture.'
+      ][i] })),
+
+      navItems: [
+        { label: 'Runs', view: 'dashboard', color: '#6366f1' },
+        { label: 'Compiler', view: 'run', color: '#a855f7' },
+        { label: 'Packages', view: 'packages', color: '#10b981' },
+        { label: 'Marketing site', view: 'landing', color: '#3f3f48' }
+      ].map(n => ({
+        label: n.label,
+        onClick: () => this.setState({ view: n.view }),
+        style: 'display: flex; align-items: center; gap: 10px; width: 100%; font-family: inherit; font-size: 13px; font-weight: 500; text-align: left; background: ' +
+          (s.view === n.view ? '#14141a' : 'transparent') + '; border: 0; border-radius: 7px; padding: 8px 9px; cursor: pointer; color: ' + (s.view === n.view ? '#fff' : '#9b9baa') + ';',
+        dotStyle: 'width: 6px; height: 6px; flex: none; border-radius: 99px; background: ' + n.color + ';'
+      })),
+
+      projects: [
+        { name: 'Artispreneur', runs: '14' }, { name: 'Civic Pie', runs: '9' }, { name: 'GencyAI', runs: '7' },
+        { name: 'Atlas HXM', runs: '6' }, { name: 'ArtistEPKs', runs: '4' }, { name: 'Your48', runs: '3' }, { name: 'ROSTR', runs: '11' }
+      ],
+
+      runCountLabel: rows.length + ' of ' + RUNS.length,
+      sortLabel: 'sorted by ' + s.sortKey + ' ' + (s.sortAsc ? '↑' : '↓'),
+
+      inProgress: RUNS.filter(r => r.status === 'running' || r.status === 'awaiting approval').map(r => ({
+        project: r.project, stageLabel: r.stage + '/8',
+        barStyle: 'width: ' + Math.round(r.stage / 8 * 100) + '%; height: 100%; background: ' + (r.status === 'awaiting approval' ? '#f59e0b' : '#6366f1') + '; border-radius: 99px;'
+      })),
+
+      trend: [62, 68, 71, 70, 78, 74, 81, 85, 83, 88, 91, 94].map(v => ({
+        style: 'flex: 1; height: ' + v + '%; background: ' + (v >= 88 ? '#34d399' : '#2a2a33') + '; border-radius: 2px;'
+      })),
+
+      spend: [
+        { label: 'Intent + JTBD', value: '$118', c: '#6366f1' },
+        { label: 'RAG-DAL retrieval', value: '$164', c: '#a855f7' },
+        { label: 'Instruction + PRD', value: '$97', c: '#10b981' },
+        { label: 'Quality eval', value: '$33', c: '#3f3f48' }
+      ].map(x => ({ label: x.label, value: x.value, swatchStyle: 'width: 8px; height: 8px; border-radius: 2px; flex: none; background: ' + x.c + ';' })),
+
+      agents: [
+        { name: 'PAL Intent Compiler', latency: '1.2s', c: '#34d399' },
+        { name: 'RAG-DAL', latency: '4.8s', c: '#fbbf24' },
+        { name: 'JTBD Builder', latency: '2.1s', c: '#34d399' },
+        { name: 'NPAO Prioritizer', latency: '1.7s', c: '#34d399' },
+        { name: 'Instruction Architect', latency: '3.0s', c: '#34d399' },
+        { name: 'PRD Publisher', latency: '2.6s', c: '#34d399' },
+        { name: 'Quality Evaluator', latency: '0.9s', c: '#34d399' }
+      ].map(a => ({ name: a.name, latency: a.latency, dotStyle: 'width: 6px; height: 6px; flex: none; border-radius: 99px; background: ' + a.c + ';' })),
+
+      filters: filterOpts.map(f => ({
+        label: f === 'all' ? 'All runs' : f,
+        onClick: () => this.setState({ filter: f }),
+        style: 'font-family: inherit; font-size: 12px; font-weight: 500; text-transform: capitalize; background: ' + (s.filter === f ? '#1c1c22' : 'transparent') +
+          '; border: 1px solid ' + (s.filter === f ? '#34343d' : 'transparent') + '; border-radius: 7px; padding: 6px 11px; cursor: pointer; color: ' + (s.filter === f ? '#fff' : '#8a8a99') + ';'
+      })),
+
+      columns: cols.map(c => ({
+        label: c[1],
+        arrow: s.sortKey === c[0] ? (s.sortAsc ? ' ↑' : ' ↓') : '',
+        onClick: () => this.setState(p => ({ sortKey: c[0], sortAsc: p.sortKey === c[0] ? !p.sortAsc : false })),
+        style: 'font-family: JetBrains Mono, monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; text-align: ' + (c[0] === 'action' ? 'right' : 'left') +
+          '; background: transparent; border: 0; padding: 11px 0; cursor: pointer; color: ' + (s.sortKey === c[0] ? '#a5b4fc' : '#55555f') + ';'
+      })),
+
+      visibleRuns: rows.map(r => Object.assign({
+        id: r.id, project: r.project, status: r.status, updated: r.updated, action: r.action,
+        stageLabel: r.stage + '/8',
+        quality: r.quality === null ? '—' : String(r.quality),
+        qualityStyle: 'font-family: JetBrains Mono, monospace; font-size: 12px; color: ' + (r.quality === null ? '#3f3f48' : r.quality >= 90 ? '#34d399' : '#b4b4c2') + ';',
+        barStyle: 'width: ' + Math.round(r.stage / 8 * 100) + '%; height: 100%; background: ' + (STATUS_COLOR[r.status] || STATUS_COLOR.running)[0] + '; border-radius: 99px;',
+        rowStyle: rowGrid + 'padding: 13px 18px; border-bottom: 1px solid #14141a; cursor: pointer; font-size: 13px;',
+        onClick: () => this.setState({ view: 'run' })
+      }, this.badge(r.status))),
+
+      wideTable,
+      tableHeadStyle: rowGrid + 'padding: 0 18px; border-bottom: 1px solid #1c1c22; background: #0a0a0c;',
+      narrow, compact,
+      showTokenLabel: w >= 1180,
+      paneVisible: !narrow || s.paneOpen,
+      paneToggleLabel: s.paneOpen ? 'Hide artifacts' : 'Artifacts',
+      togglePane: () => this.setState(p => ({ paneOpen: !p.paneOpen })),
+      closePane: () => this.setState({ paneOpen: false }),
+      showScrim: narrow && s.paneOpen,
+      stageRailStyle: compact
+        ? 'display: none;'
+        : 'width: ' + (narrow ? 210 : 250) + 'px; flex: none; border-right: 1px solid #1c1c22; display: flex; flex-direction: column;',
+      artifactPaneStyle: narrow
+        ? 'position: fixed; top: 58px; right: 0; bottom: 0; width: 400px; max-width: 92vw; z-index: 60; display: flex; flex-direction: column; background: #0a0a0c; border-left: 1px solid #26262d; box-shadow: -30px 0 80px -20px rgba(0,0,0,0.8);'
+        : 'width: 430px; flex: none; display: flex; flex-direction: column; background: #0a0a0c;',
+      dashSidebarStyle: compact
+        ? 'display: none;'
+        : 'width: 232px; flex: none; border-right: 1px solid #1c1c22; background: #0a0a0c; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;',
+      metricGridStyle: 'display: grid; grid-template-columns: repeat(' + (w < 1100 ? 2 : 4) + ', minmax(0, 1fr)); gap: 14px;',
+      bottomGridStyle: w < 1100
+        ? 'display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px;'
+        : 'display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px;',
+      packageGridStyle: 'display: grid; grid-template-columns: repeat(' + (w < 900 ? 1 : 2) + ', minmax(0, 1fr)); gap: 14px;',
+      artifactCardGridStyle: 'display: grid; grid-template-columns: repeat(' + (w < 780 ? 2 : w < 1100 ? 3 : 4) + ', minmax(0, 1fr)); gap: 14px;',
+
+      recentArtifacts: [
+        { file: 'quality-scorecard.md', project: 'Artispreneur · payouts', version: 'v1', when: '4m' },
+        { file: 'instruction-pack.md', project: 'Artispreneur · payouts', version: 'v1', when: '6m' },
+        { file: 'evidence-ledger.csv', project: 'Civic Pie · CRM intake', version: 'v2', when: '11m' },
+        { file: 'soul.md', project: 'Atlas HXM · compliance brief', version: 'v3', when: '3h' },
+        { file: 'final-prd.md', project: 'ROSTR · repo integration', version: 'v2', when: '3d' }
+      ],
+
+      approvalsQueue: [
+        { gate: 'External spend', run: 'RUN-4471', detail: 'Provision Stripe Connect test account + Supabase project. Est. $0–$25/mo.', onClick: () => this.setState({ view: 'run', showApproval: true }) },
+        { gate: 'Write scope', run: 'RUN-4441', detail: 'Agent requests write access to the Your48 production repo.', onClick: () => this.setState({ view: 'run', showApproval: true }) }
+      ],
+
+      activeRunId: 'RUN-4471',
+      activeRunProject: 'Artispreneur',
+      activeRunTitle: 'Creator payouts dashboard',
+      tokenLabel: '$7.14 · 214k tok',
+      runStatusLabel: runStatus,
+      runStatusBadgeStyle: rb.badgeStyle,
+      runStatusDotStyle: rb.badgeDotStyle,
+
+      stageRail,
+      nowNextLater: [
+        { tag: 'NOW', text: 'Migrations for ledger_entries + payout_batches', c: '#34d399' },
+        { tag: 'NEXT', text: 'Connect Express onboarding behind a flag', c: '#a5b4fc' },
+        { tag: 'LATER', text: 'Ops console and dispute surface', c: '#55555f' }
+      ].map(n => ({ tag: n.tag, text: n.text, tagStyle: 'font-family: JetBrains Mono, monospace; font-size: 9px; letter-spacing: 0.06em; flex: none; width: 34px; padding-top: 2px; color: ' + n.c + ';' })),
+
+      messages,
+      isThinking: s.running,
+      thinkingLabel: (STAGES[Math.min(done, STAGES.length - 1)] || STAGES[0]).agent + ' → ' + (STAGES[Math.min(done, STAGES.length - 1)] || STAGES[0]).file + ' …',
+
+      draft: s.draft,
+      onDraft: e => this.setState({ draft: e.target.value }),
+      onKey: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.startRun(); } },
+      submitPrompt: this.startRun,
+      sendLabel: s.running ? 'Running…' : 'Run PAL ⏎',
+      sendStyle: 'font-family: inherit; font-size: 12.5px; font-weight: 600; border: 0; border-radius: 7px; padding: 7px 14px; cursor: ' + (s.running ? 'default' : 'pointer') +
+        '; color: ' + (s.running ? '#8a8a99' : '#08080a') + '; background: ' + (s.running ? '#1c1c22' : '#f2f2f5') + ';',
+      composerChips: ['@artispreneur', 'depth: standard', 'harness: neutral'],
+
+      artifactTabs,
+      activeArtifactFile: activeStage.file,
+      activeArtifactVersion: artifactReady ? activeStage.tag : 'pending',
+      artifactStatusDotStyle: 'width: 6px; height: 6px; flex: none; border-radius: 99px; background: ' + (artifactReady ? '#34d399' : '#3f3f48') + ';',
+      artifactLines: artifactReady ? this.lines(ART[activeStage.id]) : [{ text: '// ' + activeStage.agent + ' has not produced this artifact yet.', style: 'color: #55555f;' }],
+      copyArtifact: () => this.flash('Copied ' + activeStage.file + ' to clipboard'),
+      downloadArtifact: () => this.flash('Downloading ' + activeStage.file),
+      downloadAll: () => this.flash('Downloading RUN-4471-package.zip · 8 files'),
+
+      packageFiles: STAGES.map((st, i) => ({
+        file: st.file, version: st.tag,
+        blurb: ['Stated vs inferred scope, non-goals, decision log.', 'Tiered sources with confidence scores.', 'Jobs, outcomes, edge cases, traced to intent.', 'Milestones, critical path, approval gates.', 'Master instructions, phases, tool map, tests.', 'Fourteen-section product requirements doc.', 'Compiled agent identity and refusal conditions.', 'Weighted quality verdict across seven dimensions.'][i],
+        size: ['4.1 KB', '11.8 KB', '6.9 KB', '5.4 KB', '9.2 KB', '14.6 KB', '3.8 KB', '2.2 KB'][i],
+        meta: ['provenance ✓', '23 sources', 'trace ✓', 'dep graph ✓', 'harness-neutral', 'stakeholder-ready', 'immutable', '94/100'][i],
+        badge: i === 3 ? 'gated' : 'validated',
+        badgeStyle: i === 3
+          ? 'font-family: JetBrains Mono, monospace; font-size: 10px; flex: none; color: #fbbf24; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.26); border-radius: 5px; padding: 3px 7px;'
+          : 'font-family: JetBrains Mono, monospace; font-size: 10px; flex: none; color: #34d399; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.24); border-radius: 5px; padding: 3px 7px;',
+        onView: () => this.setState({ view: 'run', artifact: st.id })
+      })),
+
+      showApproval: s.showApproval,
+      openApproval: () => this.setState({ showApproval: true }),
+      closeApproval: () => this.setState({ showApproval: false }),
+      stop: e => e.stopPropagation(),
+      approveGate: () => { this.setState({ showApproval: false, gateResolved: 'approved', view: 'run' }); this.flash('Gate G1 approved — logged to decision_log'); },
+      rejectGate: () => { this.setState({ showApproval: false, gateResolved: 'rejected', view: 'run' }); this.flash('Gate G1 rejected — playbook rewritten to mock-transfer path'); },
+      approvalSections: [
+        { label: 'PROPOSAL', body: 'Provision a Stripe Connect test account and a Supabase project, and grant the build agent stripe.accounts.retrieve (read) plus supabase.sql.migrate (write). Live transfer capability is NOT included in this gate.' },
+        { label: 'RATIONALE', body: 'M3 (batch transfer worker) cannot be validated against mocks alone — idempotency and partial-failure behaviour only surface against real Stripe semantics.' },
+        { label: 'IMPACT', body: 'Estimated $0–25/month in test-mode infrastructure. No production money movement. Two OAuth scopes requested, both read-only against Stripe.' },
+        { label: 'ALTERNATIVES', body: 'A · Approve as scoped — M3 starts today.  B · Reject and run a mock-transfer path — M1, M2, M4 proceed, M3 slips ~4 days.  C · Approve read scopes only and defer provisioning to M3 start.' }
+      ],
+
+      hasToast: s.toast !== '',
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

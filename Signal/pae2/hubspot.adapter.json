@@ -1,0 +1,107 @@
+{
+  "adapter_id": "hubspot",
+  "version": "1.0.0",
+  "vendor": "HubSpot",
+  "capabilities": ["crm.exclude_company", "crm.upsert_contact"],
+  "docs": [
+    "https://developers.hubspot.com/docs/api-reference/legacy/crm/using-object-apis",
+    "https://developers.hubspot.com/docs/api-reference/legacy/crm/objects/contacts/batch/upsert-contacts"
+  ],
+  "auth": {
+    "n8n_credential_type": "hubspotOAuth2Api",
+    "authentication": "predefinedCredentialType",
+    "scopes": [
+      "crm.objects.companies.read",
+      "crm.objects.contacts.read",
+      "crm.objects.contacts.write"
+    ],
+    "setup": [
+      "HubSpot → Settings → Integrations → Private Apps (or OAuth app).",
+      "Create an app with companies read + contacts read/write.",
+      "In n8n: Credentials → HubSpot OAuth2 API. Do not paste the token into a node header.",
+      "Attach the credential to CRM — Exclude Existing and CRM — Upsert Contact."
+    ]
+  },
+  "bindings": {
+    "crm.exclude_company": {
+      "target_node": "CRM — Exclude Existing",
+      "method": "POST",
+      "url": "https://api.hubapi.com/crm/v3/objects/companies/search",
+      "body": {
+        "filterGroups": [
+          {
+            "filters": [
+              {
+                "propertyName": "domain",
+                "operator": "EQ",
+                "value": "={{ $json.company_domain }}"
+              }
+            ]
+          }
+        ],
+        "properties": [
+          "name",
+          "domain",
+          "lifecyclestage",
+          "hubspot_owner_id",
+          "numberofemployees",
+          "industry",
+          "linkedin_company_page"
+        ],
+        "limit": 1
+      },
+      "blocked_stages": [
+        "opportunity",
+        "customer",
+        "evangelist",
+        "salesqualifiedlead",
+        "subscriber",
+        "lead",
+        "prospect"
+      ]
+    },
+    "crm.upsert_contact": {
+      "target_node": "CRM — Upsert Contact",
+      "method": "POST",
+      "url": "https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert",
+      "body": {
+        "inputs": [
+          {
+            "idProperty": "email",
+            "id": "={{ $json.work_email }}",
+            "properties": {
+              "email": "={{ $json.work_email }}",
+              "firstname": "={{ $json.first_name }}",
+              "lastname": "={{ $json.last_name }}",
+              "jobtitle": "={{ $json.title }}",
+              "company": "={{ $json.company_name }}",
+              "website": "={{ $json.company_domain }}",
+              "hs_lead_status": "NEW"
+            }
+          }
+        ]
+      },
+      "skip_if": "={{ !$json.work_email }}"
+    }
+  },
+  "compiler": {
+    "replace": {
+      "https://pae.local/replace/crm-exclude-company": "https://api.hubapi.com/crm/v3/objects/companies/search",
+      "https://pae.local/replace/crm-upsert-contact": "https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert"
+    },
+    "set_node_auth": {
+      "CRM — Exclude Existing": {
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api"
+      },
+      "CRM — Upsert Contact": {
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api"
+      }
+    },
+    "set_json_body": {
+      "CRM — Exclude Existing": "bindings.crm.exclude_company.body",
+      "CRM — Upsert Contact": "bindings.crm.upsert_contact.body"
+    }
+  }
+}

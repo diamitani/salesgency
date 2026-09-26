@@ -1,0 +1,353 @@
+# Signal Master Skill Library
+
+This library contains all processes, courses, notes, and templates from the Signal directory, converted into Agent Skills.
+
+## Available Skills
+
+- **enably----product-specification-documentdocx** (Process/Note): Derived from `ENABLY -  Product Specification Document.docx.pdf`
+- **salesgency-pitch-deck** (Process/Note): Derived from `SalesGency Pitch Deck.pdf`
+- **buyer-personas-for-revenabled-3** (Process/Note): Derived from `Buyer Personas for RevEnabled-3.docx`
+- **step-by-step-process-for-building-the-ai-agent-for-antoine** (Process/Note): Derived from `Step-by-Step Process for Building the AI Agent for Antoine.docx`
+- **scalytics-sales-playbook--2025** (Sales Playbook): Derived from `Scalytics Sales Playbook | 2025.docx`
+- **turnriver-sdr-agent-demo-build-spec** (Process/Note): Derived from `turnriver-sdr-agent-demo-build-spec.pdf`
+- **n8n-execution-analyst-prddocx** (Process/Note): Derived from `n8n-execution-analyst-PRD.docx.pdf`
+- **sales-process-summary** (Process/Note): Derived from `Sales Process Summary.docx`
+- **master-saas-webapp-builderskill** (Process/Note): Derived from `master-saas-webapp-builder.SKILL.md`
+- **prospect-automation-workflow---technical-logic-1** (Process/Note): Derived from `Prospect Automation Workflow - Technical Logic (1).docx`
+- **icp-2** (Process/Note): Derived from `ICP-2.docx`
+- **salesgency--pae-proposal** (Process/Note): Derived from `SalesGency — PAE Proposal.pdf`
+- **enably-gtm---project-overview** (Process/Note): Derived from `Enably GTM - Project Overview.docx`
+- **service-overview-fractional-head-of-sales** (Process/Note): Derived from `Service Overview_ Fractional Head of Sales.docx`
+- **revenabled--sales-outreach-process--overview-guide-2** (Process/Note): Derived from `REVENABLED | SALES OUTREACH PROCESS | OVERVIEW GUIDE-2.docx`
+- **n8n-engineer** (Pre-existing Skill): Derived from `n8n-engineer.skill`
+- **salesgencybrand** (Process/Note): Derived from `salesgencyBRAND.md`
+- **salesgency-brand-guidelines** (Process/Note): Derived from `SalesGency Brand Guidelines.pdf`
+- **salls-qualification-call-assistant** (Process/Note): Derived from `salls qualification call assistant.docx`
+- **course-title-the-gtm-engineers-starter-kit-building-your-first-email-automation-engine-2** (Course Material): Derived from `Course Title_ The GTM Engineer's Starter Kit_ Building Your First Email Automation Engine-2.docx`
+- **project-overview---gtm-architect** (Process/Note): Derived from `Project Overview - GTM Architect.docx`
+- **we-are-building-enably-go-to-market-architectdocx** (Process/Note): Derived from `We are building Enably_ Go-to-Market Architect.docx.pdf`
+- **sales-outreach-process** (Process/Note): Derived from `Sales Outreach Process.docx`
+- **circuit-sales-architect--system-instructions** (Process/Note): Derived from `Circuit Sales Architect | System Instructions.docx`
+- **sales-plan-and-proposal-for-homways** (Process/Note): Derived from `Sales Plan and Proposal for Homways.docx`
+- **context-engine** (Pre-existing Skill): Derived from `context-engine.skill`
+- **use-case-1-founder-led-startups-needing-predictable-pipeline** (Process/Note): Derived from `Use Case 1_ Founder-Led Startups Needing Predictable Pipeline.docx`
+- **business-plan-revenabled-sales-enablement-platform** (Process/Note): Derived from `Business Plan_ Revenabled Sales Enablement Platform.docx`
+- **enably----product-specification-document** (Process/Note): Derived from `ENABLY -  Product Specification Document.docx`
+- **project-handoff** (Pre-existing Skill): Derived from `project-handoff.skill`
+- **revenabled-sales-enablement-agency** (Process/Note): Derived from `Revenabled Sales Enablement Agency.docx`
+- **salesgencywebsite** (Process/Note): Derived from `SalesGencywebsite.pdf`
+- **armie--project-overview-concise-prd** (Process/Note): Derived from `Armie – Project Overview (Concise PRD).docx`
+- **patrick-diamitani-cv-full** (Process/Note): Derived from `Patrick Diamitani CV full.pdf`
+- **architecture-redacted** (Process/Note): Derived from `architecture-redacted.docx`
+- **asana-organizer** (Pre-existing Skill): Derived from `asana-organizer.skill`
+- **url-json-fallback-and-ingestskill** (Process/Note): Derived from `url-json-fallback-and-ingest.SKILL.md`
+- **template--msa--fractional-head-of-sales** (Template): Derived from `TEMPLATE | MSA | FRACTIONAL HEAD OF SALES.docx`
+- **website-home-page-2** (Process/Note): Derived from `website home page-2.docx`
+- **signal-mvp** (Process/Note): Derived from `Signal MVP.docx`
+- **sales-software-research---2025-08-19t055631054z** (Process/Note): Derived from `Sales Software Research - 2025-08-19T05_56_31.054Z.docx`
+- **protect-automation-engine-workflow** (Process/Note): Derived from `Protect Automation Engine Workflow.pdf`
+- **gtm-architect-build-prompts** (Process/Note): Derived from `GTM Architect Build Prompts.docx`
+- **salesgency-brand-guidelines926** (Process/Note): Derived from `SalesGency Brand Guidelines9.26.pdf`
+- **marketing-chatbot--mql-classification-3** (Process/Note): Derived from `Marketing Chatbot _ MQL Classification-3.json`
+- **02publishingmanagersoul** (Process/Note): Derived from `02_Publishing_Manager_Soul.md`
+- **marketing-engineer-agent** (Process/Note): Derived from `marketing-engineer-agent.md`
+- **services--sales-playbook** (Sales Playbook): Derived from `Services | Sales Playbook.docx`
+- **the-marketing-automation-template** (Template): Derived from `The Marketing Automation Template .docx`
+- **the-supreme-ultimate-sales-playbook-guide** (Sales Playbook): Derived from `The Supreme Ultimate Sales Playbook Guide.docx`
+- **daily-session-recap** (Pre-existing Skill): Derived from `daily-session-recap.skill`
+- **prospectautomationreportingagentexecwriteup** (Process/Note): Derived from `prospect_automation_reporting_agent_exec_writeup.pdf`
+- **exec-assistant** (Pre-existing Skill): Derived from `exec-assistant.skill`
+- **activationplandiamitaniindustriesxpraecipio-2** (Process/Note): Derived from `Activation_Plan_Diamitani_Industries_x_Praecipio-2.pdf`
+- **diamitani-industries-entity-information** (Process/Note): Derived from `Diamitani Industries Entity Information.pdf`
+- **signal--mvp-process-overview** (Process/Note): Derived from `Signal | MVP Process Overview.docx`
+- **sales-enablement-gpt-restructure** (Process/Note): Derived from `Sales enablement gpt restructure_.docx`
+- **sales-outreach-process---single** (Process/Note): Derived from `Sales Outreach Process - SINGLE.docx`
+- **rostr-builder** (Pre-existing Skill): Derived from `rostr-builder.skill`
+- **readme-2** (Process/Note): Derived from `README (2).md`
+- **prospect-pal-product-overview** (Process/Note): Derived from `Prospect-PAL-Product-Overview.md`
+- **ai--automation-portfolio--case-studies** (Process/Note): Derived from `AI & Automation Portfolio — Case Studies.pdf`
+- **route-category-spreadsheetsskill** (Process/Note): Derived from `route-category-spreadsheets.SKILL.md`
+- **n8n-execution-analyst--daily-email-report** (Process/Note): Derived from `n8n Execution Analyst — Daily Email Report.json`
+- **n8n-execution-analyst-build-guide** (Process/Note): Derived from `n8n-execution-analyst-BUILD-GUIDE.docx`
+- **statement-of-work-sow--custom-ai-agent-setup** (Process/Note): Derived from `Statement of Work (SOW) – Custom AI Agent Setup.docx`
+- **sales-proposal-template--integrated-pricing** (Template): Derived from `Sales Proposal Template – Integrated Pricing.docx`
+- **marketing-automation-template** (Template): Derived from `MARKETING AUTOMATION TEMPLATE.pdf`
+- **mql-ai-research-automation-2** (Process/Note): Derived from `MQL AI Research Automation-2.json`
+- **n8n-execution-analyst-prd** (Process/Note): Derived from `n8n-execution-analyst-PRD.docx`
+- **sales-outreach-process--overview-guide** (Process/Note): Derived from `SALES OUTREACH PROCESS | OVERVIEW GUIDE.docx`
+- **dailybrief2026-08-28** (Process/Note): Derived from `daily_brief_2026-08-28.md`
+- **gumloop-skill-upload** (Process/Note): Derived from `GUMLOOP-SKILL-UPLOAD.md`
+- **gtm-architect** (Pre-existing Skill): Derived from `gtm-architect.skill`
+- **gumloop-v4-first-chat** (Process/Note): Derived from `gumloop-v4-first-chat.md`
+- **service-overview--lead-generation-service** (Process/Note): Derived from `Service Overview | Lead Generation Service.docx`
+- **statement-of-work-sow** (Process/Note): Derived from `Statement of Work (SOW).docx`
+- **executive-leadership-briefskill** (Process/Note): Derived from `executive-leadership-brief.SKILL.md`
+- **prompt-rewriter** (Pre-existing Skill): Derived from `prompt-rewriter.skill`
+- **revenabled--sales-playbook-checklist** (Sales Playbook): Derived from `RevEnabled | Sales Playbook Checklist.docx`
+- **figma-sentinel-v5-unrestricted-collection** (Process/Note): Derived from `figma-sentinel-v5-unrestricted-collection.md`
+- **figma-sentinel-love-hate-sheet-headers** (Process/Note): Derived from `figma-sentinel-love-hate-sheet-headers.md`
+- **daily-meeting-sync---pre-call-summary---fixed** (Process/Note): Derived from `Daily Meeting Sync - Pre-Call Summary - FIXED.json`
+- **sales-playbook-template** (Template): Derived from `Sales Playbook Template.docx`
+- **prospect-automation---part-1-1-1** (Process/Note): Derived from `PROSPECT AUTOMATION - PART 1 (1) (1).json`
+- **universal-agent-factory-checklist** (Process/Note): Derived from `universal-agent-factory-checklist.md`
+- **prospect-automation-breakdown---gemini** (Process/Note): Derived from `Prospect Automation Breakdown - Gemini.docx`
+- **present-sentinel-reportskill** (Process/Note): Derived from `present-sentinel-report.SKILL.md`
+- **n8nfactorstoclaywebhook** (Process/Note): Derived from `n8n_Factors_to_Clay_Webhook.json`
+- **diamitani-industries-x-praecipio-consulting---activation-plan** (Process/Note): Derived from `Diamitani Industries x Praecipio Consulting - Activation Plan.docx`
+- **clay-csv-enricher** (Pre-existing Skill): Derived from `clay-csv-enricher.skill`
+- **pre-sales-call-automation-2** (Process/Note): Derived from `Pre-Sales Call Automation (2).json`
+- **statement-of-work-sow-template--integrated-pricing** (Template): Derived from `Statement of Work (SOW) Template – Integrated Pricing.docx`
+- **sales-operations-setup-guide** (Process/Note): Derived from `Sales Operations Setup Guide.docx`
+- **4-step-sales-process** (Process/Note): Derived from `4 Step Sales Process.docx`
+- **sales-enablement-gpt** (Process/Note): Derived from `Sales Enablement GPT .docx`
+- **the-gtm-automation-library** (Process/Note): Derived from `The GTM Automation Library .docx`
+- **sample-5-touch-outbound-sequence** (Process/Note): Derived from `Sample 5-Touch Outbound Sequence.docx`
+- **statement-of-work-sow--sales-outreach-setup** (Process/Note): Derived from `Statement of Work (SOW) – Sales Outreach Setup.docx`
+- **n8n-workflow-architect** (Pre-existing Skill): Derived from `n8n-workflow-architect.skill`
+- **salesgency-price-sheet** (Process/Note): Derived from `SalesGency Price Sheet.pdf`
+- **activationplandiamitaniindustriesxpraecipio** (Process/Note): Derived from `Activation_Plan_Diamitani_Industries_x_Praecipio.pdf`
+- **sales-enablement-specific-processes-to-consider** (Process/Note): Derived from `Sales Enablement-Specific Processes to Consider.docx`
+- **statement-of-work-sow--custom-gpt-setup** (Process/Note): Derived from `Statement of Work (SOW) – Custom GPT Setup.docx`
+- **productized-skill-workflow** (Process/Note): Derived from `Productized Skill Workflow.pdf`
+- **revenabled--sales-playbook-checklist-wbudget** (Sales Playbook): Derived from `RevEnabled | Sales Playbook Checklist w_Budget.docx`
+- **sales-proposal-template** (Template): Derived from `Sales Proposal Template.docx`
+- **prospect-pal-landing-copy-deck** (Process/Note): Derived from `Prospect-PAL-Landing-Copy-Deck.md`
+- **template---intro-email-syntax** (Template): Derived from `Template - Intro Email Syntax.docx`
+- **inbound-automation-workflow-3** (Process/Note): Derived from `Inbound Automation Workflow (3).json`
+- **revenabled-sales-agency---sales-proposal-template** (Template): Derived from `Revenabled Sales Agency - Sales Proposal Template.docx`
+- **patrick-diamitani-portfolio-public** (Process/Note): Derived from `Patrick-Diamitani-Portfolio-PUBLIC.pdf`
+- **service-overview--sales-outreach-setup** (Process/Note): Derived from `Service Overview | Sales Outreach Setup.docx`
+- **sales-automation** (Process/Note): Derived from `Sales Automation.pdf`
+- **thought-leadership--market-presence-strategy** (Process/Note): Derived from `Thought Leadership & Market Presence Strategy.docx`
+- **salesgencypop-project-master-doc** (Process/Note): Derived from `salesgencyPOP-Project-Master-Doc.md`
+- **gtm-ai--gtm-automation-infrastructure--dedicated-gtm-engineer--salesgency** (Process/Note): Derived from `GTM AI & GTM Automation Infrastructure | Dedicated GTM Engineer — SalesGency®.pdf`
+- **sequence-1-scrappy-saas-founder-icp-1--essentials-package** (Process/Note): Derived from `Sequence 1_ Scrappy SaaS Founder (ICP 1 – Essentials Package).docx`
+- **prospect-automation-enginedrawio** (Process/Note): Derived from `Prospect Automation Engine.drawio.pdf`
+- **nate-herk-build-sell-ai-saas-knowledge-base** (Process/Note): Derived from `nate-herk-build-sell-ai-saas-knowledge-base.md`
+- **n8n-csv-router** (Pre-existing Skill): Derived from `n8n-csv-router.skill`
+- **prospect-automation-case-study** (Process/Note): Derived from `Prospect Automation Case Study.pdf`
+- **pal-sesh-82726-106am** (Process/Note): Derived from `pal sesh 82726 106am.json`
+- **skill-4** (Process/Note): Derived from `SKILL-4.md`
+- **premium-site-build-os** (Process/Note): Derived from `premium-site-build-os.md`
+- **agents** (Process/Note): Derived from `AGENTS.md`
+- **soul-2** (Process/Note): Derived from `soul-2.md`
+- **dsmanifest** (Process/Note): Derived from `_ds_manifest.json`
+- **adherenceoxlintrc** (Process/Note): Derived from `_adherence.oxlintrc.json`
+- **readme** (Process/Note): Derived from `readme.md`
+- **dsmanifest** (Process/Note): Derived from `_ds_manifest.json`
+- **github** (Process/Note): Derived from `github.md`
+- **adherenceoxlintrc** (Process/Note): Derived from `_adherence.oxlintrc.json`
+- **readme** (Process/Note): Derived from `readme.md`
+- **skill** (Process/Note): Derived from `SKILL.md`
+- **readme** (Process/Note): Derived from `README.md`
+- **readme** (Process/Note): Derived from `README.md`
+- **pipelinerailprompt** (Process/Note): Derived from `PipelineRail.prompt.md`
+- **nodecardprompt** (Process/Note): Derived from `NodeCard.prompt.md`
+- **iconprompt** (Process/Note): Derived from `Icon.prompt.md`
+- **statuspillprompt** (Process/Note): Derived from `StatusPill.prompt.md`
+- **cardprompt** (Process/Note): Derived from `Card.prompt.md`
+- **badgeprompt** (Process/Note): Derived from `Badge.prompt.md`
+- **selectprompt** (Process/Note): Derived from `Select.prompt.md`
+- **textareaprompt** (Process/Note): Derived from `Textarea.prompt.md`
+- **iconbuttonprompt** (Process/Note): Derived from `IconButton.prompt.md`
+- **labelprompt** (Process/Note): Derived from `Label.prompt.md`
+- **inputprompt** (Process/Note): Derived from `Input.prompt.md`
+- **buttonprompt** (Process/Note): Derived from `Button.prompt.md`
+- **tooloptioncardprompt** (Process/Note): Derived from `ToolOptionCard.prompt.md`
+- **stattileprompt** (Process/Note): Derived from `StatTile.prompt.md`
+- **modalprompt** (Process/Note): Derived from `Modal.prompt.md`
+- **typingdotsprompt** (Process/Note): Derived from `TypingDots.prompt.md`
+- **chatbubbleprompt** (Process/Note): Derived from `ChatBubble.prompt.md`
+- **navitemprompt** (Process/Note): Derived from `NavItem.prompt.md`
+- **stepindicatorprompt** (Process/Note): Derived from `StepIndicator.prompt.md`
+- **logoprompt** (Process/Note): Derived from `Logo.prompt.md`
+- **sectionheadingprompt** (Process/Note): Derived from `SectionHeading.prompt.md`
+- **integrationcardprompt** (Process/Note): Derived from `IntegrationCard.prompt.md`
+- **deliverablecardprompt** (Process/Note): Derived from `DeliverableCard.prompt.md`
+- **pricingcardprompt** (Process/Note): Derived from `PricingCard.prompt.md`
+- **leadsignalcardprompt** (Process/Note): Derived from `LeadSignalCard.prompt.md`
+- **readme** (Process/Note): Derived from `README.md`
+- **intent-specschema** (Process/Note): Derived from `intent-spec.schema.json`
+- **learning-candidateschema** (Process/Note): Derived from `learning-candidate.schema.json`
+- **run-contextschema** (Process/Note): Derived from `run-context.schema.json`
+- **tsconfigbase** (Process/Note): Derived from `tsconfig.base.json`
+- **package** (Process/Note): Derived from `package.json`
+- **tsconfig** (Process/Note): Derived from `tsconfig.json`
+- **package-515dd771** (Process/Note): Derived from `package-515dd771.json`
+- **pal-runs-orchestratorsoul** (Process/Note): Derived from `pal-runs-orchestrator.soul.md`
+- **job-applicant-saved-screening-question-responses3** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_3.csv`
+- **job-applicant-saved-screening-question-responses2** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_2.csv`
+- **certifications** (Process/Note): Derived from `Certifications.csv`
+- **education** (Process/Note): Derived from `Education.csv`
+- **inferencesaboutyou** (Process/Note): Derived from `Inferences_about_you.csv`
+- **job-applicant-saved-screening-question-responses1** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_1.csv`
+- **job-applicant-saved-screening-question-responses5** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_5.csv`
+- **job-applicant-saved-screening-question-responses4** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_4.csv`
+- **receiptsv2** (Process/Note): Derived from `Receipts_v2.csv`
+- **volunteering** (Process/Note): Derived from `Volunteering.csv`
+- **job-applicant-saved-screening-question-responses6** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_6.csv`
+- **endorsementgiveninfo** (Process/Note): Derived from `Endorsement_Given_Info.csv`
+- **skills** (Process/Note): Derived from `Skills.csv`
+- **savedjobalerts** (Process/Note): Derived from `SavedJobAlerts.csv`
+- **job-applicant-saved-screening-question-responses7** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_7.csv`
+- **registration** (Process/Note): Derived from `Registration.csv`
+- **hashtagfollows522913857** (Process/Note): Derived from `Hashtag_Follows_522913857.csv`
+- **learningcoachmessages** (Process/Note): Derived from `LearningCoachMessages.csv`
+- **profile-summary** (Process/Note): Derived from `Profile Summary.csv`
+- **learningroleplaymessages** (Process/Note): Derived from `learning_role_play_messages.csv`
+- **profile** (Process/Note): Derived from `Profile.csv`
+- **whatsapp-phone-numbers** (Process/Note): Derived from `Whatsapp Phone Numbers.csv`
+- **job-applicant-saved-screening-question-responses** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses.csv`
+- **notes** (Process/Note): Derived from `Notes.csv`
+- **positions** (Process/Note): Derived from `Positions.csv`
+- **lan-ads-engagement** (Process/Note): Derived from `LAN Ads Engagement.csv`
+- **phonenumbers** (Process/Note): Derived from `PhoneNumbers.csv`
+- **saveditems522913857** (Process/Note): Derived from `Saved_Items_522913857.csv`
+- **job-applicant-saved-screening-question-responses8** (Process/Note): Derived from `Job Applicant Saved Screening Question Responses_8.csv`
+- **email-addresses** (Process/Note): Derived from `Email Addresses.csv`
+- **votes522913857** (Process/Note): Derived from `Votes_522913857.csv`
+- **verifications** (Process/Note): Derived from `Verifications.csv`
+- **job-seeker-preferences** (Process/Note): Derived from `Job Seeker Preferences.csv`
+- **online-job-postings** (Process/Note): Derived from `Online Job Postings.csv`
+- **job-applicant-saved-answers** (Process/Note): Derived from `Job Applicant Saved Answers.csv`
+- **engagements** (Process/Note): Derived from `Engagements.csv`
+- **opprtunities** (Process/Note): Derived from `Opprtunities.csv`
+- **skill** (Process/Note): Derived from `SKILL.md`
+- **architecture** (Process/Note): Derived from `architecture.md`
+- **ops** (Process/Note): Derived from `ops.md`
+- **starter-pack** (Process/Note): Derived from `starter-pack.md`
+- **hard-nodes** (Process/Note): Derived from `hard-nodes.md`
+- **sources** (Process/Note): Derived from `sources.md`
+- **gtm** (Process/Note): Derived from `gtm.md`
+- **http-api** (Process/Note): Derived from `http-api.md`
+- **agents** (Process/Note): Derived from `agents.md`
+- **gtm-outbound-personalization-gateway** (Process/Note): Derived from `gtm-outbound-personalization-gateway.json`
+- **gtm-deal-acceleration-orchestrator** (Process/Note): Derived from `gtm-deal-acceleration-orchestrator.json`
+- **mcp-server-gtm-skeleton** (Process/Note): Derived from `mcp-server-gtm-skeleton.json`
+- **gtm-account-research-copilot** (Process/Note): Derived from `gtm-account-research-copilot.json`
+- **skill** (Process/Note): Derived from `SKILL.md`
+- **metadata** (Process/Note): Derived from `metadata.json`
+- **readme** (Process/Note): Derived from `README.md`
+- **package** (Process/Note): Derived from `package.json`
+- **tsconfig** (Process/Note): Derived from `tsconfig.json`
+- **project** (Process/Note): Derived from `project.json`
+- **readme** (Process/Note): Derived from `README.txt`
+- **metadata** (Process/Note): Derived from `metadata.json`
+- **distributionverification** (Process/Note): Derived from `DISTRIBUTION_VERIFICATION.md`
+- **readme** (Process/Note): Derived from `README.md`
+- **skill** (Process/Note): Derived from `SKILL.md`
+- **asanaexporttemplate** (Template): Derived from `ASANA_EXPORT_TEMPLATE.md`
+- **projectmasterdoctemplate** (Template): Derived from `PROJECT_MASTER_DOC_TEMPLATE.md`
+- **jtbdtemplate** (Template): Derived from `JTBD_TEMPLATE.md`
+- **executionhandofftemplate** (Template): Derived from `EXECUTION_HANDOFF_TEMPLATE.md`
+- **buildguidetemplate** (Template): Derived from `BUILD_GUIDE_TEMPLATE.md`
+- **prdtemplate** (Template): Derived from `PRD_TEMPLATE.md`
+- **kpitrackingtemplate** (Template): Derived from `KPI_TRACKING_TEMPLATE.md`
+- **personas** (Process/Note): Derived from `personas.md`
+- **readme** (Process/Note): Derived from `README.md`
+- **prospect-automation-engine-pae---powered-by-salesgency** (Process/Note): Derived from `Prospect Automation Engine (PAE) - Powered by SalesGency.pdf`
+- **design-reference-catalog** (Process/Note): Derived from `design-reference-catalog.md`
+- **qa-analyst** (Process/Note): Derived from `qa-analyst.md`
+- **scaffold-prompt-pack** (Process/Note): Derived from `scaffold-prompt-pack.md`
+- **search-figma-reddit-urlsskill** (Process/Note): Derived from `search-figma-reddit-urls.SKILL.md`
+- **figma-sentinel-prompt-library** (Process/Note): Derived from `figma-sentinel-prompt-library.md`
+- **analyze-thread-dumpskill** (Process/Note): Derived from `analyze-thread-dump.SKILL.md`
+- **figma-sentinelinstruction-pack** (Process/Note): Derived from `figma-sentinel.instruction-pack.md`
+- **persist-master-dbskill** (Process/Note): Derived from `persist-master-db.SKILL.md`
+- **classify-figma-sentimentskill** (Process/Note): Derived from `classify-figma-sentiment.SKILL.md`
+- **compose-daily-briefskill** (Process/Note): Derived from `compose-daily-brief.SKILL.md`
+- **incremental-url-refreshskill** (Process/Note): Derived from `incremental-url-refresh.SKILL.md`
+- **fetch-reddit-jsonskill** (Process/Note): Derived from `fetch-reddit-json.SKILL.md`
+- **figma-public-contextskill** (Process/Note): Derived from `figma-public-context.SKILL.md`
+- **quality-gateskill** (Process/Note): Derived from `quality-gate.SKILL.md`
+- **figma-sentinelgumloopsystem-prompt** (Process/Note): Derived from `figma-sentinel.gumloop.system-prompt.md`
+- **harvest-reddit-mentionsskill** (Process/Note): Derived from `harvest-reddit-mentions.SKILL.md`
+- **locate-product-issuesskill** (Process/Note): Derived from `locate-product-issues.SKILL.md`
+- **figma-sentineltaxonomy** (Process/Note): Derived from `figma-sentinel.taxonomy.json`
+- **compose-daily-briefskill-2** (Process/Note): Derived from `compose-daily-brief.SKILL (2).md`
+- **figma-sentinelmastersoul** (Process/Note): Derived from `figma-sentinel.master.soul.md`
+- **map-chatter-to-roadmapskill** (Process/Note): Derived from `map-chatter-to-roadmap.SKILL.md`
+- **propose-pmm-hypothesesskill** (Process/Note): Derived from `propose-pmm-hypotheses.SKILL.md`
+- **map-similar-softwareskill** (Process/Note): Derived from `map-similar-software.SKILL.md`
+- **figma-sentinelgumloopsetup** (Process/Note): Derived from `figma-sentinel.gumloop.setup.md`
+- **figma-sentinelchildrensoul** (Process/Note): Derived from `figma-sentinel.children.soul.md`
+- **persist-sentinel-rowsskill** (Process/Note): Derived from `persist-sentinel-rows.SKILL.md`
+- **deliver-daily-slackskill** (Process/Note): Derived from `deliver-daily-slack.SKILL.md`
+- **create-sentinel-spreadsheetskill** (Process/Note): Derived from `create-sentinel-spreadsheet.SKILL.md`
+- **post-sales-call-automation--patrick-diamitani-1** (Process/Note): Derived from `Post-Sales Call Automation — Patrick Diamitani (1).pdf`
+- **patrick-diamitani--enterprise-ai-production--agent-skills--product-library** (Process/Note): Derived from `Patrick Diamitani — Enterprise AI Production · Agent Skills & Product Library.pdf`
+- **prospect-enrichment-pipeline--patrick-diamitani-1** (Process/Note): Derived from `Prospect Enrichment Pipeline — Patrick Diamitani (1).pdf`
+- **source-policy** (Process/Note): Derived from `source-policy.md`
+- **n8n-execution-intelligence--patrick-diamitani-1** (Process/Note): Derived from `n8n Execution Intelligence — Patrick Diamitani (1).pdf`
+- **clay-credit-governance--patrick-diamitani** (Process/Note): Derived from `Clay Credit Governance — Patrick Diamitani.pdf`
+- **entity-readiness-change-report--patrick-diamitani-1** (Process/Note): Derived from `Entity Readiness Change Report — Patrick Diamitani (1).pdf`
+- **ai-customer-agent-suite--patrick-diamitani-1** (Process/Note): Derived from `AI Customer Agent Suite — Patrick Diamitani (1).pdf`
+- **eor-compliance-checker--patrick-diamitani** (Process/Note): Derived from `EOR Compliance Checker — Patrick Diamitani.pdf`
+- **entity-readiness-change-report--weekly** (Process/Note): Derived from `Entity Readiness Change Report — Weekly.json`
+- **country-data---weekly-transformation-and-storage-2** (Process/Note): Derived from `Country Data - Weekly Transformation and Storage-2.json`
+- **maia-chatbot-daily-report-2** (Process/Note): Derived from `Maia Chatbot Daily Report-2.json`
+- **rfp-response-suite--patrick-diamitani** (Process/Note): Derived from `RFP Response Suite — Patrick Diamitani.pdf`
+- **untitled-document** (Process/Note): Derived from `Untitled document.docx`
+- **clay-prospecting-engine--patrick-diamitani** (Process/Note): Derived from `Clay Prospecting Engine — Patrick Diamitani.pdf`
+- **partner-pql-automation--patrick-diamitani-1** (Process/Note): Derived from `Partner PQL Automation — Patrick Diamitani (1).pdf`
+- **pre-call-briefing-automation--patrick-diamitani-1** (Process/Note): Derived from `Pre-Call Briefing Automation — Patrick Diamitani (1).pdf`
+- **hubspot-import-formatter--patrick-diamitani-1** (Process/Note): Derived from `HubSpot Import Formatter — Patrick Diamitani (1).pdf`
+- **entity-readiness-execution-health-skill** (Process/Note): Derived from `entity-readiness-execution-health-SKILL.md`
+- **entity-readiness-change-report--weekly-1** (Process/Note): Derived from `Entity Readiness Change Report — Weekly (1).json`
+- **the-gtm-ai-platform--patrick-diamitani** (Process/Note): Derived from `The GTM AI Platform — Patrick Diamitani.pdf`
+- **chatbot-mql-automation--troubleshooting--update-report** (Process/Note): Derived from `Chatbot MQL Automation — Troubleshooting & Update Report.pdf`
+- **entity-readiness-baseline-analyst-skill** (Process/Note): Derived from `entity-readiness-baseline-analyst-SKILL.md`
+- **diamitani-industries-inc** (Process/Note): Derived from `Diamitani Industries, Inc..pdf`
+- **diamitani-industries-inc** (Process/Note): Derived from `Diamitani Industries, Inc..docx`
+- **atlas-video-hyperframes** (Pre-existing Skill): Derived from `atlas-video-hyperframes.skill`
+- **clay-credit-estimator** (Pre-existing Skill): Derived from `clay-credit-estimator.skill`
+- **product-builder-copy** (Pre-existing Skill): Derived from `product-builder copy.skill`
+- **pal** (Pre-existing Skill): Derived from `pal.skill`
+- **saas-architect** (Pre-existing Skill): Derived from `saas-architect.skill`
+- **clay-prospecting-engine** (Pre-existing Skill): Derived from `clay-prospecting-engine.skill`
+- **project-closeout-report** (Pre-existing Skill): Derived from `project-closeout-report.skill`
+- **patrick-diamitani-portfolio-full** (Process/Note): Derived from `Patrick-Diamitani-Portfolio-FULL.pdf`
+- **agsprospectautomation** (Process/Note): Derived from `AGS_PROSPECT_AUTOMATION.json`
+- **new-project-system** (Pre-existing Skill): Derived from `new-project-system.skill`
+- **atlas-video-studio** (Pre-existing Skill): Derived from `atlas-video-studio.skill`
+- **project-instructions-builder** (Pre-existing Skill): Derived from `project-instructions-builder.skill`
+- **atlas-use-case-builder** (Pre-existing Skill): Derived from `atlas-use-case-builder.skill`
+- **atlas-prospect-video-builder** (Pre-existing Skill): Derived from `atlas-prospect-video-builder.skill`
+- **atlas-agent-factory** (Pre-existing Skill): Derived from `atlas-agent-factory.skill`
+- **token-spend-analyst** (Pre-existing Skill): Derived from `token-spend-analyst.skill`
+- **atlas-gtm-insider** (Pre-existing Skill): Derived from `atlas-gtm-insider.skill`
+- **workflow-builder** (Pre-existing Skill): Derived from `workflow-builder.skill`
+- **n8n-execution-analyst** (Pre-existing Skill): Derived from `n8n-execution-analyst.skill`
+- **jtbd-builder** (Pre-existing Skill): Derived from `jtbd-builder.skill`
+- **video-editor** (Pre-existing Skill): Derived from `video-editor.skill`
+- **file-organizer** (Pre-existing Skill): Derived from `file-organizer.skill`
+- **case-study-builder** (Pre-existing Skill): Derived from `case-study-builder.skill`
+- **hubspot-data-analyst** (Pre-existing Skill): Derived from `hubspot-data-analyst.skill`
+- **patrick-diamitani-portfolio-public** (Process/Note): Derived from `Patrick-Diamitani-Portfolio-PUBLIC.pdf`
+- **atlas-ohs---compliance-webhook-4** (Process/Note): Derived from `Atlas OHS - Compliance Webhook-4.json`
+- **atlas-video-render** (Pre-existing Skill): Derived from `atlas-video-render.skill`
+- **atlas-proposal-builder** (Pre-existing Skill): Derived from `atlas-proposal-builder.skill`
+- **dashboard-builder** (Pre-existing Skill): Derived from `dashboard-builder.skill`
+- **prd** (Process/Note): Derived from `PRD.md`
+- **architecture** (Process/Note): Derived from `ARCHITECTURE.md`
+- **palbuildprompt** (Process/Note): Derived from `PAL_BUILD_PROMPT.md`
+- **reportingframework** (Process/Note): Derived from `REPORTING_FRAMEWORK.md`
+- **masterkb** (Process/Note): Derived from `MASTER_KB.md`
+- **techstack** (Process/Note): Derived from `TECH_STACK.md`
+- **jtbdbuildplan** (Process/Note): Derived from `JTBD_BUILD_PLAN.md`
+- **readme** (Process/Note): Derived from `README.md`
+- **researchsystemprompt** (Process/Note): Derived from `research.system_prompt.md`
+- **pae-template-compile** (Template): Derived from `pae-template-compile.md`
+- **hubspotadapter** (Process/Note): Derived from `hubspot.adapter.json`
+- **pae-n8n-engineerintake** (Process/Note): Derived from `pae-n8n-engineer.intake.md`
+- **pae-coretemplate** (Template): Derived from `pae-core.template.json`
+- **prospect-automation-engineer-overview** (Process/Note): Derived from `Prospect-Automation-Engineer-Overview.pdf`
+- **pae-n8n-engineerreadme** (Process/Note): Derived from `pae-n8n-engineer.README.md`
+- **intakesample** (Process/Note): Derived from `intake.sample.json`
+- **emailsystemprompt** (Process/Note): Derived from `email.system_prompt.md`
+- **intakeschema** (Process/Note): Derived from `intake.schema.json`
+- **pae-n8n-engineerskill** (Process/Note): Derived from `pae-n8n-engineer.SKILL.md`
+- **amplemarketadapter** (Process/Note): Derived from `amplemarket.adapter.json`
+- **pae-individual-system-architecture** (Process/Note): Derived from `pae-individual-system-architecture.md`
+- **pae-workflow-steps** (Process/Note): Derived from `PAE-Workflow-Steps.md`
+- **pae-n8n-engineersoul** (Process/Note): Derived from `pae-n8n-engineer.soul.md`

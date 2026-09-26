@@ -1,0 +1,110 @@
+---
+name: job-applicant-saved-screening-question-responses6
+description: Process/Note derived from Job Applicant Saved Screening Question Responses_6.csv
+source_path: Complete_LinkedInDataExport_08-30-2026.zip/Job Applicant Saved Screening Question Responses_6.csv
+---
+
+# Job Applicant Saved Screening Question Responses_6.csv
+
+## Context
+This skill provides knowledge, processes, and instructions derived from the document: `Job Applicant Saved Screening Question Responses_6.csv`.
+Use this information to inform GTM strategies, sales playbooks, automation engine logic, and CRM setup.
+
+## Knowledge Source
+
+Question,Answer
+How many years of work experience do you have with Group Health Insurance?,0
+How many years of work experience do you have with Sales Pipeline Development?,8
+How many years of work experience do you have with Functional Safety?,0
+How many years of work experience do you have with Neural Networks?,2
+How many years of work experience do you have with Workday?,5
+How many years of PRDM experience do you currently have?,3
+How many years of work experience do you have with DevOps?,4
+How many years of work experience do you have with Salesforce Lightning?,5
+How many years of work experience do you have with Employee Rewards Programs?,0
+How many years of work experience do you have with Product Adoption?,6
+How many years of work experience do you have with Online Retail?,2
+How many years of work experience do you have with AutoCAD?,0
+How many years of work experience do you have with Pitching Ideas?,5
+How many years of FIN experience do you currently have?,0
+How many years of work experience do you have with Life & Health Insurance Licenses?,1
+How many years of work experience do you have with Technical Sales?,8
+How many years of work experience do you have with Chatbot Design?,3
+How many years of work experience do you have with Global Payroll?,2
+How many years of work experience do you have with Energy Efficiency?,0
+How many years of work experience do you have with Cryptocurrency?,2
+How many years of work experience do you have with Media Relations?,0
+Website,
+How many years of work experience do you have with International Shipping?,0
+How many years of work experience do you have with Semiconductor Engineering?,0
+How many years of work experience do you have with Google Tag Manager?,2
+How many years of work experience do you have with AWS SageMaker?,2
+What is your level of proficiency in spa?,Conversational
+How many years of urn:li:industry:6 experience do you currently have?,8
+How many years of work experience do you have with Embedded Software?,10
+How many years of work experience do you have with Sales Process Implementation?,5
+How many years of work experience do you have with Event Sales?,2
+How many years of work experience do you have with Microsoft Power Platform?,5
+How many years of work experience do you have with Sales Territory Management?,2
+How many years of work experience do you have with Software Development?,5
+How many years of work experience do you have with Commercial Business Development?,7
+How many years of work experience do you have with Salesforce B2B Commerce?,8
+How many years of urn:li:industry:52 experience do you currently have?,7
+How many years of work experience do you have with Telemarketing?,5
+How many years of work experience do you have with P&L Management?,2
+How many years of work experience do you have with Business Solutions Development?,5
+How many years of work experience do you have with Client Onboarding?,5
+How many years of work experience do you have with Community Building?,5
+How many years of work experience do you have with Microsoft Azure?,2
+How many years of work experience do you have with Domain Experience?,10
+How many years of urn:li:industry:144 experience do you currently have?,0
+How many years of work experience do you have with Clay?,1
+How many years of urn:li:industry:14 experience do you currently have?,0
+How many years of work experience do you have with Business Services?,2
+How many years of work experience do you have with Machine Tools?,0
+How many years of work experience do you have with Data Engineering?,2
+How many years of work experience do you have with Freight Forwarding?,2
+How many years of work experience do you have with Employee Benefits?,0
+Do you have the following license or certification: urn:li:credential:20702?,No
+How many years of urn:li:industry:23 experience do you currently have?,0
+How many years of work experience do you have with Copilot Tasks?,3
+Are you comfortable working in a remote setting?,Yes
+How many years of work experience do you have with Large Language Models (LLM)?,3
+How many years of work experience do you have with Network Security?,0
+Company,
+How many years of work experience do you have with Furniture?,0
+How many years of work experience do you have with Model Context Protocol (MCP)?,2
+Country,
+How many years of work experience do you have with Enterprise Software?,10
+How many years of work experience do you have with Interpersonal Skills?,5
+How many years of work experience do you have with Computer Science?,2
+How many years of work experience do you have with Inside Sales?,8
+How many years of work experience do you have with Identifying New Opportunities?,8
+How many years of work experience do you have with Software Engineering Practices?,5
+Degree,
+How many years of work experience do you have with Project Managers?,0
+How many years of work experience do you have with Technology Product Development?,10
+How many years of work experience do you have with Enterprise Solution Design?,5
+How many years of work experience do you have with VMware?,2
+"How many years of work experience do you have with Environmental, Social, and Governance (ESG)?",0
+How many years of work experience do you have with OAuth?,2
+How many years of work experience do you have with Lead Qualification?,7
+How many years of urn:li:industry:84 experience do you currently have?,3
+How many years of work experience do you have with Outbound Sales?,8
+How many years of work experience do you have with Retail Buying?,0
+How many years of work experience do you have with OpenShift?,0
+How many years of work experience do you have with List Brokerage?,1
+Your title,
+How many years of urn:li:industry:31 experience do you currently have?,2
+How many years of work experience do you have with School Districts?,1
+How many years of work experience do you have with Language Modeling?,2
+How many years of work experience do you have with Software Sales?,7
+How many years of urn:li:industry:83 experience do you currently have?,0
+How many years of work experience do you have with New Territory Development?,3
+How many years of work experience do you have with MEDDIC Sales Methodology?,2
+How many years of work experience do you have with Advertising Sales?,2
+How many years of work experience do you have with Technical Support?,2
+How many years of work experience do you have with ChatGPT?,3
+How many years of work experience do you have with Sales Negotiation?,5
+How many years of urn:li:industry:99 experience do you currently have?,3
+How many years of work experience do you have with Enablement?,5

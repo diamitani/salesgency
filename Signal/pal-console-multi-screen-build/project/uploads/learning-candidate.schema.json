@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "source_runs",
+    "proposed_change",
+    "evaluation_plan",
+    "status"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "candidate",
+        "evaluating",
+        "approved",
+        "rejected",
+        "canary",
+        "promoted",
+        "rolled_back"
+      ]
+    }
+  }
+}

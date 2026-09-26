@@ -1,0 +1,520 @@
+{
+  "name": "Marketing Chatbot | MQL Classification",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "maia",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "92c0fc47-1c2f-429e-9815-32f1eea88a17",
+      "name": "HubSpot Closed Conversation Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -528,
+        208
+      ],
+      "webhookId": "c655cf65-8ce7-4505-9b03-9554b8af60bc",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jL6mIjMZipJSP1iV",
+          "name": "n8n_hubspot_flow_key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hubapi.com/crm/v3/objects/contacts/search",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"filterGroups\": [\n    {\n      \"filters\": [\n        {\n          \"propertyName\": \"hs_object_id\",\n          \"operator\": \"EQ\",\n          \"value\": \"{{ $('HubSpot Closed Conversation Webhook').item.json.body.hs_object_id }}\"\n        }\n      ]\n    }\n  ],\n  \"properties\": [\n    \"email\",\n    \"firstname\",\n    \"lastname\",\n    \"hs_object_id\"\n  ],\n  \"limit\": 1\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "d5d26e4b-2489-4da6-a9a6-feb84d03e897",
+      "name": "Find Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        16,
+        176
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "DPC0kV3RtYO7qCPH",
+          "name": "Hubspot App Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/conversations/v3/conversations/threads/{{ $('HubSpot Closed Conversation Webhook').item.json.body.hs_thread_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "a92a4306-e1c8-4223-a10a-7b4a181700c3",
+      "name": "Get Conversation Thread",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        352,
+        208
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "DPC0kV3RtYO7qCPH",
+          "name": "Hubspot App Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/conversations/v3/conversations/threads/{{ $('HubSpot Closed Conversation Webhook').item.json.body.hs_thread_id }}/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "9fd1a823-6369-4f57-a5e3-e8782a0778eb",
+      "name": "Get Thread Messages",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        576,
+        208
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "DPC0kV3RtYO7qCPH",
+          "name": "Hubspot App Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "id": "9e0c5805-0d0d-4972-8ff0-6ae6c2f99268",
+      "name": "Azure OpenAI - Analysis Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        432
+      ],
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You analyze closed HubSpot Customer Agent chats for Atlas HXM.\n\nReturn only valid JSON. Do not return markdown, explanations, code fences, comments, or text outside JSON.\n\nGoal:\n1. Analyze the full HubSpot Customer Agent transcript.\n2. Extract GTM intent, buyer need, pain points, countries, workforce setup, questions asked, and hiring/buying timeline.\n3. Classify whether the chat is MQL or Non-MQL.\n4. Return clean field values for HubSpot contact update fields.\n5. Draft one concise follow-up email body fragment when appropriate.\n\nImportant context:\n- Atlas HXM provides Employer of Record, global hiring, international payroll, compliance, benefits, country coverage, and workforce expansion support.\n- Only visitor messages count as buying intent.\n- Assistant/Maia messages are context only and must not be treated as buyer intent.\n- Do not classify a contact as MQL just because Maia mentioned Atlas HXM services.\n\nMQL rule:\nClassify as MQL only when there is a work email or clear company identity plus clear B2B intent around one or more of the following:\n- global hiring\n- Employer of Record / EOR\n- international payroll\n- compliance\n- benefits\n- pricing\n- demo request\n- country coverage\n- entity avoidance or entity setup\n- hiring timeline\n- employee headcount\n- contractor-to-employee conversion\n- existing international workforce support\n\nDo not classify as MQL when the conversation is:\n- customer support\n- job seeking\n- vendor or partner-only\n- spam\n- personal inquiry\n- informational-only with no clear buyer intent\n- visitor declined or said no to hiring/global workforce needs and gave no later buying intent\n\nClassification consistency rules:\n- If confidence is below 0.65, chatbot_mql_status must be \"Non-MQL\".\n- If chatbot_mql_status is \"MQL\", confidence must be 0.65 or higher.\n- If the visitor says \"no\" to hiring, payroll, EOR, country coverage, or global workforce needs and gives no later buying intent, classify as \"Non-MQL\".\n- If the transcript contains no clear visitor need, classify as \"Non-MQL\".\n- If Non-MQL, include a concise chatbot_disqualification_reason.\n- If MQL, chatbot_disqualification_reason must be an empty string.\n\nLifecycle stage rule:\n- lifecyclestage must be \"marketingqualifiedlead\" only when chatbot_mql_status is \"MQL\".\n- If chatbot_mql_status is \"Non-MQL\", lifecyclestage must be an empty string.\n- Do not output any other lifecyclestage value.\n\nField interpretation rules:\n- chatbot_buyer_need must describe the business outcome the buyer appears to need, not just the product category.\n- If the visitor gives no clear business need, return: \"Unclear - no specific hiring, payroll, EOR, pricing, compliance, or country coverage need was stated.\"\n- chatbot_timeline means the buyer's hiring, payroll, EOR, implementation, or purchase timing.\n- chatbot_timeline does not mean the chronological conversation log.\n- If no timing is stated by the visitor, chatbot_timeline must be \"No timeline provided\".\n- chatbot_questions_asked should include only questions asked by the visitor, not questions asked by Maia.\n- chatbot_pain_points should only include pain, blockers, concerns, compliance risks, entity setup concerns, speed issues, payroll complexity, benefits questions, pricing concerns, or similar business friction.\n- chatbot_eor_intent should be \"yes\" when the visitor is asking about international hiring, EOR, local entity avoidance, employment setup, payroll employment, country coverage, or compliance for hiring.\n- chatbot_countries must include only countries mentioned by the visitor or strongly implied by the visitor.\n- countries must match chatbot_countries unless there is a specific reason not to.\n- chatbot_wses should summarize the workforce setup or workforce scenario.\n- ai_chatbot_processed must always be \"Yes\".\n- chatbot_session_id must be the thread ID provided.\n- chatbot_last_session_date must be the provided last session date.\n- chatbot_transcript should match the provided transcript unless the transcript is empty.\n- Do not invent missing contact details.\n- Use empty strings for unknown text fields unless a specific default is required.\n- Use empty arrays for unknown list fields.\n\nFollow-up email body rules:\n- follow_up_email_body is used inside an existing formatted email template.\n- Do not include a greeting.\n- Do not include \"Hi\", \"Hello\", or the contact's name.\n- Do not include an intro like \"Thanks for chatting\" or \"It was great speaking with you\".\n- Do not include a subject line.\n- Do not include a signature.\n- Do not include a sign-off like \"Best\", \"Regards\", or \"Thank you\".\n- Write only the middle body copy.\n- Keep it under 100 words.\n- Use HTML body only.\n- Use 1-3 concise sentences.\n- If Non-MQL or no buyer need exists, follow_up_email_body should be an empty string.\n- ai_mql_response_1 must equal follow_up_email_body.\n\nExisting contact:\n{{ JSON.stringify($json.existingContact) }}\n\nKnown contact/session fields:\n{\n  \"contactId\": \"{{ $json.contactId }}\",\n  \"threadId\": \"{{ $json.threadId }}\",\n  \"email\": \"{{ $json.email }}\",\n  \"firstname\": \"{{ $json.firstname }}\",\n  \"lastname\": \"{{ $json.lastname }}\",\n  \"phone\": \"{{ $json.phone }}\",\n  \"company\": \"{{ $json.company }}\",\n  \"company_domain\": \"{{ $json.company_domain }}\",\n  \"last_session_date\": \"{{ $json.chatbot_last_session_date }}\"\n}\n\nConversation transcript:\n{{ $json.transcript }}\n\nReturn this exact JSON schema:\n{\n  \"chatbot_mql_status\": \"MQL or Non-MQL\",\n  \"confidence\": 0.0,\n  \"lifecyclestage\": \"\",\n  \"chatbot_transcript\": \"Full cleaned transcript. If unavailable, return an empty string.\",\n  \"chatbot_timeline\": \"Hiring, payroll, EOR, implementation, or buying timeline mentioned by the visitor. Return 'No timeline provided' if none.\",\n  \"chatbot_countries\": [\"Country names mentioned by the visitor or strongly implied\"],\n  \"chatbot_eor_intent\": \"yes, no, or unknown\",\n  \"chatbot_wses\": \"Short description of workforce setup, such as new international hire, payroll support, existing employee conversion, contractor conversion, benefits need, compliance question, unknown, etc.\",\n  \"chatbot_buyer_need\": \"Interpreted buying need from the visitor's messages. If unclear, return 'Unclear - no specific hiring, payroll, EOR, pricing, compliance, or country coverage need was stated.'\",\n  \"chatbot_pain_points\": \"Pain points, blockers, risks, or concerns mentioned or strongly implied. Empty string if none.\",\n  \"chatbot_questions_asked\": \"Only questions the visitor asked, separated by newlines. Empty string if none.\",\n  \"chatbot_recommended_next_step\": \"Recommended next step for the sales rep or system. Empty string if unknown.\",\n  \"chatbot_disqualification_reason\": \"Reason this is Non-MQL, if Non-MQL. Empty string if MQL.\",\n  \"chatbot_session_id\": \"{{ $json.threadId }}\",\n  \"chatbot_last_session_date\": \"{{ $json.chatbot_last_session_date }}\",\n  \"ai_chatbot_processed\": \"Yes\",\n  \"summary\": \"4-6 sentence sales summary of the conversation.\",\n  \"follow_up_email_body\": \"Body fragment only. No greeting, no intro, no subject, no signature, no sign-off. 1-3 concise HTML sentences under 100 words. Empty string if no follow-up should be sent.\",\n  \"ai_mql_response_1\": \"Same value as follow_up_email_body.\",\n  \"first_name\": \"\",\n  \"last_name\": \"\",\n  \"phone\": \"\",\n  \"job_title\": \"\",\n  \"company\": \"\",\n  \"company_domain\": \"\",\n  \"intent_category\": \"pricing, demo, country_coverage, eor, payroll, benefits, compliance, support, partner, job_seeker, research, spam, or unknown\",\n  \"lead_temperature\": \"hot, warm, low, or unknown\",\n  \"countries\": [],\n  \"hiring_count\": \"\",\n  \"timeline\": \"Same meaning as chatbot_timeline: hiring, payroll, EOR, implementation, or buying timeline only.\",\n  \"entity_intent\": \"yes, no, or unknown\",\n  \"workforce_setup\": \"\",\n  \"buyer_need\": \"Same meaning as chatbot_buyer_need.\",\n  \"recommended_next_step\": \"\",\n  \"disqualification_reason\": \"\"\n}\n\nOutput requirements:\n- Return only a single JSON object.\n- Do not wrap the JSON in an array.\n- Do not include markdown.\n- Do not include code fences.\n- Do not include comments.\n- Do not include trailing commas.\n- All keys in the schema must be present.\n- chatbot_mql_status must be exactly \"MQL\" or \"Non-MQL\".\n- confidence must be a number between 0 and 1.\n- chatbot_eor_intent must be exactly \"yes\", \"no\", or \"unknown\".\n- entity_intent must be exactly \"yes\", \"no\", or \"unknown\".\n- lead_temperature must be exactly \"hot\", \"warm\", \"low\", or \"unknown\".\n- chatbot_countries and countries must be arrays.\n- ai_chatbot_processed must be exactly \"Yes\".\n- ai_mql_response_1 must equal follow_up_email_body.",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "e50ed997-0b5a-4de9-8c32-ddc92c2652cc",
+      "name": "Analyze + Draft Email",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1024,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Simple closed conversation flow:\n1. HubSpot workflow triggers only when conversation status is Closed.\n2. POST thread_id/hs_thread_id plus contact_id or email to /webhook/maia.\n3. n8n finds the contact, resolves thread ID, fetches conversation + messages, normalizes transcript/contact data, runs one AI analysis/email draft, and updates HubSpot contact fields.\n\nThis intentionally removes start-event handling, broad lifecycle branching, dedupe branches, and non-existent custom property writes.",
+        "height": 300,
+        "width": 620
+      },
+      "id": "fa650236-e42f-46d6-8353-964719f10041",
+      "name": "README - Simple Closed Conversation Flow",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -512,
+        -176
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const webhook = $(\"HubSpot Closed Conversation Webhook\").item.json.body || {};\nconst contactSearch = $(\"Find Contact\").item.json || {};\nconst messageResponse = $(\"Get Thread Messages\").item.json || {};\n\nconst contact = contactSearch.results?.[0] || {};\nconst contactProps = contact.properties || {};\nconst messages = messageResponse.results || [];\n\nfunction clean(value) {\n  return value === undefined || value === null ? \"\" : String(value).trim();\n}\n\nfunction stripHtml(value) {\n  return clean(value)\n    .replace(/<[^>]+>/g, \" \")\n    .replace(/&nbsp;/g, \" \")\n    .replace(/&amp;/g, \"&\")\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/\\s+/g, \" \")\n    .trim();\n}\n\nfunction extractText(message) {\n  return (\n    message.text ||\n    message.richText ||\n    message.body ||\n    message.content ||\n    message.message ||\n    message.plainText ||\n    message.previewText ||\n    \"\"\n  );\n}\n\nfunction extractSender(message) {\n  const actorId =\n    message.senders?.[0]?.actorId ||\n    message.sender?.actorId ||\n    message.createdBy ||\n    \"\";\n\n  if (actorId.startsWith(\"V-\")) return \"Visitor\";\n  if (actorId.startsWith(\"A-\")) return \"Atlas HXM assistant\";\n  if (actorId.startsWith(\"S-\")) return \"Atlas HXM assistant\";\n\n  if (message.sender?.name) return message.sender.name;\n  if (message.senders?.[0]?.name) return message.senders[0].name;\n  if (message.direction === \"INCOMING\") return \"Visitor\";\n  if (message.direction === \"OUTGOING\") return \"Atlas HXM assistant\";\n\n  return \"Unknown\";\n}\n\nfunction isVisitorMessage(message) {\n  const actorId =\n    message.senders?.[0]?.actorId ||\n    message.sender?.actorId ||\n    \"\";\n\n  return (\n    actorId.startsWith(\"V-\") ||\n    message.direction === \"INCOMING\" ||\n    extractSender(message) === \"Visitor\"\n  );\n}\n\nfunction extractEmail(text) {\n  const match = clean(text).match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/i);\n  return match ? match[0].toLowerCase() : \"\";\n}\n\nfunction extractPhone(text) {\n  const matches = clean(text).match(/(?:\\+?\\d[\\d\\s().-]{7,}\\d)/g) || [];\n\n  const cleaned = matches\n    .map((phone) => phone.replace(/\\s+/g, \" \").trim())\n    .filter((phone) => {\n      const digitCount = phone.replace(/\\D/g, \"\").length;\n      return digitCount >= 8 && digitCount <= 16;\n    });\n\n  return cleaned[0] || \"\";\n}\n\nfunction extractDomainFromEmail(email) {\n  const domain = clean(email).toLowerCase().split(\"@\")[1] || \"\";\n\n  const personalDomains = new Set([\n    \"gmail.com\",\n    \"yahoo.com\",\n    \"hotmail.com\",\n    \"outlook.com\",\n    \"icloud.com\",\n    \"aol.com\",\n    \"proton.me\",\n    \"protonmail.com\",\n    \"live.com\",\n    \"msn.com\"\n  ]);\n\n  return domain && !personalDomains.has(domain) ? domain : \"\";\n}\n\nfunction extractDomainFromText(text) {\n  const matches = clean(text).match(\n    /(?:https?:\\/\\/)?(?:www\\.)?([a-z0-9-]+\\.[a-z]{2,})(?:\\/[^\\s]*)?/gi\n  ) || [];\n\n  const excluded = new Set([\n    \"hubspot.com\",\n    \"meetings.hubspot.com\",\n    \"atlashxm.com\",\n    \"www.atlashxm.com\"\n  ]);\n\n  for (const raw of matches) {\n    const normalized = raw\n      .replace(/^https?:\\/\\//i, \"\")\n      .replace(/^www\\./i, \"\")\n      .split(\"/\")[0]\n      .toLowerCase();\n\n    if (normalized && !excluded.has(normalized)) return normalized;\n  }\n\n  return \"\";\n}\n\nfunction guessCompanyFromDomain(domain) {\n  const root = clean(domain)\n    .replace(/^www\\./, \"\")\n    .split(\".\")[0]\n    .replace(/[-_]+/g, \" \")\n    .trim();\n\n  if (!root) return \"\";\n\n  return root\n    .split(\" \")\n    .map((word) => word ? word[0].toUpperCase() + word.slice(1) : \"\")\n    .join(\" \");\n}\n\nfunction extractCompanyName(text, domain) {\n  const cleaned = clean(text);\n\n  const patterns = [\n    /(?:company name|company|organization|business|employer)\\s*(?:is|:|-)\\s*([A-Z0-9&.,'’\\- ]{2,80})/i,\n    /(?:I work for|I'm with|I am with|we are with|we're with|we are from|we're from|from)\\s+([A-Z0-9&.,'’\\- ]{2,80})/i\n  ];\n\n  for (const pattern of patterns) {\n    const match = cleaned.match(pattern);\n    if (match?.[1]) {\n      return match[1]\n        .replace(/\\s+(and|but|we|I|looking|need|want|are)\\b.*$/i, \"\")\n        .replace(/[.。]+$/, \"\")\n        .trim();\n    }\n  }\n\n  return guessCompanyFromDomain(domain);\n}\n\nconst sortedMessages = [...messages].sort((a, b) => {\n  return new Date(a.createdAt || 0) - new Date(b.createdAt || 0);\n});\n\nconst transcript = sortedMessages\n  .map((message) => {\n    const timestamp = clean(message.createdAt || message.updatedAt || message.sentAt);\n    const sender = clean(extractSender(message));\n    const text = stripHtml(extractText(message));\n\n    if (!text) return null;\n    return `[${timestamp}] ${sender}: ${text}`;\n  })\n  .filter(Boolean)\n  .join(\"\\n\\n\");\n\nconst visitorMessages = sortedMessages\n  .filter(isVisitorMessage)\n  .map((message) => stripHtml(extractText(message)))\n  .filter(Boolean);\n\nconst visitorText = visitorMessages.join(\"\\n\");\n\nconst existingEmail = clean(contactProps.email);\nconst extractedEmail = extractEmail(visitorText);\nconst email = existingEmail || extractedEmail;\n\nconst existingPhone = clean(contactProps.phone || contactProps.mobilephone);\nconst extractedPhone = extractPhone(visitorText);\nconst phone = existingPhone || extractedPhone;\n\nconst existingDomain = clean(contactProps.domain || contactProps.website);\nconst extractedDomain = extractDomainFromText(visitorText) || extractDomainFromEmail(email);\nconst companyDomain = existingDomain || extractedDomain;\n\nconst existingCompany = clean(contactProps.company);\nconst extractedCompany = extractCompanyName(visitorText, companyDomain);\nconst companyName = existingCompany || extractedCompany;\n\nconst threadId = clean(webhook.hs_thread_id);\nconst contactId = clean(webhook.hs_object_id || contact.id || contactProps.hs_object_id);\n\nconst messageDates = sortedMessages\n  .map((message) => clean(message.createdAt || message.updatedAt || message.sentAt))\n  .filter(Boolean);\n\nconst lastMessageDate = messageDates.length\n  ? messageDates[messageDates.length - 1]\n  : new Date().toISOString();\n\nreturn [\n  {\n    json: {\n      contactId,\n      hs_object_id: contactId,\n      threadId,\n      hs_thread_id: threadId,\n\n      email,\n      firstname: clean(contactProps.firstname),\n      lastname: clean(contactProps.lastname),\n      phone,\n      company: companyName,\n      company_domain: companyDomain,\n      domain: companyDomain,\n      website: companyDomain ? `https://${companyDomain.replace(/^https?:\\/\\//, \"\")}` : \"\",\n      jobtitle: clean(contactProps.jobtitle),\n\n      existing_lifecyclestage: clean(contactProps.lifecyclestage),\n      existing_hs_lead_status: clean(contactProps.hs_lead_status),\n\n      existingContact: contact,\n      contactProperties: contactProps,\n\n      rawMessages: sortedMessages,\n      visitorMessages,\n      transcript,\n\n      chatbot_transcript: transcript,\n      chatbot_session_id: threadId,\n      chatbot_last_session_date: lastMessageDate,\n      ai_chatbot_processed: \"Yes\"\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        208
+      ],
+      "id": "0d348421-8bf3-47c9-b251-b922c85dbc86",
+      "name": "Normalize Conversation + Transcript"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Normalize Conversation + Transcript').item.json.email }}",
+        "additionalFields": {
+          "companyName": "={{ $json.company }}",
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "chatbot_transcript",
+                "value": "={{ $json.chatbot_transcript }}"
+              },
+              {
+                "property": "chatbot_wses",
+                "value": "={{ $json.chatbot_wses }}"
+              },
+              {
+                "property": "chatbot_timeline",
+                "value": "={{ $json.chatbot_timeline }}"
+              },
+              {
+                "property": "chatbot_countries",
+                "value": "={{ $json.chatbot_countries }}"
+              },
+              {
+                "property": "chatbot_eor_intent",
+                "value": "={{ $json.chatbot_eor_intent }}"
+              },
+              {
+                "property": "chatbot_session_id",
+                "value": "={{ $json.chatbot_session_id }}"
+              },
+              {
+                "property": "chatbot_buyer_need",
+                "value": "={{ $json.chatbot_buyer_need }}"
+              },
+              {
+                "property": "ai_mql_response_1",
+                "value": "={{ $json.ai_mql_response_1 }}"
+              },
+              {
+                "property": "maia_chat_summary",
+                "value": "={{ $json.maia_chat_summary }}"
+              },
+              {
+                "property": "chatbot_intent_classification",
+                "value": "={{ $json.chatbot_intent_category }}"
+              },
+              {
+                "property": "chatbot_lead_temperature",
+                "value": "={{ $json.chatbot_lead_temperature }}"
+              },
+              {
+                "property": "mql___number_of_employees_hiring",
+                "value": "={{ $json.analysis.hiring_count }}"
+              }
+            ]
+          },
+          "firstName": "={{ $json.firstname }}",
+          "jobTitle": "={{ $json.analysis.job_title }}",
+          "lastName": "={{ $json.lastname }}",
+          "phoneNumber": "={{ $json.phone }}",
+          "websiteUrl": "={{ $json.website }}"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        1600,
+        208
+      ],
+      "id": "d45ebcd7-7876-4b24-8f03-a07e0a0d065d",
+      "name": "Create or update a contact",
+      "alwaysOutputData": true,
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"chatbot_mql_status\": \"MQL or Non-MQL\",\n  \"confidence\": 0.0,\n  \"lifecyclestage\": \"\",\n  \"chatbot_transcript\": \"\",\n  \"chatbot_timeline\": \"\",\n  \"chatbot_countries\": [],\n  \"chatbot_eor_intent\": \"yes, no, or unknown\",\n  \"chatbot_wses\": \"\",\n  \"chatbot_buyer_need\": \"\",\n  \"chatbot_pain_points\": \"\",\n  \"chatbot_questions_asked\": \"\",\n  \"chatbot_recommended_next_step\": \"\",\n  \"chatbot_disqualification_reason\": \"\",\n  \"chatbot_session_id\": \"\",\n  \"chatbot_last_session_date\": \"\",\n  \"ai_chatbot_processed\": \"Yes\",\n  \"summary\": \"\",\n  \"follow_up_email_body\": \"\",\n  \"ai_mql_response_1\": \"\",\n  \"first_name\": \"\",\n  \"last_name\": \"\",\n  \"phone\": \"\",\n  \"job_title\": \"\",\n  \"company\": \"\",\n  \"company_domain\": \"\",\n  \"intent_category\": \"pricing, demo, country_coverage, eor, payroll, benefits, compliance, support, partner, job_seeker, research, spam, or unknown\",\n  \"lead_temperature\": \"hot, warm, low, or unknown\",\n  \"countries\": [],\n  \"hiring_count\": \"\",\n  \"timeline\": \"\",\n  \"entity_intent\": \"yes, no, or unknown\",\n  \"workforce_setup\": \"\",\n  \"buyer_need\": \"\",\n  \"recommended_next_step\": \"\",\n  \"disqualification_reason\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1168,
+        432
+      ],
+      "id": "62d52131-3d37-48e5-8c97-a35baa2e27aa",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "jsCode": "const context = $(\"Normalize Conversation + Transcript\").item.json || {};\n\nlet analysis = $json.output || $json;\n\nif (typeof analysis === \"string\") {\n  let raw = analysis\n    .trim()\n    .replace(/^```json\\s*/i, \"\")\n    .replace(/^```\\s*/i, \"\")\n    .replace(/```$/i, \"\")\n    .trim();\n\n  try {\n    analysis = JSON.parse(raw);\n  } catch (error) {\n    analysis = {};\n  }\n}\n\nfunction clean(value) {\n  return value === undefined || value === null ? \"\" : String(value).trim();\n}\n\nfunction truncate(value, limit = 65000) {\n  const text = clean(value);\n  return text.length > limit ? text.slice(0, limit - 3) + \"...\" : text;\n}\n\nfunction joinArray(value) {\n  if (!Array.isArray(value)) return clean(value);\n  return value.map(clean).filter(Boolean).join(\"; \");\n}\n\nfunction firstValue(...values) {\n  for (const value of values) {\n    const cleaned = clean(value);\n    if (cleaned) return cleaned;\n  }\n  return \"\";\n}\n\nconst chatbotCountries = Array.isArray(analysis.chatbot_countries)\n  ? analysis.chatbot_countries\n  : Array.isArray(analysis.countries)\n    ? analysis.countries\n    : [];\n\nconst mqlStatus = firstValue(\n  analysis.chatbot_mql_status,\n  analysis.mql_classification,\n  \"Non-MQL\"\n);\n\nconst isMQL = clean(mqlStatus).toLowerCase() === \"mql\";\n\nconst lastSessionDate = firstValue(\n  analysis.chatbot_last_session_date,\n  context.chatbot_last_session_date,\n  new Date().toISOString()\n);\n\nconst followUpBody = firstValue(\n  analysis.follow_up_email_body,\n  analysis.ai_mql_response_1\n);\n\nconst fields = {\n  // Identifier fields\n  contactId: context.contactId,\n  hs_object_id: context.contactId,\n\n  // Standard contact fields\n  email: firstValue(context.email),\n  firstname: firstValue(context.firstname, analysis.first_name),\n  lastname: firstValue(context.lastname, analysis.last_name),\n  phone: firstValue(context.phone, analysis.phone),\n  jobtitle: firstValue(context.jobtitle, analysis.job_title),\n  company: firstValue(context.company, analysis.company),\n  domain: firstValue(context.domain, context.company_domain, analysis.company_domain),\n  website: firstValue(context.website),\n\n  // Chatbot fields\n  chatbot_transcript: truncate(firstValue(\n    analysis.chatbot_transcript,\n    context.chatbot_transcript,\n    context.transcript\n  ), 64000),\n\n  chatbot_wses: truncate(firstValue(\n    analysis.chatbot_wses,\n    analysis.workforce_setup\n  ), 1000),\n\n  chatbot_timeline: truncate(firstValue(\n    analysis.chatbot_timeline,\n    analysis.timeline,\n    \"No timeline provided\"\n  ), 1000),\n\n  chatbot_countries: truncate(joinArray(chatbotCountries), 1000),\n\n  chatbot_eor_intent: firstValue(\n    analysis.chatbot_eor_intent,\n    analysis.entity_intent,\n    \"unknown\"\n  ),\n\n  chatbot_mql_status: mqlStatus,\n\n  chatbot_session_id: firstValue(\n    analysis.chatbot_session_id,\n    context.chatbot_session_id,\n    context.threadId\n  ),\n\n  chatbot_buyer_need: truncate(firstValue(\n    analysis.chatbot_buyer_need,\n    analysis.buyer_need,\n    \"Unclear - no specific buyer need was identified.\"\n  ), 4000),\n\n  chatbot_pain_points: truncate(firstValue(\n    analysis.chatbot_pain_points\n  ), 4000),\n\n  ai_chatbot_processed: \"Yes\",\n\n  chatbot_questions_asked: truncate(firstValue(\n    analysis.chatbot_questions_asked\n  ), 4000),\n\n  chatbot_last_session_date: lastSessionDate,\n\n  chatbot_recommended_next_step: truncate(firstValue(\n    analysis.chatbot_recommended_next_step,\n    analysis.recommended_next_step\n  ), 4000),\n\n  chatbot_disqualification_reason: truncate(firstValue(\n    analysis.chatbot_disqualification_reason,\n    analysis.disqualification_reason\n  ), 4000),\n\n  // AI email body property\n  ai_mql_response_1: truncate(followUpBody, 64000),\n\n  // Optional supporting fields\n  maia_chat_summary: truncate(firstValue(analysis.summary), 64000),\n  chatbot_intent_category: firstValue(analysis.intent_category, \"unknown\"),\n  chatbot_lead_temperature: firstValue(analysis.lead_temperature, \"unknown\"),\n  chatbot_hiring_count: firstValue(analysis.hiring_count),\n  chatbot_hiring_timeline: firstValue(analysis.timeline),\n  customer_agent_conversation_id: firstValue(context.threadId),\n  chatbot_session_ended: \"true\",\n  chatbot_session_ended_at: lastSessionDate\n};\n\nif (isMQL) {\n  fields.lifecyclestage = \"marketingqualifiedlead\";\n  fields.hs_lead_status = \"NEW\";\n  fields.customer_agent_mql_date = new Date().toISOString().slice(0, 10);\n}\n\n// Prevent blank values from overwriting existing HubSpot values.\nfor (const key of Object.keys(fields)) {\n  if (fields[key] === \"\") {\n    delete fields[key];\n  }\n}\n\nreturn [\n  {\n    json: {\n      ...fields,\n      analysis,\n      isMQL,\n      threadId: context.threadId,\n      contactId: context.contactId\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1376,
+        208
+      ],
+      "id": "54b0706e-050b-458c-909c-f80f3d0ced83",
+      "name": "Prepare HubSpot Contact Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "acaa07c9-e944-474e-8add-cee1807b2704",
+              "leftValue": "={{ $('Prepare HubSpot Contact Fields').item.json.isMQL }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1856,
+        208
+      ],
+      "id": "67e72d8d-c7b6-4566-8972-a2d18cb9a259",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $('Prepare HubSpot Contact Fields').item.json.email }}",
+        "additionalFields": {
+          "lifeCycleStage": "marketingqualifiedlead"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        2064,
+        112
+      ],
+      "id": "f706fc17-048e-40dd-a3f5-06b15a53213e",
+      "name": "Create or update a contact1",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "VmNdJptKIcpbJ7mA",
+          "name": "Hubspot oAuth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a36bcbd8-c99e-4a7b-a340-37dc36939645",
+              "leftValue": "={{ $json.body.hs_object_id }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -320,
+        208
+      ],
+      "id": "7a7b1302-ab6c-407a-a861-5bf97662b3c1",
+      "name": "If1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HubSpot Closed Conversation Webhook": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Contact": {
+      "main": [
+        [
+          {
+            "node": "Get Conversation Thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Conversation Thread": {
+      "main": [
+        [
+          {
+            "node": "Get Thread Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Thread Messages": {
+      "main": [
+        [
+          {
+            "node": "Normalize Conversation + Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI - Analysis Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Analyze + Draft Email",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze + Draft Email": {
+      "main": [
+        [
+          {
+            "node": "Prepare HubSpot Contact Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Conversation + Transcript": {
+      "main": [
+        [
+          {
+            "node": "Analyze + Draft Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create or update a contact": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Analyze + Draft Email",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare HubSpot Contact Fields": {
+      "main": [
+        [
+          {
+            "node": "Create or update a contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create or update a contact1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Find Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "7Exlq2OSVUSh0Tni",
+    "availableInMCP": false
+  },
+  "versionId": "ed947698-283a-433c-9d52-379ce5c4d83d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "da98df5c5d7ca09b34ad4f795244e87a7663d8722c18682c2021c70624938526"
+  },
+  "id": "SKUv0NlJUsWyNB4Z",
+  "tags": []
+}

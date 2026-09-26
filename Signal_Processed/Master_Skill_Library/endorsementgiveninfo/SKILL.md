@@ -1,0 +1,112 @@
+---
+name: endorsementgiveninfo
+description: Process/Note derived from Endorsement_Given_Info.csv
+source_path: Complete_LinkedInDataExport_08-30-2026.zip/Endorsement_Given_Info.csv
+---
+
+# Endorsement_Given_Info.csv
+
+## Context
+This skill provides knowledge, processes, and instructions derived from the document: `Endorsement_Given_Info.csv`.
+Use this information to inform GTM strategies, sales playbooks, automation engine logic, and CRM setup.
+
+## Knowledge Source
+
+Endorsement Date,Skill Name,Endorsee First Name,Endorsee Last Name,Endorsee Public Url,Endorsement Status
+2020/12/22 04:14:14 UTC,Public Speaking,Ross,van Dijk,www.linkedin.com/in/ross-van-dijk-89483955,ACCEPTED
+2017/06/16 15:00:05 UTC,Cultural Competency,Markie,Channon,www.linkedin.com/in/markie-channon-320359136,ACCEPTED
+2017/06/16 15:00:03 UTC,Interpersonal Skills,Markie,Channon,www.linkedin.com/in/markie-channon-320359136,ACCEPTED
+2017/05/13 17:24:40 UTC,STEM,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:40 UTC,Startup,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:38 UTC,CSS,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:38 UTC,ES6,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:38 UTC,MVC,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:38 UTC,making apps,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:37 UTC,HTML5,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:36 UTC,front end,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:36 UTC,MySQL,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:36 UTC,SQL,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:35 UTC,angular.js,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:35 UTC,C,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:34 UTC,Cascading Style Sheets (CSS),Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:34 UTC,Server Side Programming,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:33 UTC,Nodejs,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:32 UTC,Web developer,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:32 UTC,Software Engineer,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:31 UTC,Back-End Web Development,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:31 UTC,Front-end Development,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:30 UTC,Business Development,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:30 UTC,Teamwork,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:30 UTC,Team Building,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:28 UTC,Rails,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:28 UTC,Management,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:28 UTC,Node.js,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:28 UTC,Strategy,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:26 UTC,Mean Stack,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:24 UTC,AngularJS,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:24 UTC,Express,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:24 UTC,Operations Management,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:23 UTC,Mathematics,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:23 UTC,Sales,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:21 UTC,HTML,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:21 UTC,Data Analysis,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:21 UTC,Creative Problem Solving,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:20 UTC,Engineering,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:19 UTC,Project Management,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:18 UTC,Ruby,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:18 UTC,Leadership,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:17 UTC,Software Development,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:15 UTC,full stack,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:13 UTC,Software Engineering,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:12 UTC,Web Development,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:09 UTC,Redux,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:09 UTC,React.js,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/05/13 17:24:07 UTC,JavaScript,Jawad,Bangash (PMP),www.linkedin.com/in/jbangash,ACCEPTED
+2017/02/01 20:27:11 UTC,Microsoft Office,Matthew,Bacon,www.linkedin.com/in/matthewjbacon,ACCEPTED
+2017/02/01 20:27:09 UTC,Microsoft Office,Gustavo,Cepeda,www.linkedin.com/in/guscepeda,ACCEPTED
+2017/02/01 20:27:08 UTC,Public Speaking,Seyi,Omonira,www.linkedin.com/in/seyiomonira,ACCEPTED
+2017/02/01 20:27:07 UTC,Social Media,Gonathan J.,Breedlove,www.linkedin.com/in/gonathan-j-breedlove-21394845,ACCEPTED
+2016/11/21 19:37:15 UTC,InDesign,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:37:11 UTC,Photoshop,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:37:01 UTC,Sustainability Marketing,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:37:00 UTC,OmniGraffle,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:59 UTC,Community Outreach,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:57 UTC,Public Speaking,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:56 UTC,Quantitative Research,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:55 UTC,Workshop Facilitation,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:54 UTC,Entrepreneurship,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:52 UTC,Social Entrepreneurship,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:49 UTC,Digital Strategy,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:48 UTC,Business Management,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:47 UTC,Microsoft Excel,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:44 UTC,Microsoft Office,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:44 UTC,Adobe Illustrator,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:43 UTC,HTML5,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:42 UTC,Wire Framing,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:41 UTC,Product Management,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:40 UTC,User Interface Prototyping,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:39 UTC,Illustrator,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:38 UTC,User Interface Design,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:37 UTC,User-centered Design,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/11/21 19:36:36 UTC,User Experience,Hector Fábian,Hernandez,www.linkedin.com/in/hfab,ACCEPTED
+2016/10/25 22:04:59 UTC,Social Media,Adrian,Ennis,www.linkedin.com/in/adrian-ennis-3836a538,ACCEPTED
+2016/10/25 22:04:58 UTC,Event Planning,Adrian,Ennis,www.linkedin.com/in/adrian-ennis-3836a538,ACCEPTED
+2016/10/25 22:04:56 UTC,Streaming Media,Scott,Greenberg,www.linkedin.com/in/scgreenberg,ACCEPTED
+2016/10/25 22:04:53 UTC,Data Analysis,Braden,Perez-Mugg,www.linkedin.com/in/bradenperezmugg,ACCEPTED
+2016/10/25 22:04:52 UTC,Public Speaking,Adrian,Ennis,www.linkedin.com/in/adrian-ennis-3836a538,ACCEPTED
+2016/10/25 22:04:51 UTC,Video Post-Production,Scott,Greenberg,www.linkedin.com/in/scgreenberg,ACCEPTED
+2016/10/25 22:04:49 UTC,Digital Asset Management,Scott,Greenberg,www.linkedin.com/in/scgreenberg,ACCEPTED
+2016/10/25 22:04:48 UTC,Research,Braden,Perez-Mugg,www.linkedin.com/in/bradenperezmugg,ACCEPTED
+2016/10/25 22:04:45 UTC,HTML,Braden,Perez-Mugg,www.linkedin.com/in/bradenperezmugg,ACCEPTED
+2016/10/25 22:04:41 UTC,Entrepreneurship,Ravid,Razak,www.linkedin.com/in/ravidrazak,ACCEPTED
+2016/10/25 22:04:40 UTC,Start-ups,Ravid,Razak,www.linkedin.com/in/ravidrazak,ACCEPTED
+2016/10/19 20:57:32 UTC,Advertising,Zella,Vanié,www.linkedin.com/in/zella-v-83927445,ACCEPTED
+2016/10/19 20:57:30 UTC,User Experience,Zella,Vanié,www.linkedin.com/in/zella-v-83927445,ACCEPTED
+2016/10/19 20:57:29 UTC,Digital Video,Scott,Greenberg,www.linkedin.com/in/scgreenberg,ACCEPTED
+2016/10/19 20:57:23 UTC,Ruby on Rails,Braden,Perez-Mugg,www.linkedin.com/in/bradenperezmugg,ACCEPTED
+2016/10/19 20:57:22 UTC,HTML5,Braden,Perez-Mugg,www.linkedin.com/in/bradenperezmugg,ACCEPTED
+2016/10/19 20:57:21 UTC,Business Transformation,Ravid,Razak,www.linkedin.com/in/ravidrazak,ACCEPTED
+2016/10/19 20:57:20 UTC,Management Consulting,Ravid,Razak,www.linkedin.com/in/ravidrazak,ACCEPTED
+2016/10/19 20:57:17 UTC,Cascading Style Sheets (CSS),Braden,Perez-Mugg,www.linkedin.com/in/bradenperezmugg,PENDING
+2016/10/19 20:57:13 UTC,Product Development,Ravid,Razak,www.linkedin.com/in/ravidrazak,ACCEPTED
+2016/10/19 20:57:12 UTC,Time Management,Zella,Vanié,www.linkedin.com/in/zella-v-83927445,ACCEPTED

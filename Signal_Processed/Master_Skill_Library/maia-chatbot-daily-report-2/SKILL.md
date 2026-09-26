@@ -1,0 +1,726 @@
+---
+name: maia-chatbot-daily-report-2
+description: Process/Note derived from Maia Chatbot Daily Report-2.json
+source_path: Atlas Portfolio/Maia Chatbot Daily Report-2.json
+---
+
+# Maia Chatbot Daily Report-2.json
+
+## Context
+This skill provides knowledge, processes, and instructions derived from the document: `Maia Chatbot Daily Report-2.json`.
+Use this information to inform GTM strategies, sales playbooks, automation engine logic, and CRM setup.
+
+## Knowledge Source
+
+{
+  "name": "Maia Chatbot Daily Report",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Maia Chatbot Daily Report v2\n\nReports on **Marketing Chatbot | MQL Classification** (SKUv0NlJUsWyNB4Z).\n\n**v2 additions:**\n- Conversation/visitor identity + chat preview even when no contact was captured\n- Source AI analysis surfaced per conversation (summary, intent category, lead temperature, confidence, hiring count)\n- Report AI now returns **structured output** (narrative + highlights + per-conversation summary table)\n- Rows appended to n8n **Data Tables** for a running dataset\n\n**One-time setup for the data tables** (n8n left menu → Data tables):\n1. Create **Maia Report Master** — columns (all Text unless noted): report_date, started_at, execution_id, thread_id, contact_id, conversation_name, outcome, reason, email, full_name, company, jobtitle, mql_status, eor_intent, countries, timeline, wses, buyer_need, pain_points, questions_asked, recommended_next_step, disqualification_reason, intent_category, lead_temperature, confidence, hiring_count, chat_summary, chat_preview, session_id\n2. Create **Maia Report Daily Summary** — columns: report_date (Text), conversations_in / contacts_updated / mql / non_mql / mql_rate / dropped / errors (Number), top_countries (Text), drop_reasons (Text)\n3. Open the two *Save …* nodes and select the tables in the dropdown.\n\nBoth data-table nodes are continue-on-error, so the email always sends.",
+        "height": 560,
+        "width": 520,
+        "color": 4
+      },
+      "id": "bebb11ff-df0b-4c7a-952a-0cdbee493eef",
+      "name": "README - Daily Report",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        -592
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * *"
+            }
+          ]
+        }
+      },
+      "id": "62259b7c-40d5-4e43-a136-fc50eb5b5ba1",
+      "name": "Daily 7AM CT",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1424,
+        -192
+      ],
+      "notes": "Workflow timezone is America/Chicago, so 0 7 * * * = 7:00 AM CT daily."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Reporting window: yesterday 00:00 -> today 00:00, America/Chicago\nconst nowCT = DateTime.now().setZone('America/Chicago');\nconst start = nowCT.minus({ days: 1 }).startOf('day');\nconst end = nowCT.startOf('day');\nreturn [{\n  json: {\n    window_start_iso: start.toUTC().toISO(),\n    window_end_iso: end.toUTC().toISO(),\n    window_start_ms: start.toMillis(),\n    window_end_ms: end.toMillis(),\n    report_date: start.toFormat('yyyy-LL-dd'),\n    report_date_label: start.toFormat('cccc, LLLL d, yyyy'),\n  }\n}];"
+      },
+      "id": "396db250-c969-4b6d-84dd-ed875d56d4c9",
+      "name": "Set Reporting Window",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1648,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://atlas-hxm.app.n8n.cloud/api/v1/executions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "workflowId",
+              "value": "SKUv0NlJUsWyNB4Z"
+            },
+            {
+              "name": "limit",
+              "value": "250"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "af165573-e4be-4c3d-b71a-69d2aeb37225",
+      "name": "List Executions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1872,
+        -192
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jL6mIjMZipJSP1iV",
+          "name": "n8n_hubspot_flow_key"
+        },
+        "n8nApi": {
+          "id": "ECqrfHoxXszJwcr1",
+          "name": "n8n account"
+        }
+      },
+      "notes": "Read-only GET. Header Auth credential: header name X-N8N-API-KEY, value = n8n API key."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Filter execution list to the reporting window; emit one item per execution\nconst win = $('Set Reporting Window').first().json;\nconst resp = $input.first().json || {};\nconst list = Array.isArray(resp.data) ? resp.data : [];\nconst inWindow = list.filter(e => {\n  const t = new Date(e.startedAt).getTime();\n  return t >= win.window_start_ms && t < win.window_end_ms;\n});\nif (inWindow.length === 0) {\n  return [{ json: { no_executions: true } }];\n}\nreturn inWindow.map(e => ({\n  json: {\n    execution_id: String(e.id),\n    startedAt: e.startedAt,\n    status: e.status || (e.finished ? 'success' : 'unknown'),\n    mode: e.mode || '',\n  }\n}));"
+      },
+      "id": "223a70b4-f2ac-401a-b809-ffcb18979b94",
+      "name": "Split Executions In Window",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2096,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-exec-cond",
+              "leftValue": "={{ $json.execution_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "23dcbc44-aba3-4d3a-8ba9-ba4483ac0066",
+      "name": "Has Executions?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2320,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://atlas-hxm.app.n8n.cloud/api/v1/executions/{{ $json.execution_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "includeData",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "02e28dc2-bfc2-4346-bcac-98003d730c46",
+      "name": "Get Execution Detail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2544,
+        -272
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jL6mIjMZipJSP1iV",
+          "name": "n8n_hubspot_flow_key"
+        },
+        "n8nApi": {
+          "id": "ECqrfHoxXszJwcr1",
+          "name": "n8n account"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Fetches full node run data per execution. continueRegularOutput so one bad fetch doesn't kill the report."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Classify every execution of the MQL Classification workflow and extract:\n// outcome, thread/visitor identity, chat preview, source AI analysis, and\n// the full field set for the data table (transcript, messages, errors, etc).\nconst items = $input.all();\nconst rows = [];\nlet noExec = false;\n\nconst getOut = (runData, name) => {\n  try { return runData[name]?.[0]?.data?.main?.[0]?.[0]?.json || null; }\n  catch (e) { return null; }\n};\nconst stripHtml = (t) => String(t || '').replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\nconst cut = (t, n) => { const s = String(t ?? ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; };\n\nfor (const item of items) {\n  const exec = item.json || {};\n  if (exec.no_executions) { noExec = true; continue; }\n  if (exec.fetch_failed || (!exec.id && !exec.data)) {\n    rows.push({ execution_id: String(exec.execution_id || 'unknown'), startedAt: exec.startedAt || '',\n      status: 'fetch_failed', outcome: 'unknown', reason: 'Could not fetch execution detail from n8n API',\n      threadId: '', contactId: '', mql_status: '', conversation_name: '', chat_preview: '',\n      ai: {}, extra: {}, properties_written: null });\n    continue;\n  }\n\n  const runData = exec.data?.resultData?.runData || {};\n  const lastNode = exec.data?.resultData?.lastNodeExecuted || '';\n  const errObj = exec.data?.resultData?.error || null;\n  const ran = Object.keys(runData);\n\n  const webhookOut = getOut(runData, 'HubSpot Closed Conversation Webhook');\n  const normalizeOut = getOut(runData, 'Normalize Conversation + Transcript');\n  const prepOut = getOut(runData, 'Prepare HubSpot Contact Fields');\n  const msgsOut = getOut(runData, 'Get Thread Messages');\n  const aiRaw = getOut(runData, 'Analyze + Draft Email');\n\n  const threadId = String(normalizeOut?.threadId || webhookOut?.body?.hs_thread_id || '');\n  const contactId = String(normalizeOut?.contactId || prepOut?.contactId || webhookOut?.body?.hs_object_id || '');\n\n  // --- Source AI analysis ---\n  let ai = {};\n  let aiObj = aiRaw?.output ?? aiRaw;\n  if (typeof aiObj === 'string') { try { aiObj = JSON.parse(aiObj.replace(/^```json\\s*/i,'').replace(/```$/,'')); } catch (e) { aiObj = {}; } }\n  if (aiObj && typeof aiObj === 'object') {\n    ai = {\n      summary: String(aiObj.summary || ''),\n      intent_category: String(aiObj.intent_category || ''),\n      lead_temperature: String(aiObj.lead_temperature || ''),\n      confidence: aiObj.confidence !== undefined && aiObj.confidence !== '' ? String(aiObj.confidence) : '',\n      hiring_count: String(aiObj.hiring_count || ''),\n      lifecyclestage: String(aiObj.lifecyclestage || ''),\n      ai_mql_response: String(aiObj.ai_mql_response_1 || ''),\n      follow_up_email: String(aiObj.follow_up_email_body || aiObj.ai_mql_response_1 || ''),\n    };\n  }\n\n  // --- Conversation identity + messages ---\n  const msgs = Array.isArray(msgsOut?.results) ? msgsOut.results : [];\n  const incoming = msgs.filter(m => m.type === 'MESSAGE' && m.direction === 'INCOMING');\n  const outgoing = msgs.filter(m => m.type === 'MESSAGE' && m.direction === 'OUTGOING');\n  let visitorLabel = '';\n  for (const m of incoming) {\n    const s = (m.senders || [])[0] || {};\n    if (s.name) { visitorLabel = s.name; break; }\n  }\n  if (!visitorLabel) {\n    const firstIn = stripHtml(incoming[0]?.text);\n    const emailMatch = firstIn.match(/[\\w.+-]+@[\\w-]+\\.[\\w.]+/);\n    if (emailMatch) visitorLabel = emailMatch[0];\n    else if (firstIn) visitorLabel = firstIn.slice(0, 40);\n  }\n  const visitorMessages = cut(incoming.map(m => stripHtml(m.text)).filter(Boolean).join(' | '), 4000);\n  const chat_preview = cut(incoming.slice(0, 3).map(m => stripHtml(m.text)).filter(Boolean).join(' | '), 240)\n    || cut(stripHtml(outgoing[0]?.text), 160);\n  const conversation_name =\n    (prepOut && (prepOut.firstname || prepOut.lastname)) ? `${prepOut.firstname || ''} ${prepOut.lastname || ''}`.trim()\n    : visitorLabel ? visitorLabel\n    : threadId ? `Anonymous visitor (thread ${threadId})` : 'Unknown conversation';\n\n  // --- Full transcript (before we strip it from properties_written) ---\n  const fullTranscript = cut(\n    prepOut?.chatbot_transcript || normalizeOut?.chatbot_transcript || normalizeOut?.transcript ||\n    msgs.filter(m => m.type === 'MESSAGE').map(m => `${m.direction === 'INCOMING' ? 'Visitor' : 'Maia'}: ${stripHtml(m.text)}`).join('\\n'),\n    30000);\n\n  // --- Outcome classification ---\n  let outcome = 'incomplete';\n  let reason = `Stopped at ${lastNode || 'unknown node'}`;\n  const errMsg = String(errObj?.message || '');\n  if (errObj && errMsg.includes(\"hasn't been executed\") && errMsg.includes('Find Contact')) {\n    outcome = 'dropped';\n    reason = 'Anonymous visitor — conversation closed with no contact (Find Contact skipped, Normalize failed on missing reference)';\n  } else if (errObj) {\n    outcome = 'error';\n    const nodeName = errObj.node?.name || lastNode || 'unknown node';\n    reason = `Error at \"${nodeName}\": ${errMsg.slice(0, 300) || 'unknown error'}`;\n  } else if (ran.includes('Create or update a contact') || ran.includes('Create or update a contact1')) {\n    outcome = 'contact_updated';\n    reason = 'Contact created/updated with chatbot analysis';\n  } else if (!ran.includes('Find Contact') && !ran.includes('Get Conversation Thread')) {\n    outcome = 'dropped';\n    reason = 'No contact on conversation — visitor never shared an email (filtered at If1)';\n  } else if (ran.includes('Normalize Conversation + Transcript') && !ran.includes('Analyze + Draft Email')) {\n    outcome = 'dropped';\n    reason = 'Normalize ended run — no contact id resolved or empty transcript';\n  }\n\n  let props = null;\n  if (prepOut && typeof prepOut === 'object') {\n    props = { ...prepOut };\n    if (props.chatbot_transcript) {\n      props.chatbot_transcript_length = String(props.chatbot_transcript).length;\n      delete props.chatbot_transcript;\n    }\n  }\n\n  rows.push({\n    execution_id: String(exec.id || ''),\n    startedAt: exec.startedAt || '',\n    status: exec.status || '',\n    mode: exec.mode || '',\n    outcome, reason, threadId, contactId, conversation_name, chat_preview,\n    mql_status: props?.chatbot_mql_status || '',\n    ai,\n    extra: {\n      visitor_messages: visitorMessages,\n      full_transcript: fullTranscript,\n      last_node: lastNode,\n      error_node: errObj ? (errObj.node?.name || lastNode || '') : '',\n      error_message: errObj ? cut(errMsg, 500) : '',\n      phone: prepOut?.phone || '',\n      domain: prepOut?.domain || '',\n      website: prepOut?.website || '',\n      firstname: prepOut?.firstname || '',\n      lastname: prepOut?.lastname || '',\n    },\n    properties_written: props,\n  });\n}\n\nrows.sort((a, b) => String(a.startedAt).localeCompare(String(b.startedAt)));\n\nconst stats = {\n  conversations_in: rows.length,\n  contacts_updated: rows.filter(r => r.outcome === 'contact_updated').length,\n  dropped: rows.filter(r => r.outcome === 'dropped').length,\n  errors: rows.filter(r => r.outcome === 'error').length,\n  incomplete: rows.filter(r => r.outcome === 'incomplete' || r.outcome === 'unknown').length,\n  mql: rows.filter(r => String(r.mql_status).toLowerCase() === 'mql').length,\n};\nstats.non_mql = stats.contacts_updated - stats.mql;\nstats.mql_rate = stats.contacts_updated > 0 ? Math.round((stats.mql / stats.contacts_updated) * 100) : 0;\n\nconst dropReasons = {};\nfor (const r of rows) {\n  if (r.outcome === 'dropped' || r.outcome === 'error') {\n    dropReasons[r.reason] = (dropReasons[r.reason] || 0) + 1;\n  }\n}\n\nreturn [{ json: { exec_rows: rows, exec_stats: stats, drop_reasons: dropReasons, no_data: noExec && rows.length === 0 } }];"
+      },
+      "id": "4fe2953e-3e31-4395-8148-78720f2963f8",
+      "name": "Parse Execution Outcomes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2768,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hubapi.com/crm/v3/objects/contacts/search",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ filterGroups: [{ filters: [{ propertyName: 'ai_chatbot_processed', operator: 'EQ', value: 'Yes' }, { propertyName: 'lastmodifieddate', operator: 'GTE', value: String($('Set Reporting Window').first().json.window_start_ms) }, { propertyName: 'lastmodifieddate', operator: 'LT', value: String($('Set Reporting Window').first().json.window_end_ms) } ] }], properties: ['email','firstname','lastname','company','jobtitle','phone','lifecyclestage','hs_lead_status','chatbot_mql_status','chatbot_eor_intent','chatbot_countries','chatbot_timeline','chatbot_wses','chatbot_buyer_need','chatbot_pain_points','chatbot_questions_asked','chatbot_recommended_next_step','chatbot_disqualification_reason','chatbot_session_id','chatbot_last_session_date','ai_chatbot_processed'], sorts: [{ propertyName: 'lastmodifieddate', direction: 'DESCENDING' }], limit: 200 }) }}",
+        "options": {}
+      },
+      "id": "42c2cf92-549c-4db4-be90-45f1daee2f8e",
+      "name": "Pull Chatbot Contacts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2992,
+        -192
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "DPC0kV3RtYO7qCPH",
+          "name": "Hubspot App Token"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "Contacts with ai_chatbot_processed=Yes modified in the window. Cross-checks the execution rows."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge n8n execution outcomes with live HubSpot contact records + prep AI input\nconst parsed = $('Parse Execution Outcomes').first().json;\nconst win = $('Set Reporting Window').first().json;\nconst searchResp = $input.first().json || {};\nconst contacts = Array.isArray(searchResp.results) ? searchResp.results : [];\n\nconst byId = {};\nfor (const c of contacts) byId[String(c.id)] = c.properties || {};\n\nconst CHATBOT_PROPS = [\n  'chatbot_mql_status','chatbot_eor_intent','chatbot_countries','chatbot_timeline',\n  'chatbot_wses','chatbot_buyer_need','chatbot_pain_points','chatbot_questions_asked',\n  'chatbot_recommended_next_step','chatbot_disqualification_reason','chatbot_session_id',\n  'chatbot_last_session_date','ai_chatbot_processed'\n];\n\nconst masterRows = [];\nfor (const r of parsed.exec_rows || []) {\n  const hs = byId[r.contactId] || {};\n  const p = r.properties_written || {};\n  const val = (k) => (p[k] !== undefined && p[k] !== '' ? p[k] : (hs[k] || ''));\n  masterRows.push({\n    startedAt: r.startedAt,\n    execution_id: r.execution_id,\n    threadId: r.threadId,\n    contactId: r.contactId,\n    conversation_name: r.conversation_name || '',\n    chat_preview: r.chat_preview || '',\n    status: r.status || '',\n    mode: r.mode || '',\n    outcome: r.outcome,\n    reason: r.reason,\n    email: p.email || hs.email || '',\n    name: [p.firstname || hs.firstname || '', p.lastname || hs.lastname || ''].join(' ').trim(),\n    company: p.company || hs.company || '',\n    jobtitle: p.jobtitle || hs.jobtitle || '',\n    lifecyclestage: hs.lifecyclestage || r.ai?.lifecyclestage || '',\n    lead_status: hs.hs_lead_status || '',\n    extra: r.extra || {},\n    ai: r.ai || {},\n    props: Object.fromEntries(CHATBOT_PROPS.map(k => [k, val(k)])),\n  });\n}\n\nconst seenContacts = new Set(masterRows.map(r => r.contactId).filter(Boolean));\nconst orphanContacts = contacts.filter(c => !seenContacts.has(String(c.id))).map(c => ({\n  contactId: String(c.id),\n  email: c.properties?.email || '',\n  name: [c.properties?.firstname || '', c.properties?.lastname || ''].join(' ').trim(),\n  mql_status: c.properties?.chatbot_mql_status || '',\n}));\n\nconst mqlRows = masterRows\n  .filter(r => r.outcome === 'contact_updated')\n  .map(r => ({\n    email: r.email || r.contactId,\n    company: r.company,\n    mql_status: r.props.chatbot_mql_status || 'Unknown',\n    why: String(r.props.chatbot_mql_status).toLowerCase() === 'mql'\n      ? (r.props.chatbot_buyer_need || 'Buyer need identified')\n      : (r.props.chatbot_disqualification_reason || r.props.chatbot_buyer_need || 'No qualifying signals'),\n    countries: r.props.chatbot_countries || '',\n    timeline: r.props.chatbot_timeline || '',\n    intent: r.props.chatbot_eor_intent || '',\n  }));\n\nconst countries = {};\nfor (const r of masterRows) {\n  for (const c of String(r.props.chatbot_countries || '').split(';').map(s => s.trim()).filter(Boolean)) {\n    countries[c] = (countries[c] || 0) + 1;\n  }\n}\n\n// Compact per-conversation payload for the report AI (structured output)\nconst aiConversations = masterRows.map(r => ({\n  thread_id: r.threadId,\n  who: r.name || r.email || r.conversation_name,\n  company: r.company,\n  outcome: r.outcome,\n  reason: r.outcome === 'contact_updated' ? '' : r.reason,\n  mql_status: r.props.chatbot_mql_status || '',\n  source_summary: r.ai.summary || '',\n  buyer_need: String(r.props.chatbot_buyer_need || '').slice(0, 300),\n  pain_points: String(r.props.chatbot_pain_points || '').slice(0, 200),\n  countries: r.props.chatbot_countries || '',\n  timeline: r.props.chatbot_timeline || '',\n  intent_category: r.ai.intent_category || '',\n  lead_temperature: r.ai.lead_temperature || '',\n  chat_preview: r.chat_preview || '',\n  recommended_next_step: String(r.props.chatbot_recommended_next_step || '').slice(0, 200),\n}));\n\nconst stats = {\n  ...parsed.exec_stats,\n  hubspot_contacts_touched: contacts.length,\n  orphan_contacts: orphanContacts.length,\n};\n\nreturn [{\n  json: {\n    report_date: win.report_date,\n    report_date_label: win.report_date_label,\n    stats,\n    drop_reasons: parsed.drop_reasons || {},\n    master_rows: masterRows,\n    mql_rows: mqlRows,\n    orphan_contacts: orphanContacts,\n    countries,\n    ai_conversations: aiConversations,\n    no_data: parsed.no_data === true,\n  }\n}];"
+      },
+      "id": "2b8e80b6-02c4-43a6-818e-86545a5007ff",
+      "name": "Build Master Table + Stats",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3216,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "4e9a4a85-2288-4b7a-9060-406763781256",
+      "name": "Azure OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3456,
+        336
+      ],
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "wPtjoDFwCbv9eRl4",
+          "name": "gpt-4o-mini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the GTM analytics assistant for Atlas HXM (global Employer of Record). Analyze yesterday's Maia chatbot conversations and return JSON matching the required schema.\n- narrative: 3-5 sentence executive summary for the GTM team: volume, contact-update rate, MQL count/rate, main drop reasons, notable countries/buyer needs, errors.\n- highlights: 2-4 short bullets of the most actionable takeaways (e.g. hot leads to follow up, recurring drop causes).\n- conversation_rows: exactly one row per item in DATA.conversations. chat_summary: 1-2 sentences — use source_summary when present, otherwise infer from chat_preview; for anonymous/dropped conversations describe what the visitor asked. key_signals: compact string of countries, timeline, intent_category, lead_temperature that are present. recommended_action: concrete next step for the team. Never invent facts not present in the data.\n\nDATA:\n{{ JSON.stringify({ report_date: $json.report_date, stats: $json.stats, drop_reasons: $json.drop_reasons, countries: $json.countries, conversations: $json.ai_conversations }) }}",
+        "hasOutputParser": true
+      },
+      "id": "21c03b24-f2df-4ec1-961a-3322c9a187b4",
+      "name": "AI Narrative Summary",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        3440,
+        112
+      ],
+      "onError": "continueRegularOutput",
+      "notes": "If Azure errors, the email still sends without the narrative."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Render the Atlas-branded daily report email (v2 — AI structured output aware)\nconst d = $('Build Master Table + Stats').first().json;\nconst aiIn = $input.first().json || {};\nlet ai = aiIn.output;\nif (typeof ai === 'string') { try { ai = JSON.parse(ai); } catch (e) { ai = null; } }\nif (!ai || typeof ai !== 'object') ai = {};\nconst narrative = String(ai.narrative || aiIn.text || aiIn.response || '').trim();\nconst highlights = Array.isArray(ai.highlights) ? ai.highlights.filter(Boolean) : [];\nlet convRows = Array.isArray(ai.conversation_rows) ? ai.conversation_rows : [];\n\n// Deterministic fallback if the AI table is missing\nif (!convRows.length) {\n  convRows = (d.master_rows || []).map(r => ({\n    thread_id: r.threadId,\n    who: r.name || r.email || r.conversation_name,\n    company: r.company,\n    mql_status: r.props?.chatbot_mql_status || (r.outcome === 'contact_updated' ? 'Unknown' : '—'),\n    chat_summary: r.ai?.summary || r.chat_preview || '',\n    key_signals: [r.props?.chatbot_countries, r.props?.chatbot_timeline, r.ai?.lead_temperature].filter(Boolean).join(' · '),\n    recommended_action: r.props?.chatbot_recommended_next_step || '',\n  }));\n}\n\nconst esc = (v) => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst NAVY = '#160629', BLUE = '#0559FA', GREY = '#f4f5f9';\nconst s = d.stats || {};\nconst short = (v, n = 160) => { const t = String(v ?? ''); return t.length > n ? t.slice(0, n - 1) + '…' : t; };\n\nconst kpi = (label, value, color) => `\n  <td style=\"padding:14px 18px;background:${GREY};border-radius:8px;text-align:center;\">\n    <div style=\"font-size:26px;font-weight:700;color:${color || NAVY};\">${esc(value)}</div>\n    <div style=\"font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:#666;\">${esc(label)}</div>\n  </td><td style=\"width:8px;\"></td>`;\n\nconst th = (h) => `<th style=\"padding:6px 10px;background:${GREY};text-align:left;font-size:11px;\">${esc(h)}</th>`;\nconst td = (c, extra='') => `<td style=\"padding:6px 10px;border-bottom:1px solid #eee;font-size:12px;vertical-align:top;${extra}\">${c}</td>`;\n\nconst badge = (status) => {\n  const t = String(status || '').toLowerCase();\n  const good = t === 'mql';\n  const na = t === '—' || t === '';\n  const bg = na ? '#eef0f4' : good ? '#e6f9ed' : '#feecec';\n  const fg = na ? '#667' : good ? '#0a7a3d' : '#b42318';\n  return `<span style=\"background:${bg};color:${fg};padding:2px 10px;border-radius:10px;font-weight:600;font-size:11px;\">${esc(status || '—')}</span>`;\n};\n\n// Conversation summaries (AI-generated)\nconst convTable = convRows.map(r => `<tr>\n  ${td(esc(r.who || '') + (r.company ? `<br/><span style=\"color:#888;\">${esc(r.company)}</span>` : ''))}\n  ${td(esc(r.thread_id || ''))}\n  ${td(badge(r.mql_status), 'text-align:center;')}\n  ${td(esc(short(r.chat_summary, 400)))}\n  ${td(esc(short(r.key_signals, 160)))}\n  ${td(esc(short(r.recommended_action, 200)))}\n</tr>`).join('') || `<tr><td colspan=\"6\" style=\"padding:8px;color:#888;\">No conversations in this window.</td></tr>`;\n\n// Drops — now with conversation identity + preview\nconst dropDetail = (d.master_rows || []).filter(r => r.outcome === 'dropped' || r.outcome === 'error');\nconst dropRows = dropDetail.map(r => `<tr>\n  ${td(esc(r.conversation_name || 'Unknown'))}\n  ${td(esc(r.threadId))}\n  ${td(esc(short(r.reason, 180)))}\n  ${td(esc(short(r.chat_preview, 220)))}\n</tr>`).join('') || `<tr><td colspan=\"4\" style=\"padding:8px;color:#888;\">No drops or errors — every conversation reached the contact update.</td></tr>`;\n\nconst mqlRows = (d.mql_rows || []).map(r => `<tr>\n  ${td(esc(r.email))}${td(esc(r.company))}\n  ${td(badge(r.mql_status), 'text-align:center;')}\n  ${td(esc(short(r.why, 300)))}${td(esc(r.countries))}${td(esc(r.timeline))}\n</tr>`).join('') || '<tr><td colspan=\"6\" style=\"padding:8px;color:#888;\">No contacts were updated in this window.</td></tr>';\n\nconst P = ['chatbot_mql_status','chatbot_eor_intent','chatbot_countries','chatbot_timeline','chatbot_wses','chatbot_buyer_need','chatbot_pain_points','chatbot_questions_asked','chatbot_recommended_next_step','chatbot_disqualification_reason','chatbot_session_id','chatbot_last_session_date','ai_chatbot_processed'];\nconst AIF = [['summary','AI summary'],['intent_category','intent category'],['lead_temperature','lead temp'],['confidence','confidence'],['hiring_count','hiring count']];\nconst headCells = ['Time (CT)','Exec ID','Thread','Conversation','Contact','Email / Name','Company','Outcome','Reason', ...AIF.map(x=>x[1]), ...P.map(k => k.replace('chatbot_','').replace(/_/g,' '))]\n  .map(h => `<th style=\"padding:6px 8px;background:${NAVY};color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:.4px;text-align:left;white-space:nowrap;\">${esc(h)}</th>`).join('');\n\nconst masterRows = (d.master_rows || []).map(r => {\n  const t = r.startedAt ? new Date(r.startedAt).toLocaleTimeString('en-US',{timeZone:'America/Chicago',hour:'2-digit',minute:'2-digit'}) : '';\n  const cells = [t, r.execution_id, r.threadId, r.conversation_name, r.contactId,\n    `${esc(r.email)}${r.name ? '<br/><span style=\"color:#888;\">'+esc(r.name)+'</span>' : ''}`,\n    r.company, r.outcome, short(r.reason, 120),\n    ...AIF.map(x => short(r.ai?.[x[0]])),\n    ...P.map(k => short(r.props?.[k]))];\n  return `<tr>${cells.map((c, i) => `<td style=\"padding:5px 8px;border-bottom:1px solid #eee;font-size:11px;vertical-align:top;\">${i===5?c:esc(c)}</td>`).join('')}</tr>`;\n}).join('') || '<tr><td colspan=\"27\" style=\"padding:8px;color:#888;\">No executions in this window.</td></tr>';\n\nconst countryList = Object.entries(d.countries || {}).sort((a,b)=>b[1]-a[1]).slice(0,8)\n  .map(([c,n]) => `${esc(c)} (${n})`).join(' · ') || '—';\n\nconst orphanNote = (d.orphan_contacts || []).length\n  ? `<p style=\"font-size:12px;color:#b45309;background:#fef3c7;padding:8px 12px;border-radius:6px;\">⚠️ ${d.orphan_contacts.length} contact(s) updated in HubSpot yesterday with chatbot properties but no matching n8n execution: ${d.orphan_contacts.map(o=>esc(o.email||o.contactId)).join(', ')}</p>` : '';\n\nconst highlightsHtml = highlights.length\n  ? `<ul style=\"margin:8px 0 0;padding-left:18px;font-size:13px;line-height:1.6;\">${highlights.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>` : '';\n\nconst html = `\n<div style=\"font-family:Segoe UI,Helvetica,Arial,sans-serif;max-width:1100px;margin:0 auto;color:${NAVY};\">\n  <div style=\"background:${NAVY};padding:22px 26px;border-radius:10px 10px 0 0;\">\n    <div style=\"color:#fff;font-size:20px;font-weight:700;\">Maia Chatbot — Daily Report</div>\n    <div style=\"color:#9aa4c7;font-size:13px;margin-top:4px;\">${esc(d.report_date_label)} · Marketing Chatbot | MQL Classification · Atlas HXM GTM AI</div>\n  </div>\n  <div style=\"padding:22px 26px;background:#fff;border:1px solid #e8e8f0;border-top:none;border-radius:0 0 10px 10px;\">\n    ${narrative ? `<div style=\"background:${GREY};border-left:4px solid ${BLUE};padding:12px 16px;border-radius:6px;font-size:14px;line-height:1.55;margin-bottom:18px;\">${esc(narrative)}${highlightsHtml}</div>` : ''}\n    <table style=\"border-collapse:separate;width:100%;margin-bottom:20px;\"><tr>\n      ${kpi('Conversations In', s.conversations_in ?? 0)}\n      ${kpi('Contacts Updated', s.contacts_updated ?? 0, BLUE)}\n      ${kpi('MQLs', s.mql ?? 0, '#0a7a3d')}\n      ${kpi('MQL Rate', (s.mql_rate ?? 0) + '%')}\n      ${kpi('Dropped', s.dropped ?? 0, '#b45309')}\n      ${kpi('Errors', s.errors ?? 0, '#b42318')}\n    </tr></table>\n    <p style=\"font-size:12px;color:#666;margin:0 0 18px;\">Top countries: ${countryList}</p>\n    ${orphanNote}\n\n    <h3 style=\"font-size:14px;margin:18px 0 8px;color:${NAVY};\">Conversation summaries</h3>\n    <table style=\"border-collapse:collapse;width:100%;font-size:12px;\">\n      <tr>${['Who','Thread','Status','Chat summary','Key signals','Recommended action'].map(th).join('')}</tr>\n      ${convTable}\n    </table>\n\n    <h3 style=\"font-size:14px;margin:22px 0 8px;color:${NAVY};\">Conversations that didn't create/update a contact</h3>\n    <table style=\"border-collapse:collapse;width:100%;font-size:12px;\">\n      <tr>${['Conversation','Thread','Why no contact','What they said'].map(th).join('')}</tr>\n      ${dropRows}\n    </table>\n\n    <h3 style=\"font-size:14px;margin:22px 0 8px;color:${NAVY};\">MQL decisions — why each contact was (or wasn't) an MQL</h3>\n    <table style=\"border-collapse:collapse;width:100%;font-size:12px;\">\n      <tr>${['Email','Company','Status','Why','Countries','Timeline'].map(th).join('')}</tr>\n      ${mqlRows}\n    </table>\n\n    <h3 style=\"font-size:14px;margin:22px 0 8px;color:${NAVY};\">Master table — every execution, thread, contact & all HubSpot properties written</h3>\n    <div style=\"overflow-x:auto;\">\n      <table style=\"border-collapse:collapse;min-width:1200px;\">\n        <tr>${headCells}</tr>\n        ${masterRows}\n      </table>\n    </div>\n    <p style=\"font-size:11px;color:#999;margin-top:16px;\">Transcripts excluded (length shown). Rows are also appended to the “Maia Report Master” data table in n8n. Window: ${esc(d.report_date)} 00:00–24:00 CT.</p>\n  </div>\n</div>`;\n\nconst mqlCount = s.mql ?? 0;\nconst subject = `Maia Daily Report — ${d.report_date}: ${s.conversations_in ?? 0} conversations, ${s.contacts_updated ?? 0} contacts updated, ${mqlCount} MQL${mqlCount === 1 ? '' : 's'}`;\n\nreturn [{ json: { subject, html } }];"
+      },
+      "id": "a0d7cd3b-05bb-4603-8dbf-2b0ce49d4a6c",
+      "name": "Render HTML Email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3792,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "pdiamitani@atlashxm.com",
+        "subject": "={{ $json.subject }}",
+        "bodyContent": "={{ $json.html }}",
+        "additionalFields": {
+          "bodyContentType": "html"
+        }
+      },
+      "id": "ff20f935-28b0-43e3-adb0-e588b588bc42",
+      "name": "Send Report (Outlook)",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        4016,
+        112
+      ],
+      "webhookId": "f001f507-8787-4c0a-984c-f20ff14a08dc",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ctizexFzQop7Y1XP",
+          "name": "pdiamitani@atlashxm.com"
+        }
+      },
+      "notes": "Update toRecipients to add GTM/ELT distribution once validated."
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"narrative\": \"3-5 sentence executive summary\",\n  \"highlights\": [\n    \"actionable takeaway\"\n  ],\n  \"conversation_rows\": [\n    {\n      \"thread_id\": \"\",\n      \"who\": \"contact name/email or visitor label\",\n      \"company\": \"\",\n      \"mql_status\": \"MQL, Non-MQL, or \\u2014 for no contact\",\n      \"chat_summary\": \"1-2 sentence summary of the conversation\",\n      \"key_signals\": \"countries \\u00b7 timeline \\u00b7 intent \\u00b7 temperature\",\n      \"recommended_action\": \"next step for the team\"\n    }\n  ]\n}"
+      },
+      "id": "structured-report-parser",
+      "name": "Structured Report Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        3584,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// One flat item per conversation — keys match the \"chatbot CRM n8n outputs\" data table exactly\nconst d = $input.first().json;\nconst fmt = (iso, tz) => {\n  if (!iso) return '';\n  const dt = new Date(iso);\n  const p = new Intl.DateTimeFormat('en-US', { timeZone: tz, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(dt);\n  const g = (t) => p.find(x => x.type === t)?.value || '';\n  return `${g('month')}/${g('day')}/${g('year')} ${g('hour')}:${g('minute')}`;\n};\nconst out = [];\nlet i = 0;\nfor (const r of d.master_rows || []) {\n  i += 1;\n  const p = r.props || {}, a = r.ai || {}, x = r.extra || {};\n  out.push({ json: {\n    '#': String(i),\n    'Execution ID': r.execution_id,\n    'Started (UTC)': fmt(r.startedAt, 'UTC'),\n    'Started (Central)': fmt(r.startedAt, 'America/Chicago'),\n    'Status': r.status || '',\n    'Failure Reason': r.outcome === 'contact_updated' ? '' : r.reason,\n    'Mode': r.mode || '',\n    'Thread ID': r.threadId,\n    'Contact ID': r.contactId,\n    'First Name': x.firstname || '',\n    'Last Name': x.lastname || '',\n    'Email': r.email || '',\n    'Phone': x.phone || '',\n    'Job Title': r.jobtitle || '',\n    'Company': r.company || '',\n    'Domain': x.domain || '',\n    'Website': x.website || '',\n    'MQL Status': p.chatbot_mql_status || '',\n    'Confidence': a.confidence || '',\n    'Lifecycle Stage': r.lifecyclestage || '',\n    'Lead Status': r.lead_status || '',\n    'Lead Temp': a.lead_temperature || '',\n    'Intent Category': a.intent_category || '',\n    'EOR Intent': p.chatbot_eor_intent || '',\n    'Hiring Count': a.hiring_count || '',\n    'Hiring Timeline': p.chatbot_timeline || '',\n    'Countries': p.chatbot_countries || '',\n    'Workforce Setup': p.chatbot_wses || '',\n    'Buyer Need': p.chatbot_buyer_need || '',\n    'Pain Points': p.chatbot_pain_points || '',\n    'Questions Asked': p.chatbot_questions_asked || '',\n    'Recommended Next Step': p.chatbot_recommended_next_step || '',\n    'Disqualification Reason': p.chatbot_disqualification_reason || '',\n    'Chat Summary': a.summary || '',\n    'AI MQL Response': a.ai_mql_response || '',\n    'Follow-up Email': a.follow_up_email || '',\n    'Visitor Messages': x.visitor_messages || '',\n    'Full Transcript': x.full_transcript || '',\n    'Last Node Executed': x.last_node || '',\n    'Error Node': x.error_node || '',\n    'Error Message': x.error_message || '',\n  }});\n}\nreturn out;"
+      },
+      "id": "emit-master-rows",
+      "name": "Emit Master Rows",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3504,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gwjKTOe6XvsdNVwl",
+          "cachedResultName": "chatbot CRM n8n outputs"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "save-master-rows",
+      "name": "Save Master Rows (Data Table)",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        3792,
+        -192
+      ],
+      "onError": "continueRegularOutput",
+      "notes": "Inserts into data table gwjKTOe6XvsdNVwl (chatbot CRM n8n outputs) — columns auto-mapped by name."
+    },
+    {
+      "parameters": {
+        "jsCode": "// One row per day — matches the \"Maia Report Daily Summary\" data table\nconst d = $input.first().json;\nconst s = d.stats || {};\nconst topCountries = Object.entries(d.countries || {}).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([c,n])=>`${c} (${n})`).join('; ');\nconst topDrop = Object.entries(d.drop_reasons || {}).sort((a,b)=>b[1]-a[1]).map(([r,n])=>`${r} ×${n}`).join(' | ');\nreturn [{ json: {\n  report_date: d.report_date,\n  conversations_in: s.conversations_in ?? 0,\n  contacts_updated: s.contacts_updated ?? 0,\n  mql: s.mql ?? 0,\n  non_mql: s.non_mql ?? 0,\n  mql_rate: s.mql_rate ?? 0,\n  dropped: s.dropped ?? 0,\n  errors: s.errors ?? 0,\n  top_countries: topCountries,\n  drop_reasons: topDrop,\n}}];"
+      },
+      "id": "emit-daily-summary",
+      "name": "Emit Daily Summary Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3504,
+        -384
+      ]
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "uKzeMo2OSPuAbfid",
+          "mode": "list",
+          "cachedResultName": "conversation data",
+          "cachedResultUrl": "/projects/WvtsN50IrMcuz3dw/datatables/uKzeMo2OSPuAbfid"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "event_timestamp",
+              "displayName": "event_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "thread_id",
+              "displayName": "thread_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "associated_contact_id",
+              "displayName": "associated_contact_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "contact_email",
+              "displayName": "contact_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "contact_name",
+              "displayName": "contact_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "contact_company",
+              "displayName": "contact_company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "contact_jobtitle",
+              "displayName": "contact_jobtitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lifecycle_stage",
+              "displayName": "lifecycle_stage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "owner_id",
+              "displayName": "owner_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "source_url",
+              "displayName": "source_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "inbox_id",
+              "displayName": "inbox_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "closed_at",
+              "displayName": "closed_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "latest_message_timestamp",
+              "displayName": "latest_message_timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "message_count",
+              "displayName": "message_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "conversation_summary",
+              "displayName": "conversation_summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "visitor_intent",
+              "displayName": "visitor_intent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "intent_confidence",
+              "displayName": "intent_confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "buying_stage",
+              "displayName": "buying_stage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "mql_status",
+              "displayName": "mql_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "mql_reason",
+              "displayName": "mql_reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "meeting_requested",
+              "displayName": "meeting_requested",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "meeting_booked",
+              "displayName": "meeting_booked",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "human_handoff_requested",
+              "displayName": "human_handoff_requested",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "countries_mentioned",
+              "displayName": "countries_mentioned",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "services_mentioned",
+              "displayName": "services_mentioned",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "headcount_mentioned",
+              "displayName": "headcount_mentioned",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "timeline_mentioned",
+              "displayName": "timeline_mentioned",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company_name_detected",
+              "displayName": "company_name_detected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "job_title_detected",
+              "displayName": "job_title_detected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lead_quality_score",
+              "displayName": "lead_quality_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,

@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>How to Build a Custom Assistant Using the Chain Prompting method (Frontend and Backend)</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img class="series-logo" src="https://media.licdn.com/dms/image/v2/D5612AQEYV4Npqpxv8w/series-logo_image-shrink_300_300/B56ZVMIneDHsAQ-/0/1740739082461?e=1789603200&v=beta&t=w64xb9r_xqBWQzHt8z7-fUki1-JSC_2d8CQWtcHpCbM" />
+    <h3>
+      <span class="series-title">LiveBuildAI</span>
+      </br>
+      <span class="series-description">Everything You Need to Know to Live and Build AI. Aggregated from the best sources across the web.</span>
+    </h3>
+    <img src="https://media.licdn.com/mediaD5612AQExe7CrdkBqhg" alt="" title="" />
+      <h1><a href="https://www.linkedin.com/pulse/how-build-custom-assistant-using-chain-prompting-method-diamitani-5a3pc">How to Build a Custom Assistant Using the Chain Prompting method (Frontend and Backend)</a></h1>
+    <p class="created">Created on 2025-04-28 03:33</p>
+  <p class="published">Published on 2025-04-28 16:25</p>
+  <div><h2>Hey all, </h2><p>In this edition, I'm going to go over how to use a concept called "chain prompting" to set up a complete ai assistant, using the open ai assistant dashboard, a few GPTs and a vibe coding dev copilot platform (if none of this makes sense to use, please, stick around, it's a lot easier than you think).</p><h2>OVERVIEW</h2><p>This training covers the full journey of creating a <strong>real, deployable custom AI Assistant</strong> using the <strong>Chain Prompting method</strong>, OpenAI's Assistants API, and frontend/backend tools.</p><p>At the end, you'll have an assistant you can use in production, train more, and even build businesses around.</p><hr><h2>WHAT IS CHAIN PROMPTING?</h2><p>First, you should probably get an understanding of what prompt chaining is (as you can see, it has many names and applications). My version, is simply, using a set of tools, to help you use other tools. For example, in order to make an AI system work right, you have to be ultra specific in what you write. Imagine you are not that great at this. It may cause a problem in your efforts to build a truly reliable system. Instead, you can use a tool that can help you write prompts, by pasting what you want to say in there and have it respond with the actual words to use for an AI system. In that scenario, you just used one tool to help you build another tool.</p><hr><h2>HOW IT RELATES</h2><p>That's exactly what we're going to do in this system here. We're going to take a bunch of already built tools, (custom GPTs on the GPT store) and use them to define our item and build the right words and scripts to make it function as we want to. The first set of tools we will be using will be those custom tools, then we will use vibe coding platforms that allow you to build applications with your prompts. The secret here is we are just refining the prompts we put into it beforehand, so we save time and money on edits and token charges.</p><hr><h2>FLOW SUMMARY (ULTRA SIMPLE)</h2><ol><li><p>Phase 1 Chain prompting to create Master Prompt, System Instructions, Functions, KB</p></li><li><p>Phase 2 Create OpenAI Assistant</p></li><li><p>Phase 3 Create PRD + generate PromptBuilder outputs</p></li><li><p>Phase 4 Paste into Replit/v0/Lovable/etc → Build frontend/backend</p></li></ol><hr><h2>FULL PROCESS FLOW</h2><h3>Phase 1: Chain Prompting Setup — Building Out Your AI Agent</h3><p><strong>Goal: </strong>Use a series of focused GPT tools to design the entire "soul" of your assistant before ever coding or deploying.</p><h3>1. Define the Vision — Highly Suggested Prompts (HSP)</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-haeo2jTUS-highly-suggested-prompts-hsps" target="_blank">Highly Suggested Prompts (HSP)</a></p></li><li><p><strong>Prompt: </strong></p></li></ul><blockquote><p>"Please generate a prompt to build the following idea: (insert your idea, general or detailed)."</p></blockquote><ul><li><p>Output: Your <strong>Master Prompt</strong> — a detailed definition of what your agent will do.</p></li></ul><p></p><h3>2. Create System Instructions — Instruction Architect</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-676964c88b088191b70dcd4133ae2595-1-system-instruction-architect" target="_blank">Instruction Architect</a></p></li><li><p><strong>Prompt: </strong></p></li></ul><blockquote><p>"Please use the following prompt to generate system instructions for my assistant: (your HSP result)."</p></blockquote><ul><li><p>Output: Full <strong>System Instructions</strong> (personality, tone, workflow, compliance rules).</p></li></ul><p></p><h3>3. Define Functions (Optional, Recommended) — Funky</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-MW14VqXOV-funky" target="_blank">Funky (Function Schema Builder)</a></p></li><li><p><strong>Prompt: </strong></p></li></ul><blockquote><p>"Please use the following system instructions to generate OpenAI function schemas for this assistant."</p></blockquote><ul><li><p>Output: <strong>Function Schema</strong> in JSON (defines expected structured input/output).</p></li></ul><p></p><h3>4. Build Knowledge Base — Knowledge Base Architect</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-679e8aa68d70819185c2f072b4bf2065-autonomous-rag-builder" target="_blank">Knowledge Base Architect</a></p></li><li><p><strong>Prompt: </strong>"Please use the following data (System Instructions + Function Schema) to create a verified Knowledge Base from trusted, recent sources."</p></li></ul><ul><li><p>Output: Static documents (usually Markdown) compiling reference materials for your Assistant.</p></li></ul><p></p><h3>5. Generate Project Structure — Project Structure Architect</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-67a5092e227c81919212f7862604d5cf-project-structure-architect" target="_blank">Project Structure Architect</a></p></li><li><p><strong>Prompt: </strong></p></li></ul><blockquote><p>"Please use the following materials to build a complete project structure (backend/frontend/infra) ready to upload to Replit/AWS/GitHub."</p></blockquote><ul><li><p>Output: Directory tree including:</p></li></ul><p></p><h3>6. Create Full Documentation — Comprehensive PRD Architect</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-67a465d99950819186563b257bac0d88-comprehensive-prd-knowledge-architect" target="_blank">Comprehensive PRD Architect</a></p></li><li><p><strong>Prompt: </strong></p></li></ul><blockquote><p>"Please compile the System Instructions, Function Schema, Knowledge Base, and Project Structure into a complete Product Requirements Document (PRD)."</p></blockquote><ul><li><p>Output: A full professional PRD to track your build.</p></li></ul><p></p><h3>7. Build Prompt Templates — PromptBuilder Architect</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-67ebb39985c88191bde258e563a05af8-promptbuilder-architect" target="_blank">PromptBuilder Architect</a></p></li><li><p><strong>Prompt:</strong></p></li></ul><blockquote><p>"Please generate a master prompt and a series of sequential prompts (5, 20, 100) for dev copilots like Replit, Cursor, Lovable, <a href="http://Bolt.new" target="_blank">Bolt.new</a>."</p></blockquote><ul><li><p>Output: Developer prompts for faster building inside AI-enabled IDEs.</p></li></ul><h3>At the end of Phase 1, you'll have everything ready to deploy an AI Assistant — but nothing is live yet.</h3><hr><h2>Phase 2: OpenAI Assistant Deployment — Bringing Your Agent to Life</h2><h3>8. Set Up Your OpenAI Account (If Needed)</h3><ul><li><p>Go to <a href="https://platform.openai.com/" target="_blank">OpenAI Platform</a></p></li><li><p><strong>Sign Up</strong> or <strong>Log In</strong></p></li><li><p>Under <strong>Billing</strong>, add $5 to $10 minimum (required to generate a usable API key).</p></li><li><p>Verify billing is activated before continuing.</p></li></ul><h3>9. Create Your OpenAI API Key</h3><ul><li><p>Go to: <a href="https://platform.openai.com/account/api-keys" target="_blank">API Keys Settings</a></p></li><li><p><strong>Create New Key</strong> → <strong>Copy it</strong> and store securely (you won’t see it again).</p></li><li><p>This will be needed for your backend or frontend integrations.</p></li></ul><h3>10. Create Your Assistant in OpenAI</h3><ul><li><p>Go to <a href="https://platform.openai.com/assistants" target="_blank">Assistants Dashboard</a></p></li><li><p>Click <strong>"Create Assistant"</strong>.</p></li></ul><p></p><h3>Fill in Setup Form:</h3><ul><li><p><strong>Name: </strong>Your Assistant Name (e.g., "Stori", "CoachGPT", "BizBuilderBot")</p></li><li><p><strong>Instructions: </strong>Paste the <strong>System Instructions</strong> you built</p></li><li><p><strong>Tools: </strong>Enable "Code Interpreter" (optional), "Retrieval" (optional if KB needed)</p></li><li><p><strong>Functions: </strong>Paste your <strong>Function Schema JSON</strong></p></li><li><p><strong>Knowledge Base: </strong>Upload your <strong>Knowledge Base file(s)</strong> (e.g., Markdown, PDFs)</p></li><li><p>Click <strong>Create</strong> — your Assistant is now live.</p></li></ul><p></p><h3>After creation, copy and save:</h3><ul><li><p>Assistant ID</p></li><li><p>Vector Store ID (if using Knowledge Base)</p></li><li><p>Organization ID (from OpenAI dashboard)</p></li></ul><p></p><h3>11. Create Your Configuration File</h3><p>Create a simple config file (config.json or .env) with these fields:</p><ul><li><p>"OPENAI_API_KEY": "your-api-key",</p></li><li><p>"ASSISTANT_ID": "your-assistant-id",</p></li><li><p>"VECTOR_STORE_ID": "your-vector-store-id",</p></li><li><p>"PROJECT_ID": "optional-project-id",</p></li><li><p>"ORG_ID": "your-organization-id"</p></li></ul><blockquote><p>This will be used to connect your frontend/backend to your Assistant.</p></blockquote><hr><h2>Phase 3: Bundle All Assets — Prepare for Frontend and Backend Build</h2><h3>11. Build Your Full Product Requirements Document (PRD)</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-67a465d99950819186563b257bac0d88-comprehensive-prd-knowledge-architect" target="_blank">Comprehensive PRD Architect</a></p></li><li><p><strong>Prompt:</strong></p></li></ul><blockquote><p>"Please compile my System Instructions, Function Schema, Knowledge Base details, Assistant ID, API Key, and any deployment configs into a complete Product Requirements Document (PRD) for my AI Assistant project."</p></blockquote><p><strong>What goes inside the PRD:</strong></p><ul><li><p>System Instructions</p></li><li><p>Function Schemas</p></li><li><p>Knowledge Base outline</p></li><li><p>Assistant ID, Vector Store ID, API Key</p></li><li><p>Frontend and backend deployment notes</p></li></ul><p>You can either:</p><ul><li><p><strong>Download the PRD</strong></p></li><li><p>or <strong>Copy/Paste the PRD text</strong> for the next step.</p></li></ul><p></p><hr><p></p><h3>12. Use PromptBuilder Architect to Create Dev Prompts</h3><ul><li><p>Tool: <a href="https://chatgpt.com/g/g-67ebb39985c88191bde258e563a05af8-promptbuilder-architect" target="_blank">PromptBuilder Architect</a></p></li><li><p><strong>Prompt:</strong></p></li></ul><blockquote><p>"Please use the following PRD to generate master dev prompts for building this project. Include frontend prompts (React/Vite), backend prompts (API handling), page-by-page prompts (landing page, chat page, dashboard, login/signup)."</p></blockquote><p><strong>Output:</strong></p><ul><li><p>Master Setup Prompt</p></li><li><p>5 Prompt Quick Setup</p></li><li><p>20 Prompt Detailed Setup</p></li><li><p>100 Prompt Full Setup</p></li><li><p>Frontend Specific Prompts</p></li><li><p>Backend Specific Prompts</p></li><li><p>Page-by-Page Specific Prompts</p></li></ul><blockquote><p>These prompts <strong>tell Replit, </strong><a href="http://v0.dev" target="_blank"><strong>v0.dev</strong></a><strong>, </strong><a href="http://Lovable.dev" target="_blank"><strong>Lovable.dev</strong></a><strong>, Cursor, etc. exactly what to build</strong>.</p></blockquote><hr><h2>Phase 4: Frontend and Backend Deployment — Actually Building the App</h2><h3>13. Paste Dev Prompts into your IDE or Build Platform</h3><p>Options where you can paste and start building:</p><p><strong>Platform Notes</strong></p><p><a href="https://replit.com/" target="_blank">Replit</a> Great for quick full-stack serverless projects</p><p><a href="http://v0.dev" target="_blank">v0.dev</a> Best for React/Vite frontend auto-generation</p><p><a href="http://Lovable.dev" target="_blank">Lovable.dev</a> Copilot-style web/app generation</p><p><a href="https://cursor.sh/" target="_blank">Cursor</a> GitHub Copilot++ AI IDE, great for custom builds</p><p><a href="http://Bolt.new" target="_blank">Bolt.new</a> Instant code generation from prompts</p><blockquote><p>Paste your <strong>PromptBuilder Architect outputs</strong> into these tools — and watch them <strong>autogenerate your frontend, backend, infra, API calls</strong>, etc.</p></blockquote><p></p><h3>14. Insert Configuration Details</h3><p>Into your generated frontend/backend, make sure to insert:</p><ul><li><p>OPENAI_API_KEY</p></li><li><p>ASSISTANT_ID</p></li><li><p>VECTOR_STORE_ID</p></li><li><p>(Optional) ORG_ID, PROJECT_ID</p></li></ul><blockquote><p>This connects your <strong>live frontend</strong> directly to your <strong>Assistant in OpenAI</strong>.</p></blockquote><p></p><h3>15. Test, Tweak, and Launch&nbsp;</h3><ul><li><p>Test frontend chat → backend → OpenAI Assistant.</p></li><li><p>Tweak any prompts or UI.</p></li><li><p>Deploy live via Replit, Vercel, AWS Amplify, or your preferred host.</p></li></ul><hr><h2>Closing</h2><ul><li><p>Now you have a <strong>real process</strong> that mirrors <strong>how serious, modular agent builders work</strong>.</p></li><li><p>You can now repeat this <strong>over and over</strong> to build <strong>unlimited assistants</strong>, each with their own soul, frontend, and deployment.</p></li></ul></div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prospect Automation Engineer — Build your engine</title>
+  <meta name="description" content="Enter your ICP, persona, product, and company. We write the AI system prompt, compile HTTP CRM and data nodes, and give you credential setup instructions for your own n8n." />
+  <style>
+    :root {
+      --navy: #101B2D;
+      --navy-2: #172338;
+      --cobalt: #2A41C9;
+      --champagne: #D9B968;
+      --paper: #FBFAF8;
+      --card: #ffffff;
+      --muted: #5C6678;
+      --hair: #E4DDD0;
+      --ink-3: #C5CBD6;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--paper);
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.04em; font-size: 13px; }
+    .brand span { color: var(--cobalt); }
+    nav { display: flex; gap: 22px; font-size: 14px; color: var(--muted); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--cobalt); color: #fff; text-decoration: none;
+      border-radius: 999px; padding: 12px 18px; font-weight: 600; font-size: 14px;
+    }
+    .btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--hair); }
+    .btn.light { background: var(--champagne); color: var(--navy); }
+    .hero { padding: 56px 0 28px; }
+    .kicker {
+      color: var(--cobalt); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; margin: 12px 0 16px; max-width: 16ch; }
+    .lede { font-size: 18px; color: var(--muted); max-width: 62ch; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      margin: 40px 0 8px;
+    }
+    .strip div {
+      background: var(--card); border: 1px solid var(--hair); border-radius: 14px; padding: 16px;
+    }
+    .strip strong { display: block; font-size: 13px; }
+    .strip span { color: var(--muted); font-size: 13px; }
+    section { padding: 64px 0; }
+    h2 { font-size: 32px; line-height: 1.15; margin: 8px 0 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; }
+    .card {
+      background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 20px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p, .card li { color: var(--muted); font-size: 14px; }
+    ol.steps { list-style: none; padding: 0; margin: 0; }
+    ol.steps li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+    ol.steps li:last-child { border-bottom: 0; }
+    .num {
+      width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--champagne);
+      display: grid; place-items: center; font-size: 12px; font-weight: 700; flex: none;
+    }
+    .dark {
+      background: var(--navy); color: #fff;
+    }
+    .dark .muted, .dark p, .dark li { color: var(--ink-3); }
+    .path {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 28px;
+    }
+    .path div {
+      background: var(--navy-2); border-radius: 12px; padding: 14px; font-size: 13px;
+    }
+    .path b { display: block; color: var(--champagne); font-size: 11px; margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+    th { font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 800px) {
+      nav { display: none; }
+      .strip, .grid-3, .grid-2, .path { grid-template-columns: 1fr; }
+      h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">PROSPECT PAL <span>/</span> ENGINEER</div>
+      <nav>
+        <a href="#process">Process</a>
+        <a href="#intake">Intake</a>
+        <a href="#graph">Graph</a>
+        <a href="#setup">Setup</a>
+      </nav>
+      <a class="btn" href="/app/start">Start your engine</a>
+    </header>
+
+    <section class="hero">
+      <div class="kicker">Individual system · Build with agent</div>
+      <h1>Your ICP writes the engine.</h1>
+      <p class="lede">
+        Tell us the company, product, ICP, and persona. The compiler writes the AI system prompt,
+        builds HTTP requests for CRM and data, and uses sequence nodes to enroll — then walks you
+        through credentials on your own n8n. The Amplemarket template is only the guide.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/app/start">Build from my ICP</a>
+        <a class="btn ghost" href="#process">See the compile path</a>
+      </div>
+      <div class="strip">
+        <div><strong>1. Context</strong><span>Company, product, ICP, persona</span></div>
+        <div><strong>2. Prompt</strong><span>System prompt for the AI node</span></div>
+        <div><strong>3. Graph</strong><span>HTTP CRM/data + sequence enroll</span></div>
+        <div><strong>4. Setup</strong><span>Credential instructions, then deploy</span></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="dark" id="process">
+    <div class="wrap">
+      <div class="kicker">How it works</div>
+      <h2>Two compilers. One workflow.</h2>
+      <p class="muted">Business context does not become API calls. Stack bindings do not become copy.</p>
+      <div class="path">
+        <div><b>INTAKE</b>ICP, persona, product, company, then your tools</div>
+        <div><b>PROMPT</b>AI node learns who you sell to and how you sound</div>
+        <div><b>BIND</b>Each capability maps to HTTP or a sequence node</div>
+        <div><b>SETUP</b>Click-path instructions. Keys stay in your n8n</div>
+        <div><b>DEPLOY</b>Import the JSON to your instance and attach creds</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="intake">
+    <div class="wrap grid-2">
+      <div>
+        <div class="kicker">What you enter</div>
+        <h2>Dump the GTM brain first.</h2>
+        <p>These four fields write the system prompt. Without them the AI node is a generic PAS toy.</p>
+        <div class="grid-3" style="margin-top:20px; grid-template-columns:1fr 1fr;">
+          <div class="card"><h3>Company</h3><p>Who you are, category, why you exist.</p></div>
+          <div class="card"><h3>Product</h3><p>Offer, motion, proof, claims you will not make.</p></div>
+          <div class="card"><h3>ICP</h3><p>Firmographics, triggers, disqualifiers.</p></div>
+          <div class="card"><h3>Persona</h3><p>Title, job-to-be-done, language they use.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Then name the stack — not the keys</h3>
+        <ol class="steps">
+          <li><span class="num">1</span><div><strong>Lead source</strong><br>CRM search, sheet, or data-tool query</div></li>
+          <li><span class="num">2</span><div><strong>CRM + data API</strong><br>Compiled as HTTP Request nodes</div></li>
+          <li><span class="num">3</span><div><strong>Sequencer</strong><br>Native enroll node, HTTP if none exists</div></li>
+          <li><span class="num">4</span><div><strong>LLM + approval</strong><br>Your model, Slack or full-auto gate</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="graph">
+    <div class="wrap">
+      <div class="kicker">The graph we compile</div>
+      <h2>Template path. Your adapters.</h2>
+      <p>Amplemarket + CRM ingest shows the shape. Your compile replaces those vendors.</p>
+      <div class="card" style="overflow:auto;">
+        <table>
+          <thead>
+            <tr><th>Node</th><th>Capability</th><th>How we build it</th><th>Template guide</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>01</td><td>Ingest</td><td>Cron, webhook, or CRM HTTP search</td><td>CRM list pull</td></tr>
+            <tr><td>02</td><td>Normalize</td><td>Fixed code node</td><td>Same every time</td></tr>
+            <tr><td>03</td><td>CRM lookup</td><td>HTTP Request search / dedupe</td><td>HubSpot / Salesforce</td></tr>
+            <tr><td>04</td><td>Data enrich</td><td>HTTP Request to your data API</td><td>Amplemarket search</td></tr>
+            <tr><td>05</td><td>Research + copy</td><td>LLM node + compiled system prompt</td><td>Generic PAS prompt</td></tr>
+            <tr><td>06</td><td>Approval</td><td>IF / Slack review</td><td>Human switch</td></tr>
+            <tr><td>07</td><td>CRM write</td><td>HTTP Request upsert</td><td>CRM create</td></tr>
+            <tr><td>08</td><td>Enroll</td><td>Sequence node, else HTTP</td><td>Amplemarket add-to-sequence</td></tr>
+            <tr><td>09</td><td>Alert</td><td>Slack / email on review or fail</td><td>Review queue</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="setup">
+    <div class="wrap grid-3">
+      <div class="card">
+        <h3>You leave with four files</h3>
+        <p>System prompt, workflow JSON, credential click-path, and a remaining-wiring checklist. No secrets stored here.</p>
+      </div>
+      <div class="card">
+        <h3>Credentials stay in n8n</h3>
+        <p>We tell you the vendor screen, scopes, n8n credential type, and which node to attach. You paste keys only in your instance.</p>
+      </div>
+      <div class="card">
+        <h3>You own the runtime</h3>
+        <p>Deploy imports the graph to your n8n. Edit the prompt, swap an HTTP adapter, keep the path.</p>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+      <a class="btn" href="/app/start">Start intake</a>
+      <a class="btn ghost" href="/how-it-works">Read the full process</a>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>Prospect PAL · Prospect Automation Engineer · Individual system · Template is a guide, not the product</footer>
+  </div>
+</body>
+</html>

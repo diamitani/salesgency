@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/styles.css">
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.js"></script>
+  <script src="_ds/prospect-pal-design-system-b8251def-1f16-425d-8e59-e72d1da3218a/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--surface-page);font-family:var(--font-body);color:var(--text-primary);-webkit-font-smoothing:antialiased;}
+    a{color:var(--text-link);text-decoration:none;}
+    a:hover{color:var(--text-link-hover);}
+    *{text-wrap:pretty;}
+    ::-webkit-scrollbar{width:10px;height:10px;}
+    ::-webkit-scrollbar-thumb{background:var(--paper-300);border-radius:99px;border:3px solid transparent;background-clip:content-box;}
+  </style>
+</helmet>
+
+<sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:100vh;background:var(--surface-page)">
+  <nav style="position:sticky;top:0;z-index:40;height:66px;padding:0 32px;background:rgba(251,250,248,0.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Logo" size="34" hint-size="150px,34px"></x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" hint-size="110px,22px">Agent SDR</x-import>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px">
+      <a href="#product" style="font-size:var(--text-body-sm);font-weight:500;color:var(--text-secondary)">Product</a>
+      <a href="#engineer" style="font-size:var(--text-body-sm);font-weight:500;color:var(--text-secondary)">A day in the engine</a>
+      <a href="#pricing" style="font-size:var(--text-body-sm);font-weight:500;color:var(--text-secondary)">Pricing</a>
+      <a href="#security" style="font-size:var(--text-body-sm);font-weight:500;color:var(--text-secondary)">Security</a>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="md" onClick="{{ goApp }}" hint-size="86px,36px">Sign in</x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="md" icon="zap" onClick="{{ openCheckoutPro }}" hint-size="150px,36px">Get my engine</x-import>
+    </div>
+  </nav>
+
+  <section style="padding:64px 32px 0;max-width:var(--layout-max);margin:0 auto">
+    <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center">
+      <div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" icon="workflow" hint-size="180px,22px">Prospect automation engine</x-import>
+        <h1 style="margin:22px 0 18px;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-display-1);letter-spacing:var(--tracking-display);line-height:var(--leading-tight)">Get a prospect automation engine.</h1>
+        <p style="margin:0 0 30px;font-size:19px;line-height:var(--leading-relaxed);color:var(--text-secondary)">Tell Prospect PAL what you sell and who you sell to. It finds the accounts, researches each one, writes the outreach, sends it, and reports back — every morning, before you open your laptop. No SDR to hire. No workflow to build.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="lg" icon="zap" onClick="{{ openCheckoutPro }}" hint-size="210px,44px">Get my engine — $99/mo</x-import>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="lg" icon="play" onClick="{{ goApp }}" hint-size="180px,44px">See it run</x-import>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:8px;font-size:var(--text-body-sm);color:var(--text-secondary);font-weight:500"><x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="shield-check" size="16" color="var(--cobalt-500)" hint-size="16px,16px"></x-import>Running inside a day</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:var(--text-body-sm);color:var(--text-secondary);font-weight:500"><x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="scale" size="16" color="var(--cobalt-500)" hint-size="16px,16px"></x-import>You approve every email</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:var(--text-body-sm);color:var(--text-secondary);font-weight:500"><x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="rocket" size="16" color="var(--cobalt-500)" hint-size="16px,16px"></x-import>Cancel anytime</span>
+        </div>
+      </div>
+      <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-2xl);box-shadow:var(--shadow-card);overflow:hidden">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand)">Your engine, this morning</span>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.StatusPill" label="Running" tone="verified" hint-size="100px,24px"></x-import>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <sc-for list="{{ morning }}" as="m" hint-placeholder-count="4">
+            <div style="padding:18px 20px;border-right:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline)">
+              <div style="font-family:var(--font-data);font-size:30px;font-weight:700;letter-spacing:var(--tracking-heading);color:var(--text-primary)">{{ m.value }}</div>
+              <div style="font-size:var(--text-caption);color:var(--text-secondary);margin-top:3px">{{ m.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ morningFeed }}" as="f" hint-placeholder-count="3">
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <span style="width:24px;height:24px;border-radius:var(--radius-xs);background:var(--surface-sunken);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cobalt-600)">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ f.icon }}" size="13" hint-size="13px,13px"></x-import>
+              </span>
+              <span style="min-width:0">
+                <span style="display:block;font-size:var(--text-body-sm);color:var(--text-primary)">{{ f.title }}</span>
+                <span style="display:block;font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ f.meta }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:12px 20px;border-top:1px solid var(--border-hairline);background:var(--surface-sunken);font-size:var(--text-caption);color:var(--text-muted)">Sample workspace. Your numbers start on day one.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:72px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:18px">
+      <div style="max-width:640px">
+        <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:8px">Under the hood</div>
+        <h2 style="font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 8px">The engine is a real workflow, and you own it</h2>
+        <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0;line-height:var(--leading-relaxed)">You never have to open this. It is here when you want it: nine nodes compiled against your stack, exportable to your own instance, and templatable the day you decide to change it.</p>
+      </div>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="neutral" mono="{{ true }}" hint-size="220px,22px">export: n8n · make · gumloop</x-import>
+    </div>
+    <div style="background:var(--surface-deep);border-radius:var(--radius-2xl);border:1px solid var(--border-deep);box-shadow:var(--shadow-overlay);overflow:hidden">
+      <div style="padding:12px 18px;border-bottom:1px solid var(--border-deep);display:flex;align-items:center;justify-content:space-between">
+        <span style="font-family:var(--font-data);font-size:var(--text-caption);color:var(--ink-300)">workflow.n8n.json · 9 nodes · approved</span>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="verified" hint-size="130px,22px">Graph compiled</x-import>
+      </div>
+      <div style="padding:22px 20px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.PipelineRail" nodes="{{ nineNodes }}" activeIndex="{{ heroNode }}" onSelect="{{ setHeroNode }}" hint-size="100%,150px"></x-import>
+        <div style="margin-top:18px;padding:16px 18px;border-radius:var(--radius-lg);background:rgba(255,255,255,0.03);border:1px solid var(--border-deep);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+          <div style="max-width:640px">
+            <div style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--champagne-200);margin-bottom:5px">{{ heroNodeLine }}</div>
+            <div style="font-size:var(--text-body-sm);color:var(--ink-200);line-height:var(--leading-relaxed)">{{ heroNodeCopy }}</div>
+          </div>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="inverse" icon="settings-2" onClick="{{ openCheckoutPro }}" hint-size="180px,36px">Configure this node</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="product" style="padding:72px 32px;margin-top:72px;background:var(--surface-sunken);border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline)">
+    <div style="max-width:var(--layout-max);margin:0 auto">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="Your stack" title="It plugs into the tools you already pay for" description="Name your CRM, your data tool and your sender. The engine connects to them and asks for a connection — never for a key. An unlisted tool still gets an integration, built from its docs." hint-size="100%,140px"></x-import>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px">
+        <sc-for list="{{ integrations }}" as="t" hint-placeholder-count="9">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.IntegrationCard" name="{{ t.name }}" description="{{ t.description }}" icon="{{ t.icon }}" capability="{{ t.capability }}" connected="{{ t.connected }}" hint-size="100%,110px"></x-import>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:72px 32px 0;max-width:var(--layout-max);margin:0 auto">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="How it works" title="Three answers, then it runs itself" description="There is no workflow to build and nothing to wire. You answer, it compiles, it reports." hint-size="100%,140px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px">
+      <sc-for list="{{ howItWorks }}" as="w" hint-placeholder-count="3">
+        <div style="padding:24px;background:var(--surface-card);border-radius:var(--radius-xl);border:1px solid var(--border-hairline);box-shadow:var(--shadow-card)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <span style="width:34px;height:34px;border-radius:var(--radius-md);background:var(--surface-brand-tint);display:inline-flex;align-items:center;justify-content:center;color:var(--cobalt-600)">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ w.icon }}" size="18" hint-size="18px,18px"></x-import>
+            </span>
+            <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ w.step }}</span>
+          </div>
+          <h3 style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading);margin:0 0 6px">{{ w.title }}</h3>
+          <p style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed);margin:0">{{ w.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="engineer" style="padding:64px 32px;max-width:var(--layout-max);margin:0 auto">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="A day in the engine" title="What it does while you sleep" description="Four jobs, on a cron, on your stack. The approval switch means nothing sends without you." hint-size="100%,140px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px">
+      <sc-for list="{{ skills }}" as="k" hint-placeholder-count="4">
+        <div style="padding:24px;background:var(--surface-card);border-radius:var(--radius-xl);border:1px solid var(--border-hairline);box-shadow:var(--shadow-card)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="width:34px;height:34px;border-radius:var(--radius-md);background:var(--surface-sunken);display:inline-flex;align-items:center;justify-content:center">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ k.icon }}" size="18" color="{{ k.color }}" hint-size="18px,18px"></x-import>
+            </span>
+            <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ k.slug }}</span>
+          </div>
+          <h3 style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading);margin:0 0 6px">{{ k.title }}</h3>
+          <p style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed);margin:0">{{ k.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:56px">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="For the engineers" title="Every run hands you the files" description="If you want to read it, patch it, or take it and leave — it is all written down, versioned per run." hint-size="100%,140px"></x-import>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px">
+        <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="6">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="{{ d.file }}" label="{{ d.label }}" description="{{ d.description }}" badge="{{ d.badge }}" hint-size="100%,140px"></x-import>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:80px 32px;background:var(--surface-deep)">
+    <div style="max-width:var(--layout-max);margin:0 auto">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" align="left" on-deep="{{ true }}" eyebrow="Tech stack intelligence" title="Leads that already run n8n" description="Stack detection plus hiring intent, so your first line writes itself." hint-size="100%,120px"></x-import>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px">
+        <sc-for list="{{ leads }}" as="l" hint-placeholder-count="3">
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.LeadSignalCard" company="{{ l.company }}" round="{{ l.round }}" stack="{{ l.stack }}" trigger="{{ l.trigger }}" contact="{{ l.contact }}" hint-size="100%,200px"></x-import>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" style="padding:84px 32px;max-width:var(--layout-max);margin:0 auto">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="Three ways in" title="Compile once. Run it forever." description="Bring your own keys. No per-lead markup, no vendor lock-in." hint-size="100%,140px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;align-items:start">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:26px 24px;display:flex;flex-direction:column;gap:16px;height:100%;box-sizing:border-box">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;min-height:24px">
+            <span style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading)">{{ p.name }}</span>
+            <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ true }}">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="premium" hint-size="120px,22px">{{ p.badge }}</x-import>
+            </sc-if>
+          </div>
+          <div>
+            <div style="display:flex;align-items:baseline;gap:4px">
+              <span style="font-family:var(--font-display);font-size:var(--text-display-2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-display);line-height:1">{{ p.price }}</span>
+              <span style="font-size:var(--text-body-sm);color:var(--text-muted)">{{ p.cadence }}</span>
+            </div>
+            <div style="font-size:var(--text-caption);color:var(--text-muted);margin-top:6px">{{ p.note }}</div>
+          </div>
+          <p style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed);margin:0">{{ p.description }}</p>
+          <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid var(--border-hairline)">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="5">
+              <div style="display:flex;align-items:flex-start;gap:9px">
+                <span style="color:var(--cobalt-600);flex-shrink:0;margin-top:1px;display:inline-flex">
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="check" size="14" hint-size="14px,14px"></x-import>
+                </span>
+                <span style="font-size:var(--text-body-sm);color:var(--text-primary);line-height:var(--leading-normal)">{{ f }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:auto;padding-top:8px">
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="{{ p.ctaVariant }}" icon="{{ p.ctaIcon }}" full-width="{{ true }}" onClick="{{ p.buy }}" hint-size="100%,40px">{{ p.cta }}</x-import>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div id="security" style="display:flex;justify-content:center;margin-top:28px">
+      <span style="display:inline-flex;align-items:center;gap:8px;font-size:var(--text-caption);color:var(--text-secondary)">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="shield-check" size="15" color="var(--signal-verified)" hint-size="15px,15px"></x-import>
+        Prospect PAL only asks which provider — never a key. The workflow lives entirely on your instance.
+      </span>
+    </div>
+  </section>
+
+  <section style="padding:0 32px 84px;max-width:var(--layout-max);margin:0 auto">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.SectionHeading" eyebrow="Before you ask" title="The questions everyone sends first" hint-size="100%,110px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px">
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="6">
+        <div style="padding:20px;background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg)">
+          <div style="font-size:var(--text-h4);font-weight:600;margin-bottom:6px">{{ f.q }}</div>
+          <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ f.a }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:72px 32px;background:var(--surface-deep);text-align:center">
+    <div style="max-width:640px;margin:0 auto">
+      <h2 style="font-family:var(--font-display);font-size:var(--text-display-2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-display);line-height:var(--leading-snug);color:var(--paper-0);margin:0 0 16px">Your pipeline should be filling itself by tomorrow.</h2>
+      <p style="font-size:var(--text-body);color:var(--ink-300);margin:0 0 28px;line-height:var(--leading-relaxed)">Three answers to start. The engine takes it from there.</p>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="lg" icon="zap" onClick="{{ openCheckoutPro }}" hint-size="220px,44px">Get my engine — $99/mo</x-import>
+    </div>
+  </section>
+
+  <footer style="padding:40px 32px;border-top:1px solid var(--border-hairline);background:var(--surface-sunken)">
+    <div style="max-width:var(--layout-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Logo" size="26" hint-size="120px,26px"></x-import>
+      <div style="font-size:var(--text-caption);color:var(--text-muted)">2026 Prospect PAL. GTM automation, compiled and handed over.</div>
+      <div style="display:flex;gap:18px">
+        <a href="#product" style="font-size:var(--text-caption);color:var(--text-secondary)">Product</a>
+        <a href="#security" style="font-size:var(--text-caption);color:var(--text-secondary)">Security</a>
+        <a href="#engineer" style="font-size:var(--text-caption);color:var(--text-secondary)">Docs</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAuth }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;min-height:100vh;background:var(--surface-card)">
+  <div style="width:480px;flex-shrink:0;background:var(--surface-deep);display:flex;flex-direction:column;padding:48px;box-sizing:border-box">
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Logo" size="32" on-deep="{{ true }}" hint-size="150px,32px"></x-import>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--champagne-300);margin-bottom:16px">{{ authEyebrow }}</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--text-h1);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);line-height:var(--leading-snug);color:var(--paper-0);margin:0 0 16px">{{ authPitch }}</h2>
+      <p style="font-size:var(--text-body-sm);color:var(--ink-300);line-height:var(--leading-relaxed);margin:0 0 28px">Three answers and a connection. The engine researches, writes and reports from tomorrow morning.</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ authProof }}" as="a" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:20px;height:20px;border-radius:50%;background:var(--cobalt-600);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cobalt-100)">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="check" size="12" hint-size="12px,12px"></x-import>
+            </span>
+            <span style="font-size:var(--text-body-sm);color:var(--ink-200)">{{ a }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-data);font-size:var(--text-micro);color:var(--ink-400)">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="lock" size="12" hint-size="12px,12px"></x-import>
+      TLS 1.3 · no card required to see your first compile
+    </div>
+  </div>
+
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px">
+    <div style="width:100%;max-width:380px">
+      <div style="margin-bottom:24px">
+        <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">{{ authTitle }}</h1>
+        <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">{{ authSub }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="lg" icon="chrome" full-width="{{ true }}" onClick="{{ submitAuth }}" hint-size="100%,44px">Continue with Google</x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="lg" icon="github" full-width="{{ true }}" onClick="{{ submitAuth }}" hint-size="100%,44px">Continue with GitHub</x-import>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin:18px 0">
+        <span style="flex:1;height:1px;background:var(--border-hairline)"></span>
+        <span style="font-size:var(--text-caption);color:var(--text-muted)">or continue with email</span>
+        <span style="flex:1;height:1px;background:var(--border-hairline)"></span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-if value="{{ isSignup }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="100%,18px">Full name</x-import>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ coName }}" onChange="{{ setCoName }}" placeholder="Delali Amenyo" hint-size="100%,40px"></x-import>
+          </div>
+        </sc-if>
+        <div>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="100%,18px">Work email</x-import>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ coEmail }}" onChange="{{ setCoEmail }}" placeholder="you@company.com" hint-size="100%,40px"></x-import>
+        </div>
+        <div>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint="8+ characters" hint-size="100%,18px">Password</x-import>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ authPass }}" onChange="{{ setAuthPass }}" type="password" placeholder="••••••••" onSubmitKey="{{ submitAuth }}" hint-size="100%,40px"></x-import>
+        </div>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="lg" icon-right="arrow-right" full-width="{{ true }}" onClick="{{ submitAuth }}" hint-size="100%,44px">{{ authCta }}</x-import>
+      </div>
+      <div style="text-align:center;font-size:var(--text-body-sm);color:var(--text-secondary);margin-top:18px">
+        {{ authSwitchText }} <a href="#auth" onClick="{{ toggleAuth }}">{{ authSwitchLink }}</a>
+      </div>
+      <div style="text-align:center;font-size:var(--text-micro);color:var(--text-subtle);margin-top:10px">Signing up agrees to the terms and privacy policy.</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;height:100vh;overflow:hidden;background:var(--surface-page)">
+  <aside style="width:var(--layout-app-sidebar);flex-shrink:0;background:var(--surface-deep);display:flex;flex-direction:column;height:100vh;border-right:1px solid var(--border-deep)">
+    <div style="padding:20px 18px 16px;border-bottom:1px solid var(--border-deep)">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Logo" size="32" on-deep="{{ true }}" hint-size="150px,32px"></x-import>
+    </div>
+    <div style="padding:12px 12px 6px">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="wand-sparkles" full-width="{{ true }}" onClick="{{ startIntake }}" hint-size="100%,38px">New campaign</x-import>
+    </div>
+    <nav style="flex:1;padding:4px 8px;overflow-y:auto;display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="12">
+        <div>
+          <sc-if value="{{ n.heading }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:var(--text-micro);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--ink-400);padding:14px 12px 6px">{{ n.heading }}</div>
+          </sc-if>
+          <sc-if value="{{ n.label }}" hint-placeholder-val="{{ true }}">
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.NavItem" label="{{ n.label }}" icon="{{ n.icon }}" active="{{ n.active }}" badge="{{ n.badge }}" onClick="{{ n.go }}" hint-size="100%,34px"></x-import>
+          </sc-if>
+        </div>
+      </sc-for>
+    </nav>
+    <div style="padding:0 12px 10px">
+      <div style="font-size:var(--text-micro);color:var(--ink-400);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);margin-bottom:4px">Active campaign</div>
+      <div style="font-size:var(--text-micro);padding:6px 10px;background:var(--surface-deep-raised);border-radius:var(--radius-sm);color:var(--ink-200);border:1px solid var(--border-deep);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ activeCampaign }}</div>
+    </div>
+    <div style="padding:12px 14px;border-top:1px solid var(--border-deep);display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;border-radius:50%;background:var(--action-accent);color:var(--text-inverse);display:flex;align-items:center;justify-content:center;font-weight:var(--weight-bold);font-size:var(--text-caption);flex-shrink:0">D</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:var(--text-caption);font-weight:var(--weight-semibold);color:var(--paper-0)">Delali Amenyo</div>
+        <div style="font-size:var(--text-micro);color:var(--champagne-300);font-weight:var(--weight-semibold)">{{ planLabel }}</div>
+      </div>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.IconButton" icon="log-out" label="Sign out" variant="ghost-deep" onClick="{{ goLanding }}" hint-size="28px,28px"></x-import>
+    </div>
+  </aside>
+
+  <div style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+    <header style="background:var(--surface-card);border-bottom:1px solid var(--border-hairline);padding:0 var(--space-10);height:var(--layout-topbar);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+      <div style="display:flex;align-items:center;gap:var(--space-4)">
+        <span style="font-size:var(--text-body-sm);font-weight:var(--weight-bold);color:var(--text-primary)">{{ viewTitle }}</span>
+        <span style="color:var(--text-subtle);font-size:var(--text-caption)">·</span>
+        <span style="font-size:var(--text-caption);color:var(--text-muted)">{{ viewCrumb }}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--space-4)">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.StatusPill" label="{{ engineStatus }}" tone="verified" hint-size="120px,24px"></x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.IconButton" icon="circle-help" label="Help" hint-size="28px,28px"></x-import>
+      </div>
+    </header>
+    <main style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+      <sc-if value="{{ vDashboard }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:32px 40px 48px;max-width:1100px;margin:0 auto;width:100%;box-sizing:border-box">
+          <div style="margin-bottom:24px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+              <h1 style="font-size:var(--text-h1);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0">Your engine, at a glance</h1>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" hint-size="130px,22px">Workspace ready</x-import>
+            </div>
+            <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">Two campaigns compiled, one waiting on an outreach binding. The analyst mailed the 06:00 report.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px">
+            <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.StatTile" value="{{ s.value }}" unit="{{ s.unit }}" label="{{ s.label }}" tone="{{ s.tone }}" hint-size="100%,96px"></x-import>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:12px;align-items:start">
+            <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:20px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                <span style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand)">Last runs</span>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" size="sm" icon-right="arrow-right" onClick="{{ goReports }}" hint-size="120px,30px">Open reports</x-import>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <sc-for list="{{ runs }}" as="r" hint-placeholder-count="5">
+                  <div style="display:grid;grid-template-columns:96px 1fr auto auto;gap:12px;align-items:center;padding:10px 8px;border-radius:var(--radius-sm);border-bottom:1px solid var(--border-hairline)">
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ r.id }}</span>
+                    <span style="font-size:var(--text-body-sm);color:var(--text-primary)">{{ r.workflow }}</span>
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ r.when }}</span>
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="{{ r.tone }}" hint-size="80px,22px">{{ r.status }}</x-import>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ quickActions }}" as="q" hint-placeholder-count="4">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Card" interactive="{{ true }}" onClick="{{ q.go }}" hint-size="100%,84px">
+                  <div style="display:flex;align-items:flex-start;gap:12px">
+                    <span style="width:36px;height:36px;border-radius:var(--radius-md);background:var(--surface-sunken);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">
+                      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ q.icon }}" size="18" color="var(--cobalt-600)" hint-size="18px,18px"></x-import>
+                    </span>
+                    <span style="min-width:0">
+                      <span style="display:block;font-size:var(--text-h4);font-weight:600;margin-bottom:3px">{{ q.title }}</span>
+                      <span style="display:block;font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ q.desc }}</span>
+                    </span>
+                  </div>
+                </x-import>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vIntake }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex:1;min-height:0">
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px">
+            <div style="width:100%;max-width:640px">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.QuestionStep" index="{{ qIndex }}" total="8" question="{{ qQuestion }}" why="{{ qWhy }}" saved="{{ qSaved }}" hint-size="100%,320px">
+                <sc-if value="{{ qIsTools }}" hint-placeholder-val="{{ true }}">
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.ToolPicker" options="{{ qOptions }}" value="{{ qValue }}" onChange="{{ setToolAnswer }}" placeholder="Type any other tool…" hint-size="100%,140px"></x-import>
+                </sc-if>
+                <sc-if value="{{ qIsText }}" hint-placeholder-val="{{ false }}">
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Textarea" value="{{ qText }}" onChange="{{ setTextAnswer }}" placeholder="{{ qPlaceholder }}" rows="3" hint-size="100%,90px"></x-import>
+                </sc-if>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px">
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" icon="arrow-left" onClick="{{ prevQ }}" disabled="{{ qFirst }}" hint-size="90px,36px">Back</x-import>
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ qGate }}</span>
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon-right="arrow-right" onClick="{{ nextQ }}" hint-size="140px,36px">{{ qNextLabel }}</x-import>
+                  </div>
+                </div>
+              </x-import>
+            </div>
+          </div>
+          <aside style="width:var(--layout-pane);flex-shrink:0;background:var(--surface-card);border-left:1px solid var(--border-hairline);padding:24px;overflow-y:auto">
+            <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:14px">Answer history</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ history }}" as="h" hint-placeholder-count="4">
+                <div style="padding:12px 14px;border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-page)">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ h.key }}</span>
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--champagne-500)">{{ h.version }}</span>
+                  </div>
+                  <div style="font-size:var(--text-body-sm);color:var(--text-primary)">{{ h.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:22px;padding:14px;border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-sunken)">
+              <div style="font-size:var(--text-caption);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ gateNote }}</div>
+            </div>
+          </aside>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vCampaigns }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:28px 40px 48px;width:100%;box-sizing:border-box">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px">
+            <div style="max-width:540px">
+              <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">Campaigns</h1>
+              <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">A campaign holds its intake versions, its compiled engine and its run history.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="wand-sparkles" onClick="{{ startIntake }}" hint-size="160px,38px">New campaign</x-import>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <sc-for list="{{ campaigns }}" as="c" hint-placeholder-count="3">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.CampaignCard" title="{{ c.title }}" company="{{ c.company }}" status="{{ c.status }}" version="{{ c.version }}" updated="{{ c.updated }}" tools="{{ c.tools }}" outputs="{{ c.outputs }}" onOpen="{{ c.open }}" hint-size="100%,210px"></x-import>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vEditor }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex:1;min-height:0">
+          <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+            <div style="height:48px;flex-shrink:0;border-bottom:1px solid var(--border-hairline);background:var(--surface-card);display:flex;align-items:center;justify-content:space-between;padding:0 20px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="verified" icon="circle-check" hint-size="110px,22px">Compiled</x-import>
+                <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">workflow.n8n.json · 9 nodes · v4</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Select" value="{{ dialect }}" onChange="{{ setDialect }}" options="{{ dialects }}" hint-size="160px,34px"></x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="download" hint-size="150px,32px">Download JSON</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="sm" icon="rocket" onClick="{{ openDeploy }}" hint-size="160px,32px">Connect and deploy</x-import>
+              </div>
+            </div>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.CanvasBoard" nodes="{{ canvasNodes }}" connections="{{ canvasConns }}" selectedId="{{ nodeId }}" onSelect="{{ setNodeId }}" width="2060" height="520" hint-size="100%,520px"></x-import>
+          </div>
+          <aside style="width:360px;flex-shrink:0;background:var(--surface-card);border-left:1px solid var(--border-hairline);padding:20px;overflow-y:auto">
+            <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:12px">Node inspector</div>
+            <h3 style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading);margin:0 0 4px">{{ nodeTitle }}</h3>
+            <div style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted);margin-bottom:16px">{{ nodeBinding }}</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ nodeParams }}" as="p" hint-placeholder-count="4">
+                <div>
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint="{{ p.hint }}" hint-size="100%,18px">{{ p.label }}</x-import>
+                  <div style="font-family:var(--font-data);font-size:var(--text-body-sm);padding:8px 12px;border:1px solid var(--border-hairline);border-radius:var(--radius-sm);background:var(--surface-page);color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:20px;padding:14px;border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-sunken)">
+              <div style="font-size:var(--text-caption);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ nodeNote }}</div>
+            </div>
+          </aside>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vAnalyzer }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0">
+          <div style="padding:24px 28px;border-right:1px solid var(--border-hairline);display:flex;flex-direction:column;min-height:0">
+            <div style="margin-bottom:14px">
+              <h1 style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading);margin:0 0 4px">Paste a workflow</h1>
+              <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">Any n8n, Make or Gumloop export. The engineer reads it and names what is wrong.</p>
+            </div>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Textarea" value="{{ analyzeInput }}" onChange="{{ setAnalyzeInput }}" placeholder="{ &quot;name&quot;: &quot;My workflow&quot;, &quot;nodes&quot;: [ … ] }" rows="15" hint-size="100%,300px"></x-import>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:10px">
+              <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ analyzeMeta }}</span>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="stethoscope" onClick="{{ runAnalyze }}" hint-size="160px,38px">Analyze workflow</x-import>
+            </div>
+          </div>
+          <div style="padding:24px 28px;overflow-y:auto;background:var(--surface-page)">
+            <sc-if value="{{ analyzed }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                <div style="width:64px;height:64px;border-radius:var(--radius-lg);background:var(--signal-attention-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <span style="font-family:var(--font-data);font-size:24px;font-weight:700;color:var(--signal-attention)">{{ healthScore }}</span>
+                </div>
+                <div>
+                  <div style="font-size:var(--text-h4);font-weight:600;margin-bottom:2px">{{ healthVerdict }}</div>
+                  <div style="font-size:var(--text-caption);color:var(--text-secondary)">{{ healthSummary }}</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ issues }}" as="i" hint-placeholder-count="4">
+                  <div style="padding:14px 16px;background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md)">
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:5px">
+                      <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ i.node }}</span>
+                      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="{{ i.tone }}" hint-size="110px,22px">{{ i.severity }}</x-import>
+                    </div>
+                    <div style="font-size:var(--text-body-sm);color:var(--text-primary);margin-bottom:4px">{{ i.title }}</div>
+                    <div style="font-size:var(--text-caption);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ i.fix }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="margin-top:16px">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="wrench" onClick="{{ goFix }}" hint-size="200px,38px">Patch these in the fix editor</x-import>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notAnalyzed }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px dashed var(--border-strong);border-radius:var(--radius-lg);padding:40px 28px;text-align:center;color:var(--text-muted)">
+                <div style="font-size:var(--text-body-sm);line-height:var(--leading-relaxed)">Nothing analyzed yet. Paste a workflow on the left, or load the sample.</div>
+                <div style="margin-top:14px;display:flex;justify-content:center">
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="file-json" onClick="{{ loadSample }}" hint-size="150px,32px">Load the sample</x-import>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vFix }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:24px 28px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+          <div>
+            <h1 style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading);margin:0 0 4px">Something broke. Paste it.</h1>
+            <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0 0 14px">The error text from your instance, and the node JSON if you have it.</p>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint="required" hint-size="100%,18px">Error from the run</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Textarea" value="{{ fixError }}" onChange="{{ setFixError }}" placeholder="ERROR: Bad request - please check your parameters [item 0]" rows="3" hint-size="100%,80px"></x-import>
+              </div>
+              <div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint="optional" hint-size="100%,18px">Node JSON</x-import>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Textarea" value="{{ fixJson }}" onChange="{{ setFixJson }}" placeholder="{ &quot;type&quot;: &quot;n8n-nodes-base.httpRequest&quot;, … }" rows="9" hint-size="100%,190px"></x-import>
+              </div>
+              <div style="display:flex;justify-content:flex-end">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="wrench" onClick="{{ runFix }}" hint-size="170px,38px">Diagnose and patch</x-import>
+              </div>
+            </div>
+          </div>
+          <div>
+            <sc-if value="{{ fixed }}" hint-placeholder-val="{{ true }}">
+              <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card)">
+                <div style="padding:14px 16px;border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:space-between">
+                  <span style="font-size:var(--text-h4);font-weight:600">Diagnosis</span>
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="verified" hint-size="110px,22px">Patch ready</x-import>
+                </div>
+                <div style="padding:16px">
+                  <div style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted);margin-bottom:8px">{{ fixNode }}</div>
+                  <div style="font-size:var(--text-body-sm);color:var(--text-primary);line-height:var(--leading-relaxed);margin-bottom:14px">{{ fixCause }}</div>
+                  <div style="border:1px solid var(--border-hairline);border-radius:var(--radius-sm);overflow:hidden">
+                    <sc-for list="{{ fixDiff }}" as="d" hint-placeholder-count="4">
+                      <div style="display:flex;gap:10px;padding:6px 12px;font-family:var(--font-data);font-size:var(--text-micro);border-bottom:1px solid var(--border-hairline);background:var(--surface-page)">
+                        <span style="width:12px;flex-shrink:0;color:var(--text-muted)">{{ d.mark }}</span>
+                        <span style="min-width:0;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.line }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex;gap:10px;margin-top:14px">
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" icon="copy" hint-size="160px,32px">Copy patched node</x-import>
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="sm" icon="rocket" onClick="{{ openDeploy }}" hint-size="150px,32px">Push to instance</x-import>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notFixed }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px dashed var(--border-strong);border-radius:var(--radius-lg);padding:40px 28px;text-align:center;color:var(--text-muted);font-size:var(--text-body-sm);line-height:var(--leading-relaxed)">Paste the error. The engineer names the node, the cause and the exact parameter to change.</div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vTemplates }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:28px 40px 48px;width:100%;box-sizing:border-box">
+          <div style="max-width:600px;margin-bottom:20px">
+            <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">Templates</h1>
+            <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">Proven engines. Duplicate one, rebind it to your stack, export in the dialect your instance speaks.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <sc-for list="{{ templates }}" as="t" hint-placeholder-count="6">
+              <div style="padding:20px;background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+                  <span style="width:34px;height:34px;border-radius:var(--radius-md);background:var(--surface-sunken);display:inline-flex;align-items:center;justify-content:center;color:var(--cobalt-600);flex-shrink:0">
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ t.icon }}" size="17" hint-size="17px,17px"></x-import>
+                  </span>
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="neutral" mono="{{ true }}" hint-size="80px,22px">{{ t.nodes }}</x-import>
+                </div>
+                <div>
+                  <div style="font-size:var(--text-h4);font-weight:600;margin-bottom:4px">{{ t.name }}</div>
+                  <div style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ t.desc }}</div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto">
+                  <sc-for list="{{ t.dialects }}" as="d" hint-placeholder-count="3">
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);padding:3px 8px;border-radius:var(--radius-pill);background:var(--surface-sunken);color:var(--text-secondary)">{{ d }}</span>
+                  </sc-for>
+                </div>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" size="sm" full-width="{{ true }}" icon="copy-plus" onClick="{{ t.use }}" hint-size="100%,32px">Use this template</x-import>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vReports }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:28px 40px 48px;width:100%;box-sizing:border-box;max-width:1180px;margin:0 auto">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px">
+            <div style="max-width:560px">
+              <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">Reports</h1>
+              <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">The analyst queries your instance on a cron and mails this at 06:00 — with the failing node named.</p>
+            </div>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" icon="mail" hint-size="190px,38px">Edit report schedule</x-import>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+            <sc-for list="{{ reportStats }}" as="s" hint-placeholder-count="4">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.StatTile" value="{{ s.value }}" unit="{{ s.unit }}" label="{{ s.label }}" tone="{{ s.tone }}" hint-size="100%,96px"></x-import>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;align-items:start">
+            <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden">
+              <div style="padding:14px 18px;border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:var(--text-h4);font-weight:600">Execution ledger</span>
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="attention" hint-size="130px,22px">1 needs a patch</x-import>
+              </div>
+              <div>
+                <sc-for list="{{ execRows }}" as="e" hint-placeholder-count="6">
+                  <div style="display:grid;grid-template-columns:100px 1fr auto auto;gap:12px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--border-hairline)">
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ e.id }}</span>
+                    <span style="font-size:var(--text-body-sm);color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.node }}</span>
+                    <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ e.ms }}</span>
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="{{ e.tone }}" hint-size="90px,22px">{{ e.status }}</x-import>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden">
+              <div style="padding:14px 18px;border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:var(--text-h4);font-weight:600">The 06:00 email</span>
+                <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">daily · resend</span>
+              </div>
+              <div style="padding:18px">
+                <div style="font-size:var(--text-body-sm);line-height:var(--leading-relaxed);color:var(--text-primary);margin-bottom:12px">{{ emailSubject }}</div>
+                <div style="display:flex;flex-direction:column;gap:9px">
+                  <sc-for list="{{ emailLines }}" as="l" hint-placeholder-count="4">
+                    <div style="display:flex;gap:9px;align-items:flex-start">
+                      <span style="width:5px;height:5px;border-radius:50%;background:var(--cobalt-500);margin-top:7px;flex-shrink:0"></span>
+                      <span style="font-size:var(--text-body-sm);color:var(--text-secondary);line-height:var(--leading-relaxed)">{{ l }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vAgents }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:28px 40px 48px;width:100%;box-sizing:border-box;max-width:1180px;margin:0 auto">
+          <div style="max-width:600px;margin-bottom:20px">
+            <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">Agent package</h1>
+            <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">The four agents that build your engine, and every document they work from. Yours to download and run elsewhere.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px">
+            <sc-for list="{{ agents }}" as="a" hint-placeholder-count="4">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.AgentCard" name="{{ a.name }}" icon="{{ a.icon }}" role="{{ a.role }}" needs="{{ a.needs }}" state="{{ a.state }}" lastRun="{{ a.lastRun }}" onRun="{{ a.run }}" hint-size="100%,170px"></x-import>
+            </sc-for>
+          </div>
+          <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:12px">Documents in this package</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="6">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.DeliverableCard" file="{{ d.file }}" label="{{ d.label }}" description="{{ d.description }}" badge="{{ d.badge }}" hint-size="100%,140px"></x-import>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vSdr }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex:1;min-height:0">
+          <div style="flex:1;padding:26px 32px 40px;overflow-y:auto;min-width:0">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px">
+              <div style="max-width:520px">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+                  <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0">Core SDR</h1>
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="premium" hint-size="150px,22px">No platform in the loop</x-import>
+                </div>
+                <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">The agent researches, writes and sends from your mailboxes. Nothing leaves the queue without your approval.</p>
+              </div>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="circle-check" onClick="{{ approveAll }}" hint-size="190px,38px">{{ approveLabel }}</x-import>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px">
+              <sc-for list="{{ sdrStats }}" as="s" hint-placeholder-count="4">
+                <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.StatTile" value="{{ s.value }}" unit="{{ s.unit }}" label="{{ s.label }}" tone="{{ s.tone }}" hint-size="100%,96px"></x-import>
+              </sc-for>
+            </div>
+            <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:10px">Approval queue</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ queue }}" as="q" hint-placeholder-count="4">
+                <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);box-shadow:var(--shadow-hairline);padding:18px">
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px">
+                    <div style="min-width:0">
+                      <div style="font-size:var(--text-h4);font-weight:600;margin-bottom:2px">{{ q.contact }}</div>
+                      <div style="font-size:var(--text-caption);color:var(--text-muted)">{{ q.role }}</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+                      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="brand" hint-size="130px,22px">{{ q.signal }}</x-import>
+                      <span style="font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ q.when }}</span>
+                    </div>
+                  </div>
+                  <div style="padding:14px 16px;background:var(--surface-page);border:1px solid var(--border-hairline);border-radius:var(--radius-md);font-size:var(--text-body-sm);line-height:var(--leading-relaxed);color:var(--text-primary);margin-bottom:12px">{{ q.draft }}</div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+                    <span style="font-size:var(--text-caption);color:var(--text-muted)">{{ q.evidence }}</span>
+                    <div style="display:flex;gap:8px">
+                      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" size="sm" icon="pencil" hint-size="80px,30px">Edit</x-import>
+                      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" size="sm" icon="send" onClick="{{ q.send }}" hint-size="90px,30px">Send</x-import>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <aside style="width:320px;flex-shrink:0;background:var(--surface-card);border-left:1px solid var(--border-hairline);padding:20px;overflow-y:auto">
+            <div style="font-size:var(--text-eyebrow);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);color:var(--text-brand);margin-bottom:12px">Live agent run</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ agentRun }}" as="r" hint-placeholder-count="5">
+                <div style="display:flex;gap:10px;align-items:flex-start">
+                  <span style="width:24px;height:24px;border-radius:var(--radius-xs);background:var(--surface-sunken);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cobalt-600)">
+                    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ r.icon }}" size="13" hint-size="13px,13px"></x-import>
+                  </span>
+                  <span style="min-width:0">
+                    <span style="display:block;font-size:var(--text-body-sm);color:var(--text-primary)">{{ r.title }}</span>
+                    <span style="display:block;font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ r.meta }}</span>
+                  </span>
+                </div>
+              </sc-for>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.TypingDots" label="Researching CloudPulse Systems" hint-size="100%,20px"></x-import>
+            </div>
+            <div style="margin-top:20px;padding:14px;border:1px solid var(--border-hairline);border-radius:var(--radius-md);background:var(--surface-sunken);font-size:var(--text-caption);color:var(--text-secondary);line-height:var(--leading-relaxed)">Sending from your own mailboxes over your own domain. Prospect PAL never sends on your behalf during setup.</div>
+          </aside>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vIntegrations }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:28px 40px 48px;width:100%;box-sizing:border-box;max-width:1180px;margin:0 auto">
+          <div style="max-width:600px;margin-bottom:20px">
+            <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">Integrations and keys</h1>
+            <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">Prospect PAL stores a connection, never a key. Everything below is referenced by ENV name only.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px">
+            <sc-for list="{{ integrations }}" as="t" hint-placeholder-count="9">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.IntegrationCard" name="{{ t.name }}" description="{{ t.description }}" icon="{{ t.icon }}" capability="{{ t.capability }}" connected="{{ t.connected }}" hint-size="100%,110px"></x-import>
+            </sc-for>
+          </div>
+          <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);overflow:hidden">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--border-hairline);font-size:var(--text-h4);font-weight:600">Credential slots in this engine</div>
+            <div>
+              <sc-for list="{{ envRows }}" as="v" hint-placeholder-count="5">
+                <div style="display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--border-hairline)">
+                  <span style="font-family:var(--font-data);font-size:var(--text-body-sm);color:var(--text-primary)">{{ v.name }}</span>
+                  <span style="font-size:var(--text-caption);color:var(--text-muted)">{{ v.used }}</span>
+                  <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="{{ v.tone }}" hint-size="100px,22px">{{ v.status }}</x-import>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vBilling }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:28px 40px 48px;width:100%;box-sizing:border-box;max-width:1000px;margin:0 auto">
+          <div style="max-width:600px;margin-bottom:20px">
+            <h1 style="font-size:var(--text-h2);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);margin:0 0 6px">Billing</h1>
+            <p style="font-size:var(--text-body-sm);color:var(--text-secondary);margin:0">One plan, changeable at any time. Cancelling keeps every file you have already compiled.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">
+            <sc-for list="{{ planCards }}" as="p" hint-placeholder-count="3">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.ToolOptionCard" icon="{{ p.icon }}" title="{{ p.name }}" caption="{{ p.caption }}" meta="{{ p.meta }}" selected="{{ p.selected }}" onClick="{{ p.pick }}" hint-size="100%,150px"></x-import>
+            </sc-for>
+          </div>
+          <div style="background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <div>
+              <div style="font-size:var(--text-h4);font-weight:600;margin-bottom:3px">{{ billingLine }}</div>
+              <div style="font-size:var(--text-caption);color:var(--text-muted)">Next invoice 27 September 2026 · card ending 4242</div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" icon="file-text" hint-size="140px,38px">View invoices</x-import>
+              <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="arrow-up-right" hint-size="150px,38px">{{ billingCta }}</x-import>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </main>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ checkoutOpen }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Modal" open="{{ true }}" eyebrow="{{ coEyebrow }}" title="{{ coTitle }}" onClose="{{ closeCheckout }}" width="820" hint-size="820px,520px">
+  <sc-if value="{{ coSelect }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <sc-for list="{{ planCards }}" as="p" hint-placeholder-count="3">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.ToolOptionCard" icon="{{ p.icon }}" title="{{ p.name }}" caption="{{ p.caption }}" meta="{{ p.meta }}" selected="{{ p.selected }}" onClick="{{ p.pick }}" hint-size="100%,140px"></x-import>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border-hairline)">
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" onClick="{{ closeCheckout }}" hint-size="90px,36px">Cancel</x-import>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon-right="arrow-right" onClick="{{ toPay }}" hint-size="200px,36px">{{ coContinue }}</x-import>
+    </div>
+  </sc-if>
+  <sc-if value="{{ coPay }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:520px;margin:0 auto">
+      <div style="background:var(--surface-sunken);padding:16px;border-radius:var(--radius-md);border:1px solid var(--border-hairline);margin-bottom:18px;display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:var(--text-body-sm);font-weight:600">{{ coPlanName }}</span>
+        <span style="font-family:var(--font-data);font-size:var(--text-h3);font-weight:700;color:var(--cobalt-600)">{{ coPlanPrice }}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="200px,18px">Full name or company</x-import>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ coName }}" onChange="{{ setCoName }}" placeholder="Delali Amenyo (Rostr)" hint-size="100%,38px"></x-import>
+        </div>
+        <div>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint-size="200px,18px">Work email</x-import>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ coEmail }}" onChange="{{ setCoEmail }}" placeholder="delali@rostr.io" hint-size="100%,38px"></x-import>
+        </div>
+        <div>
+          <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint="Test mode" hint-size="200px,18px">Payment method</x-import>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--radius-md);border:var(--border-width-emphasis) solid var(--border-strong);background:var(--surface-card)">
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="credit-card" size="16" color="var(--text-muted)" hint-size="16px,16px"></x-import>
+            <span style="font-family:var(--font-data);font-size:var(--text-body-sm)">4242 •••• •••• 4242</span>
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Badge" tone="neutral" mono="{{ true }}" hint-size="90px,22px">test_mode</x-import>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:18px;border-top:1px solid var(--border-hairline)">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="ghost" icon="arrow-left" onClick="{{ toSelect }}" hint-size="130px,36px">Back to plans</x-import>
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="lock" onClick="{{ confirmPay }}" hint-size="200px,36px">{{ coPayLabel }}</x-import>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ coDone }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center;padding:32px 20px">
+      <div style="width:64px;height:64px;background:var(--signal-verified-bg);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="circle-check" size="30" color="var(--signal-verified)" hint-size="30px,30px"></x-import>
+      </div>
+      <h3 style="font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-heading);margin:0 0 8px">Workspace provisioned</h3>
+      <p style="font-size:var(--text-body-sm);color:var(--text-secondary);max-width:420px;margin:0 auto 20px;line-height:var(--leading-relaxed)">Eight questions next. Nothing touches your CRM until you approve the compile.</p>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="wand-sparkles" onClick="{{ enterWorkspace }}" hint-size="200px,40px">Start the intake</x-import>
+    </div>
+  </sc-if>
+</x-import>
+</sc-if>
+
+<sc-if value="{{ deployOpen }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Modal" open="{{ true }}" eyebrow="Deploy" title="Push this engine to your instance" onClose="{{ closeDeploy }}" width="560" hint-size="560px,460px">
+  <sc-if value="{{ deployConnect }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
+      <sc-for list="{{ deploySteps }}" as="d" hint-placeholder-count="4">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span style="width:26px;height:26px;border-radius:var(--radius-xs);background:var(--surface-sunken);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cobalt-600)">
+            <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="{{ d.icon }}" size="14" hint-size="14px,14px"></x-import>
+          </span>
+          <span style="min-width:0">
+            <span style="display:block;font-size:var(--text-body-sm);color:var(--text-primary)">{{ d.title }}</span>
+            <span style="display:block;font-family:var(--font-data);font-size:var(--text-micro);color:var(--text-muted)">{{ d.meta }}</span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Label" hint="your instance" hint-size="100%,18px">n8n base URL</x-import>
+    <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Input" value="{{ instanceUrl }}" onChange="{{ setInstanceUrl }}" placeholder="https://your-team.app.n8n.cloud" mono="{{ true }}" hint-size="100%,38px"></x-import>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border-hairline)">
+      <span style="font-size:var(--text-caption);color:var(--text-muted)">Created inactive. You press go.</span>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="accent" icon="rocket" onClick="{{ runDeploy }}" hint-size="170px,38px">Connect and deploy</x-import>
+    </div>
+  </sc-if>
+  <sc-if value="{{ deployDone }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center;padding:24px 12px">
+      <div style="width:60px;height:60px;background:var(--signal-verified-bg);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px">
+        <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Icon" name="circle-check" size="28" color="var(--signal-verified)" hint-size="28px,28px"></x-import>
+      </div>
+      <h3 style="font-size:var(--text-h3);font-weight:600;letter-spacing:var(--tracking-heading);margin:0 0 8px">Live on your instance</h3>
+      <p style="font-size:var(--text-body-sm);color:var(--text-secondary);max-width:400px;margin:0 auto 18px;line-height:var(--leading-relaxed)">Created inactive with one credential still to wire. Add <span style="font-family:var(--font-data)">ENV:APOLLO_API_KEY</span> and press go.</p>
+      <x-import component-from-global-scope="ProspectPALDesignSystem_b8251d.Button" variant="outline" icon="chart-line" onClick="{{ closeDeploy }}" hint-size="180px,38px">Watch the first run</x-import>
+    </div>
+  </sc-if>
+</x-import>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startRoute&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;landing&quot;,&quot;app&quot;],&quot;default&quot;:&quot;landing&quot;,&quot;tsType&quot;:&quot;'landing' | 'app'&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;showSignals&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;}}">
+const NINE = [
+  { title: "Intake & cron", subtitle: "Trigger source", icon: "zap", stage: "trigger", binding: "n8n-nodes-base.scheduleTrigger" },
+  { title: "Data normalizer", subtitle: "Schema transform", icon: "braces", stage: "logic", binding: "n8n-nodes-base.set" },
+  { title: "CRM dedupe shield", subtitle: "Deal protection", icon: "shield-check", stage: "shield", binding: "n8n-nodes-base.hubspot" },
+  { title: "Data tool adapter", subtitle: "Contact reveal", icon: "search", stage: "data", binding: "n8n-nodes-base.httpRequest" },
+  { title: "AI research & PAS", subtitle: "Email copy", icon: "sparkles", stage: "ai", binding: "n8n-nodes-base.anthropic" },
+  { title: "Approval switch", subtitle: "Human gate", icon: "scale", stage: "logic", binding: "n8n-nodes-base.switch" },
+  { title: "CRM contact create", subtitle: "Lead sync", icon: "database", stage: "shield", binding: "n8n-nodes-base.hubspot" },
+  { title: "Sequence enrollment", subtitle: "Outreach start", icon: "send", stage: "sequence", binding: "n8n-nodes-base.smartlead" },
+  { title: "Review alert", subtitle: "Slack notify", icon: "bell", stage: "logic", binding: "n8n-nodes-base.slack" }
+];
+
+const QUESTIONS = [
+  { key: "company.product", q: "What do you sell, in one sentence?", why: "The compiler writes your PAS copy from this line. Be literal.", type: "text", ph: "Rostr is an agent framework for revenue teams." },
+  { key: "icp.criteria", q: "Who is the ideal account?", why: "Becomes the filter set on the data node — industry, headcount, region.", type: "text", ph: "Seed to Series B SaaS, 10–200 staff, North America." },
+  { key: "persona.titles", q: "Which titles do you need to reach?", why: "Maps to the people-search parameters on the enrichment call.", type: "text", ph: "Head of Growth, VP RevOps, Founder" },
+  { key: "tools_needed[0].crm", q: "Which platform holds your contact data today?", why: "Binds the dedupe shield and the contact-create node.", type: "tools", options: ["HubSpot", "Salesforce", "Attio", "Pipedrive", "None yet"] },
+  { key: "tools_needed[1].data", q: "Which data tool should reveal contacts?", why: "Resolved to a concrete HTTP node with an ENV credential slot.", type: "tools", options: ["Apollo.io", "Clay", "ZoomInfo", "Clearbit", "Exa"] },
+  { key: "tools_needed[2].outreach", q: "Where should the sequence run?", why: "Blocking gate — the compile cannot finish without an outreach binding.", type: "tools", options: ["Smartlead", "Instantly", "Lemlist", "HubSpot sequences", "Gmail direct"] },
+  { key: "tools_needed[3].platform", q: "Which automation platform runs the graph?", why: "Decides the export dialect. n8n compiles first; Make and Gumloop transpile after.", type: "tools", options: ["n8n cloud", "n8n self-hosted", "Make.com", "Gumloop"] },
+  { key: "approval.mode", q: "Who approves a draft before it sends?", why: "Sets the approval switch. There is always an approval switch.", type: "tools", options: ["Slack one-click", "Email digest", "Auto-approve after 24h", "Manual in CRM"] }
+];
+
+class Component extends DCLogic {
+  state = {
+    route: "landing", view: "dashboard", heroNode: 2,
+    checkout: null, plan: "pro", paid: false,
+    q: 0, answers: {}
+  };
+
+  componentDidMount() {
+    if (this.props.startRoute === "app") this.setState({ route: "app" });
+  }
+
+  go = (view) => this.setState({ view, route: "app" });
+
+  renderVals() {
+    const s = this.state;
+    const plan = s.plan;
+    const q = QUESTIONS[s.q];
+    const ans = s.answers[q.key];
+
+    const nav = [
+      { heading: "Build" },
+      { label: "Dashboard", icon: "layout-dashboard", id: "dashboard" },
+      { label: "Intake wizard", icon: "wand-sparkles", id: "intake" },
+      { label: "Campaigns", icon: "target", id: "campaigns", badge: "3" },
+      { label: "Workflow editor", icon: "workflow", id: "editor" },
+      { heading: "Engineer" },
+      { label: "Analyzer", icon: "stethoscope", id: "analyzer" },
+      { label: "Fix editor", icon: "wrench", id: "fix" },
+      { label: "Templates", icon: "layers", id: "templates" },
+      { heading: "Analyst" },
+      { label: "Reports", icon: "chart-line", id: "reports" },
+      { heading: "Agents" },
+      { label: "Agent package", icon: "package", id: "agents" },
+      { label: "Core SDR", icon: "bot", id: "sdr", badge: "beta" },
+      { heading: "Account" },
+      { label: "Integrations & keys", icon: "plug", id: "integrations" },
+      { label: "Billing", icon: "credit-card", id: "billing" }
+    ].map(n => n.label ? { ...n, active: s.view === n.id, go: () => this.go(n.id) } : n);
+
+    const META = {
+      dashboard: ["Dashboard", "Two campaigns live"],
+      intake: ["Intake wizard", "Eight gated questions"],
+      campaigns: ["Campaigns", "Every campaign carries its versions"],
+      editor: ["Workflow editor", "outbound-engine · v4"],
+      analyzer: ["Analyzer", "Paste a workflow, read its health"],
+      fix: ["Fix editor", "Paste the error, take the patch"],
+      templates: ["Templates", "n8n · Make · Gumloop"],
+      reports: ["Reports", "Execution analyst, 06:00 daily"],
+      agents: ["Agent package", "Skills, instructions, scaffolding"],
+      sdr: ["Core SDR", "No automation platform required"],
+      integrations: ["Integrations & keys", "Providers only — never a key"],
+      billing: ["Billing", "Cancel anytime"]
+    };
+    const meta = META[s.view] || META.dashboard;
+
+    const PLANS = [
+      {
+        id: "pkg", name: "Agent package", price: "$19.99", cadence: "", note: "One-time download", tone: "paper",
+        icon: "package", caption: "Skills, instructions, scaffolding and every doc. You wire it.",
+        meta: "one-time",
+        description: "For engineers who want the skills, the instruction pack and the scaffolding, and will wire it themselves.",
+        features: ["n8n engineer + analyst skill files", "Instruction pack: input → template → graph", "Agent scaffolding for your stack", "PRD, tech-stack and overview docs", ".env.template and credential map"],
+        badge: "", cta: "Get the package", ctaVariant: "outline", ctaIcon: "download", buy: () => this.openCheckout("pkg")
+      },
+      {
+        id: "pro", name: "Custom template agent", price: "$99", cadence: "/ month", note: "Cancel anytime · BYOK", featured: true, tone: "paper",
+        icon: "wand-sparkles", caption: "Chat with the agent. Unlimited campaigns, unlimited compiles.",
+        meta: "most picked",
+        description: "The builder: agent chat, unlimited campaigns and settings, the live canvas, and deploy to your own instance.",
+        features: ["Unlimited campaign compiles", "Agent chat UI with versioned intake", "Live nine-node editing canvas", "Connect & deploy to n8n, Make, Gumloop", "Analyzer, fix editor and daily report", "Slack one-click approval gates"],
+        badge: "Most picked", cta: "Start the builder", ctaVariant: "accent", ctaIcon: "zap", buy: () => this.openCheckout("pro")
+      },
+      {
+        id: "core", name: "Core agent", price: "$199", cadence: "/ month", note: "Full SDR · no platform needed", tone: "sunken",
+        icon: "bot", caption: "The agent runs outreach itself. No n8n, no Make, no Gumloop.",
+        meta: "bypasses platforms",
+        description: "Research, write, send, report — the agent does the SDR job in one dashboard, with no automation platform in the loop.",
+        features: ["Autonomous research and PAS drafting", "Sending from your own mailboxes", "Reply triage and reporting", "Approval queue with one-click send", "Everything in the builder tier"],
+        badge: "No platform needed", cta: "Hire the core agent", ctaVariant: "primary", ctaIcon: "bot", buy: () => this.openCheckout("core")
+      }
+    ];
+    const current = PLANS.find(p => p.id === plan) || PLANS[1];
+
+    return {
+      isLanding: s.route === "landing",
+      isApp: s.route === "app",
+      isAuth: s.route === "auth",
+      isSignup: s.authMode !== "login",
+      authEyebrow: s.authMode === "login" ? "Welcome back" : "Free to start",
+      authPitch: s.authMode === "login" ? "Your engine has been running without you." : "Your pipeline should be filling itself by tomorrow.",
+      authTitle: s.authMode === "login" ? "Sign in" : "Create your workspace",
+      authSub: s.authMode === "login" ? "Pick up where the engine left off." : "No card until you choose a plan.",
+      authCta: s.authMode === "login" ? "Sign in" : "Create workspace",
+      authSwitchText: s.authMode === "login" ? "New here?" : "Already have an account?",
+      authSwitchLink: s.authMode === "login" ? "Create a workspace" : "Sign in",
+      authProof: [
+        "Nine-node engine compiled against your own stack",
+        "Research and copy written before you wake up",
+        "Approval switch on every send, always",
+        "Export to n8n, Make or Gumloop whenever you want",
+        "Cancel and keep every file you compiled"
+      ],
+      authPass: s.authPass || "",
+      setAuthPass: (v) => this.setState({ authPass: v }),
+      toggleAuth: () => this.setState({ authMode: s.authMode === "login" ? "signup" : "login" }),
+      submitAuth: () => s.authMode === "login"
+        ? this.setState({ route: "app", view: "dashboard" })
+        : this.setState({ checkout: "select" }),
+      goLanding: () => this.setState({ route: "landing" }),
+      goApp: () => this.setState({ route: "auth", authMode: "login" }),
+      goReports: () => this.go("reports"),
+      startIntake: () => this.setState({ route: "app", view: "intake", q: 0 }),
+      planLabel: plan === "core" ? "Core agent" : plan === "pkg" ? "Agent package" : "Custom template agent",
+      activeCampaign: "outbound-engine · seed SaaS · v4",
+      viewTitle: meta[0], viewCrumb: meta[1],
+      engineStatus: "Agent ready",
+      nav,
+      vDashboard: s.view === "dashboard",
+      vIntake: s.view === "intake",
+      vCampaigns: s.view === "campaigns",
+      vEditor: s.view === "editor",
+      vAnalyzer: s.view === "analyzer",
+      vFix: s.view === "fix",
+      vTemplates: s.view === "templates",
+      vReports: s.view === "reports",
+      vAgents: s.view === "agents",
+      vSdr: s.view === "sdr",
+      vIntegrations: s.view === "integrations",
+      vBilling: s.view === "billing",
+
+      campaigns: [
+        { title: "Seed SaaS founders", company: "n8n cloud · HubSpot · Apollo", status: "approved", version: "v4", updated: "12 minutes ago", tools: ["HubSpot", "Apollo.io", "Smartlead"], outputs: 6, open: () => this.go("editor") },
+        { title: "Boutique agencies", company: "n8n self-hosted · Attio", status: "needs-clarification", version: "v2", updated: "yesterday", tools: ["Attio", "Clay"], outputs: 4, open: () => this.go("editor") },
+        { title: "Series B RevOps", company: "Make.com · Salesforce", status: "draft", version: "v1", updated: "3 days ago", tools: ["Salesforce"], outputs: 0, open: () => this.setState({ view: "intake", q: 0 }) }
+      ],
+
+      dialect: s.dialect || "n8n (native)",
+      dialects: ["n8n (native)", "Make.com (transpiled)", "Gumloop (transpiled)"],
+      setDialect: (v) => this.setState({ dialect: v }),
+      canvasNodes: NINE.map((n, i) => ({ id: "n" + (i + 1), x: 24 + i * 224, y: 200, stage: n.stage, icon: n.icon, title: n.title, subtitle: n.subtitle })),
+      canvasConns: NINE.slice(1).map((_, i) => ["n" + (i + 1), "n" + (i + 2)]),
+      nodeId: s.nodeId || "n5",
+      setNodeId: (id) => this.setState({ nodeId: id }),
+      nodeTitle: NINE[this.nodeIdx()].title,
+      nodeBinding: NINE[this.nodeIdx()].binding,
+      nodeParams: [
+        { label: "Model", hint: "provider", value: "claude-sonnet-4-6" },
+        { label: "Credential", hint: "ENV reference", value: "ENV:ANTHROPIC_API_KEY" },
+        { label: "Prompt pack", hint: "versioned", value: "pas-3-sentence@v4" },
+        { label: "Output", hint: "downstream", value: "{{ $json.draft_email }}" }
+      ],
+      nodeNote: "Edits here recompile the node only. The approval switch downstream stays wired — it cannot be removed from a compiled engine.",
+
+      analyzeInput: s.analyzeInput || "",
+      setAnalyzeInput: (v) => this.setState({ analyzeInput: v }),
+      analyzeMeta: s.analyzeInput ? (s.analyzeInput.length + " chars pasted") : "nothing pasted",
+      runAnalyze: () => this.setState({ analyzed: true }),
+      loadSample: () => this.setState({ analyzeInput: '{ "name": "Prospect Automation Engine", "nodes": [ { "id": "schedule_trigger", "type": "n8n-nodes-base.scheduleTrigger" }, … ] }', analyzed: true }),
+      analyzed: !!s.analyzed,
+      notAnalyzed: !s.analyzed,
+      healthScore: "72",
+      healthVerdict: "Runs, but it will drop leads",
+      healthSummary: "9 nodes read · 3 issues · 1 blocking",
+      issues: [
+        { node: "n8n-nodes-base.httpRequest", severity: "blocking", tone: "blocked", title: "No credential bound on the data tool adapter", fix: "Set nodeCredentialType and reference ENV:APOLLO_API_KEY. The node runs unauthenticated today and returns 401 on every item." },
+        { node: "n8n-nodes-base.hubspot", severity: "will duplicate", tone: "attention", title: "Contact create has no match key", fix: "Set resolve on email, or the dedupe shield upstream is pointless — you will re-create contacts you already own." },
+        { node: "n8n-nodes-base.switch", severity: "advisory", tone: "neutral", title: "Approval branch has no timeout", fix: "Add a wait of 24h with a fallback to hold, so drafts do not sit unsent forever." }
+      ],
+      goFix: () => this.go("fix"),
+
+      fixError: s.fixError || "",
+      fixJson: s.fixJson || "",
+      setFixError: (v) => this.setState({ fixError: v }),
+      setFixJson: (v) => this.setState({ fixJson: v }),
+      runFix: () => this.setState({ fixed: true }),
+      fixed: !!s.fixed,
+      notFixed: !s.fixed,
+      fixNode: "node: Data tool adapter · n8n-nodes-base.httpRequest",
+      fixCause: "The provider moved people search to POST /api/v1/mixed_people/search and now rejects the query string. Your node still sends GET with params, so every item returns 400.",
+      fixDiff: [
+        { mark: "-", line: '"method": "GET",' },
+        { mark: "+", line: '"method": "POST",' },
+        { mark: "+", line: '"sendBody": true, "specifyBody": "json",' },
+        { mark: "+", line: '"jsonBody": "={{ JSON.stringify($json.search) }}"' }
+      ],
+
+      templates: [
+        { icon: "target", name: "Outbound engine", nodes: "9 nodes", desc: "The canonical prospect automation engine. Research, draft, approve, send, report.", dialects: ["n8n", "make", "gumloop"], use: () => this.go("editor") },
+        { icon: "radio", name: "Signal watcher", nodes: "6 nodes", desc: "Watches funding and hiring feeds, drops matches into your CRM with the trigger quoted.", dialects: ["n8n", "make"], use: () => this.go("editor") },
+        { icon: "message-square", name: "Reply triage", nodes: "7 nodes", desc: "Classifies replies, drafts the follow-up, books the meeting, silences the rest.", dialects: ["n8n", "gumloop"], use: () => this.go("editor") },
+        { icon: "shield-check", name: "CRM hygiene", nodes: "5 nodes", desc: "Nightly dedupe, bounce quarantine and stage correction across your contact table.", dialects: ["n8n"], use: () => this.go("editor") },
+        { icon: "chart-line", name: "Execution analyst", nodes: "4 nodes", desc: "Queries your instance at 06:00 and mails the failing node with a suggested patch.", dialects: ["n8n"], use: () => this.go("reports") },
+        { icon: "layers", name: "List enrichment", nodes: "6 nodes", desc: "Upload a CSV, waterfall it through your data tools, write back what verified.", dialects: ["n8n", "make", "gumloop"], use: () => this.go("editor") }
+      ],
+
+      reportStats: [
+        { value: "1,412", label: "Executions this week", tone: "ink" },
+        { value: "97", unit: "%", label: "Success rate", tone: "verified" },
+        { value: "2.4", unit: "s", label: "Median run", tone: "brand" },
+        { value: "1", label: "Node needing a patch", tone: "premium" }
+      ],
+      execRows: [
+        { id: "exec_44f912", node: "AI research & PAS copy", ms: "3.1s", status: "success", tone: "verified" },
+        { id: "exec_44f8c7", node: "Data tool adapter", ms: "0.4s", status: "error 400", tone: "blocked" },
+        { id: "exec_44f8a3", node: "CRM dedupe shield", ms: "1.2s", status: "success", tone: "verified" },
+        { id: "exec_44f871", node: "Approval switch", ms: "0.1s", status: "waiting", tone: "attention" },
+        { id: "exec_44f83f", node: "Sequence enrollment", ms: "2.0s", status: "success", tone: "verified" },
+        { id: "exec_44f80b", node: "Review alert", ms: "0.3s", status: "success", tone: "verified" }
+      ],
+      emailSubject: "Prospect PAL · daily report · 27 Aug · 1 workflow needs you",
+      emailLines: [
+        "1,412 executions in the last 7 days, 97% success.",
+        "Data tool adapter failed 38 times with error 400 — the provider changed its people-search verb. A patch is ready in the fix editor.",
+        "38 drafts are holding at the approval switch. Oldest is 14 hours old.",
+        "No CRM duplicates created. Dedupe shield caught 61 accounts already in your pipeline."
+      ],
+
+      agents: [
+        { name: "Configure tools", icon: "plug", role: "Resolves every named tool to a concrete node and a credential slot.", needs: "intake answers 4–7", state: "done", lastRun: "12m ago", run: () => this.go("integrations") },
+        { name: "Write copy", icon: "sparkles", role: "Drafts the three-sentence PAS sequence in your voice, with the research in line one.", needs: "intake answers 1–3", state: "done", lastRun: "12m ago", run: () => this.go("sdr") },
+        { name: "Generate workflow", icon: "workflow", role: "Compiles the nine-node graph against your dialect and emits ack.json.", needs: "all bindings resolved", state: "running", lastRun: "now", run: () => this.go("editor") },
+        { name: "Edit workflow", icon: "wrench", role: "Reads an error, names the node, and hands back the patched parameters.", needs: "a failing run", state: "idle", lastRun: "yesterday", run: () => this.go("fix") }
+      ],
+
+      sdrStats: [
+        { value: "186", label: "Accounts in play", tone: "ink" },
+        { value: "38", label: "Drafts awaiting you", tone: "premium" },
+        { value: "9", label: "Replies today", tone: "verified" },
+        { value: "4", label: "Meetings booked", tone: "brand" }
+      ],
+      approveLabel: s.approved ? "Queue cleared" : "Approve all 38",
+      approveAll: () => this.setState({ approved: true }),
+      queue: [
+        { contact: "Marcus Vance", role: "VP RevOps · NexusFlow Data", signal: "Hiring for automation", when: "06:02", draft: "Marcus — you posted for a GTM automation engineer three days after closing your Series A, which usually means outbound is running on someone's evenings. Most teams at that stage lose a quarter building the pipeline plumbing before it sends anything. Worth fifteen minutes on what we would stand up in a day?", evidence: "Evidence: job post 24 Aug · n8n detected on careers page" },
+        { contact: "Elena Rostova", role: "Head of Growth · HyperScale AI", signal: "Stack change", when: "06:03", draft: "Elena — you moved from Instantly to Smartlead last month, which tells me deliverability was the problem, not volume. Rebuilding sequences after a sender migration is where most teams quietly lose two weeks. Happy to show you what the migration looks like when the research layer is already automated.", evidence: "Evidence: DNS change 11 Aug · 4 inboxes warming" },
+        { contact: "Devon Chen", role: "Co-founder · CloudPulse Systems", signal: "Seed round", when: "06:04", draft: "Devon — congratulations on the seed. You are the founder and the SDR right now, and the second job is the one that gets dropped first. This runs the research and the first touch so your calendar fills without you writing the emails. Fifteen minutes?", evidence: "Evidence: funding filing 19 Aug · Attio + Instantly detected" }
+      ],
+      agentRun: [
+        { icon: "target", title: "Matched 186 accounts to your ICP", meta: "06:00 · 61 dropped as already in CRM" },
+        { icon: "search", title: "Researched 142 contacts", meta: "06:01 · 8 skipped, no verified email" },
+        { icon: "sparkles", title: "Wrote 38 drafts", meta: "06:03 · pas-3-sentence@v4" },
+        { icon: "scale", title: "Held all 38 at the approval switch", meta: "06:04 · nothing sent" },
+        { icon: "chart-line", title: "Mailed the daily report", meta: "06:05 · 1 node needs a patch" }
+      ],
+
+      envRows: [
+        { name: "ENV:HUBSPOT_PRIVATE_APP_TOKEN", used: "dedupe shield · contact create", status: "connected", tone: "verified" },
+        { name: "ENV:APOLLO_API_KEY", used: "data tool adapter", status: "missing", tone: "blocked" },
+        { name: "ENV:ANTHROPIC_API_KEY", used: "research and PAS copy", status: "connected", tone: "verified" },
+        { name: "ENV:SMARTLEAD_API_KEY", used: "sequence enrollment", status: "connected", tone: "verified" },
+        { name: "ENV:SLACK_WEBHOOK_URL", used: "review alert · approvals", status: "connected", tone: "verified" },
+        { name: "ENV:N8N_API_KEY", used: "deploy target · analyst queries", status: "connected", tone: "verified" }
+      ],
+
+      billingLine: current.name + " · " + current.price + (current.cadence || ""),
+      billingCta: plan === "core" ? "Manage plan" : "Upgrade to core agent",
+
+      deployOpen: !!s.deploy,
+      openDeploy: () => this.setState({ deploy: "connect" }),
+      closeDeploy: () => this.setState({ deploy: null }),
+      deployDone: s.deploy === "done",
+      deployConnect: s.deploy === "connect",
+      instanceUrl: s.instanceUrl || "",
+      setInstanceUrl: (v) => this.setState({ instanceUrl: v }),
+      runDeploy: () => this.setState({ deploy: "done" }),
+      deploySteps: [
+        { icon: "circle-check", title: "Graph validated", meta: "9 nodes · 0 orphans" },
+        { icon: "shield-check", title: "Approval switch present", meta: "required · cannot be removed" },
+        { icon: "key-round", title: "5 of 6 credentials connected", meta: "ENV:APOLLO_API_KEY still missing" },
+        { icon: "rocket", title: "Ready to push", meta: "workflow will be created inactive" }
+      ],
+
+      morning: [
+        { value: "186", label: "accounts matched to your ICP" },
+        { value: "142", label: "contacts researched" },
+        { value: "38", label: "emails drafted for approval" },
+        { value: "9", label: "replies waiting for you" }
+      ],
+      morningFeed: [
+        { icon: "search", title: "NexusFlow Data — hiring a GTM automation engineer", meta: "06:02 · researched · draft ready" },
+        { icon: "scale", title: "38 drafts held at the approval switch", meta: "06:04 · nothing sends until you say so" },
+        { icon: "chart-line", title: "Daily report mailed to you", meta: "06:05 · 1 failing node named and patched" }
+      ],
+      howItWorks: [
+        { step: "step 01", icon: "message-square", title: "Tell it what you sell", body: "A short conversation: your offer, your ideal account, the titles you need. Three answers is enough to start; eight makes it sharp." },
+        { step: "step 02", icon: "plug", title: "Point it at your tools", body: "Pick the CRM, the data tool and the sender you already use. It connects and asks for a connection — never for a key." },
+        { step: "step 03", icon: "rocket", title: "It runs every morning", body: "Research, drafts, sends and a daily report. You approve; it repairs itself when a provider changes." }
+      ],
+      faq: [
+        { q: "Do I need to know n8n?", a: "No. The workflow is the backend. If you never open it, nothing breaks — and if you want it, you can export it." },
+        { q: "Does it send without me?", a: "Only if you turn that on. Every compiled engine ships with an approval switch, and it defaults to holding drafts for you." },
+        { q: "Whose keys does it use?", a: "Yours. Prospect PAL asks which provider you use and stores a connection, never a key. The engine runs on your instance." },
+        { q: "What if my stack is unusual?", a: "Name the tool in free text. The agent reads its docs and builds the integration for the next compile." },
+        { q: "Can I run more than one campaign?", a: "Yes — unlimited campaigns and settings on the $99 plan. Each one carries its own versions and outputs." },
+        { q: "What if I do not want an automation platform at all?", a: "That is the $199 core agent. It does the SDR job itself — research, copy, sending, reporting — with no n8n, Make or Gumloop in the loop." }
+      ],
+      nineNodes: NINE,
+      heroNode: s.heroNode,
+      setHeroNode: (i) => this.setState({ heroNode: i }),
+      heroNodeLine: "NODE " + String(s.heroNode + 1).padStart(2, "0") + " · " + NINE[s.heroNode].binding,
+      heroNodeCopy: NINE[s.heroNode].title + " — " + NINE[s.heroNode].subtitle + ".",
+
+      integrations: [
+        { name: "HubSpot", capability: "crm-read-write", description: "Dedupe shield and contact upsert", icon: "database", connected: true },
+        { name: "Salesforce", capability: "crm-read-write", description: "Enterprise pipeline protection", icon: "cloud" },
+        { name: "Apollo.io", capability: "contact-enrichment", description: "Verified decision-maker reveal", icon: "search", connected: true },
+        { name: "Clay", capability: "contact-enrichment", description: "Waterfall company enrichment", icon: "layers" },
+        { name: "Smartlead", capability: "sequencer", description: "Multi-inbox warmup and sending", icon: "send" },
+        { name: "Instantly", capability: "sequencer", description: "High-volume cold sequencing", icon: "mail" },
+        { name: "Anthropic Claude", capability: "llm-inference", description: "Research and PAS copywriting", icon: "sparkles", connected: true },
+        { name: "Slack", capability: "approval-gate", description: "One-click human review", icon: "message-square" },
+        { name: "n8n", capability: "deploy-target", description: "Your own cloud or self-hosted instance", icon: "workflow", connected: true }
+      ],
+      skills: [
+        { slug: "06:00", icon: "target", color: "var(--stage-trigger)", title: "Finds the accounts worth your morning", body: "Matches your ICP against fresh signals — funding, hiring, stack changes — and drops anything already sitting in your CRM." },
+        { slug: "06:02", icon: "search", color: "var(--stage-data)", title: "Researches every contact before it writes", body: "Reveals the decision maker, reads the company, and forms one specific pain hypothesis. No mail-merge personalisation." },
+        { slug: "06:04", icon: "sparkles", color: "var(--stage-ai)", title: "Writes three sentences worth sending", body: "Problem, agitate, solve — in your voice, with the research in the first line. Held at the approval switch until you release it." },
+        { slug: "06:05", icon: "chart-line", color: "var(--stage-sequence)", title: "Reports back, and fixes itself", body: "A daily email: what ran, what replied, what failed. When a provider changes, the engineer patches the node and tells you what it changed." }
+      ],
+      deliverables: [
+        { file: "workflow.n8n.json", badge: "Import ready", label: "Production workflow", description: "Nine wired nodes with error catchers, expressions and sub-workflow hooks." },
+        { file: "BUILD_PROMPT.md", badge: "Documentation", label: "Deploy checklist", description: "Every credential and ENV var still to wire, in the order you'll need them." },
+        { file: ".env.template", badge: "Security", label: "Zero hard-coded secrets", description: "Providers referenced by ENV name only — no key ever leaves your browser." },
+        { file: "email-framework.md", badge: "Copywriting", label: "3-sentence PAS scripts", description: "Problem-agitate-solve templates with dynamic variable mappings." },
+        { file: "PRD.md", badge: "Strategy", label: "Pipeline specification", description: "ICP matrix, data dictionary, bounce guardrails and compliance rules." },
+        { file: "ack.json", badge: "API contract", label: "Compile receipt", description: "Run status, resolved bindings and every requires_connection flag." }
+      ],
+      leads: [
+        { company: "NexusFlow Data", round: "Series A · $12M", stack: ["n8n self-hosted", "HubSpot", "Apollo"], trigger: "Hiring GTM Automation Engineer", contact: "Marcus Vance, VP RevOps" },
+        { company: "HyperScale AI", round: "Series B · $28M", stack: ["n8n cloud", "Salesforce", "Clay", "Smartlead"], trigger: "Hiring Head of Outbound Growth", contact: "Elena Rostova, Head of Growth" },
+        { company: "CloudPulse Systems", round: "Seed · $4.5M", stack: ["Make.com", "Attio", "Instantly"], trigger: "Hiring Founding GTM Specialist", contact: "Devon Chen, Co-founder" }
+      ],
+      plans: PLANS,
+
+      stats: [
+        { value: "3", label: "Campaigns", tone: "brand" },
+        { value: "1,284", label: "Leads compiled", tone: "verified" },
+        { value: "97", unit: "%", label: "Run success", tone: "ink" },
+        { value: "42", label: "Replies", tone: "premium" }
+      ],
+      runs: [
+        { id: "run_8f21c4", workflow: "outbound-engine · seed SaaS", when: "06:04", status: "approved", tone: "verified" },
+        { id: "run_8f2093", workflow: "outbound-engine · agencies", when: "05:58", status: "approved", tone: "verified" },
+        { id: "run_8f1e77", workflow: "reply-triage", when: "04:12", status: "needs-clarification", tone: "attention" },
+        { id: "run_8f1c05", workflow: "outbound-engine · seed SaaS", when: "yesterday", status: "blocked", tone: "blocked" },
+        { id: "run_8f1a90", workflow: "signal-watch", when: "yesterday", status: "approved", tone: "verified" }
+      ],
+      quickActions: [
+        { icon: "wand-sparkles", title: "New campaign", desc: "Eight questions, then a compiled graph.", go: () => this.setState({ view: "intake", q: 0 }) },
+        { icon: "stethoscope", title: "Analyze a workflow", desc: "Paste any JSON and read its health score.", go: () => this.go("analyzer") },
+        { icon: "wrench", title: "Fix a broken run", desc: "Paste the error, take the patched node.", go: () => this.go("fix") },
+        { icon: "bot", title: "Core SDR queue", desc: "12 drafts waiting on your approval.", go: () => this.go("sdr") }
+      ],
+
+      qIndex: s.q + 1,
+      qQuestion: q.q,
+      qWhy: q.why,
+      qSaved: ans ? "saved · v" + (s.q + 1) : "",
+      qIsTools: q.type === "tools",
+      qIsText: q.type === "text",
+      qOptions: q.options || [],
+      qValue: q.type === "tools" ? (ans || []) : [],
+      qText: q.type === "text" ? (ans || "") : "",
+      qPlaceholder: q.ph || "",
+      qFirst: s.q === 0,
+      qGate: s.q === 7 ? "gate: ready to compile" : "gate " + (s.q + 1) + "/8",
+      qNextLabel: s.q === 7 ? "Compile GTM engine" : "Save and continue",
+      setToolAnswer: (v) => this.setState({ answers: { ...s.answers, [q.key]: v } }),
+      setTextAnswer: (v) => this.setState({ answers: { ...s.answers, [q.key]: v } }),
+      prevQ: () => this.setState({ q: Math.max(0, s.q - 1) }),
+      nextQ: () => s.q === 7 ? this.go("editor") : this.setState({ q: s.q + 1 }),
+      history: QUESTIONS.slice(0, s.q).map((x, i) => ({
+        key: x.key,
+        version: "v" + (i + 1),
+        value: Array.isArray(s.answers[x.key]) ? s.answers[x.key].join(", ") : (s.answers[x.key] || "— skipped")
+      })),
+      gateNote: "The compile is blocked until tools_needed[2].capability resolves to an outreach tool. Prospect PAL only asks which provider — never a key.",
+
+      checkoutOpen: !!s.checkout,
+      coSelect: s.checkout === "select",
+      coPay: s.checkout === "pay",
+      coDone: s.checkout === "done",
+      coEyebrow: s.checkout === "done" ? "Receipt" : "Checkout",
+      coTitle: s.checkout === "select" ? "Pick how you want to build"
+        : s.checkout === "pay" ? "Confirm and provision the workspace"
+        : "Payment cleared",
+      coContinue: "Continue with " + current.name,
+      coPlanName: current.name,
+      coPlanPrice: current.price + (current.cadence || ""),
+      coPayLabel: "Authorize " + current.price,
+      coName: s.coName || "",
+      coEmail: s.coEmail || "",
+      setCoName: (v) => this.setState({ coName: v }),
+      setCoEmail: (v) => this.setState({ coEmail: v }),
+      planCards: PLANS.map(p => ({
+        name: p.name, icon: p.icon, caption: p.caption, meta: p.price + (p.cadence || ""),
+        selected: plan === p.id, pick: () => this.setState({ plan: p.id })
+      })),
+      openCheckoutPro: () => this.openCheckout("pro"),
+      closeCheckout: () => this.setState({ checkout: null }),
+      toPay: () => this.setState({ checkout: "pay" }),
+      toSelect: () => this.setState({ checkout: "select" }),
+      confirmPay: () => this.setState({ checkout: "done", paid: true }),
+      enterWorkspace: () => this.setState({ checkout: null, route: "app", view: "intake", q: 0 })
+    };
+  }
+
+  nodeIdx() {
+    const id = this.state.nodeId || "n5";
+    const i = parseInt(String(id).replace("n", ""), 10) - 1;
+    return Number.isFinite(i) && i >= 0 && i < NINE.length ? i : 4;
+  }
+
+  openCheckout(planId) {
+    // Account first, then payment: /signup → checkout → intake.
+    if (this.state.route === "landing") {
+      this.setState({ plan: planId, route: "auth", authMode: "signup" });
+    } else {
+      this.setState({ plan: planId, checkout: "select" });
+    }
+  }
+}
+</script>
+</body>
+</html>
